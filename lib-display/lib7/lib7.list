@@ -1,0 +1,3124 @@
+In archive lib7/libdisplay.a:
+
+display_timeout.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <display::timeout::gpio_init()>:
+   0:	e12fff1e 	bx	lr
+
+00000004 <display::timeout::gpio_renew()>:
+   4:	e3a00000 	mov	r0, #0
+   8:	e12fff1e 	bx	lr
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+display.o:     file format elf32-littlearm
+
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000007 	andeq	r0, r0, r7
+   8:	00000008 	andeq	r0, r0, r8
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000009 	andeq	r0, r0, r9
+   8:	0000000a 	andeq	r0, r0, sl
+
+Disassembly of section .text:
+
+00000000 <Display::Detect(display::Type)>:
+   0:	e3510002 	cmp	r1, #2
+   4:	e92d4070 	push	{r4, r5, r6, lr}
+   8:	e1a04000 	mov	r4, r0
+   c:	0a000022 	beq	9c <Display::Detect(display::Type)+0x9c>
+  10:	e5945018 	ldr	r5, [r4, #24]
+  14:	e3510004 	cmp	r1, #4
+  18:	05801000 	streq	r1, [r0]
+  1c:	e3550000 	cmp	r5, #0
+  20:	0a000013 	beq	74 <Display::Detect(display::Type)+0x74>
+  24:	e5953000 	ldr	r3, [r5]
+  28:	e1a00005 	mov	r0, r5
+  2c:	e5933008 	ldr	r3, [r3, #8]
+  30:	e12fff33 	blx	r3
+  34:	e3500000 	cmp	r0, #0
+  38:	e5940018 	ldr	r0, [r4, #24]
+  3c:	1a00000f 	bne	80 <Display::Detect(display::Type)+0x80>
+  40:	e3500000 	cmp	r0, #0
+  44:	0a000006 	beq	64 <Display::Detect(display::Type)+0x64>
+  48:	e5902000 	ldr	r2, [r0]
+  4c:	e3003000 	movw	r3, #0
+  50:	e3403000 	movt	r3, #0
+  54:	e5922004 	ldr	r2, [r2, #4]
+  58:	e1520003 	cmp	r2, r3
+  5c:	1a000015 	bne	b8 <Display::Detect(display::Type)+0xb8>
+  60:	ebfffffe 	bl	0 <operator delete(void*)>
+  64:	e3a02000 	mov	r2, #0
+  68:	e3a03004 	mov	r3, #4
+  6c:	e5842018 	str	r2, [r4, #24]
+  70:	e5843000 	str	r3, [r4]
+  74:	e3a03000 	mov	r3, #0
+  78:	e5843014 	str	r3, [r4, #20]
+  7c:	e8bd8070 	pop	{r4, r5, r6, pc}
+  80:	e5903000 	ldr	r3, [r0]
+  84:	e593300c 	ldr	r3, [r3, #12]
+  88:	e12fff33 	blx	r3
+  8c:	e5943018 	ldr	r3, [r4, #24]
+  90:	e3530000 	cmp	r3, #0
+  94:	18bd8070 	popne	{r4, r5, r6, pc}
+  98:	eafffff5 	b	74 <Display::Detect(display::Type)+0x74>
+  9c:	e3a00018 	mov	r0, #24
+  a0:	ebfffffe 	bl	0 <operator new(unsigned int)>
+  a4:	e1a05000 	mov	r5, r0
+  a8:	e3a01000 	mov	r1, #0
+  ac:	ebfffffe 	bl	0 <Ssd1306::Ssd1306(TOledPanel)>
+  b0:	e5845018 	str	r5, [r4, #24]
+  b4:	eaffffda 	b	24 <Display::Detect(display::Type)+0x24>
+  b8:	e12fff32 	blx	r2
+  bc:	eaffffe8 	b	64 <Display::Detect(display::Type)+0x64>
+
+000000c0 <Display::Display()>:
+  c0:	e3a03004 	mov	r3, #4
+  c4:	e92d4030 	push	{r4, r5, lr}
+  c8:	e1a04000 	mov	r4, r0
+  cc:	e5803000 	str	r3, [r0]
+  d0:	e24dd00c 	sub	sp, sp, #12
+  d4:	ebfffffe 	bl	0 <millis>
+  d8:	e5840004 	str	r0, [r4, #4]
+  dc:	e3a00d6a 	mov	r0, #6784	; 0x1a80
+  e0:	e3400006 	movt	r0, #6
+  e4:	e30913e0 	movw	r1, #37856	; 0x93e0
+  e8:	e3401004 	movt	r1, #4
+  ec:	e3003000 	movw	r3, #0
+  f0:	e3403000 	movt	r3, #0
+  f4:	e3a02000 	mov	r2, #0
+  f8:	e584000c 	str	r0, [r4, #12]
+  fc:	e3a00021 	mov	r0, #33	; 0x21
+ 100:	e5c40008 	strb	r0, [r4, #8]
+ 104:	e1a00004 	mov	r0, r4
+ 108:	e1c421b0 	strh	r2, [r4, #16]
+ 10c:	e5841014 	str	r1, [r4, #20]
+ 110:	e3a01002 	mov	r1, #2
+ 114:	e5842018 	str	r2, [r4, #24]
+ 118:	e5834000 	str	r4, [r3]
+ 11c:	ebfffffe 	bl	0 <Display::Detect(display::Type)>
+ 120:	e5d45008 	ldrb	r5, [r4, #8]
+ 124:	e3a03901 	mov	r3, #16384	; 0x4000
+ 128:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 12c:	e594000c 	ldr	r0, [r4, #12]
+ 130:	e583500c 	str	r5, [r3, #12]
+ 134:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 138:	e2451030 	sub	r1, r5, #48	; 0x30
+ 13c:	e2455050 	sub	r5, r5, #80	; 0x50
+ 140:	e355000f 	cmp	r5, #15
+ 144:	83510007 	cmphi	r1, #7
+ 148:	93a01001 	movls	r1, #1
+ 14c:	83a01000 	movhi	r1, #0
+ 150:	8a000014 	bhi	1a8 <Display::Display()+0xe8>
+ 154:	e3a01001 	mov	r1, #1
+ 158:	e28d0004 	add	r0, sp, #4
+ 15c:	ebfffffe 	bl	0 <bcm2835_i2c_read>
+ 160:	e16f0f10 	clz	r0, r0
+ 164:	e1a002a0 	lsr	r0, r0, #5
+ 168:	e5c40011 	strb	r0, [r4, #17]
+ 16c:	e3500000 	cmp	r0, #0
+ 170:	1a000013 	bne	1c4 <Display::Display()+0x104>
+ 174:	e5943018 	ldr	r3, [r4, #24]
+ 178:	e3530000 	cmp	r3, #0
+ 17c:	0a000030 	beq	244 <Display::Display()+0x184>
+ 180:	ebfffffe 	bl	0 <display::timeout::gpio_init()>
+ 184:	e5940018 	ldr	r0, [r4, #24]
+ 188:	e3500000 	cmp	r0, #0
+ 18c:	0a00002c 	beq	244 <Display::Display()+0x184>
+ 190:	e5903000 	ldr	r3, [r0]
+ 194:	e5933034 	ldr	r3, [r3, #52]	; 0x34
+ 198:	e12fff33 	blx	r3
+ 19c:	e1a00004 	mov	r0, r4
+ 1a0:	e28dd00c 	add	sp, sp, #12
+ 1a4:	e8bd8030 	pop	{r4, r5, pc}
+ 1a8:	e1a00001 	mov	r0, r1
+ 1ac:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 1b0:	e16f0f10 	clz	r0, r0
+ 1b4:	e1a002a0 	lsr	r0, r0, #5
+ 1b8:	e5c40011 	strb	r0, [r4, #17]
+ 1bc:	e3500000 	cmp	r0, #0
+ 1c0:	0affffeb 	beq	174 <Display::Display()+0xb4>
+ 1c4:	e5d42008 	ldrb	r2, [r4, #8]
+ 1c8:	e3a05901 	mov	r5, #16384	; 0x4000
+ 1cc:	e3435f80 	movt	r5, #16256	; 0x3f80
+ 1d0:	e3a03000 	mov	r3, #0
+ 1d4:	e5cd3004 	strb	r3, [sp, #4]
+ 1d8:	e5cd3005 	strb	r3, [sp, #5]
+ 1dc:	e5cd3006 	strb	r3, [sp, #6]
+ 1e0:	e594000c 	ldr	r0, [r4, #12]
+ 1e4:	e585200c 	str	r2, [r5, #12]
+ 1e8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 1ec:	e3a01003 	mov	r1, #3
+ 1f0:	e28d0004 	add	r0, sp, #4
+ 1f4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 1f8:	e5d43011 	ldrb	r3, [r4, #17]
+ 1fc:	e3530000 	cmp	r3, #0
+ 200:	0affffdb 	beq	174 <Display::Display()+0xb4>
+ 204:	e5d43008 	ldrb	r3, [r4, #8]
+ 208:	e3a02012 	mov	r2, #18
+ 20c:	e5cd2004 	strb	r2, [sp, #4]
+ 210:	e3e0203f 	mvn	r2, #63	; 0x3f
+ 214:	e5cd2005 	strb	r2, [sp, #5]
+ 218:	e3e02000 	mvn	r2, #0
+ 21c:	e594000c 	ldr	r0, [r4, #12]
+ 220:	e5cd2006 	strb	r2, [sp, #6]
+ 224:	e585300c 	str	r3, [r5, #12]
+ 228:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 22c:	e3a01003 	mov	r1, #3
+ 230:	e28d0004 	add	r0, sp, #4
+ 234:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 238:	e5943018 	ldr	r3, [r4, #24]
+ 23c:	e3530000 	cmp	r3, #0
+ 240:	1affffce 	bne	180 <Display::Display()+0xc0>
+ 244:	e3000000 	movw	r0, #0
+ 248:	e3400000 	movt	r0, #0
+ 24c:	ebfffffe 	bl	0 <puts>
+ 250:	eaffffd1 	b	19c <Display::Display()+0xdc>
+
+00000254 <Display::Display(display::Type)>:
+ 254:	e92d4030 	push	{r4, r5, lr}
+ 258:	e1a04000 	mov	r4, r0
+ 25c:	e5801000 	str	r1, [r0]
+ 260:	e24dd00c 	sub	sp, sp, #12
+ 264:	e1a05001 	mov	r5, r1
+ 268:	ebfffffe 	bl	0 <millis>
+ 26c:	e5840004 	str	r0, [r4, #4]
+ 270:	e30913e0 	movw	r1, #37856	; 0x93e0
+ 274:	e3401004 	movt	r1, #4
+ 278:	e3a00d6a 	mov	r0, #6784	; 0x1a80
+ 27c:	e3400006 	movt	r0, #6
+ 280:	e3003000 	movw	r3, #0
+ 284:	e3403000 	movt	r3, #0
+ 288:	e3a02000 	mov	r2, #0
+ 28c:	e5841014 	str	r1, [r4, #20]
+ 290:	e3a01021 	mov	r1, #33	; 0x21
+ 294:	e5c41008 	strb	r1, [r4, #8]
+ 298:	e1a01005 	mov	r1, r5
+ 29c:	e584000c 	str	r0, [r4, #12]
+ 2a0:	e1a00004 	mov	r0, r4
+ 2a4:	e1c421b0 	strh	r2, [r4, #16]
+ 2a8:	e5842018 	str	r2, [r4, #24]
+ 2ac:	e5834000 	str	r4, [r3]
+ 2b0:	ebfffffe 	bl	0 <Display::Detect(display::Type)>
+ 2b4:	e5d45008 	ldrb	r5, [r4, #8]
+ 2b8:	e3a03901 	mov	r3, #16384	; 0x4000
+ 2bc:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 2c0:	e594000c 	ldr	r0, [r4, #12]
+ 2c4:	e583500c 	str	r5, [r3, #12]
+ 2c8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 2cc:	e2451030 	sub	r1, r5, #48	; 0x30
+ 2d0:	e2455050 	sub	r5, r5, #80	; 0x50
+ 2d4:	e355000f 	cmp	r5, #15
+ 2d8:	83510007 	cmphi	r1, #7
+ 2dc:	93a01001 	movls	r1, #1
+ 2e0:	83a01000 	movhi	r1, #0
+ 2e4:	8a000014 	bhi	33c <Display::Display(display::Type)+0xe8>
+ 2e8:	e3a01001 	mov	r1, #1
+ 2ec:	e28d0004 	add	r0, sp, #4
+ 2f0:	ebfffffe 	bl	0 <bcm2835_i2c_read>
+ 2f4:	e16f0f10 	clz	r0, r0
+ 2f8:	e1a002a0 	lsr	r0, r0, #5
+ 2fc:	e5c40011 	strb	r0, [r4, #17]
+ 300:	e3500000 	cmp	r0, #0
+ 304:	1a000013 	bne	358 <Display::Display(display::Type)+0x104>
+ 308:	e5943018 	ldr	r3, [r4, #24]
+ 30c:	e3530000 	cmp	r3, #0
+ 310:	0a000030 	beq	3d8 <Display::Display(display::Type)+0x184>
+ 314:	ebfffffe 	bl	0 <display::timeout::gpio_init()>
+ 318:	e5940018 	ldr	r0, [r4, #24]
+ 31c:	e3500000 	cmp	r0, #0
+ 320:	0a00002c 	beq	3d8 <Display::Display(display::Type)+0x184>
+ 324:	e5903000 	ldr	r3, [r0]
+ 328:	e5933034 	ldr	r3, [r3, #52]	; 0x34
+ 32c:	e12fff33 	blx	r3
+ 330:	e1a00004 	mov	r0, r4
+ 334:	e28dd00c 	add	sp, sp, #12
+ 338:	e8bd8030 	pop	{r4, r5, pc}
+ 33c:	e1a00001 	mov	r0, r1
+ 340:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 344:	e16f0f10 	clz	r0, r0
+ 348:	e1a002a0 	lsr	r0, r0, #5
+ 34c:	e5c40011 	strb	r0, [r4, #17]
+ 350:	e3500000 	cmp	r0, #0
+ 354:	0affffeb 	beq	308 <Display::Display(display::Type)+0xb4>
+ 358:	e5d42008 	ldrb	r2, [r4, #8]
+ 35c:	e3a05901 	mov	r5, #16384	; 0x4000
+ 360:	e3435f80 	movt	r5, #16256	; 0x3f80
+ 364:	e3a03000 	mov	r3, #0
+ 368:	e5cd3004 	strb	r3, [sp, #4]
+ 36c:	e5cd3005 	strb	r3, [sp, #5]
+ 370:	e5cd3006 	strb	r3, [sp, #6]
+ 374:	e594000c 	ldr	r0, [r4, #12]
+ 378:	e585200c 	str	r2, [r5, #12]
+ 37c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 380:	e3a01003 	mov	r1, #3
+ 384:	e28d0004 	add	r0, sp, #4
+ 388:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 38c:	e5d43011 	ldrb	r3, [r4, #17]
+ 390:	e3530000 	cmp	r3, #0
+ 394:	0affffdb 	beq	308 <Display::Display(display::Type)+0xb4>
+ 398:	e5d43008 	ldrb	r3, [r4, #8]
+ 39c:	e3a02012 	mov	r2, #18
+ 3a0:	e5cd2004 	strb	r2, [sp, #4]
+ 3a4:	e3e0203f 	mvn	r2, #63	; 0x3f
+ 3a8:	e5cd2005 	strb	r2, [sp, #5]
+ 3ac:	e3e02000 	mvn	r2, #0
+ 3b0:	e594000c 	ldr	r0, [r4, #12]
+ 3b4:	e5cd2006 	strb	r2, [sp, #6]
+ 3b8:	e585300c 	str	r3, [r5, #12]
+ 3bc:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 3c0:	e3a01003 	mov	r1, #3
+ 3c4:	e28d0004 	add	r0, sp, #4
+ 3c8:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 3cc:	e5943018 	ldr	r3, [r4, #24]
+ 3d0:	e3530000 	cmp	r3, #0
+ 3d4:	1affffce 	bne	314 <Display::Display(display::Type)+0xc0>
+ 3d8:	e3000000 	movw	r0, #0
+ 3dc:	e3400000 	movt	r0, #0
+ 3e0:	ebfffffe 	bl	0 <puts>
+ 3e4:	eaffffd1 	b	330 <Display::Display(display::Type)+0xdc>
+
+000003e8 <Display::Detect(unsigned int)>:
+ 3e8:	e3a03901 	mov	r3, #16384	; 0x4000
+ 3ec:	e3a0203c 	mov	r2, #60	; 0x3c
+ 3f0:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 3f4:	e92d4070 	push	{r4, r5, r6, lr}
+ 3f8:	e1a04000 	mov	r4, r0
+ 3fc:	e583200c 	str	r2, [r3, #12]
+ 400:	e30806a0 	movw	r0, #34464	; 0x86a0
+ 404:	e3400001 	movt	r0, #1
+ 408:	e1a06001 	mov	r6, r1
+ 40c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 410:	e3a01000 	mov	r1, #0
+ 414:	e1a00001 	mov	r0, r1
+ 418:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 41c:	e2505000 	subs	r5, r0, #0
+ 420:	1a00000d 	bne	45c <Display::Detect(unsigned int)+0x74>
+ 424:	e3560004 	cmp	r6, #4
+ 428:	e3a00018 	mov	r0, #24
+ 42c:	9a00000e 	bls	46c <Display::Detect(unsigned int)+0x84>
+ 430:	ebfffffe 	bl	0 <operator new(unsigned int)>
+ 434:	e1a06000 	mov	r6, r0
+ 438:	e1a01005 	mov	r1, r5
+ 43c:	ebfffffe 	bl	0 <Ssd1306::Ssd1306(TOledPanel)>
+ 440:	e5846018 	str	r6, [r4, #24]
+ 444:	e5963000 	ldr	r3, [r6]
+ 448:	e1a00006 	mov	r0, r6
+ 44c:	e5933008 	ldr	r3, [r3, #8]
+ 450:	e12fff33 	blx	r3
+ 454:	e3500000 	cmp	r0, #0
+ 458:	1a000009 	bne	484 <Display::Detect(unsigned int)+0x9c>
+ 45c:	e5943018 	ldr	r3, [r4, #24]
+ 460:	e3530000 	cmp	r3, #0
+ 464:	05843014 	streq	r3, [r4, #20]
+ 468:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 46c:	ebfffffe 	bl	0 <operator new(unsigned int)>
+ 470:	e1a06000 	mov	r6, r0
+ 474:	e3a01001 	mov	r1, #1
+ 478:	ebfffffe 	bl	0 <Ssd1306::Ssd1306(TOledPanel)>
+ 47c:	e5846018 	str	r6, [r4, #24]
+ 480:	eaffffef 	b	444 <Display::Detect(unsigned int)+0x5c>
+ 484:	e3a03002 	mov	r3, #2
+ 488:	e3002000 	movw	r2, #0
+ 48c:	e3402000 	movt	r2, #0
+ 490:	e3a01001 	mov	r1, #1
+ 494:	e5843000 	str	r3, [r4]
+ 498:	e1a00004 	mov	r0, r4
+ 49c:	ebfffffe 	bl	0 <Display::Detect(display::Type)>
+ 4a0:	eaffffed 	b	45c <Display::Detect(unsigned int)+0x74>
+
+000004a4 <Display::Display(unsigned int)>:
+ 4a4:	e3a03004 	mov	r3, #4
+ 4a8:	e92d4030 	push	{r4, r5, lr}
+ 4ac:	e1a04000 	mov	r4, r0
+ 4b0:	e5803000 	str	r3, [r0]
+ 4b4:	e24dd00c 	sub	sp, sp, #12
+ 4b8:	e1a05001 	mov	r5, r1
+ 4bc:	ebfffffe 	bl	0 <millis>
+ 4c0:	e5840004 	str	r0, [r4, #4]
+ 4c4:	e30913e0 	movw	r1, #37856	; 0x93e0
+ 4c8:	e3401004 	movt	r1, #4
+ 4cc:	e3a00d6a 	mov	r0, #6784	; 0x1a80
+ 4d0:	e3400006 	movt	r0, #6
+ 4d4:	e3003000 	movw	r3, #0
+ 4d8:	e3403000 	movt	r3, #0
+ 4dc:	e3a02000 	mov	r2, #0
+ 4e0:	e5841014 	str	r1, [r4, #20]
+ 4e4:	e3a01021 	mov	r1, #33	; 0x21
+ 4e8:	e5c41008 	strb	r1, [r4, #8]
+ 4ec:	e1a01005 	mov	r1, r5
+ 4f0:	e584000c 	str	r0, [r4, #12]
+ 4f4:	e1a00004 	mov	r0, r4
+ 4f8:	e1c421b0 	strh	r2, [r4, #16]
+ 4fc:	e5842018 	str	r2, [r4, #24]
+ 500:	e5834000 	str	r4, [r3]
+ 504:	ebfffffe 	bl	3e8 <Display::Detect(unsigned int)>
+ 508:	e5d45008 	ldrb	r5, [r4, #8]
+ 50c:	e3a03901 	mov	r3, #16384	; 0x4000
+ 510:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 514:	e594000c 	ldr	r0, [r4, #12]
+ 518:	e583500c 	str	r5, [r3, #12]
+ 51c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 520:	e2451030 	sub	r1, r5, #48	; 0x30
+ 524:	e2455050 	sub	r5, r5, #80	; 0x50
+ 528:	e355000f 	cmp	r5, #15
+ 52c:	83510007 	cmphi	r1, #7
+ 530:	93a01001 	movls	r1, #1
+ 534:	83a01000 	movhi	r1, #0
+ 538:	8a000014 	bhi	590 <Display::Display(unsigned int)+0xec>
+ 53c:	e3a01001 	mov	r1, #1
+ 540:	e28d0004 	add	r0, sp, #4
+ 544:	ebfffffe 	bl	0 <bcm2835_i2c_read>
+ 548:	e16f0f10 	clz	r0, r0
+ 54c:	e1a002a0 	lsr	r0, r0, #5
+ 550:	e5c40011 	strb	r0, [r4, #17]
+ 554:	e3500000 	cmp	r0, #0
+ 558:	1a000013 	bne	5ac <Display::Display(unsigned int)+0x108>
+ 55c:	e5943018 	ldr	r3, [r4, #24]
+ 560:	e3530000 	cmp	r3, #0
+ 564:	0a000030 	beq	62c <Display::Display(unsigned int)+0x188>
+ 568:	ebfffffe 	bl	0 <display::timeout::gpio_init()>
+ 56c:	e5940018 	ldr	r0, [r4, #24]
+ 570:	e3500000 	cmp	r0, #0
+ 574:	0a00002c 	beq	62c <Display::Display(unsigned int)+0x188>
+ 578:	e5903000 	ldr	r3, [r0]
+ 57c:	e5933034 	ldr	r3, [r3, #52]	; 0x34
+ 580:	e12fff33 	blx	r3
+ 584:	e1a00004 	mov	r0, r4
+ 588:	e28dd00c 	add	sp, sp, #12
+ 58c:	e8bd8030 	pop	{r4, r5, pc}
+ 590:	e1a00001 	mov	r0, r1
+ 594:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 598:	e16f0f10 	clz	r0, r0
+ 59c:	e1a002a0 	lsr	r0, r0, #5
+ 5a0:	e5c40011 	strb	r0, [r4, #17]
+ 5a4:	e3500000 	cmp	r0, #0
+ 5a8:	0affffeb 	beq	55c <Display::Display(unsigned int)+0xb8>
+ 5ac:	e5d42008 	ldrb	r2, [r4, #8]
+ 5b0:	e3a05901 	mov	r5, #16384	; 0x4000
+ 5b4:	e3435f80 	movt	r5, #16256	; 0x3f80
+ 5b8:	e3a03000 	mov	r3, #0
+ 5bc:	e5cd3004 	strb	r3, [sp, #4]
+ 5c0:	e5cd3005 	strb	r3, [sp, #5]
+ 5c4:	e5cd3006 	strb	r3, [sp, #6]
+ 5c8:	e594000c 	ldr	r0, [r4, #12]
+ 5cc:	e585200c 	str	r2, [r5, #12]
+ 5d0:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 5d4:	e3a01003 	mov	r1, #3
+ 5d8:	e28d0004 	add	r0, sp, #4
+ 5dc:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 5e0:	e5d43011 	ldrb	r3, [r4, #17]
+ 5e4:	e3530000 	cmp	r3, #0
+ 5e8:	0affffdb 	beq	55c <Display::Display(unsigned int)+0xb8>
+ 5ec:	e5d43008 	ldrb	r3, [r4, #8]
+ 5f0:	e3a02012 	mov	r2, #18
+ 5f4:	e5cd2004 	strb	r2, [sp, #4]
+ 5f8:	e3e0203f 	mvn	r2, #63	; 0x3f
+ 5fc:	e5cd2005 	strb	r2, [sp, #5]
+ 600:	e3e02000 	mvn	r2, #0
+ 604:	e594000c 	ldr	r0, [r4, #12]
+ 608:	e5cd2006 	strb	r2, [sp, #6]
+ 60c:	e585300c 	str	r3, [r5, #12]
+ 610:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 614:	e3a01003 	mov	r1, #3
+ 618:	e28d0004 	add	r0, sp, #4
+ 61c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 620:	e5943018 	ldr	r3, [r4, #24]
+ 624:	e3530000 	cmp	r3, #0
+ 628:	1affffce 	bne	568 <Display::Display(unsigned int)+0xc4>
+ 62c:	e3000000 	movw	r0, #0
+ 630:	e3400000 	movt	r0, #0
+ 634:	ebfffffe 	bl	0 <puts>
+ 638:	eaffffd1 	b	584 <Display::Display(unsigned int)+0xe0>
+
+Disassembly of section .bss:
+
+00000000 <Display::s_pThis>:
+   0:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section .text._ZN7Ssd1306D0Ev:
+
+00000000 <Ssd1306::~Ssd1306()>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04000 	mov	r4, r0
+   8:	ebfffffe 	bl	0 <operator delete(void*)>
+   c:	e1a00004 	mov	r0, r4
+  10:	e8bd8010 	pop	{r4, pc}
+
+Disassembly of section .text._ZN7Display6PrintfEhPKcz:
+
+00000000 <Display::Printf(unsigned char, char const*, ...)>:
+   0:	e92d000c 	push	{r2, r3}
+   4:	e92d4070 	push	{r4, r5, r6, lr}
+   8:	e24dd028 	sub	sp, sp, #40	; 0x28
+   c:	e5904018 	ldr	r4, [r0, #24]
+  10:	e3540000 	cmp	r4, #0
+  14:	0a00000f 	beq	58 <Display::Printf(unsigned char, char const*, ...)+0x58>
+  18:	e59d2038 	ldr	r2, [sp, #56]	; 0x38
+  1c:	e1a05000 	mov	r5, r0
+  20:	e28d303c 	add	r3, sp, #60	; 0x3c
+  24:	e1a06001 	mov	r6, r1
+  28:	e58d3004 	str	r3, [sp, #4]
+  2c:	e3a01020 	mov	r1, #32
+  30:	e28d0008 	add	r0, sp, #8
+  34:	ebfffffe 	bl	0 <vsnprintf>
+  38:	e1a04000 	mov	r4, r0
+  3c:	e1a01006 	mov	r1, r6
+  40:	e5950018 	ldr	r0, [r5, #24]
+  44:	e6ff3074 	uxth	r3, r4
+  48:	e5902000 	ldr	r2, [r0]
+  4c:	e592501c 	ldr	r5, [r2, #28]
+  50:	e28d2008 	add	r2, sp, #8
+  54:	e12fff35 	blx	r5
+  58:	e1a00004 	mov	r0, r4
+  5c:	e28dd028 	add	sp, sp, #40	; 0x28
+  60:	e8bd4070 	pop	{r4, r5, r6, lr}
+  64:	e28dd008 	add	sp, sp, #8
+  68:	e12fff1e 	bx	lr
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.LC0>:
+   0:	64206f4e 	strtvs	r6, [r0], #-3918	; 0xfffff0b2
+   4:	6c707369 	ldclvs	3, cr7, [r0], #-420	; 0xfffffe5c
+   8:	66207961 	strtvs	r7, [r0], -r1, ror #18
+   c:	646e756f 	strbtvs	r7, [lr], #-1391	; 0xfffffa91
+  10:	00000000 	andeq	r0, r0, r0
+
+00000014 <.LC1>:
+  14:	31445353 	cmpcc	r4, r3, asr r3
+  18:	00363033 	eorseq	r3, r6, r3, lsr r0
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+hd44780.o:     file format elf32-littlearm
+
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	0000000a 	andeq	r0, r0, sl
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	0000000b 	andeq	r0, r0, fp
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	0000000c 	andeq	r0, r0, ip
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	0000000d 	andeq	r0, r0, sp
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	0000000f 	andeq	r0, r0, pc
+   8:	00000010 	andeq	r0, r0, r0, lsl r0
+
+Disassembly of section .text:
+
+00000000 <Hd44780::SetCursor(unsigned int)>:
+   0:	e12fff1e 	bx	lr
+
+00000004 <Hd44780::PrintInfo()>:
+   4:	e1a03000 	mov	r3, r0
+   8:	e3000000 	movw	r0, #0
+   c:	e3400000 	movt	r0, #0
+  10:	e5d32004 	ldrb	r2, [r3, #4]
+  14:	e5d31005 	ldrb	r1, [r3, #5]
+  18:	eafffffe 	b	0 <printf>
+
+0000001c <Hd44780::Hd44780()>:
+  1c:	e59fc024 	ldr	ip, [pc, #36]	; 48 <Hd44780::Hd44780()+0x2c>
+  20:	e3a01d6a 	mov	r1, #6784	; 0x1a80
+  24:	e3401006 	movt	r1, #6
+  28:	e3a02e21 	mov	r2, #528	; 0x210
+  2c:	e340207f 	movt	r2, #127	; 0x7f
+  30:	e580100c 	str	r1, [r0, #12]
+  34:	e3a01027 	mov	r1, #39	; 0x27
+  38:	e580c000 	str	ip, [r0]
+  3c:	e5802004 	str	r2, [r0, #4]
+  40:	e5c01008 	strb	r1, [r0, #8]
+  44:	e12fff1e 	bx	lr
+  48:	00000008 	andeq	r0, r0, r8
+
+0000004c <Hd44780::Hd44780(unsigned char, unsigned char)>:
+  4c:	e59fc048 	ldr	ip, [pc, #72]	; 9c <Hd44780::Hd44780(unsigned char, unsigned char)+0x50>
+  50:	e3510010 	cmp	r1, #16
+  54:	33a01010 	movcc	r1, #16
+  58:	e580c000 	str	ip, [r0]
+  5c:	e3510014 	cmp	r1, #20
+  60:	23a01014 	movcs	r1, #20
+  64:	e3520002 	cmp	r2, #2
+  68:	e5c01004 	strb	r1, [r0, #4]
+  6c:	33a02002 	movcc	r2, #2
+  70:	e3a0c07f 	mov	ip, #127	; 0x7f
+  74:	e3520004 	cmp	r2, #4
+  78:	e1c0c0b6 	strh	ip, [r0, #6]
+  7c:	e3a01d6a 	mov	r1, #6784	; 0x1a80
+  80:	e3401006 	movt	r1, #6
+  84:	e3a0c027 	mov	ip, #39	; 0x27
+  88:	e5c0c008 	strb	ip, [r0, #8]
+  8c:	23a02004 	movcs	r2, #4
+  90:	e580100c 	str	r1, [r0, #12]
+  94:	e5c02005 	strb	r2, [r0, #5]
+  98:	e12fff1e 	bx	lr
+  9c:	00000008 	andeq	r0, r0, r8
+
+000000a0 <Hd44780::Hd44780(unsigned char, unsigned char, unsigned char)>:
+  a0:	e3510000 	cmp	r1, #0
+  a4:	03a01027 	moveq	r1, #39	; 0x27
+  a8:	e3520010 	cmp	r2, #16
+  ac:	e5c01008 	strb	r1, [r0, #8]
+  b0:	33a02010 	movcc	r2, #16
+  b4:	e3520014 	cmp	r2, #20
+  b8:	e3a01d6a 	mov	r1, #6784	; 0x1a80
+  bc:	e3401006 	movt	r1, #6
+  c0:	23a02014 	movcs	r2, #20
+  c4:	e5c02004 	strb	r2, [r0, #4]
+  c8:	e3530002 	cmp	r3, #2
+  cc:	e580100c 	str	r1, [r0, #12]
+  d0:	33a03002 	movcc	r3, #2
+  d4:	e3530004 	cmp	r3, #4
+  d8:	23a03004 	movcs	r3, #4
+  dc:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+  e0:	e59fe010 	ldr	lr, [pc, #16]	; f8 <Hd44780::Hd44780(unsigned char, unsigned char, unsigned char)+0x58>
+  e4:	e5c03005 	strb	r3, [r0, #5]
+  e8:	e3a0307f 	mov	r3, #127	; 0x7f
+  ec:	e580e000 	str	lr, [r0]
+  f0:	e1c030b6 	strh	r3, [r0, #6]
+  f4:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+  f8:	00000008 	andeq	r0, r0, r8
+
+000000fc <Hd44780::Write4bits(unsigned char)>:
+  fc:	e92d4070 	push	{r4, r5, r6, lr}
+ 100:	e1a05000 	mov	r5, r0
+ 104:	e590000c 	ldr	r0, [r0, #12]
+ 108:	e3a06901 	mov	r6, #16384	; 0x4000
+ 10c:	e5d53008 	ldrb	r3, [r5, #8]
+ 110:	e24dd008 	sub	sp, sp, #8
+ 114:	e3436f80 	movt	r6, #16256	; 0x3f80
+ 118:	e1a04001 	mov	r4, r1
+ 11c:	e5cd1007 	strb	r1, [sp, #7]
+ 120:	e586300c 	str	r3, [r6, #12]
+ 124:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 128:	e3a01001 	mov	r1, #1
+ 12c:	e28d0007 	add	r0, sp, #7
+ 130:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 134:	e5d53008 	ldrb	r3, [r5, #8]
+ 138:	e384200c 	orr	r2, r4, #12
+ 13c:	e5cd2007 	strb	r2, [sp, #7]
+ 140:	e595000c 	ldr	r0, [r5, #12]
+ 144:	e586300c 	str	r3, [r6, #12]
+ 148:	e3c4400c 	bic	r4, r4, #12
+ 14c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 150:	e3a01001 	mov	r1, #1
+ 154:	e28d0007 	add	r0, sp, #7
+ 158:	e3844008 	orr	r4, r4, #8
+ 15c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 160:	e5d53008 	ldrb	r3, [r5, #8]
+ 164:	e595000c 	ldr	r0, [r5, #12]
+ 168:	e5cd4007 	strb	r4, [sp, #7]
+ 16c:	e586300c 	str	r3, [r6, #12]
+ 170:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 174:	e3a01001 	mov	r1, #1
+ 178:	e28d0007 	add	r0, sp, #7
+ 17c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 180:	e28dd008 	add	sp, sp, #8
+ 184:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+00000188 <Hd44780::PutString(char const*)>:
+ 188:	e92d4070 	push	{r4, r5, r6, lr}
+ 18c:	e5d14000 	ldrb	r4, [r1]
+ 190:	e3540000 	cmp	r4, #0
+ 194:	08bd8070 	popeq	{r4, r5, r6, pc}
+ 198:	e1a05001 	mov	r5, r1
+ 19c:	e1a06000 	mov	r6, r0
+ 1a0:	e3c4100f 	bic	r1, r4, #15
+ 1a4:	e1a00006 	mov	r0, r6
+ 1a8:	e1a04204 	lsl	r4, r4, #4
+ 1ac:	e3811001 	orr	r1, r1, #1
+ 1b0:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 1b4:	e3841001 	orr	r1, r4, #1
+ 1b8:	e1a00006 	mov	r0, r6
+ 1bc:	e20110f1 	and	r1, r1, #241	; 0xf1
+ 1c0:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 1c4:	e3a0002b 	mov	r0, #43	; 0x2b
+ 1c8:	ebfffffe 	bl	0 <udelay>
+ 1cc:	e5f54001 	ldrb	r4, [r5, #1]!
+ 1d0:	e3540000 	cmp	r4, #0
+ 1d4:	1afffff1 	bne	1a0 <Hd44780::PutString(char const*)+0x18>
+ 1d8:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+000001dc <Hd44780::Text(char const*, unsigned int)>:
+ 1dc:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+ 1e0:	e5d07004 	ldrb	r7, [r0, #4]
+ 1e4:	e1570002 	cmp	r7, r2
+ 1e8:	21a07002 	movcs	r7, r2
+ 1ec:	e3570000 	cmp	r7, #0
+ 1f0:	08bd81f0 	popeq	{r4, r5, r6, r7, r8, pc}
+ 1f4:	e2415001 	sub	r5, r1, #1
+ 1f8:	e1a06000 	mov	r6, r0
+ 1fc:	e0857007 	add	r7, r5, r7
+ 200:	e5f54001 	ldrb	r4, [r5, #1]!
+ 204:	e1a00006 	mov	r0, r6
+ 208:	e3c4100f 	bic	r1, r4, #15
+ 20c:	e3811001 	orr	r1, r1, #1
+ 210:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 214:	e1a01204 	lsl	r1, r4, #4
+ 218:	e1a00006 	mov	r0, r6
+ 21c:	e3811001 	orr	r1, r1, #1
+ 220:	e20110f1 	and	r1, r1, #241	; 0xf1
+ 224:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 228:	e3a0002b 	mov	r0, #43	; 0x2b
+ 22c:	ebfffffe 	bl	0 <udelay>
+ 230:	e1570005 	cmp	r7, r5
+ 234:	1afffff1 	bne	200 <Hd44780::Text(char const*, unsigned int)+0x24>
+ 238:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+
+0000023c <Hd44780::Cls()>:
+ 23c:	e92d4010 	push	{r4, lr}
+ 240:	e3a01000 	mov	r1, #0
+ 244:	e1a04000 	mov	r4, r0
+ 248:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 24c:	e1a00004 	mov	r0, r4
+ 250:	e3a01010 	mov	r1, #16
+ 254:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 258:	e3a00025 	mov	r0, #37	; 0x25
+ 25c:	ebfffffe 	bl	0 <udelay>
+ 260:	e8bd4010 	pop	{r4, lr}
+ 264:	e30005cb 	movw	r0, #1483	; 0x5cb
+ 268:	eafffffe 	b	0 <udelay>
+
+0000026c <Hd44780::PutChar(int)>:
+ 26c:	e92d4070 	push	{r4, r5, r6, lr}
+ 270:	e1a04001 	mov	r4, r1
+ 274:	e20110f0 	and	r1, r1, #240	; 0xf0
+ 278:	e1a05000 	mov	r5, r0
+ 27c:	e3811001 	orr	r1, r1, #1
+ 280:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 284:	e1a01204 	lsl	r1, r4, #4
+ 288:	e1a00005 	mov	r0, r5
+ 28c:	e20110f0 	and	r1, r1, #240	; 0xf0
+ 290:	e3811001 	orr	r1, r1, #1
+ 294:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 298:	e8bd4070 	pop	{r4, r5, r6, lr}
+ 29c:	e3a0002b 	mov	r0, #43	; 0x2b
+ 2a0:	eafffffe 	b	0 <udelay>
+
+000002a4 <Hd44780::SetCursorPos(unsigned char, unsigned char)>:
+ 2a4:	e92d4030 	push	{r4, r5, lr}
+ 2a8:	e24dd00c 	sub	sp, sp, #12
+ 2ac:	e28dc008 	add	ip, sp, #8
+ 2b0:	e2022003 	and	r2, r2, #3
+ 2b4:	e08c2002 	add	r2, ip, r2
+ 2b8:	e3a03901 	mov	r3, #16384	; 0x4000
+ 2bc:	e3453414 	movt	r3, #21524	; 0x5414
+ 2c0:	e1a05000 	mov	r5, r0
+ 2c4:	e58d3004 	str	r3, [sp, #4]
+ 2c8:	e5523004 	ldrb	r3, [r2, #-4]
+ 2cc:	e0811003 	add	r1, r1, r3
+ 2d0:	e1e01c81 	mvn	r1, r1, lsl #25
+ 2d4:	e1e01ca1 	mvn	r1, r1, lsr #25
+ 2d8:	e6ef4071 	uxtb	r4, r1
+ 2dc:	e20110f0 	and	r1, r1, #240	; 0xf0
+ 2e0:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 2e4:	e1a01204 	lsl	r1, r4, #4
+ 2e8:	e1a00005 	mov	r0, r5
+ 2ec:	e20110f0 	and	r1, r1, #240	; 0xf0
+ 2f0:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 2f4:	e3a00025 	mov	r0, #37	; 0x25
+ 2f8:	e28dd00c 	add	sp, sp, #12
+ 2fc:	e8bd4030 	pop	{r4, r5, lr}
+ 300:	eafffffe 	b	0 <udelay>
+
+00000304 <Hd44780::TextLine(unsigned char, char const*, unsigned int)>:
+ 304:	e5d0c005 	ldrb	ip, [r0, #5]
+ 308:	e15c0001 	cmp	ip, r1
+ 30c:	312fff1e 	bxcc	lr
+ 310:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+ 314:	e2411001 	sub	r1, r1, #1
+ 318:	e24dd00c 	sub	sp, sp, #12
+ 31c:	e1a04003 	mov	r4, r3
+ 320:	e2011003 	and	r1, r1, #3
+ 324:	e28d3008 	add	r3, sp, #8
+ 328:	e0831001 	add	r1, r3, r1
+ 32c:	e3a03901 	mov	r3, #16384	; 0x4000
+ 330:	e3453414 	movt	r3, #21524	; 0x5414
+ 334:	e1a06000 	mov	r6, r0
+ 338:	e58d3004 	str	r3, [sp, #4]
+ 33c:	e1a05002 	mov	r5, r2
+ 340:	e5517004 	ldrb	r7, [r1, #-4]
+ 344:	e3877080 	orr	r7, r7, #128	; 0x80
+ 348:	e20710f0 	and	r1, r7, #240	; 0xf0
+ 34c:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 350:	e1a01207 	lsl	r1, r7, #4
+ 354:	e1a00006 	mov	r0, r6
+ 358:	e20110f0 	and	r1, r1, #240	; 0xf0
+ 35c:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 360:	e3a00025 	mov	r0, #37	; 0x25
+ 364:	ebfffffe 	bl	0 <udelay>
+ 368:	e5d67004 	ldrb	r7, [r6, #4]
+ 36c:	e1570004 	cmp	r7, r4
+ 370:	21a07004 	movcs	r7, r4
+ 374:	e3570000 	cmp	r7, #0
+ 378:	0a00000f 	beq	3bc <Hd44780::TextLine(unsigned char, char const*, unsigned int)+0xb8>
+ 37c:	e2455001 	sub	r5, r5, #1
+ 380:	e0857007 	add	r7, r5, r7
+ 384:	e5f54001 	ldrb	r4, [r5, #1]!
+ 388:	e1a00006 	mov	r0, r6
+ 38c:	e3c4100f 	bic	r1, r4, #15
+ 390:	e3811001 	orr	r1, r1, #1
+ 394:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 398:	e1a01204 	lsl	r1, r4, #4
+ 39c:	e1a00006 	mov	r0, r6
+ 3a0:	e3811001 	orr	r1, r1, #1
+ 3a4:	e20110f1 	and	r1, r1, #241	; 0xf1
+ 3a8:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 3ac:	e3a0002b 	mov	r0, #43	; 0x2b
+ 3b0:	ebfffffe 	bl	0 <udelay>
+ 3b4:	e1570005 	cmp	r7, r5
+ 3b8:	1afffff1 	bne	384 <Hd44780::TextLine(unsigned char, char const*, unsigned int)+0x80>
+ 3bc:	e28dd00c 	add	sp, sp, #12
+ 3c0:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+
+000003c4 <Hd44780::Start()>:
+ 3c4:	e3a03901 	mov	r3, #16384	; 0x4000
+ 3c8:	e92d4030 	push	{r4, r5, lr}
+ 3cc:	e1a04000 	mov	r4, r0
+ 3d0:	e5d05008 	ldrb	r5, [r0, #8]
+ 3d4:	e24dd00c 	sub	sp, sp, #12
+ 3d8:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 3dc:	e590000c 	ldr	r0, [r0, #12]
+ 3e0:	e583500c 	str	r5, [r3, #12]
+ 3e4:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 3e8:	e2451030 	sub	r1, r5, #48	; 0x30
+ 3ec:	e2455050 	sub	r5, r5, #80	; 0x50
+ 3f0:	e355000f 	cmp	r5, #15
+ 3f4:	83510007 	cmphi	r1, #7
+ 3f8:	93a01001 	movls	r1, #1
+ 3fc:	83a01000 	movhi	r1, #0
+ 400:	8a000007 	bhi	424 <Hd44780::Start()+0x60>
+ 404:	e3a01001 	mov	r1, #1
+ 408:	e28d0007 	add	r0, sp, #7
+ 40c:	ebfffffe 	bl	0 <bcm2835_i2c_read>
+ 410:	e3500000 	cmp	r0, #0
+ 414:	0a000006 	beq	434 <Hd44780::Start()+0x70>
+ 418:	e3a00000 	mov	r0, #0
+ 41c:	e28dd00c 	add	sp, sp, #12
+ 420:	e8bd8030 	pop	{r4, r5, pc}
+ 424:	e1a00001 	mov	r0, r1
+ 428:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 42c:	e3500000 	cmp	r0, #0
+ 430:	1afffff8 	bne	418 <Hd44780::Start()+0x54>
+ 434:	e1a00004 	mov	r0, r4
+ 438:	e3a01030 	mov	r1, #48	; 0x30
+ 43c:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 440:	e3a01030 	mov	r1, #48	; 0x30
+ 444:	e1a00004 	mov	r0, r4
+ 448:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 44c:	e3a00025 	mov	r0, #37	; 0x25
+ 450:	ebfffffe 	bl	0 <udelay>
+ 454:	e1a00004 	mov	r0, r4
+ 458:	e3a01030 	mov	r1, #48	; 0x30
+ 45c:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 460:	e3a01020 	mov	r1, #32
+ 464:	e1a00004 	mov	r0, r4
+ 468:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 46c:	e3a00025 	mov	r0, #37	; 0x25
+ 470:	ebfffffe 	bl	0 <udelay>
+ 474:	e1a00004 	mov	r0, r4
+ 478:	e3a01020 	mov	r1, #32
+ 47c:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 480:	e3a01080 	mov	r1, #128	; 0x80
+ 484:	e1a00004 	mov	r0, r4
+ 488:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 48c:	e3a00025 	mov	r0, #37	; 0x25
+ 490:	ebfffffe 	bl	0 <udelay>
+ 494:	e1a00004 	mov	r0, r4
+ 498:	e3a01000 	mov	r1, #0
+ 49c:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 4a0:	e3a010c0 	mov	r1, #192	; 0xc0
+ 4a4:	e1a00004 	mov	r0, r4
+ 4a8:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 4ac:	e3a00025 	mov	r0, #37	; 0x25
+ 4b0:	ebfffffe 	bl	0 <udelay>
+ 4b4:	e1a00004 	mov	r0, r4
+ 4b8:	e3a01000 	mov	r1, #0
+ 4bc:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 4c0:	e3a01010 	mov	r1, #16
+ 4c4:	e1a00004 	mov	r0, r4
+ 4c8:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 4cc:	e3a00025 	mov	r0, #37	; 0x25
+ 4d0:	ebfffffe 	bl	0 <udelay>
+ 4d4:	e30005cb 	movw	r0, #1483	; 0x5cb
+ 4d8:	ebfffffe 	bl	0 <udelay>
+ 4dc:	e1a00004 	mov	r0, r4
+ 4e0:	e3a01000 	mov	r1, #0
+ 4e4:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 4e8:	e3a01060 	mov	r1, #96	; 0x60
+ 4ec:	e1a00004 	mov	r0, r4
+ 4f0:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 4f4:	e3a00025 	mov	r0, #37	; 0x25
+ 4f8:	ebfffffe 	bl	0 <udelay>
+ 4fc:	e3a00001 	mov	r0, #1
+ 500:	e28dd00c 	add	sp, sp, #12
+ 504:	e8bd8030 	pop	{r4, r5, pc}
+
+00000508 <Hd44780::ClearLine(unsigned char)>:
+ 508:	e5d03005 	ldrb	r3, [r0, #5]
+ 50c:	e1530001 	cmp	r3, r1
+ 510:	312fff1e 	bxcc	lr
+ 514:	e92d4070 	push	{r4, r5, r6, lr}
+ 518:	e2416001 	sub	r6, r1, #1
+ 51c:	e24dd008 	sub	sp, sp, #8
+ 520:	e2066003 	and	r6, r6, #3
+ 524:	e28d2008 	add	r2, sp, #8
+ 528:	e3a03901 	mov	r3, #16384	; 0x4000
+ 52c:	e0826006 	add	r6, r2, r6
+ 530:	e1a04000 	mov	r4, r0
+ 534:	e3453414 	movt	r3, #21524	; 0x5414
+ 538:	e58d3004 	str	r3, [sp, #4]
+ 53c:	e5565004 	ldrb	r5, [r6, #-4]
+ 540:	e3855080 	orr	r5, r5, #128	; 0x80
+ 544:	e20510f0 	and	r1, r5, #240	; 0xf0
+ 548:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 54c:	e1a01205 	lsl	r1, r5, #4
+ 550:	e1a00004 	mov	r0, r4
+ 554:	e20110f0 	and	r1, r1, #240	; 0xf0
+ 558:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 55c:	e3a00025 	mov	r0, #37	; 0x25
+ 560:	ebfffffe 	bl	0 <udelay>
+ 564:	e5d43004 	ldrb	r3, [r4, #4]
+ 568:	e3530000 	cmp	r3, #0
+ 56c:	0a00000c 	beq	5a4 <Hd44780::ClearLine(unsigned char)+0x9c>
+ 570:	e3a05000 	mov	r5, #0
+ 574:	e3a01021 	mov	r1, #33	; 0x21
+ 578:	e1a00004 	mov	r0, r4
+ 57c:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 580:	e3a01001 	mov	r1, #1
+ 584:	e1a00004 	mov	r0, r4
+ 588:	e0855001 	add	r5, r5, r1
+ 58c:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 590:	e3a0002b 	mov	r0, #43	; 0x2b
+ 594:	ebfffffe 	bl	0 <udelay>
+ 598:	e5d43004 	ldrb	r3, [r4, #4]
+ 59c:	e1530005 	cmp	r3, r5
+ 5a0:	8afffff3 	bhi	574 <Hd44780::ClearLine(unsigned char)+0x6c>
+ 5a4:	e3a03901 	mov	r3, #16384	; 0x4000
+ 5a8:	e1a00004 	mov	r0, r4
+ 5ac:	e3453414 	movt	r3, #21524	; 0x5414
+ 5b0:	e58d3004 	str	r3, [sp, #4]
+ 5b4:	e5565004 	ldrb	r5, [r6, #-4]
+ 5b8:	e3855080 	orr	r5, r5, #128	; 0x80
+ 5bc:	e20510f0 	and	r1, r5, #240	; 0xf0
+ 5c0:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 5c4:	e1a01205 	lsl	r1, r5, #4
+ 5c8:	e1a00004 	mov	r0, r4
+ 5cc:	e20110f0 	and	r1, r1, #240	; 0xf0
+ 5d0:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 5d4:	e3a00025 	mov	r0, #37	; 0x25
+ 5d8:	e28dd008 	add	sp, sp, #8
+ 5dc:	e8bd4070 	pop	{r4, r5, r6, lr}
+ 5e0:	eafffffe 	b	0 <udelay>
+
+000005e4 <Hd44780::WriteCmd(unsigned char)>:
+ 5e4:	e92d4070 	push	{r4, r5, r6, lr}
+ 5e8:	e1a04001 	mov	r4, r1
+ 5ec:	e20110f0 	and	r1, r1, #240	; 0xf0
+ 5f0:	e1a05000 	mov	r5, r0
+ 5f4:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 5f8:	e1a01204 	lsl	r1, r4, #4
+ 5fc:	e1a00005 	mov	r0, r5
+ 600:	e20110f0 	and	r1, r1, #240	; 0xf0
+ 604:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 608:	e8bd4070 	pop	{r4, r5, r6, lr}
+ 60c:	e3a00025 	mov	r0, #37	; 0x25
+ 610:	eafffffe 	b	0 <udelay>
+
+00000614 <Hd44780::WriteReg(unsigned char)>:
+ 614:	e92d4070 	push	{r4, r5, r6, lr}
+ 618:	e1a04001 	mov	r4, r1
+ 61c:	e3c1100f 	bic	r1, r1, #15
+ 620:	e1a05000 	mov	r5, r0
+ 624:	e3811001 	orr	r1, r1, #1
+ 628:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 62c:	e1a01204 	lsl	r1, r4, #4
+ 630:	e1a00005 	mov	r0, r5
+ 634:	e3811001 	orr	r1, r1, #1
+ 638:	e20110f1 	and	r1, r1, #241	; 0xf1
+ 63c:	ebfffffe 	bl	fc <Hd44780::Write4bits(unsigned char)>
+ 640:	e8bd4070 	pop	{r4, r5, r6, lr}
+ 644:	e3a0002b 	mov	r0, #43	; 0x2b
+ 648:	eafffffe 	b	0 <udelay>
+
+Disassembly of section .text._ZN10DisplaySet8SetSleepEb:
+
+00000000 <DisplaySet::SetSleep(bool)>:
+   0:	e12fff1e 	bx	lr
+
+Disassembly of section .text._ZN10DisplaySet11SetContrastEh:
+
+00000000 <DisplaySet::SetContrast(unsigned char)>:
+   0:	e12fff1e 	bx	lr
+
+Disassembly of section .text._ZN10DisplaySet17SetFlipVerticallyEb:
+
+00000000 <DisplaySet::SetFlipVertically(bool)>:
+   0:	e12fff1e 	bx	lr
+
+Disassembly of section .text._ZN7Hd44780D1Ev:
+
+00000000 <Hd44780::~Hd44780()>:
+   0:	e12fff1e 	bx	lr
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.LC0>:
+   0:	34344448 	ldrtcc	r4, [r4], #-1096	; 0xfffffbb8
+   4:	20303837 	eorscs	r3, r0, r7, lsr r8
+   8:	4643505b 			; <UNDEFINED> instruction: 0x4643505b
+   c:	34373538 	ldrtcc	r3, [r7], #-1336	; 0xfffffac8
+  10:	28205d54 	stmdacs	r0!, {r2, r4, r6, r8, sl, fp, ip, lr}
+  14:	252c6425 	strcs	r6, [ip, #-1061]!	; 0xfffffbdb
+  18:	000a2964 	andeq	r2, sl, r4, ror #18
+
+Disassembly of section .text._ZN7Hd44780D0Ev:
+
+00000000 <Hd44780::~Hd44780()>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04000 	mov	r4, r0
+   8:	ebfffffe 	bl	0 <operator delete(void*)>
+   c:	e1a00004 	mov	r0, r4
+  10:	e8bd8010 	pop	{r4, pc}
+
+Disassembly of section .rodata:
+
+00000000 <vtable for Hd44780>:
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+ssd1306.o:     file format elf32-littlearm
+
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000007 	andeq	r0, r0, r7
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000009 	andeq	r0, r0, r9
+   8:	0000000a 	andeq	r0, r0, sl
+
+Disassembly of section .text:
+
+00000000 <Ssd1306::SetCursor(unsigned int)>:
+   0:	e12fff1e 	bx	lr
+
+00000004 <Ssd1306::PrintInfo()>:
+   4:	e1a02000 	mov	r2, r0
+   8:	e3003000 	movw	r3, #0
+   c:	e5d00011 	ldrb	r0, [r0, #17]
+  10:	e3001000 	movw	r1, #0
+  14:	e3403000 	movt	r3, #0
+  18:	e3401000 	movt	r1, #0
+  1c:	e3500000 	cmp	r0, #0
+  20:	e3000000 	movw	r0, #0
+  24:	01a01003 	moveq	r1, r3
+  28:	e3400000 	movt	r0, #0
+  2c:	e5d23004 	ldrb	r3, [r2, #4]
+  30:	e5d22005 	ldrb	r2, [r2, #5]
+  34:	eafffffe 	b	0 <printf>
+
+00000038 <Ssd1306::PutChar(int)>:
+  38:	e2411020 	sub	r1, r1, #32
+  3c:	e351005f 	cmp	r1, #95	; 0x5f
+  40:	e92d4010 	push	{r4, lr}
+  44:	e3004000 	movw	r4, #0
+  48:	93404000 	movtls	r4, #0
+  4c:	93a03007 	movls	r3, #7
+  50:	90244193 	mlals	r4, r3, r1, r4
+  54:	e5d02008 	ldrb	r2, [r0, #8]
+  58:	e3a03901 	mov	r3, #16384	; 0x4000
+  5c:	e3433f80 	movt	r3, #16256	; 0x3f80
+  60:	83404000 	movthi	r4, #0
+  64:	e583200c 	str	r2, [r3, #12]
+  68:	e590000c 	ldr	r0, [r0, #12]
+  6c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+  70:	e1a00004 	mov	r0, r4
+  74:	e3a01007 	mov	r1, #7
+  78:	e8bd4010 	pop	{r4, lr}
+  7c:	eafffffe 	b	0 <bcm2835_i2c_write>
+
+00000080 <Ssd1306::PutString(char const*)>:
+  80:	e5d13000 	ldrb	r3, [r1]
+  84:	e3530000 	cmp	r3, #0
+  88:	012fff1e 	bxeq	lr
+  8c:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  90:	e3007000 	movw	r7, #0
+  94:	e3407000 	movt	r7, #0
+  98:	e3a08901 	mov	r8, #16384	; 0x4000
+  9c:	e3438f80 	movt	r8, #16256	; 0x3f80
+  a0:	e1a05001 	mov	r5, r1
+  a4:	e1a06000 	mov	r6, r0
+  a8:	e3a09007 	mov	r9, #7
+  ac:	e2433020 	sub	r3, r3, #32
+  b0:	e1a04007 	mov	r4, r7
+  b4:	e353005f 	cmp	r3, #95	; 0x5f
+  b8:	90247399 	mlals	r4, r9, r3, r7
+  bc:	e5d63008 	ldrb	r3, [r6, #8]
+  c0:	e588300c 	str	r3, [r8, #12]
+  c4:	e596000c 	ldr	r0, [r6, #12]
+  c8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+  cc:	e3a01007 	mov	r1, #7
+  d0:	e1a00004 	mov	r0, r4
+  d4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+  d8:	e5f53001 	ldrb	r3, [r5, #1]!
+  dc:	e3530000 	cmp	r3, #0
+  e0:	1afffff1 	bne	ac <Ssd1306::PutString(char const*)+0x2c>
+  e4:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+
+000000e8 <Ssd1306::SetContrast(unsigned char)>:
+  e8:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+  ec:	e3a06901 	mov	r6, #16384	; 0x4000
+  f0:	e5d03008 	ldrb	r3, [r0, #8]
+  f4:	e24dd00c 	sub	sp, sp, #12
+  f8:	e3436f80 	movt	r6, #16256	; 0x3f80
+  fc:	e3e0207e 	mvn	r2, #126	; 0x7e
+ 100:	e5cd2005 	strb	r2, [sp, #5]
+ 104:	e3a07000 	mov	r7, #0
+ 108:	e5c01006 	strb	r1, [r0, #6]
+ 10c:	e1a04000 	mov	r4, r0
+ 110:	e5cd7004 	strb	r7, [sp, #4]
+ 114:	e1a05001 	mov	r5, r1
+ 118:	e586300c 	str	r3, [r6, #12]
+ 11c:	e590000c 	ldr	r0, [r0, #12]
+ 120:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 124:	e3a01002 	mov	r1, #2
+ 128:	e28d0004 	add	r0, sp, #4
+ 12c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 130:	e5d43008 	ldrb	r3, [r4, #8]
+ 134:	e5cd7004 	strb	r7, [sp, #4]
+ 138:	e5cd5005 	strb	r5, [sp, #5]
+ 13c:	e586300c 	str	r3, [r6, #12]
+ 140:	e594000c 	ldr	r0, [r4, #12]
+ 144:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 148:	e3a01002 	mov	r1, #2
+ 14c:	e28d0004 	add	r0, sp, #4
+ 150:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 154:	e28dd00c 	add	sp, sp, #12
+ 158:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+
+0000015c <Ssd1306::SetSleep(bool)>:
+ 15c:	e3510000 	cmp	r1, #0
+ 160:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 164:	13a02901 	movne	r2, #16384	; 0x4000
+ 168:	e5d03008 	ldrb	r3, [r0, #8]
+ 16c:	e24dd00c 	sub	sp, sp, #12
+ 170:	13432f80 	movtne	r2, #16256	; 0x3f80
+ 174:	03a02901 	moveq	r2, #16384	; 0x4000
+ 178:	03432f80 	movteq	r2, #16256	; 0x3f80
+ 17c:	13e01051 	mvnne	r1, #81	; 0x51
+ 180:	05cd1004 	strbeq	r1, [sp, #4]
+ 184:	13a0c000 	movne	ip, #0
+ 188:	15cdc004 	strbne	ip, [sp, #4]
+ 18c:	03e01050 	mvneq	r1, #80	; 0x50
+ 190:	e5cd1005 	strb	r1, [sp, #5]
+ 194:	e590000c 	ldr	r0, [r0, #12]
+ 198:	e582300c 	str	r3, [r2, #12]
+ 19c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 1a0:	e3a01002 	mov	r1, #2
+ 1a4:	e28d0004 	add	r0, sp, #4
+ 1a8:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 1ac:	e28dd00c 	add	sp, sp, #12
+ 1b0:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+000001b4 <Ssd1306::SetCursorPos(unsigned char, unsigned char)>:
+ 1b4:	e3510014 	cmp	r1, #20
+ 1b8:	812fff1e 	bxhi	lr
+ 1bc:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+ 1c0:	e1a05000 	mov	r5, r0
+ 1c4:	e5d03005 	ldrb	r3, [r0, #5]
+ 1c8:	e24dd008 	sub	sp, sp, #8
+ 1cc:	e1a06002 	mov	r6, r2
+ 1d0:	e1530002 	cmp	r3, r2
+ 1d4:	9a00002b 	bls	288 <Ssd1306::SetCursorPos(unsigned char, unsigned char)+0xd4>
+ 1d8:	e1a04081 	lsl	r4, r1, #1
+ 1dc:	e3a07901 	mov	r7, #16384	; 0x4000
+ 1e0:	e0814004 	add	r4, r1, r4
+ 1e4:	e3a08000 	mov	r8, #0
+ 1e8:	e5d03011 	ldrb	r3, [r0, #17]
+ 1ec:	e1a04084 	lsl	r4, r4, #1
+ 1f0:	e3437f80 	movt	r7, #16256	; 0x3f80
+ 1f4:	e3530000 	cmp	r3, #0
+ 1f8:	e5d03008 	ldrb	r3, [r0, #8]
+ 1fc:	e6ef4074 	uxtb	r4, r4
+ 200:	e5cd8004 	strb	r8, [sp, #4]
+ 204:	12844004 	addne	r4, r4, #4
+ 208:	16ef4074 	uxtbne	r4, r4
+ 20c:	e204200f 	and	r2, r4, #15
+ 210:	e5cd2005 	strb	r2, [sp, #5]
+ 214:	e587300c 	str	r3, [r7, #12]
+ 218:	e590000c 	ldr	r0, [r0, #12]
+ 21c:	e1a04224 	lsr	r4, r4, #4
+ 220:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 224:	e3a01002 	mov	r1, #2
+ 228:	e28d0004 	add	r0, sp, #4
+ 22c:	e3844010 	orr	r4, r4, #16
+ 230:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 234:	e5d53008 	ldrb	r3, [r5, #8]
+ 238:	e5cd8004 	strb	r8, [sp, #4]
+ 23c:	e5cd4005 	strb	r4, [sp, #5]
+ 240:	e587300c 	str	r3, [r7, #12]
+ 244:	e595000c 	ldr	r0, [r5, #12]
+ 248:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 24c:	e3a01002 	mov	r1, #2
+ 250:	e28d0004 	add	r0, sp, #4
+ 254:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 258:	e1e02006 	mvn	r2, r6
+ 25c:	e5d53008 	ldrb	r3, [r5, #8]
+ 260:	e202204f 	and	r2, r2, #79	; 0x4f
+ 264:	e1e02002 	mvn	r2, r2
+ 268:	e5cd8004 	strb	r8, [sp, #4]
+ 26c:	e5cd2005 	strb	r2, [sp, #5]
+ 270:	e587300c 	str	r3, [r7, #12]
+ 274:	e595000c 	ldr	r0, [r5, #12]
+ 278:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 27c:	e3a01002 	mov	r1, #2
+ 280:	e28d0004 	add	r0, sp, #4
+ 284:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 288:	e28dd008 	add	sp, sp, #8
+ 28c:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+
+00000290 <Ssd1306::TextLine(unsigned char, char const*, unsigned int)>:
+ 290:	e5d0c005 	ldrb	ip, [r0, #5]
+ 294:	e15c0001 	cmp	ip, r1
+ 298:	312fff1e 	bxcc	lr
+ 29c:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+ 2a0:	e2411001 	sub	r1, r1, #1
+ 2a4:	e1a05000 	mov	r5, r0
+ 2a8:	e1a04002 	mov	r4, r2
+ 2ac:	e6ef2071 	uxtb	r2, r1
+ 2b0:	e3a01000 	mov	r1, #0
+ 2b4:	e1a07003 	mov	r7, r3
+ 2b8:	ebfffffe 	bl	1b4 <Ssd1306::SetCursorPos(unsigned char, unsigned char)>
+ 2bc:	e5d56004 	ldrb	r6, [r5, #4]
+ 2c0:	e1560007 	cmp	r6, r7
+ 2c4:	21a06007 	movcs	r6, r7
+ 2c8:	e3560000 	cmp	r6, #0
+ 2cc:	08bd87f0 	popeq	{r4, r5, r6, r7, r8, r9, sl, pc}
+ 2d0:	e2444001 	sub	r4, r4, #1
+ 2d4:	e3007000 	movw	r7, #0
+ 2d8:	e0846006 	add	r6, r4, r6
+ 2dc:	e3a08901 	mov	r8, #16384	; 0x4000
+ 2e0:	e3407000 	movt	r7, #0
+ 2e4:	e3a09007 	mov	r9, #7
+ 2e8:	e3438f80 	movt	r8, #16256	; 0x3f80
+ 2ec:	e5f43001 	ldrb	r3, [r4, #1]!
+ 2f0:	e1a0a007 	mov	sl, r7
+ 2f4:	e2433020 	sub	r3, r3, #32
+ 2f8:	e353005f 	cmp	r3, #95	; 0x5f
+ 2fc:	902a7399 	mlals	sl, r9, r3, r7
+ 300:	e5d53008 	ldrb	r3, [r5, #8]
+ 304:	e588300c 	str	r3, [r8, #12]
+ 308:	e595000c 	ldr	r0, [r5, #12]
+ 30c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 310:	e3a01007 	mov	r1, #7
+ 314:	e1a0000a 	mov	r0, sl
+ 318:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 31c:	e1540006 	cmp	r4, r6
+ 320:	1afffff1 	bne	2ec <Ssd1306::TextLine(unsigned char, char const*, unsigned int)+0x5c>
+ 324:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+
+00000328 <Ssd1306::ClearLine(unsigned char)>:
+ 328:	e5d03005 	ldrb	r3, [r0, #5]
+ 32c:	e1530001 	cmp	r3, r1
+ 330:	312fff1e 	bxcc	lr
+ 334:	e92d4070 	push	{r4, r5, r6, lr}
+ 338:	e2414001 	sub	r4, r1, #1
+ 33c:	e6ef4074 	uxtb	r4, r4
+ 340:	e1a05000 	mov	r5, r0
+ 344:	e3a01000 	mov	r1, #0
+ 348:	e1a02004 	mov	r2, r4
+ 34c:	ebfffffe 	bl	1b4 <Ssd1306::SetCursorPos(unsigned char, unsigned char)>
+ 350:	e5d52008 	ldrb	r2, [r5, #8]
+ 354:	e3a03901 	mov	r3, #16384	; 0x4000
+ 358:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 35c:	e583200c 	str	r2, [r3, #12]
+ 360:	e595000c 	ldr	r0, [r5, #12]
+ 364:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 368:	e3000000 	movw	r0, #0
+ 36c:	e3a01081 	mov	r1, #129	; 0x81
+ 370:	e3400000 	movt	r0, #0
+ 374:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 378:	e1a02004 	mov	r2, r4
+ 37c:	e1a00005 	mov	r0, r5
+ 380:	e3a01000 	mov	r1, #0
+ 384:	e8bd4070 	pop	{r4, r5, r6, lr}
+ 388:	eafffffe 	b	1b4 <Ssd1306::SetCursorPos(unsigned char, unsigned char)>
+
+0000038c <Ssd1306::SetFlipVertically(bool)>:
+ 38c:	e92d4070 	push	{r4, r5, r6, lr}
+ 390:	e3510000 	cmp	r1, #0
+ 394:	e5d03008 	ldrb	r3, [r0, #8]
+ 398:	e1a04000 	mov	r4, r0
+ 39c:	e590000c 	ldr	r0, [r0, #12]
+ 3a0:	e24dd008 	sub	sp, sp, #8
+ 3a4:	e5c41007 	strb	r1, [r4, #7]
+ 3a8:	0a000016 	beq	408 <Ssd1306::SetFlipVertically(bool)+0x7c>
+ 3ac:	e3a05901 	mov	r5, #16384	; 0x4000
+ 3b0:	e3e0203f 	mvn	r2, #63	; 0x3f
+ 3b4:	e3435f80 	movt	r5, #16256	; 0x3f80
+ 3b8:	e3a06000 	mov	r6, #0
+ 3bc:	e5cd2005 	strb	r2, [sp, #5]
+ 3c0:	e5cd6004 	strb	r6, [sp, #4]
+ 3c4:	e585300c 	str	r3, [r5, #12]
+ 3c8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 3cc:	e3a01002 	mov	r1, #2
+ 3d0:	e28d0004 	add	r0, sp, #4
+ 3d4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 3d8:	e5d43008 	ldrb	r3, [r4, #8]
+ 3dc:	e3e0205f 	mvn	r2, #95	; 0x5f
+ 3e0:	e5cd6004 	strb	r6, [sp, #4]
+ 3e4:	e5cd2005 	strb	r2, [sp, #5]
+ 3e8:	e585300c 	str	r3, [r5, #12]
+ 3ec:	e594000c 	ldr	r0, [r4, #12]
+ 3f0:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 3f4:	e3a01002 	mov	r1, #2
+ 3f8:	e28d0004 	add	r0, sp, #4
+ 3fc:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 400:	e28dd008 	add	sp, sp, #8
+ 404:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 408:	e5cd1004 	strb	r1, [sp, #4]
+ 40c:	e3a06901 	mov	r6, #16384	; 0x4000
+ 410:	e3436f80 	movt	r6, #16256	; 0x3f80
+ 414:	e3e02037 	mvn	r2, #55	; 0x37
+ 418:	e5cd2005 	strb	r2, [sp, #5]
+ 41c:	e1a05001 	mov	r5, r1
+ 420:	e586300c 	str	r3, [r6, #12]
+ 424:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 428:	e3a01002 	mov	r1, #2
+ 42c:	e28d0004 	add	r0, sp, #4
+ 430:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 434:	e5d43008 	ldrb	r3, [r4, #8]
+ 438:	e3e0205e 	mvn	r2, #94	; 0x5e
+ 43c:	e5cd5004 	strb	r5, [sp, #4]
+ 440:	e5cd2005 	strb	r2, [sp, #5]
+ 444:	e586300c 	str	r3, [r6, #12]
+ 448:	eaffffe7 	b	3ec <Ssd1306::SetFlipVertically(bool)+0x60>
+
+0000044c <Ssd1306::Cls()>:
+ 44c:	e5d02011 	ldrb	r2, [r0, #17]
+ 450:	e5903014 	ldr	r3, [r0, #20]
+ 454:	e3520000 	cmp	r2, #0
+ 458:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 45c:	03a09010 	moveq	r9, #16
+ 460:	13a09014 	movne	r9, #20
+ 464:	03a08000 	moveq	r8, #0
+ 468:	13a08004 	movne	r8, #4
+ 46c:	e3530000 	cmp	r3, #0
+ 470:	e24dd00c 	sub	sp, sp, #12
+ 474:	e1a04000 	mov	r4, r0
+ 478:	0a000057 	beq	5dc <Ssd1306::Cls()+0x190>
+ 47c:	e3a06901 	mov	r6, #16384	; 0x4000
+ 480:	e300a000 	movw	sl, #0
+ 484:	e3436f80 	movt	r6, #16256	; 0x3f80
+ 488:	e3a05000 	mov	r5, #0
+ 48c:	e340a000 	movt	sl, #0
+ 490:	e28d7004 	add	r7, sp, #4
+ 494:	e5d43008 	ldrb	r3, [r4, #8]
+ 498:	e3a0b000 	mov	fp, #0
+ 49c:	e5cdb004 	strb	fp, [sp, #4]
+ 4a0:	e5cd8005 	strb	r8, [sp, #5]
+ 4a4:	e586300c 	str	r3, [r6, #12]
+ 4a8:	e594000c 	ldr	r0, [r4, #12]
+ 4ac:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 4b0:	e3a01002 	mov	r1, #2
+ 4b4:	e1a00007 	mov	r0, r7
+ 4b8:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 4bc:	e5d43008 	ldrb	r3, [r4, #8]
+ 4c0:	e5cdb004 	strb	fp, [sp, #4]
+ 4c4:	e5cd9005 	strb	r9, [sp, #5]
+ 4c8:	e586300c 	str	r3, [r6, #12]
+ 4cc:	e594000c 	ldr	r0, [r4, #12]
+ 4d0:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 4d4:	e3a01002 	mov	r1, #2
+ 4d8:	e1a00007 	mov	r0, r7
+ 4dc:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 4e0:	e1e03005 	mvn	r3, r5
+ 4e4:	e5d42008 	ldrb	r2, [r4, #8]
+ 4e8:	e203304f 	and	r3, r3, #79	; 0x4f
+ 4ec:	e1e03003 	mvn	r3, r3
+ 4f0:	e5cd3005 	strb	r3, [sp, #5]
+ 4f4:	e5cdb004 	strb	fp, [sp, #4]
+ 4f8:	e586200c 	str	r2, [r6, #12]
+ 4fc:	e594000c 	ldr	r0, [r4, #12]
+ 500:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 504:	e3a01002 	mov	r1, #2
+ 508:	e1a00007 	mov	r0, r7
+ 50c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 510:	e5d43010 	ldrb	r3, [r4, #16]
+ 514:	e153000b 	cmp	r3, fp
+ 518:	e2432001 	sub	r2, r3, #1
+ 51c:	0a000001 	beq	528 <Ssd1306::Cls()+0xdc>
+ 520:	e3520001 	cmp	r2, #1
+ 524:	8a000007 	bhi	548 <Ssd1306::Cls()+0xfc>
+ 528:	e5d43008 	ldrb	r3, [r4, #8]
+ 52c:	e586300c 	str	r3, [r6, #12]
+ 530:	e594000c 	ldr	r0, [r4, #12]
+ 534:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 538:	e248107f 	sub	r1, r8, #127	; 0x7f
+ 53c:	e1a0000a 	mov	r0, sl
+ 540:	e6ef1071 	uxtb	r1, r1
+ 544:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 548:	e5943014 	ldr	r3, [r4, #20]
+ 54c:	e2855001 	add	r5, r5, #1
+ 550:	e1530005 	cmp	r3, r5
+ 554:	8affffce 	bhi	494 <Ssd1306::Cls()+0x48>
+ 558:	e5d43008 	ldrb	r3, [r4, #8]
+ 55c:	e3a05901 	mov	r5, #16384	; 0x4000
+ 560:	e3435f80 	movt	r5, #16256	; 0x3f80
+ 564:	e3a06000 	mov	r6, #0
+ 568:	e5cd8005 	strb	r8, [sp, #5]
+ 56c:	e5cd6004 	strb	r6, [sp, #4]
+ 570:	e585300c 	str	r3, [r5, #12]
+ 574:	e594000c 	ldr	r0, [r4, #12]
+ 578:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 57c:	e3a01002 	mov	r1, #2
+ 580:	e1a00007 	mov	r0, r7
+ 584:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 588:	e5d43008 	ldrb	r3, [r4, #8]
+ 58c:	e5cd6004 	strb	r6, [sp, #4]
+ 590:	e5cd9005 	strb	r9, [sp, #5]
+ 594:	e585300c 	str	r3, [r5, #12]
+ 598:	e594000c 	ldr	r0, [r4, #12]
+ 59c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 5a0:	e3a01002 	mov	r1, #2
+ 5a4:	e1a00007 	mov	r0, r7
+ 5a8:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 5ac:	e5d43008 	ldrb	r3, [r4, #8]
+ 5b0:	e3e0204f 	mvn	r2, #79	; 0x4f
+ 5b4:	e5cd2005 	strb	r2, [sp, #5]
+ 5b8:	e5cd6004 	strb	r6, [sp, #4]
+ 5bc:	e585300c 	str	r3, [r5, #12]
+ 5c0:	e594000c 	ldr	r0, [r4, #12]
+ 5c4:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 5c8:	e3a01002 	mov	r1, #2
+ 5cc:	e1a00007 	mov	r0, r7
+ 5d0:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 5d4:	e28dd00c 	add	sp, sp, #12
+ 5d8:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 5dc:	e28d7004 	add	r7, sp, #4
+ 5e0:	eaffffdc 	b	558 <Ssd1306::Cls()+0x10c>
+
+000005e4 <Ssd1306::Ssd1306()>:
+ 5e4:	e59fc040 	ldr	ip, [pc, #64]	; 62c <Ssd1306::Ssd1306()+0x48>
+ 5e8:	e3002000 	movw	r2, #0
+ 5ec:	e3402000 	movt	r2, #0
+ 5f0:	e3a01d6a 	mov	r1, #6784	; 0x1a80
+ 5f4:	e3401006 	movt	r1, #6
+ 5f8:	e580c000 	str	ip, [r0]
+ 5fc:	e3a0c000 	mov	ip, #0
+ 600:	e580100c 	str	r1, [r0, #12]
+ 604:	e3001815 	movw	r1, #2069	; 0x815
+ 608:	e340107f 	movt	r1, #127	; 0x7f
+ 60c:	e1c0c1b0 	strh	ip, [r0, #16]
+ 610:	e3a0c03c 	mov	ip, #60	; 0x3c
+ 614:	e5820088 	str	r0, [r2, #136]	; 0x88
+ 618:	e3a02008 	mov	r2, #8
+ 61c:	e5801004 	str	r1, [r0, #4]
+ 620:	e5c0c008 	strb	ip, [r0, #8]
+ 624:	e5802014 	str	r2, [r0, #20]
+ 628:	e12fff1e 	bx	lr
+ 62c:	000002a8 	andeq	r0, r0, r8, lsr #5
+
+00000630 <Ssd1306::Ssd1306(TOledPanel)>:
+ 630:	e59fc078 	ldr	ip, [pc, #120]	; 6b0 <Ssd1306::Ssd1306(TOledPanel)+0x80>
+ 634:	e3003000 	movw	r3, #0
+ 638:	e3403000 	movt	r3, #0
+ 63c:	e3a02d6a 	mov	r2, #6784	; 0x1a80
+ 640:	e580c000 	str	ip, [r0]
+ 644:	e3a0c07f 	mov	ip, #127	; 0x7f
+ 648:	e1c0c0b6 	strh	ip, [r0, #6]
+ 64c:	e3510000 	cmp	r1, #0
+ 650:	e3402006 	movt	r2, #6
+ 654:	e3a0c03c 	mov	ip, #60	; 0x3c
+ 658:	e5c0c008 	strb	ip, [r0, #8]
+ 65c:	e3a0c000 	mov	ip, #0
+ 660:	e580200c 	str	r2, [r0, #12]
+ 664:	e5c01010 	strb	r1, [r0, #16]
+ 668:	e5c0c011 	strb	ip, [r0, #17]
+ 66c:	e5830088 	str	r0, [r3, #136]	; 0x88
+ 670:	0a000009 	beq	69c <Ssd1306::Ssd1306(TOledPanel)+0x6c>
+ 674:	e2411001 	sub	r1, r1, #1
+ 678:	e3510001 	cmp	r1, #1
+ 67c:	93002415 	movwls	r2, #1045	; 0x415
+ 680:	93a03004 	movls	r3, #4
+ 684:	91c020b4 	strhls	r2, [r0, #4]
+ 688:	83a03004 	movhi	r3, #4
+ 68c:	83002815 	movwhi	r2, #2069	; 0x815
+ 690:	81c020b4 	strhhi	r2, [r0, #4]
+ 694:	e5803014 	str	r3, [r0, #20]
+ 698:	e12fff1e 	bx	lr
+ 69c:	e3002815 	movw	r2, #2069	; 0x815
+ 6a0:	e3a03008 	mov	r3, #8
+ 6a4:	e1c020b4 	strh	r2, [r0, #4]
+ 6a8:	e5803014 	str	r3, [r0, #20]
+ 6ac:	e12fff1e 	bx	lr
+ 6b0:	000002a8 	andeq	r0, r0, r8, lsr #5
+
+000006b4 <Ssd1306::Ssd1306(unsigned char, TOledPanel)>:
+ 6b4:	e59fc07c 	ldr	ip, [pc, #124]	; 738 <Ssd1306::Ssd1306(unsigned char, TOledPanel)+0x84>
+ 6b8:	e3510000 	cmp	r1, #0
+ 6bc:	e5c02010 	strb	r2, [r0, #16]
+ 6c0:	03a0103c 	moveq	r1, #60	; 0x3c
+ 6c4:	e580c000 	str	ip, [r0]
+ 6c8:	e3003000 	movw	r3, #0
+ 6cc:	e3403000 	movt	r3, #0
+ 6d0:	e3a0cd6a 	mov	ip, #6784	; 0x1a80
+ 6d4:	e5c01008 	strb	r1, [r0, #8]
+ 6d8:	e3520000 	cmp	r2, #0
+ 6dc:	e340c006 	movt	ip, #6
+ 6e0:	e3a0107f 	mov	r1, #127	; 0x7f
+ 6e4:	e1c010b6 	strh	r1, [r0, #6]
+ 6e8:	e3a01000 	mov	r1, #0
+ 6ec:	e580c00c 	str	ip, [r0, #12]
+ 6f0:	e5c01011 	strb	r1, [r0, #17]
+ 6f4:	e5830088 	str	r0, [r3, #136]	; 0x88
+ 6f8:	0a000009 	beq	724 <Ssd1306::Ssd1306(unsigned char, TOledPanel)+0x70>
+ 6fc:	e2422001 	sub	r2, r2, #1
+ 700:	e3520001 	cmp	r2, #1
+ 704:	93002415 	movwls	r2, #1045	; 0x415
+ 708:	93a03004 	movls	r3, #4
+ 70c:	91c020b4 	strhls	r2, [r0, #4]
+ 710:	83a03004 	movhi	r3, #4
+ 714:	83002815 	movwhi	r2, #2069	; 0x815
+ 718:	81c020b4 	strhhi	r2, [r0, #4]
+ 71c:	e5803014 	str	r3, [r0, #20]
+ 720:	e12fff1e 	bx	lr
+ 724:	e3002815 	movw	r2, #2069	; 0x815
+ 728:	e3a03008 	mov	r3, #8
+ 72c:	e1c020b4 	strh	r2, [r0, #4]
+ 730:	e5803014 	str	r3, [r0, #20]
+ 734:	e12fff1e 	bx	lr
+ 738:	000002a8 	andeq	r0, r0, r8, lsr #5
+
+0000073c <Ssd1306::CheckSH1106()>:
+ 73c:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+ 740:	e3a05901 	mov	r5, #16384	; 0x4000
+ 744:	e3435f80 	movt	r5, #16256	; 0x3f80
+ 748:	e24dd018 	sub	sp, sp, #24
+ 74c:	e5d03008 	ldrb	r3, [r0, #8]
+ 750:	e3a06000 	mov	r6, #0
+ 754:	e5cd6010 	strb	r6, [sp, #16]
+ 758:	e1a04000 	mov	r4, r0
+ 75c:	e5cd6011 	strb	r6, [sp, #17]
+ 760:	e3e0806f 	mvn	r8, #111	; 0x6f
+ 764:	e585300c 	str	r3, [r5, #12]
+ 768:	e3e0704f 	mvn	r7, #79	; 0x4f
+ 76c:	e590000c 	ldr	r0, [r0, #12]
+ 770:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 774:	e3a01002 	mov	r1, #2
+ 778:	e28d0010 	add	r0, sp, #16
+ 77c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 780:	e5d43008 	ldrb	r3, [r4, #8]
+ 784:	e5cd6010 	strb	r6, [sp, #16]
+ 788:	e5cd8011 	strb	r8, [sp, #17]
+ 78c:	e585300c 	str	r3, [r5, #12]
+ 790:	e594000c 	ldr	r0, [r4, #12]
+ 794:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 798:	e3a01002 	mov	r1, #2
+ 79c:	e28d0010 	add	r0, sp, #16
+ 7a0:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 7a4:	e5d43008 	ldrb	r3, [r4, #8]
+ 7a8:	e5cd6010 	strb	r6, [sp, #16]
+ 7ac:	e5cd7011 	strb	r7, [sp, #17]
+ 7b0:	e585300c 	str	r3, [r5, #12]
+ 7b4:	e594000c 	ldr	r0, [r4, #12]
+ 7b8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 7bc:	e3a01002 	mov	r1, #2
+ 7c0:	e28d0010 	add	r0, sp, #16
+ 7c4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 7c8:	e5d42008 	ldrb	r2, [r4, #8]
+ 7cc:	e3003000 	movw	r3, #0
+ 7d0:	e3403000 	movt	r3, #0
+ 7d4:	e8930003 	ldm	r3, {r0, r1}
+ 7d8:	e58d0008 	str	r0, [sp, #8]
+ 7dc:	e5cd100c 	strb	r1, [sp, #12]
+ 7e0:	e585200c 	str	r2, [r5, #12]
+ 7e4:	e594000c 	ldr	r0, [r4, #12]
+ 7e8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 7ec:	e3a01005 	mov	r1, #5
+ 7f0:	e28d0008 	add	r0, sp, #8
+ 7f4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 7f8:	e5d43008 	ldrb	r3, [r4, #8]
+ 7fc:	e5cd6010 	strb	r6, [sp, #16]
+ 800:	e5cd6011 	strb	r6, [sp, #17]
+ 804:	e585300c 	str	r3, [r5, #12]
+ 808:	e594000c 	ldr	r0, [r4, #12]
+ 80c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 810:	e3a01002 	mov	r1, #2
+ 814:	e28d0010 	add	r0, sp, #16
+ 818:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 81c:	e5d43008 	ldrb	r3, [r4, #8]
+ 820:	e5cd8011 	strb	r8, [sp, #17]
+ 824:	e5cd6010 	strb	r6, [sp, #16]
+ 828:	e585300c 	str	r3, [r5, #12]
+ 82c:	e594000c 	ldr	r0, [r4, #12]
+ 830:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 834:	e3a01002 	mov	r1, #2
+ 838:	e28d0010 	add	r0, sp, #16
+ 83c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 840:	e5d43008 	ldrb	r3, [r4, #8]
+ 844:	e5cd6010 	strb	r6, [sp, #16]
+ 848:	e5cd7011 	strb	r7, [sp, #17]
+ 84c:	e585300c 	str	r3, [r5, #12]
+ 850:	e594000c 	ldr	r0, [r4, #12]
+ 854:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 858:	e3a01002 	mov	r1, #2
+ 85c:	e28d0010 	add	r0, sp, #16
+ 860:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 864:	e5d43008 	ldrb	r3, [r4, #8]
+ 868:	e3a02040 	mov	r2, #64	; 0x40
+ 86c:	e5cd2007 	strb	r2, [sp, #7]
+ 870:	e594000c 	ldr	r0, [r4, #12]
+ 874:	e58d6010 	str	r6, [sp, #16]
+ 878:	e5cd6014 	strb	r6, [sp, #20]
+ 87c:	e585300c 	str	r3, [r5, #12]
+ 880:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 884:	e3a01001 	mov	r1, #1
+ 888:	e28d0007 	add	r0, sp, #7
+ 88c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 890:	e5d43008 	ldrb	r3, [r4, #8]
+ 894:	e594000c 	ldr	r0, [r4, #12]
+ 898:	e585300c 	str	r3, [r5, #12]
+ 89c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 8a0:	e3a01005 	mov	r1, #5
+ 8a4:	e28d0010 	add	r0, sp, #16
+ 8a8:	ebfffffe 	bl	0 <bcm2835_i2c_read>
+ 8ac:	e28d3009 	add	r3, sp, #9
+ 8b0:	e28d2011 	add	r2, sp, #17
+ 8b4:	e28dc00d 	add	ip, sp, #13
+ 8b8:	ea000001 	b	8c4 <Ssd1306::CheckSH1106()+0x188>
+ 8bc:	e15c0003 	cmp	ip, r3
+ 8c0:	0a000007 	beq	8e4 <Ssd1306::CheckSH1106()+0x1a8>
+ 8c4:	e4d30001 	ldrb	r0, [r3], #1
+ 8c8:	e4d21001 	ldrb	r1, [r2], #1
+ 8cc:	e1500001 	cmp	r0, r1
+ 8d0:	0afffff9 	beq	8bc <Ssd1306::CheckSH1106()+0x180>
+ 8d4:	e3a03000 	mov	r3, #0
+ 8d8:	e5c43011 	strb	r3, [r4, #17]
+ 8dc:	e28dd018 	add	sp, sp, #24
+ 8e0:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+ 8e4:	e3a03001 	mov	r3, #1
+ 8e8:	e5c43011 	strb	r3, [r4, #17]
+ 8ec:	e28dd018 	add	sp, sp, #24
+ 8f0:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+
+000008f4 <Ssd1306::Start()>:
+ 8f4:	e3a03901 	mov	r3, #16384	; 0x4000
+ 8f8:	e92d43f0 	push	{r4, r5, r6, r7, r8, r9, lr}
+ 8fc:	e1a05000 	mov	r5, r0
+ 900:	e5d06008 	ldrb	r6, [r0, #8]
+ 904:	e24dd00c 	sub	sp, sp, #12
+ 908:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 90c:	e590000c 	ldr	r0, [r0, #12]
+ 910:	e2464030 	sub	r4, r6, #48	; 0x30
+ 914:	e583600c 	str	r6, [r3, #12]
+ 918:	e2466050 	sub	r6, r6, #80	; 0x50
+ 91c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 920:	e356000f 	cmp	r6, #15
+ 924:	83540007 	cmphi	r4, #7
+ 928:	93a04001 	movls	r4, #1
+ 92c:	83a04000 	movhi	r4, #0
+ 930:	8a00003d 	bhi	a2c <Ssd1306::Start()+0x138>
+ 934:	e3a01001 	mov	r1, #1
+ 938:	e28d0004 	add	r0, sp, #4
+ 93c:	ebfffffe 	bl	0 <bcm2835_i2c_read>
+ 940:	e3500000 	cmp	r0, #0
+ 944:	1a000041 	bne	a50 <Ssd1306::Start()+0x15c>
+ 948:	e5d57010 	ldrb	r7, [r5, #16]
+ 94c:	e3570000 	cmp	r7, #0
+ 950:	0a000042 	beq	a60 <Ssd1306::Start()+0x16c>
+ 954:	e2477001 	sub	r7, r7, #1
+ 958:	e3570001 	cmp	r7, #1
+ 95c:	8a00003b 	bhi	a50 <Ssd1306::Start()+0x15c>
+ 960:	e59f4148 	ldr	r4, [pc, #328]	; ab0 <Ssd1306::Start()+0x1bc>
+ 964:	e3a07901 	mov	r7, #16384	; 0x4000
+ 968:	e3437f80 	movt	r7, #16256	; 0x3f80
+ 96c:	e3a030ae 	mov	r3, #174	; 0xae
+ 970:	e28d6004 	add	r6, sp, #4
+ 974:	e3a09000 	mov	r9, #0
+ 978:	e2848017 	add	r8, r4, #23
+ 97c:	ea000000 	b	984 <Ssd1306::Start()+0x90>
+ 980:	e5f43001 	ldrb	r3, [r4, #1]!
+ 984:	e5d52008 	ldrb	r2, [r5, #8]
+ 988:	e5cd3005 	strb	r3, [sp, #5]
+ 98c:	e5cd9004 	strb	r9, [sp, #4]
+ 990:	e587200c 	str	r2, [r7, #12]
+ 994:	e595000c 	ldr	r0, [r5, #12]
+ 998:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 99c:	e3a01002 	mov	r1, #2
+ 9a0:	e1a00006 	mov	r0, r6
+ 9a4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 9a8:	e1540008 	cmp	r4, r8
+ 9ac:	1afffff3 	bne	980 <Ssd1306::Start()+0x8c>
+ 9b0:	e59f30fc 	ldr	r3, [pc, #252]	; ab4 <Ssd1306::Start()+0x1c0>
+ 9b4:	e3a04000 	mov	r4, #0
+ 9b8:	e2832086 	add	r2, r3, #134	; 0x86
+ 9bc:	e5e34001 	strb	r4, [r3, #1]!
+ 9c0:	e1530002 	cmp	r3, r2
+ 9c4:	1afffffc 	bne	9bc <Ssd1306::Start()+0xc8>
+ 9c8:	e3003000 	movw	r3, #0
+ 9cc:	e3a02040 	mov	r2, #64	; 0x40
+ 9d0:	e3403000 	movt	r3, #0
+ 9d4:	e1a00005 	mov	r0, r5
+ 9d8:	e5c32000 	strb	r2, [r3]
+ 9dc:	ebfffffe 	bl	73c <Ssd1306::CheckSH1106()>
+ 9e0:	e1a00005 	mov	r0, r5
+ 9e4:	ebfffffe 	bl	44c <Ssd1306::Cls()>
+ 9e8:	e5d52008 	ldrb	r2, [r5, #8]
+ 9ec:	e3a03901 	mov	r3, #16384	; 0x4000
+ 9f0:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 9f4:	e3e01050 	mvn	r1, #80	; 0x50
+ 9f8:	e5cd4004 	strb	r4, [sp, #4]
+ 9fc:	e3a04001 	mov	r4, #1
+ a00:	e5cd1005 	strb	r1, [sp, #5]
+ a04:	e583200c 	str	r2, [r3, #12]
+ a08:	e595000c 	ldr	r0, [r5, #12]
+ a0c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ a10:	e3a01002 	mov	r1, #2
+ a14:	e1a00006 	mov	r0, r6
+ a18:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ a1c:	e5c54007 	strb	r4, [r5, #7]
+ a20:	e1a00004 	mov	r0, r4
+ a24:	e28dd00c 	add	sp, sp, #12
+ a28:	e8bd83f0 	pop	{r4, r5, r6, r7, r8, r9, pc}
+ a2c:	e1a01004 	mov	r1, r4
+ a30:	e1a00004 	mov	r0, r4
+ a34:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ a38:	e3500000 	cmp	r0, #0
+ a3c:	1afffff7 	bne	a20 <Ssd1306::Start()+0x12c>
+ a40:	e5d57010 	ldrb	r7, [r5, #16]
+ a44:	e3570000 	cmp	r7, #0
+ a48:	1affffc1 	bne	954 <Ssd1306::Start()+0x60>
+ a4c:	ea000003 	b	a60 <Ssd1306::Start()+0x16c>
+ a50:	e3a04000 	mov	r4, #0
+ a54:	e1a00004 	mov	r0, r4
+ a58:	e28dd00c 	add	sp, sp, #12
+ a5c:	e8bd83f0 	pop	{r4, r5, r6, r7, r8, r9, pc}
+ a60:	e59f4050 	ldr	r4, [pc, #80]	; ab8 <Ssd1306::Start()+0x1c4>
+ a64:	e3a08901 	mov	r8, #16384	; 0x4000
+ a68:	e3438f80 	movt	r8, #16256	; 0x3f80
+ a6c:	e3a030ae 	mov	r3, #174	; 0xae
+ a70:	e28d6004 	add	r6, sp, #4
+ a74:	e2849017 	add	r9, r4, #23
+ a78:	ea000000 	b	a80 <Ssd1306::Start()+0x18c>
+ a7c:	e5f43001 	ldrb	r3, [r4, #1]!
+ a80:	e5d52008 	ldrb	r2, [r5, #8]
+ a84:	e5cd3005 	strb	r3, [sp, #5]
+ a88:	e5cd7004 	strb	r7, [sp, #4]
+ a8c:	e588200c 	str	r2, [r8, #12]
+ a90:	e595000c 	ldr	r0, [r5, #12]
+ a94:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ a98:	e3a01002 	mov	r1, #2
+ a9c:	e1a00006 	mov	r0, r6
+ aa0:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ aa4:	e1540009 	cmp	r4, r9
+ aa8:	1afffff3 	bne	a7c <Ssd1306::Start()+0x188>
+ aac:	eaffffbf 	b	9b0 <Ssd1306::Start()+0xbc>
+ ab0:	000002e0 	andeq	r0, r0, r0, ror #5
+ ab4:	ffffffff 			; <UNDEFINED> instruction: 0xffffffff
+ ab8:	000002f8 	strdeq	r0, [r0], -r8
+
+00000abc <Ssd1306::Text(char const*, unsigned int)>:
+ abc:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+ ac0:	e5d06004 	ldrb	r6, [r0, #4]
+ ac4:	e1560002 	cmp	r6, r2
+ ac8:	21a06002 	movcs	r6, r2
+ acc:	e3560000 	cmp	r6, #0
+ ad0:	08bd87f0 	popeq	{r4, r5, r6, r7, r8, r9, sl, pc}
+ ad4:	e2414001 	sub	r4, r1, #1
+ ad8:	e3007000 	movw	r7, #0
+ adc:	e0846006 	add	r6, r4, r6
+ ae0:	e3a08901 	mov	r8, #16384	; 0x4000
+ ae4:	e3407000 	movt	r7, #0
+ ae8:	e1a0a000 	mov	sl, r0
+ aec:	e3438f80 	movt	r8, #16256	; 0x3f80
+ af0:	e3a09007 	mov	r9, #7
+ af4:	e5f43001 	ldrb	r3, [r4, #1]!
+ af8:	e1a05007 	mov	r5, r7
+ afc:	e2433020 	sub	r3, r3, #32
+ b00:	e353005f 	cmp	r3, #95	; 0x5f
+ b04:	90257399 	mlals	r5, r9, r3, r7
+ b08:	e5da3008 	ldrb	r3, [sl, #8]
+ b0c:	e588300c 	str	r3, [r8, #12]
+ b10:	e59a000c 	ldr	r0, [sl, #12]
+ b14:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ b18:	e3a01007 	mov	r1, #7
+ b1c:	e1a00005 	mov	r0, r5
+ b20:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ b24:	e1560004 	cmp	r6, r4
+ b28:	1afffff1 	bne	af4 <Ssd1306::Text(char const*, unsigned int)+0x38>
+ b2c:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+
+00000b30 <Ssd1306::InitMembers()>:
+ b30:	e5d03010 	ldrb	r3, [r0, #16]
+ b34:	e3530000 	cmp	r3, #0
+ b38:	0a000009 	beq	b64 <Ssd1306::InitMembers()+0x34>
+ b3c:	e2433001 	sub	r3, r3, #1
+ b40:	e3530001 	cmp	r3, #1
+ b44:	93002415 	movwls	r2, #1045	; 0x415
+ b48:	93a03004 	movls	r3, #4
+ b4c:	91c020b4 	strhls	r2, [r0, #4]
+ b50:	83a03004 	movhi	r3, #4
+ b54:	83002815 	movwhi	r2, #2069	; 0x815
+ b58:	81c020b4 	strhhi	r2, [r0, #4]
+ b5c:	e5803014 	str	r3, [r0, #20]
+ b60:	e12fff1e 	bx	lr
+ b64:	e3002815 	movw	r2, #2069	; 0x815
+ b68:	e3a03008 	mov	r3, #8
+ b6c:	e1c020b4 	strh	r2, [r0, #4]
+ b70:	e5803014 	str	r3, [r0, #20]
+ b74:	e12fff1e 	bx	lr
+
+00000b78 <Ssd1306::SendCommand(unsigned char)>:
+ b78:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ b7c:	e3a03901 	mov	r3, #16384	; 0x4000
+ b80:	e5d02008 	ldrb	r2, [r0, #8]
+ b84:	e24dd00c 	sub	sp, sp, #12
+ b88:	e3433f80 	movt	r3, #16256	; 0x3f80
+ b8c:	e5cd1005 	strb	r1, [sp, #5]
+ b90:	e3a01000 	mov	r1, #0
+ b94:	e5cd1004 	strb	r1, [sp, #4]
+ b98:	e583200c 	str	r2, [r3, #12]
+ b9c:	e590000c 	ldr	r0, [r0, #12]
+ ba0:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ ba4:	e3a01002 	mov	r1, #2
+ ba8:	e28d0004 	add	r0, sp, #4
+ bac:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ bb0:	e28dd00c 	add	sp, sp, #12
+ bb4:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00000bb8 <Ssd1306::SendData(unsigned char const*, unsigned int)>:
+ bb8:	e3a03901 	mov	r3, #16384	; 0x4000
+ bbc:	e92d4070 	push	{r4, r5, r6, lr}
+ bc0:	e1a04001 	mov	r4, r1
+ bc4:	e5d0c008 	ldrb	ip, [r0, #8]
+ bc8:	e1a05002 	mov	r5, r2
+ bcc:	e3433f80 	movt	r3, #16256	; 0x3f80
+ bd0:	e583c00c 	str	ip, [r3, #12]
+ bd4:	e590000c 	ldr	r0, [r0, #12]
+ bd8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ bdc:	e1a01005 	mov	r1, r5
+ be0:	e1a00004 	mov	r0, r4
+ be4:	e8bd4070 	pop	{r4, r5, r6, lr}
+ be8:	eafffffe 	b	0 <bcm2835_i2c_write>
+
+00000bec <Ssd1306::SetCursorOn()>:
+ bec:	e12fff1e 	bx	lr
+
+00000bf0 <Ssd1306::SetCursorBlinkOn()>:
+ bf0:	e12fff1e 	bx	lr
+
+00000bf4 <Ssd1306::SetCursorOff()>:
+ bf4:	e12fff1e 	bx	lr
+
+00000bf8 <Ssd1306::SetColumnRow(unsigned char, unsigned char)>:
+ bf8:	e12fff1e 	bx	lr
+
+00000bfc <Ssd1306::DumpShadowRam()>:
+ bfc:	e12fff1e 	bx	lr
+
+Disassembly of section .bss:
+
+00000000 <_ClearBuffer>:
+	...
+
+00000088 <Ssd1306::s_pThis>:
+  88:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section .text._ZN7Ssd1306D1Ev:
+
+00000000 <Ssd1306::~Ssd1306()>:
+   0:	e12fff1e 	bx	lr
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.LC0>:
+   0:	31314853 	teqcc	r1, r3, asr r8
+   4:	00003630 	andeq	r3, r0, r0, lsr r6
+
+00000008 <.LC1>:
+   8:	31445353 	cmpcc	r4, r3, asr r3
+   c:	00363033 	eorseq	r3, r6, r3, lsr r0
+
+00000010 <.LC2>:
+  10:	28207325 	stmdacs	r0!, {r0, r2, r5, r8, r9, ip, sp, lr}
+  14:	252c6425 	strcs	r6, [ip, #-1061]!	; 0xfffffbdb
+  18:	000a2964 	andeq	r2, sl, r4, ror #18
+
+0000001c <.LC3>:
+  1c:	aaeeaa40 	bge	ffbaa924 <Ssd1306::DumpShadowRam()+0xffba9d28>
+  20:	Address 0x0000000000000020 is out of bounds.
+
+
+Disassembly of section .text._ZN7Ssd1306D0Ev:
+
+00000000 <Ssd1306::~Ssd1306()>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04000 	mov	r4, r0
+   8:	ebfffffe 	bl	0 <operator delete(void*)>
+   c:	e1a00004 	mov	r0, r4
+  10:	e8bd8010 	pop	{r4, pc}
+
+Disassembly of section .rodata:
+
+00000000 <_OledFont8x6>:
+   0:	00000040 	andeq	r0, r0, r0, asr #32
+   4:	40000000 	andmi	r0, r0, r0
+   8:	005f0000 	subseq	r0, pc, r0
+   c:	00400000 	subeq	r0, r0, r0
+  10:	00070007 	andeq	r0, r7, r7
+  14:	7f144000 	svcvc	0x00144000
+  18:	00147f14 	andseq	r7, r4, r4, lsl pc
+  1c:	7f2a2440 	svcvc	0x002a2440
+  20:	4000122a 	andmi	r1, r0, sl, lsr #4
+  24:	64081323 	strvs	r1, [r8], #-803	; 0xfffffcdd
+  28:	36400062 	strbcc	r0, [r0], -r2, rrx
+  2c:	50205649 	eorpl	r5, r0, r9, asr #12
+  30:	08004000 	stmdaeq	r0, {lr}
+  34:	00000307 	andeq	r0, r0, r7, lsl #6
+  38:	221c0040 	andscs	r0, ip, #64	; 0x40
+  3c:	40000041 	andmi	r0, r0, r1, asr #32
+  40:	1c224100 	stfnes	f4, [r2], #-0
+  44:	2a400000 	bcs	100004c <Ssd1306::DumpShadowRam()+0xfff450>
+  48:	2a1c7f1c 	bcs	71fcc0 <Ssd1306::DumpShadowRam()+0x71f0c4>
+  4c:	08084000 	stmdaeq	r8, {lr}
+  50:	0008083e 	andeq	r0, r8, lr, lsr r8
+  54:	70800040 	addvc	r0, r0, r0, asr #32
+  58:	40000030 	andmi	r0, r0, r0, lsr r0
+  5c:	08080808 	stmdaeq	r8, {r3, fp}
+  60:	00400008 	subeq	r0, r0, r8
+  64:	00606000 	rsbeq	r6, r0, r0
+  68:	10204000 	eorne	r4, r0, r0
+  6c:	00020408 	andeq	r0, r2, r8, lsl #8
+  70:	49513e40 	ldmdbmi	r1, {r6, r9, sl, fp, ip, sp}^
+  74:	40003e45 	andmi	r3, r0, r5, asr #28
+  78:	407f4200 	rsbsmi	r4, pc, r0, lsl #4
+  7c:	72400000 	subvc	r0, r0, #0
+  80:	46494949 	strbmi	r4, [r9], -r9, asr #18
+  84:	41214000 			; <UNDEFINED> instruction: 0x41214000
+  88:	00334d49 	eorseq	r4, r3, r9, asr #26
+  8c:	12141840 	andsne	r1, r4, #64, 16	; 0x400000
+  90:	4000107f 	andmi	r1, r0, pc, ror r0
+  94:	45454527 	strbmi	r4, [r5, #-1319]	; 0xfffffad9
+  98:	3c400039 	mcrrcc	0, 3, r0, r0, cr9
+  9c:	3149494a 	cmpcc	r9, sl, asr #18
+  a0:	21414000 	mrscs	r4, (UNDEF: 65)
+  a4:	00070911 	andeq	r0, r7, r1, lsl r9
+  a8:	49493640 	stmdbmi	r9, {r6, r9, sl, ip, sp}^
+  ac:	40003649 	andmi	r3, r0, r9, asr #12
+  b0:	29494946 	stmdbcs	r9, {r1, r2, r6, r8, fp, lr}^
+  b4:	0040001e 	subeq	r0, r0, lr, lsl r0
+  b8:	00001400 	andeq	r1, r0, r0, lsl #8
+  bc:	40004000 	andmi	r4, r0, r0
+  c0:	00000034 	andeq	r0, r0, r4, lsr r0
+  c4:	14080040 	strne	r0, [r8], #-64	; 0xffffffc0
+  c8:	40004122 	andmi	r4, r0, r2, lsr #2
+  cc:	14141414 	ldrne	r1, [r4], #-1044	; 0xfffffbec
+  d0:	00400014 	subeq	r0, r0, r4, lsl r0
+  d4:	08142241 	ldmdaeq	r4, {r0, r6, r9, sp}
+  d8:	01024000 	mrseq	r4, (UNDEF: 2)
+  dc:	00060959 	andeq	r0, r6, r9, asr r9
+  e0:	5d413e40 	stclpl	14, cr3, [r1, #-256]	; 0xffffff00
+  e4:	40004e59 	andmi	r4, r0, r9, asr lr
+  e8:	1211127c 	andsne	r1, r1, #124, 4	; 0xc0000007
+  ec:	7f40007c 	svcvc	0x0040007c
+  f0:	36494949 	strbcc	r4, [r9], -r9, asr #18
+  f4:	413e4000 	teqmi	lr, r0
+  f8:	00224141 	eoreq	r4, r2, r1, asr #2
+  fc:	41417f40 	cmpmi	r1, r0, asr #30
+ 100:	40003e41 	andmi	r3, r0, r1, asr #28
+ 104:	4949497f 	stmdbmi	r9, {r0, r1, r2, r3, r4, r5, r6, r8, fp, lr}^
+ 108:	7f400041 	svcvc	0x00400041
+ 10c:	01090909 	tsteq	r9, r9, lsl #18
+ 110:	413e4000 	teqmi	lr, r0
+ 114:	00735141 	rsbseq	r5, r3, r1, asr #2
+ 118:	08087f40 	stmdaeq	r8, {r6, r8, r9, sl, fp, ip, sp, lr}
+ 11c:	40007f08 	andmi	r7, r0, r8, lsl #30
+ 120:	417f4100 	cmnmi	pc, r0, lsl #2
+ 124:	20400000 	subcs	r0, r0, r0
+ 128:	013f4140 	teqeq	pc, r0, asr #2
+ 12c:	087f4000 	ldmdaeq	pc!, {lr}^	; <UNPREDICTABLE>
+ 130:	00412214 	subeq	r2, r1, r4, lsl r2
+ 134:	40407f40 	submi	r7, r0, r0, asr #30
+ 138:	40004040 	andmi	r4, r0, r0, asr #32
+ 13c:	021c027f 	andseq	r0, ip, #-268435449	; 0xf0000007
+ 140:	7f40007f 	svcvc	0x0040007f
+ 144:	7f100804 	svcvc	0x00100804
+ 148:	413e4000 	teqmi	lr, r0
+ 14c:	003e4141 	eorseq	r4, lr, r1, asr #2
+ 150:	09097f40 	stmdbeq	r9, {r6, r8, r9, sl, fp, ip, sp, lr}
+ 154:	40000609 	andmi	r0, r0, r9, lsl #12
+ 158:	2151413e 	cmpcs	r1, lr, lsr r1
+ 15c:	7f40005e 	svcvc	0x0040005e
+ 160:	46291909 	strtmi	r1, [r9], -r9, lsl #18
+ 164:	49264000 	stmdbmi	r6!, {lr}
+ 168:	00324949 	eorseq	r4, r2, r9, asr #18
+ 16c:	7f010340 	svcvc	0x00010340
+ 170:	40000301 	andmi	r0, r0, r1, lsl #6
+ 174:	4040403f 	submi	r4, r0, pc, lsr r0
+ 178:	1f40003f 	svcne	0x0040003f
+ 17c:	1f204020 	svcne	0x00204020
+ 180:	403f4000 	eorsmi	r4, pc, r0
+ 184:	003f4038 	eorseq	r4, pc, r8, lsr r0	; <UNPREDICTABLE>
+ 188:	08146340 	ldmdaeq	r4, {r6, r8, r9, sp, lr}
+ 18c:	40006314 	andmi	r6, r0, r4, lsl r3
+ 190:	04780403 	ldrbteq	r0, [r8], #-1027	; 0xfffffbfd
+ 194:	61400003 	cmpvs	r0, r3
+ 198:	434d4959 	movtmi	r4, #55641	; 0xd959
+ 19c:	7f004000 	svcvc	0x00004000
+ 1a0:	00414141 	subeq	r4, r1, r1, asr #2
+ 1a4:	08040240 	stmdaeq	r4, {r6, r9}
+ 1a8:	40002010 	andmi	r2, r0, r0, lsl r0
+ 1ac:	41414100 	mrsmi	r4, (UNDEF: 81)
+ 1b0:	0440007f 	strbeq	r0, [r0], #-127	; 0xffffff81
+ 1b4:	04020102 	streq	r0, [r2], #-258	; 0xfffffefe
+ 1b8:	40404000 	submi	r4, r0, r0
+ 1bc:	00404040 	subeq	r4, r0, r0, asr #32
+ 1c0:	07030040 	streq	r0, [r3, -r0, asr #32]
+ 1c4:	40000008 	andmi	r0, r0, r8
+ 1c8:	78545420 	ldmdavc	r4, {r5, sl, ip, lr}^
+ 1cc:	7f400040 	svcvc	0x00400040
+ 1d0:	38444428 	stmdacc	r4, {r3, r5, sl, lr}^
+ 1d4:	44384000 	ldrtmi	r4, [r8], #-0
+ 1d8:	00284444 	eoreq	r4, r8, r4, asr #8
+ 1dc:	44443840 	strbmi	r3, [r4], #-2112	; 0xfffff7c0
+ 1e0:	40007f28 	andmi	r7, r0, r8, lsr #30
+ 1e4:	54545438 	ldrbpl	r5, [r4], #-1080	; 0xfffffbc8
+ 1e8:	00400018 	subeq	r0, r0, r8, lsl r0
+ 1ec:	02097e08 	andeq	r7, r9, #8, 28	; 0x80
+ 1f0:	a4184000 	ldrge	r4, [r8], #-0
+ 1f4:	00789ca4 	rsbseq	r9, r8, r4, lsr #25
+ 1f8:	04087f40 	streq	r7, [r8], #-3904	; 0xfffff0c0
+ 1fc:	40007804 	andmi	r7, r0, r4, lsl #16
+ 200:	407d4400 	rsbsmi	r4, sp, r0, lsl #8
+ 204:	20400000 	subcs	r0, r0, r0
+ 208:	003d4040 	eorseq	r4, sp, r0, asr #32
+ 20c:	107f4000 	rsbsne	r4, pc, r0
+ 210:	00004428 	andeq	r4, r0, r8, lsr #8
+ 214:	7f410040 	svcvc	0x00410040
+ 218:	40000040 	andmi	r0, r0, r0, asr #32
+ 21c:	0478047c 	ldrbteq	r0, [r8], #-1148	; 0xfffffb84
+ 220:	7c400078 	mcrrvc	0, 7, r0, r0, cr8
+ 224:	78040408 	stmdavc	r4, {r3, sl}
+ 228:	44384000 	ldrtmi	r4, [r8], #-0
+ 22c:	00384444 	eorseq	r4, r8, r4, asr #8
+ 230:	2418fc40 	ldrcs	pc, [r8], #-3136	; 0xfffff3c0
+ 234:	40001824 	andmi	r1, r0, r4, lsr #16
+ 238:	18242418 	stmdane	r4!, {r3, r4, sl, sp}
+ 23c:	7c4000fc 	mcrrvc	0, 15, r0, r0, cr12
+ 240:	08040408 	stmdaeq	r4, {r3, sl}
+ 244:	54484000 	strbpl	r4, [r8], #-0
+ 248:	00245454 	eoreq	r5, r4, r4, asr r4
+ 24c:	3f040440 	svccc	0x00040440
+ 250:	40002444 	andmi	r2, r0, r4, asr #8
+ 254:	2040403c 	subcs	r4, r0, ip, lsr r0
+ 258:	1c40007c 	mcrrne	0, 7, r0, r0, cr12
+ 25c:	1c204020 	stcne	0, cr4, [r0], #-128	; 0xffffff80
+ 260:	403c4000 	eorsmi	r4, ip, r0
+ 264:	003c4030 	eorseq	r4, ip, r0, lsr r0
+ 268:	10284440 	eorne	r4, r8, r0, asr #8
+ 26c:	40004428 	andmi	r4, r0, r8, lsr #8
+ 270:	9090904c 	addsls	r9, r0, ip, asr #32
+ 274:	4440007c 	strbmi	r0, [r0], #-124	; 0xffffff84
+ 278:	444c5464 	strbmi	r5, [ip], #-1124	; 0xfffffb9c
+ 27c:	08004000 	stmdaeq	r0, {lr}
+ 280:	00004136 	andeq	r4, r0, r6, lsr r1
+ 284:	77000040 	strvc	r0, [r0, -r0, asr #32]
+ 288:	40000000 	andmi	r0, r0, r0
+ 28c:	08364100 	ldmdaeq	r6!, {r8, lr}
+ 290:	02400000 	subeq	r0, r0, #0
+ 294:	02040201 	andeq	r0, r4, #268435456	; 0x10000000
+ 298:	263c4000 	ldrtcs	r4, [ip], -r0
+ 29c:	003c2623 	eorseq	r2, ip, r3, lsr #12
+
+000002a0 <vtable for Ssd1306>:
+	...
+
+000002e0 <oled_128x32_init>:
+ 2e0:	a880d5ae 	stmge	r0, {r1, r2, r3, r5, r7, r8, sl, ip, lr, pc}
+ 2e4:	4000d31f 	andmi	sp, r0, pc, lsl r3
+ 2e8:	0020148d 	eoreq	r1, r0, sp, lsl #9
+ 2ec:	02dac8a1 	sbcseq	ip, sl, #10551296	; 0xa10000
+ 2f0:	f1d97f81 			; <UNDEFINED> instruction: 0xf1d97f81
+ 2f4:	a6a440db 	ssatge	r4, #5, fp, asr #1
+
+000002f8 <oled_128x64_init>:
+ 2f8:	a880d5ae 	stmge	r0, {r1, r2, r3, r5, r7, r8, sl, ip, lr, pc}
+ 2fc:	4000d33f 	andmi	sp, r0, pc, lsr r3
+ 300:	0020148d 	eoreq	r1, r0, sp, lsl #9
+ 304:	12dac8a1 	sbcsne	ip, sl, #10551296	; 0xa10000
+ 308:	f1d97f81 			; <UNDEFINED> instruction: 0xf1d97f81
+ 30c:	a6a440db 	ssatge	r4, #5, fp, asr #1
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+ssd1311.o:     file format elf32-littlearm
+
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000008 	andeq	r0, r0, r8
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000009 	andeq	r0, r0, r9
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	0000000b 	andeq	r0, r0, fp
+   8:	0000000c 	andeq	r0, r0, ip
+
+Disassembly of section .text:
+
+00000000 <Ssd1311::SetCursor(unsigned int)>:
+   0:	e12fff1e 	bx	lr
+
+00000004 <Ssd1311::PrintInfo()>:
+   4:	e1a03000 	mov	r3, r0
+   8:	e3000000 	movw	r0, #0
+   c:	e3400000 	movt	r0, #0
+  10:	e5d32004 	ldrb	r2, [r3, #4]
+  14:	e5d31005 	ldrb	r1, [r3, #5]
+  18:	eafffffe 	b	0 <printf>
+
+0000001c <Ssd1311::PutString(char const*)>:
+  1c:	e59fc064 	ldr	ip, [pc, #100]	; 88 <Ssd1311::PutString(char const*)+0x6c>
+  20:	e2411001 	sub	r1, r1, #1
+  24:	e3a03014 	mov	r3, #20
+  28:	e92d4010 	push	{r4, lr}
+  2c:	ea000003 	b	40 <Ssd1311::PutString(char const*)+0x24>
+  30:	e4cc2001 	strb	r2, [ip], #1
+  34:	e6ff307e 	uxth	r3, lr
+  38:	e3530000 	cmp	r3, #0
+  3c:	0a00000f 	beq	80 <Ssd1311::PutString(char const*)+0x64>
+  40:	e5f12001 	ldrb	r2, [r1, #1]!
+  44:	e243e001 	sub	lr, r3, #1
+  48:	e3520000 	cmp	r2, #0
+  4c:	1afffff7 	bne	30 <Ssd1311::PutString(char const*)+0x14>
+  50:	e2634015 	rsb	r4, r3, #21
+  54:	e5d02008 	ldrb	r2, [r0, #8]
+  58:	e3a03901 	mov	r3, #16384	; 0x4000
+  5c:	e3433f80 	movt	r3, #16256	; 0x3f80
+  60:	e583200c 	str	r2, [r3, #12]
+  64:	e590000c 	ldr	r0, [r0, #12]
+  68:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+  6c:	e3000000 	movw	r0, #0
+  70:	e1a01004 	mov	r1, r4
+  74:	e3400000 	movt	r0, #0
+  78:	e8bd4010 	pop	{r4, lr}
+  7c:	eafffffe 	b	0 <bcm2835_i2c_write>
+  80:	e3a04015 	mov	r4, #21
+  84:	eafffff2 	b	54 <Ssd1311::PutString(char const*)+0x38>
+  88:	00000001 	andeq	r0, r0, r1
+
+0000008c <Ssd1311::Cls()>:
+  8c:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+  90:	e3a03901 	mov	r3, #16384	; 0x4000
+  94:	e5d02008 	ldrb	r2, [r0, #8]
+  98:	e24dd00c 	sub	sp, sp, #12
+  9c:	e3433f80 	movt	r3, #16256	; 0x3f80
+  a0:	e3e0107f 	mvn	r1, #127	; 0x7f
+  a4:	e5cd1004 	strb	r1, [sp, #4]
+  a8:	e3a01001 	mov	r1, #1
+  ac:	e5cd1005 	strb	r1, [sp, #5]
+  b0:	e583200c 	str	r2, [r3, #12]
+  b4:	e590000c 	ldr	r0, [r0, #12]
+  b8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+  bc:	e3a01002 	mov	r1, #2
+  c0:	e28d0004 	add	r0, sp, #4
+  c4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+  c8:	e28dd00c 	add	sp, sp, #12
+  cc:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+000000d0 <Ssd1311::PutChar(int)>:
+  d0:	e3a03901 	mov	r3, #16384	; 0x4000
+  d4:	e3a0c040 	mov	ip, #64	; 0x40
+  d8:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+  dc:	e24dd00c 	sub	sp, sp, #12
+  e0:	e5d02008 	ldrb	r2, [r0, #8]
+  e4:	e201107f 	and	r1, r1, #127	; 0x7f
+  e8:	e3433f80 	movt	r3, #16256	; 0x3f80
+  ec:	e5cdc004 	strb	ip, [sp, #4]
+  f0:	e5cd1005 	strb	r1, [sp, #5]
+  f4:	e583200c 	str	r2, [r3, #12]
+  f8:	e590000c 	ldr	r0, [r0, #12]
+  fc:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 100:	e3a01002 	mov	r1, #2
+ 104:	e28d0004 	add	r0, sp, #4
+ 108:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 10c:	e28dd00c 	add	sp, sp, #12
+ 110:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00000114 <Ssd1311::SetSleep(bool)>:
+ 114:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 118:	e3a02901 	mov	r2, #16384	; 0x4000
+ 11c:	e5d03010 	ldrb	r3, [r0, #16]
+ 120:	e24dd00c 	sub	sp, sp, #12
+ 124:	e3432f80 	movt	r2, #16256	; 0x3f80
+ 128:	e3510000 	cmp	r1, #0
+ 12c:	e5d01008 	ldrb	r1, [r0, #8]
+ 130:	120330fb 	andne	r3, r3, #251	; 0xfb
+ 134:	03833004 	orreq	r3, r3, #4
+ 138:	e3e0c07f 	mvn	ip, #127	; 0x7f
+ 13c:	e5c03010 	strb	r3, [r0, #16]
+ 140:	e5cdc004 	strb	ip, [sp, #4]
+ 144:	e5cd3005 	strb	r3, [sp, #5]
+ 148:	e582100c 	str	r1, [r2, #12]
+ 14c:	e590000c 	ldr	r0, [r0, #12]
+ 150:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 154:	e3a01002 	mov	r1, #2
+ 158:	e28d0004 	add	r0, sp, #4
+ 15c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 160:	e28dd00c 	add	sp, sp, #12
+ 164:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00000168 <Ssd1311::SetCursorPos(unsigned char, unsigned char)>:
+ 168:	e3520003 	cmp	r2, #3
+ 16c:	93510013 	cmpls	r1, #19
+ 170:	812fff1e 	bxhi	lr
+ 174:	e3a0c901 	mov	ip, #16384	; 0x4000
+ 178:	e3e0307f 	mvn	r3, #127	; 0x7f
+ 17c:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 180:	e24dd00c 	sub	sp, sp, #12
+ 184:	e5d0e008 	ldrb	lr, [r0, #8]
+ 188:	e343cf80 	movt	ip, #16256	; 0x3f80
+ 18c:	e0811282 	add	r1, r1, r2, lsl #5
+ 190:	e1831001 	orr	r1, r3, r1
+ 194:	e5cd3004 	strb	r3, [sp, #4]
+ 198:	e5cd1005 	strb	r1, [sp, #5]
+ 19c:	e58ce00c 	str	lr, [ip, #12]
+ 1a0:	e590000c 	ldr	r0, [r0, #12]
+ 1a4:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 1a8:	e3a01002 	mov	r1, #2
+ 1ac:	e28d0004 	add	r0, sp, #4
+ 1b0:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 1b4:	e28dd00c 	add	sp, sp, #12
+ 1b8:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+000001bc <Ssd1311::TextLine(unsigned char, char const*, unsigned int)>:
+ 1bc:	e2411001 	sub	r1, r1, #1
+ 1c0:	e6ef1071 	uxtb	r1, r1
+ 1c4:	e3510003 	cmp	r1, #3
+ 1c8:	812fff1e 	bxhi	lr
+ 1cc:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+ 1d0:	e24dd00c 	sub	sp, sp, #12
+ 1d4:	e1a06003 	mov	r6, r3
+ 1d8:	e3e0307f 	mvn	r3, #127	; 0x7f
+ 1dc:	e1831281 	orr	r1, r3, r1, lsl #5
+ 1e0:	e1a04002 	mov	r4, r2
+ 1e4:	e5cd3004 	strb	r3, [sp, #4]
+ 1e8:	e3a03901 	mov	r3, #16384	; 0x4000
+ 1ec:	e5d02008 	ldrb	r2, [r0, #8]
+ 1f0:	e1a05000 	mov	r5, r0
+ 1f4:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 1f8:	e5cd1005 	strb	r1, [sp, #5]
+ 1fc:	e583200c 	str	r2, [r3, #12]
+ 200:	e590000c 	ldr	r0, [r0, #12]
+ 204:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 208:	e3a01002 	mov	r1, #2
+ 20c:	e28d0004 	add	r0, sp, #4
+ 210:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 214:	e3560014 	cmp	r6, #20
+ 218:	31a07006 	movcc	r7, r6
+ 21c:	23a07014 	movcs	r7, #20
+ 220:	e3560000 	cmp	r6, #0
+ 224:	0a000006 	beq	244 <Ssd1311::TextLine(unsigned char, char const*, unsigned int)+0x88>
+ 228:	e084c007 	add	ip, r4, r7
+ 22c:	e3003000 	movw	r3, #0
+ 230:	e3403000 	movt	r3, #0
+ 234:	e4d42001 	ldrb	r2, [r4], #1
+ 238:	e15c0004 	cmp	ip, r4
+ 23c:	e5e32001 	strb	r2, [r3, #1]!
+ 240:	1afffffb 	bne	234 <Ssd1311::TextLine(unsigned char, char const*, unsigned int)+0x78>
+ 244:	e5d52008 	ldrb	r2, [r5, #8]
+ 248:	e3a03901 	mov	r3, #16384	; 0x4000
+ 24c:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 250:	e583200c 	str	r2, [r3, #12]
+ 254:	e595000c 	ldr	r0, [r5, #12]
+ 258:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 25c:	e3000000 	movw	r0, #0
+ 260:	e2871001 	add	r1, r7, #1
+ 264:	e3400000 	movt	r0, #0
+ 268:	e28dd00c 	add	sp, sp, #12
+ 26c:	e8bd40f0 	pop	{r4, r5, r6, r7, lr}
+ 270:	eafffffe 	b	0 <bcm2835_i2c_write>
+
+00000274 <Ssd1311::ClearLine(unsigned char)>:
+ 274:	e2411001 	sub	r1, r1, #1
+ 278:	e6ef1071 	uxtb	r1, r1
+ 27c:	e3510003 	cmp	r1, #3
+ 280:	812fff1e 	bxhi	lr
+ 284:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+ 288:	e3e0707f 	mvn	r7, #127	; 0x7f
+ 28c:	e5d03008 	ldrb	r3, [r0, #8]
+ 290:	e3a06901 	mov	r6, #16384	; 0x4000
+ 294:	e3436f80 	movt	r6, #16256	; 0x3f80
+ 298:	e24dd00c 	sub	sp, sp, #12
+ 29c:	e1871281 	orr	r1, r7, r1, lsl #5
+ 2a0:	e1a05000 	mov	r5, r0
+ 2a4:	e5cd7004 	strb	r7, [sp, #4]
+ 2a8:	e6ef4071 	uxtb	r4, r1
+ 2ac:	e5cd4005 	strb	r4, [sp, #5]
+ 2b0:	e586300c 	str	r3, [r6, #12]
+ 2b4:	e590000c 	ldr	r0, [r0, #12]
+ 2b8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 2bc:	e3a01002 	mov	r1, #2
+ 2c0:	e28d0004 	add	r0, sp, #4
+ 2c4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 2c8:	e5d53008 	ldrb	r3, [r5, #8]
+ 2cc:	e586300c 	str	r3, [r6, #12]
+ 2d0:	e595000c 	ldr	r0, [r5, #12]
+ 2d4:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 2d8:	e59f0030 	ldr	r0, [pc, #48]	; 310 <Ssd1311::ClearLine(unsigned char)+0x9c>
+ 2dc:	e3a01015 	mov	r1, #21
+ 2e0:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 2e4:	e5d53008 	ldrb	r3, [r5, #8]
+ 2e8:	e5cd7004 	strb	r7, [sp, #4]
+ 2ec:	e5cd4005 	strb	r4, [sp, #5]
+ 2f0:	e586300c 	str	r3, [r6, #12]
+ 2f4:	e595000c 	ldr	r0, [r5, #12]
+ 2f8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 2fc:	e3a01002 	mov	r1, #2
+ 300:	e28d0004 	add	r0, sp, #4
+ 304:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 308:	e28dd00c 	add	sp, sp, #12
+ 30c:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+ 310:	00000018 	andeq	r0, r0, r8, lsl r0
+
+00000314 <Ssd1311::SetContrast(unsigned char)>:
+ 314:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+ 318:	e3a05901 	mov	r5, #16384	; 0x4000
+ 31c:	e3435f80 	movt	r5, #16256	; 0x3f80
+ 320:	e24dd008 	sub	sp, sp, #8
+ 324:	e5d03008 	ldrb	r3, [r0, #8]
+ 328:	e3e0607f 	mvn	r6, #127	; 0x7f
+ 32c:	e5c01006 	strb	r1, [r0, #6]
+ 330:	e3a0802a 	mov	r8, #42	; 0x2a
+ 334:	e5cd6004 	strb	r6, [sp, #4]
+ 338:	e1a04000 	mov	r4, r0
+ 33c:	e5cd8005 	strb	r8, [sp, #5]
+ 340:	e1a07001 	mov	r7, r1
+ 344:	e585300c 	str	r3, [r5, #12]
+ 348:	e590000c 	ldr	r0, [r0, #12]
+ 34c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 350:	e3a01002 	mov	r1, #2
+ 354:	e28d0004 	add	r0, sp, #4
+ 358:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 35c:	e5d43008 	ldrb	r3, [r4, #8]
+ 360:	e5cd6004 	strb	r6, [sp, #4]
+ 364:	e5cd8005 	strb	r8, [sp, #5]
+ 368:	e585300c 	str	r3, [r5, #12]
+ 36c:	e594000c 	ldr	r0, [r4, #12]
+ 370:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 374:	e3a01002 	mov	r1, #2
+ 378:	e28d0004 	add	r0, sp, #4
+ 37c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 380:	e5d43008 	ldrb	r3, [r4, #8]
+ 384:	e3a02079 	mov	r2, #121	; 0x79
+ 388:	e5cd2005 	strb	r2, [sp, #5]
+ 38c:	e5cd6004 	strb	r6, [sp, #4]
+ 390:	e585300c 	str	r3, [r5, #12]
+ 394:	e594000c 	ldr	r0, [r4, #12]
+ 398:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 39c:	e3a01002 	mov	r1, #2
+ 3a0:	e28d0004 	add	r0, sp, #4
+ 3a4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 3a8:	e5d43008 	ldrb	r3, [r4, #8]
+ 3ac:	e3e0207e 	mvn	r2, #126	; 0x7e
+ 3b0:	e5cd2005 	strb	r2, [sp, #5]
+ 3b4:	e5cd6004 	strb	r6, [sp, #4]
+ 3b8:	e585300c 	str	r3, [r5, #12]
+ 3bc:	e594000c 	ldr	r0, [r4, #12]
+ 3c0:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 3c4:	e3a01002 	mov	r1, #2
+ 3c8:	e28d0004 	add	r0, sp, #4
+ 3cc:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 3d0:	e5d43008 	ldrb	r3, [r4, #8]
+ 3d4:	e5cd7005 	strb	r7, [sp, #5]
+ 3d8:	e5cd6004 	strb	r6, [sp, #4]
+ 3dc:	e585300c 	str	r3, [r5, #12]
+ 3e0:	e594000c 	ldr	r0, [r4, #12]
+ 3e4:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 3e8:	e3a01002 	mov	r1, #2
+ 3ec:	e28d0004 	add	r0, sp, #4
+ 3f0:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 3f4:	e5d43008 	ldrb	r3, [r4, #8]
+ 3f8:	e5cd6004 	strb	r6, [sp, #4]
+ 3fc:	e5cd8005 	strb	r8, [sp, #5]
+ 400:	e585300c 	str	r3, [r5, #12]
+ 404:	e594000c 	ldr	r0, [r4, #12]
+ 408:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 40c:	e3a01002 	mov	r1, #2
+ 410:	e28d0004 	add	r0, sp, #4
+ 414:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 418:	e5cd6004 	strb	r6, [sp, #4]
+ 41c:	e3a03078 	mov	r3, #120	; 0x78
+ 420:	e5cd3005 	strb	r3, [sp, #5]
+ 424:	e5d43008 	ldrb	r3, [r4, #8]
+ 428:	e585300c 	str	r3, [r5, #12]
+ 42c:	e594000c 	ldr	r0, [r4, #12]
+ 430:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 434:	e3a01002 	mov	r1, #2
+ 438:	e28d0004 	add	r0, sp, #4
+ 43c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 440:	e5d43008 	ldrb	r3, [r4, #8]
+ 444:	e3a02028 	mov	r2, #40	; 0x28
+ 448:	e5cd2005 	strb	r2, [sp, #5]
+ 44c:	e5cd6004 	strb	r6, [sp, #4]
+ 450:	e585300c 	str	r3, [r5, #12]
+ 454:	e594000c 	ldr	r0, [r4, #12]
+ 458:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 45c:	e3a01002 	mov	r1, #2
+ 460:	e28d0004 	add	r0, sp, #4
+ 464:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 468:	e28dd008 	add	sp, sp, #8
+ 46c:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+
+00000470 <Ssd1311::Ssd1311()>:
+ 470:	e59fc038 	ldr	ip, [pc, #56]	; 4b0 <Ssd1311::Ssd1311()+0x40>
+ 474:	e3a01d6a 	mov	r1, #6784	; 0x1a80
+ 478:	e3401006 	movt	r1, #6
+ 47c:	e3002000 	movw	r2, #0
+ 480:	e3402000 	movt	r2, #0
+ 484:	e580c000 	str	ip, [r0]
+ 488:	e3a0c008 	mov	ip, #8
+ 48c:	e580100c 	str	r1, [r0, #12]
+ 490:	e3001414 	movw	r1, #1044	; 0x414
+ 494:	e340107f 	movt	r1, #127	; 0x7f
+ 498:	e5c0c010 	strb	ip, [r0, #16]
+ 49c:	e3a0c03c 	mov	ip, #60	; 0x3c
+ 4a0:	e5820030 	str	r0, [r2, #48]	; 0x30
+ 4a4:	e5801004 	str	r1, [r0, #4]
+ 4a8:	e5c0c008 	strb	ip, [r0, #8]
+ 4ac:	e12fff1e 	bx	lr
+ 4b0:	00000008 	andeq	r0, r0, r8
+
+000004b4 <Ssd1311::Text(char const*, unsigned int)>:
+ 4b4:	e3520014 	cmp	r2, #20
+ 4b8:	e92d4010 	push	{r4, lr}
+ 4bc:	31a04002 	movcc	r4, r2
+ 4c0:	23a04014 	movcs	r4, #20
+ 4c4:	e3520000 	cmp	r2, #0
+ 4c8:	0a000006 	beq	4e8 <Ssd1311::Text(char const*, unsigned int)+0x34>
+ 4cc:	e081c004 	add	ip, r1, r4
+ 4d0:	e3003000 	movw	r3, #0
+ 4d4:	e3403000 	movt	r3, #0
+ 4d8:	e4d12001 	ldrb	r2, [r1], #1
+ 4dc:	e151000c 	cmp	r1, ip
+ 4e0:	e5e32001 	strb	r2, [r3, #1]!
+ 4e4:	1afffffb 	bne	4d8 <Ssd1311::Text(char const*, unsigned int)+0x24>
+ 4e8:	e5d02008 	ldrb	r2, [r0, #8]
+ 4ec:	e3a03901 	mov	r3, #16384	; 0x4000
+ 4f0:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 4f4:	e583200c 	str	r2, [r3, #12]
+ 4f8:	e590000c 	ldr	r0, [r0, #12]
+ 4fc:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 500:	e3000000 	movw	r0, #0
+ 504:	e2841001 	add	r1, r4, #1
+ 508:	e3400000 	movt	r0, #0
+ 50c:	e8bd4010 	pop	{r4, lr}
+ 510:	eafffffe 	b	0 <bcm2835_i2c_write>
+
+00000514 <Ssd1311::SelectRamRom(unsigned int, unsigned int)>:
+ 514:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+ 518:	e3a06901 	mov	r6, #16384	; 0x4000
+ 51c:	e5d03010 	ldrb	r3, [r0, #16]
+ 520:	e24dd008 	sub	sp, sp, #8
+ 524:	e3436f80 	movt	r6, #16256	; 0x3f80
+ 528:	e1a04000 	mov	r4, r0
+ 52c:	e5d00008 	ldrb	r0, [r0, #8]
+ 530:	e3e0707f 	mvn	r7, #127	; 0x7f
+ 534:	e5cd7004 	strb	r7, [sp, #4]
+ 538:	e20330fb 	and	r3, r3, #251	; 0xfb
+ 53c:	e5c43010 	strb	r3, [r4, #16]
+ 540:	e1a05002 	mov	r5, r2
+ 544:	e5cd3005 	strb	r3, [sp, #5]
+ 548:	e1a08001 	mov	r8, r1
+ 54c:	e586000c 	str	r0, [r6, #12]
+ 550:	e2088003 	and	r8, r8, #3
+ 554:	e594000c 	ldr	r0, [r4, #12]
+ 558:	e1a05105 	lsl	r5, r5, #2
+ 55c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 560:	e3a01002 	mov	r1, #2
+ 564:	e28d0004 	add	r0, sp, #4
+ 568:	e205500c 	and	r5, r5, #12
+ 56c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 570:	e5d43008 	ldrb	r3, [r4, #8]
+ 574:	e3a0202a 	mov	r2, #42	; 0x2a
+ 578:	e5cd2005 	strb	r2, [sp, #5]
+ 57c:	e5cd7004 	strb	r7, [sp, #4]
+ 580:	e586300c 	str	r3, [r6, #12]
+ 584:	e594000c 	ldr	r0, [r4, #12]
+ 588:	e1855008 	orr	r5, r5, r8
+ 58c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 590:	e3a01002 	mov	r1, #2
+ 594:	e28d0004 	add	r0, sp, #4
+ 598:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 59c:	e5d43008 	ldrb	r3, [r4, #8]
+ 5a0:	e3a02072 	mov	r2, #114	; 0x72
+ 5a4:	e5cd2005 	strb	r2, [sp, #5]
+ 5a8:	e5cd7004 	strb	r7, [sp, #4]
+ 5ac:	e586300c 	str	r3, [r6, #12]
+ 5b0:	e594000c 	ldr	r0, [r4, #12]
+ 5b4:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 5b8:	e3a01002 	mov	r1, #2
+ 5bc:	e28d0004 	add	r0, sp, #4
+ 5c0:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 5c4:	e5d43008 	ldrb	r3, [r4, #8]
+ 5c8:	e5cd7004 	strb	r7, [sp, #4]
+ 5cc:	e5cd5005 	strb	r5, [sp, #5]
+ 5d0:	e586300c 	str	r3, [r6, #12]
+ 5d4:	e594000c 	ldr	r0, [r4, #12]
+ 5d8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 5dc:	e3a01002 	mov	r1, #2
+ 5e0:	e28d0004 	add	r0, sp, #4
+ 5e4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 5e8:	e5cd7004 	strb	r7, [sp, #4]
+ 5ec:	e3a03028 	mov	r3, #40	; 0x28
+ 5f0:	e5cd3005 	strb	r3, [sp, #5]
+ 5f4:	e5d43008 	ldrb	r3, [r4, #8]
+ 5f8:	e586300c 	str	r3, [r6, #12]
+ 5fc:	e594000c 	ldr	r0, [r4, #12]
+ 600:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 604:	e3a01002 	mov	r1, #2
+ 608:	e28d0004 	add	r0, sp, #4
+ 60c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 610:	e5d43010 	ldrb	r3, [r4, #16]
+ 614:	e5d42008 	ldrb	r2, [r4, #8]
+ 618:	e5cd7004 	strb	r7, [sp, #4]
+ 61c:	e3833004 	orr	r3, r3, #4
+ 620:	e5c43010 	strb	r3, [r4, #16]
+ 624:	e5cd3005 	strb	r3, [sp, #5]
+ 628:	e586200c 	str	r2, [r6, #12]
+ 62c:	e594000c 	ldr	r0, [r4, #12]
+ 630:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 634:	e3a01002 	mov	r1, #2
+ 638:	e28d0004 	add	r0, sp, #4
+ 63c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 640:	e5d43008 	ldrb	r3, [r4, #8]
+ 644:	e3a02001 	mov	r2, #1
+ 648:	e5cd2005 	strb	r2, [sp, #5]
+ 64c:	e5cd7004 	strb	r7, [sp, #4]
+ 650:	e586300c 	str	r3, [r6, #12]
+ 654:	e594000c 	ldr	r0, [r4, #12]
+ 658:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 65c:	e3a01002 	mov	r1, #2
+ 660:	e28d0004 	add	r0, sp, #4
+ 664:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 668:	e28dd008 	add	sp, sp, #8
+ 66c:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+
+00000670 <Ssd1311::SetDDRAM(unsigned char)>:
+ 670:	e3a03901 	mov	r3, #16384	; 0x4000
+ 674:	e3e0207f 	mvn	r2, #127	; 0x7f
+ 678:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 67c:	e24dd00c 	sub	sp, sp, #12
+ 680:	e5d0c008 	ldrb	ip, [r0, #8]
+ 684:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 688:	e1811002 	orr	r1, r1, r2
+ 68c:	e5cd2004 	strb	r2, [sp, #4]
+ 690:	e5cd1005 	strb	r1, [sp, #5]
+ 694:	e583c00c 	str	ip, [r3, #12]
+ 698:	e590000c 	ldr	r0, [r0, #12]
+ 69c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 6a0:	e3a01002 	mov	r1, #2
+ 6a4:	e28d0004 	add	r0, sp, #4
+ 6a8:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 6ac:	e28dd00c 	add	sp, sp, #12
+ 6b0:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+000006b4 <Ssd1311::SetCGRAM(unsigned char)>:
+ 6b4:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 6b8:	e3a03901 	mov	r3, #16384	; 0x4000
+ 6bc:	e5d02008 	ldrb	r2, [r0, #8]
+ 6c0:	e24dd00c 	sub	sp, sp, #12
+ 6c4:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 6c8:	e201103f 	and	r1, r1, #63	; 0x3f
+ 6cc:	e3811040 	orr	r1, r1, #64	; 0x40
+ 6d0:	e5cd1005 	strb	r1, [sp, #5]
+ 6d4:	e3e0107f 	mvn	r1, #127	; 0x7f
+ 6d8:	e5cd1004 	strb	r1, [sp, #4]
+ 6dc:	e583200c 	str	r2, [r3, #12]
+ 6e0:	e590000c 	ldr	r0, [r0, #12]
+ 6e4:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 6e8:	e3a01002 	mov	r1, #2
+ 6ec:	e28d0004 	add	r0, sp, #4
+ 6f0:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 6f4:	e28dd00c 	add	sp, sp, #12
+ 6f8:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+000006fc <Ssd1311::SetRE(Ssd1311::FunctionSet)>:
+ 6fc:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 700:	e3510000 	cmp	r1, #0
+ 704:	e5d02008 	ldrb	r2, [r0, #8]
+ 708:	e24dd00c 	sub	sp, sp, #12
+ 70c:	e3a03901 	mov	r3, #16384	; 0x4000
+ 710:	03a01028 	moveq	r1, #40	; 0x28
+ 714:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 718:	13a0102a 	movne	r1, #42	; 0x2a
+ 71c:	e5cd1005 	strb	r1, [sp, #5]
+ 720:	e3e0107f 	mvn	r1, #127	; 0x7f
+ 724:	e5cd1004 	strb	r1, [sp, #4]
+ 728:	e583200c 	str	r2, [r3, #12]
+ 72c:	e590000c 	ldr	r0, [r0, #12]
+ 730:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 734:	e3a01002 	mov	r1, #2
+ 738:	e28d0004 	add	r0, sp, #4
+ 73c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 740:	e28dd00c 	add	sp, sp, #12
+ 744:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00000748 <Ssd1311::SetSD(Ssd1311::CommandSet)>:
+ 748:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+ 74c:	e3a05901 	mov	r5, #16384	; 0x4000
+ 750:	e5d03008 	ldrb	r3, [r0, #8]
+ 754:	e24dd00c 	sub	sp, sp, #12
+ 758:	e3435f80 	movt	r5, #16256	; 0x3f80
+ 75c:	e3a0202a 	mov	r2, #42	; 0x2a
+ 760:	e5cd2005 	strb	r2, [sp, #5]
+ 764:	e3e0707f 	mvn	r7, #127	; 0x7f
+ 768:	e5cd7004 	strb	r7, [sp, #4]
+ 76c:	e1a04000 	mov	r4, r0
+ 770:	e585300c 	str	r3, [r5, #12]
+ 774:	e1a06001 	mov	r6, r1
+ 778:	e590000c 	ldr	r0, [r0, #12]
+ 77c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 780:	e3a01002 	mov	r1, #2
+ 784:	e28d0004 	add	r0, sp, #4
+ 788:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 78c:	e5d43008 	ldrb	r3, [r4, #8]
+ 790:	e3560000 	cmp	r6, #0
+ 794:	e5cd7004 	strb	r7, [sp, #4]
+ 798:	03a02078 	moveq	r2, #120	; 0x78
+ 79c:	13a02079 	movne	r2, #121	; 0x79
+ 7a0:	e5cd2005 	strb	r2, [sp, #5]
+ 7a4:	e585300c 	str	r3, [r5, #12]
+ 7a8:	e594000c 	ldr	r0, [r4, #12]
+ 7ac:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 7b0:	e3a01002 	mov	r1, #2
+ 7b4:	e28d0004 	add	r0, sp, #4
+ 7b8:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 7bc:	e28dd00c 	add	sp, sp, #12
+ 7c0:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+
+000007c4 <Ssd1311::SendCommand(unsigned char)>:
+ 7c4:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 7c8:	e3a03901 	mov	r3, #16384	; 0x4000
+ 7cc:	e5d02008 	ldrb	r2, [r0, #8]
+ 7d0:	e24dd00c 	sub	sp, sp, #12
+ 7d4:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 7d8:	e5cd1005 	strb	r1, [sp, #5]
+ 7dc:	e3e0107f 	mvn	r1, #127	; 0x7f
+ 7e0:	e5cd1004 	strb	r1, [sp, #4]
+ 7e4:	e583200c 	str	r2, [r3, #12]
+ 7e8:	e590000c 	ldr	r0, [r0, #12]
+ 7ec:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 7f0:	e3a01002 	mov	r1, #2
+ 7f4:	e28d0004 	add	r0, sp, #4
+ 7f8:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 7fc:	e28dd00c 	add	sp, sp, #12
+ 800:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00000804 <Ssd1311::SendData(unsigned char)>:
+ 804:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 808:	e3a03901 	mov	r3, #16384	; 0x4000
+ 80c:	e5d02008 	ldrb	r2, [r0, #8]
+ 810:	e24dd00c 	sub	sp, sp, #12
+ 814:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 818:	e5cd1005 	strb	r1, [sp, #5]
+ 81c:	e3a01040 	mov	r1, #64	; 0x40
+ 820:	e5cd1004 	strb	r1, [sp, #4]
+ 824:	e583200c 	str	r2, [r3, #12]
+ 828:	e590000c 	ldr	r0, [r0, #12]
+ 82c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 830:	e3a01002 	mov	r1, #2
+ 834:	e28d0004 	add	r0, sp, #4
+ 838:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 83c:	e28dd00c 	add	sp, sp, #12
+ 840:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00000844 <Ssd1311::SendData(unsigned char const*, unsigned int)>:
+ 844:	e3a03901 	mov	r3, #16384	; 0x4000
+ 848:	e92d4070 	push	{r4, r5, r6, lr}
+ 84c:	e1a04001 	mov	r4, r1
+ 850:	e5d0c008 	ldrb	ip, [r0, #8]
+ 854:	e1a05002 	mov	r5, r2
+ 858:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 85c:	e583c00c 	str	ip, [r3, #12]
+ 860:	e590000c 	ldr	r0, [r0, #12]
+ 864:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 868:	e1a01005 	mov	r1, r5
+ 86c:	e1a00004 	mov	r0, r4
+ 870:	e8bd4070 	pop	{r4, r5, r6, lr}
+ 874:	eafffffe 	b	0 <bcm2835_i2c_write>
+
+00000878 <Ssd1311::CheckSSD1311()>:
+ 878:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+ 87c:	e3a05901 	mov	r5, #16384	; 0x4000
+ 880:	e3435f80 	movt	r5, #16256	; 0x3f80
+ 884:	e24dd01c 	sub	sp, sp, #28
+ 888:	e5d03008 	ldrb	r3, [r0, #8]
+ 88c:	e3a06040 	mov	r6, #64	; 0x40
+ 890:	e5cd6011 	strb	r6, [sp, #17]
+ 894:	e3e0707f 	mvn	r7, #127	; 0x7f
+ 898:	e5cd7010 	strb	r7, [sp, #16]
+ 89c:	e1a04000 	mov	r4, r0
+ 8a0:	e585300c 	str	r3, [r5, #12]
+ 8a4:	e590000c 	ldr	r0, [r0, #12]
+ 8a8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 8ac:	e3a01002 	mov	r1, #2
+ 8b0:	e28d0010 	add	r0, sp, #16
+ 8b4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 8b8:	e5d42008 	ldrb	r2, [r4, #8]
+ 8bc:	e3003000 	movw	r3, #0
+ 8c0:	e3403000 	movt	r3, #0
+ 8c4:	e8930003 	ldm	r3, {r0, r1}
+ 8c8:	e58d0008 	str	r0, [sp, #8]
+ 8cc:	e5cd100c 	strb	r1, [sp, #12]
+ 8d0:	e585200c 	str	r2, [r5, #12]
+ 8d4:	e594000c 	ldr	r0, [r4, #12]
+ 8d8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 8dc:	e3a01005 	mov	r1, #5
+ 8e0:	e28d0008 	add	r0, sp, #8
+ 8e4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 8e8:	e59f30a8 	ldr	r3, [pc, #168]	; 998 <Ssd1311::CheckSSD1311()+0x120>
+ 8ec:	e5d42008 	ldrb	r2, [r4, #8]
+ 8f0:	e8930003 	ldm	r3, {r0, r1}
+ 8f4:	e5cd7004 	strb	r7, [sp, #4]
+ 8f8:	e58d0010 	str	r0, [sp, #16]
+ 8fc:	e1cd11b4 	strh	r1, [sp, #20]
+ 900:	e5cd6005 	strb	r6, [sp, #5]
+ 904:	e585200c 	str	r2, [r5, #12]
+ 908:	e594000c 	ldr	r0, [r4, #12]
+ 90c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 910:	e3a01002 	mov	r1, #2
+ 914:	e28d0004 	add	r0, sp, #4
+ 918:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 91c:	e5d43008 	ldrb	r3, [r4, #8]
+ 920:	e594000c 	ldr	r0, [r4, #12]
+ 924:	e5cd6004 	strb	r6, [sp, #4]
+ 928:	e585300c 	str	r3, [r5, #12]
+ 92c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 930:	e3a01001 	mov	r1, #1
+ 934:	e28d0004 	add	r0, sp, #4
+ 938:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ 93c:	e5d43008 	ldrb	r3, [r4, #8]
+ 940:	e594000c 	ldr	r0, [r4, #12]
+ 944:	e585300c 	str	r3, [r5, #12]
+ 948:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 94c:	e3a01006 	mov	r1, #6
+ 950:	e28d0010 	add	r0, sp, #16
+ 954:	ebfffffe 	bl	0 <bcm2835_i2c_read>
+ 958:	e28d3009 	add	r3, sp, #9
+ 95c:	e28d2011 	add	r2, sp, #17
+ 960:	e28dc00d 	add	ip, sp, #13
+ 964:	ea000001 	b	970 <Ssd1311::CheckSSD1311()+0xf8>
+ 968:	e153000c 	cmp	r3, ip
+ 96c:	0a000006 	beq	98c <Ssd1311::CheckSSD1311()+0x114>
+ 970:	e4d30001 	ldrb	r0, [r3], #1
+ 974:	e4d21001 	ldrb	r1, [r2], #1
+ 978:	e1500001 	cmp	r0, r1
+ 97c:	0afffff9 	beq	968 <Ssd1311::CheckSSD1311()+0xf0>
+ 980:	e3a00000 	mov	r0, #0
+ 984:	e28dd01c 	add	sp, sp, #28
+ 988:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+ 98c:	e3a00001 	mov	r0, #1
+ 990:	e28dd01c 	add	sp, sp, #28
+ 994:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+ 998:	00000040 	andeq	r0, r0, r0, asr #32
+
+0000099c <Ssd1311::Start()>:
+ 99c:	e3a03901 	mov	r3, #16384	; 0x4000
+ 9a0:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+ 9a4:	e1a04000 	mov	r4, r0
+ 9a8:	e5d05008 	ldrb	r5, [r0, #8]
+ 9ac:	e24dd008 	sub	sp, sp, #8
+ 9b0:	e3433f80 	movt	r3, #16256	; 0x3f80
+ 9b4:	e590000c 	ldr	r0, [r0, #12]
+ 9b8:	e583500c 	str	r5, [r3, #12]
+ 9bc:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ 9c0:	e2451030 	sub	r1, r5, #48	; 0x30
+ 9c4:	e2455050 	sub	r5, r5, #80	; 0x50
+ 9c8:	e355000f 	cmp	r5, #15
+ 9cc:	83510007 	cmphi	r1, #7
+ 9d0:	93a01001 	movls	r1, #1
+ 9d4:	83a01000 	movhi	r1, #0
+ 9d8:	8a000008 	bhi	a00 <Ssd1311::Start()+0x64>
+ 9dc:	e3a01001 	mov	r1, #1
+ 9e0:	e28d0004 	add	r0, sp, #4
+ 9e4:	ebfffffe 	bl	0 <bcm2835_i2c_read>
+ 9e8:	e3500000 	cmp	r0, #0
+ 9ec:	0a000007 	beq	a10 <Ssd1311::Start()+0x74>
+ 9f0:	e3a05000 	mov	r5, #0
+ 9f4:	e1a00005 	mov	r0, r5
+ 9f8:	e28dd008 	add	sp, sp, #8
+ 9fc:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+ a00:	e1a00001 	mov	r0, r1
+ a04:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ a08:	e3500000 	cmp	r0, #0
+ a0c:	1afffff7 	bne	9f0 <Ssd1311::Start()+0x54>
+ a10:	e1a00004 	mov	r0, r4
+ a14:	ebfffffe 	bl	878 <Ssd1311::CheckSSD1311()>
+ a18:	e2505000 	subs	r5, r0, #0
+ a1c:	0afffff3 	beq	9f0 <Ssd1311::Start()+0x54>
+ a20:	e59f31fc 	ldr	r3, [pc, #508]	; c24 <Ssd1311::Start()+0x288>
+ a24:	e3a01020 	mov	r1, #32
+ a28:	e2832015 	add	r2, r3, #21
+ a2c:	e5e31001 	strb	r1, [r3, #1]!
+ a30:	e1520003 	cmp	r2, r3
+ a34:	1afffffc 	bne	a2c <Ssd1311::Start()+0x90>
+ a38:	e5d42008 	ldrb	r2, [r4, #8]
+ a3c:	e3003000 	movw	r3, #0
+ a40:	e3403000 	movt	r3, #0
+ a44:	e3a06901 	mov	r6, #16384	; 0x4000
+ a48:	e3436f80 	movt	r6, #16256	; 0x3f80
+ a4c:	e3e0707f 	mvn	r7, #127	; 0x7f
+ a50:	e5cd7004 	strb	r7, [sp, #4]
+ a54:	e3a08040 	mov	r8, #64	; 0x40
+ a58:	e5c38018 	strb	r8, [r3, #24]
+ a5c:	e3a0a03a 	mov	sl, #58	; 0x3a
+ a60:	e5c38000 	strb	r8, [r3]
+ a64:	e3a0903c 	mov	r9, #60	; 0x3c
+ a68:	e5cda005 	strb	sl, [sp, #5]
+ a6c:	e586200c 	str	r2, [r6, #12]
+ a70:	e594000c 	ldr	r0, [r4, #12]
+ a74:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ a78:	e3a01002 	mov	r1, #2
+ a7c:	e28d0004 	add	r0, sp, #4
+ a80:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ a84:	e5d43008 	ldrb	r3, [r4, #8]
+ a88:	e3a02009 	mov	r2, #9
+ a8c:	e5cd2005 	strb	r2, [sp, #5]
+ a90:	e5cd7004 	strb	r7, [sp, #4]
+ a94:	e586300c 	str	r3, [r6, #12]
+ a98:	e594000c 	ldr	r0, [r4, #12]
+ a9c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ aa0:	e3a01002 	mov	r1, #2
+ aa4:	e28d0004 	add	r0, sp, #4
+ aa8:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ aac:	e5d43008 	ldrb	r3, [r4, #8]
+ ab0:	e3a02005 	mov	r2, #5
+ ab4:	e5cd2005 	strb	r2, [sp, #5]
+ ab8:	e5cd7004 	strb	r7, [sp, #4]
+ abc:	e586300c 	str	r3, [r6, #12]
+ ac0:	e594000c 	ldr	r0, [r4, #12]
+ ac4:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ ac8:	e3a01002 	mov	r1, #2
+ acc:	e28d0004 	add	r0, sp, #4
+ ad0:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ ad4:	e5d43008 	ldrb	r3, [r4, #8]
+ ad8:	e3a0201c 	mov	r2, #28
+ adc:	e5cd2005 	strb	r2, [sp, #5]
+ ae0:	e5cd7004 	strb	r7, [sp, #4]
+ ae4:	e586300c 	str	r3, [r6, #12]
+ ae8:	e594000c 	ldr	r0, [r4, #12]
+ aec:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ af0:	e3a01002 	mov	r1, #2
+ af4:	e28d0004 	add	r0, sp, #4
+ af8:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ afc:	e5d43008 	ldrb	r3, [r4, #8]
+ b00:	e5cd7004 	strb	r7, [sp, #4]
+ b04:	e5cd9005 	strb	r9, [sp, #5]
+ b08:	e586300c 	str	r3, [r6, #12]
+ b0c:	e594000c 	ldr	r0, [r4, #12]
+ b10:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ b14:	e3a01002 	mov	r1, #2
+ b18:	e28d0004 	add	r0, sp, #4
+ b1c:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ b20:	e5d43008 	ldrb	r3, [r4, #8]
+ b24:	e5cda005 	strb	sl, [sp, #5]
+ b28:	e5cd7004 	strb	r7, [sp, #4]
+ b2c:	e586300c 	str	r3, [r6, #12]
+ b30:	e594000c 	ldr	r0, [r4, #12]
+ b34:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ b38:	e3a01002 	mov	r1, #2
+ b3c:	e28d0004 	add	r0, sp, #4
+ b40:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ b44:	e5d43008 	ldrb	r3, [r4, #8]
+ b48:	e3a02072 	mov	r2, #114	; 0x72
+ b4c:	e5cd2005 	strb	r2, [sp, #5]
+ b50:	e5cd7004 	strb	r7, [sp, #4]
+ b54:	e586300c 	str	r3, [r6, #12]
+ b58:	e594000c 	ldr	r0, [r4, #12]
+ b5c:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ b60:	e3a01002 	mov	r1, #2
+ b64:	e28d0004 	add	r0, sp, #4
+ b68:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ b6c:	e5d43008 	ldrb	r3, [r4, #8]
+ b70:	e5cd8004 	strb	r8, [sp, #4]
+ b74:	e3a08000 	mov	r8, #0
+ b78:	e5cd8005 	strb	r8, [sp, #5]
+ b7c:	e586300c 	str	r3, [r6, #12]
+ b80:	e594000c 	ldr	r0, [r4, #12]
+ b84:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ b88:	e3a01002 	mov	r1, #2
+ b8c:	e28d0004 	add	r0, sp, #4
+ b90:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ b94:	e5d43008 	ldrb	r3, [r4, #8]
+ b98:	e5cd9005 	strb	r9, [sp, #5]
+ b9c:	e5cd7004 	strb	r7, [sp, #4]
+ ba0:	e586300c 	str	r3, [r6, #12]
+ ba4:	e594000c 	ldr	r0, [r4, #12]
+ ba8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ bac:	e3a01002 	mov	r1, #2
+ bb0:	e28d0004 	add	r0, sp, #4
+ bb4:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ bb8:	e5d43008 	ldrb	r3, [r4, #8]
+ bbc:	e3a0200c 	mov	r2, #12
+ bc0:	e5cd2005 	strb	r2, [sp, #5]
+ bc4:	e5cd7004 	strb	r7, [sp, #4]
+ bc8:	e586300c 	str	r3, [r6, #12]
+ bcc:	e594000c 	ldr	r0, [r4, #12]
+ bd0:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ bd4:	e3a01002 	mov	r1, #2
+ bd8:	e28d0004 	add	r0, sp, #4
+ bdc:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ be0:	e5d43008 	ldrb	r3, [r4, #8]
+ be4:	e3a02001 	mov	r2, #1
+ be8:	e5cd2005 	strb	r2, [sp, #5]
+ bec:	e5cd7004 	strb	r7, [sp, #4]
+ bf0:	e586300c 	str	r3, [r6, #12]
+ bf4:	e594000c 	ldr	r0, [r4, #12]
+ bf8:	ebfffffe 	bl	0 <bcm2835_i2c_set_baudrate>
+ bfc:	e3a01002 	mov	r1, #2
+ c00:	e28d0004 	add	r0, sp, #4
+ c04:	ebfffffe 	bl	0 <bcm2835_i2c_write>
+ c08:	e1a00004 	mov	r0, r4
+ c0c:	e1a02008 	mov	r2, r8
+ c10:	e1a01008 	mov	r1, r8
+ c14:	ebfffffe 	bl	514 <Ssd1311::SelectRamRom(unsigned int, unsigned int)>
+ c18:	e1a00005 	mov	r0, r5
+ c1c:	e28dd008 	add	sp, sp, #8
+ c20:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+ c24:	00000017 	andeq	r0, r0, r7, lsl r0
+
+Disassembly of section .bss:
+
+00000000 <_TextBuffer>:
+	...
+
+00000018 <_ClearBuffer>:
+	...
+
+00000030 <Ssd1311::s_pThis>:
+  30:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section .text._ZN10DisplaySet17SetFlipVerticallyEb:
+
+00000000 <DisplaySet::SetFlipVertically(bool)>:
+   0:	e12fff1e 	bx	lr
+
+Disassembly of section .text._ZN7Ssd1311D1Ev:
+
+00000000 <Ssd1311::~Ssd1311()>:
+   0:	e12fff1e 	bx	lr
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.LC0>:
+   0:	31445353 	cmpcc	r4, r3, asr r3
+   4:	20313133 	eorscs	r3, r1, r3, lsr r1
+   8:	2c642528 	cfstr64cs	mvdx2, [r4], #-160	; 0xffffff60
+   c:	0a296425 	beq	a590a8 <Ssd1311::Start()+0xa5870c>
+  10:	00000000 	andeq	r0, r0, r0
+
+00000014 <.LC1>:
+  14:	aa55aa40 	bge	156a91c <Ssd1311::Start()+0x1569f80>
+  18:	Address 0x0000000000000018 is out of bounds.
+
+
+Disassembly of section .text._ZN7Ssd1311D0Ev:
+
+00000000 <Ssd1311::~Ssd1311()>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04000 	mov	r4, r0
+   8:	ebfffffe 	bl	0 <operator delete(void*)>
+   c:	e1a00004 	mov	r0, r4
+  10:	e8bd8010 	pop	{r4, pc}
+
+Disassembly of section .rodata:
+
+00000000 <vtable for Ssd1311>:
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+

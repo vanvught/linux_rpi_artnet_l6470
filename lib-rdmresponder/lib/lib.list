@@ -1,0 +1,355 @@
+In archive lib/librdmresponder.a:
+
+artnetrdmresponder.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <ArtNetRdmResponder::Full(unsigned int)>:
+   0:	e12fff1e 	bx	lr
+
+00000004 <ArtNetRdmResponder::GetUidCount(unsigned int)>:
+   4:	e3a00001 	mov	r0, #1
+   8:	e12fff1e 	bx	lr
+
+0000000c <ArtNetRdmResponder::Copy(unsigned int, unsigned char*)>:
+   c:	e2803004 	add	r3, r0, #4
+  10:	e2422001 	sub	r2, r2, #1
+  14:	e280000a 	add	r0, r0, #10
+  18:	e4d31001 	ldrb	r1, [r3], #1
+  1c:	e1530000 	cmp	r3, r0
+  20:	e5e21001 	strb	r1, [r2, #1]!
+  24:	1afffffb 	bne	18 <ArtNetRdmResponder::Copy(unsigned int, unsigned char*)+0xc>
+  28:	e12fff1e 	bx	lr
+
+0000002c <ArtNetRdmResponder::~ArtNetRdmResponder()>:
+  2c:	e92d4070 	push	{r4, r5, r6, lr}
+  30:	e59050d4 	ldr	r5, [r0, #212]	; 0xd4
+  34:	e59f3054 	ldr	r3, [pc, #84]	; 90 <ArtNetRdmResponder::~ArtNetRdmResponder()+0x64>
+  38:	e3550000 	cmp	r5, #0
+  3c:	e1a04000 	mov	r4, r0
+  40:	e5803000 	str	r3, [r0]
+  44:	0a000003 	beq	58 <ArtNetRdmResponder::~ArtNetRdmResponder()+0x2c>
+  48:	e2850004 	add	r0, r5, #4
+  4c:	ebfffffe 	bl	0 <RDMQueuedMessage::~RDMQueuedMessage()>
+  50:	e1a00005 	mov	r0, r5
+  54:	ebfffffe 	bl	0 <operator delete(void*)>
+  58:	e3a03000 	mov	r3, #0
+  5c:	e59400d0 	ldr	r0, [r4, #208]	; 0xd0
+  60:	e58430d4 	str	r3, [r4, #212]	; 0xd4
+  64:	e1500003 	cmp	r0, r3
+  68:	0a000000 	beq	70 <ArtNetRdmResponder::~ArtNetRdmResponder()+0x44>
+  6c:	ebfffffe 	bl	0 <operator delete(void*)>
+  70:	e3a03000 	mov	r3, #0
+  74:	e2840088 	add	r0, r4, #136	; 0x88
+  78:	e58430d0 	str	r3, [r4, #208]	; 0xd0
+  7c:	ebfffffe 	bl	0 <RDMSubDevices::~RDMSubDevices()>
+  80:	e2840080 	add	r0, r4, #128	; 0x80
+  84:	ebfffffe 	bl	0 <RDMSensors::~RDMSensors()>
+  88:	e1a00004 	mov	r0, r4
+  8c:	e8bd8070 	pop	{r4, r5, r6, pc}
+  90:	00000008 	andeq	r0, r0, r8
+
+00000094 <ArtNetRdmResponder::~ArtNetRdmResponder()>:
+  94:	e92d4010 	push	{r4, lr}
+  98:	e1a04000 	mov	r4, r0
+  9c:	ebfffffe 	bl	2c <ArtNetRdmResponder::~ArtNetRdmResponder()>
+  a0:	e1a00004 	mov	r0, r4
+  a4:	ebfffffe 	bl	0 <operator delete(void*)>
+  a8:	e1a00004 	mov	r0, r4
+  ac:	e8bd8010 	pop	{r4, pc}
+
+000000b0 <ArtNetRdmResponder::Handler(unsigned int, unsigned char const*)>:
+  b0:	e2521000 	subs	r1, r2, #0
+  b4:	0a000009 	beq	e0 <ArtNetRdmResponder::Handler(unsigned int, unsigned char const*)+0x30>
+  b8:	e92d4010 	push	{r4, lr}
+  bc:	e1a04000 	mov	r4, r0
+  c0:	e59020d0 	ldr	r2, [r0, #208]	; 0xd0
+  c4:	e59000d4 	ldr	r0, [r0, #212]	; 0xd4
+  c8:	ebfffffe 	bl	0 <RDMHandler::HandleData(unsigned char const*, unsigned char*)>
+  cc:	e59400d0 	ldr	r0, [r4, #208]	; 0xd0
+  d0:	e5d03000 	ldrb	r3, [r0]
+  d4:	e35300cc 	cmp	r3, #204	; 0xcc
+  d8:	13a00000 	movne	r0, #0
+  dc:	e8bd8010 	pop	{r4, pc}
+  e0:	e3a00000 	mov	r0, #0
+  e4:	e12fff1e 	bx	lr
+
+000000e8 <ArtNetRdmResponder::ArtNetRdmResponder(RDMPersonality*, LightSet*)>:
+  e8:	e92d4070 	push	{r4, r5, r6, lr}
+  ec:	e1a04000 	mov	r4, r0
+  f0:	e2800004 	add	r0, r0, #4
+  f4:	ebfffffe 	bl	0 <RDMDeviceResponder::RDMDeviceResponder(RDMPersonality*, LightSet*)>
+  f8:	e3a03000 	mov	r3, #0
+  fc:	e59f2038 	ldr	r2, [pc, #56]	; 13c <ArtNetRdmResponder::ArtNetRdmResponder(RDMPersonality*, LightSet*)+0x54>
+ 100:	e58430d0 	str	r3, [r4, #208]	; 0xd0
+ 104:	e5842000 	str	r2, [r4]
+ 108:	e58430d4 	str	r3, [r4, #212]	; 0xd4
+ 10c:	e3a000ff 	mov	r0, #255	; 0xff
+ 110:	ebfffffe 	bl	0 <operator new(unsigned int)>
+ 114:	e1a03000 	mov	r3, r0
+ 118:	e3a00018 	mov	r0, #24
+ 11c:	e58430d0 	str	r3, [r4, #208]	; 0xd0
+ 120:	ebfffffe 	bl	0 <operator new(unsigned int)>
+ 124:	e1a05000 	mov	r5, r0
+ 128:	e3a01001 	mov	r1, #1
+ 12c:	ebfffffe 	bl	0 <RDMHandler::RDMHandler(bool)>
+ 130:	e1a00004 	mov	r0, r4
+ 134:	e58450d4 	str	r5, [r4, #212]	; 0xd4
+ 138:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 13c:	00000008 	andeq	r0, r0, r8
+
+Disassembly of section .rodata:
+
+00000000 <vtable for ArtNetRdmResponder>:
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003241 	andeq	r3, r0, r1, asr #4
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000028 	andeq	r0, r0, r8, lsr #32
+  10:	4b5a3605 	blmi	168d82c <ArtNetRdmResponder::ArtNetRdmResponder(RDMPersonality*, LightSet*)+0x168d744>
+  14:	08070600 	stmdaeq	r7, {r9, sl}
+  18:	0a010901 	beq	42424 <ArtNetRdmResponder::ArtNetRdmResponder(RDMPersonality*, LightSet*)+0x4233c>
+  1c:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  20:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  24:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  28:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  2c:	22021e01 	andcs	r1, r2, #1, 28
+  30:	Address 0x0000000000000030 is out of bounds.
+
+
+rdmresponder.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <RDMResponder::~RDMResponder()>:
+   0:	e92d4070 	push	{r4, r5, r6, lr}
+   4:	e59052f0 	ldr	r5, [r0, #752]	; 0x2f0
+   8:	e59f305c 	ldr	r3, [pc, #92]	; 6c <RDMResponder::~RDMResponder()+0x6c>
+   c:	e3550000 	cmp	r5, #0
+  10:	e1a04000 	mov	r4, r0
+  14:	e5803000 	str	r3, [r0]
+  18:	0a000003 	beq	2c <RDMResponder::~RDMResponder()+0x2c>
+  1c:	e2850004 	add	r0, r5, #4
+  20:	ebfffffe 	bl	0 <RDMQueuedMessage::~RDMQueuedMessage()>
+  24:	e1a00005 	mov	r0, r5
+  28:	ebfffffe 	bl	0 <operator delete(void*)>
+  2c:	e3a03000 	mov	r3, #0
+  30:	e59402ec 	ldr	r0, [r4, #748]	; 0x2ec
+  34:	e58432f0 	str	r3, [r4, #752]	; 0x2f0
+  38:	e1500003 	cmp	r0, r3
+  3c:	0a000000 	beq	44 <RDMResponder::~RDMResponder()+0x44>
+  40:	ebfffffe 	bl	0 <operator delete(void*)>
+  44:	e3a03000 	mov	r3, #0
+  48:	e2840fa9 	add	r0, r4, #676	; 0x2a4
+  4c:	e58432ec 	str	r3, [r4, #748]	; 0x2ec
+  50:	ebfffffe 	bl	0 <RDMSubDevices::~RDMSubDevices()>
+  54:	e2840fa7 	add	r0, r4, #668	; 0x29c
+  58:	ebfffffe 	bl	0 <RDMSensors::~RDMSensors()>
+  5c:	e1a00004 	mov	r0, r4
+  60:	ebfffffe 	bl	0 <DMXReceiver::~DMXReceiver()>
+  64:	e1a00004 	mov	r0, r4
+  68:	e8bd8070 	pop	{r4, r5, r6, pc}
+  6c:	00000008 	andeq	r0, r0, r8
+
+00000070 <RDMResponder::~RDMResponder()>:
+  70:	e92d4010 	push	{r4, lr}
+  74:	e1a04000 	mov	r4, r0
+  78:	ebfffffe 	bl	0 <RDMResponder::~RDMResponder()>
+  7c:	e1a00004 	mov	r0, r4
+  80:	ebfffffe 	bl	0 <operator delete(void*)>
+  84:	e1a00004 	mov	r0, r4
+  88:	e8bd8010 	pop	{r4, pc}
+
+0000008c <RDMResponder::RDMResponder(RDMPersonality*, LightSet*)>:
+  8c:	e92d4030 	push	{r4, r5, lr}
+  90:	e1a04000 	mov	r4, r0
+  94:	e24dd00c 	sub	sp, sp, #12
+  98:	e58d1004 	str	r1, [sp, #4]
+  9c:	e58d2000 	str	r2, [sp]
+  a0:	ebfffffe 	bl	0 <DMXReceiver::DMXReceiver()>
+  a4:	e59d1004 	ldr	r1, [sp, #4]
+  a8:	e59d2000 	ldr	r2, [sp]
+  ac:	e2840e22 	add	r0, r4, #544	; 0x220
+  b0:	ebfffffe 	bl	0 <RDMDeviceResponder::RDMDeviceResponder(RDMPersonality*, LightSet*)>
+  b4:	e3a03000 	mov	r3, #0
+  b8:	e59f2040 	ldr	r2, [pc, #64]	; 100 <RDMResponder::RDMResponder(RDMPersonality*, LightSet*)+0x74>
+  bc:	e58432ec 	str	r3, [r4, #748]	; 0x2ec
+  c0:	e5842000 	str	r2, [r4]
+  c4:	e58432f0 	str	r3, [r4, #752]	; 0x2f0
+  c8:	e5c432f4 	strb	r3, [r4, #756]	; 0x2f4
+  cc:	e3a000ff 	mov	r0, #255	; 0xff
+  d0:	ebfffffe 	bl	0 <operator new(unsigned int)>
+  d4:	e1a03000 	mov	r3, r0
+  d8:	e3a00018 	mov	r0, #24
+  dc:	e58432ec 	str	r3, [r4, #748]	; 0x2ec
+  e0:	ebfffffe 	bl	0 <operator new(unsigned int)>
+  e4:	e3a01001 	mov	r1, #1
+  e8:	e1a05000 	mov	r5, r0
+  ec:	ebfffffe 	bl	0 <RDMHandler::RDMHandler(bool)>
+  f0:	e1a00004 	mov	r0, r4
+  f4:	e58452f0 	str	r5, [r4, #752]	; 0x2f0
+  f8:	e28dd00c 	add	sp, sp, #12
+  fc:	e8bd8030 	pop	{r4, r5, pc}
+ 100:	00000008 	andeq	r0, r0, r8
+
+00000104 <RDMResponder::Init()>:
+ 104:	e2800e22 	add	r0, r0, #544	; 0x220
+ 108:	eafffffe 	b	0 <RDMDeviceResponder::Init()>
+
+0000010c <RDMResponder::HandleResponse(unsigned char*)>:
+ 10c:	e5d12000 	ldrb	r2, [r1]
+ 110:	e92d4010 	push	{r4, lr}
+ 114:	e35200cc 	cmp	r2, #204	; 0xcc
+ 118:	0a000008 	beq	140 <RDMResponder::HandleResponse(unsigned char*)+0x34>
+ 11c:	e35200fe 	cmp	r2, #254	; 0xfe
+ 120:	13e04002 	mvnne	r4, #2
+ 124:	1a000003 	bne	138 <RDMResponder::HandleResponse(unsigned char*)+0x2c>
+ 128:	e3a02018 	mov	r2, #24
+ 12c:	e3a00000 	mov	r0, #0
+ 130:	ebfffffe 	bl	0 <Rdm::SendDiscoveryRespondMessage(unsigned int, unsigned char const*, unsigned int)>
+ 134:	e3a04018 	mov	r4, #24
+ 138:	e1a00004 	mov	r0, r4
+ 13c:	e8bd8010 	pop	{r4, pc}
+ 140:	e5d14002 	ldrb	r4, [r1, #2]
+ 144:	e3a00000 	mov	r0, #0
+ 148:	e2844002 	add	r4, r4, #2
+ 14c:	e1a02004 	mov	r2, r4
+ 150:	ebfffffe 	bl	0 <Rdm::SendRawRespondMessage(unsigned int, unsigned char const*, unsigned int)>
+ 154:	e1a00004 	mov	r0, r4
+ 158:	e8bd8010 	pop	{r4, pc}
+
+0000015c <RDMResponder::Run()>:
+ 15c:	e92d4030 	push	{r4, r5, lr}
+ 160:	e59f5134 	ldr	r5, [pc, #308]	; 29c <RDMResponder::Run()+0x140>
+ 164:	e24dd00c 	sub	sp, sp, #12
+ 168:	e28d1006 	add	r1, sp, #6
+ 16c:	e1a04000 	mov	r4, r0
+ 170:	ebfffffe 	bl	0 <DMXReceiver::Run(short&)>
+ 174:	e5953000 	ldr	r3, [r5]
+ 178:	e1d320b4 	ldrh	r2, [r3, #4]
+ 17c:	e3520000 	cmp	r2, #0
+ 180:	0a00000f 	beq	1c4 <RDMResponder::Run()+0x68>
+ 184:	e1dd20f6 	ldrsh	r2, [sp, #6]
+ 188:	e3720001 	cmn	r2, #1
+ 18c:	0a000030 	beq	254 <RDMResponder::Run()+0xf8>
+ 190:	e3500000 	cmp	r0, #0
+ 194:	0a00000a 	beq	1c4 <RDMResponder::Run()+0x68>
+ 198:	e1a01000 	mov	r1, r0
+ 19c:	e6ff2072 	uxth	r2, r2
+ 1a0:	e1a00003 	mov	r0, r3
+ 1a4:	ebfffffe 	bl	0 <RDMSubDevices::SetData(unsigned char const*, unsigned int)>
+ 1a8:	e5d432f4 	ldrb	r3, [r4, #756]	; 0x2f4
+ 1ac:	e3530000 	cmp	r3, #0
+ 1b0:	1a000003 	bne	1c4 <RDMResponder::Run()+0x68>
+ 1b4:	e5950000 	ldr	r0, [r5]
+ 1b8:	ebfffffe 	bl	0 <RDMSubDevices::Start()>
+ 1bc:	e3a03001 	mov	r3, #1
+ 1c0:	e5c432f4 	strb	r3, [r4, #756]	; 0x2f4
+ 1c4:	e3a00000 	mov	r0, #0
+ 1c8:	ebfffffe 	bl	0 <Rdm::Receive(unsigned int)>
+ 1cc:	e2501000 	subs	r1, r0, #0
+ 1d0:	01a04001 	moveq	r4, r1
+ 1d4:	0a000009 	beq	200 <RDMResponder::Run()+0xa4>
+ 1d8:	e5d13000 	ldrb	r3, [r1]
+ 1dc:	e35300cc 	cmp	r3, #204	; 0xcc
+ 1e0:	1a00002b 	bne	294 <RDMResponder::Run()+0x138>
+ 1e4:	e5d13014 	ldrb	r3, [r1, #20]
+ 1e8:	e3530020 	cmp	r3, #32
+ 1ec:	0a000006 	beq	20c <RDMResponder::Run()+0xb0>
+ 1f0:	e20330df 	and	r3, r3, #223	; 0xdf
+ 1f4:	e3530010 	cmp	r3, #16
+ 1f8:	13e04001 	mvnne	r4, #1
+ 1fc:	0a000002 	beq	20c <RDMResponder::Run()+0xb0>
+ 200:	e1a00004 	mov	r0, r4
+ 204:	e28dd00c 	add	sp, sp, #12
+ 208:	e8bd8030 	pop	{r4, r5, pc}
+ 20c:	e2811001 	add	r1, r1, #1
+ 210:	e59422ec 	ldr	r2, [r4, #748]	; 0x2ec
+ 214:	e59402f0 	ldr	r0, [r4, #752]	; 0x2f0
+ 218:	ebfffffe 	bl	0 <RDMHandler::HandleData(unsigned char const*, unsigned char*)>
+ 21c:	e59412ec 	ldr	r1, [r4, #748]	; 0x2ec
+ 220:	e5d13000 	ldrb	r3, [r1]
+ 224:	e35300cc 	cmp	r3, #204	; 0xcc
+ 228:	0a000011 	beq	274 <RDMResponder::Run()+0x118>
+ 22c:	e35300fe 	cmp	r3, #254	; 0xfe
+ 230:	13e04002 	mvnne	r4, #2
+ 234:	1afffff1 	bne	200 <RDMResponder::Run()+0xa4>
+ 238:	e3a04018 	mov	r4, #24
+ 23c:	e3a02018 	mov	r2, #24
+ 240:	e3a00000 	mov	r0, #0
+ 244:	ebfffffe 	bl	0 <Rdm::SendDiscoveryRespondMessage(unsigned int, unsigned char const*, unsigned int)>
+ 248:	e1a00004 	mov	r0, r4
+ 24c:	e28dd00c 	add	sp, sp, #12
+ 250:	e8bd8030 	pop	{r4, r5, pc}
+ 254:	e5d422f4 	ldrb	r2, [r4, #756]	; 0x2f4
+ 258:	e3520000 	cmp	r2, #0
+ 25c:	0affffd8 	beq	1c4 <RDMResponder::Run()+0x68>
+ 260:	e1a00003 	mov	r0, r3
+ 264:	ebfffffe 	bl	0 <RDMSubDevices::Stop()>
+ 268:	e3a03000 	mov	r3, #0
+ 26c:	e5c432f4 	strb	r3, [r4, #756]	; 0x2f4
+ 270:	eaffffd3 	b	1c4 <RDMResponder::Run()+0x68>
+ 274:	e5d14002 	ldrb	r4, [r1, #2]
+ 278:	e3a00000 	mov	r0, #0
+ 27c:	e2844002 	add	r4, r4, #2
+ 280:	e1a02004 	mov	r2, r4
+ 284:	ebfffffe 	bl	0 <Rdm::SendRawRespondMessage(unsigned int, unsigned char const*, unsigned int)>
+ 288:	e1a00004 	mov	r0, r4
+ 28c:	e28dd00c 	add	sp, sp, #12
+ 290:	e8bd8030 	pop	{r4, r5, pc}
+ 294:	e3e04000 	mvn	r4, #0
+ 298:	eaffffd8 	b	200 <RDMResponder::Run()+0xa4>
+ 29c:	00000000 	andeq	r0, r0, r0
+
+000002a0 <RDMResponder::Print()>:
+ 2a0:	e2800e22 	add	r0, r0, #544	; 0x220
+ 2a4:	eafffffe 	b	0 <RDMDeviceResponder::Print()>
+
+Disassembly of section .rodata:
+
+00000000 <vtable for RDMResponder>:
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003241 	andeq	r3, r0, r1, asr #4
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000028 	andeq	r0, r0, r8, lsr #32
+  10:	4b5a3605 	blmi	168d82c <RDMResponder::Print()+0x168d58c>
+  14:	08070600 	stmdaeq	r7, {r9, sl}
+  18:	0a010901 	beq	42424 <RDMResponder::Print()+0x42184>
+  1c:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  20:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  24:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  28:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  2c:	22021e01 	andcs	r1, r2, #1, 28
+  30:	Address 0x0000000000000030 is out of bounds.
+

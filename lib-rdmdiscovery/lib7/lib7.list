@@ -1,0 +1,917 @@
+In archive lib7/librdmdiscovery.a:
+
+artnetrdmcontroller.o:     file format elf32-littlearm
+
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	0000000d 	andeq	r0, r0, sp
+   8:	0000000e 	andeq	r0, r0, lr
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	0000000f 	andeq	r0, r0, pc
+   8:	00000010 	andeq	r0, r0, r0, lsl r0
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000011 	andeq	r0, r0, r1, lsl r0
+   8:	00000012 	andeq	r0, r0, r2, lsl r0
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000013 	andeq	r0, r0, r3, lsl r0
+   8:	00000014 	andeq	r0, r0, r4, lsl r0
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000015 	andeq	r0, r0, r5, lsl r0
+   8:	00000016 	andeq	r0, r0, r6, lsl r0
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000017 	andeq	r0, r0, r7, lsl r0
+   8:	00000018 	andeq	r0, r0, r8, lsl r0
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000019 	andeq	r0, r0, r9, lsl r0
+   8:	0000001a 	andeq	r0, r0, sl, lsl r0
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	0000001b 	andeq	r0, r0, fp, lsl r0
+   8:	0000001c 	andeq	r0, r0, ip, lsl r0
+
+Disassembly of section .text:
+
+00000000 <ArtNetRdmController::Handler(unsigned int, unsigned char const*)>:
+   0:	e92d4070 	push	{r4, r5, r6, lr}
+   4:	e2525000 	subs	r5, r2, #0
+   8:	0a000017 	beq	6c <ArtNetRdmController::Handler(unsigned int, unsigned char const*)+0x6c>
+   c:	e1a04001 	mov	r4, r1
+  10:	ebfffffe 	bl	0 <bcm2835_watchdog_feed>
+  14:	e1a00004 	mov	r0, r4
+  18:	ebfffffe 	bl	0 <Rdm::Receive(unsigned int)>
+  1c:	e3500000 	cmp	r0, #0
+  20:	1afffffa 	bne	10 <ArtNetRdmController::Handler(unsigned int, unsigned char const*)+0x10>
+  24:	e5d51001 	ldrb	r1, [r5, #1]
+  28:	e1a03005 	mov	r3, r5
+  2c:	e59fc040 	ldr	ip, [pc, #64]	; 74 <ArtNetRdmController::Handler(unsigned int, unsigned char const*)+0x74>
+  30:	e2811002 	add	r1, r1, #2
+  34:	e0851001 	add	r1, r5, r1
+  38:	e4d3e001 	ldrb	lr, [r3], #1
+  3c:	e1510003 	cmp	r1, r3
+  40:	e5ece001 	strb	lr, [ip, #1]!
+  44:	1afffffb 	bne	38 <ArtNetRdmController::Handler(unsigned int, unsigned char const*)+0x38>
+  48:	e5d52001 	ldrb	r2, [r5, #1]
+  4c:	e1a00004 	mov	r0, r4
+  50:	e59f101c 	ldr	r1, [pc, #28]	; 74 <ArtNetRdmController::Handler(unsigned int, unsigned char const*)+0x74>
+  54:	e2822002 	add	r2, r2, #2
+  58:	ebfffffe 	bl	0 <Rdm::SendRaw(unsigned int, unsigned char const*, unsigned int)>
+  5c:	e1a00004 	mov	r0, r4
+  60:	e30e1a60 	movw	r1, #60000	; 0xea60
+  64:	e8bd4070 	pop	{r4, r5, r6, lr}
+  68:	eafffffe 	b	0 <Rdm::ReceiveTimeOut(unsigned int, unsigned short)>
+  6c:	e1a00005 	mov	r0, r5
+  70:	e8bd8070 	pop	{r4, r5, r6, pc}
+  74:	00000010 	andeq	r0, r0, r0, lsl r0
+
+00000078 <ArtNetRdmController::ArtNetRdmController()>:
+  78:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  7c:	e1a05000 	mov	r5, r0
+  80:	e2800004 	add	r0, r0, #4
+  84:	e3006000 	movw	r6, #0
+  88:	e3406000 	movt	r6, #0
+  8c:	ebfffffe 	bl	0 <RDMDevice::RDMDevice()>
+  90:	e59f30a8 	ldr	r3, [pc, #168]	; 140 <ArtNetRdmController::ArtNetRdmController()+0xc8>
+  94:	e1a01005 	mov	r1, r5
+  98:	e2850080 	add	r0, r5, #128	; 0x80
+  9c:	e1a07006 	mov	r7, r6
+  a0:	e4813005 	str	r3, [r1], #5
+  a4:	e2869010 	add	r9, r6, #16
+  a8:	e30084d4 	movw	r8, #1236	; 0x4d4
+  ac:	ebfffffe 	bl	0 <RDMDiscovery::RDMDiscovery(unsigned char const*)>
+  b0:	e59f308c 	ldr	r3, [pc, #140]	; 144 <ArtNetRdmController::ArtNetRdmController()+0xcc>
+  b4:	e3a04000 	mov	r4, #0
+  b8:	e5853000 	str	r3, [r5]
+  bc:	e30004d4 	movw	r0, #1236	; 0x4d4
+  c0:	ebfffffe 	bl	0 <operator new(unsigned int)>
+  c4:	e1a0e000 	mov	lr, r0
+  c8:	e3e02000 	mvn	r2, #0
+  cc:	e0800008 	add	r0, r0, r8
+  d0:	e28e3024 	add	r3, lr, #36	; 0x24
+  d4:	e58e4000 	str	r4, [lr]
+  d8:	e58e2004 	str	r2, [lr, #4]
+  dc:	e3002000 	movw	r2, #0
+  e0:	e3a010ff 	mov	r1, #255	; 0xff
+  e4:	e3402000 	movt	r2, #0
+  e8:	e283c006 	add	ip, r3, #6
+  ec:	ea000000 	b	f4 <ArtNetRdmController::ArtNetRdmController()+0x7c>
+  f0:	e5f21001 	ldrb	r1, [r2, #1]!
+  f4:	e4c31001 	strb	r1, [r3], #1
+  f8:	e153000c 	cmp	r3, ip
+  fc:	1afffffb 	bne	f0 <ArtNetRdmController::ArtNetRdmController()+0x78>
+ 100:	e1500003 	cmp	r0, r3
+ 104:	1afffff4 	bne	dc <ArtNetRdmController::ArtNetRdmController()+0x64>
+ 108:	e487e004 	str	lr, [r7], #4
+ 10c:	e1570009 	cmp	r7, r9
+ 110:	e58e4008 	str	r4, [lr, #8]
+ 114:	e58e400c 	str	r4, [lr, #12]
+ 118:	e58e4010 	str	r4, [lr, #16]
+ 11c:	e58e4014 	str	r4, [lr, #20]
+ 120:	e58e4018 	str	r4, [lr, #24]
+ 124:	e58e401c 	str	r4, [lr, #28]
+ 128:	e58e4020 	str	r4, [lr, #32]
+ 12c:	1affffe2 	bne	bc <ArtNetRdmController::ArtNetRdmController()+0x44>
+ 130:	e3e03033 	mvn	r3, #51	; 0x33
+ 134:	e1a00005 	mov	r0, r5
+ 138:	e5c63010 	strb	r3, [r6, #16]
+ 13c:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+ 140:	00000008 	andeq	r0, r0, r8
+ 144:	00000010 	andeq	r0, r0, r0, lsl r0
+
+00000148 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)>:
+ 148:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+ 14c:	e3004000 	movw	r4, #0
+ 150:	e3404000 	movt	r4, #0
+ 154:	e283e00f 	add	lr, r3, #15
+ 158:	e5d30001 	ldrb	r0, [r3, #1]
+ 15c:	e2422001 	sub	r2, r2, #1
+ 160:	e5d3c014 	ldrb	ip, [r3, #20]
+ 164:	e5c40011 	strb	r0, [r4, #17]
+ 168:	e1a00001 	mov	r0, r1
+ 16c:	e5d3100f 	ldrb	r1, [r3, #15]
+ 170:	e28cc001 	add	ip, ip, #1
+ 174:	e5d46027 	ldrb	r6, [r4, #39]	; 0x27
+ 178:	e5c4101f 	strb	r1, [r4, #31]
+ 17c:	e5d31012 	ldrb	r1, [r3, #18]
+ 180:	e2865018 	add	r5, r6, #24
+ 184:	e6ef5075 	uxtb	r5, r5
+ 188:	e5c41022 	strb	r1, [r4, #34]	; 0x22
+ 18c:	e3e01033 	mvn	r1, #51	; 0x33
+ 190:	e5c41010 	strb	r1, [r4, #16]
+ 194:	e5d31013 	ldrb	r1, [r3, #19]
+ 198:	e5c4c024 	strb	ip, [r4, #36]	; 0x24
+ 19c:	e283c009 	add	ip, r3, #9
+ 1a0:	e5c41023 	strb	r1, [r4, #35]	; 0x23
+ 1a4:	e5d31015 	ldrb	r1, [r3, #21]
+ 1a8:	e5c45012 	strb	r5, [r4, #18]
+ 1ac:	e5c41025 	strb	r1, [r4, #37]	; 0x25
+ 1b0:	e5d31016 	ldrb	r1, [r3, #22]
+ 1b4:	e2843012 	add	r3, r4, #18
+ 1b8:	e5c41026 	strb	r1, [r4, #38]	; 0x26
+ 1bc:	e3a01000 	mov	r1, #0
+ 1c0:	e1c412b0 	strh	r1, [r4, #32]
+ 1c4:	e4dc1001 	ldrb	r1, [ip], #1
+ 1c8:	e5e31001 	strb	r1, [r3, #1]!
+ 1cc:	e15e000c 	cmp	lr, ip
+ 1d0:	e5f21001 	ldrb	r1, [r2, #1]!
+ 1d4:	e5c31006 	strb	r1, [r3, #6]
+ 1d8:	1afffff9 	bne	1c4 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x7c>
+ 1dc:	e3550000 	cmp	r5, #0
+ 1e0:	0a000065 	beq	37c <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x234>
+ 1e4:	e2466009 	sub	r6, r6, #9
+ 1e8:	e245e01f 	sub	lr, r5, #31
+ 1ec:	e6ef6076 	uxtb	r6, r6
+ 1f0:	e35600de 	cmp	r6, #222	; 0xde
+ 1f4:	8a000065 	bhi	390 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x248>
+ 1f8:	e59f11a0 	ldr	r1, [pc, #416]	; 3a0 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x258>
+ 1fc:	e3a02000 	mov	r2, #0
+ 200:	e3a030cc 	mov	r3, #204	; 0xcc
+ 204:	e1a0c002 	mov	ip, r2
+ 208:	e5516022 	ldrb	r6, [r1, #-34]	; 0xffffffde
+ 20c:	e5517021 	ldrb	r7, [r1, #-33]	; 0xffffffdf
+ 210:	f5d1f000 	pld	[r1]
+ 214:	e2811020 	add	r1, r1, #32
+ 218:	e0866007 	add	r6, r6, r7
+ 21c:	e0863003 	add	r3, r6, r3
+ 220:	e5516040 	ldrb	r6, [r1, #-64]	; 0xffffffc0
+ 224:	e0863003 	add	r3, r6, r3
+ 228:	e551603f 	ldrb	r6, [r1, #-63]	; 0xffffffc1
+ 22c:	e0863003 	add	r3, r6, r3
+ 230:	e551603e 	ldrb	r6, [r1, #-62]	; 0xffffffc2
+ 234:	e0866003 	add	r6, r6, r3
+ 238:	e551303d 	ldrb	r3, [r1, #-61]	; 0xffffffc3
+ 23c:	e0836006 	add	r6, r3, r6
+ 240:	e551303c 	ldrb	r3, [r1, #-60]	; 0xffffffc4
+ 244:	e0833006 	add	r3, r3, r6
+ 248:	e551603b 	ldrb	r6, [r1, #-59]	; 0xffffffc5
+ 24c:	e0863003 	add	r3, r6, r3
+ 250:	e551603a 	ldrb	r6, [r1, #-58]	; 0xffffffc6
+ 254:	e0866003 	add	r6, r6, r3
+ 258:	e5513039 	ldrb	r3, [r1, #-57]	; 0xffffffc7
+ 25c:	e0836006 	add	r6, r3, r6
+ 260:	e5513038 	ldrb	r3, [r1, #-56]	; 0xffffffc8
+ 264:	e0833006 	add	r3, r3, r6
+ 268:	e5516037 	ldrb	r6, [r1, #-55]	; 0xffffffc9
+ 26c:	e0863003 	add	r3, r6, r3
+ 270:	e5516036 	ldrb	r6, [r1, #-54]	; 0xffffffca
+ 274:	e0866003 	add	r6, r6, r3
+ 278:	e5513035 	ldrb	r3, [r1, #-53]	; 0xffffffcb
+ 27c:	e0836006 	add	r6, r3, r6
+ 280:	e5513034 	ldrb	r3, [r1, #-52]	; 0xffffffcc
+ 284:	e0833006 	add	r3, r3, r6
+ 288:	e5516033 	ldrb	r6, [r1, #-51]	; 0xffffffcd
+ 28c:	e0863003 	add	r3, r6, r3
+ 290:	e5516032 	ldrb	r6, [r1, #-50]	; 0xffffffce
+ 294:	e0866003 	add	r6, r6, r3
+ 298:	e5513031 	ldrb	r3, [r1, #-49]	; 0xffffffcf
+ 29c:	e0836006 	add	r6, r3, r6
+ 2a0:	e5513030 	ldrb	r3, [r1, #-48]	; 0xffffffd0
+ 2a4:	e0833006 	add	r3, r3, r6
+ 2a8:	e551602f 	ldrb	r6, [r1, #-47]	; 0xffffffd1
+ 2ac:	e0863003 	add	r3, r6, r3
+ 2b0:	e551602e 	ldrb	r6, [r1, #-46]	; 0xffffffd2
+ 2b4:	e0866003 	add	r6, r6, r3
+ 2b8:	e551302d 	ldrb	r3, [r1, #-45]	; 0xffffffd3
+ 2bc:	e0836006 	add	r6, r3, r6
+ 2c0:	e551302c 	ldrb	r3, [r1, #-44]	; 0xffffffd4
+ 2c4:	e0833006 	add	r3, r3, r6
+ 2c8:	e551602b 	ldrb	r6, [r1, #-43]	; 0xffffffd5
+ 2cc:	e0863003 	add	r3, r6, r3
+ 2d0:	e551602a 	ldrb	r6, [r1, #-42]	; 0xffffffd6
+ 2d4:	e0866003 	add	r6, r6, r3
+ 2d8:	e5513029 	ldrb	r3, [r1, #-41]	; 0xffffffd7
+ 2dc:	e0836006 	add	r6, r3, r6
+ 2e0:	e5513028 	ldrb	r3, [r1, #-40]	; 0xffffffd8
+ 2e4:	e0833006 	add	r3, r3, r6
+ 2e8:	e5516027 	ldrb	r6, [r1, #-39]	; 0xffffffd9
+ 2ec:	e0863003 	add	r3, r6, r3
+ 2f0:	e5516026 	ldrb	r6, [r1, #-38]	; 0xffffffda
+ 2f4:	e0866003 	add	r6, r6, r3
+ 2f8:	e5513025 	ldrb	r3, [r1, #-37]	; 0xffffffdb
+ 2fc:	e0836006 	add	r6, r3, r6
+ 300:	e5513024 	ldrb	r3, [r1, #-36]	; 0xffffffdc
+ 304:	e0833006 	add	r3, r3, r6
+ 308:	e2826021 	add	r6, r2, #33	; 0x21
+ 30c:	e15e0006 	cmp	lr, r6
+ 310:	e2822020 	add	r2, r2, #32
+ 314:	e08cc003 	add	ip, ip, r3
+ 318:	e5513023 	ldrb	r3, [r1, #-35]	; 0xffffffdd
+ 31c:	e6ffc07c 	uxth	ip, ip
+ 320:	8affffb8 	bhi	208 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0xc0>
+ 324:	e59fe078 	ldr	lr, [pc, #120]	; 3a4 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x25c>
+ 328:	e2822001 	add	r2, r2, #1
+ 32c:	e08e1002 	add	r1, lr, r2
+ 330:	ea000000 	b	338 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x1f0>
+ 334:	e4d13001 	ldrb	r3, [r1], #1
+ 338:	e1520005 	cmp	r2, r5
+ 33c:	e2822001 	add	r2, r2, #1
+ 340:	e08c3003 	add	r3, ip, r3
+ 344:	e6ffc073 	uxth	ip, r3
+ 348:	3afffff9 	bcc	334 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x1ec>
+ 34c:	e08e2005 	add	r2, lr, r5
+ 350:	e6ef307c 	uxtb	r3, ip
+ 354:	e1a0142c 	lsr	r1, ip, #8
+ 358:	e2855001 	add	r5, r5, #1
+ 35c:	e0845005 	add	r5, r4, r5
+ 360:	e5c21000 	strb	r1, [r2]
+ 364:	e5c53010 	strb	r3, [r5, #16]
+ 368:	e5d42012 	ldrb	r2, [r4, #18]
+ 36c:	e59f1030 	ldr	r1, [pc, #48]	; 3a4 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x25c>
+ 370:	e8bd40f0 	pop	{r4, r5, r6, r7, lr}
+ 374:	e2822002 	add	r2, r2, #2
+ 378:	eafffffe 	b	0 <Rdm::SendRawRespondMessage(unsigned int, unsigned char const*, unsigned int)>
+ 37c:	e59f2020 	ldr	r2, [pc, #32]	; 3a4 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x25c>
+ 380:	e1a03005 	mov	r3, r5
+ 384:	e1a01003 	mov	r1, r3
+ 388:	e3a05001 	mov	r5, #1
+ 38c:	eafffff2 	b	35c <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x214>
+ 390:	e3a02000 	mov	r2, #0
+ 394:	e3a030cc 	mov	r3, #204	; 0xcc
+ 398:	e1a0c002 	mov	ip, r2
+ 39c:	eaffffe0 	b	324 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)+0x1dc>
+ 3a0:	00000033 	andeq	r0, r0, r3, lsr r0
+ 3a4:	00000010 	andeq	r0, r0, r0, lsl r0
+
+000003a8 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)>:
+ 3a8:	e92d4ff8 	push	{r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 3ac:	e1a07000 	mov	r7, r0
+ 3b0:	e1a00001 	mov	r0, r1
+ 3b4:	e1a08001 	mov	r8, r1
+ 3b8:	e1a06002 	mov	r6, r2
+ 3bc:	ebfffffe 	bl	0 <Rdm::Receive(unsigned int)>
+ 3c0:	e250a000 	subs	sl, r0, #0
+ 3c4:	0a000045 	beq	4e0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x138>
+ 3c8:	e28a2003 	add	r2, sl, #3
+ 3cc:	e3001000 	movw	r1, #0
+ 3d0:	e3401000 	movt	r1, #0
+ 3d4:	e28a0009 	add	r0, sl, #9
+ 3d8:	e1a0c002 	mov	ip, r2
+ 3dc:	e3a0e0ff 	mov	lr, #255	; 0xff
+ 3e0:	ea000002 	b	3f0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x48>
+ 3e4:	e15c0000 	cmp	ip, r0
+ 3e8:	0a00001c 	beq	460 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0xb8>
+ 3ec:	e5f1e001 	ldrb	lr, [r1, #1]!
+ 3f0:	e4dc3001 	ldrb	r3, [ip], #1
+ 3f4:	e153000e 	cmp	r3, lr
+ 3f8:	0afffff9 	beq	3e4 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x3c>
+ 3fc:	e3009000 	movw	r9, #0
+ 400:	e3409000 	movt	r9, #0
+ 404:	e799b108 	ldr	fp, [r9, r8, lsl #2]
+ 408:	e59b0000 	ldr	r0, [fp]
+ 40c:	e3500000 	cmp	r0, #0
+ 410:	128b5029 	addne	r5, fp, #41	; 0x29
+ 414:	13a01000 	movne	r1, #0
+ 418:	0a00000c 	beq	450 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0xa8>
+ 41c:	e245c006 	sub	ip, r5, #6
+ 420:	e1a0e002 	mov	lr, r2
+ 424:	ea000001 	b	430 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x88>
+ 428:	e15c0005 	cmp	ip, r5
+ 42c:	0a000038 	beq	514 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x16c>
+ 430:	e5fc4001 	ldrb	r4, [ip, #1]!
+ 434:	e4de3001 	ldrb	r3, [lr], #1
+ 438:	e1540003 	cmp	r4, r3
+ 43c:	0afffff9 	beq	428 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x80>
+ 440:	e2811001 	add	r1, r1, #1
+ 444:	e2855006 	add	r5, r5, #6
+ 448:	e1510000 	cmp	r1, r0
+ 44c:	1afffff2 	bne	41c <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x74>
+ 450:	e3e03000 	mvn	r3, #0
+ 454:	e3a00000 	mov	r0, #0
+ 458:	e58b3004 	str	r3, [fp, #4]
+ 45c:	e8bd8ff8 	pop	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 460:	e5da3014 	ldrb	r3, [sl, #20]
+ 464:	e20330ef 	and	r3, r3, #239	; 0xef
+ 468:	e3530020 	cmp	r3, #32
+ 46c:	0a00001d 	beq	4e8 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x140>
+ 470:	e3009000 	movw	r9, #0
+ 474:	e3a00000 	mov	r0, #0
+ 478:	e3409000 	movt	r9, #0
+ 47c:	e7992108 	ldr	r2, [r9, r8, lsl #2]
+ 480:	e892000a 	ldm	r2, {r1, r3}
+ 484:	e2833001 	add	r3, r3, #1
+ 488:	e1530001 	cmp	r3, r1
+ 48c:	e5823004 	str	r3, [r2, #4]
+ 490:	13a01006 	movne	r1, #6
+ 494:	10030391 	mulne	r3, r1, r3
+ 498:	03a03024 	moveq	r3, #36	; 0x24
+ 49c:	03a01000 	moveq	r1, #0
+ 4a0:	05821004 	streq	r1, [r2, #4]
+ 4a4:	12833024 	addne	r3, r3, #36	; 0x24
+ 4a8:	e0822003 	add	r2, r2, r3
+ 4ac:	e5da3014 	ldrb	r3, [sl, #20]
+ 4b0:	e3530010 	cmp	r3, #16
+ 4b4:	1a000009 	bne	4e0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x138>
+ 4b8:	e5da1015 	ldrb	r1, [sl, #21]
+ 4bc:	e5da3016 	ldrb	r3, [sl, #22]
+ 4c0:	e0833401 	add	r3, r3, r1, lsl #8
+ 4c4:	e6ff3073 	uxth	r3, r3
+ 4c8:	e3530001 	cmp	r3, #1
+ 4cc:	0a000032 	beq	59c <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x1f4>
+ 4d0:	e3530003 	cmp	r3, #3
+ 4d4:	0a00007a 	beq	6c4 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x31c>
+ 4d8:	e3530002 	cmp	r3, #2
+ 4dc:	0a000013 	beq	530 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x188>
+ 4e0:	e3a00000 	mov	r0, #0
+ 4e4:	e8bd8ff8 	pop	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 4e8:	e5da2002 	ldrb	r2, [sl, #2]
+ 4ec:	e28aa001 	add	sl, sl, #1
+ 4f0:	e3520000 	cmp	r2, #0
+ 4f4:	10862002 	addne	r2, r6, r2
+ 4f8:	0a000003 	beq	50c <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x164>
+ 4fc:	e4da3001 	ldrb	r3, [sl], #1
+ 500:	e4c63001 	strb	r3, [r6], #1
+ 504:	e1520006 	cmp	r2, r6
+ 508:	1afffffb 	bne	4fc <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x154>
+ 50c:	e3a00001 	mov	r0, #1
+ 510:	e8bd8ff8 	pop	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 514:	e58b1004 	str	r1, [fp, #4]
+ 518:	e5da3014 	ldrb	r3, [sl, #20]
+ 51c:	e20310ef 	and	r1, r3, #239	; 0xef
+ 520:	e3510020 	cmp	r1, #32
+ 524:	0affffef 	beq	4e8 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x140>
+ 528:	e3a00001 	mov	r0, #1
+ 52c:	eaffffdf 	b	4b0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x108>
+ 530:	e5da3017 	ldrb	r3, [sl, #23]
+ 534:	e3530000 	cmp	r3, #0
+ 538:	13a00000 	movne	r0, #0
+ 53c:	02000001 	andeq	r0, r0, #1
+ 540:	e3500000 	cmp	r0, #0
+ 544:	0affffe5 	beq	4e0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x138>
+ 548:	e7993108 	ldr	r3, [r9, r8, lsl #2]
+ 54c:	e5931004 	ldr	r1, [r3, #4]
+ 550:	e3710001 	cmn	r1, #1
+ 554:	0a000006 	beq	574 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x1cc>
+ 558:	e1a002a1 	lsr	r0, r1, #5
+ 55c:	e3a0c001 	mov	ip, #1
+ 560:	e201101f 	and	r1, r1, #31
+ 564:	e0833100 	add	r3, r3, r0, lsl #2
+ 568:	e5930008 	ldr	r0, [r3, #8]
+ 56c:	e180111c 	orr	r1, r0, ip, lsl r1
+ 570:	e5831008 	str	r1, [r3, #8]
+ 574:	e1a00007 	mov	r0, r7
+ 578:	e3a04000 	mov	r4, #0
+ 57c:	e1c942b8 	strh	r4, [r9, #40]	; 0x28
+ 580:	e3a0c002 	mov	ip, #2
+ 584:	e5c9c027 	strb	ip, [r9, #39]	; 0x27
+ 588:	e1a0300a 	mov	r3, sl
+ 58c:	e1a01008 	mov	r1, r8
+ 590:	ebfffffe 	bl	148 <ArtNetRdmController::RespondMessageAck(unsigned int, unsigned char const*, TRdmMessage const*)>
+ 594:	e1a00004 	mov	r0, r4
+ 598:	e8bd8ff8 	pop	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 59c:	e799c108 	ldr	ip, [r9, r8, lsl #2]
+ 5a0:	e59c1004 	ldr	r1, [ip, #4]
+ 5a4:	e3710001 	cmn	r1, #1
+ 5a8:	0affffcc 	beq	4e0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x138>
+ 5ac:	e1a002a1 	lsr	r0, r1, #5
+ 5b0:	e201101f 	and	r1, r1, #31
+ 5b4:	e1a03113 	lsl	r3, r3, r1
+ 5b8:	e2801002 	add	r1, r0, #2
+ 5bc:	e79c1101 	ldr	r1, [ip, r1, lsl #2]
+ 5c0:	e1d33001 	bics	r3, r3, r1
+ 5c4:	0affffc5 	beq	4e0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x138>
+ 5c8:	e242e001 	sub	lr, r2, #1
+ 5cc:	e28a3018 	add	r3, sl, #24
+ 5d0:	e1a0c00e 	mov	ip, lr
+ 5d4:	e28aa01e 	add	sl, sl, #30
+ 5d8:	ea000001 	b	5e4 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x23c>
+ 5dc:	e15a0003 	cmp	sl, r3
+ 5e0:	0a000006 	beq	600 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x258>
+ 5e4:	e4d31001 	ldrb	r1, [r3], #1
+ 5e8:	e5fc0001 	ldrb	r0, [ip, #1]!
+ 5ec:	e1510000 	cmp	r1, r0
+ 5f0:	0afffff9 	beq	5dc <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x234>
+ 5f4:	e0411000 	sub	r1, r1, r0
+ 5f8:	e3510000 	cmp	r1, #0
+ 5fc:	caffffb7 	bgt	4e0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x138>
+ 600:	e2822005 	add	r2, r2, #5
+ 604:	e1a0100e 	mov	r1, lr
+ 608:	ea000001 	b	614 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x26c>
+ 60c:	e1510002 	cmp	r1, r2
+ 610:	0a000006 	beq	630 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x288>
+ 614:	e5f13001 	ldrb	r3, [r1, #1]!
+ 618:	e4da0001 	ldrb	r0, [sl], #1
+ 61c:	e1530000 	cmp	r3, r0
+ 620:	0afffff9 	beq	60c <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x264>
+ 624:	e0433000 	sub	r3, r3, r0
+ 628:	e3530000 	cmp	r3, #0
+ 62c:	caffffab 	bgt	4e0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x138>
+ 630:	e59f00f0 	ldr	r0, [pc, #240]	; 728 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x380>
+ 634:	e30f3efe 	movw	r3, #65278	; 0xfefe
+ 638:	e34f3efe 	movt	r3, #65278	; 0xfefe
+ 63c:	e3e0c055 	mvn	ip, #85	; 0x55
+ 640:	e5893010 	str	r3, [r9, #16]
+ 644:	e30f3efe 	movw	r3, #65278	; 0xfefe
+ 648:	e34a3afe 	movt	r3, #43774	; 0xaafe
+ 64c:	e5893014 	str	r3, [r9, #20]
+ 650:	e30035fa 	movw	r3, #1530	; 0x5fa
+ 654:	e5fe1001 	ldrb	r1, [lr, #1]!
+ 658:	e2800002 	add	r0, r0, #2
+ 65c:	e18c1001 	orr	r1, ip, r1
+ 660:	e5c01006 	strb	r1, [r0, #6]
+ 664:	e5de1000 	ldrb	r1, [lr]
+ 668:	e15e0002 	cmp	lr, r2
+ 66c:	e3811055 	orr	r1, r1, #85	; 0x55
+ 670:	e5c01007 	strb	r1, [r0, #7]
+ 674:	e5de1000 	ldrb	r1, [lr]
+ 678:	e0833001 	add	r3, r3, r1
+ 67c:	e3e01055 	mvn	r1, #85	; 0x55
+ 680:	e6ff3073 	uxth	r3, r3
+ 684:	1afffff2 	bne	654 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x2ac>
+ 688:	e1a02423 	lsr	r2, r3, #8
+ 68c:	e6ef3073 	uxtb	r3, r3
+ 690:	e1820001 	orr	r0, r2, r1
+ 694:	e3822055 	orr	r2, r2, #85	; 0x55
+ 698:	e1831001 	orr	r1, r3, r1
+ 69c:	e3833055 	orr	r3, r3, #85	; 0x55
+ 6a0:	e5c90024 	strb	r0, [r9, #36]	; 0x24
+ 6a4:	e1a00008 	mov	r0, r8
+ 6a8:	e5c92025 	strb	r2, [r9, #37]	; 0x25
+ 6ac:	e3a02018 	mov	r2, #24
+ 6b0:	e5c91026 	strb	r1, [r9, #38]	; 0x26
+ 6b4:	e59f106c 	ldr	r1, [pc, #108]	; 728 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x380>
+ 6b8:	e5c93027 	strb	r3, [r9, #39]	; 0x27
+ 6bc:	ebfffffe 	bl	0 <Rdm::SendDiscoveryRespondMessage(unsigned int, unsigned char const*, unsigned int)>
+ 6c0:	eaffff86 	b	4e0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x138>
+ 6c4:	e5da3017 	ldrb	r3, [sl, #23]
+ 6c8:	e3530000 	cmp	r3, #0
+ 6cc:	1affff83 	bne	4e0 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x138>
+ 6d0:	e7993108 	ldr	r3, [r9, r8, lsl #2]
+ 6d4:	e3500000 	cmp	r0, #0
+ 6d8:	1a000007 	bne	6fc <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x354>
+ 6dc:	e5830008 	str	r0, [r3, #8]
+ 6e0:	e583000c 	str	r0, [r3, #12]
+ 6e4:	e5830010 	str	r0, [r3, #16]
+ 6e8:	e5830014 	str	r0, [r3, #20]
+ 6ec:	e5830018 	str	r0, [r3, #24]
+ 6f0:	e583001c 	str	r0, [r3, #28]
+ 6f4:	e5830020 	str	r0, [r3, #32]
+ 6f8:	e8bd8ff8 	pop	{r3, r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 6fc:	e5931004 	ldr	r1, [r3, #4]
+ 700:	e3710001 	cmn	r1, #1
+ 704:	0affff9a 	beq	574 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x1cc>
+ 708:	e1a002a1 	lsr	r0, r1, #5
+ 70c:	e3a0c001 	mov	ip, #1
+ 710:	e201101f 	and	r1, r1, #31
+ 714:	e0833100 	add	r3, r3, r0, lsl #2
+ 718:	e5930008 	ldr	r0, [r3, #8]
+ 71c:	e1c0111c 	bic	r1, r0, ip, lsl r1
+ 720:	e5831008 	str	r1, [r3, #8]
+ 724:	eaffff92 	b	574 <ArtNetRdmController::RdmReceive(unsigned int, unsigned char*)+0x1cc>
+ 728:	00000010 	andeq	r0, r0, r0, lsl r0
+
+Disassembly of section .bss:
+
+00000000 <ArtNetRdmController::m_pRDMTod>:
+	...
+
+00000010 <ArtNetRdmController::s_rdmMessage>:
+	...
+
+Disassembly of section .text._ZN19ArtNetRdmController11GetUidCountEj:
+
+00000000 <ArtNetRdmController::GetUidCount(unsigned int)>:
+   0:	e3003000 	movw	r3, #0
+   4:	e3403000 	movt	r3, #0
+   8:	e7933101 	ldr	r3, [r3, r1, lsl #2]
+   c:	e5930000 	ldr	r0, [r3]
+  10:	e12fff1e 	bx	lr
+
+Disassembly of section .text._ZN19ArtNetRdmController7TodCopyEjPh:
+
+00000000 <ArtNetRdmController::TodCopy(unsigned int, unsigned char*)>:
+   0:	e3003000 	movw	r3, #0
+   4:	e3403000 	movt	r3, #0
+   8:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+   c:	e3a0e006 	mov	lr, #6
+  10:	e793c101 	ldr	ip, [r3, r1, lsl #2]
+  14:	e1a0100c 	mov	r1, ip
+  18:	e4913024 	ldr	r3, [r1], #36	; 0x24
+  1c:	e003039e 	mul	r3, lr, r3
+  20:	e3530000 	cmp	r3, #0
+  24:	049df004 	popeq	{pc}		; (ldreq pc, [sp], #4)
+  28:	e2420001 	sub	r0, r2, #1
+  2c:	e4d13001 	ldrb	r3, [r1], #1
+  30:	e5e03001 	strb	r3, [r0, #1]!
+  34:	e2413024 	sub	r3, r1, #36	; 0x24
+  38:	e59c2000 	ldr	r2, [ip]
+  3c:	e043300c 	sub	r3, r3, ip
+  40:	e002029e 	mul	r2, lr, r2
+  44:	e1520003 	cmp	r2, r3
+  48:	8afffff7 	bhi	2c <ArtNetRdmController::TodCopy(unsigned int, unsigned char*)+0x2c>
+  4c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+Disassembly of section .text._ZN19ArtNetRdmController8TodResetEj:
+
+00000000 <ArtNetRdmController::TodReset(unsigned int)>:
+   0:	e3003000 	movw	r3, #0
+   4:	e3403000 	movt	r3, #0
+   8:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+   c:	e793e101 	ldr	lr, [r3, r1, lsl #2]
+  10:	e59e3000 	ldr	r3, [lr]
+  14:	e3530000 	cmp	r3, #0
+  18:	128e002a 	addne	r0, lr, #42	; 0x2a
+  1c:	13a0c000 	movne	ip, #0
+  20:	0a00000d 	beq	5c <ArtNetRdmController::TodReset(unsigned int)+0x5c>
+  24:	e3002000 	movw	r2, #0
+  28:	e2403006 	sub	r3, r0, #6
+  2c:	e3402000 	movt	r2, #0
+  30:	e3a010ff 	mov	r1, #255	; 0xff
+  34:	ea000000 	b	3c <ArtNetRdmController::TodReset(unsigned int)+0x3c>
+  38:	e5f21001 	ldrb	r1, [r2, #1]!
+  3c:	e4c31001 	strb	r1, [r3], #1
+  40:	e1530000 	cmp	r3, r0
+  44:	1afffffb 	bne	38 <ArtNetRdmController::TodReset(unsigned int)+0x38>
+  48:	e59e3000 	ldr	r3, [lr]
+  4c:	e28cc001 	add	ip, ip, #1
+  50:	e2800006 	add	r0, r0, #6
+  54:	e153000c 	cmp	r3, ip
+  58:	8afffff1 	bhi	24 <ArtNetRdmController::TodReset(unsigned int)+0x24>
+  5c:	e3a03000 	mov	r3, #0
+  60:	e58e3000 	str	r3, [lr]
+  64:	e58e3008 	str	r3, [lr, #8]
+  68:	e58e300c 	str	r3, [lr, #12]
+  6c:	e58e3010 	str	r3, [lr, #16]
+  70:	e58e3014 	str	r3, [lr, #20]
+  74:	e58e3018 	str	r3, [lr, #24]
+  78:	e58e301c 	str	r3, [lr, #28]
+  7c:	e58e3020 	str	r3, [lr, #32]
+  80:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+Disassembly of section .text._ZN19ArtNetRdmController4FullEj:
+
+00000000 <ArtNetRdmController::Full(unsigned int)>:
+   0:	e3003000 	movw	r3, #0
+   4:	e2800080 	add	r0, r0, #128	; 0x80
+   8:	e3403000 	movt	r3, #0
+   c:	e7932101 	ldr	r2, [r3, r1, lsl #2]
+  10:	eafffffe 	b	0 <RDMDiscovery::Full(unsigned int, RDMTod*)>
+
+Disassembly of section .text._ZN19ArtNetRdmControllerD1Ev:
+
+00000000 <ArtNetRdmController::~ArtNetRdmController()>:
+   0:	e92d4070 	push	{r4, r5, r6, lr}
+   4:	e3004000 	movw	r4, #0
+   8:	e3404000 	movt	r4, #0
+   c:	e1a05000 	mov	r5, r0
+  10:	e59f3024 	ldr	r3, [pc, #36]	; 3c <ArtNetRdmController::~ArtNetRdmController()+0x3c>
+  14:	e2846010 	add	r6, r4, #16
+  18:	e5803000 	str	r3, [r0]
+  1c:	e4940004 	ldr	r0, [r4], #4
+  20:	e3500000 	cmp	r0, #0
+  24:	0a000000 	beq	2c <ArtNetRdmController::~ArtNetRdmController()+0x2c>
+  28:	ebfffffe 	bl	0 <operator delete(void*)>
+  2c:	e1540006 	cmp	r4, r6
+  30:	1afffff9 	bne	1c <ArtNetRdmController::~ArtNetRdmController()+0x1c>
+  34:	e1a00005 	mov	r0, r5
+  38:	e8bd8070 	pop	{r4, r5, r6, pc}
+  3c:	00000010 	andeq	r0, r0, r0, lsl r0
+
+Disassembly of section .text._ZN19ArtNetRdmControllerD0Ev:
+
+00000000 <ArtNetRdmController::~ArtNetRdmController()>:
+   0:	e92d4070 	push	{r4, r5, r6, lr}
+   4:	e3004000 	movw	r4, #0
+   8:	e3404000 	movt	r4, #0
+   c:	e1a05000 	mov	r5, r0
+  10:	e59f302c 	ldr	r3, [pc, #44]	; 44 <ArtNetRdmController::~ArtNetRdmController()+0x44>
+  14:	e2846010 	add	r6, r4, #16
+  18:	e5803000 	str	r3, [r0]
+  1c:	e4940004 	ldr	r0, [r4], #4
+  20:	e3500000 	cmp	r0, #0
+  24:	0a000000 	beq	2c <ArtNetRdmController::~ArtNetRdmController()+0x2c>
+  28:	ebfffffe 	bl	0 <operator delete(void*)>
+  2c:	e1540006 	cmp	r4, r6
+  30:	1afffff9 	bne	1c <ArtNetRdmController::~ArtNetRdmController()+0x1c>
+  34:	e1a00005 	mov	r0, r5
+  38:	ebfffffe 	bl	0 <operator delete(void*)>
+  3c:	e1a00005 	mov	r0, r5
+  40:	e8bd8070 	pop	{r4, r5, r6, pc}
+  44:	00000010 	andeq	r0, r0, r0, lsl r0
+
+Disassembly of section .text._ZN19ArtNetRdmController9TodAddUidEjPKh:
+
+00000000 <ArtNetRdmController::TodAddUid(unsigned int, unsigned char const*)>:
+   0:	e3003000 	movw	r3, #0
+   4:	e3403000 	movt	r3, #0
+   8:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+   c:	e7937101 	ldr	r7, [r3, r1, lsl #2]
+  10:	e5975000 	ldr	r5, [r7]
+  14:	e35500c8 	cmp	r5, #200	; 0xc8
+  18:	0a000020 	beq	a0 <ArtNetRdmController::TodAddUid(unsigned int, unsigned char const*)+0xa0>
+  1c:	e3550000 	cmp	r5, #0
+  20:	e1a04002 	mov	r4, r2
+  24:	0a00000f 	beq	68 <ArtNetRdmController::TodAddUid(unsigned int, unsigned char const*)+0x68>
+  28:	e287e029 	add	lr, r7, #41	; 0x29
+  2c:	e3a02000 	mov	r2, #0
+  30:	e2446001 	sub	r6, r4, #1
+  34:	e24e3006 	sub	r3, lr, #6
+  38:	e1a01006 	mov	r1, r6
+  3c:	ea000001 	b	48 <ArtNetRdmController::TodAddUid(unsigned int, unsigned char const*)+0x48>
+  40:	e153000e 	cmp	r3, lr
+  44:	0a000017 	beq	a8 <ArtNetRdmController::TodAddUid(unsigned int, unsigned char const*)+0xa8>
+  48:	e5f3c001 	ldrb	ip, [r3, #1]!
+  4c:	e5f10001 	ldrb	r0, [r1, #1]!
+  50:	e15c0000 	cmp	ip, r0
+  54:	0afffff9 	beq	40 <ArtNetRdmController::TodAddUid(unsigned int, unsigned char const*)+0x40>
+  58:	e2822001 	add	r2, r2, #1
+  5c:	e28ee006 	add	lr, lr, #6
+  60:	e1550002 	cmp	r5, r2
+  64:	1afffff2 	bne	34 <ArtNetRdmController::TodAddUid(unsigned int, unsigned char const*)+0x34>
+  68:	e3a03006 	mov	r3, #6
+  6c:	e3e02000 	mvn	r2, #0
+  70:	e0841003 	add	r1, r4, r3
+  74:	e0237593 	mla	r3, r3, r5, r7
+  78:	e5872004 	str	r2, [r7, #4]
+  7c:	e2855001 	add	r5, r5, #1
+  80:	e5875000 	str	r5, [r7]
+  84:	e2833023 	add	r3, r3, #35	; 0x23
+  88:	e4d42001 	ldrb	r2, [r4], #1
+  8c:	e1510004 	cmp	r1, r4
+  90:	e5e32001 	strb	r2, [r3, #1]!
+  94:	1afffffb 	bne	88 <ArtNetRdmController::TodAddUid(unsigned int, unsigned char const*)+0x88>
+  98:	e3a00001 	mov	r0, #1
+  9c:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+  a0:	e3a00000 	mov	r0, #0
+  a4:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+  a8:	e5872004 	str	r2, [r7, #4]
+  ac:	e3a00000 	mov	r0, #0
+  b0:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+
+Disassembly of section .rodata._ZTV9ArtNetRdm:
+
+00000000 <vtable for ArtNetRdm>:
+	...
+
+Disassembly of section .rodata:
+
+00000000 <UID_ALL>:
+   0:	ffffffff 			; <UNDEFINED> instruction: 0xffffffff
+   4:	0000ffff 	strdeq	pc, [r0], -pc	; <UNPREDICTABLE>
+
+00000008 <vtable for ArtNetRdmController>:
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+rdm_send.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <artnet::rdm_send(unsigned int, unsigned char const*)>:
+   0:	e5d12013 	ldrb	r2, [r1, #19]
+   4:	e20220ef 	and	r2, r2, #239	; 0xef
+   8:	e3520021 	cmp	r2, #33	; 0x21
+   c:	112fff1e 	bxne	lr
+  10:	e92d4070 	push	{r4, r5, r6, lr}
+  14:	e24ddf42 	sub	sp, sp, #264	; 0x108
+  18:	e5d1e001 	ldrb	lr, [r1, #1]
+  1c:	e1a03001 	mov	r3, r1
+  20:	e3e02033 	mvn	r2, #51	; 0x33
+  24:	e28d1004 	add	r1, sp, #4
+  28:	e5cd2004 	strb	r2, [sp, #4]
+  2c:	e35e0001 	cmp	lr, #1
+  30:	124ee001 	subne	lr, lr, #1
+  34:	11a02001 	movne	r2, r1
+  38:	1083e00e 	addne	lr, r3, lr
+  3c:	0a000003 	beq	50 <artnet::rdm_send(unsigned int, unsigned char const*)+0x50>
+  40:	e4d3c001 	ldrb	ip, [r3], #1
+  44:	e153000e 	cmp	r3, lr
+  48:	e5e2c001 	strb	ip, [r2, #1]!
+  4c:	1afffffb 	bne	40 <artnet::rdm_send(unsigned int, unsigned char const*)+0x40>
+  50:	e5dd4006 	ldrb	r4, [sp, #6]
+  54:	e3540000 	cmp	r4, #0
+  58:	0a00005b 	beq	1cc <artnet::rdm_send(unsigned int, unsigned char const*)+0x1cc>
+  5c:	e3540020 	cmp	r4, #32
+  60:	e244501f 	sub	r5, r4, #31
+  64:	9a000065 	bls	200 <artnet::rdm_send(unsigned int, unsigned char const*)+0x200>
+  68:	e3a0e000 	mov	lr, #0
+  6c:	e28dc026 	add	ip, sp, #38	; 0x26
+  70:	e1a0300e 	mov	r3, lr
+  74:	e55c2022 	ldrb	r2, [ip, #-34]	; 0xffffffde
+  78:	e55c6021 	ldrb	r6, [ip, #-33]	; 0xffffffdf
+  7c:	f5dcf000 	pld	[ip]
+  80:	e28cc020 	add	ip, ip, #32
+  84:	e0866002 	add	r6, r6, r2
+  88:	e55c2040 	ldrb	r2, [ip, #-64]	; 0xffffffc0
+  8c:	e0826006 	add	r6, r2, r6
+  90:	e55c203f 	ldrb	r2, [ip, #-63]	; 0xffffffc1
+  94:	e0822006 	add	r2, r2, r6
+  98:	e55c603e 	ldrb	r6, [ip, #-62]	; 0xffffffc2
+  9c:	e0862002 	add	r2, r6, r2
+  a0:	e55c603d 	ldrb	r6, [ip, #-61]	; 0xffffffc3
+  a4:	e0866002 	add	r6, r6, r2
+  a8:	e55c203c 	ldrb	r2, [ip, #-60]	; 0xffffffc4
+  ac:	e0826006 	add	r6, r2, r6
+  b0:	e55c203b 	ldrb	r2, [ip, #-59]	; 0xffffffc5
+  b4:	e0822006 	add	r2, r2, r6
+  b8:	e55c603a 	ldrb	r6, [ip, #-58]	; 0xffffffc6
+  bc:	e0862002 	add	r2, r6, r2
+  c0:	e55c6039 	ldrb	r6, [ip, #-57]	; 0xffffffc7
+  c4:	e0866002 	add	r6, r6, r2
+  c8:	e55c2038 	ldrb	r2, [ip, #-56]	; 0xffffffc8
+  cc:	e0826006 	add	r6, r2, r6
+  d0:	e55c2037 	ldrb	r2, [ip, #-55]	; 0xffffffc9
+  d4:	e0822006 	add	r2, r2, r6
+  d8:	e55c6036 	ldrb	r6, [ip, #-54]	; 0xffffffca
+  dc:	e0862002 	add	r2, r6, r2
+  e0:	e55c6035 	ldrb	r6, [ip, #-53]	; 0xffffffcb
+  e4:	e0866002 	add	r6, r6, r2
+  e8:	e55c2034 	ldrb	r2, [ip, #-52]	; 0xffffffcc
+  ec:	e0826006 	add	r6, r2, r6
+  f0:	e55c2033 	ldrb	r2, [ip, #-51]	; 0xffffffcd
+  f4:	e0822006 	add	r2, r2, r6
+  f8:	e55c6032 	ldrb	r6, [ip, #-50]	; 0xffffffce
+  fc:	e0862002 	add	r2, r6, r2
+ 100:	e55c6031 	ldrb	r6, [ip, #-49]	; 0xffffffcf
+ 104:	e0866002 	add	r6, r6, r2
+ 108:	e55c2030 	ldrb	r2, [ip, #-48]	; 0xffffffd0
+ 10c:	e0826006 	add	r6, r2, r6
+ 110:	e55c202f 	ldrb	r2, [ip, #-47]	; 0xffffffd1
+ 114:	e0822006 	add	r2, r2, r6
+ 118:	e55c602e 	ldrb	r6, [ip, #-46]	; 0xffffffd2
+ 11c:	e0862002 	add	r2, r6, r2
+ 120:	e55c602d 	ldrb	r6, [ip, #-45]	; 0xffffffd3
+ 124:	e0866002 	add	r6, r6, r2
+ 128:	e55c202c 	ldrb	r2, [ip, #-44]	; 0xffffffd4
+ 12c:	e0826006 	add	r6, r2, r6
+ 130:	e55c202b 	ldrb	r2, [ip, #-43]	; 0xffffffd5
+ 134:	e0822006 	add	r2, r2, r6
+ 138:	e55c602a 	ldrb	r6, [ip, #-42]	; 0xffffffd6
+ 13c:	e0862002 	add	r2, r6, r2
+ 140:	e55c6029 	ldrb	r6, [ip, #-41]	; 0xffffffd7
+ 144:	e0866002 	add	r6, r6, r2
+ 148:	e55c2028 	ldrb	r2, [ip, #-40]	; 0xffffffd8
+ 14c:	e0826006 	add	r6, r2, r6
+ 150:	e55c2027 	ldrb	r2, [ip, #-39]	; 0xffffffd9
+ 154:	e0822006 	add	r2, r2, r6
+ 158:	e55c6026 	ldrb	r6, [ip, #-38]	; 0xffffffda
+ 15c:	e0862002 	add	r2, r6, r2
+ 160:	e55c6025 	ldrb	r6, [ip, #-37]	; 0xffffffdb
+ 164:	e0866002 	add	r6, r6, r2
+ 168:	e55c2024 	ldrb	r2, [ip, #-36]	; 0xffffffdc
+ 16c:	e0826006 	add	r6, r2, r6
+ 170:	e55c2023 	ldrb	r2, [ip, #-35]	; 0xffffffdd
+ 174:	e0822006 	add	r2, r2, r6
+ 178:	e08e2002 	add	r2, lr, r2
+ 17c:	e6ffe072 	uxth	lr, r2
+ 180:	e2832021 	add	r2, r3, #33	; 0x21
+ 184:	e1550002 	cmp	r5, r2
+ 188:	e2833020 	add	r3, r3, #32
+ 18c:	8affffb8 	bhi	74 <artnet::rdm_send(unsigned int, unsigned char const*)+0x74>
+ 190:	e2433001 	sub	r3, r3, #1
+ 194:	e081c003 	add	ip, r1, r3
+ 198:	e1a0300c 	mov	r3, ip
+ 19c:	e5fc2001 	ldrb	r2, [ip, #1]!
+ 1a0:	e2833002 	add	r3, r3, #2
+ 1a4:	e0433001 	sub	r3, r3, r1
+ 1a8:	e1540003 	cmp	r4, r3
+ 1ac:	e08e2002 	add	r2, lr, r2
+ 1b0:	e6ffe072 	uxth	lr, r2
+ 1b4:	8afffff7 	bhi	198 <artnet::rdm_send(unsigned int, unsigned char const*)+0x198>
+ 1b8:	e0813004 	add	r3, r1, r4
+ 1bc:	e6ef207e 	uxtb	r2, lr
+ 1c0:	e1a0c42e 	lsr	ip, lr, #8
+ 1c4:	e2844001 	add	r4, r4, #1
+ 1c8:	ea000003 	b	1dc <artnet::rdm_send(unsigned int, unsigned char const*)+0x1dc>
+ 1cc:	e1a02004 	mov	r2, r4
+ 1d0:	e1a03001 	mov	r3, r1
+ 1d4:	e3a04001 	mov	r4, #1
+ 1d8:	e1a0c002 	mov	ip, r2
+ 1dc:	e5c3c000 	strb	ip, [r3]
+ 1e0:	e28d3f42 	add	r3, sp, #264	; 0x108
+ 1e4:	e0834004 	add	r4, r3, r4
+ 1e8:	e5442104 	strb	r2, [r4, #-260]	; 0xfffffefc
+ 1ec:	e5dd2006 	ldrb	r2, [sp, #6]
+ 1f0:	e2822002 	add	r2, r2, #2
+ 1f4:	ebfffffe 	bl	0 <Rdm::SendRaw(unsigned int, unsigned char const*, unsigned int)>
+ 1f8:	e28ddf42 	add	sp, sp, #264	; 0x108
+ 1fc:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 200:	e3a0e000 	mov	lr, #0
+ 204:	e1a0300e 	mov	r3, lr
+ 208:	eaffffe0 	b	190 <artnet::rdm_send(unsigned int, unsigned char const*)+0x190>
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+

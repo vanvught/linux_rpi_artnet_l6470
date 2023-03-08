@@ -1,0 +1,5 @@
+#sparkfun.txt
+#sparkfun_reset_pin=27
+#sparkfun_busy_pin=17
+#sparkfun_spi_cs=0
+

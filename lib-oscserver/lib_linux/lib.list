@@ -1,0 +1,2607 @@
+In archive lib_linux/liboscserver.a:
+
+oscserverconst.o:     file format elf64-x86-64
+
+
+oscserver.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZN3oscL15string_validateEPvj:
+
+0000000000000000 <osc::string_validate(void*, unsigned int)>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+   8:	89 75 e4             	mov    %esi,-0x1c(%rbp)
+   b:	c7 45 f0 00 00 00 00 	movl   $0x0,-0x10(%rbp)
+  12:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  16:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  1a:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%rbp)
+  21:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%rbp)
+  28:	eb 26                	jmp    50 <osc::string_validate(void*, unsigned int)+0x50>
+  2a:	8b 55 f4             	mov    -0xc(%rbp),%edx
+  2d:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  31:	48 01 d0             	add    %rdx,%rax
+  34:	0f b6 00             	movzbl (%rax),%eax
+  37:	84 c0                	test   %al,%al
+  39:	75 11                	jne    4c <osc::string_validate(void*, unsigned int)+0x4c>
+  3b:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  3e:	c1 e8 02             	shr    $0x2,%eax
+  41:	83 c0 01             	add    $0x1,%eax
+  44:	c1 e0 02             	shl    $0x2,%eax
+  47:	89 45 f0             	mov    %eax,-0x10(%rbp)
+  4a:	eb 0c                	jmp    58 <osc::string_validate(void*, unsigned int)+0x58>
+  4c:	83 45 f4 01          	addl   $0x1,-0xc(%rbp)
+  50:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  53:	3b 45 e4             	cmp    -0x1c(%rbp),%eax
+  56:	72 d2                	jb     2a <osc::string_validate(void*, unsigned int)+0x2a>
+  58:	83 7d f0 00          	cmpl   $0x0,-0x10(%rbp)
+  5c:	75 07                	jne    65 <osc::string_validate(void*, unsigned int)+0x65>
+  5e:	b8 fe ff ff ff       	mov    $0xfffffffe,%eax
+  63:	eb 36                	jmp    9b <osc::string_validate(void*, unsigned int)+0x9b>
+  65:	8b 45 f0             	mov    -0x10(%rbp),%eax
+  68:	3b 45 e4             	cmp    -0x1c(%rbp),%eax
+  6b:	76 23                	jbe    90 <osc::string_validate(void*, unsigned int)+0x90>
+  6d:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+  72:	eb 27                	jmp    9b <osc::string_validate(void*, unsigned int)+0x9b>
+  74:	8b 55 f4             	mov    -0xc(%rbp),%edx
+  77:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  7b:	48 01 d0             	add    %rdx,%rax
+  7e:	0f b6 00             	movzbl (%rax),%eax
+  81:	84 c0                	test   %al,%al
+  83:	74 07                	je     8c <osc::string_validate(void*, unsigned int)+0x8c>
+  85:	b8 fd ff ff ff       	mov    $0xfffffffd,%eax
+  8a:	eb 0f                	jmp    9b <osc::string_validate(void*, unsigned int)+0x9b>
+  8c:	83 45 f4 01          	addl   $0x1,-0xc(%rbp)
+  90:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  93:	3b 45 f0             	cmp    -0x10(%rbp),%eax
+  96:	72 dc                	jb     74 <osc::string_validate(void*, unsigned int)+0x74>
+  98:	8b 45 f0             	mov    -0x10(%rbp),%eax
+  9b:	5d                   	pop    %rbp
+  9c:	c3                   	ret    
+
+Disassembly of section .text._ZN3oscL8get_pathEPvj:
+
+0000000000000000 <osc::get_path(void*, unsigned int)>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 83 ec 10          	sub    $0x10,%rsp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	89 75 f4             	mov    %esi,-0xc(%rbp)
+   f:	8b 55 f4             	mov    -0xc(%rbp),%edx
+  12:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  16:	89 d6                	mov    %edx,%esi
+  18:	48 89 c7             	mov    %rax,%rdi
+  1b:	e8 00 00 00 00       	call   20 <osc::get_path(void*, unsigned int)+0x20>
+  20:	83 f8 03             	cmp    $0x3,%eax
+  23:	7e 06                	jle    2b <osc::get_path(void*, unsigned int)+0x2b>
+  25:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  29:	eb 05                	jmp    30 <osc::get_path(void*, unsigned int)+0x30>
+  2b:	b8 00 00 00 00       	mov    $0x0,%eax
+  30:	c9                   	leave  
+  31:	c3                   	ret    
+
+Disassembly of section .text._ZN3oscL8is_matchEPKcS1_:
+
+0000000000000000 <osc::is_match(char const*, char const*)>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 83 ec 10          	sub    $0x10,%rsp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  10:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+  14:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  18:	48 89 d6             	mov    %rdx,%rsi
+  1b:	48 89 c7             	mov    %rax,%rdi
+  1e:	e8 00 00 00 00       	call   23 <osc::is_match(char const*, char const*)+0x23>
+  23:	85 c0                	test   %eax,%eax
+  25:	0f 95 c0             	setne  %al
+  28:	c9                   	leave  
+  29:	c3                   	ret    
+
+Disassembly of section .text._ZN7OSCBlobD2Ev:
+
+0000000000000000 <OSCBlob::~OSCBlob()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	90                   	nop
+   d:	5d                   	pop    %rbp
+   e:	c3                   	ret    
+
+Disassembly of section .text._ZN7OSCBlob11GetDataSizeEv:
+
+0000000000000000 <OSCBlob::GetDataSize()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 08             	mov    0x8(%rax),%eax
+  13:	5d                   	pop    %rbp
+  14:	c3                   	ret    
+
+Disassembly of section .text._ZN7OSCBlob10GetDataPtrEv:
+
+0000000000000000 <OSCBlob::GetDataPtr()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	48 8b 00             	mov    (%rax),%rax
+  13:	5d                   	pop    %rbp
+  14:	c3                   	ret    
+
+Disassembly of section .text._ZN16OscSimpleMessage7GetArgcEv:
+
+0000000000000000 <OscSimpleMessage::GetArgc()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	0f b6 40 0c          	movzbl 0xc(%rax),%eax
+  14:	84 c0                	test   %al,%al
+  16:	74 09                	je     21 <OscSimpleMessage::GetArgc()+0x21>
+  18:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  1c:	8b 40 18             	mov    0x18(%rax),%eax
+  1f:	eb 05                	jmp    26 <OscSimpleMessage::GetArgc()+0x26>
+  21:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+  26:	5d                   	pop    %rbp
+  27:	c3                   	ret    
+
+Disassembly of section .text._ZN16OscSimpleMessage7GetTypeEj:
+
+0000000000000000 <OscSimpleMessage::GetType(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	89 75 f4             	mov    %esi,-0xc(%rbp)
+   f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  13:	8b 40 18             	mov    0x18(%rax),%eax
+  16:	39 45 f4             	cmp    %eax,-0xc(%rbp)
+  19:	73 13                	jae    2e <OscSimpleMessage::GetType(unsigned int)+0x2e>
+  1b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  1f:	48 8b 50 10          	mov    0x10(%rax),%rdx
+  23:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  26:	48 01 d0             	add    %rdx,%rax
+  29:	0f b6 00             	movzbl (%rax),%eax
+  2c:	eb 05                	jmp    33 <OscSimpleMessage::GetType(unsigned int)+0x33>
+  2e:	b8 00 00 00 00       	mov    $0x0,%eax
+  33:	5d                   	pop    %rbp
+  34:	c3                   	ret    
+
+Disassembly of section .text._ZNK7Network5GetIpEv:
+
+0000000000000000 <Network::GetIp() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 10             	mov    0x10(%rax),%eax
+  13:	5d                   	pop    %rbp
+  14:	c3                   	ret    
+
+Disassembly of section .text._ZNK7Network10GetNetmaskEv:
+
+0000000000000000 <Network::GetNetmask() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 18             	mov    0x18(%rax),%eax
+  13:	5d                   	pop    %rbp
+  14:	c3                   	ret    
+
+Disassembly of section .text._ZN7Network3GetEv:
+
+0000000000000000 <Network::Get()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # f <Network::Get()+0xf>
+   f:	5d                   	pop    %rbp
+  10:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware3GetEv:
+
+0000000000000000 <Hardware::Get()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # f <Hardware::Get()+0xf>
+   f:	5d                   	pop    %rbp
+  10:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServerC2Ev:
+
+0000000000000000 <OscServer::OscServer()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  17:	00 00 
+  19:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  1d:	31 c0                	xor    %eax,%eax
+  1f:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  23:	66 c7 00 40 1f       	movw   $0x1f40,(%rax)
+  28:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  2c:	66 c7 40 02 28 23    	movw   $0x2328,0x2(%rax)
+  32:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  36:	c7 40 04 ff ff ff ff 	movl   $0xffffffff,0x4(%rax)
+  3d:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  41:	66 c7 40 08 00 00    	movw   $0x0,0x8(%rax)
+  47:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  4b:	c6 40 0a 00          	movb   $0x0,0xa(%rax)
+  4f:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  53:	c6 40 0b 00          	movb   $0x0,0xb(%rax)
+  57:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  5b:	c6 40 0c 00          	movb   $0x0,0xc(%rax)
+  5f:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  63:	48 c7 40 30 00 00 00 	movq   $0x0,0x30(%rax)
+  6a:	00 
+  6b:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  6f:	48 c7 40 38 00 00 00 	movq   $0x0,0x38(%rax)
+  76:	00 
+  77:	b9 3f 00 00 00       	mov    $0x3f,%ecx
+  7c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 83 <OscServer::OscServer()+0x83>
+  83:	48 89 c2             	mov    %rax,%rdx
+  86:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 8d <OscServer::OscServer()+0x8d>
+  8d:	48 89 c6             	mov    %rax,%rsi
+  90:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 97 <OscServer::OscServer()+0x97>
+  97:	48 89 c7             	mov    %rax,%rdi
+  9a:	b8 00 00 00 00       	mov    $0x0,%eax
+  9f:	e8 00 00 00 00       	call   a4 <OscServer::OscServer()+0xa4>
+  a4:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # ab <OscServer::OscServer()+0xab>
+  ab:	48 85 c0             	test   %rax,%rax
+  ae:	74 28                	je     d8 <OscServer::OscServer()+0xd8>
+  b0:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # b7 <OscServer::OscServer()+0xb7>
+  b7:	48 89 c1             	mov    %rax,%rcx
+  ba:	ba 40 00 00 00       	mov    $0x40,%edx
+  bf:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # c6 <OscServer::OscServer()+0xc6>
+  c6:	48 89 c6             	mov    %rax,%rsi
+  c9:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # d0 <OscServer::OscServer()+0xd0>
+  d0:	48 89 c7             	mov    %rax,%rdi
+  d3:	e8 00 00 00 00       	call   d8 <OscServer::OscServer()+0xd8>
+  d8:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  dc:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # e3 <OscServer::OscServer()+0xe3>
+  e3:	ba 80 00 00 00       	mov    $0x80,%edx
+  e8:	be 00 00 00 00       	mov    $0x0,%esi
+  ed:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # f4 <OscServer::OscServer()+0xf4>
+  f4:	48 89 c7             	mov    %rax,%rdi
+  f7:	e8 00 00 00 00       	call   fc <OscServer::OscServer()+0xfc>
+  fc:	c7 05 00 00 00 00 2f 	movl   $0x786d642f,0x0(%rip)        # 106 <OscServer::OscServer()+0x106>
+ 103:	64 6d 78 
+ 106:	66 c7 05 00 00 00 00 	movw   $0x31,0x0(%rip)        # 10f <OscServer::OscServer()+0x10f>
+ 10d:	31 00 
+ 10f:	ba 80 00 00 00       	mov    $0x80,%edx
+ 114:	be 00 00 00 00       	mov    $0x0,%esi
+ 119:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 120 <OscServer::OscServer()+0x120>
+ 120:	48 89 c7             	mov    %rax,%rdi
+ 123:	e8 00 00 00 00       	call   128 <OscServer::OscServer()+0x128>
+ 128:	48 b8 2f 64 6d 78 31 	movabs $0x2a2f31786d642f,%rax
+ 12f:	2f 2a 00 
+ 132:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 139 <OscServer::OscServer()+0x139>
+ 139:	ba 80 00 00 00       	mov    $0x80,%edx
+ 13e:	be 00 00 00 00       	mov    $0x0,%esi
+ 143:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 14a <OscServer::OscServer()+0x14a>
+ 14a:	48 89 c7             	mov    %rax,%rdi
+ 14d:	e8 00 00 00 00       	call   152 <OscServer::OscServer()+0x152>
+ 152:	66 c7 05 00 00 00 00 	movw   $0x322f,0x0(%rip)        # 15b <OscServer::OscServer()+0x15b>
+ 159:	2f 32 
+ 15b:	c6 05 00 00 00 00 00 	movb   $0x0,0x0(%rip)        # 162 <OscServer::OscServer()+0x162>
+ 162:	ba 80 00 00 00       	mov    $0x80,%edx
+ 167:	be 00 00 00 00       	mov    $0x0,%esi
+ 16c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 173 <OscServer::OscServer()+0x173>
+ 173:	48 89 c7             	mov    %rax,%rdi
+ 176:	e8 00 00 00 00       	call   17b <OscServer::OscServer()+0x17b>
+ 17b:	48 b8 2f 64 6d 78 31 	movabs $0x6c622f31786d642f,%rax
+ 182:	2f 62 6c 
+ 185:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 18c <OscServer::OscServer()+0x18c>
+ 18c:	c7 05 00 00 00 00 61 	movl   $0x6f6b6361,0x0(%rip)        # 196 <OscServer::OscServer()+0x196>
+ 193:	63 6b 6f 
+ 196:	66 c7 05 00 00 00 00 	movw   $0x7475,0x0(%rip)        # 19f <OscServer::OscServer()+0x19f>
+ 19d:	75 74 
+ 19f:	c6 05 00 00 00 00 00 	movb   $0x0,0x0(%rip)        # 1a6 <OscServer::OscServer()+0x1a6>
+ 1a6:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 1aa:	48 83 c0 0d          	add    $0xd,%rax
+ 1ae:	4c 8d 05 00 00 00 00 	lea    0x0(%rip),%r8        # 1b5 <OscServer::OscServer()+0x1b5>
+ 1b5:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 1bc <OscServer::OscServer()+0x1bc>
+ 1bc:	48 89 d1             	mov    %rdx,%rcx
+ 1bf:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 1c6 <OscServer::OscServer()+0x1c6>
+ 1c6:	be 1f 00 00 00       	mov    $0x1f,%esi
+ 1cb:	48 89 c7             	mov    %rax,%rdi
+ 1ce:	b8 00 00 00 00       	mov    $0x0,%eax
+ 1d3:	e8 00 00 00 00       	call   1d8 <OscServer::OscServer()+0x1d8>
+ 1d8:	e8 00 00 00 00       	call   1dd <OscServer::OscServer()+0x1dd>
+ 1dd:	48 89 c2             	mov    %rax,%rdx
+ 1e0:	48 8d 45 f7          	lea    -0x9(%rbp),%rax
+ 1e4:	48 89 c6             	mov    %rax,%rsi
+ 1e7:	48 89 d7             	mov    %rdx,%rdi
+ 1ea:	e8 00 00 00 00       	call   1ef <OscServer::OscServer()+0x1ef>
+ 1ef:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+ 1f3:	48 89 42 40          	mov    %rax,0x40(%rdx)
+ 1f7:	e8 00 00 00 00       	call   1fc <OscServer::OscServer()+0x1fc>
+ 1fc:	48 89 c2             	mov    %rax,%rdx
+ 1ff:	48 8d 45 f7          	lea    -0x9(%rbp),%rax
+ 203:	48 89 c6             	mov    %rax,%rsi
+ 206:	48 89 d7             	mov    %rdx,%rdi
+ 209:	e8 00 00 00 00       	call   20e <OscServer::OscServer()+0x20e>
+ 20e:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+ 212:	48 89 42 48          	mov    %rax,0x48(%rdx)
+ 216:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 21a:	48 8b 40 48          	mov    0x48(%rax),%rax
+ 21e:	0f b6 00             	movzbl (%rax),%eax
+ 221:	84 c0                	test   %al,%al
+ 223:	75 1f                	jne    244 <OscServer::OscServer()+0x244>
+ 225:	e8 00 00 00 00       	call   22a <OscServer::OscServer()+0x22a>
+ 22a:	48 89 c2             	mov    %rax,%rdx
+ 22d:	48 8d 45 f7          	lea    -0x9(%rbp),%rax
+ 231:	48 89 c6             	mov    %rax,%rsi
+ 234:	48 89 d7             	mov    %rdx,%rdi
+ 237:	e8 00 00 00 00       	call   23c <OscServer::OscServer()+0x23c>
+ 23c:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+ 240:	48 89 42 48          	mov    %rax,0x48(%rdx)
+ 244:	b9 59 00 00 00       	mov    $0x59,%ecx
+ 249:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 250 <OscServer::OscServer()+0x250>
+ 250:	48 89 c2             	mov    %rax,%rdx
+ 253:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 25a <OscServer::OscServer()+0x25a>
+ 25a:	48 89 c6             	mov    %rax,%rsi
+ 25d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 264 <OscServer::OscServer()+0x264>
+ 264:	48 89 c7             	mov    %rax,%rdi
+ 267:	b8 00 00 00 00       	mov    $0x0,%eax
+ 26c:	e8 00 00 00 00       	call   271 <OscServer::OscServer()+0x271>
+ 271:	90                   	nop
+ 272:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 276:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 27d:	00 00 
+ 27f:	74 05                	je     286 <OscServer::OscServer()+0x286>
+ 281:	e8 00 00 00 00       	call   286 <OscServer::OscServer()+0x286>
+ 286:	c9                   	leave  
+ 287:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServerD2Ev:
+
+0000000000000000 <OscServer::~OscServer()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	b9 5d 00 00 00       	mov    $0x5d,%ecx
+  15:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 1c <OscServer::~OscServer()+0x1c>
+  1c:	48 89 c2             	mov    %rax,%rdx
+  1f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 26 <OscServer::~OscServer()+0x26>
+  26:	48 89 c6             	mov    %rax,%rsi
+  29:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 30 <OscServer::~OscServer()+0x30>
+  30:	48 89 c7             	mov    %rax,%rdi
+  33:	b8 00 00 00 00       	mov    $0x0,%eax
+  38:	e8 00 00 00 00       	call   3d <OscServer::~OscServer()+0x3d>
+  3d:	b9 5f 00 00 00       	mov    $0x5f,%ecx
+  42:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 49 <OscServer::~OscServer()+0x49>
+  49:	48 89 c2             	mov    %rax,%rdx
+  4c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 53 <OscServer::~OscServer()+0x53>
+  53:	48 89 c6             	mov    %rax,%rsi
+  56:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 5d <OscServer::~OscServer()+0x5d>
+  5d:	48 89 c7             	mov    %rax,%rdi
+  60:	b8 00 00 00 00       	mov    $0x0,%eax
+  65:	e8 00 00 00 00       	call   6a <OscServer::~OscServer()+0x6a>
+  6a:	90                   	nop
+  6b:	c9                   	leave  
+  6c:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer5StartEv:
+
+0000000000000000 <OscServer::Start()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	41 54                	push   %r12
+   a:	53                   	push   %rbx
+   b:	48 83 ec 20          	sub    $0x20,%rsp
+   f:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+  13:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  1a:	00 00 
+  1c:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+  20:	31 c0                	xor    %eax,%eax
+  22:	b9 63 00 00 00       	mov    $0x63,%ecx
+  27:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2e <OscServer::Start()+0x2e>
+  2e:	48 89 c2             	mov    %rax,%rdx
+  31:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 38 <OscServer::Start()+0x38>
+  38:	48 89 c6             	mov    %rax,%rsi
+  3b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 42 <OscServer::Start()+0x42>
+  42:	48 89 c7             	mov    %rax,%rdi
+  45:	b8 00 00 00 00       	mov    $0x0,%eax
+  4a:	e8 00 00 00 00       	call   4f <OscServer::Start()+0x4f>
+  4f:	e8 00 00 00 00       	call   54 <OscServer::Start()+0x54>
+  54:	48 89 c2             	mov    %rax,%rdx
+  57:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  5b:	0f b7 00             	movzwl (%rax),%eax
+  5e:	0f b7 c0             	movzwl %ax,%eax
+  61:	89 c6                	mov    %eax,%esi
+  63:	48 89 d7             	mov    %rdx,%rdi
+  66:	e8 00 00 00 00       	call   6b <OscServer::Start()+0x6b>
+  6b:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+  6f:	89 42 04             	mov    %eax,0x4(%rdx)
+  72:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  76:	8b 40 04             	mov    0x4(%rax),%eax
+  79:	83 f8 ff             	cmp    $0xffffffff,%eax
+  7c:	75 28                	jne    a6 <OscServer::Start()+0xa6>
+  7e:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 85 <OscServer::Start()+0x85>
+  85:	48 89 c1             	mov    %rax,%rcx
+  88:	ba 66 00 00 00       	mov    $0x66,%edx
+  8d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 94 <OscServer::Start()+0x94>
+  94:	48 89 c6             	mov    %rax,%rsi
+  97:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 9e <OscServer::Start()+0x9e>
+  9e:	48 89 c7             	mov    %rax,%rdi
+  a1:	e8 00 00 00 00       	call   a6 <OscServer::Start()+0xa6>
+  a6:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  aa:	0f b7 00             	movzwl (%rax),%eax
+  ad:	0f b7 d8             	movzwl %ax,%ebx
+  b0:	e8 00 00 00 00       	call   b5 <OscServer::Start()+0xb5>
+  b5:	48 89 c7             	mov    %rax,%rdi
+  b8:	e8 00 00 00 00       	call   bd <OscServer::Start()+0xbd>
+  bd:	41 89 c4             	mov    %eax,%r12d
+  c0:	e8 00 00 00 00       	call   c5 <OscServer::Start()+0xc5>
+  c5:	48 89 c7             	mov    %rax,%rdi
+  c8:	e8 00 00 00 00       	call   cd <OscServer::Start()+0xcd>
+  cd:	f7 d0                	not    %eax
+  cf:	44 89 e2             	mov    %r12d,%edx
+  d2:	09 c2                	or     %eax,%edx
+  d4:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  d8:	8b 70 04             	mov    0x4(%rax),%esi
+  db:	48 8d 45 e7          	lea    -0x19(%rbp),%rax
+  df:	41 b9 00 00 00 00    	mov    $0x0,%r9d
+  e5:	4c 8d 05 00 00 00 00 	lea    0x0(%rip),%r8        # ec <OscServer::Start()+0xec>
+  ec:	89 d9                	mov    %ebx,%ecx
+  ee:	48 89 c7             	mov    %rax,%rdi
+  f1:	e8 00 00 00 00       	call   f6 <OscServer::Start()+0xf6>
+  f6:	e8 00 00 00 00       	call   fb <OscServer::Start()+0xfb>
+  fb:	be 02 00 00 00       	mov    $0x2,%esi
+ 100:	48 89 c7             	mov    %rax,%rdi
+ 103:	e8 00 00 00 00       	call   108 <OscServer::Start()+0x108>
+ 108:	b9 6c 00 00 00       	mov    $0x6c,%ecx
+ 10d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 114 <OscServer::Start()+0x114>
+ 114:	48 89 c2             	mov    %rax,%rdx
+ 117:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 11e <OscServer::Start()+0x11e>
+ 11e:	48 89 c6             	mov    %rax,%rsi
+ 121:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 128 <OscServer::Start()+0x128>
+ 128:	48 89 c7             	mov    %rax,%rdi
+ 12b:	b8 00 00 00 00       	mov    $0x0,%eax
+ 130:	e8 00 00 00 00       	call   135 <OscServer::Start()+0x135>
+ 135:	90                   	nop
+ 136:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 13a:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 141:	00 00 
+ 143:	74 05                	je     14a <OscServer::Start()+0x14a>
+ 145:	e8 00 00 00 00       	call   14a <OscServer::Start()+0x14a>
+ 14a:	48 83 c4 20          	add    $0x20,%rsp
+ 14e:	5b                   	pop    %rbx
+ 14f:	41 5c                	pop    %r12
+ 151:	5d                   	pop    %rbp
+ 152:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer4StopEv:
+
+0000000000000000 <OscServer::Stop()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  14:	48 8b 40 38          	mov    0x38(%rax),%rax
+  18:	48 85 c0             	test   %rax,%rax
+  1b:	74 24                	je     41 <OscServer::Stop()+0x41>
+  1d:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  21:	48 8b 40 38          	mov    0x38(%rax),%rax
+  25:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  29:	48 8b 52 38          	mov    0x38(%rdx),%rdx
+  2d:	48 8b 12             	mov    (%rdx),%rdx
+  30:	48 83 c2 18          	add    $0x18,%rdx
+  34:	48 8b 12             	mov    (%rdx),%rdx
+  37:	be 00 00 00 00       	mov    $0x0,%esi
+  3c:	48 89 c7             	mov    %rax,%rdi
+  3f:	ff d2                	call   *%rdx
+  41:	90                   	nop
+  42:	c9                   	leave  
+  43:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer7SetPathEPKc:
+
+0000000000000000 <OscServer::SetPath(char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+  14:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  18:	0f b6 00             	movzbl (%rax),%eax
+  1b:	3c 2f                	cmp    $0x2f,%al
+  1d:	0f 85 ca 00 00 00    	jne    ed <OscServer::SetPath(char const*)+0xed>
+  23:	48 c7 45 f8 7d 00 00 	movq   $0x7d,-0x8(%rbp)
+  2a:	00 
+  2b:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  2f:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  33:	48 89 c6             	mov    %rax,%rsi
+  36:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 3d <OscServer::SetPath(char const*)+0x3d>
+  3d:	48 89 c7             	mov    %rax,%rdi
+  40:	e8 00 00 00 00       	call   45 <OscServer::SetPath(char const*)+0x45>
+  45:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4c <OscServer::SetPath(char const*)+0x4c>
+  4c:	48 89 c7             	mov    %rax,%rdi
+  4f:	e8 00 00 00 00       	call   54 <OscServer::SetPath(char const*)+0x54>
+  54:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  58:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  5c:	48 8d 50 ff          	lea    -0x1(%rax),%rdx
+  60:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 67 <OscServer::SetPath(char const*)+0x67>
+  67:	0f b6 04 02          	movzbl (%rdx,%rax,1),%eax
+  6b:	3c 2f                	cmp    $0x2f,%al
+  6d:	75 13                	jne    82 <OscServer::SetPath(char const*)+0x82>
+  6f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  73:	48 8d 50 ff          	lea    -0x1(%rax),%rdx
+  77:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7e <OscServer::SetPath(char const*)+0x7e>
+  7e:	c6 04 02 00          	movb   $0x0,(%rdx,%rax,1)
+  82:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 89 <OscServer::SetPath(char const*)+0x89>
+  89:	48 89 c6             	mov    %rax,%rsi
+  8c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 93 <OscServer::SetPath(char const*)+0x93>
+  93:	48 89 c7             	mov    %rax,%rdi
+  96:	e8 00 00 00 00       	call   9b <OscServer::SetPath(char const*)+0x9b>
+  9b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # a2 <OscServer::SetPath(char const*)+0xa2>
+  a2:	48 89 c7             	mov    %rax,%rdi
+  a5:	e8 00 00 00 00       	call   aa <OscServer::SetPath(char const*)+0xaa>
+  aa:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  ae:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  b2:	48 8d 50 01          	lea    0x1(%rax),%rdx
+  b6:	48 89 55 f8          	mov    %rdx,-0x8(%rbp)
+  ba:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # c1 <OscServer::SetPath(char const*)+0xc1>
+  c1:	c6 04 10 2f          	movb   $0x2f,(%rax,%rdx,1)
+  c5:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  c9:	48 8d 50 01          	lea    0x1(%rax),%rdx
+  cd:	48 89 55 f8          	mov    %rdx,-0x8(%rbp)
+  d1:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # d8 <OscServer::SetPath(char const*)+0xd8>
+  d8:	c6 04 10 2a          	movb   $0x2a,(%rax,%rdx,1)
+  dc:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # e3 <OscServer::SetPath(char const*)+0xe3>
+  e3:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  e7:	48 01 d0             	add    %rdx,%rax
+  ea:	c6 00 00             	movb   $0x0,(%rax)
+  ed:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # f4 <OscServer::SetPath(char const*)+0xf4>
+  f4:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # fb <OscServer::SetPath(char const*)+0xfb>
+  fb:	41 b8 86 00 00 00    	mov    $0x86,%r8d
+ 101:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 108 <OscServer::SetPath(char const*)+0x108>
+ 108:	48 89 d1             	mov    %rdx,%rcx
+ 10b:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 112 <OscServer::SetPath(char const*)+0x112>
+ 112:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 119 <OscServer::SetPath(char const*)+0x119>
+ 119:	48 89 c7             	mov    %rax,%rdi
+ 11c:	b8 00 00 00 00       	mov    $0x0,%eax
+ 121:	e8 00 00 00 00       	call   126 <OscServer::SetPath(char const*)+0x126>
+ 126:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 12d <OscServer::SetPath(char const*)+0x12d>
+ 12d:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 134 <OscServer::SetPath(char const*)+0x134>
+ 134:	41 b8 87 00 00 00    	mov    $0x87,%r8d
+ 13a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 141 <OscServer::SetPath(char const*)+0x141>
+ 141:	48 89 d1             	mov    %rdx,%rcx
+ 144:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 14b <OscServer::SetPath(char const*)+0x14b>
+ 14b:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 152 <OscServer::SetPath(char const*)+0x152>
+ 152:	48 89 c7             	mov    %rax,%rdi
+ 155:	b8 00 00 00 00       	mov    $0x0,%eax
+ 15a:	e8 00 00 00 00       	call   15f <OscServer::SetPath(char const*)+0x15f>
+ 15f:	90                   	nop
+ 160:	c9                   	leave  
+ 161:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer11SetPathInfoEPKc:
+
+0000000000000000 <OscServer::SetPathInfo(char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+  14:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  18:	0f b6 00             	movzbl (%rax),%eax
+  1b:	3c 2f                	cmp    $0x2f,%al
+  1d:	75 5f                	jne    7e <OscServer::SetPathInfo(char const*)+0x7e>
+  1f:	48 c7 45 f8 7f 00 00 	movq   $0x7f,-0x8(%rbp)
+  26:	00 
+  27:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  2b:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  2f:	48 89 c6             	mov    %rax,%rsi
+  32:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 39 <OscServer::SetPathInfo(char const*)+0x39>
+  39:	48 89 c7             	mov    %rax,%rdi
+  3c:	e8 00 00 00 00       	call   41 <OscServer::SetPathInfo(char const*)+0x41>
+  41:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 48 <OscServer::SetPathInfo(char const*)+0x48>
+  48:	48 89 c7             	mov    %rax,%rdi
+  4b:	e8 00 00 00 00       	call   50 <OscServer::SetPathInfo(char const*)+0x50>
+  50:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  54:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  58:	48 8d 50 ff          	lea    -0x1(%rax),%rdx
+  5c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 63 <OscServer::SetPathInfo(char const*)+0x63>
+  63:	0f b6 04 02          	movzbl (%rdx,%rax,1),%eax
+  67:	3c 2f                	cmp    $0x2f,%al
+  69:	75 13                	jne    7e <OscServer::SetPathInfo(char const*)+0x7e>
+  6b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  6f:	48 8d 50 ff          	lea    -0x1(%rax),%rdx
+  73:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7a <OscServer::SetPathInfo(char const*)+0x7a>
+  7a:	c6 04 02 00          	movb   $0x0,(%rdx,%rax,1)
+  7e:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 85 <OscServer::SetPathInfo(char const*)+0x85>
+  85:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 8c <OscServer::SetPathInfo(char const*)+0x8c>
+  8c:	41 b8 95 00 00 00    	mov    $0x95,%r8d
+  92:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 99 <OscServer::SetPathInfo(char const*)+0x99>
+  99:	48 89 d1             	mov    %rdx,%rcx
+  9c:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # a3 <OscServer::SetPathInfo(char const*)+0xa3>
+  a3:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # aa <OscServer::SetPathInfo(char const*)+0xaa>
+  aa:	48 89 c7             	mov    %rax,%rdi
+  ad:	b8 00 00 00 00       	mov    $0x0,%eax
+  b2:	e8 00 00 00 00       	call   b7 <OscServer::SetPathInfo(char const*)+0xb7>
+  b7:	90                   	nop
+  b8:	c9                   	leave  
+  b9:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer15SetPathBlackOutEPKc:
+
+0000000000000000 <OscServer::SetPathBlackOut(char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+  14:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  18:	0f b6 00             	movzbl (%rax),%eax
+  1b:	3c 2f                	cmp    $0x2f,%al
+  1d:	75 5f                	jne    7e <OscServer::SetPathBlackOut(char const*)+0x7e>
+  1f:	48 c7 45 f8 7f 00 00 	movq   $0x7f,-0x8(%rbp)
+  26:	00 
+  27:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  2b:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  2f:	48 89 c6             	mov    %rax,%rsi
+  32:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 39 <OscServer::SetPathBlackOut(char const*)+0x39>
+  39:	48 89 c7             	mov    %rax,%rdi
+  3c:	e8 00 00 00 00       	call   41 <OscServer::SetPathBlackOut(char const*)+0x41>
+  41:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 48 <OscServer::SetPathBlackOut(char const*)+0x48>
+  48:	48 89 c7             	mov    %rax,%rdi
+  4b:	e8 00 00 00 00       	call   50 <OscServer::SetPathBlackOut(char const*)+0x50>
+  50:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  54:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  58:	48 8d 50 ff          	lea    -0x1(%rax),%rdx
+  5c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 63 <OscServer::SetPathBlackOut(char const*)+0x63>
+  63:	0f b6 04 02          	movzbl (%rdx,%rax,1),%eax
+  67:	3c 2f                	cmp    $0x2f,%al
+  69:	75 13                	jne    7e <OscServer::SetPathBlackOut(char const*)+0x7e>
+  6b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  6f:	48 8d 50 ff          	lea    -0x1(%rax),%rdx
+  73:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7a <OscServer::SetPathBlackOut(char const*)+0x7a>
+  7a:	c6 04 02 00          	movb   $0x0,(%rdx,%rax,1)
+  7e:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 85 <OscServer::SetPathBlackOut(char const*)+0x85>
+  85:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 8c <OscServer::SetPathBlackOut(char const*)+0x8c>
+  8c:	41 b8 a3 00 00 00    	mov    $0xa3,%r8d
+  92:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 99 <OscServer::SetPathBlackOut(char const*)+0x99>
+  99:	48 89 d1             	mov    %rdx,%rcx
+  9c:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # a3 <OscServer::SetPathBlackOut(char const*)+0xa3>
+  a3:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # aa <OscServer::SetPathBlackOut(char const*)+0xaa>
+  aa:	48 89 c7             	mov    %rax,%rdi
+  ad:	b8 00 00 00 00       	mov    $0x0,%eax
+  b2:	e8 00 00 00 00       	call   b7 <OscServer::SetPathBlackOut(char const*)+0xb7>
+  b7:	90                   	nop
+  b8:	c9                   	leave  
+  b9:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer10GetChannelEPKc:
+
+0000000000000000 <OscServer::GetChannel(char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+  10:	48 89 75 d0          	mov    %rsi,-0x30(%rbp)
+  14:	48 83 7d d0 00       	cmpq   $0x0,-0x30(%rbp)
+  19:	75 28                	jne    43 <OscServer::GetChannel(char const*)+0x43>
+  1b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 22 <OscServer::GetChannel(char const*)+0x22>
+  22:	48 89 c1             	mov    %rax,%rcx
+  25:	ba a7 00 00 00       	mov    $0xa7,%edx
+  2a:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 31 <OscServer::GetChannel(char const*)+0x31>
+  31:	48 89 c6             	mov    %rax,%rsi
+  34:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 3b <OscServer::GetChannel(char const*)+0x3b>
+  3b:	48 89 c7             	mov    %rax,%rdi
+  3e:	e8 00 00 00 00       	call   43 <OscServer::GetChannel(char const*)+0x43>
+  43:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4a <OscServer::GetChannel(char const*)+0x4a>
+  4a:	48 89 c7             	mov    %rax,%rdi
+  4d:	e8 00 00 00 00       	call   52 <OscServer::GetChannel(char const*)+0x52>
+  52:	48 8d 50 01          	lea    0x1(%rax),%rdx
+  56:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  5a:	48 01 d0             	add    %rdx,%rax
+  5d:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  61:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+  68:	c7 45 f0 00 00 00 00 	movl   $0x0,-0x10(%rbp)
+  6f:	eb 42                	jmp    b3 <OscServer::GetChannel(char const*)+0xb3>
+  71:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  75:	0f b6 00             	movzbl (%rax),%eax
+  78:	0f be c0             	movsbl %al,%eax
+  7b:	89 45 f4             	mov    %eax,-0xc(%rbp)
+  7e:	83 7d f4 2f          	cmpl   $0x2f,-0xc(%rbp)
+  82:	7e 06                	jle    8a <OscServer::GetChannel(char const*)+0x8a>
+  84:	83 7d f4 39          	cmpl   $0x39,-0xc(%rbp)
+  88:	7e 07                	jle    91 <OscServer::GetChannel(char const*)+0x91>
+  8a:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+  8f:	eb 46                	jmp    d7 <OscServer::GetChannel(char const*)+0xd7>
+  91:	8b 55 ec             	mov    -0x14(%rbp),%edx
+  94:	89 d0                	mov    %edx,%eax
+  96:	c1 e0 02             	shl    $0x2,%eax
+  99:	01 d0                	add    %edx,%eax
+  9b:	01 c0                	add    %eax,%eax
+  9d:	89 c2                	mov    %eax,%edx
+  9f:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  a2:	01 d0                	add    %edx,%eax
+  a4:	83 e8 30             	sub    $0x30,%eax
+  a7:	89 45 ec             	mov    %eax,-0x14(%rbp)
+  aa:	48 83 45 f8 01       	addq   $0x1,-0x8(%rbp)
+  af:	83 45 f0 01          	addl   $0x1,-0x10(%rbp)
+  b3:	83 7d f0 02          	cmpl   $0x2,-0x10(%rbp)
+  b7:	7f 0b                	jg     c4 <OscServer::GetChannel(char const*)+0xc4>
+  b9:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  bd:	0f b6 00             	movzbl (%rax),%eax
+  c0:	84 c0                	test   %al,%al
+  c2:	75 ad                	jne    71 <OscServer::GetChannel(char const*)+0x71>
+  c4:	81 7d ec 00 02 00 00 	cmpl   $0x200,-0x14(%rbp)
+  cb:	7e 07                	jle    d4 <OscServer::GetChannel(char const*)+0xd4>
+  cd:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+  d2:	eb 03                	jmp    d7 <OscServer::GetChannel(char const*)+0xd7>
+  d4:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  d7:	c9                   	leave  
+  d8:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer16IsDmxDataChangedEPKhtj:
+
+0000000000000000 <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 40          	sub    $0x40,%rsp
+   c:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+  10:	48 89 75 d0          	mov    %rsi,-0x30(%rbp)
+  14:	89 d0                	mov    %edx,%eax
+  16:	89 4d c8             	mov    %ecx,-0x38(%rbp)
+  19:	66 89 45 cc          	mov    %ax,-0x34(%rbp)
+  1d:	48 83 7d d0 00       	cmpq   $0x0,-0x30(%rbp)
+  22:	75 28                	jne    4c <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x4c>
+  24:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2b <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x2b>
+  2b:	48 89 c1             	mov    %rax,%rcx
+  2e:	ba c0 00 00 00       	mov    $0xc0,%edx
+  33:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 3a <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x3a>
+  3a:	48 89 c6             	mov    %rax,%rsi
+  3d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 44 <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x44>
+  44:	48 89 c7             	mov    %rax,%rdi
+  47:	e8 00 00 00 00       	call   4c <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x4c>
+  4c:	81 7d c8 00 02 00 00 	cmpl   $0x200,-0x38(%rbp)
+  53:	76 28                	jbe    7d <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x7d>
+  55:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 5c <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x5c>
+  5c:	48 89 c1             	mov    %rax,%rcx
+  5f:	ba c1 00 00 00       	mov    $0xc1,%edx
+  64:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 6b <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x6b>
+  6b:	48 89 c6             	mov    %rax,%rsi
+  6e:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 75 <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x75>
+  75:	48 89 c7             	mov    %rax,%rdi
+  78:	e8 00 00 00 00       	call   7d <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x7d>
+  7d:	c6 45 e9 00          	movb   $0x0,-0x17(%rbp)
+  81:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  85:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  89:	66 83 6d cc 01       	subw   $0x1,-0x34(%rbp)
+  8e:	0f b7 45 cc          	movzwl -0x34(%rbp),%eax
+  92:	48 98                	cltq   
+  94:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 9b <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x9b>
+  9b:	48 01 d0             	add    %rdx,%rax
+  9e:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  a2:	0f b7 55 cc          	movzwl -0x34(%rbp),%edx
+  a6:	8b 45 c8             	mov    -0x38(%rbp),%eax
+  a9:	01 d0                	add    %edx,%eax
+  ab:	89 45 ec             	mov    %eax,-0x14(%rbp)
+  ae:	81 7d ec 00 02 00 00 	cmpl   $0x200,-0x14(%rbp)
+  b5:	76 28                	jbe    df <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0xdf>
+  b7:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # be <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0xbe>
+  be:	48 89 c1             	mov    %rax,%rcx
+  c1:	ba c8 00 00 00       	mov    $0xc8,%edx
+  c6:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # cd <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0xcd>
+  cd:	48 89 c6             	mov    %rax,%rsi
+  d0:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # d7 <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0xd7>
+  d7:	48 89 c7             	mov    %rax,%rdi
+  da:	e8 00 00 00 00       	call   df <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0xdf>
+  df:	0f b7 45 cc          	movzwl -0x34(%rbp),%eax
+  e3:	66 89 45 ea          	mov    %ax,-0x16(%rbp)
+  e7:	eb 38                	jmp    121 <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x121>
+  e9:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  ed:	0f b6 10             	movzbl (%rax),%edx
+  f0:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  f4:	0f b6 00             	movzbl (%rax),%eax
+  f7:	38 c2                	cmp    %al,%dl
+  f9:	74 11                	je     10c <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x10c>
+  fb:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  ff:	0f b6 10             	movzbl (%rax),%edx
+ 102:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 106:	88 10                	mov    %dl,(%rax)
+ 108:	c6 45 e9 01          	movb   $0x1,-0x17(%rbp)
+ 10c:	48 83 45 f8 01       	addq   $0x1,-0x8(%rbp)
+ 111:	48 83 45 f0 01       	addq   $0x1,-0x10(%rbp)
+ 116:	0f b7 45 ea          	movzwl -0x16(%rbp),%eax
+ 11a:	83 c0 01             	add    $0x1,%eax
+ 11d:	66 89 45 ea          	mov    %ax,-0x16(%rbp)
+ 121:	0f b7 45 ea          	movzwl -0x16(%rbp),%eax
+ 125:	39 45 ec             	cmp    %eax,-0x14(%rbp)
+ 128:	77 bf                	ja     e9 <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0xe9>
+ 12a:	0f b6 45 e9          	movzbl -0x17(%rbp),%eax
+ 12e:	c9                   	leave  
+ 12f:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer3RunEv:
+
+0000000000000000 <OscServer::Run()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	53                   	push   %rbx
+   9:	48 81 ec b8 00 00 00 	sub    $0xb8,%rsp
+  10:	48 89 bd 48 ff ff ff 	mov    %rdi,-0xb8(%rbp)
+  17:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  1e:	00 00 
+  20:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+  24:	31 c0                	xor    %eax,%eax
+  26:	e8 00 00 00 00       	call   2b <OscServer::Run()+0x2b>
+  2b:	48 89 c7             	mov    %rax,%rdi
+  2e:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+  35:	8b 40 04             	mov    0x4(%rax),%eax
+  38:	48 8d 8d 62 ff ff ff 	lea    -0x9e(%rbp),%rcx
+  3f:	48 8d 95 6c ff ff ff 	lea    -0x94(%rbp),%rdx
+  46:	49 89 c8             	mov    %rcx,%r8
+  49:	48 89 d1             	mov    %rdx,%rcx
+  4c:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 53 <OscServer::Run()+0x53>
+  53:	89 c6                	mov    %eax,%esi
+  55:	e8 00 00 00 00       	call   5a <OscServer::Run()+0x5a>
+  5a:	66 89 85 64 ff ff ff 	mov    %ax,-0x9c(%rbp)
+  61:	66 83 bd 64 ff ff ff 	cmpw   $0x0,-0x9c(%rbp)
+  68:	00 
+  69:	0f 94 c0             	sete   %al
+  6c:	0f b6 c0             	movzbl %al,%eax
+  6f:	48 85 c0             	test   %rax,%rax
+  72:	0f 85 37 0d 00 00    	jne    daf <OscServer::Run()+0xdaf>
+  78:	c6 85 61 ff ff ff 00 	movb   $0x0,-0x9f(%rbp)
+  7f:	0f b7 95 64 ff ff ff 	movzwl -0x9c(%rbp),%edx
+  86:	48 8b 0d 00 00 00 00 	mov    0x0(%rip),%rcx        # 8d <OscServer::Run()+0x8d>
+  8d:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+  91:	48 89 ce             	mov    %rcx,%rsi
+  94:	48 89 c7             	mov    %rax,%rdi
+  97:	e8 00 00 00 00       	call   9c <OscServer::Run()+0x9c>
+  9c:	0f b7 95 64 ff ff ff 	movzwl -0x9c(%rbp),%edx
+  a3:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # aa <OscServer::Run()+0xaa>
+  aa:	89 d6                	mov    %edx,%esi
+  ac:	48 89 c7             	mov    %rax,%rdi
+  af:	e8 00 00 00 00       	call   b4 <OscServer::Run()+0xb4>
+  b4:	0f b7 95 64 ff ff ff 	movzwl -0x9c(%rbp),%edx
+  bb:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # c2 <OscServer::Run()+0xc2>
+  c2:	89 d6                	mov    %edx,%esi
+  c4:	48 89 c7             	mov    %rax,%rdi
+  c7:	e8 00 00 00 00       	call   cc <OscServer::Run()+0xcc>
+  cc:	48 89 c2             	mov    %rax,%rdx
+  cf:	0f b7 8d 64 ff ff ff 	movzwl -0x9c(%rbp),%ecx
+  d6:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # dd <OscServer::Run()+0xdd>
+  dd:	48 83 ec 08          	sub    $0x8,%rsp
+  e1:	52                   	push   %rdx
+  e2:	41 89 c9             	mov    %ecx,%r9d
+  e5:	41 b8 e6 00 00 00    	mov    $0xe6,%r8d
+  eb:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # f2 <OscServer::Run()+0xf2>
+  f2:	48 89 d1             	mov    %rdx,%rcx
+  f5:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # fc <OscServer::Run()+0xfc>
+  fc:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 103 <OscServer::Run()+0x103>
+ 103:	48 89 c7             	mov    %rax,%rdi
+ 106:	b8 00 00 00 00       	mov    $0x0,%eax
+ 10b:	e8 00 00 00 00       	call   110 <OscServer::Run()+0x110>
+ 110:	48 83 c4 10          	add    $0x10,%rsp
+ 114:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 11b <OscServer::Run()+0x11b>
+ 11b:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 122 <OscServer::Run()+0x122>
+ 122:	48 89 d6             	mov    %rdx,%rsi
+ 125:	48 89 c7             	mov    %rax,%rdi
+ 128:	e8 00 00 00 00       	call   12d <OscServer::Run()+0x12d>
+ 12d:	84 c0                	test   %al,%al
+ 12f:	0f 84 af 05 00 00    	je     6e4 <OscServer::Run()+0x6e4>
+ 135:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 139:	48 89 c7             	mov    %rax,%rdi
+ 13c:	e8 00 00 00 00       	call   141 <OscServer::Run()+0x141>
+ 141:	89 85 74 ff ff ff    	mov    %eax,-0x8c(%rbp)
+ 147:	83 bd 74 ff ff ff 01 	cmpl   $0x1,-0x8c(%rbp)
+ 14e:	75 1c                	jne    16c <OscServer::Run()+0x16c>
+ 150:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 154:	be 00 00 00 00       	mov    $0x0,%esi
+ 159:	48 89 c7             	mov    %rax,%rdi
+ 15c:	e8 00 00 00 00       	call   161 <OscServer::Run()+0x161>
+ 161:	3c 62                	cmp    $0x62,%al
+ 163:	75 07                	jne    16c <OscServer::Run()+0x16c>
+ 165:	b8 01 00 00 00       	mov    $0x1,%eax
+ 16a:	eb 05                	jmp    171 <OscServer::Run()+0x171>
+ 16c:	b8 00 00 00 00       	mov    $0x0,%eax
+ 171:	84 c0                	test   %al,%al
+ 173:	0f 84 42 02 00 00    	je     3bb <OscServer::Run()+0x3bb>
+ 179:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 180 <OscServer::Run()+0x180>
+ 180:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 187 <OscServer::Run()+0x187>
+ 187:	41 b8 ec 00 00 00    	mov    $0xec,%r8d
+ 18d:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 194 <OscServer::Run()+0x194>
+ 194:	48 89 d1             	mov    %rdx,%rcx
+ 197:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 19e <OscServer::Run()+0x19e>
+ 19e:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1a5 <OscServer::Run()+0x1a5>
+ 1a5:	48 89 c7             	mov    %rax,%rdi
+ 1a8:	b8 00 00 00 00       	mov    $0x0,%eax
+ 1ad:	e8 00 00 00 00       	call   1b2 <OscServer::Run()+0x1b2>
+ 1b2:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+ 1b6:	48 8d 4d 80          	lea    -0x80(%rbp),%rcx
+ 1ba:	ba 00 00 00 00       	mov    $0x0,%edx
+ 1bf:	48 89 ce             	mov    %rcx,%rsi
+ 1c2:	48 89 c7             	mov    %rax,%rdi
+ 1c5:	e8 00 00 00 00       	call   1ca <OscServer::Run()+0x1ca>
+ 1ca:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+ 1ce:	48 89 c7             	mov    %rax,%rdi
+ 1d1:	e8 00 00 00 00       	call   1d6 <OscServer::Run()+0x1d6>
+ 1d6:	66 89 85 6a ff ff ff 	mov    %ax,-0x96(%rbp)
+ 1dd:	66 81 bd 6a ff ff ff 	cmpw   $0x200,-0x96(%rbp)
+ 1e4:	00 02 
+ 1e6:	0f 87 70 01 00 00    	ja     35c <OscServer::Run()+0x35c>
+ 1ec:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+ 1f0:	48 89 c7             	mov    %rax,%rdi
+ 1f3:	e8 00 00 00 00       	call   1f8 <OscServer::Run()+0x1f8>
+ 1f8:	48 89 85 78 ff ff ff 	mov    %rax,-0x88(%rbp)
+ 1ff:	0f b7 95 6a ff ff ff 	movzwl -0x96(%rbp),%edx
+ 206:	48 8b b5 78 ff ff ff 	mov    -0x88(%rbp),%rsi
+ 20d:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 214:	89 d1                	mov    %edx,%ecx
+ 216:	ba 01 00 00 00       	mov    $0x1,%edx
+ 21b:	48 89 c7             	mov    %rax,%rdi
+ 21e:	e8 00 00 00 00       	call   223 <OscServer::Run()+0x223>
+ 223:	88 85 61 ff ff ff    	mov    %al,-0x9f(%rbp)
+ 229:	80 bd 61 ff ff ff 00 	cmpb   $0x0,-0x9f(%rbp)
+ 230:	75 13                	jne    245 <OscServer::Run()+0x245>
+ 232:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 239:	0f b6 40 0b          	movzbl 0xb(%rax),%eax
+ 23d:	84 c0                	test   %al,%al
+ 23f:	0f 84 57 01 00 00    	je     39c <OscServer::Run()+0x39c>
+ 245:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 24c:	0f b6 40 0a          	movzbl 0xa(%rax),%eax
+ 250:	83 f0 01             	xor    $0x1,%eax
+ 253:	84 c0                	test   %al,%al
+ 255:	75 0b                	jne    262 <OscServer::Run()+0x262>
+ 257:	66 81 bd 6a ff ff ff 	cmpw   $0x200,-0x96(%rbp)
+ 25e:	00 02 
+ 260:	75 39                	jne    29b <OscServer::Run()+0x29b>
+ 262:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 269:	48 8b 40 38          	mov    0x38(%rax),%rax
+ 26d:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 274:	48 8b 52 38          	mov    0x38(%rdx),%rdx
+ 278:	48 8b 12             	mov    (%rdx),%rdx
+ 27b:	48 83 c2 20          	add    $0x20,%rdx
+ 27f:	4c 8b 02             	mov    (%rdx),%r8
+ 282:	b9 00 02 00 00       	mov    $0x200,%ecx
+ 287:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 28e <OscServer::Run()+0x28e>
+ 28e:	be 00 00 00 00       	mov    $0x0,%esi
+ 293:	48 89 c7             	mov    %rax,%rdi
+ 296:	41 ff d0             	call   *%r8
+ 299:	eb 78                	jmp    313 <OscServer::Run()+0x313>
+ 29b:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 2a2:	0f b7 40 08          	movzwl 0x8(%rax),%eax
+ 2a6:	66 39 85 6a ff ff ff 	cmp    %ax,-0x96(%rbp)
+ 2ad:	77 10                	ja     2bf <OscServer::Run()+0x2bf>
+ 2af:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 2b6:	48 83 c0 08          	add    $0x8,%rax
+ 2ba:	0f b7 00             	movzwl (%rax),%eax
+ 2bd:	eb 07                	jmp    2c6 <OscServer::Run()+0x2c6>
+ 2bf:	0f b7 85 6a ff ff ff 	movzwl -0x96(%rbp),%eax
+ 2c6:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 2cd:	66 89 42 08          	mov    %ax,0x8(%rdx)
+ 2d1:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 2d8:	48 8b 40 38          	mov    0x38(%rax),%rax
+ 2dc:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 2e3:	48 8b 52 38          	mov    0x38(%rdx),%rdx
+ 2e7:	48 8b 12             	mov    (%rdx),%rdx
+ 2ea:	48 83 c2 20          	add    $0x20,%rdx
+ 2ee:	4c 8b 02             	mov    (%rdx),%r8
+ 2f1:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 2f8:	0f b7 52 08          	movzwl 0x8(%rdx),%edx
+ 2fc:	0f b7 d2             	movzwl %dx,%edx
+ 2ff:	89 d1                	mov    %edx,%ecx
+ 301:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 308 <OscServer::Run()+0x308>
+ 308:	be 00 00 00 00       	mov    $0x0,%esi
+ 30d:	48 89 c7             	mov    %rax,%rdi
+ 310:	41 ff d0             	call   *%r8
+ 313:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 31a:	0f b6 40 0c          	movzbl 0xc(%rax),%eax
+ 31e:	83 f0 01             	xor    $0x1,%eax
+ 321:	84 c0                	test   %al,%al
+ 323:	74 77                	je     39c <OscServer::Run()+0x39c>
+ 325:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 32c:	c6 40 0c 01          	movb   $0x1,0xc(%rax)
+ 330:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 337:	48 8b 40 38          	mov    0x38(%rax),%rax
+ 33b:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 342:	48 8b 52 38          	mov    0x38(%rdx),%rdx
+ 346:	48 8b 12             	mov    (%rdx),%rdx
+ 349:	48 83 c2 10          	add    $0x10,%rdx
+ 34d:	48 8b 12             	mov    (%rdx),%rdx
+ 350:	be 00 00 00 00       	mov    $0x0,%esi
+ 355:	48 89 c7             	mov    %rax,%rdi
+ 358:	ff d2                	call   *%rdx
+ 35a:	eb 40                	jmp    39c <OscServer::Run()+0x39c>
+ 35c:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 363 <OscServer::Run()+0x363>
+ 363:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 36a <OscServer::Run()+0x36a>
+ 36a:	41 b8 04 01 00 00    	mov    $0x104,%r8d
+ 370:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 377 <OscServer::Run()+0x377>
+ 377:	48 89 d1             	mov    %rdx,%rcx
+ 37a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 381 <OscServer::Run()+0x381>
+ 381:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 388 <OscServer::Run()+0x388>
+ 388:	48 89 c7             	mov    %rax,%rdi
+ 38b:	b8 00 00 00 00       	mov    $0x0,%eax
+ 390:	e8 00 00 00 00       	call   395 <OscServer::Run()+0x395>
+ 395:	bb 00 00 00 00       	mov    $0x0,%ebx
+ 39a:	eb 05                	jmp    3a1 <OscServer::Run()+0x3a1>
+ 39c:	bb 01 00 00 00       	mov    $0x1,%ebx
+ 3a1:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+ 3a5:	48 89 c7             	mov    %rax,%rdi
+ 3a8:	e8 00 00 00 00       	call   3ad <OscServer::Run()+0x3ad>
+ 3ad:	83 fb 01             	cmp    $0x1,%ebx
+ 3b0:	0f 85 06 0a 00 00    	jne    dbc <OscServer::Run()+0xdbc>
+ 3b6:	e9 24 03 00 00       	jmp    6df <OscServer::Run()+0x6df>
+ 3bb:	83 bd 74 ff ff ff 02 	cmpl   $0x2,-0x8c(%rbp)
+ 3c2:	75 1c                	jne    3e0 <OscServer::Run()+0x3e0>
+ 3c4:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 3c8:	be 00 00 00 00       	mov    $0x0,%esi
+ 3cd:	48 89 c7             	mov    %rax,%rdi
+ 3d0:	e8 00 00 00 00       	call   3d5 <OscServer::Run()+0x3d5>
+ 3d5:	3c 69                	cmp    $0x69,%al
+ 3d7:	75 07                	jne    3e0 <OscServer::Run()+0x3e0>
+ 3d9:	b8 01 00 00 00       	mov    $0x1,%eax
+ 3de:	eb 05                	jmp    3e5 <OscServer::Run()+0x3e5>
+ 3e0:	b8 00 00 00 00       	mov    $0x0,%eax
+ 3e5:	84 c0                	test   %al,%al
+ 3e7:	0f 84 c5 09 00 00    	je     db2 <OscServer::Run()+0xdb2>
+ 3ed:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 3f1:	be 00 00 00 00       	mov    $0x0,%esi
+ 3f6:	48 89 c7             	mov    %rax,%rdi
+ 3f9:	e8 00 00 00 00       	call   3fe <OscServer::Run()+0x3fe>
+ 3fe:	83 c0 01             	add    $0x1,%eax
+ 401:	66 89 85 68 ff ff ff 	mov    %ax,-0x98(%rbp)
+ 408:	66 83 bd 68 ff ff ff 	cmpw   $0x0,-0x98(%rbp)
+ 40f:	00 
+ 410:	74 0b                	je     41d <OscServer::Run()+0x41d>
+ 412:	66 81 bd 68 ff ff ff 	cmpw   $0x200,-0x98(%rbp)
+ 419:	00 02 
+ 41b:	76 41                	jbe    45e <OscServer::Run()+0x45e>
+ 41d:	0f b7 95 68 ff ff ff 	movzwl -0x98(%rbp),%edx
+ 424:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 42b <OscServer::Run()+0x42b>
+ 42b:	41 89 d1             	mov    %edx,%r9d
+ 42e:	41 b8 0b 01 00 00    	mov    $0x10b,%r8d
+ 434:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 43b <OscServer::Run()+0x43b>
+ 43b:	48 89 d1             	mov    %rdx,%rcx
+ 43e:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 445 <OscServer::Run()+0x445>
+ 445:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 44c <OscServer::Run()+0x44c>
+ 44c:	48 89 c7             	mov    %rax,%rdi
+ 44f:	b8 00 00 00 00       	mov    $0x0,%eax
+ 454:	e8 00 00 00 00       	call   459 <OscServer::Run()+0x459>
+ 459:	e9 5e 09 00 00       	jmp    dbc <OscServer::Run()+0xdbc>
+ 45e:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 462:	be 01 00 00 00       	mov    $0x1,%esi
+ 467:	48 89 c7             	mov    %rax,%rdi
+ 46a:	e8 00 00 00 00       	call   46f <OscServer::Run()+0x46f>
+ 46f:	3c 69                	cmp    $0x69,%al
+ 471:	0f 94 c0             	sete   %al
+ 474:	84 c0                	test   %al,%al
+ 476:	74 4f                	je     4c7 <OscServer::Run()+0x4c7>
+ 478:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 47f <OscServer::Run()+0x47f>
+ 47f:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 486 <OscServer::Run()+0x486>
+ 486:	41 b8 12 01 00 00    	mov    $0x112,%r8d
+ 48c:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 493 <OscServer::Run()+0x493>
+ 493:	48 89 d1             	mov    %rdx,%rcx
+ 496:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 49d <OscServer::Run()+0x49d>
+ 49d:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 4a4 <OscServer::Run()+0x4a4>
+ 4a4:	48 89 c7             	mov    %rax,%rdi
+ 4a7:	b8 00 00 00 00       	mov    $0x0,%eax
+ 4ac:	e8 00 00 00 00       	call   4b1 <OscServer::Run()+0x4b1>
+ 4b1:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 4b5:	be 01 00 00 00       	mov    $0x1,%esi
+ 4ba:	48 89 c7             	mov    %rax,%rdi
+ 4bd:	e8 00 00 00 00       	call   4c2 <OscServer::Run()+0x4c2>
+ 4c2:	88 45 b0             	mov    %al,-0x50(%rbp)
+ 4c5:	eb 7b                	jmp    542 <OscServer::Run()+0x542>
+ 4c7:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 4cb:	be 01 00 00 00       	mov    $0x1,%esi
+ 4d0:	48 89 c7             	mov    %rax,%rdi
+ 4d3:	e8 00 00 00 00       	call   4d8 <OscServer::Run()+0x4d8>
+ 4d8:	3c 66                	cmp    $0x66,%al
+ 4da:	0f 94 c0             	sete   %al
+ 4dd:	84 c0                	test   %al,%al
+ 4df:	0f 84 d0 08 00 00    	je     db5 <OscServer::Run()+0xdb5>
+ 4e5:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 4ec <OscServer::Run()+0x4ec>
+ 4ec:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 4f3 <OscServer::Run()+0x4f3>
+ 4f3:	41 b8 15 01 00 00    	mov    $0x115,%r8d
+ 4f9:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 500 <OscServer::Run()+0x500>
+ 500:	48 89 d1             	mov    %rdx,%rcx
+ 503:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 50a <OscServer::Run()+0x50a>
+ 50a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 511 <OscServer::Run()+0x511>
+ 511:	48 89 c7             	mov    %rax,%rdi
+ 514:	b8 00 00 00 00       	mov    $0x0,%eax
+ 519:	e8 00 00 00 00       	call   51e <OscServer::Run()+0x51e>
+ 51e:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 522:	be 01 00 00 00       	mov    $0x1,%esi
+ 527:	48 89 c7             	mov    %rax,%rdi
+ 52a:	e8 00 00 00 00       	call   52f <OscServer::Run()+0x52f>
+ 52f:	f3 0f 10 0d 00 00 00 	movss  0x0(%rip),%xmm1        # 537 <OscServer::Run()+0x537>
+ 536:	00 
+ 537:	f3 0f 59 c1          	mulss  %xmm1,%xmm0
+ 53b:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+ 53f:	88 45 b0             	mov    %al,-0x50(%rbp)
+ 542:	0f b6 45 b0          	movzbl -0x50(%rbp),%eax
+ 546:	0f b6 d0             	movzbl %al,%edx
+ 549:	0f b7 8d 68 ff ff ff 	movzwl -0x98(%rbp),%ecx
+ 550:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 557 <OscServer::Run()+0x557>
+ 557:	48 83 ec 08          	sub    $0x8,%rsp
+ 55b:	52                   	push   %rdx
+ 55c:	41 89 c9             	mov    %ecx,%r9d
+ 55f:	41 b8 1b 01 00 00    	mov    $0x11b,%r8d
+ 565:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 56c <OscServer::Run()+0x56c>
+ 56c:	48 89 d1             	mov    %rdx,%rcx
+ 56f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 576 <OscServer::Run()+0x576>
+ 576:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 57d <OscServer::Run()+0x57d>
+ 57d:	48 89 c7             	mov    %rax,%rdi
+ 580:	b8 00 00 00 00       	mov    $0x0,%eax
+ 585:	e8 00 00 00 00       	call   58a <OscServer::Run()+0x58a>
+ 58a:	48 83 c4 10          	add    $0x10,%rsp
+ 58e:	0f b7 95 68 ff ff ff 	movzwl -0x98(%rbp),%edx
+ 595:	48 8d 75 b0          	lea    -0x50(%rbp),%rsi
+ 599:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 5a0:	b9 01 00 00 00       	mov    $0x1,%ecx
+ 5a5:	48 89 c7             	mov    %rax,%rdi
+ 5a8:	e8 00 00 00 00       	call   5ad <OscServer::Run()+0x5ad>
+ 5ad:	88 85 61 ff ff ff    	mov    %al,-0x9f(%rbp)
+ 5b3:	80 bd 61 ff ff ff 00 	cmpb   $0x0,-0x9f(%rbp)
+ 5ba:	75 13                	jne    5cf <OscServer::Run()+0x5cf>
+ 5bc:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 5c3:	0f b6 40 0b          	movzbl 0xb(%rax),%eax
+ 5c7:	84 c0                	test   %al,%al
+ 5c9:	0f 84 e3 07 00 00    	je     db2 <OscServer::Run()+0xdb2>
+ 5cf:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 5d6:	0f b6 40 0a          	movzbl 0xa(%rax),%eax
+ 5da:	83 f0 01             	xor    $0x1,%eax
+ 5dd:	84 c0                	test   %al,%al
+ 5df:	74 39                	je     61a <OscServer::Run()+0x61a>
+ 5e1:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 5e8:	48 8b 40 38          	mov    0x38(%rax),%rax
+ 5ec:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 5f3:	48 8b 52 38          	mov    0x38(%rdx),%rdx
+ 5f7:	48 8b 12             	mov    (%rdx),%rdx
+ 5fa:	48 83 c2 20          	add    $0x20,%rdx
+ 5fe:	4c 8b 02             	mov    (%rdx),%r8
+ 601:	b9 00 02 00 00       	mov    $0x200,%ecx
+ 606:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 60d <OscServer::Run()+0x60d>
+ 60d:	be 00 00 00 00       	mov    $0x0,%esi
+ 612:	48 89 c7             	mov    %rax,%rdi
+ 615:	41 ff d0             	call   *%r8
+ 618:	eb 75                	jmp    68f <OscServer::Run()+0x68f>
+ 61a:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 621:	0f b7 40 08          	movzwl 0x8(%rax),%eax
+ 625:	66 39 85 68 ff ff ff 	cmp    %ax,-0x98(%rbp)
+ 62c:	77 0d                	ja     63b <OscServer::Run()+0x63b>
+ 62e:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 635:	0f b7 40 08          	movzwl 0x8(%rax),%eax
+ 639:	eb 07                	jmp    642 <OscServer::Run()+0x642>
+ 63b:	0f b7 85 68 ff ff ff 	movzwl -0x98(%rbp),%eax
+ 642:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 649:	66 89 42 08          	mov    %ax,0x8(%rdx)
+ 64d:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 654:	48 8b 40 38          	mov    0x38(%rax),%rax
+ 658:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 65f:	48 8b 52 38          	mov    0x38(%rdx),%rdx
+ 663:	48 8b 12             	mov    (%rdx),%rdx
+ 666:	48 83 c2 20          	add    $0x20,%rdx
+ 66a:	4c 8b 02             	mov    (%rdx),%r8
+ 66d:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 674:	0f b7 52 08          	movzwl 0x8(%rdx),%edx
+ 678:	0f b7 d2             	movzwl %dx,%edx
+ 67b:	89 d1                	mov    %edx,%ecx
+ 67d:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 684 <OscServer::Run()+0x684>
+ 684:	be 00 00 00 00       	mov    $0x0,%esi
+ 689:	48 89 c7             	mov    %rax,%rdi
+ 68c:	41 ff d0             	call   *%r8
+ 68f:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 696:	0f b6 40 0c          	movzbl 0xc(%rax),%eax
+ 69a:	83 f0 01             	xor    $0x1,%eax
+ 69d:	84 c0                	test   %al,%al
+ 69f:	0f 84 0d 07 00 00    	je     db2 <OscServer::Run()+0xdb2>
+ 6a5:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 6ac:	c6 40 0c 01          	movb   $0x1,0xc(%rax)
+ 6b0:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 6b7:	48 8b 40 38          	mov    0x38(%rax),%rax
+ 6bb:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 6c2:	48 8b 52 38          	mov    0x38(%rdx),%rdx
+ 6c6:	48 8b 12             	mov    (%rdx),%rdx
+ 6c9:	48 83 c2 10          	add    $0x10,%rdx
+ 6cd:	48 8b 12             	mov    (%rdx),%rdx
+ 6d0:	be 00 00 00 00       	mov    $0x0,%esi
+ 6d5:	48 89 c7             	mov    %rax,%rdi
+ 6d8:	ff d2                	call   *%rdx
+ 6da:	e9 d3 06 00 00       	jmp    db2 <OscServer::Run()+0xdb2>
+ 6df:	e9 ce 06 00 00       	jmp    db2 <OscServer::Run()+0xdb2>
+ 6e4:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 6eb:	48 8b 40 30          	mov    0x30(%rax),%rax
+ 6ef:	48 85 c0             	test   %rax,%rax
+ 6f2:	74 24                	je     718 <OscServer::Run()+0x718>
+ 6f4:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 6fb <OscServer::Run()+0x6fb>
+ 6fb:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 702 <OscServer::Run()+0x702>
+ 702:	48 89 d6             	mov    %rdx,%rsi
+ 705:	48 89 c7             	mov    %rax,%rdi
+ 708:	e8 00 00 00 00       	call   70d <OscServer::Run()+0x70d>
+ 70d:	84 c0                	test   %al,%al
+ 70f:	74 07                	je     718 <OscServer::Run()+0x718>
+ 711:	b8 01 00 00 00       	mov    $0x1,%eax
+ 716:	eb 05                	jmp    71d <OscServer::Run()+0x71d>
+ 718:	b8 00 00 00 00       	mov    $0x0,%eax
+ 71d:	84 c0                	test   %al,%al
+ 71f:	0f 84 77 01 00 00    	je     89c <OscServer::Run()+0x89c>
+ 725:	0f b7 95 64 ff ff ff 	movzwl -0x9c(%rbp),%edx
+ 72c:	48 8b 0d 00 00 00 00 	mov    0x0(%rip),%rcx        # 733 <OscServer::Run()+0x733>
+ 733:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+ 737:	48 89 ce             	mov    %rcx,%rsi
+ 73a:	48 89 c7             	mov    %rax,%rdi
+ 73d:	e8 00 00 00 00       	call   742 <OscServer::Run()+0x742>
+ 742:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+ 746:	be 00 00 00 00       	mov    $0x0,%esi
+ 74b:	48 89 c7             	mov    %rax,%rdi
+ 74e:	e8 00 00 00 00       	call   753 <OscServer::Run()+0x753>
+ 753:	3c 66                	cmp    $0x66,%al
+ 755:	0f 95 c0             	setne  %al
+ 758:	84 c0                	test   %al,%al
+ 75a:	74 3e                	je     79a <OscServer::Run()+0x79a>
+ 75c:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 763 <OscServer::Run()+0x763>
+ 763:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 76a <OscServer::Run()+0x76a>
+ 76a:	41 b8 35 01 00 00    	mov    $0x135,%r8d
+ 770:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 777 <OscServer::Run()+0x777>
+ 777:	48 89 d1             	mov    %rdx,%rcx
+ 77a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 781 <OscServer::Run()+0x781>
+ 781:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 788 <OscServer::Run()+0x788>
+ 788:	48 89 c7             	mov    %rax,%rdi
+ 78b:	b8 00 00 00 00       	mov    $0x0,%eax
+ 790:	e8 00 00 00 00       	call   795 <OscServer::Run()+0x795>
+ 795:	e9 22 06 00 00       	jmp    dbc <OscServer::Run()+0xdbc>
+ 79a:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+ 79e:	be 00 00 00 00       	mov    $0x0,%esi
+ 7a3:	48 89 c7             	mov    %rax,%rdi
+ 7a6:	e8 00 00 00 00       	call   7ab <OscServer::Run()+0x7ab>
+ 7ab:	66 0f 7e c0          	movd   %xmm0,%eax
+ 7af:	66 0f ef c0          	pxor   %xmm0,%xmm0
+ 7b3:	66 0f 6e d0          	movd   %eax,%xmm2
+ 7b7:	0f 2e d0             	ucomiss %xmm0,%xmm2
+ 7ba:	0f 9a c2             	setp   %dl
+ 7bd:	b9 01 00 00 00       	mov    $0x1,%ecx
+ 7c2:	66 0f ef c0          	pxor   %xmm0,%xmm0
+ 7c6:	66 0f 6e d8          	movd   %eax,%xmm3
+ 7ca:	0f 2e d8             	ucomiss %xmm0,%xmm3
+ 7cd:	89 c8                	mov    %ecx,%eax
+ 7cf:	0f 44 c2             	cmove  %edx,%eax
+ 7d2:	84 c0                	test   %al,%al
+ 7d4:	74 63                	je     839 <OscServer::Run()+0x839>
+ 7d6:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 7dd:	48 8b 40 30          	mov    0x30(%rax),%rax
+ 7e1:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 7e8:	48 8b 52 30          	mov    0x30(%rdx),%rdx
+ 7ec:	48 8b 12             	mov    (%rdx),%rdx
+ 7ef:	48 83 c2 10          	add    $0x10,%rdx
+ 7f3:	48 8b 12             	mov    (%rdx),%rdx
+ 7f6:	48 89 c7             	mov    %rax,%rdi
+ 7f9:	ff d2                	call   *%rdx
+ 7fb:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 802 <OscServer::Run()+0x802>
+ 802:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 809 <OscServer::Run()+0x809>
+ 809:	41 b8 3b 01 00 00    	mov    $0x13b,%r8d
+ 80f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 816 <OscServer::Run()+0x816>
+ 816:	48 89 d1             	mov    %rdx,%rcx
+ 819:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 820 <OscServer::Run()+0x820>
+ 820:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 827 <OscServer::Run()+0x827>
+ 827:	48 89 c7             	mov    %rax,%rdi
+ 82a:	b8 00 00 00 00       	mov    $0x0,%eax
+ 82f:	e8 00 00 00 00       	call   834 <OscServer::Run()+0x834>
+ 834:	e9 83 05 00 00       	jmp    dbc <OscServer::Run()+0xdbc>
+ 839:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 840:	48 8b 40 30          	mov    0x30(%rax),%rax
+ 844:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ 84b:	48 8b 52 30          	mov    0x30(%rdx),%rdx
+ 84f:	48 8b 12             	mov    (%rdx),%rdx
+ 852:	48 83 c2 18          	add    $0x18,%rdx
+ 856:	48 8b 12             	mov    (%rdx),%rdx
+ 859:	48 89 c7             	mov    %rax,%rdi
+ 85c:	ff d2                	call   *%rdx
+ 85e:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 865 <OscServer::Run()+0x865>
+ 865:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 86c <OscServer::Run()+0x86c>
+ 86c:	41 b8 3e 01 00 00    	mov    $0x13e,%r8d
+ 872:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 879 <OscServer::Run()+0x879>
+ 879:	48 89 d1             	mov    %rdx,%rcx
+ 87c:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 883 <OscServer::Run()+0x883>
+ 883:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 88a <OscServer::Run()+0x88a>
+ 88a:	48 89 c7             	mov    %rax,%rdi
+ 88d:	b8 00 00 00 00       	mov    $0x0,%eax
+ 892:	e8 00 00 00 00       	call   897 <OscServer::Run()+0x897>
+ 897:	e9 20 05 00 00       	jmp    dbc <OscServer::Run()+0xdbc>
+ 89c:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 8a3 <OscServer::Run()+0x8a3>
+ 8a3:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 8aa <OscServer::Run()+0x8aa>
+ 8aa:	48 89 d6             	mov    %rdx,%rsi
+ 8ad:	48 89 c7             	mov    %rax,%rdi
+ 8b0:	e8 00 00 00 00       	call   8b5 <OscServer::Run()+0x8b5>
+ 8b5:	84 c0                	test   %al,%al
+ 8b7:	0f 84 ff 02 00 00    	je     bbc <OscServer::Run()+0xbbc>
+ 8bd:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 8c1:	48 89 c7             	mov    %rax,%rdi
+ 8c4:	e8 00 00 00 00       	call   8c9 <OscServer::Run()+0x8c9>
+ 8c9:	89 85 70 ff ff ff    	mov    %eax,-0x90(%rbp)
+ 8cf:	83 bd 70 ff ff ff 01 	cmpl   $0x1,-0x90(%rbp)
+ 8d6:	0f 85 dc 04 00 00    	jne    db8 <OscServer::Run()+0xdb8>
+ 8dc:	48 8b 15 00 00 00 00 	mov    0x0(%rip),%rdx        # 8e3 <OscServer::Run()+0x8e3>
+ 8e3:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ 8ea:	48 89 d6             	mov    %rdx,%rsi
+ 8ed:	48 89 c7             	mov    %rax,%rdi
+ 8f0:	e8 00 00 00 00       	call   8f5 <OscServer::Run()+0x8f5>
+ 8f5:	66 89 85 66 ff ff ff 	mov    %ax,-0x9a(%rbp)
+ 8fc:	66 83 bd 66 ff ff ff 	cmpw   $0x0,-0x9a(%rbp)
+ 903:	00 
+ 904:	0f 84 ae 04 00 00    	je     db8 <OscServer::Run()+0xdb8>
+ 90a:	66 81 bd 66 ff ff ff 	cmpw   $0x200,-0x9a(%rbp)
+ 911:	00 02 
+ 913:	0f 87 9f 04 00 00    	ja     db8 <OscServer::Run()+0xdb8>
+ 919:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 91d:	be 00 00 00 00       	mov    $0x0,%esi
+ 922:	48 89 c7             	mov    %rax,%rdi
+ 925:	e8 00 00 00 00       	call   92a <OscServer::Run()+0x92a>
+ 92a:	3c 69                	cmp    $0x69,%al
+ 92c:	0f 94 c0             	sete   %al
+ 92f:	84 c0                	test   %al,%al
+ 931:	74 52                	je     985 <OscServer::Run()+0x985>
+ 933:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 93a <OscServer::Run()+0x93a>
+ 93a:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 941 <OscServer::Run()+0x941>
+ 941:	41 b8 4e 01 00 00    	mov    $0x14e,%r8d
+ 947:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 94e <OscServer::Run()+0x94e>
+ 94e:	48 89 d1             	mov    %rdx,%rcx
+ 951:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 958 <OscServer::Run()+0x958>
+ 958:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 95f <OscServer::Run()+0x95f>
+ 95f:	48 89 c7             	mov    %rax,%rdi
+ 962:	b8 00 00 00 00       	mov    $0x0,%eax
+ 967:	e8 00 00 00 00       	call   96c <OscServer::Run()+0x96c>
+ 96c:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 970:	be 00 00 00 00       	mov    $0x0,%esi
+ 975:	48 89 c7             	mov    %rax,%rdi
+ 978:	e8 00 00 00 00       	call   97d <OscServer::Run()+0x97d>
+ 97d:	88 45 b0             	mov    %al,-0x50(%rbp)
+ 980:	e9 97 00 00 00       	jmp    a1c <OscServer::Run()+0xa1c>
+ 985:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 989:	be 00 00 00 00       	mov    $0x0,%esi
+ 98e:	48 89 c7             	mov    %rax,%rdi
+ 991:	e8 00 00 00 00       	call   996 <OscServer::Run()+0x996>
+ 996:	3c 66                	cmp    $0x66,%al
+ 998:	0f 94 c0             	sete   %al
+ 99b:	84 c0                	test   %al,%al
+ 99d:	0f 84 18 04 00 00    	je     dbb <OscServer::Run()+0xdbb>
+ 9a3:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 9a7:	be 00 00 00 00       	mov    $0x0,%esi
+ 9ac:	48 89 c7             	mov    %rax,%rdi
+ 9af:	e8 00 00 00 00       	call   9b4 <OscServer::Run()+0x9b4>
+ 9b4:	66 0f ef e4          	pxor   %xmm4,%xmm4
+ 9b8:	f3 0f 5a e0          	cvtss2sd %xmm0,%xmm4
+ 9bc:	66 48 0f 7e e2       	movq   %xmm4,%rdx
+ 9c1:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 9c8 <OscServer::Run()+0x9c8>
+ 9c8:	66 48 0f 6e c2       	movq   %rdx,%xmm0
+ 9cd:	41 b8 51 01 00 00    	mov    $0x151,%r8d
+ 9d3:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 9da <OscServer::Run()+0x9da>
+ 9da:	48 89 d1             	mov    %rdx,%rcx
+ 9dd:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 9e4 <OscServer::Run()+0x9e4>
+ 9e4:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 9eb <OscServer::Run()+0x9eb>
+ 9eb:	48 89 c7             	mov    %rax,%rdi
+ 9ee:	b8 01 00 00 00       	mov    $0x1,%eax
+ 9f3:	e8 00 00 00 00       	call   9f8 <OscServer::Run()+0x9f8>
+ 9f8:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+ 9fc:	be 00 00 00 00       	mov    $0x0,%esi
+ a01:	48 89 c7             	mov    %rax,%rdi
+ a04:	e8 00 00 00 00       	call   a09 <OscServer::Run()+0xa09>
+ a09:	f3 0f 10 0d 00 00 00 	movss  0x0(%rip),%xmm1        # a11 <OscServer::Run()+0xa11>
+ a10:	00 
+ a11:	f3 0f 59 c1          	mulss  %xmm1,%xmm0
+ a15:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+ a19:	88 45 b0             	mov    %al,-0x50(%rbp)
+ a1c:	0f b6 45 b0          	movzbl -0x50(%rbp),%eax
+ a20:	0f b6 d0             	movzbl %al,%edx
+ a23:	0f b7 8d 66 ff ff ff 	movzwl -0x9a(%rbp),%ecx
+ a2a:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # a31 <OscServer::Run()+0xa31>
+ a31:	48 83 ec 08          	sub    $0x8,%rsp
+ a35:	52                   	push   %rdx
+ a36:	41 89 c9             	mov    %ecx,%r9d
+ a39:	41 b8 57 01 00 00    	mov    $0x157,%r8d
+ a3f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # a46 <OscServer::Run()+0xa46>
+ a46:	48 89 d1             	mov    %rdx,%rcx
+ a49:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # a50 <OscServer::Run()+0xa50>
+ a50:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # a57 <OscServer::Run()+0xa57>
+ a57:	48 89 c7             	mov    %rax,%rdi
+ a5a:	b8 00 00 00 00       	mov    $0x0,%eax
+ a5f:	e8 00 00 00 00       	call   a64 <OscServer::Run()+0xa64>
+ a64:	48 83 c4 10          	add    $0x10,%rsp
+ a68:	0f b7 95 66 ff ff ff 	movzwl -0x9a(%rbp),%edx
+ a6f:	48 8d 75 b0          	lea    -0x50(%rbp),%rsi
+ a73:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ a7a:	b9 01 00 00 00       	mov    $0x1,%ecx
+ a7f:	48 89 c7             	mov    %rax,%rdi
+ a82:	e8 00 00 00 00       	call   a87 <OscServer::Run()+0xa87>
+ a87:	88 85 61 ff ff ff    	mov    %al,-0x9f(%rbp)
+ a8d:	80 bd 61 ff ff ff 00 	cmpb   $0x0,-0x9f(%rbp)
+ a94:	75 13                	jne    aa9 <OscServer::Run()+0xaa9>
+ a96:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ a9d:	0f b6 40 0b          	movzbl 0xb(%rax),%eax
+ aa1:	84 c0                	test   %al,%al
+ aa3:	0f 84 0f 03 00 00    	je     db8 <OscServer::Run()+0xdb8>
+ aa9:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ ab0:	0f b6 40 0a          	movzbl 0xa(%rax),%eax
+ ab4:	83 f0 01             	xor    $0x1,%eax
+ ab7:	84 c0                	test   %al,%al
+ ab9:	74 39                	je     af4 <OscServer::Run()+0xaf4>
+ abb:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ ac2:	48 8b 40 38          	mov    0x38(%rax),%rax
+ ac6:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ acd:	48 8b 52 38          	mov    0x38(%rdx),%rdx
+ ad1:	48 8b 12             	mov    (%rdx),%rdx
+ ad4:	48 83 c2 20          	add    $0x20,%rdx
+ ad8:	4c 8b 02             	mov    (%rdx),%r8
+ adb:	b9 00 02 00 00       	mov    $0x200,%ecx
+ ae0:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # ae7 <OscServer::Run()+0xae7>
+ ae7:	be 00 00 00 00       	mov    $0x0,%esi
+ aec:	48 89 c7             	mov    %rax,%rdi
+ aef:	41 ff d0             	call   *%r8
+ af2:	eb 78                	jmp    b6c <OscServer::Run()+0xb6c>
+ af4:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ afb:	0f b7 40 08          	movzwl 0x8(%rax),%eax
+ aff:	66 39 85 66 ff ff ff 	cmp    %ax,-0x9a(%rbp)
+ b06:	77 10                	ja     b18 <OscServer::Run()+0xb18>
+ b08:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ b0f:	48 83 c0 08          	add    $0x8,%rax
+ b13:	0f b7 00             	movzwl (%rax),%eax
+ b16:	eb 07                	jmp    b1f <OscServer::Run()+0xb1f>
+ b18:	0f b7 85 66 ff ff ff 	movzwl -0x9a(%rbp),%eax
+ b1f:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ b26:	66 89 42 08          	mov    %ax,0x8(%rdx)
+ b2a:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ b31:	48 8b 40 38          	mov    0x38(%rax),%rax
+ b35:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ b3c:	48 8b 52 38          	mov    0x38(%rdx),%rdx
+ b40:	48 8b 12             	mov    (%rdx),%rdx
+ b43:	48 83 c2 20          	add    $0x20,%rdx
+ b47:	4c 8b 02             	mov    (%rdx),%r8
+ b4a:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ b51:	0f b7 52 08          	movzwl 0x8(%rdx),%edx
+ b55:	0f b7 d2             	movzwl %dx,%edx
+ b58:	89 d1                	mov    %edx,%ecx
+ b5a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # b61 <OscServer::Run()+0xb61>
+ b61:	be 00 00 00 00       	mov    $0x0,%esi
+ b66:	48 89 c7             	mov    %rax,%rdi
+ b69:	41 ff d0             	call   *%r8
+ b6c:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ b73:	0f b6 40 0c          	movzbl 0xc(%rax),%eax
+ b77:	83 f0 01             	xor    $0x1,%eax
+ b7a:	84 c0                	test   %al,%al
+ b7c:	0f 84 36 02 00 00    	je     db8 <OscServer::Run()+0xdb8>
+ b82:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ b89:	c6 40 0c 01          	movb   $0x1,0xc(%rax)
+ b8d:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ b94:	48 8b 40 38          	mov    0x38(%rax),%rax
+ b98:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ b9f:	48 8b 52 38          	mov    0x38(%rdx),%rdx
+ ba3:	48 8b 12             	mov    (%rdx),%rdx
+ ba6:	48 83 c2 10          	add    $0x10,%rdx
+ baa:	48 8b 12             	mov    (%rdx),%rdx
+ bad:	be 00 00 00 00       	mov    $0x0,%esi
+ bb2:	48 89 c7             	mov    %rax,%rdi
+ bb5:	ff d2                	call   *%rdx
+ bb7:	e9 fc 01 00 00       	jmp    db8 <OscServer::Run()+0xdb8>
+ bbc:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # bc3 <OscServer::Run()+0xbc3>
+ bc3:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # bca <OscServer::Run()+0xbca>
+ bca:	48 89 d6             	mov    %rdx,%rsi
+ bcd:	48 89 c7             	mov    %rax,%rdi
+ bd0:	e8 00 00 00 00       	call   bd5 <OscServer::Run()+0xbd5>
+ bd5:	84 c0                	test   %al,%al
+ bd7:	74 75                	je     c4e <OscServer::Run()+0xc4e>
+ bd9:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # be0 <OscServer::Run()+0xbe0>
+ be0:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # be7 <OscServer::Run()+0xbe7>
+ be7:	41 b8 6f 01 00 00    	mov    $0x16f,%r8d
+ bed:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # bf4 <OscServer::Run()+0xbf4>
+ bf4:	48 89 d1             	mov    %rdx,%rcx
+ bf7:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # bfe <OscServer::Run()+0xbfe>
+ bfe:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # c05 <OscServer::Run()+0xc05>
+ c05:	48 89 c7             	mov    %rax,%rdi
+ c08:	b8 00 00 00 00       	mov    $0x0,%eax
+ c0d:	e8 00 00 00 00       	call   c12 <OscServer::Run()+0xc12>
+ c12:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ c19:	0f b7 40 02          	movzwl 0x2(%rax),%eax
+ c1d:	0f b7 c8             	movzwl %ax,%ecx
+ c20:	8b 95 6c ff ff ff    	mov    -0x94(%rbp),%edx
+ c26:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ c2d:	8b 70 04             	mov    0x4(%rax),%esi
+ c30:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+ c34:	41 b9 00 00 00 00    	mov    $0x0,%r9d
+ c3a:	4c 8d 05 00 00 00 00 	lea    0x0(%rip),%r8        # c41 <OscServer::Run()+0xc41>
+ c41:	48 89 c7             	mov    %rax,%rdi
+ c44:	e8 00 00 00 00       	call   c49 <OscServer::Run()+0xc49>
+ c49:	e9 6e 01 00 00       	jmp    dbc <OscServer::Run()+0xdbc>
+ c4e:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # c55 <OscServer::Run()+0xc55>
+ c55:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # c5c <OscServer::Run()+0xc5c>
+ c5c:	48 89 d6             	mov    %rdx,%rsi
+ c5f:	48 89 c7             	mov    %rax,%rdi
+ c62:	e8 00 00 00 00       	call   c67 <OscServer::Run()+0xc67>
+ c67:	84 c0                	test   %al,%al
+ c69:	0f 84 4d 01 00 00    	je     dbc <OscServer::Run()+0xdbc>
+ c6f:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ c76:	48 8d 78 0d          	lea    0xd(%rax),%rdi
+ c7a:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ c81:	0f b7 40 02          	movzwl 0x2(%rax),%eax
+ c85:	0f b7 c8             	movzwl %ax,%ecx
+ c88:	8b 95 6c ff ff ff    	mov    -0x94(%rbp),%edx
+ c8e:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ c95:	8b 70 04             	mov    0x4(%rax),%esi
+ c98:	48 8d 85 5f ff ff ff 	lea    -0xa1(%rbp),%rax
+ c9f:	48 83 ec 08          	sub    $0x8,%rsp
+ ca3:	57                   	push   %rdi
+ ca4:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # cab <OscServer::Run()+0xcab>
+ cab:	4c 8d 05 00 00 00 00 	lea    0x0(%rip),%r8        # cb2 <OscServer::Run()+0xcb2>
+ cb2:	48 89 c7             	mov    %rax,%rdi
+ cb5:	e8 00 00 00 00       	call   cba <OscServer::Run()+0xcba>
+ cba:	48 83 c4 10          	add    $0x10,%rsp
+ cbe:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ cc5:	48 8b 78 40          	mov    0x40(%rax),%rdi
+ cc9:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ cd0:	0f b7 40 02          	movzwl 0x2(%rax),%eax
+ cd4:	0f b7 c8             	movzwl %ax,%ecx
+ cd7:	8b 95 6c ff ff ff    	mov    -0x94(%rbp),%edx
+ cdd:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ ce4:	8b 70 04             	mov    0x4(%rax),%esi
+ ce7:	48 8d 85 60 ff ff ff 	lea    -0xa0(%rbp),%rax
+ cee:	48 83 ec 08          	sub    $0x8,%rsp
+ cf2:	57                   	push   %rdi
+ cf3:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # cfa <OscServer::Run()+0xcfa>
+ cfa:	4c 8d 05 00 00 00 00 	lea    0x0(%rip),%r8        # d01 <OscServer::Run()+0xd01>
+ d01:	48 89 c7             	mov    %rax,%rdi
+ d04:	e8 00 00 00 00       	call   d09 <OscServer::Run()+0xd09>
+ d09:	48 83 c4 10          	add    $0x10,%rsp
+ d0d:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ d14:	48 8b 78 48          	mov    0x48(%rax),%rdi
+ d18:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ d1f:	0f b7 40 02          	movzwl 0x2(%rax),%eax
+ d23:	0f b7 c8             	movzwl %ax,%ecx
+ d26:	8b 95 6c ff ff ff    	mov    -0x94(%rbp),%edx
+ d2c:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ d33:	8b 70 04             	mov    0x4(%rax),%esi
+ d36:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+ d3a:	48 83 ec 08          	sub    $0x8,%rsp
+ d3e:	57                   	push   %rdi
+ d3f:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # d46 <OscServer::Run()+0xd46>
+ d46:	4c 8d 05 00 00 00 00 	lea    0x0(%rip),%r8        # d4d <OscServer::Run()+0xd4d>
+ d4d:	48 89 c7             	mov    %rax,%rdi
+ d50:	e8 00 00 00 00       	call   d55 <OscServer::Run()+0xd55>
+ d55:	48 83 c4 10          	add    $0x10,%rsp
+ d59:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ d60:	48 8b 40 30          	mov    0x30(%rax),%rax
+ d64:	48 85 c0             	test   %rax,%rax
+ d67:	74 53                	je     dbc <OscServer::Run()+0xdbc>
+ d69:	48 8b 85 48 ff ff ff 	mov    -0xb8(%rbp),%rax
+ d70:	48 8b 40 30          	mov    0x30(%rax),%rax
+ d74:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ d7b:	48 8b 52 30          	mov    0x30(%rdx),%rdx
+ d7f:	48 8b 12             	mov    (%rdx),%rdx
+ d82:	48 83 c2 20          	add    $0x20,%rdx
+ d86:	4c 8b 02             	mov    (%rdx),%r8
+ d89:	48 8b 95 48 ff ff ff 	mov    -0xb8(%rbp),%rdx
+ d90:	0f b7 52 02          	movzwl 0x2(%rdx),%edx
+ d94:	0f b7 ca             	movzwl %dx,%ecx
+ d97:	8b 95 6c ff ff ff    	mov    -0x94(%rbp),%edx
+ d9d:	48 8b b5 48 ff ff ff 	mov    -0xb8(%rbp),%rsi
+ da4:	8b 76 04             	mov    0x4(%rsi),%esi
+ da7:	48 89 c7             	mov    %rax,%rdi
+ daa:	41 ff d0             	call   *%r8
+ dad:	eb 0d                	jmp    dbc <OscServer::Run()+0xdbc>
+ daf:	90                   	nop
+ db0:	eb 0a                	jmp    dbc <OscServer::Run()+0xdbc>
+ db2:	90                   	nop
+ db3:	eb 07                	jmp    dbc <OscServer::Run()+0xdbc>
+ db5:	90                   	nop
+ db6:	eb 04                	jmp    dbc <OscServer::Run()+0xdbc>
+ db8:	90                   	nop
+ db9:	eb 01                	jmp    dbc <OscServer::Run()+0xdbc>
+ dbb:	90                   	nop
+ dbc:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ dc0:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ dc7:	00 00 
+ dc9:	74 05                	je     dd0 <OscServer::Run()+0xdd0>
+ dcb:	e8 00 00 00 00       	call   dd0 <OscServer::Run()+0xdd0>
+ dd0:	48 8b 5d f8          	mov    -0x8(%rbp),%rbx
+ dd4:	c9                   	leave  
+ dd5:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer5PrintEv:
+
+0000000000000000 <OscServer::Print()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 17 <OscServer::Print()+0x17>
+  17:	48 89 c7             	mov    %rax,%rdi
+  1a:	e8 00 00 00 00       	call   1f <OscServer::Print()+0x1f>
+  1f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  23:	0f b7 00             	movzwl (%rax),%eax
+  26:	0f b7 c0             	movzwl %ax,%eax
+  29:	89 c6                	mov    %eax,%esi
+  2b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 32 <OscServer::Print()+0x32>
+  32:	48 89 c7             	mov    %rax,%rdi
+  35:	b8 00 00 00 00       	mov    $0x0,%eax
+  3a:	e8 00 00 00 00       	call   3f <OscServer::Print()+0x3f>
+  3f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  43:	0f b7 40 02          	movzwl 0x2(%rax),%eax
+  47:	0f b7 c0             	movzwl %ax,%eax
+  4a:	89 c6                	mov    %eax,%esi
+  4c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 53 <OscServer::Print()+0x53>
+  53:	48 89 c7             	mov    %rax,%rdi
+  56:	b8 00 00 00 00       	mov    $0x0,%eax
+  5b:	e8 00 00 00 00       	call   60 <OscServer::Print()+0x60>
+  60:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 67 <OscServer::Print()+0x67>
+  67:	48 89 c2             	mov    %rax,%rdx
+  6a:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 71 <OscServer::Print()+0x71>
+  71:	48 89 c6             	mov    %rax,%rsi
+  74:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7b <OscServer::Print()+0x7b>
+  7b:	48 89 c7             	mov    %rax,%rdi
+  7e:	b8 00 00 00 00       	mov    $0x0,%eax
+  83:	e8 00 00 00 00       	call   88 <OscServer::Print()+0x88>
+  88:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 8f <OscServer::Print()+0x8f>
+  8f:	48 89 c6             	mov    %rax,%rsi
+  92:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 99 <OscServer::Print()+0x99>
+  99:	48 89 c7             	mov    %rax,%rdi
+  9c:	b8 00 00 00 00       	mov    $0x0,%eax
+  a1:	e8 00 00 00 00       	call   a6 <OscServer::Print()+0xa6>
+  a6:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  aa:	0f b6 40 0a          	movzbl 0xa(%rax),%eax
+  ae:	84 c0                	test   %al,%al
+  b0:	74 09                	je     bb <OscServer::Print()+0xbb>
+  b2:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # b9 <OscServer::Print()+0xb9>
+  b9:	eb 07                	jmp    c2 <OscServer::Print()+0xc2>
+  bb:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # c2 <OscServer::Print()+0xc2>
+  c2:	48 89 c6             	mov    %rax,%rsi
+  c5:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # cc <OscServer::Print()+0xcc>
+  cc:	48 89 c7             	mov    %rax,%rdi
+  cf:	b8 00 00 00 00       	mov    $0x0,%eax
+  d4:	e8 00 00 00 00       	call   d9 <OscServer::Print()+0xd9>
+  d9:	90                   	nop
+  da:	c9                   	leave  
+  db:	c3                   	ret    
+
+oscservermsgconst.o:     file format elf64-x86-64
+
+
+oscserverparamsconst.o:     file format elf64-x86-64
+
+
+oscserverparams.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZN9OscServer15SetPortIncomingEt:
+
+0000000000000000 <OscServer::SetPortIncoming(unsigned short)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	66 81 fe ff 03       	cmp    $0x3ff,%si
+   9:	77 20                	ja     2b <OscServer::SetPortIncoming(unsigned short)+0x2b>
+   b:	50                   	push   %rax
+   c:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 13 <OscServer::SetPortIncoming(unsigned short)+0x13>
+  13:	ba 47 00 00 00       	mov    $0x47,%edx
+  18:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1f <OscServer::SetPortIncoming(unsigned short)+0x1f>
+  1f:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 26 <OscServer::SetPortIncoming(unsigned short)+0x26>
+  26:	e8 00 00 00 00       	call   2b <OscServer::SetPortIncoming(unsigned short)+0x2b>
+  2b:	66 89 37             	mov    %si,(%rdi)
+  2e:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer15SetPortOutgoingEt:
+
+0000000000000000 <OscServer::SetPortOutgoing(unsigned short)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	66 81 fe ff 03       	cmp    $0x3ff,%si
+   9:	77 20                	ja     2b <OscServer::SetPortOutgoing(unsigned short)+0x2b>
+   b:	50                   	push   %rax
+   c:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 13 <OscServer::SetPortOutgoing(unsigned short)+0x13>
+  13:	ba 50 00 00 00       	mov    $0x50,%edx
+  18:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1f <OscServer::SetPortOutgoing(unsigned short)+0x1f>
+  1f:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 26 <OscServer::SetPortOutgoing(unsigned short)+0x26>
+  26:	e8 00 00 00 00       	call   2b <OscServer::SetPortOutgoing(unsigned short)+0x2b>
+  2b:	66 89 77 02          	mov    %si,0x2(%rdi)
+  2f:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer7GetPathEv:
+
+0000000000000000 <OscServer::GetPath()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # b <OscServer::GetPath()+0xb>
+   b:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer11GetPathInfoEv:
+
+0000000000000000 <OscServer::GetPathInfo()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # b <OscServer::GetPathInfo()+0xb>
+   b:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer15GetPathBlackOutEv:
+
+0000000000000000 <OscServer::GetPathBlackOut()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # b <OscServer::GetPathBlackOut()+0xb>
+   b:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer22SetPartialTransmissionEb:
+
+0000000000000000 <OscServer::SetPartialTransmission(bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	40 88 77 0a          	mov    %sil,0xa(%rdi)
+   8:	c3                   	ret    
+
+Disassembly of section .text._ZN9OscServer3GetEv:
+
+0000000000000000 <OscServer::Get()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # b <OscServer::Get()+0xb>
+   b:	c3                   	ret    
+
+Disassembly of section .text._ZNK15OSCServerParams9isMaskSetEj:
+
+0000000000000000 <OSCServerParams::isMaskSet(unsigned int) const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	8b 47 08             	mov    0x8(%rdi),%eax
+   7:	21 f0                	and    %esi,%eax
+   9:	39 f0                	cmp    %esi,%eax
+   b:	0f 94 c0             	sete   %al
+   e:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder7GetSizeEv:
+
+0000000000000000 <PropertiesBuilder::GetSize()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	80 7f 0c 00          	cmpb   $0x0,0xc(%rdi)
+   8:	74 1b                	je     25 <PropertiesBuilder::GetSize()+0x25>
+   a:	0f b7 47 0a          	movzwl 0xa(%rdi),%eax
+   e:	48 8b 17             	mov    (%rdi),%rdx
+  11:	c6 44 02 ff 7d       	movb   $0x7d,-0x1(%rdx,%rax,1)
+  16:	0f b7 47 0a          	movzwl 0xa(%rdi),%eax
+  1a:	48 8b 17             	mov    (%rdi),%rdx
+  1d:	c6 04 02 7d          	movb   $0x7d,(%rdx,%rax,1)
+  21:	66 ff 47 0a          	incw   0xa(%rdi)
+  25:	66 8b 47 0a          	mov    0xa(%rdi),%ax
+  29:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partIPcEEiS1_jPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fa             	mov    %rdi,%r10
+   7:	48 89 f7             	mov    %rsi,%rdi
+   a:	89 d6                	mov    %edx,%esi
+   c:	41 8a 42 0c          	mov    0xc(%r10),%al
+  10:	45 84 c9             	test   %r9b,%r9b
+  13:	75 06                	jne    1b <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x1b>
+  15:	84 c0                	test   %al,%al
+  17:	75 0d                	jne    26 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x26>
+  19:	eb 14                	jmp    2f <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x2f>
+  1b:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 22 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x22>
+  22:	84 c0                	test   %al,%al
+  24:	74 10                	je     36 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x36>
+  26:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 2d <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x2d>
+  2d:	eb 07                	jmp    36 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x36>
+  2f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 36 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x36>
+  36:	31 c0                	xor    %eax,%eax
+  38:	e9 00 00 00 00       	jmp    3d <.LC14+0x9>
+
+Disassembly of section .text._ZN15OSCServerParamsC2EP20OSCServerParamsStore:
+
+0000000000000000 <OSCServerParams::OSCServerParams(OSCServerParamsStore*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	48 89 37             	mov    %rsi,(%rdi)
+   7:	48 8d 77 08          	lea    0x8(%rdi),%rsi
+   b:	48 89 fa             	mov    %rdi,%rdx
+   e:	b9 8a 01 00 00       	mov    $0x18a,%ecx
+  13:	31 c0                	xor    %eax,%eax
+  15:	48 89 f7             	mov    %rsi,%rdi
+  18:	f3 aa                	rep stos %al,%es:(%rdi)
+  1a:	c7 42 0c 40 1f 28 23 	movl   $0x23281f40,0xc(%rdx)
+  21:	c3                   	ret    
+
+Disassembly of section .text._ZN15OSCServerParams4LoadEv:
+
+0000000000000000 <OSCServerParams::Load()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 54                	push   %r12
+   6:	48 89 fa             	mov    %rdi,%rdx
+   9:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 10 <OSCServerParams::Load()+0x10>
+  10:	55                   	push   %rbp
+  11:	53                   	push   %rbx
+  12:	48 89 fb             	mov    %rdi,%rbx
+  15:	48 83 ec 20          	sub    $0x20,%rsp
+  19:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  20:	00 00 
+  22:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+  27:	31 c0                	xor    %eax,%eax
+  29:	c7 47 08 00 00 00 00 	movl   $0x0,0x8(%rdi)
+  30:	48 8d 6c 24 08       	lea    0x8(%rsp),%rbp
+  35:	48 89 ef             	mov    %rbp,%rdi
+  38:	e8 00 00 00 00       	call   3d <OSCServerParams::Load()+0x3d>
+  3d:	48 89 ef             	mov    %rbp,%rdi
+  40:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 47 <OSCServerParams::Load()+0x47>
+  47:	e8 00 00 00 00       	call   4c <OSCServerParams::Load()+0x4c>
+  4c:	48 8b 3b             	mov    (%rbx),%rdi
+  4f:	84 c0                	test   %al,%al
+  51:	41 89 c4             	mov    %eax,%r12d
+  54:	74 11                	je     67 <OSCServerParams::Load()+0x67>
+  56:	48 85 ff             	test   %rdi,%rdi
+  59:	74 1e                	je     79 <OSCServerParams::Load()+0x79>
+  5b:	48 8b 07             	mov    (%rdi),%rax
+  5e:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+  62:	ff 50 10             	call   *0x10(%rax)
+  65:	eb 12                	jmp    79 <OSCServerParams::Load()+0x79>
+  67:	48 85 ff             	test   %rdi,%rdi
+  6a:	74 0d                	je     79 <OSCServerParams::Load()+0x79>
+  6c:	48 8b 07             	mov    (%rdi),%rax
+  6f:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+  73:	41 b4 01             	mov    $0x1,%r12b
+  76:	ff 50 18             	call   *0x18(%rax)
+  79:	48 89 ef             	mov    %rbp,%rdi
+  7c:	e8 00 00 00 00       	call   81 <OSCServerParams::Load()+0x81>
+  81:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+  86:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+  8d:	00 00 
+  8f:	74 05                	je     96 <OSCServerParams::Load()+0x96>
+  91:	e8 00 00 00 00       	call   96 <OSCServerParams::Load()+0x96>
+  96:	48 83 c4 20          	add    $0x20,%rsp
+  9a:	44 89 e0             	mov    %r12d,%eax
+  9d:	5b                   	pop    %rbx
+  9e:	5d                   	pop    %rbp
+  9f:	41 5c                	pop    %r12
+  a1:	c3                   	ret    
+
+Disassembly of section .text._ZN15OSCServerParams4LoadEPKcj:
+
+0000000000000000 <OSCServerParams::Load(char const*, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 55                	push   %r13
+   6:	41 54                	push   %r12
+   8:	55                   	push   %rbp
+   9:	53                   	push   %rbx
+   a:	48 83 ec 28          	sub    $0x28,%rsp
+   e:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  15:	00 00 
+  17:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+  1c:	31 c0                	xor    %eax,%eax
+  1e:	48 85 f6             	test   %rsi,%rsi
+  21:	75 1c                	jne    3f <OSCServerParams::Load(char const*, unsigned int)+0x3f>
+  23:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 2a <OSCServerParams::Load(char const*, unsigned int)+0x2a>
+  2a:	ba 52 00 00 00       	mov    $0x52,%edx
+  2f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 36 <OSCServerParams::Load(char const*, unsigned int)+0x36>
+  36:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 3d <OSCServerParams::Load(char const*, unsigned int)+0x3d>
+  3d:	eb 21                	jmp    60 <OSCServerParams::Load(char const*, unsigned int)+0x60>
+  3f:	41 89 d4             	mov    %edx,%r12d
+  42:	85 d2                	test   %edx,%edx
+  44:	75 1f                	jne    65 <OSCServerParams::Load(char const*, unsigned int)+0x65>
+  46:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 4d <OSCServerParams::Load(char const*, unsigned int)+0x4d>
+  4d:	ba 53 00 00 00       	mov    $0x53,%edx
+  52:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 59 <OSCServerParams::Load(char const*, unsigned int)+0x59>
+  59:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 60 <OSCServerParams::Load(char const*, unsigned int)+0x60>
+  60:	e8 00 00 00 00       	call   65 <OSCServerParams::Load(char const*, unsigned int)+0x65>
+  65:	48 83 3f 00          	cmpq   $0x0,(%rdi)
+  69:	48 89 fb             	mov    %rdi,%rbx
+  6c:	75 1c                	jne    8a <OSCServerParams::Load(char const*, unsigned int)+0x8a>
+  6e:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 75 <OSCServerParams::Load(char const*, unsigned int)+0x75>
+  75:	ba 54 00 00 00       	mov    $0x54,%edx
+  7a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 81 <OSCServerParams::Load(char const*, unsigned int)+0x81>
+  81:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 88 <OSCServerParams::Load(char const*, unsigned int)+0x88>
+  88:	eb d6                	jmp    60 <OSCServerParams::Load(char const*, unsigned int)+0x60>
+  8a:	c7 47 08 00 00 00 00 	movl   $0x0,0x8(%rdi)
+  91:	4c 8d 6c 24 08       	lea    0x8(%rsp),%r13
+  96:	48 89 fa             	mov    %rdi,%rdx
+  99:	48 89 f5             	mov    %rsi,%rbp
+  9c:	4c 89 ef             	mov    %r13,%rdi
+  9f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # a6 <OSCServerParams::Load(char const*, unsigned int)+0xa6>
+  a6:	e8 00 00 00 00       	call   ab <OSCServerParams::Load(char const*, unsigned int)+0xab>
+  ab:	44 89 e2             	mov    %r12d,%edx
+  ae:	48 89 ee             	mov    %rbp,%rsi
+  b1:	4c 89 ef             	mov    %r13,%rdi
+  b4:	e8 00 00 00 00       	call   b9 <OSCServerParams::Load(char const*, unsigned int)+0xb9>
+  b9:	48 8b 3b             	mov    (%rbx),%rdi
+  bc:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+  c0:	48 8b 07             	mov    (%rdi),%rax
+  c3:	ff 50 10             	call   *0x10(%rax)
+  c6:	4c 89 ef             	mov    %r13,%rdi
+  c9:	e8 00 00 00 00       	call   ce <OSCServerParams::Load(char const*, unsigned int)+0xce>
+  ce:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+  d3:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+  da:	00 00 
+  dc:	74 05                	je     e3 <OSCServerParams::Load(char const*, unsigned int)+0xe3>
+  de:	e8 00 00 00 00       	call   e3 <OSCServerParams::Load(char const*, unsigned int)+0xe3>
+  e3:	48 83 c4 28          	add    $0x28,%rsp
+  e7:	5b                   	pop    %rbx
+  e8:	5d                   	pop    %rbp
+  e9:	41 5c                	pop    %r12
+  eb:	41 5d                	pop    %r13
+  ed:	c3                   	ret    
+
+Disassembly of section .text._ZN15OSCServerParams16callbackFunctionEPKc:
+
+0000000000000000 <OSCServerParams::callbackFunction(char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 55                	push   %r13
+   6:	41 54                	push   %r12
+   8:	55                   	push   %rbp
+   9:	53                   	push   %rbx
+   a:	48 83 ec 18          	sub    $0x18,%rsp
+   e:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  15:	00 00 
+  17:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+  1c:	31 c0                	xor    %eax,%eax
+  1e:	48 85 f6             	test   %rsi,%rsi
+  21:	75 1f                	jne    42 <OSCServerParams::callbackFunction(char const*)+0x42>
+  23:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 2a <OSCServerParams::callbackFunction(char const*)+0x2a>
+  2a:	ba 64 00 00 00       	mov    $0x64,%edx
+  2f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 36 <OSCServerParams::callbackFunction(char const*)+0x36>
+  36:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 3d <OSCServerParams::callbackFunction(char const*)+0x3d>
+  3d:	e8 00 00 00 00       	call   42 <OSCServerParams::callbackFunction(char const*)+0x42>
+  42:	48 89 f5             	mov    %rsi,%rbp
+  45:	4c 8d 64 24 02       	lea    0x2(%rsp),%r12
+  4a:	48 89 fb             	mov    %rdi,%rbx
+  4d:	4c 89 e2             	mov    %r12,%rdx
+  50:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 57 <OSCServerParams::callbackFunction(char const*)+0x57>
+  57:	48 89 ef             	mov    %rbp,%rdi
+  5a:	e8 00 00 00 00       	call   5f <OSCServerParams::callbackFunction(char const*)+0x5f>
+  5f:	85 c0                	test   %eax,%eax
+  61:	75 29                	jne    8c <OSCServerParams::callbackFunction(char const*)+0x8c>
+  63:	66 8b 54 24 02       	mov    0x2(%rsp),%dx
+  68:	8b 43 08             	mov    0x8(%rbx),%eax
+  6b:	66 81 fa ff 03       	cmp    $0x3ff,%dx
+  70:	76 09                	jbe    7b <OSCServerParams::callbackFunction(char const*)+0x7b>
+  72:	66 89 53 0c          	mov    %dx,0xc(%rbx)
+  76:	83 c8 01             	or     $0x1,%eax
+  79:	eb 09                	jmp    84 <OSCServerParams::callbackFunction(char const*)+0x84>
+  7b:	66 c7 43 0c 40 1f    	movw   $0x1f40,0xc(%rbx)
+  81:	83 e0 fe             	and    $0xfffffffe,%eax
+  84:	89 43 08             	mov    %eax,0x8(%rbx)
+  87:	e9 f4 00 00 00       	jmp    180 <OSCServerParams::callbackFunction(char const*)+0x180>
+  8c:	4c 89 e2             	mov    %r12,%rdx
+  8f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 96 <OSCServerParams::callbackFunction(char const*)+0x96>
+  96:	48 89 ef             	mov    %rbp,%rdi
+  99:	e8 00 00 00 00       	call   9e <OSCServerParams::callbackFunction(char const*)+0x9e>
+  9e:	85 c0                	test   %eax,%eax
+  a0:	75 23                	jne    c5 <OSCServerParams::callbackFunction(char const*)+0xc5>
+  a2:	66 8b 54 24 02       	mov    0x2(%rsp),%dx
+  a7:	8b 43 08             	mov    0x8(%rbx),%eax
+  aa:	66 81 fa ff 03       	cmp    $0x3ff,%dx
+  af:	76 09                	jbe    ba <OSCServerParams::callbackFunction(char const*)+0xba>
+  b1:	66 89 53 0e          	mov    %dx,0xe(%rbx)
+  b5:	83 c8 02             	or     $0x2,%eax
+  b8:	eb ca                	jmp    84 <OSCServerParams::callbackFunction(char const*)+0x84>
+  ba:	66 c7 43 0e 28 23    	movw   $0x2328,0xe(%rbx)
+  c0:	83 e0 fd             	and    $0xfffffffd,%eax
+  c3:	eb bf                	jmp    84 <OSCServerParams::callbackFunction(char const*)+0x84>
+  c5:	48 8d 54 24 01       	lea    0x1(%rsp),%rdx
+  ca:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # d1 <OSCServerParams::callbackFunction(char const*)+0xd1>
+  d1:	48 89 ef             	mov    %rbp,%rdi
+  d4:	e8 00 00 00 00       	call   d9 <OSCServerParams::callbackFunction(char const*)+0xd9>
+  d9:	85 c0                	test   %eax,%eax
+  db:	75 23                	jne    100 <OSCServerParams::callbackFunction(char const*)+0x100>
+  dd:	8b 4b 08             	mov    0x8(%rbx),%ecx
+  e0:	8a 44 24 01          	mov    0x1(%rsp),%al
+  e4:	89 ca                	mov    %ecx,%edx
+  e6:	83 e2 f7             	and    $0xfffffff7,%edx
+  e9:	84 c0                	test   %al,%al
+  eb:	74 05                	je     f2 <OSCServerParams::callbackFunction(char const*)+0xf2>
+  ed:	83 c9 08             	or     $0x8,%ecx
+  f0:	89 ca                	mov    %ecx,%edx
+  f2:	84 c0                	test   %al,%al
+  f4:	89 53 08             	mov    %edx,0x8(%rbx)
+  f7:	0f 95 43 11          	setne  0x11(%rbx)
+  fb:	e9 80 00 00 00       	jmp    180 <OSCServerParams::callbackFunction(char const*)+0x180>
+ 100:	4c 8d 64 24 04       	lea    0x4(%rsp),%r12
+ 105:	48 8d 53 12          	lea    0x12(%rbx),%rdx
+ 109:	48 89 ef             	mov    %rbp,%rdi
+ 10c:	c7 44 24 04 7f 00 00 	movl   $0x7f,0x4(%rsp)
+ 113:	00 
+ 114:	4c 89 e1             	mov    %r12,%rcx
+ 117:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 11e <OSCServerParams::callbackFunction(char const*)+0x11e>
+ 11e:	e8 00 00 00 00       	call   123 <OSCServerParams::callbackFunction(char const*)+0x123>
+ 123:	85 c0                	test   %eax,%eax
+ 125:	75 06                	jne    12d <OSCServerParams::callbackFunction(char const*)+0x12d>
+ 127:	83 4b 08 04          	orl    $0x4,0x8(%rbx)
+ 12b:	eb 53                	jmp    180 <OSCServerParams::callbackFunction(char const*)+0x180>
+ 12d:	4c 8d 2d 00 00 00 00 	lea    0x0(%rip),%r13        # 134 <OSCServerParams::callbackFunction(char const*)+0x134>
+ 134:	48 8d 93 92 00 00 00 	lea    0x92(%rbx),%rdx
+ 13b:	4c 89 e1             	mov    %r12,%rcx
+ 13e:	48 89 ef             	mov    %rbp,%rdi
+ 141:	4c 89 ee             	mov    %r13,%rsi
+ 144:	c7 44 24 04 7f 00 00 	movl   $0x7f,0x4(%rsp)
+ 14b:	00 
+ 14c:	e8 00 00 00 00       	call   151 <OSCServerParams::callbackFunction(char const*)+0x151>
+ 151:	85 c0                	test   %eax,%eax
+ 153:	75 06                	jne    15b <OSCServerParams::callbackFunction(char const*)+0x15b>
+ 155:	83 4b 08 20          	orl    $0x20,0x8(%rbx)
+ 159:	eb 25                	jmp    180 <OSCServerParams::callbackFunction(char const*)+0x180>
+ 15b:	48 8d 93 12 01 00 00 	lea    0x112(%rbx),%rdx
+ 162:	4c 89 e1             	mov    %r12,%rcx
+ 165:	4c 89 ee             	mov    %r13,%rsi
+ 168:	48 89 ef             	mov    %rbp,%rdi
+ 16b:	c7 44 24 04 7f 00 00 	movl   $0x7f,0x4(%rsp)
+ 172:	00 
+ 173:	e8 00 00 00 00       	call   178 <OSCServerParams::callbackFunction(char const*)+0x178>
+ 178:	85 c0                	test   %eax,%eax
+ 17a:	75 04                	jne    180 <OSCServerParams::callbackFunction(char const*)+0x180>
+ 17c:	83 4b 08 40          	orl    $0x40,0x8(%rbx)
+ 180:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+ 185:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 18c:	00 00 
+ 18e:	74 05                	je     195 <OSCServerParams::callbackFunction(char const*)+0x195>
+ 190:	e8 00 00 00 00       	call   195 <OSCServerParams::callbackFunction(char const*)+0x195>
+ 195:	48 83 c4 18          	add    $0x18,%rsp
+ 199:	5b                   	pop    %rbx
+ 19a:	5d                   	pop    %rbp
+ 19b:	41 5c                	pop    %r12
+ 19d:	41 5d                	pop    %r13
+ 19f:	c3                   	ret    
+
+Disassembly of section .text._ZN15OSCServerParams3SetEP9OscServer:
+
+0000000000000000 <OSCServerParams::Set(OscServer*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	51                   	push   %rcx
+   7:	48 85 f6             	test   %rsi,%rsi
+   a:	75 1f                	jne    2b <OSCServerParams::Set(OscServer*)+0x2b>
+   c:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 13 <OSCServerParams::Set(OscServer*)+0x13>
+  13:	ba 9e 00 00 00       	mov    $0x9e,%edx
+  18:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1f <OSCServerParams::Set(OscServer*)+0x1f>
+  1f:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 26 <OSCServerParams::Set(OscServer*)+0x26>
+  26:	e8 00 00 00 00       	call   2b <OSCServerParams::Set(OscServer*)+0x2b>
+  2b:	48 89 f5             	mov    %rsi,%rbp
+  2e:	be 01 00 00 00       	mov    $0x1,%esi
+  33:	48 89 fb             	mov    %rdi,%rbx
+  36:	e8 00 00 00 00       	call   3b <OSCServerParams::Set(OscServer*)+0x3b>
+  3b:	84 c0                	test   %al,%al
+  3d:	74 0c                	je     4b <OSCServerParams::Set(OscServer*)+0x4b>
+  3f:	0f b7 73 0c          	movzwl 0xc(%rbx),%esi
+  43:	48 89 ef             	mov    %rbp,%rdi
+  46:	e8 00 00 00 00       	call   4b <OSCServerParams::Set(OscServer*)+0x4b>
+  4b:	be 02 00 00 00       	mov    $0x2,%esi
+  50:	48 89 df             	mov    %rbx,%rdi
+  53:	e8 00 00 00 00       	call   58 <OSCServerParams::Set(OscServer*)+0x58>
+  58:	84 c0                	test   %al,%al
+  5a:	74 0c                	je     68 <OSCServerParams::Set(OscServer*)+0x68>
+  5c:	0f b7 73 0e          	movzwl 0xe(%rbx),%esi
+  60:	48 89 ef             	mov    %rbp,%rdi
+  63:	e8 00 00 00 00       	call   68 <OSCServerParams::Set(OscServer*)+0x68>
+  68:	be 04 00 00 00       	mov    $0x4,%esi
+  6d:	48 89 df             	mov    %rbx,%rdi
+  70:	e8 00 00 00 00       	call   75 <OSCServerParams::Set(OscServer*)+0x75>
+  75:	84 c0                	test   %al,%al
+  77:	74 0c                	je     85 <OSCServerParams::Set(OscServer*)+0x85>
+  79:	48 8d 73 12          	lea    0x12(%rbx),%rsi
+  7d:	48 89 ef             	mov    %rbp,%rdi
+  80:	e8 00 00 00 00       	call   85 <OSCServerParams::Set(OscServer*)+0x85>
+  85:	be 20 00 00 00       	mov    $0x20,%esi
+  8a:	48 89 df             	mov    %rbx,%rdi
+  8d:	e8 00 00 00 00       	call   92 <OSCServerParams::Set(OscServer*)+0x92>
+  92:	84 c0                	test   %al,%al
+  94:	74 0f                	je     a5 <OSCServerParams::Set(OscServer*)+0xa5>
+  96:	48 8d b3 92 00 00 00 	lea    0x92(%rbx),%rsi
+  9d:	48 89 ef             	mov    %rbp,%rdi
+  a0:	e8 00 00 00 00       	call   a5 <OSCServerParams::Set(OscServer*)+0xa5>
+  a5:	be 40 00 00 00       	mov    $0x40,%esi
+  aa:	48 89 df             	mov    %rbx,%rdi
+  ad:	e8 00 00 00 00       	call   b2 <OSCServerParams::Set(OscServer*)+0xb2>
+  b2:	84 c0                	test   %al,%al
+  b4:	74 0f                	je     c5 <OSCServerParams::Set(OscServer*)+0xc5>
+  b6:	48 8d b3 12 01 00 00 	lea    0x112(%rbx),%rsi
+  bd:	48 89 ef             	mov    %rbp,%rdi
+  c0:	e8 00 00 00 00       	call   c5 <OSCServerParams::Set(OscServer*)+0xc5>
+  c5:	be 08 00 00 00       	mov    $0x8,%esi
+  ca:	48 89 df             	mov    %rbx,%rdi
+  cd:	e8 00 00 00 00       	call   d2 <OSCServerParams::Set(OscServer*)+0xd2>
+  d2:	84 c0                	test   %al,%al
+  d4:	74 0f                	je     e5 <OSCServerParams::Set(OscServer*)+0xe5>
+  d6:	0f b6 73 11          	movzbl 0x11(%rbx),%esi
+  da:	48 89 ef             	mov    %rbp,%rdi
+  dd:	5a                   	pop    %rdx
+  de:	5b                   	pop    %rbx
+  df:	5d                   	pop    %rbp
+  e0:	e9 00 00 00 00       	jmp    e5 <OSCServerParams::Set(OscServer*)+0xe5>
+  e5:	58                   	pop    %rax
+  e6:	5b                   	pop    %rbx
+  e7:	5d                   	pop    %rbp
+  e8:	c3                   	ret    
+
+Disassembly of section .text._ZN15OSCServerParams7BuilderEPKN3osc6server6ParamsEPcjRj:
+
+0000000000000000 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 57                	push   %r15
+   6:	41 56                	push   %r14
+   8:	41 89 ce             	mov    %ecx,%r14d
+   b:	b9 ba 00 00 00       	mov    $0xba,%ecx
+  10:	41 55                	push   %r13
+  12:	49 89 d5             	mov    %rdx,%r13
+  15:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 1c <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x1c>
+  1c:	41 54                	push   %r12
+  1e:	4c 8d 25 00 00 00 00 	lea    0x0(%rip),%r12        # 25 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x25>
+  25:	55                   	push   %rbp
+  26:	48 89 f5             	mov    %rsi,%rbp
+  29:	4c 89 e6             	mov    %r12,%rsi
+  2c:	53                   	push   %rbx
+  2d:	48 89 fb             	mov    %rdi,%rbx
+  30:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 37 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x37>
+  37:	48 83 ec 38          	sub    $0x38,%rsp
+  3b:	4c 89 44 24 08       	mov    %r8,0x8(%rsp)
+  40:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  47:	00 00 
+  49:	48 89 44 24 28       	mov    %rax,0x28(%rsp)
+  4e:	31 c0                	xor    %eax,%eax
+  50:	e8 00 00 00 00       	call   55 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x55>
+  55:	4d 85 ed             	test   %r13,%r13
+  58:	75 1b                	jne    75 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x75>
+  5a:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 61 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x61>
+  61:	ba bc 00 00 00       	mov    $0xbc,%edx
+  66:	4c 89 e6             	mov    %r12,%rsi
+  69:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 70 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x70>
+  70:	e8 00 00 00 00       	call   75 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x75>
+  75:	4c 8d 43 08          	lea    0x8(%rbx),%r8
+  79:	48 85 ed             	test   %rbp,%rbp
+  7c:	74 0f                	je     8d <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x8d>
+  7e:	b9 8a 01 00 00       	mov    $0x18a,%ecx
+  83:	4c 89 c7             	mov    %r8,%rdi
+  86:	48 89 ee             	mov    %rbp,%rsi
+  89:	f3 a4                	rep movsb %ds:(%rsi),%es:(%rdi)
+  8b:	eb 0c                	jmp    99 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x99>
+  8d:	48 8b 3b             	mov    (%rbx),%rdi
+  90:	4c 89 c6             	mov    %r8,%rsi
+  93:	48 8b 07             	mov    (%rdi),%rax
+  96:	ff 50 18             	call   *0x18(%rax)
+  99:	48 8d 6c 24 18       	lea    0x18(%rsp),%rbp
+  9e:	44 89 f1             	mov    %r14d,%ecx
+  a1:	4c 8d 7b 12          	lea    0x12(%rbx),%r15
+  a5:	4c 89 ea             	mov    %r13,%rdx
+  a8:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # af <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0xaf>
+  af:	48 89 ef             	mov    %rbp,%rdi
+  b2:	e8 00 00 00 00       	call   b7 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0xb7>
+  b7:	be 04 00 00 00       	mov    $0x4,%esi
+  bc:	48 89 df             	mov    %rbx,%rdi
+  bf:	e8 00 00 00 00       	call   c4 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0xc4>
+  c4:	84 c0                	test   %al,%al
+  c6:	75 1d                	jne    e5 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0xe5>
+  c8:	e8 00 00 00 00       	call   cd <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0xcd>
+  cd:	48 89 c7             	mov    %rax,%rdi
+  d0:	e8 00 00 00 00       	call   d5 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0xd5>
+  d5:	ba 7f 00 00 00       	mov    $0x7f,%edx
+  da:	4c 89 ff             	mov    %r15,%rdi
+  dd:	48 89 c6             	mov    %rax,%rsi
+  e0:	e8 00 00 00 00       	call   e5 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0xe5>
+  e5:	be 20 00 00 00       	mov    $0x20,%esi
+  ea:	48 89 df             	mov    %rbx,%rdi
+  ed:	4c 8d b3 92 00 00 00 	lea    0x92(%rbx),%r14
+  f4:	e8 00 00 00 00       	call   f9 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0xf9>
+  f9:	84 c0                	test   %al,%al
+  fb:	75 1d                	jne    11a <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x11a>
+  fd:	e8 00 00 00 00       	call   102 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x102>
+ 102:	48 89 c7             	mov    %rax,%rdi
+ 105:	e8 00 00 00 00       	call   10a <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x10a>
+ 10a:	ba 7f 00 00 00       	mov    $0x7f,%edx
+ 10f:	4c 89 f7             	mov    %r14,%rdi
+ 112:	48 89 c6             	mov    %rax,%rsi
+ 115:	e8 00 00 00 00       	call   11a <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x11a>
+ 11a:	be 40 00 00 00       	mov    $0x40,%esi
+ 11f:	48 89 df             	mov    %rbx,%rdi
+ 122:	4c 8d ab 12 01 00 00 	lea    0x112(%rbx),%r13
+ 129:	e8 00 00 00 00       	call   12e <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x12e>
+ 12e:	84 c0                	test   %al,%al
+ 130:	75 1d                	jne    14f <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x14f>
+ 132:	e8 00 00 00 00       	call   137 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x137>
+ 137:	48 89 c7             	mov    %rax,%rdi
+ 13a:	e8 00 00 00 00       	call   13f <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x13f>
+ 13f:	ba 7f 00 00 00       	mov    $0x7f,%edx
+ 144:	4c 89 ef             	mov    %r13,%rdi
+ 147:	48 89 c6             	mov    %rax,%rsi
+ 14a:	e8 00 00 00 00       	call   14f <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x14f>
+ 14f:	48 89 df             	mov    %rbx,%rdi
+ 152:	be 01 00 00 00       	mov    $0x1,%esi
+ 157:	e8 00 00 00 00       	call   15c <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x15c>
+ 15c:	0f b7 53 0c          	movzwl 0xc(%rbx),%edx
+ 160:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 166:	48 89 ef             	mov    %rbp,%rdi
+ 169:	0f b6 c8             	movzbl %al,%ecx
+ 16c:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 173 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x173>
+ 173:	e8 00 00 00 00       	call   178 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x178>
+ 178:	48 89 df             	mov    %rbx,%rdi
+ 17b:	be 02 00 00 00       	mov    $0x2,%esi
+ 180:	e8 00 00 00 00       	call   185 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x185>
+ 185:	0f b7 53 0e          	movzwl 0xe(%rbx),%edx
+ 189:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 18f:	48 89 ef             	mov    %rbp,%rdi
+ 192:	0f b6 c8             	movzbl %al,%ecx
+ 195:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 19c <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x19c>
+ 19c:	e8 00 00 00 00       	call   1a1 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x1a1>
+ 1a1:	48 89 df             	mov    %rbx,%rdi
+ 1a4:	be 04 00 00 00       	mov    $0x4,%esi
+ 1a9:	e8 00 00 00 00       	call   1ae <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x1ae>
+ 1ae:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 1b4:	4c 89 fa             	mov    %r15,%rdx
+ 1b7:	48 89 ef             	mov    %rbp,%rdi
+ 1ba:	0f b6 c8             	movzbl %al,%ecx
+ 1bd:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1c4 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x1c4>
+ 1c4:	e8 00 00 00 00       	call   1c9 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x1c9>
+ 1c9:	48 89 df             	mov    %rbx,%rdi
+ 1cc:	be 20 00 00 00       	mov    $0x20,%esi
+ 1d1:	e8 00 00 00 00       	call   1d6 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x1d6>
+ 1d6:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 1dc:	4c 89 f2             	mov    %r14,%rdx
+ 1df:	48 89 ef             	mov    %rbp,%rdi
+ 1e2:	0f b6 c8             	movzbl %al,%ecx
+ 1e5:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1ec <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x1ec>
+ 1ec:	e8 00 00 00 00       	call   1f1 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x1f1>
+ 1f1:	48 89 df             	mov    %rbx,%rdi
+ 1f4:	be 40 00 00 00       	mov    $0x40,%esi
+ 1f9:	e8 00 00 00 00       	call   1fe <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x1fe>
+ 1fe:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 204:	4c 89 ea             	mov    %r13,%rdx
+ 207:	48 89 ef             	mov    %rbp,%rdi
+ 20a:	0f b6 c8             	movzbl %al,%ecx
+ 20d:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 214 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x214>
+ 214:	e8 00 00 00 00       	call   219 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x219>
+ 219:	48 89 df             	mov    %rbx,%rdi
+ 21c:	be 08 00 00 00       	mov    $0x8,%esi
+ 221:	e8 00 00 00 00       	call   226 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x226>
+ 226:	0f b6 53 11          	movzbl 0x11(%rbx),%edx
+ 22a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 231 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x231>
+ 231:	48 89 ef             	mov    %rbp,%rdi
+ 234:	0f b6 c8             	movzbl %al,%ecx
+ 237:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 23d:	e8 00 00 00 00       	call   242 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x242>
+ 242:	48 89 ef             	mov    %rbp,%rdi
+ 245:	e8 00 00 00 00       	call   24a <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x24a>
+ 24a:	48 8b 5c 24 08       	mov    0x8(%rsp),%rbx
+ 24f:	b9 db 00 00 00       	mov    $0xdb,%ecx
+ 254:	4c 89 e6             	mov    %r12,%rsi
+ 257:	0f b7 c0             	movzwl %ax,%eax
+ 25a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 261 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x261>
+ 261:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 268 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x268>
+ 268:	89 03                	mov    %eax,(%rbx)
+ 26a:	31 c0                	xor    %eax,%eax
+ 26c:	e8 00 00 00 00       	call   271 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x271>
+ 271:	48 8b 44 24 28       	mov    0x28(%rsp),%rax
+ 276:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 27d:	00 00 
+ 27f:	74 05                	je     286 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x286>
+ 281:	e8 00 00 00 00       	call   286 <OSCServerParams::Builder(osc::server::Params const*, char*, unsigned int, unsigned int&)+0x286>
+ 286:	48 83 c4 38          	add    $0x38,%rsp
+ 28a:	5b                   	pop    %rbx
+ 28b:	5d                   	pop    %rbp
+ 28c:	41 5c                	pop    %r12
+ 28e:	41 5d                	pop    %r13
+ 290:	41 5e                	pop    %r14
+ 292:	41 5f                	pop    %r15
+ 294:	c3                   	ret    
+
+Disassembly of section .text._ZN15OSCServerParams4SaveEPcjRj:
+
+0000000000000000 <OSCServerParams::Save(char*, unsigned int, unsigned int&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 57                	push   %r15
+   6:	4c 8d 3d 00 00 00 00 	lea    0x0(%rip),%r15        # d <OSCServerParams::Save(char*, unsigned int, unsigned int&)+0xd>
+   d:	31 c0                	xor    %eax,%eax
+   f:	41 56                	push   %r14
+  11:	4c 8d 35 00 00 00 00 	lea    0x0(%rip),%r14        # 18 <OSCServerParams::Save(char*, unsigned int, unsigned int&)+0x18>
+  18:	41 55                	push   %r13
+  1a:	41 89 d5             	mov    %edx,%r13d
+  1d:	4c 89 fa             	mov    %r15,%rdx
+  20:	41 54                	push   %r12
+  22:	49 89 f4             	mov    %rsi,%r12
+  25:	4c 89 f6             	mov    %r14,%rsi
+  28:	55                   	push   %rbp
+  29:	48 89 fd             	mov    %rdi,%rbp
+  2c:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 33 <OSCServerParams::Save(char*, unsigned int, unsigned int&)+0x33>
+  33:	53                   	push   %rbx
+  34:	48 89 cb             	mov    %rcx,%rbx
+  37:	b9 df 00 00 00       	mov    $0xdf,%ecx
+  3c:	41 51                	push   %r9
+  3e:	e8 00 00 00 00       	call   43 <OSCServerParams::Save(char*, unsigned int, unsigned int&)+0x43>
+  43:	48 83 7d 00 00       	cmpq   $0x0,0x0(%rbp)
+  48:	75 2b                	jne    75 <OSCServerParams::Save(char*, unsigned int, unsigned int&)+0x75>
+  4a:	c7 03 00 00 00 00    	movl   $0x0,(%rbx)
+  50:	4c 89 fa             	mov    %r15,%rdx
+  53:	41 58                	pop    %r8
+  55:	4c 89 f6             	mov    %r14,%rsi
+  58:	5b                   	pop    %rbx
+  59:	b9 e3 00 00 00       	mov    $0xe3,%ecx
+  5e:	5d                   	pop    %rbp
+  5f:	31 c0                	xor    %eax,%eax
+  61:	41 5c                	pop    %r12
+  63:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 6a <OSCServerParams::Save(char*, unsigned int, unsigned int&)+0x6a>
+  6a:	41 5d                	pop    %r13
+  6c:	41 5e                	pop    %r14
+  6e:	41 5f                	pop    %r15
+  70:	e9 00 00 00 00       	jmp    75 <OSCServerParams::Save(char*, unsigned int, unsigned int&)+0x75>
+  75:	58                   	pop    %rax
+  76:	49 89 d8             	mov    %rbx,%r8
+  79:	44 89 e9             	mov    %r13d,%ecx
+  7c:	5b                   	pop    %rbx
+  7d:	4c 89 e2             	mov    %r12,%rdx
+  80:	48 89 ef             	mov    %rbp,%rdi
+  83:	31 f6                	xor    %esi,%esi
+  85:	5d                   	pop    %rbp
+  86:	41 5c                	pop    %r12
+  88:	41 5d                	pop    %r13
+  8a:	41 5e                	pop    %r14
+  8c:	41 5f                	pop    %r15
+  8e:	e9 00 00 00 00       	jmp    93 <.LC20+0x27>
+
+Disassembly of section .text._ZN15OSCServerParams4DumpEv:
+
+0000000000000000 <OSCServerParams::Dump()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	53                   	push   %rbx
+   5:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # c <OSCServerParams::Dump()+0xc>
+   c:	31 c0                	xor    %eax,%eax
+   e:	48 89 fb             	mov    %rdi,%rbx
+  11:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 18 <OSCServerParams::Dump()+0x18>
+  18:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 1f <OSCServerParams::Dump()+0x1f>
+  1f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 26 <OSCServerParams::Dump()+0x26>
+  26:	e8 00 00 00 00       	call   2b <OSCServerParams::Dump()+0x2b>
+  2b:	be 01 00 00 00       	mov    $0x1,%esi
+  30:	48 89 df             	mov    %rbx,%rdi
+  33:	e8 00 00 00 00       	call   38 <OSCServerParams::Dump()+0x38>
+  38:	84 c0                	test   %al,%al
+  3a:	74 19                	je     55 <OSCServerParams::Dump()+0x55>
+  3c:	0f b7 53 0c          	movzwl 0xc(%rbx),%edx
+  40:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 47 <OSCServerParams::Dump()+0x47>
+  47:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 4e <OSCServerParams::Dump()+0x4e>
+  4e:	31 c0                	xor    %eax,%eax
+  50:	e8 00 00 00 00       	call   55 <OSCServerParams::Dump()+0x55>
+  55:	be 02 00 00 00       	mov    $0x2,%esi
+  5a:	48 89 df             	mov    %rbx,%rdi
+  5d:	e8 00 00 00 00       	call   62 <OSCServerParams::Dump()+0x62>
+  62:	84 c0                	test   %al,%al
+  64:	74 19                	je     7f <OSCServerParams::Dump()+0x7f>
+  66:	0f b7 53 0e          	movzwl 0xe(%rbx),%edx
+  6a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 71 <OSCServerParams::Dump()+0x71>
+  71:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 78 <OSCServerParams::Dump()+0x78>
+  78:	31 c0                	xor    %eax,%eax
+  7a:	e8 00 00 00 00       	call   7f <OSCServerParams::Dump()+0x7f>
+  7f:	be 04 00 00 00       	mov    $0x4,%esi
+  84:	48 89 df             	mov    %rbx,%rdi
+  87:	e8 00 00 00 00       	call   8c <OSCServerParams::Dump()+0x8c>
+  8c:	84 c0                	test   %al,%al
+  8e:	74 19                	je     a9 <OSCServerParams::Dump()+0xa9>
+  90:	48 8d 53 12          	lea    0x12(%rbx),%rdx
+  94:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 9b <OSCServerParams::Dump()+0x9b>
+  9b:	31 c0                	xor    %eax,%eax
+  9d:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # a4 <OSCServerParams::Dump()+0xa4>
+  a4:	e8 00 00 00 00       	call   a9 <OSCServerParams::Dump()+0xa9>
+  a9:	be 20 00 00 00       	mov    $0x20,%esi
+  ae:	48 89 df             	mov    %rbx,%rdi
+  b1:	e8 00 00 00 00       	call   b6 <OSCServerParams::Dump()+0xb6>
+  b6:	84 c0                	test   %al,%al
+  b8:	74 1c                	je     d6 <OSCServerParams::Dump()+0xd6>
+  ba:	48 8d 93 92 00 00 00 	lea    0x92(%rbx),%rdx
+  c1:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # c8 <OSCServerParams::Dump()+0xc8>
+  c8:	31 c0                	xor    %eax,%eax
+  ca:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # d1 <OSCServerParams::Dump()+0xd1>
+  d1:	e8 00 00 00 00       	call   d6 <OSCServerParams::Dump()+0xd6>
+  d6:	be 40 00 00 00       	mov    $0x40,%esi
+  db:	48 89 df             	mov    %rbx,%rdi
+  de:	e8 00 00 00 00       	call   e3 <OSCServerParams::Dump()+0xe3>
+  e3:	84 c0                	test   %al,%al
+  e5:	74 1c                	je     103 <OSCServerParams::Dump()+0x103>
+  e7:	48 8d 93 12 01 00 00 	lea    0x112(%rbx),%rdx
+  ee:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # f5 <OSCServerParams::Dump()+0xf5>
+  f5:	31 c0                	xor    %eax,%eax
+  f7:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # fe <OSCServerParams::Dump()+0xfe>
+  fe:	e8 00 00 00 00       	call   103 <OSCServerParams::Dump()+0x103>
+ 103:	be 08 00 00 00       	mov    $0x8,%esi
+ 108:	48 89 df             	mov    %rbx,%rdi
+ 10b:	e8 00 00 00 00       	call   110 <OSCServerParams::Dump()+0x110>
+ 110:	84 c0                	test   %al,%al
+ 112:	74 1a                	je     12e <OSCServerParams::Dump()+0x12e>
+ 114:	0f b6 53 11          	movzbl 0x11(%rbx),%edx
+ 118:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 11f <OSCServerParams::Dump()+0x11f>
+ 11f:	31 c0                	xor    %eax,%eax
+ 121:	5b                   	pop    %rbx
+ 122:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 129 <OSCServerParams::Dump()+0x129>
+ 129:	e9 00 00 00 00       	jmp    12e <OSCServerParams::Dump()+0x12e>
+ 12e:	5b                   	pop    %rbx
+ 12f:	c3                   	ret    
+
+Disassembly of section .text._ZN15OSCServerParams22staticCallbackFunctionEPvPKc:
+
+0000000000000000 <OSCServerParams::staticCallbackFunction(void*, char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	52                   	push   %rdx
+   5:	48 85 ff             	test   %rdi,%rdi
+   8:	75 1c                	jne    26 <OSCServerParams::staticCallbackFunction(void*, char const*)+0x26>
+   a:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 11 <OSCServerParams::staticCallbackFunction(void*, char const*)+0x11>
+  11:	ba 09 01 00 00       	mov    $0x109,%edx
+  16:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1d <OSCServerParams::staticCallbackFunction(void*, char const*)+0x1d>
+  1d:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 24 <OSCServerParams::staticCallbackFunction(void*, char const*)+0x24>
+  24:	eb 1f                	jmp    45 <OSCServerParams::staticCallbackFunction(void*, char const*)+0x45>
+  26:	48 85 f6             	test   %rsi,%rsi
+  29:	75 1f                	jne    4a <OSCServerParams::staticCallbackFunction(void*, char const*)+0x4a>
+  2b:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 32 <OSCServerParams::staticCallbackFunction(void*, char const*)+0x32>
+  32:	ba 0a 01 00 00       	mov    $0x10a,%edx
+  37:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 3e <OSCServerParams::staticCallbackFunction(void*, char const*)+0x3e>
+  3e:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 45 <OSCServerParams::staticCallbackFunction(void*, char const*)+0x45>
+  45:	e8 00 00 00 00       	call   4a <OSCServerParams::staticCallbackFunction(void*, char const*)+0x4a>
+  4a:	58                   	pop    %rax
+  4b:	e9 00 00 00 00       	jmp    50 <.LC10+0x6>
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddIbEEbPKcT_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	41 52                	push   %r10
+   8:	49 89 f2             	mov    %rsi,%r10
+   b:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+   f:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 33                	jmp    4f <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int)+0x4f>
+  1c:	89 d0                	mov    %edx,%eax
+  1e:	48 89 fb             	mov    %rdi,%rbx
+  21:	0f b7 d6             	movzwl %si,%edx
+  24:	48 03 37             	add    (%rdi),%rsi
+  27:	57                   	push   %rdi
+  28:	29 d5                	sub    %edx,%ebp
+  2a:	44 0f b6 c9          	movzbl %cl,%r9d
+  2e:	48 89 df             	mov    %rbx,%rdi
+  31:	41 50                	push   %r8
+  33:	4c 89 d1             	mov    %r10,%rcx
+  36:	44 0f b6 c0          	movzbl %al,%r8d
+  3a:	89 ea                	mov    %ebp,%edx
+  3c:	e8 00 00 00 00       	call   41 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int)+0x41>
+  41:	41 58                	pop    %r8
+  43:	41 59                	pop    %r9
+  45:	39 c5                	cmp    %eax,%ebp
+  47:	7c cf                	jl     18 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int)+0x18>
+  49:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  4d:	b0 01                	mov    $0x1,%al
+  4f:	5a                   	pop    %rdx
+  50:	5b                   	pop    %rbx
+  51:	5d                   	pop    %rbp
+  52:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddItEEbPKcT_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	41 52                	push   %r10
+   8:	49 89 f2             	mov    %rsi,%r10
+   b:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+   f:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 33                	jmp    4f <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x4f>
+  1c:	89 d0                	mov    %edx,%eax
+  1e:	48 89 fb             	mov    %rdi,%rbx
+  21:	0f b7 d6             	movzwl %si,%edx
+  24:	48 03 37             	add    (%rdi),%rsi
+  27:	57                   	push   %rdi
+  28:	29 d5                	sub    %edx,%ebp
+  2a:	44 0f b6 c9          	movzbl %cl,%r9d
+  2e:	48 89 df             	mov    %rbx,%rdi
+  31:	41 50                	push   %r8
+  33:	4c 89 d1             	mov    %r10,%rcx
+  36:	44 0f b7 c0          	movzwl %ax,%r8d
+  3a:	89 ea                	mov    %ebp,%edx
+  3c:	e8 00 00 00 00       	call   41 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x41>
+  41:	41 58                	pop    %r8
+  43:	41 59                	pop    %r9
+  45:	39 c5                	cmp    %eax,%ebp
+  47:	7c cf                	jl     18 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x18>
+  49:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  4d:	b0 01                	mov    $0x1,%al
+  4f:	5a                   	pop    %rdx
+  50:	5b                   	pop    %rbx
+  51:	5d                   	pop    %rbp
+  52:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddIPcEEbPKcT_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	41 52                	push   %r10
+   8:	49 89 f2             	mov    %rsi,%r10
+   b:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+   f:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 33                	jmp    4f <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int)+0x4f>
+  1c:	48 89 d0             	mov    %rdx,%rax
+  1f:	48 89 fb             	mov    %rdi,%rbx
+  22:	0f b7 d6             	movzwl %si,%edx
+  25:	48 03 37             	add    (%rdi),%rsi
+  28:	57                   	push   %rdi
+  29:	29 d5                	sub    %edx,%ebp
+  2b:	44 0f b6 c9          	movzbl %cl,%r9d
+  2f:	48 89 df             	mov    %rbx,%rdi
+  32:	41 50                	push   %r8
+  34:	4c 89 d1             	mov    %r10,%rcx
+  37:	49 89 c0             	mov    %rax,%r8
+  3a:	89 ea                	mov    %ebp,%edx
+  3c:	e8 00 00 00 00       	call   41 <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int)+0x41>
+  41:	41 58                	pop    %r8
+  43:	41 59                	pop    %r9
+  45:	39 c5                	cmp    %eax,%ebp
+  47:	7c cf                	jl     18 <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int)+0x18>
+  49:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  4d:	b0 01                	mov    $0x1,%al
+  4f:	5a                   	pop    %rdx
+  50:	5b                   	pop    %rbx
+  51:	5d                   	pop    %rbp
+  52:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partIbEEiPcjPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fa             	mov    %rdi,%r10
+   7:	45 0f b6 c0          	movzbl %r8b,%r8d
+   b:	48 89 f7             	mov    %rsi,%rdi
+   e:	89 d6                	mov    %edx,%esi
+  10:	41 8a 42 0c          	mov    0xc(%r10),%al
+  14:	45 84 c9             	test   %r9b,%r9b
+  17:	75 06                	jne    1f <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x1f>
+  19:	84 c0                	test   %al,%al
+  1b:	75 0d                	jne    2a <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x2a>
+  1d:	eb 14                	jmp    33 <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x33>
+  1f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 26 <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x26>
+  26:	84 c0                	test   %al,%al
+  28:	74 10                	je     3a <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x3a>
+  2a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 31 <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x31>
+  31:	eb 07                	jmp    3a <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x3a>
+  33:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 3a <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x3a>
+  3a:	31 c0                	xor    %eax,%eax
+  3c:	e9 00 00 00 00       	jmp    41 <.LC2+0x1>
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partItEEiPcjPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fa             	mov    %rdi,%r10
+   7:	45 0f b7 c0          	movzwl %r8w,%r8d
+   b:	48 89 f7             	mov    %rsi,%rdi
+   e:	89 d6                	mov    %edx,%esi
+  10:	41 8a 42 0c          	mov    0xc(%r10),%al
+  14:	45 84 c9             	test   %r9b,%r9b
+  17:	75 06                	jne    1f <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x1f>
+  19:	84 c0                	test   %al,%al
+  1b:	75 0d                	jne    2a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x2a>
+  1d:	eb 14                	jmp    33 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x33>
+  1f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 26 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x26>
+  26:	84 c0                	test   %al,%al
+  28:	74 10                	je     3a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x3a>
+  2a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 31 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x31>
+  31:	eb 07                	jmp    3a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x3a>
+  33:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 3a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x3a>
+  3a:	31 c0                	xor    %eax,%eax
+  3c:	e9 00 00 00 00       	jmp    41 <.LC2+0x1>

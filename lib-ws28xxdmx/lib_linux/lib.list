@@ -1,0 +1,2203 @@
+In archive lib_linux/libws28xxdmx.a:
+
+pixeldmxconfiguration.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZN18PixelConfiguration7SetTypeEN5pixel4TypeE:
+
+0000000000000000 <PixelConfiguration::SetType(pixel::Type)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	89 37                	mov    %esi,(%rdi)
+   6:	c3                   	ret    
+
+Disassembly of section .text._ZNK18PixelConfiguration7GetTypeEv:
+
+0000000000000000 <PixelConfiguration::GetType() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	8b 07                	mov    (%rdi),%eax
+   6:	c3                   	ret    
+
+Disassembly of section .text._ZNK18PixelConfiguration8GetCountEv:
+
+0000000000000000 <PixelConfiguration::GetCount() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	8b 47 04             	mov    0x4(%rdi),%eax
+   7:	c3                   	ret    
+
+Disassembly of section .text._ZNK18PixelConfiguration13IsRTZProtocolEv:
+
+0000000000000000 <PixelConfiguration::IsRTZProtocol() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	8a 47 15             	mov    0x15(%rdi),%al
+   7:	c3                   	ret    
+
+Disassembly of section .text._ZN21PixelDmxConfiguration8ValidateEjRjRN21pixeldmxconfiguration8PortInfoE:
+
+0000000000000000 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 57                	push   %r15
+   6:	31 c0                	xor    %eax,%eax
+   8:	41 56                	push   %r14
+   a:	4c 8d 35 00 00 00 00 	lea    0x0(%rip),%r14        # 11 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x11>
+  11:	41 55                	push   %r13
+  13:	4c 8d 2d 00 00 00 00 	lea    0x0(%rip),%r13        # 1a <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x1a>
+  1a:	41 54                	push   %r12
+  1c:	49 89 cc             	mov    %rcx,%r12
+  1f:	b9 31 00 00 00       	mov    $0x31,%ecx
+  24:	55                   	push   %rbp
+  25:	48 89 d5             	mov    %rdx,%rbp
+  28:	4c 89 f2             	mov    %r14,%rdx
+  2b:	53                   	push   %rbx
+  2c:	48 89 fb             	mov    %rdi,%rbx
+  2f:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 36 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x36>
+  36:	48 83 ec 18          	sub    $0x18,%rsp
+  3a:	89 74 24 0c          	mov    %esi,0xc(%rsp)
+  3e:	4c 89 ee             	mov    %r13,%rsi
+  41:	e8 00 00 00 00       	call   46 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x46>
+  46:	48 89 df             	mov    %rbx,%rdi
+  49:	48 89 ee             	mov    %rbp,%rsi
+  4c:	e8 00 00 00 00       	call   51 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x51>
+  51:	48 89 df             	mov    %rbx,%rdi
+  54:	e8 00 00 00 00       	call   59 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x59>
+  59:	84 c0                	test   %al,%al
+  5b:	75 29                	jne    86 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x86>
+  5d:	48 89 df             	mov    %rbx,%rdi
+  60:	e8 00 00 00 00       	call   65 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x65>
+  65:	8d 50 f5             	lea    -0xb(%rax),%edx
+  68:	83 fa 01             	cmp    $0x1,%edx
+  6b:	76 0e                	jbe    7b <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x7b>
+  6d:	85 c0                	test   %eax,%eax
+  6f:	74 0a                	je     7b <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x7b>
+  71:	31 f6                	xor    %esi,%esi
+  73:	48 89 df             	mov    %rbx,%rdi
+  76:	e8 00 00 00 00       	call   7b <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x7b>
+  7b:	48 89 ee             	mov    %rbp,%rsi
+  7e:	48 89 df             	mov    %rbx,%rdi
+  81:	e8 00 00 00 00       	call   86 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x86>
+  86:	48 89 df             	mov    %rbx,%rdi
+  89:	41 bf aa 00 00 00    	mov    $0xaa,%r15d
+  8f:	e8 00 00 00 00       	call   94 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x94>
+  94:	ba 54 01 00 00       	mov    $0x154,%edx
+  99:	8b 6b 24             	mov    0x24(%rbx),%ebp
+  9c:	48 89 df             	mov    %rbx,%rdi
+  9f:	83 f8 07             	cmp    $0x7,%eax
+  a2:	b8 80 00 00 00       	mov    $0x80,%eax
+  a7:	b9 80 01 00 00       	mov    $0x180,%ecx
+  ac:	44 0f 44 f8          	cmove  %eax,%r15d
+  b0:	b8 00 01 00 00       	mov    $0x100,%eax
+  b5:	0f 44 d0             	cmove  %eax,%edx
+  b8:	b8 fe 01 00 00       	mov    $0x1fe,%eax
+  bd:	0f 44 c1             	cmove  %ecx,%eax
+  c0:	45 89 3c 24          	mov    %r15d,(%r12)
+  c4:	41 89 54 24 04       	mov    %edx,0x4(%r12)
+  c9:	41 89 44 24 08       	mov    %eax,0x8(%r12)
+  ce:	e8 00 00 00 00       	call   d3 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0xd3>
+  d3:	85 ed                	test   %ebp,%ebp
+  d5:	74 04                	je     db <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0xdb>
+  d7:	39 e8                	cmp    %ebp,%eax
+  d9:	73 03                	jae    de <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0xde>
+  db:	89 43 24             	mov    %eax,0x24(%rbx)
+  de:	48 89 df             	mov    %rbx,%rdi
+  e1:	41 ff c7             	inc    %r15d
+  e4:	e8 00 00 00 00       	call   e9 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0xe9>
+  e9:	31 d2                	xor    %edx,%edx
+  eb:	48 8d 73 20          	lea    0x20(%rbx),%rsi
+  ef:	48 8d 7c 24 0c       	lea    0xc(%rsp),%rdi
+  f4:	f7 73 24             	divl   0x24(%rbx)
+  f7:	89 43 28             	mov    %eax,0x28(%rbx)
+  fa:	89 c5                	mov    %eax,%ebp
+  fc:	e8 00 00 00 00       	call   101 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x101>
+ 101:	31 d2                	xor    %edx,%edx
+ 103:	8b 08                	mov    (%rax),%ecx
+ 105:	89 e8                	mov    %ebp,%eax
+ 107:	41 f7 f7             	div    %r15d
+ 10a:	89 4b 20             	mov    %ecx,0x20(%rbx)
+ 10d:	83 7c 24 0c 01       	cmpl   $0x1,0xc(%rsp)
+ 112:	41 89 c1             	mov    %eax,%r9d
+ 115:	8d 40 01             	lea    0x1(%rax),%eax
+ 118:	89 43 2c             	mov    %eax,0x2c(%rbx)
+ 11b:	74 05                	je     122 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x122>
+ 11d:	44 8d 4c 88 fb       	lea    -0x5(%rax,%rcx,4),%r9d
+ 122:	45 89 4c 24 0c       	mov    %r9d,0xc(%r12)
+ 127:	4c 89 e9             	mov    %r13,%rcx
+ 12a:	4c 89 f2             	mov    %r14,%rdx
+ 12d:	31 c0                	xor    %eax,%eax
+ 12f:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 136 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x136>
+ 136:	41 b8 5b 00 00 00    	mov    $0x5b,%r8d
+ 13c:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 143 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x143>
+ 143:	e8 00 00 00 00       	call   148 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x148>
+ 148:	4c 89 f2             	mov    %r14,%rdx
+ 14b:	4c 89 ee             	mov    %r13,%rsi
+ 14e:	b9 5c 00 00 00       	mov    $0x5c,%ecx
+ 153:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 15a <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x15a>
+ 15a:	31 c0                	xor    %eax,%eax
+ 15c:	e8 00 00 00 00       	call   161 <PixelDmxConfiguration::Validate(unsigned int, unsigned int&, pixeldmxconfiguration::PortInfo&)+0x161>
+ 161:	48 83 c4 18          	add    $0x18,%rsp
+ 165:	5b                   	pop    %rbx
+ 166:	5d                   	pop    %rbp
+ 167:	41 5c                	pop    %r12
+ 169:	41 5d                	pop    %r13
+ 16b:	41 5e                	pop    %r14
+ 16d:	41 5f                	pop    %r15
+ 16f:	c3                   	ret    
+
+Disassembly of section .text._ZN21PixelDmxConfiguration5PrintEv:
+
+0000000000000000 <PixelDmxConfiguration::Print()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	53                   	push   %rbx
+   5:	48 89 fb             	mov    %rdi,%rbx
+   8:	e8 00 00 00 00       	call   d <PixelDmxConfiguration::Print()+0xd>
+   d:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 14 <PixelDmxConfiguration::Print()+0x14>
+  14:	e8 00 00 00 00       	call   19 <PixelDmxConfiguration::Print()+0x19>
+  19:	8b 73 20             	mov    0x20(%rbx),%esi
+  1c:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 23 <PixelDmxConfiguration::Print()+0x23>
+  23:	31 c0                	xor    %eax,%eax
+  25:	e8 00 00 00 00       	call   2a <PixelDmxConfiguration::Print()+0x2a>
+  2a:	8b 53 28             	mov    0x28(%rbx),%edx
+  2d:	8b 73 24             	mov    0x24(%rbx),%esi
+  30:	31 c0                	xor    %eax,%eax
+  32:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 39 <PixelDmxConfiguration::Print()+0x39>
+  39:	5b                   	pop    %rbx
+  3a:	e9 00 00 00 00       	jmp    3f <.LC3+0xa>
+
+Disassembly of section .text._ZSt3minIjERKT_S2_S2_:
+
+0000000000000000 <unsigned int const& std::min<unsigned int>(unsigned int const&, unsigned int const&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	8b 17                	mov    (%rdi),%edx
+   6:	48 89 f8             	mov    %rdi,%rax
+   9:	39 16                	cmp    %edx,(%rsi)
+   b:	73 03                	jae    10 <unsigned int const& std::min<unsigned int>(unsigned int const&, unsigned int const&)+0x10>
+   d:	48 89 f0             	mov    %rsi,%rax
+  10:	c3                   	ret    
+
+pixeldmxparams.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZN18PixelConfiguration7SetTypeEN5pixel4TypeE:
+
+0000000000000000 <PixelConfiguration::SetType(pixel::Type)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	89 37                	mov    %esi,(%rdi)
+   6:	c3                   	ret    
+
+Disassembly of section .text._ZN18PixelConfiguration8SetCountEj:
+
+0000000000000000 <PixelConfiguration::SetCount(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	85 f6                	test   %esi,%esi
+   6:	75 05                	jne    d <PixelConfiguration::SetCount(unsigned int)+0xd>
+   8:	be aa 00 00 00       	mov    $0xaa,%esi
+   d:	89 77 04             	mov    %esi,0x4(%rdi)
+  10:	c3                   	ret    
+
+Disassembly of section .text._ZN18PixelConfiguration6SetMapEN5pixel3MapE:
+
+0000000000000000 <PixelConfiguration::SetMap(pixel::Map)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	89 77 08             	mov    %esi,0x8(%rdi)
+   7:	c3                   	ret    
+
+Disassembly of section .text._ZN18PixelConfiguration10SetLowCodeEh:
+
+0000000000000000 <PixelConfiguration::SetLowCode(unsigned char)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	40 88 77 10          	mov    %sil,0x10(%rdi)
+   8:	c3                   	ret    
+
+Disassembly of section .text._ZN18PixelConfiguration11SetHighCodeEh:
+
+0000000000000000 <PixelConfiguration::SetHighCode(unsigned char)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	40 88 77 11          	mov    %sil,0x11(%rdi)
+   8:	c3                   	ret    
+
+Disassembly of section .text._ZN18PixelConfiguration15SetClockSpeedHzEj:
+
+0000000000000000 <PixelConfiguration::SetClockSpeedHz(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	89 77 0c             	mov    %esi,0xc(%rdi)
+   7:	c3                   	ret    
+
+Disassembly of section .text._ZN18PixelConfiguration19SetGlobalBrightnessEh:
+
+0000000000000000 <PixelConfiguration::SetGlobalBrightness(unsigned char)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	40 88 77 12          	mov    %sil,0x12(%rdi)
+   8:	c3                   	ret    
+
+Disassembly of section .text._ZN18PixelConfiguration24SetEnableGammaCorrectionEb:
+
+0000000000000000 <PixelConfiguration::SetEnableGammaCorrection(bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	40 88 77 14          	mov    %sil,0x14(%rdi)
+   8:	c3                   	ret    
+
+Disassembly of section .text._ZN18PixelConfiguration13SetGammaTableEj:
+
+0000000000000000 <PixelConfiguration::SetGammaTable(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	40 88 77 13          	mov    %sil,0x13(%rdi)
+   8:	c3                   	ret    
+
+Disassembly of section .text._ZN21PixelDmxConfiguration14SetOutputPortsEj:
+
+0000000000000000 <PixelDmxConfiguration::SetOutputPorts(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	89 77 20             	mov    %esi,0x20(%rdi)
+   7:	c3                   	ret    
+
+Disassembly of section .text._ZN21PixelDmxConfiguration16SetGroupingCountEt:
+
+0000000000000000 <PixelDmxConfiguration::SetGroupingCount(unsigned short)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	0f b7 f6             	movzwl %si,%esi
+   7:	89 77 24             	mov    %esi,0x24(%rdi)
+   a:	c3                   	ret    
+
+Disassembly of section .text._ZN21PixelDmxConfiguration18SetDmxStartAddressEt:
+
+0000000000000000 <PixelDmxConfiguration::SetDmxStartAddress(unsigned short)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	66 89 77 30          	mov    %si,0x30(%rdi)
+   8:	c3                   	ret    
+
+Disassembly of section .text._ZNK14PixelDmxParams9isMaskSetEj:
+
+0000000000000000 <PixelDmxParams::isMaskSet(unsigned int) const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	8b 47 08             	mov    0x8(%rdi),%eax
+   7:	21 f0                	and    %esi,%eax
+   9:	39 f0                	cmp    %esi,%eax
+   b:	0f 94 c0             	sete   %al
+   e:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddEPKcb:
+
+0000000000000000 <PropertiesBuilder::Add(char const*, bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	0f b6 d2             	movzbl %dl,%edx
+   7:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+   d:	89 d1                	mov    %edx,%ecx
+   f:	e9 00 00 00 00       	jmp    14 <.LC2>
+
+Disassembly of section .text._ZN17PropertiesBuilder7GetSizeEv:
+
+0000000000000000 <PropertiesBuilder::GetSize()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	80 7f 0c 00          	cmpb   $0x0,0xc(%rdi)
+   8:	74 1b                	je     25 <PropertiesBuilder::GetSize()+0x25>
+   a:	0f b7 47 0a          	movzwl 0xa(%rdi),%eax
+   e:	48 8b 17             	mov    (%rdi),%rdx
+  11:	c6 44 02 ff 7d       	movb   $0x7d,-0x1(%rdx,%rax,1)
+  16:	0f b7 47 0a          	movzwl 0xa(%rdi),%eax
+  1a:	48 8b 17             	mov    (%rdi),%rdx
+  1d:	c6 04 02 7d          	movb   $0x7d,(%rdx,%rax,1)
+  21:	66 ff 47 0a          	incw   0xa(%rdi)
+  25:	66 8b 47 0a          	mov    0xa(%rdi),%ax
+  29:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partIfEEiPcjPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<float>(char*, unsigned int, char const*, float, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fb             	mov    %rdi,%r11
+   7:	45 89 c2             	mov    %r8d,%r10d
+   a:	48 89 f7             	mov    %rsi,%rdi
+   d:	45 89 c8             	mov    %r9d,%r8d
+  10:	41 8a 43 0c          	mov    0xc(%r11),%al
+  14:	89 d6                	mov    %edx,%esi
+  16:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+  1a:	45 84 d2             	test   %r10b,%r10b
+  1d:	75 06                	jne    25 <int PropertiesBuilder::add_part<float>(char*, unsigned int, char const*, float, bool, unsigned int)+0x25>
+  1f:	84 c0                	test   %al,%al
+  21:	75 0d                	jne    30 <int PropertiesBuilder::add_part<float>(char*, unsigned int, char const*, float, bool, unsigned int)+0x30>
+  23:	eb 14                	jmp    39 <int PropertiesBuilder::add_part<float>(char*, unsigned int, char const*, float, bool, unsigned int)+0x39>
+  25:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 2c <int PropertiesBuilder::add_part<float>(char*, unsigned int, char const*, float, bool, unsigned int)+0x2c>
+  2c:	84 c0                	test   %al,%al
+  2e:	74 10                	je     40 <int PropertiesBuilder::add_part<float>(char*, unsigned int, char const*, float, bool, unsigned int)+0x40>
+  30:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 37 <int PropertiesBuilder::add_part<float>(char*, unsigned int, char const*, float, bool, unsigned int)+0x37>
+  37:	eb 07                	jmp    40 <int PropertiesBuilder::add_part<float>(char*, unsigned int, char const*, float, bool, unsigned int)+0x40>
+  39:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 40 <int PropertiesBuilder::add_part<float>(char*, unsigned int, char const*, float, bool, unsigned int)+0x40>
+  40:	b0 01                	mov    $0x1,%al
+  42:	e9 00 00 00 00       	jmp    47 <.LC15>
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partIPcEEiS1_jPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fa             	mov    %rdi,%r10
+   7:	48 89 f7             	mov    %rsi,%rdi
+   a:	89 d6                	mov    %edx,%esi
+   c:	41 8a 42 0c          	mov    0xc(%r10),%al
+  10:	45 84 c9             	test   %r9b,%r9b
+  13:	75 06                	jne    1b <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x1b>
+  15:	84 c0                	test   %al,%al
+  17:	75 0d                	jne    26 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x26>
+  19:	eb 14                	jmp    2f <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x2f>
+  1b:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 22 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x22>
+  22:	84 c0                	test   %al,%al
+  24:	74 10                	je     36 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x36>
+  26:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 2d <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x2d>
+  2d:	eb 07                	jmp    36 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x36>
+  2f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 36 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x36>
+  36:	31 c0                	xor    %eax,%eax
+  38:	e9 00 00 00 00       	jmp    3d <.LC12+0xa>
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partIPKcEEiPcjS2_T_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<char const*>(char*, unsigned int, char const*, char const*, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	45 0f b6 c9          	movzbl %r9b,%r9d
+   8:	e9 00 00 00 00       	jmp    d <.LC1+0x2>
+
+Disassembly of section .text._ZL16getStartUniverset:
+
+0000000000000000 <getStartUniverse(unsigned short)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	8d 57 03             	lea    0x3(%rdi),%edx
+   7:	89 f8                	mov    %edi,%eax
+   9:	31 d7                	xor    %edx,%edi
+   b:	66 f7 c7 f0 7f       	test   $0x7ff0,%di
+  10:	74 06                	je     18 <getStartUniverse(unsigned short)+0x18>
+  12:	89 d0                	mov    %edx,%eax
+  14:	66 25 f0 7f          	and    $0x7ff0,%ax
+  18:	c3                   	ret    
+
+Disassembly of section .text._ZN14PixelDmxParamsC2EP19PixelDmxParamsStore:
+
+0000000000000000 <PixelDmxParams::PixelDmxParams(PixelDmxParamsStore*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	b8 03 aa 00 01       	mov    $0x100aa03,%eax
+   9:	48 89 37             	mov    %rsi,(%rdi)
+   c:	48 c1 e0 20          	shl    $0x20,%rax
+  10:	48 89 47 08          	mov    %rax,0x8(%rdi)
+  14:	48 b8 00 00 00 09 3d 	movabs $0x1ff003d09000000,%rax
+  1b:	00 ff 01 
+  1e:	48 89 47 10          	mov    %rax,0x10(%rdi)
+  22:	48 b8 00 01 00 06 00 	movabs $0x1000006000100,%rax
+  29:	00 01 00 
+  2c:	48 89 47 18          	mov    %rax,0x18(%rdi)
+  30:	c3                   	ret    
+
+Disassembly of section .text._ZN14PixelDmxParams4LoadEv:
+
+0000000000000000 <PixelDmxParams::Load()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 54                	push   %r12
+   6:	48 89 fa             	mov    %rdi,%rdx
+   9:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 10 <PixelDmxParams::Load()+0x10>
+  10:	55                   	push   %rbp
+  11:	53                   	push   %rbx
+  12:	48 89 fb             	mov    %rdi,%rbx
+  15:	48 83 ec 20          	sub    $0x20,%rsp
+  19:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  20:	00 00 
+  22:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+  27:	31 c0                	xor    %eax,%eax
+  29:	c7 47 08 00 00 00 00 	movl   $0x0,0x8(%rdi)
+  30:	48 8d 6c 24 08       	lea    0x8(%rsp),%rbp
+  35:	48 89 ef             	mov    %rbp,%rdi
+  38:	e8 00 00 00 00       	call   3d <PixelDmxParams::Load()+0x3d>
+  3d:	48 89 ef             	mov    %rbp,%rdi
+  40:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 47 <PixelDmxParams::Load()+0x47>
+  47:	e8 00 00 00 00       	call   4c <PixelDmxParams::Load()+0x4c>
+  4c:	48 8b 3b             	mov    (%rbx),%rdi
+  4f:	84 c0                	test   %al,%al
+  51:	41 89 c4             	mov    %eax,%r12d
+  54:	74 11                	je     67 <PixelDmxParams::Load()+0x67>
+  56:	48 85 ff             	test   %rdi,%rdi
+  59:	74 1e                	je     79 <PixelDmxParams::Load()+0x79>
+  5b:	48 8b 07             	mov    (%rdi),%rax
+  5e:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+  62:	ff 50 10             	call   *0x10(%rax)
+  65:	eb 12                	jmp    79 <PixelDmxParams::Load()+0x79>
+  67:	48 85 ff             	test   %rdi,%rdi
+  6a:	74 0d                	je     79 <PixelDmxParams::Load()+0x79>
+  6c:	48 8b 07             	mov    (%rdi),%rax
+  6f:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+  73:	41 b4 01             	mov    $0x1,%r12b
+  76:	ff 50 18             	call   *0x18(%rax)
+  79:	48 89 ef             	mov    %rbp,%rdi
+  7c:	e8 00 00 00 00       	call   81 <PixelDmxParams::Load()+0x81>
+  81:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+  86:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+  8d:	00 00 
+  8f:	74 05                	je     96 <PixelDmxParams::Load()+0x96>
+  91:	e8 00 00 00 00       	call   96 <PixelDmxParams::Load()+0x96>
+  96:	48 83 c4 20          	add    $0x20,%rsp
+  9a:	44 89 e0             	mov    %r12d,%eax
+  9d:	5b                   	pop    %rbx
+  9e:	5d                   	pop    %rbp
+  9f:	41 5c                	pop    %r12
+  a1:	c3                   	ret    
+
+Disassembly of section .text._ZN14PixelDmxParams4LoadEPKcj:
+
+0000000000000000 <PixelDmxParams::Load(char const*, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 55                	push   %r13
+   6:	41 54                	push   %r12
+   8:	55                   	push   %rbp
+   9:	53                   	push   %rbx
+   a:	48 83 ec 28          	sub    $0x28,%rsp
+   e:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  15:	00 00 
+  17:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+  1c:	31 c0                	xor    %eax,%eax
+  1e:	48 85 f6             	test   %rsi,%rsi
+  21:	75 1c                	jne    3f <PixelDmxParams::Load(char const*, unsigned int)+0x3f>
+  23:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 2a <PixelDmxParams::Load(char const*, unsigned int)+0x2a>
+  2a:	ba 80 00 00 00       	mov    $0x80,%edx
+  2f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 36 <PixelDmxParams::Load(char const*, unsigned int)+0x36>
+  36:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 3d <PixelDmxParams::Load(char const*, unsigned int)+0x3d>
+  3d:	eb 21                	jmp    60 <PixelDmxParams::Load(char const*, unsigned int)+0x60>
+  3f:	41 89 d4             	mov    %edx,%r12d
+  42:	85 d2                	test   %edx,%edx
+  44:	75 1f                	jne    65 <PixelDmxParams::Load(char const*, unsigned int)+0x65>
+  46:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 4d <PixelDmxParams::Load(char const*, unsigned int)+0x4d>
+  4d:	ba 81 00 00 00       	mov    $0x81,%edx
+  52:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 59 <PixelDmxParams::Load(char const*, unsigned int)+0x59>
+  59:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 60 <PixelDmxParams::Load(char const*, unsigned int)+0x60>
+  60:	e8 00 00 00 00       	call   65 <PixelDmxParams::Load(char const*, unsigned int)+0x65>
+  65:	48 83 3f 00          	cmpq   $0x0,(%rdi)
+  69:	48 89 fb             	mov    %rdi,%rbx
+  6c:	75 1c                	jne    8a <PixelDmxParams::Load(char const*, unsigned int)+0x8a>
+  6e:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 75 <PixelDmxParams::Load(char const*, unsigned int)+0x75>
+  75:	ba 82 00 00 00       	mov    $0x82,%edx
+  7a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 81 <PixelDmxParams::Load(char const*, unsigned int)+0x81>
+  81:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 88 <PixelDmxParams::Load(char const*, unsigned int)+0x88>
+  88:	eb d6                	jmp    60 <PixelDmxParams::Load(char const*, unsigned int)+0x60>
+  8a:	c7 47 08 00 00 00 00 	movl   $0x0,0x8(%rdi)
+  91:	4c 8d 6c 24 08       	lea    0x8(%rsp),%r13
+  96:	48 89 fa             	mov    %rdi,%rdx
+  99:	48 89 f5             	mov    %rsi,%rbp
+  9c:	4c 89 ef             	mov    %r13,%rdi
+  9f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # a6 <PixelDmxParams::Load(char const*, unsigned int)+0xa6>
+  a6:	e8 00 00 00 00       	call   ab <PixelDmxParams::Load(char const*, unsigned int)+0xab>
+  ab:	44 89 e2             	mov    %r12d,%edx
+  ae:	48 89 ee             	mov    %rbp,%rsi
+  b1:	4c 89 ef             	mov    %r13,%rdi
+  b4:	e8 00 00 00 00       	call   b9 <PixelDmxParams::Load(char const*, unsigned int)+0xb9>
+  b9:	48 8b 3b             	mov    (%rbx),%rdi
+  bc:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+  c0:	48 8b 07             	mov    (%rdi),%rax
+  c3:	ff 50 10             	call   *0x10(%rax)
+  c6:	4c 89 ef             	mov    %r13,%rdi
+  c9:	e8 00 00 00 00       	call   ce <PixelDmxParams::Load(char const*, unsigned int)+0xce>
+  ce:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+  d3:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+  da:	00 00 
+  dc:	74 05                	je     e3 <PixelDmxParams::Load(char const*, unsigned int)+0xe3>
+  de:	e8 00 00 00 00       	call   e3 <PixelDmxParams::Load(char const*, unsigned int)+0xe3>
+  e3:	48 83 c4 28          	add    $0x28,%rsp
+  e7:	5b                   	pop    %rbx
+  e8:	5d                   	pop    %rbp
+  e9:	41 5c                	pop    %r12
+  eb:	41 5d                	pop    %r13
+  ed:	c3                   	ret    
+
+Disassembly of section .text._ZN14PixelDmxParams16callbackFunctionEPKc:
+
+0000000000000000 <PixelDmxParams::callbackFunction(char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 56                	push   %r14
+   6:	41 55                	push   %r13
+   8:	41 54                	push   %r12
+   a:	55                   	push   %rbp
+   b:	53                   	push   %rbx
+   c:	48 83 ec 30          	sub    $0x30,%rsp
+  10:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  17:	00 00 
+  19:	48 89 44 24 28       	mov    %rax,0x28(%rsp)
+  1e:	31 c0                	xor    %eax,%eax
+  20:	48 85 f6             	test   %rsi,%rsi
+  23:	75 1f                	jne    44 <PixelDmxParams::callbackFunction(char const*)+0x44>
+  25:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 2c <PixelDmxParams::callbackFunction(char const*)+0x2c>
+  2c:	ba 92 00 00 00       	mov    $0x92,%edx
+  31:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 38 <PixelDmxParams::callbackFunction(char const*)+0x38>
+  38:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 3f <PixelDmxParams::callbackFunction(char const*)+0x3f>
+  3f:	e8 00 00 00 00       	call   44 <PixelDmxParams::callbackFunction(char const*)+0x44>
+  44:	48 89 f5             	mov    %rsi,%rbp
+  47:	4c 8d 74 24 10       	lea    0x10(%rsp),%r14
+  4c:	4c 8d 64 24 18       	lea    0x18(%rsp),%r12
+  51:	48 89 fb             	mov    %rdi,%rbx
+  54:	4c 89 f1             	mov    %r14,%rcx
+  57:	4c 89 e2             	mov    %r12,%rdx
+  5a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 61 <PixelDmxParams::callbackFunction(char const*)+0x61>
+  61:	48 89 ef             	mov    %rbp,%rdi
+  64:	c7 44 24 10 08 00 00 	movl   $0x8,0x10(%rsp)
+  6b:	00 
+  6c:	e8 00 00 00 00       	call   71 <PixelDmxParams::callbackFunction(char const*)+0x71>
+  71:	85 c0                	test   %eax,%eax
+  73:	75 2f                	jne    a4 <PixelDmxParams::callbackFunction(char const*)+0xa4>
+  75:	8b 44 24 10          	mov    0x10(%rsp),%eax
+  79:	4c 89 e7             	mov    %r12,%rdi
+  7c:	c6 44 04 18 00       	movb   $0x0,0x18(%rsp,%rax,1)
+  81:	e8 00 00 00 00       	call   86 <PixelDmxParams::callbackFunction(char const*)+0x86>
+  86:	83 f8 0e             	cmp    $0xe,%eax
+  89:	74 0c                	je     97 <PixelDmxParams::callbackFunction(char const*)+0x97>
+  8b:	83 4b 08 01          	orl    $0x1,0x8(%rbx)
+  8f:	88 43 0c             	mov    %al,0xc(%rbx)
+  92:	e9 2b 03 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+  97:	83 63 08 fe          	andl   $0xfffffffe,0x8(%rbx)
+  9b:	c6 43 0c 03          	movb   $0x3,0xc(%rbx)
+  9f:	e9 1e 03 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+  a4:	4c 8d 6c 24 0a       	lea    0xa(%rsp),%r13
+  a9:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # b0 <PixelDmxParams::callbackFunction(char const*)+0xb0>
+  b0:	48 89 ef             	mov    %rbp,%rdi
+  b3:	4c 89 ea             	mov    %r13,%rdx
+  b6:	e8 00 00 00 00       	call   bb <PixelDmxParams::callbackFunction(char const*)+0xbb>
+  bb:	85 c0                	test   %eax,%eax
+  bd:	75 40                	jne    ff <PixelDmxParams::callbackFunction(char const*)+0xff>
+  bf:	66 8b 6c 24 0a       	mov    0xa(%rsp),%bp
+  c4:	66 85 ed             	test   %bp,%bp
+  c7:	74 27                	je     f0 <PixelDmxParams::callbackFunction(char const*)+0xf0>
+  c9:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # d0 <PixelDmxParams::callbackFunction(char const*)+0xd0>
+  d0:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # d7 <PixelDmxParams::callbackFunction(char const*)+0xd7>
+  d7:	e8 00 00 00 00       	call   dc <PixelDmxParams::callbackFunction(char const*)+0xdc>
+  dc:	0f b7 d5             	movzwl %bp,%edx
+  df:	3b 10                	cmp    (%rax),%edx
+  e1:	7f 0d                	jg     f0 <PixelDmxParams::callbackFunction(char const*)+0xf0>
+  e3:	83 4b 08 02          	orl    $0x2,0x8(%rbx)
+  e7:	66 89 6b 0d          	mov    %bp,0xd(%rbx)
+  eb:	e9 d2 02 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+  f0:	83 63 08 fd          	andl   $0xfffffffd,0x8(%rbx)
+  f4:	66 c7 43 0d aa 00    	movw   $0xaa,0xd(%rbx)
+  fa:	e9 c3 02 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+  ff:	4c 89 f1             	mov    %r14,%rcx
+ 102:	4c 89 e2             	mov    %r12,%rdx
+ 105:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 10c <PixelDmxParams::callbackFunction(char const*)+0x10c>
+ 10c:	48 89 ef             	mov    %rbp,%rdi
+ 10f:	c7 44 24 10 03 00 00 	movl   $0x3,0x10(%rsp)
+ 116:	00 
+ 117:	e8 00 00 00 00       	call   11c <PixelDmxParams::callbackFunction(char const*)+0x11c>
+ 11c:	85 c0                	test   %eax,%eax
+ 11e:	75 2c                	jne    14c <PixelDmxParams::callbackFunction(char const*)+0x14c>
+ 120:	8b 44 24 10          	mov    0x10(%rsp),%eax
+ 124:	4c 89 e7             	mov    %r12,%rdi
+ 127:	c6 44 04 18 00       	movb   $0x0,0x18(%rsp,%rax,1)
+ 12c:	e8 00 00 00 00       	call   131 <PixelDmxParams::callbackFunction(char const*)+0x131>
+ 131:	8b 53 08             	mov    0x8(%rbx),%edx
+ 134:	83 f8 06             	cmp    $0x6,%eax
+ 137:	74 05                	je     13e <PixelDmxParams::callbackFunction(char const*)+0x13e>
+ 139:	80 ce 02             	or     $0x2,%dh
+ 13c:	eb 03                	jmp    141 <PixelDmxParams::callbackFunction(char const*)+0x141>
+ 13e:	80 e6 fd             	and    $0xfd,%dh
+ 141:	89 53 08             	mov    %edx,0x8(%rbx)
+ 144:	88 43 1b             	mov    %al,0x1b(%rbx)
+ 147:	e9 76 02 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 14c:	4c 8d 74 24 0c       	lea    0xc(%rsp),%r14
+ 151:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 158 <PixelDmxParams::callbackFunction(char const*)+0x158>
+ 158:	48 89 ef             	mov    %rbp,%rdi
+ 15b:	4c 89 f2             	mov    %r14,%rdx
+ 15e:	e8 00 00 00 00       	call   163 <PixelDmxParams::callbackFunction(char const*)+0x163>
+ 163:	85 c0                	test   %eax,%eax
+ 165:	75 25                	jne    18c <PixelDmxParams::callbackFunction(char const*)+0x18c>
+ 167:	f3 0f 10 44 24 0c    	movss  0xc(%rsp),%xmm0
+ 16d:	e8 00 00 00 00       	call   172 <PixelDmxParams::callbackFunction(char const*)+0x172>
+ 172:	8b 53 08             	mov    0x8(%rbx),%edx
+ 175:	84 c0                	test   %al,%al
+ 177:	74 05                	je     17e <PixelDmxParams::callbackFunction(char const*)+0x17e>
+ 179:	80 ce 04             	or     $0x4,%dh
+ 17c:	eb 03                	jmp    181 <PixelDmxParams::callbackFunction(char const*)+0x181>
+ 17e:	80 e6 fb             	and    $0xfb,%dh
+ 181:	89 53 08             	mov    %edx,0x8(%rbx)
+ 184:	88 43 1c             	mov    %al,0x1c(%rbx)
+ 187:	e9 36 02 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 18c:	4c 89 f2             	mov    %r14,%rdx
+ 18f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 196 <PixelDmxParams::callbackFunction(char const*)+0x196>
+ 196:	48 89 ef             	mov    %rbp,%rdi
+ 199:	e8 00 00 00 00       	call   19e <PixelDmxParams::callbackFunction(char const*)+0x19e>
+ 19e:	85 c0                	test   %eax,%eax
+ 1a0:	75 25                	jne    1c7 <PixelDmxParams::callbackFunction(char const*)+0x1c7>
+ 1a2:	f3 0f 10 44 24 0c    	movss  0xc(%rsp),%xmm0
+ 1a8:	e8 00 00 00 00       	call   1ad <PixelDmxParams::callbackFunction(char const*)+0x1ad>
+ 1ad:	8b 53 08             	mov    0x8(%rbx),%edx
+ 1b0:	84 c0                	test   %al,%al
+ 1b2:	74 05                	je     1b9 <PixelDmxParams::callbackFunction(char const*)+0x1b9>
+ 1b4:	80 ce 08             	or     $0x8,%dh
+ 1b7:	eb 03                	jmp    1bc <PixelDmxParams::callbackFunction(char const*)+0x1bc>
+ 1b9:	80 e6 f7             	and    $0xf7,%dh
+ 1bc:	89 53 08             	mov    %edx,0x8(%rbx)
+ 1bf:	88 43 1d             	mov    %al,0x1d(%rbx)
+ 1c2:	e9 fb 01 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 1c7:	4c 89 ea             	mov    %r13,%rdx
+ 1ca:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1d1 <PixelDmxParams::callbackFunction(char const*)+0x1d1>
+ 1d1:	48 89 ef             	mov    %rbp,%rdi
+ 1d4:	e8 00 00 00 00       	call   1d9 <PixelDmxParams::callbackFunction(char const*)+0x1d9>
+ 1d9:	85 c0                	test   %eax,%eax
+ 1db:	75 47                	jne    224 <PixelDmxParams::callbackFunction(char const*)+0x224>
+ 1dd:	66 8b 6c 24 0a       	mov    0xa(%rsp),%bp
+ 1e2:	66 83 fd 01          	cmp    $0x1,%bp
+ 1e6:	76 1a                	jbe    202 <PixelDmxParams::callbackFunction(char const*)+0x202>
+ 1e8:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1ef <PixelDmxParams::callbackFunction(char const*)+0x1ef>
+ 1ef:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 1f6 <PixelDmxParams::callbackFunction(char const*)+0x1f6>
+ 1f6:	e8 00 00 00 00       	call   1fb <PixelDmxParams::callbackFunction(char const*)+0x1fb>
+ 1fb:	0f b7 d5             	movzwl %bp,%edx
+ 1fe:	3b 10                	cmp    (%rax),%edx
+ 200:	7e 12                	jle    214 <PixelDmxParams::callbackFunction(char const*)+0x214>
+ 202:	81 63 08 ff fe ff ff 	andl   $0xfffffeff,0x8(%rbx)
+ 209:	66 c7 43 19 01 00    	movw   $0x1,0x19(%rbx)
+ 20f:	e9 ae 01 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 214:	81 4b 08 00 01 00 00 	orl    $0x100,0x8(%rbx)
+ 21b:	66 89 6b 19          	mov    %bp,0x19(%rbx)
+ 21f:	e9 9e 01 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 224:	48 8d 54 24 14       	lea    0x14(%rsp),%rdx
+ 229:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 230 <PixelDmxParams::callbackFunction(char const*)+0x230>
+ 230:	48 89 ef             	mov    %rbp,%rdi
+ 233:	e8 00 00 00 00       	call   238 <PixelDmxParams::callbackFunction(char const*)+0x238>
+ 238:	85 c0                	test   %eax,%eax
+ 23a:	75 23                	jne    25f <PixelDmxParams::callbackFunction(char const*)+0x25f>
+ 23c:	8b 4b 08             	mov    0x8(%rbx),%ecx
+ 23f:	8b 44 24 14          	mov    0x14(%rsp),%eax
+ 243:	89 ca                	mov    %ecx,%edx
+ 245:	83 e2 ef             	and    $0xffffffef,%edx
+ 248:	3d 00 09 3d 00       	cmp    $0x3d0900,%eax
+ 24d:	74 05                	je     254 <PixelDmxParams::callbackFunction(char const*)+0x254>
+ 24f:	83 c9 10             	or     $0x10,%ecx
+ 252:	89 ca                	mov    %ecx,%edx
+ 254:	89 53 08             	mov    %edx,0x8(%rbx)
+ 257:	89 43 12             	mov    %eax,0x12(%rbx)
+ 25a:	e9 63 01 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 25f:	4c 8d 64 24 09       	lea    0x9(%rsp),%r12
+ 264:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 26b <PixelDmxParams::callbackFunction(char const*)+0x26b>
+ 26b:	48 89 ef             	mov    %rbp,%rdi
+ 26e:	4c 89 e2             	mov    %r12,%rdx
+ 271:	e8 00 00 00 00       	call   276 <PixelDmxParams::callbackFunction(char const*)+0x276>
+ 276:	85 c0                	test   %eax,%eax
+ 278:	75 2c                	jne    2a6 <PixelDmxParams::callbackFunction(char const*)+0x2a6>
+ 27a:	8a 54 24 09          	mov    0x9(%rsp),%dl
+ 27e:	8b 43 08             	mov    0x8(%rbx),%eax
+ 281:	8d 4a ff             	lea    -0x1(%rdx),%ecx
+ 284:	80 f9 fd             	cmp    $0xfd,%cl
+ 287:	77 0e                	ja     297 <PixelDmxParams::callbackFunction(char const*)+0x297>
+ 289:	83 c8 20             	or     $0x20,%eax
+ 28c:	88 53 16             	mov    %dl,0x16(%rbx)
+ 28f:	89 43 08             	mov    %eax,0x8(%rbx)
+ 292:	e9 2b 01 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 297:	83 e0 df             	and    $0xffffffdf,%eax
+ 29a:	c6 43 16 ff          	movb   $0xff,0x16(%rbx)
+ 29e:	89 43 08             	mov    %eax,0x8(%rbx)
+ 2a1:	e9 1c 01 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 2a6:	4c 89 ea             	mov    %r13,%rdx
+ 2a9:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 2b0 <PixelDmxParams::callbackFunction(char const*)+0x2b0>
+ 2b0:	48 89 ef             	mov    %rbp,%rdi
+ 2b3:	e8 00 00 00 00       	call   2b8 <PixelDmxParams::callbackFunction(char const*)+0x2b8>
+ 2b8:	85 c0                	test   %eax,%eax
+ 2ba:	75 59                	jne    315 <PixelDmxParams::callbackFunction(char const*)+0x315>
+ 2bc:	66 8b 54 24 0a       	mov    0xa(%rsp),%dx
+ 2c1:	8b 43 08             	mov    0x8(%rbx),%eax
+ 2c4:	8d 4a fe             	lea    -0x2(%rdx),%ecx
+ 2c7:	66 81 f9 fe 01       	cmp    $0x1fe,%cx
+ 2cc:	77 09                	ja     2d7 <PixelDmxParams::callbackFunction(char const*)+0x2d7>
+ 2ce:	66 89 53 0f          	mov    %dx,0xf(%rbx)
+ 2d2:	83 c8 04             	or     $0x4,%eax
+ 2d5:	eb 36                	jmp    30d <PixelDmxParams::callbackFunction(char const*)+0x30d>
+ 2d7:	66 c7 43 0f 01 00    	movw   $0x1,0xf(%rbx)
+ 2dd:	83 e0 fb             	and    $0xfffffffb,%eax
+ 2e0:	eb 2b                	jmp    30d <PixelDmxParams::callbackFunction(char const*)+0x30d>
+ 2e2:	4c 89 e2             	mov    %r12,%rdx
+ 2e5:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 2ec <PixelDmxParams::callbackFunction(char const*)+0x2ec>
+ 2ec:	48 89 ef             	mov    %rbp,%rdi
+ 2ef:	e8 00 00 00 00       	call   2f4 <PixelDmxParams::callbackFunction(char const*)+0x2f4>
+ 2f4:	85 c0                	test   %eax,%eax
+ 2f6:	75 6c                	jne    364 <PixelDmxParams::callbackFunction(char const*)+0x364>
+ 2f8:	8a 54 24 09          	mov    0x9(%rsp),%dl
+ 2fc:	8b 43 08             	mov    0x8(%rbx),%eax
+ 2ff:	8d 4a ff             	lea    -0x1(%rdx),%ecx
+ 302:	80 f9 04             	cmp    $0x4,%cl
+ 305:	77 54                	ja     35b <PixelDmxParams::callbackFunction(char const*)+0x35b>
+ 307:	88 53 18             	mov    %dl,0x18(%rbx)
+ 30a:	83 c8 08             	or     $0x8,%eax
+ 30d:	89 43 08             	mov    %eax,0x8(%rbx)
+ 310:	e9 ad 00 00 00       	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 315:	4c 89 ea             	mov    %r13,%rdx
+ 318:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 31f <PixelDmxParams::callbackFunction(char const*)+0x31f>
+ 31f:	48 89 ef             	mov    %rbp,%rdi
+ 322:	e8 00 00 00 00       	call   327 <PixelDmxParams::callbackFunction(char const*)+0x327>
+ 327:	85 c0                	test   %eax,%eax
+ 329:	75 10                	jne    33b <PixelDmxParams::callbackFunction(char const*)+0x33b>
+ 32b:	66 8b 44 24 0a       	mov    0xa(%rsp),%ax
+ 330:	81 4b 08 00 10 00 00 	orl    $0x1000,0x8(%rbx)
+ 337:	66 89 43 1e          	mov    %ax,0x1e(%rbx)
+ 33b:	4c 89 e2             	mov    %r12,%rdx
+ 33e:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 345 <PixelDmxParams::callbackFunction(char const*)+0x345>
+ 345:	48 89 ef             	mov    %rbp,%rdi
+ 348:	e8 00 00 00 00       	call   34d <PixelDmxParams::callbackFunction(char const*)+0x34d>
+ 34d:	85 c0                	test   %eax,%eax
+ 34f:	75 91                	jne    2e2 <PixelDmxParams::callbackFunction(char const*)+0x2e2>
+ 351:	83 63 08 bf          	andl   $0xffffffbf,0x8(%rbx)
+ 355:	c6 43 17 01          	movb   $0x1,0x17(%rbx)
+ 359:	eb 67                	jmp    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 35b:	c6 43 18 00          	movb   $0x0,0x18(%rbx)
+ 35f:	83 e0 f7             	and    $0xfffffff7,%eax
+ 362:	eb a9                	jmp    30d <PixelDmxParams::callbackFunction(char const*)+0x30d>
+ 364:	4c 89 e2             	mov    %r12,%rdx
+ 367:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 36e <PixelDmxParams::callbackFunction(char const*)+0x36e>
+ 36e:	48 89 ef             	mov    %rbp,%rdi
+ 371:	e8 00 00 00 00       	call   376 <PixelDmxParams::callbackFunction(char const*)+0x376>
+ 376:	85 c0                	test   %eax,%eax
+ 378:	75 12                	jne    38c <PixelDmxParams::callbackFunction(char const*)+0x38c>
+ 37a:	80 7c 24 09 00       	cmpb   $0x0,0x9(%rsp)
+ 37f:	8b 43 08             	mov    0x8(%rbx),%eax
+ 382:	74 04                	je     388 <PixelDmxParams::callbackFunction(char const*)+0x388>
+ 384:	0c 80                	or     $0x80,%al
+ 386:	eb 85                	jmp    30d <PixelDmxParams::callbackFunction(char const*)+0x30d>
+ 388:	24 7f                	and    $0x7f,%al
+ 38a:	eb 81                	jmp    30d <PixelDmxParams::callbackFunction(char const*)+0x30d>
+ 38c:	4c 89 f2             	mov    %r14,%rdx
+ 38f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 396 <PixelDmxParams::callbackFunction(char const*)+0x396>
+ 396:	48 89 ef             	mov    %rbp,%rdi
+ 399:	e8 00 00 00 00       	call   39e <PixelDmxParams::callbackFunction(char const*)+0x39e>
+ 39e:	85 c0                	test   %eax,%eax
+ 3a0:	75 20                	jne    3c2 <PixelDmxParams::callbackFunction(char const*)+0x3c2>
+ 3a2:	f3 0f 10 05 00 00 00 	movss  0x0(%rip),%xmm0        # 3aa <PixelDmxParams::callbackFunction(char const*)+0x3aa>
+ 3a9:	00 
+ 3aa:	f3 0f 59 44 24 0c    	mulss  0xc(%rsp),%xmm0
+ 3b0:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+ 3b4:	8d 50 ec             	lea    -0x14(%rax),%edx
+ 3b7:	80 fa 06             	cmp    $0x6,%dl
+ 3ba:	b2 00                	mov    $0x0,%dl
+ 3bc:	0f 43 c2             	cmovae %edx,%eax
+ 3bf:	88 43 11             	mov    %al,0x11(%rbx)
+ 3c2:	48 8b 44 24 28       	mov    0x28(%rsp),%rax
+ 3c7:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 3ce:	00 00 
+ 3d0:	74 05                	je     3d7 <PixelDmxParams::callbackFunction(char const*)+0x3d7>
+ 3d2:	e8 00 00 00 00       	call   3d7 <PixelDmxParams::callbackFunction(char const*)+0x3d7>
+ 3d7:	48 83 c4 30          	add    $0x30,%rsp
+ 3db:	5b                   	pop    %rbx
+ 3dc:	5d                   	pop    %rbp
+ 3dd:	41 5c                	pop    %r12
+ 3df:	41 5d                	pop    %r13
+ 3e1:	41 5e                	pop    %r14
+ 3e3:	c3                   	ret    
+
+Disassembly of section .text._ZN14PixelDmxParams22staticCallbackFunctionEPvPKc:
+
+0000000000000000 <PixelDmxParams::staticCallbackFunction(void*, char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	52                   	push   %rdx
+   5:	48 85 ff             	test   %rdi,%rdi
+   8:	75 1c                	jne    26 <PixelDmxParams::staticCallbackFunction(void*, char const*)+0x26>
+   a:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 11 <PixelDmxParams::staticCallbackFunction(void*, char const*)+0x11>
+  11:	ba 45 01 00 00       	mov    $0x145,%edx
+  16:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1d <PixelDmxParams::staticCallbackFunction(void*, char const*)+0x1d>
+  1d:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 24 <PixelDmxParams::staticCallbackFunction(void*, char const*)+0x24>
+  24:	eb 1f                	jmp    45 <PixelDmxParams::staticCallbackFunction(void*, char const*)+0x45>
+  26:	48 85 f6             	test   %rsi,%rsi
+  29:	75 1f                	jne    4a <PixelDmxParams::staticCallbackFunction(void*, char const*)+0x4a>
+  2b:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 32 <PixelDmxParams::staticCallbackFunction(void*, char const*)+0x32>
+  32:	ba 46 01 00 00       	mov    $0x146,%edx
+  37:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 3e <PixelDmxParams::staticCallbackFunction(void*, char const*)+0x3e>
+  3e:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 45 <PixelDmxParams::staticCallbackFunction(void*, char const*)+0x45>
+  45:	e8 00 00 00 00       	call   4a <PixelDmxParams::staticCallbackFunction(void*, char const*)+0x4a>
+  4a:	58                   	pop    %rax
+  4b:	e9 00 00 00 00       	jmp    50 <.LC8+0x1>
+
+Disassembly of section .text._ZN14PixelDmxParams7BuilderEPKN14pixeldmxparams6ParamsEPcjRj:
+
+0000000000000000 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 57                	push   %r15
+   6:	41 56                	push   %r14
+   8:	4c 8d 35 00 00 00 00 	lea    0x0(%rip),%r14        # f <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0xf>
+   f:	41 55                	push   %r13
+  11:	41 54                	push   %r12
+  13:	55                   	push   %rbp
+  14:	53                   	push   %rbx
+  15:	48 83 ec 28          	sub    $0x28,%rsp
+  19:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  20:	00 00 
+  22:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+  27:	31 c0                	xor    %eax,%eax
+  29:	48 85 d2             	test   %rdx,%rdx
+  2c:	75 1b                	jne    49 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x49>
+  2e:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 35 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x35>
+  35:	ba 4c 01 00 00       	mov    $0x14c,%edx
+  3a:	4c 89 f6             	mov    %r14,%rsi
+  3d:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 44 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x44>
+  44:	e8 00 00 00 00       	call   49 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x49>
+  49:	4d 89 c5             	mov    %r8,%r13
+  4c:	48 89 fb             	mov    %rdi,%rbx
+  4f:	49 89 d4             	mov    %rdx,%r12
+  52:	41 89 cf             	mov    %ecx,%r15d
+  55:	4c 8d 47 08          	lea    0x8(%rdi),%r8
+  59:	48 85 f6             	test   %rsi,%rsi
+  5c:	74 11                	je     6f <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x6f>
+  5e:	0f 10 0e             	movups (%rsi),%xmm1
+  61:	0f 11 4f 08          	movups %xmm1,0x8(%rdi)
+  65:	48 8b 46 10          	mov    0x10(%rsi),%rax
+  69:	49 89 40 10          	mov    %rax,0x10(%r8)
+  6d:	eb 0c                	jmp    7b <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x7b>
+  6f:	48 8b 3f             	mov    (%rdi),%rdi
+  72:	4c 89 c6             	mov    %r8,%rsi
+  75:	48 8b 07             	mov    (%rdi),%rax
+  78:	ff 50 18             	call   *0x18(%rax)
+  7b:	48 8d 6c 24 08       	lea    0x8(%rsp),%rbp
+  80:	4c 89 e2             	mov    %r12,%rdx
+  83:	44 89 f9             	mov    %r15d,%ecx
+  86:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 8d <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x8d>
+  8d:	48 89 ef             	mov    %rbp,%rdi
+  90:	e8 00 00 00 00       	call   95 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x95>
+  95:	be 01 00 00 00       	mov    $0x1,%esi
+  9a:	48 89 df             	mov    %rbx,%rdi
+  9d:	e8 00 00 00 00       	call   a2 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0xa2>
+  a2:	0f b6 7b 0c          	movzbl 0xc(%rbx),%edi
+  a6:	41 89 c4             	mov    %eax,%r12d
+  a9:	e8 00 00 00 00       	call   ae <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0xae>
+  ae:	41 0f b6 cc          	movzbl %r12b,%ecx
+  b2:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+  b8:	48 89 ef             	mov    %rbp,%rdi
+  bb:	48 89 c2             	mov    %rax,%rdx
+  be:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # c5 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0xc5>
+  c5:	e8 00 00 00 00       	call   ca <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0xca>
+  ca:	be 02 00 00 00       	mov    $0x2,%esi
+  cf:	48 89 df             	mov    %rbx,%rdi
+  d2:	e8 00 00 00 00       	call   d7 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0xd7>
+  d7:	0f b7 53 0d          	movzwl 0xd(%rbx),%edx
+  db:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+  e1:	48 89 ef             	mov    %rbp,%rdi
+  e4:	0f b6 c8             	movzbl %al,%ecx
+  e7:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # ee <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0xee>
+  ee:	e8 00 00 00 00       	call   f3 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0xf3>
+  f3:	be 80 00 00 00       	mov    $0x80,%esi
+  f8:	48 89 df             	mov    %rbx,%rdi
+  fb:	e8 00 00 00 00       	call   100 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x100>
+ 100:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 107 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x107>
+ 107:	48 89 ef             	mov    %rbp,%rdi
+ 10a:	0f b6 d0             	movzbl %al,%edx
+ 10d:	e8 00 00 00 00       	call   112 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x112>
+ 112:	0f b6 43 11          	movzbl 0x11(%rbx),%eax
+ 116:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 11d <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x11d>
+ 11d:	84 c0                	test   %al,%al
+ 11f:	75 19                	jne    13a <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x13a>
+ 121:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 127:	31 c9                	xor    %ecx,%ecx
+ 129:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 130 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x130>
+ 130:	48 89 ef             	mov    %rbp,%rdi
+ 133:	e8 00 00 00 00       	call   138 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x138>
+ 138:	eb 1e                	jmp    158 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x158>
+ 13a:	b9 01 00 00 00       	mov    $0x1,%ecx
+ 13f:	f3 0f 2a c0          	cvtsi2ss %eax,%xmm0
+ 143:	ba 01 00 00 00       	mov    $0x1,%edx
+ 148:	48 89 ef             	mov    %rbp,%rdi
+ 14b:	f3 0f 5e 05 00 00 00 	divss  0x0(%rip),%xmm0        # 153 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x153>
+ 152:	00 
+ 153:	e8 00 00 00 00       	call   158 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x158>
+ 158:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 15f <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x15f>
+ 15f:	48 89 ef             	mov    %rbp,%rdi
+ 162:	e8 00 00 00 00       	call   167 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x167>
+ 167:	be 00 02 00 00       	mov    $0x200,%esi
+ 16c:	48 89 df             	mov    %rbx,%rdi
+ 16f:	e8 00 00 00 00       	call   174 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x174>
+ 174:	84 c0                	test   %al,%al
+ 176:	75 0c                	jne    184 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x184>
+ 178:	0f b6 7b 0c          	movzbl 0xc(%rbx),%edi
+ 17c:	e8 00 00 00 00       	call   181 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x181>
+ 181:	88 43 1b             	mov    %al,0x1b(%rbx)
+ 184:	be 00 02 00 00       	mov    $0x200,%esi
+ 189:	48 89 df             	mov    %rbx,%rdi
+ 18c:	e8 00 00 00 00       	call   191 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x191>
+ 191:	0f b6 7b 1b          	movzbl 0x1b(%rbx),%edi
+ 195:	41 89 c4             	mov    %eax,%r12d
+ 198:	e8 00 00 00 00       	call   19d <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x19d>
+ 19d:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1a4 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x1a4>
+ 1a4:	48 89 ef             	mov    %rbp,%rdi
+ 1a7:	41 0f b6 cc          	movzbl %r12b,%ecx
+ 1ab:	48 89 c2             	mov    %rax,%rdx
+ 1ae:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 1b4:	e8 00 00 00 00       	call   1b9 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x1b9>
+ 1b9:	be 00 04 00 00       	mov    $0x400,%esi
+ 1be:	48 89 df             	mov    %rbx,%rdi
+ 1c1:	e8 00 00 00 00       	call   1c6 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x1c6>
+ 1c6:	84 c0                	test   %al,%al
+ 1c8:	74 11                	je     1db <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x1db>
+ 1ca:	be 00 08 00 00       	mov    $0x800,%esi
+ 1cf:	48 89 df             	mov    %rbx,%rdi
+ 1d2:	e8 00 00 00 00       	call   1d7 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x1d7>
+ 1d7:	84 c0                	test   %al,%al
+ 1d9:	75 43                	jne    21e <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x21e>
+ 1db:	0f b6 7b 0c          	movzbl 0xc(%rbx),%edi
+ 1df:	48 8d 74 24 06       	lea    0x6(%rsp),%rsi
+ 1e4:	48 8d 54 24 07       	lea    0x7(%rsp),%rdx
+ 1e9:	e8 00 00 00 00       	call   1ee <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x1ee>
+ 1ee:	be 00 04 00 00       	mov    $0x400,%esi
+ 1f3:	48 89 df             	mov    %rbx,%rdi
+ 1f6:	e8 00 00 00 00       	call   1fb <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x1fb>
+ 1fb:	84 c0                	test   %al,%al
+ 1fd:	75 07                	jne    206 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x206>
+ 1ff:	8a 44 24 06          	mov    0x6(%rsp),%al
+ 203:	88 43 1c             	mov    %al,0x1c(%rbx)
+ 206:	be 00 08 00 00       	mov    $0x800,%esi
+ 20b:	48 89 df             	mov    %rbx,%rdi
+ 20e:	e8 00 00 00 00       	call   213 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x213>
+ 213:	84 c0                	test   %al,%al
+ 215:	75 07                	jne    21e <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x21e>
+ 217:	8a 44 24 07          	mov    0x7(%rsp),%al
+ 21b:	88 43 1d             	mov    %al,0x1d(%rbx)
+ 21e:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 225 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x225>
+ 225:	48 89 ef             	mov    %rbp,%rdi
+ 228:	e8 00 00 00 00       	call   22d <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x22d>
+ 22d:	be 00 04 00 00       	mov    $0x400,%esi
+ 232:	48 89 df             	mov    %rbx,%rdi
+ 235:	e8 00 00 00 00       	call   23a <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x23a>
+ 23a:	0f b6 7b 1c          	movzbl 0x1c(%rbx),%edi
+ 23e:	41 89 c4             	mov    %eax,%r12d
+ 241:	e8 00 00 00 00       	call   246 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x246>
+ 246:	41 0f b6 d4          	movzbl %r12b,%edx
+ 24a:	b9 02 00 00 00       	mov    $0x2,%ecx
+ 24f:	48 89 ef             	mov    %rbp,%rdi
+ 252:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 259 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x259>
+ 259:	e8 00 00 00 00       	call   25e <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x25e>
+ 25e:	be 00 08 00 00       	mov    $0x800,%esi
+ 263:	48 89 df             	mov    %rbx,%rdi
+ 266:	e8 00 00 00 00       	call   26b <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x26b>
+ 26b:	0f b6 7b 1d          	movzbl 0x1d(%rbx),%edi
+ 26f:	41 89 c4             	mov    %eax,%r12d
+ 272:	e8 00 00 00 00       	call   277 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x277>
+ 277:	41 0f b6 d4          	movzbl %r12b,%edx
+ 27b:	b9 02 00 00 00       	mov    $0x2,%ecx
+ 280:	48 89 ef             	mov    %rbp,%rdi
+ 283:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 28a <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x28a>
+ 28a:	e8 00 00 00 00       	call   28f <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x28f>
+ 28f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 296 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x296>
+ 296:	48 89 ef             	mov    %rbp,%rdi
+ 299:	e8 00 00 00 00       	call   29e <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x29e>
+ 29e:	be 00 01 00 00       	mov    $0x100,%esi
+ 2a3:	48 89 df             	mov    %rbx,%rdi
+ 2a6:	e8 00 00 00 00       	call   2ab <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x2ab>
+ 2ab:	0f b7 53 19          	movzwl 0x19(%rbx),%edx
+ 2af:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 2b5:	48 89 ef             	mov    %rbp,%rdi
+ 2b8:	0f b6 c8             	movzbl %al,%ecx
+ 2bb:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 2c2 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x2c2>
+ 2c2:	e8 00 00 00 00       	call   2c7 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x2c7>
+ 2c7:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 2ce <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x2ce>
+ 2ce:	48 89 ef             	mov    %rbp,%rdi
+ 2d1:	e8 00 00 00 00       	call   2d6 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x2d6>
+ 2d6:	be 10 00 00 00       	mov    $0x10,%esi
+ 2db:	48 89 df             	mov    %rbx,%rdi
+ 2de:	e8 00 00 00 00       	call   2e3 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x2e3>
+ 2e3:	8b 53 12             	mov    0x12(%rbx),%edx
+ 2e6:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 2ec:	48 89 ef             	mov    %rbp,%rdi
+ 2ef:	0f b6 c8             	movzbl %al,%ecx
+ 2f2:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 2f9 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x2f9>
+ 2f9:	e8 00 00 00 00       	call   2fe <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x2fe>
+ 2fe:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 305 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x305>
+ 305:	48 89 ef             	mov    %rbp,%rdi
+ 308:	e8 00 00 00 00       	call   30d <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x30d>
+ 30d:	be 20 00 00 00       	mov    $0x20,%esi
+ 312:	48 89 df             	mov    %rbx,%rdi
+ 315:	e8 00 00 00 00       	call   31a <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x31a>
+ 31a:	0f b6 53 16          	movzbl 0x16(%rbx),%edx
+ 31e:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 324:	48 89 ef             	mov    %rbp,%rdi
+ 327:	0f b6 c8             	movzbl %al,%ecx
+ 32a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 331 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x331>
+ 331:	e8 00 00 00 00       	call   336 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x336>
+ 336:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 33d <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x33d>
+ 33d:	48 89 ef             	mov    %rbp,%rdi
+ 340:	e8 00 00 00 00       	call   345 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x345>
+ 345:	be 04 00 00 00       	mov    $0x4,%esi
+ 34a:	48 89 df             	mov    %rbx,%rdi
+ 34d:	e8 00 00 00 00       	call   352 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x352>
+ 352:	0f b7 53 0f          	movzwl 0xf(%rbx),%edx
+ 356:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 35c:	48 89 ef             	mov    %rbp,%rdi
+ 35f:	0f b6 c8             	movzbl %al,%ecx
+ 362:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 369 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x369>
+ 369:	e8 00 00 00 00       	call   36e <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x36e>
+ 36e:	be 00 10 00 00       	mov    $0x1000,%esi
+ 373:	48 89 df             	mov    %rbx,%rdi
+ 376:	e8 00 00 00 00       	call   37b <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x37b>
+ 37b:	0f b7 53 1e          	movzwl 0x1e(%rbx),%edx
+ 37f:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 385:	48 89 ef             	mov    %rbp,%rdi
+ 388:	0f b6 c8             	movzbl %al,%ecx
+ 38b:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 392 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x392>
+ 392:	e8 00 00 00 00       	call   397 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x397>
+ 397:	be 40 00 00 00       	mov    $0x40,%esi
+ 39c:	48 89 df             	mov    %rbx,%rdi
+ 39f:	e8 00 00 00 00       	call   3a4 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x3a4>
+ 3a4:	0f b6 53 17          	movzbl 0x17(%rbx),%edx
+ 3a8:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 3ae:	48 89 ef             	mov    %rbp,%rdi
+ 3b1:	0f b6 c8             	movzbl %al,%ecx
+ 3b4:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 3bb <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x3bb>
+ 3bb:	e8 00 00 00 00       	call   3c0 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x3c0>
+ 3c0:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 3c7 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x3c7>
+ 3c7:	48 89 ef             	mov    %rbp,%rdi
+ 3ca:	e8 00 00 00 00       	call   3cf <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x3cf>
+ 3cf:	be 08 00 00 00       	mov    $0x8,%esi
+ 3d4:	48 89 df             	mov    %rbx,%rdi
+ 3d7:	e8 00 00 00 00       	call   3dc <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x3dc>
+ 3dc:	0f b6 53 18          	movzbl 0x18(%rbx),%edx
+ 3e0:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 3e6:	48 89 ef             	mov    %rbp,%rdi
+ 3e9:	0f b6 c8             	movzbl %al,%ecx
+ 3ec:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 3f3 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x3f3>
+ 3f3:	e8 00 00 00 00       	call   3f8 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x3f8>
+ 3f8:	48 89 ef             	mov    %rbp,%rdi
+ 3fb:	e8 00 00 00 00       	call   400 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x400>
+ 400:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 407 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x407>
+ 407:	4c 89 f1             	mov    %r14,%rcx
+ 40a:	41 b8 93 01 00 00    	mov    $0x193,%r8d
+ 410:	44 0f b7 c8          	movzwl %ax,%r9d
+ 414:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 41b <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x41b>
+ 41b:	31 c0                	xor    %eax,%eax
+ 41d:	45 89 4d 00          	mov    %r9d,0x0(%r13)
+ 421:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 428 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x428>
+ 428:	e8 00 00 00 00       	call   42d <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x42d>
+ 42d:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+ 432:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 439:	00 00 
+ 43b:	74 05                	je     442 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x442>
+ 43d:	e8 00 00 00 00       	call   442 <PixelDmxParams::Builder(pixeldmxparams::Params const*, char*, unsigned int, unsigned int&)+0x442>
+ 442:	48 83 c4 28          	add    $0x28,%rsp
+ 446:	5b                   	pop    %rbx
+ 447:	5d                   	pop    %rbp
+ 448:	41 5c                	pop    %r12
+ 44a:	41 5d                	pop    %r13
+ 44c:	41 5e                	pop    %r14
+ 44e:	41 5f                	pop    %r15
+ 450:	c3                   	ret    
+
+Disassembly of section .text._ZN14PixelDmxParams4SaveEPcjRj:
+
+0000000000000000 <PixelDmxParams::Save(char*, unsigned int, unsigned int&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	48 83 3f 00          	cmpq   $0x0,(%rdi)
+   8:	49 89 c8             	mov    %rcx,%r8
+   b:	75 07                	jne    14 <PixelDmxParams::Save(char*, unsigned int, unsigned int&)+0x14>
+   d:	c7 01 00 00 00 00    	movl   $0x0,(%rcx)
+  13:	c3                   	ret    
+  14:	89 d1                	mov    %edx,%ecx
+  16:	48 89 f2             	mov    %rsi,%rdx
+  19:	31 f6                	xor    %esi,%esi
+  1b:	e9 00 00 00 00       	jmp    20 <.LC2+0xc>
+
+Disassembly of section .text._ZN14PixelDmxParams3SetEP21PixelDmxConfiguration:
+
+0000000000000000 <PixelDmxParams::Set(PixelDmxConfiguration*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	51                   	push   %rcx
+   7:	48 85 f6             	test   %rsi,%rsi
+   a:	75 1f                	jne    2b <PixelDmxParams::Set(PixelDmxConfiguration*)+0x2b>
+   c:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 13 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x13>
+  13:	ba a0 01 00 00       	mov    $0x1a0,%edx
+  18:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1f <PixelDmxParams::Set(PixelDmxConfiguration*)+0x1f>
+  1f:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 26 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x26>
+  26:	e8 00 00 00 00       	call   2b <PixelDmxParams::Set(PixelDmxConfiguration*)+0x2b>
+  2b:	48 89 f5             	mov    %rsi,%rbp
+  2e:	be 01 00 00 00       	mov    $0x1,%esi
+  33:	48 89 fb             	mov    %rdi,%rbx
+  36:	e8 00 00 00 00       	call   3b <PixelDmxParams::Set(PixelDmxConfiguration*)+0x3b>
+  3b:	84 c0                	test   %al,%al
+  3d:	74 0c                	je     4b <PixelDmxParams::Set(PixelDmxConfiguration*)+0x4b>
+  3f:	0f b6 73 0c          	movzbl 0xc(%rbx),%esi
+  43:	48 89 ef             	mov    %rbp,%rdi
+  46:	e8 00 00 00 00       	call   4b <PixelDmxParams::Set(PixelDmxConfiguration*)+0x4b>
+  4b:	be 02 00 00 00       	mov    $0x2,%esi
+  50:	48 89 df             	mov    %rbx,%rdi
+  53:	e8 00 00 00 00       	call   58 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x58>
+  58:	84 c0                	test   %al,%al
+  5a:	74 0c                	je     68 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x68>
+  5c:	0f b7 73 0d          	movzwl 0xd(%rbx),%esi
+  60:	48 89 ef             	mov    %rbp,%rdi
+  63:	e8 00 00 00 00       	call   68 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x68>
+  68:	be 00 02 00 00       	mov    $0x200,%esi
+  6d:	48 89 df             	mov    %rbx,%rdi
+  70:	e8 00 00 00 00       	call   75 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x75>
+  75:	84 c0                	test   %al,%al
+  77:	74 0c                	je     85 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x85>
+  79:	0f b6 73 1b          	movzbl 0x1b(%rbx),%esi
+  7d:	48 89 ef             	mov    %rbp,%rdi
+  80:	e8 00 00 00 00       	call   85 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x85>
+  85:	be 00 04 00 00       	mov    $0x400,%esi
+  8a:	48 89 df             	mov    %rbx,%rdi
+  8d:	e8 00 00 00 00       	call   92 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x92>
+  92:	84 c0                	test   %al,%al
+  94:	74 0c                	je     a2 <PixelDmxParams::Set(PixelDmxConfiguration*)+0xa2>
+  96:	0f b6 73 1c          	movzbl 0x1c(%rbx),%esi
+  9a:	48 89 ef             	mov    %rbp,%rdi
+  9d:	e8 00 00 00 00       	call   a2 <PixelDmxParams::Set(PixelDmxConfiguration*)+0xa2>
+  a2:	be 00 08 00 00       	mov    $0x800,%esi
+  a7:	48 89 df             	mov    %rbx,%rdi
+  aa:	e8 00 00 00 00       	call   af <PixelDmxParams::Set(PixelDmxConfiguration*)+0xaf>
+  af:	84 c0                	test   %al,%al
+  b1:	74 0c                	je     bf <PixelDmxParams::Set(PixelDmxConfiguration*)+0xbf>
+  b3:	0f b6 73 1d          	movzbl 0x1d(%rbx),%esi
+  b7:	48 89 ef             	mov    %rbp,%rdi
+  ba:	e8 00 00 00 00       	call   bf <PixelDmxParams::Set(PixelDmxConfiguration*)+0xbf>
+  bf:	be 10 00 00 00       	mov    $0x10,%esi
+  c4:	48 89 df             	mov    %rbx,%rdi
+  c7:	e8 00 00 00 00       	call   cc <PixelDmxParams::Set(PixelDmxConfiguration*)+0xcc>
+  cc:	84 c0                	test   %al,%al
+  ce:	74 0b                	je     db <PixelDmxParams::Set(PixelDmxConfiguration*)+0xdb>
+  d0:	8b 73 12             	mov    0x12(%rbx),%esi
+  d3:	48 89 ef             	mov    %rbp,%rdi
+  d6:	e8 00 00 00 00       	call   db <PixelDmxParams::Set(PixelDmxConfiguration*)+0xdb>
+  db:	be 20 00 00 00       	mov    $0x20,%esi
+  e0:	48 89 df             	mov    %rbx,%rdi
+  e3:	e8 00 00 00 00       	call   e8 <PixelDmxParams::Set(PixelDmxConfiguration*)+0xe8>
+  e8:	84 c0                	test   %al,%al
+  ea:	74 0c                	je     f8 <PixelDmxParams::Set(PixelDmxConfiguration*)+0xf8>
+  ec:	0f b6 73 16          	movzbl 0x16(%rbx),%esi
+  f0:	48 89 ef             	mov    %rbp,%rdi
+  f3:	e8 00 00 00 00       	call   f8 <PixelDmxParams::Set(PixelDmxConfiguration*)+0xf8>
+  f8:	be 80 00 00 00       	mov    $0x80,%esi
+  fd:	48 89 df             	mov    %rbx,%rdi
+ 100:	e8 00 00 00 00       	call   105 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x105>
+ 105:	84 c0                	test   %al,%al
+ 107:	74 1e                	je     127 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x127>
+ 109:	be 01 00 00 00       	mov    $0x1,%esi
+ 10e:	48 89 ef             	mov    %rbp,%rdi
+ 111:	e8 00 00 00 00       	call   116 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x116>
+ 116:	0f b6 73 11          	movzbl 0x11(%rbx),%esi
+ 11a:	40 84 f6             	test   %sil,%sil
+ 11d:	74 08                	je     127 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x127>
+ 11f:	48 89 ef             	mov    %rbp,%rdi
+ 122:	e8 00 00 00 00       	call   127 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x127>
+ 127:	be 04 00 00 00       	mov    $0x4,%esi
+ 12c:	48 89 df             	mov    %rbx,%rdi
+ 12f:	e8 00 00 00 00       	call   134 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x134>
+ 134:	84 c0                	test   %al,%al
+ 136:	74 0c                	je     144 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x144>
+ 138:	0f b7 73 0f          	movzwl 0xf(%rbx),%esi
+ 13c:	48 89 ef             	mov    %rbp,%rdi
+ 13f:	e8 00 00 00 00       	call   144 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x144>
+ 144:	be 00 01 00 00       	mov    $0x100,%esi
+ 149:	48 89 df             	mov    %rbx,%rdi
+ 14c:	e8 00 00 00 00       	call   151 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x151>
+ 151:	84 c0                	test   %al,%al
+ 153:	74 0c                	je     161 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x161>
+ 155:	0f b7 73 19          	movzwl 0x19(%rbx),%esi
+ 159:	48 89 ef             	mov    %rbp,%rdi
+ 15c:	e8 00 00 00 00       	call   161 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x161>
+ 161:	be 40 00 00 00       	mov    $0x40,%esi
+ 166:	48 89 df             	mov    %rbx,%rdi
+ 169:	e8 00 00 00 00       	call   16e <PixelDmxParams::Set(PixelDmxConfiguration*)+0x16e>
+ 16e:	84 c0                	test   %al,%al
+ 170:	74 0f                	je     181 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x181>
+ 172:	0f b6 73 17          	movzbl 0x17(%rbx),%esi
+ 176:	48 89 ef             	mov    %rbp,%rdi
+ 179:	5a                   	pop    %rdx
+ 17a:	5b                   	pop    %rbx
+ 17b:	5d                   	pop    %rbp
+ 17c:	e9 00 00 00 00       	jmp    181 <PixelDmxParams::Set(PixelDmxConfiguration*)+0x181>
+ 181:	58                   	pop    %rax
+ 182:	5b                   	pop    %rbx
+ 183:	5d                   	pop    %rbp
+ 184:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddIbEEbPKcT_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	41 52                	push   %r10
+   8:	49 89 f2             	mov    %rsi,%r10
+   b:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+   f:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 33                	jmp    4f <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int)+0x4f>
+  1c:	89 d0                	mov    %edx,%eax
+  1e:	48 89 fb             	mov    %rdi,%rbx
+  21:	0f b7 d6             	movzwl %si,%edx
+  24:	48 03 37             	add    (%rdi),%rsi
+  27:	57                   	push   %rdi
+  28:	29 d5                	sub    %edx,%ebp
+  2a:	44 0f b6 c9          	movzbl %cl,%r9d
+  2e:	48 89 df             	mov    %rbx,%rdi
+  31:	41 50                	push   %r8
+  33:	4c 89 d1             	mov    %r10,%rcx
+  36:	44 0f b6 c0          	movzbl %al,%r8d
+  3a:	89 ea                	mov    %ebp,%edx
+  3c:	e8 00 00 00 00       	call   41 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int)+0x41>
+  41:	41 58                	pop    %r8
+  43:	41 59                	pop    %r9
+  45:	39 c5                	cmp    %eax,%ebp
+  47:	7c cf                	jl     18 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int)+0x18>
+  49:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  4d:	b0 01                	mov    $0x1,%al
+  4f:	5a                   	pop    %rdx
+  50:	5b                   	pop    %rbx
+  51:	5d                   	pop    %rbp
+  52:	c3                   	ret    
+
+Disassembly of section .text._ZSt3maxIiERKT_S2_S2_:
+
+0000000000000000 <int const& std::max<int>(int const&, int const&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	8b 16                	mov    (%rsi),%edx
+   6:	48 89 f8             	mov    %rdi,%rax
+   9:	39 17                	cmp    %edx,(%rdi)
+   b:	48 0f 4c c6          	cmovl  %rsi,%rax
+   f:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddIPKcEEbS2_T_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	41 52                	push   %r10
+   8:	49 89 f2             	mov    %rsi,%r10
+   b:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+   f:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 33                	jmp    4f <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int)+0x4f>
+  1c:	48 89 d0             	mov    %rdx,%rax
+  1f:	48 89 fb             	mov    %rdi,%rbx
+  22:	0f b7 d6             	movzwl %si,%edx
+  25:	48 03 37             	add    (%rdi),%rsi
+  28:	57                   	push   %rdi
+  29:	29 d5                	sub    %edx,%ebp
+  2b:	44 0f b6 c9          	movzbl %cl,%r9d
+  2f:	48 89 df             	mov    %rbx,%rdi
+  32:	41 50                	push   %r8
+  34:	4c 89 d1             	mov    %r10,%rcx
+  37:	49 89 c0             	mov    %rax,%r8
+  3a:	89 ea                	mov    %ebp,%edx
+  3c:	e8 00 00 00 00       	call   41 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int)+0x41>
+  41:	41 58                	pop    %r8
+  43:	41 59                	pop    %r9
+  45:	39 c5                	cmp    %eax,%ebp
+  47:	7c cf                	jl     18 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int)+0x18>
+  49:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  4d:	b0 01                	mov    $0x1,%al
+  4f:	5a                   	pop    %rdx
+  50:	5b                   	pop    %rbx
+  51:	5d                   	pop    %rbp
+  52:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddItEEbPKcT_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	41 52                	push   %r10
+   8:	49 89 f2             	mov    %rsi,%r10
+   b:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+   f:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 33                	jmp    4f <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x4f>
+  1c:	89 d0                	mov    %edx,%eax
+  1e:	48 89 fb             	mov    %rdi,%rbx
+  21:	0f b7 d6             	movzwl %si,%edx
+  24:	48 03 37             	add    (%rdi),%rsi
+  27:	57                   	push   %rdi
+  28:	29 d5                	sub    %edx,%ebp
+  2a:	44 0f b6 c9          	movzbl %cl,%r9d
+  2e:	48 89 df             	mov    %rbx,%rdi
+  31:	41 50                	push   %r8
+  33:	4c 89 d1             	mov    %r10,%rcx
+  36:	44 0f b7 c0          	movzwl %ax,%r8d
+  3a:	89 ea                	mov    %ebp,%edx
+  3c:	e8 00 00 00 00       	call   41 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x41>
+  41:	41 58                	pop    %r8
+  43:	41 59                	pop    %r9
+  45:	39 c5                	cmp    %eax,%ebp
+  47:	7c cf                	jl     18 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x18>
+  49:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  4d:	b0 01                	mov    $0x1,%al
+  4f:	5a                   	pop    %rdx
+  50:	5b                   	pop    %rbx
+  51:	5d                   	pop    %rbp
+  52:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddIfEEbPKcT_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<float>(char const*, float, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	49 89 f2             	mov    %rsi,%r10
+   8:	53                   	push   %rbx
+   9:	41 50                	push   %r8
+   b:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+   f:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<float>(char const*, float, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 26                	jmp    42 <bool PropertiesBuilder::Add<float>(char const*, float, bool, unsigned int)+0x42>
+  1c:	0f b7 c6             	movzwl %si,%eax
+  1f:	41 89 c9             	mov    %ecx,%r9d
+  22:	48 03 37             	add    (%rdi),%rsi
+  25:	44 0f b6 c2          	movzbl %dl,%r8d
+  29:	29 c5                	sub    %eax,%ebp
+  2b:	4c 89 d1             	mov    %r10,%rcx
+  2e:	48 89 fb             	mov    %rdi,%rbx
+  31:	89 ea                	mov    %ebp,%edx
+  33:	e8 00 00 00 00       	call   38 <bool PropertiesBuilder::Add<float>(char const*, float, bool, unsigned int)+0x38>
+  38:	39 c5                	cmp    %eax,%ebp
+  3a:	7c dc                	jl     18 <bool PropertiesBuilder::Add<float>(char const*, float, bool, unsigned int)+0x18>
+  3c:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  40:	b0 01                	mov    $0x1,%al
+  42:	5a                   	pop    %rdx
+  43:	5b                   	pop    %rbx
+  44:	5d                   	pop    %rbp
+  45:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddIjEEbPKcT_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	41 52                	push   %r10
+   8:	49 89 f2             	mov    %rsi,%r10
+   b:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+   f:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 32                	jmp    4e <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int)+0x4e>
+  1c:	89 d0                	mov    %edx,%eax
+  1e:	48 89 fb             	mov    %rdi,%rbx
+  21:	0f b7 d6             	movzwl %si,%edx
+  24:	48 03 37             	add    (%rdi),%rsi
+  27:	57                   	push   %rdi
+  28:	29 d5                	sub    %edx,%ebp
+  2a:	44 0f b6 c9          	movzbl %cl,%r9d
+  2e:	48 89 df             	mov    %rbx,%rdi
+  31:	41 50                	push   %r8
+  33:	4c 89 d1             	mov    %r10,%rcx
+  36:	41 89 c0             	mov    %eax,%r8d
+  39:	89 ea                	mov    %ebp,%edx
+  3b:	e8 00 00 00 00       	call   40 <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int)+0x40>
+  40:	41 58                	pop    %r8
+  42:	41 59                	pop    %r9
+  44:	39 c5                	cmp    %eax,%ebp
+  46:	7c d0                	jl     18 <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int)+0x18>
+  48:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  4c:	b0 01                	mov    $0x1,%al
+  4e:	5a                   	pop    %rdx
+  4f:	5b                   	pop    %rbx
+  50:	5d                   	pop    %rbp
+  51:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddIhEEbPKcT_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<unsigned char>(char const*, unsigned char, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	41 52                	push   %r10
+   8:	49 89 f2             	mov    %rsi,%r10
+   b:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+   f:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<unsigned char>(char const*, unsigned char, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 33                	jmp    4f <bool PropertiesBuilder::Add<unsigned char>(char const*, unsigned char, bool, unsigned int)+0x4f>
+  1c:	89 d0                	mov    %edx,%eax
+  1e:	48 89 fb             	mov    %rdi,%rbx
+  21:	0f b7 d6             	movzwl %si,%edx
+  24:	48 03 37             	add    (%rdi),%rsi
+  27:	57                   	push   %rdi
+  28:	29 d5                	sub    %edx,%ebp
+  2a:	44 0f b6 c9          	movzbl %cl,%r9d
+  2e:	48 89 df             	mov    %rbx,%rdi
+  31:	41 50                	push   %r8
+  33:	4c 89 d1             	mov    %r10,%rcx
+  36:	44 0f b6 c0          	movzbl %al,%r8d
+  3a:	89 ea                	mov    %ebp,%edx
+  3c:	e8 00 00 00 00       	call   41 <bool PropertiesBuilder::Add<unsigned char>(char const*, unsigned char, bool, unsigned int)+0x41>
+  41:	41 58                	pop    %r8
+  43:	41 59                	pop    %r9
+  45:	39 c5                	cmp    %eax,%ebp
+  47:	7c cf                	jl     18 <bool PropertiesBuilder::Add<unsigned char>(char const*, unsigned char, bool, unsigned int)+0x18>
+  49:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  4d:	b0 01                	mov    $0x1,%al
+  4f:	5a                   	pop    %rdx
+  50:	5b                   	pop    %rbx
+  51:	5d                   	pop    %rbp
+  52:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partIbEEiPcjPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fa             	mov    %rdi,%r10
+   7:	45 0f b6 c0          	movzbl %r8b,%r8d
+   b:	48 89 f7             	mov    %rsi,%rdi
+   e:	89 d6                	mov    %edx,%esi
+  10:	41 8a 42 0c          	mov    0xc(%r10),%al
+  14:	45 84 c9             	test   %r9b,%r9b
+  17:	75 06                	jne    1f <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x1f>
+  19:	84 c0                	test   %al,%al
+  1b:	75 0d                	jne    2a <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x2a>
+  1d:	eb 14                	jmp    33 <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x33>
+  1f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 26 <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x26>
+  26:	84 c0                	test   %al,%al
+  28:	74 10                	je     3a <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x3a>
+  2a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 31 <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x31>
+  31:	eb 07                	jmp    3a <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x3a>
+  33:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 3a <int PropertiesBuilder::add_part<bool>(char*, unsigned int, char const*, bool, bool, unsigned int)+0x3a>
+  3a:	31 c0                	xor    %eax,%eax
+  3c:	e9 00 00 00 00       	jmp    41 <.LC12+0xe>
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partItEEiPcjPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fa             	mov    %rdi,%r10
+   7:	45 0f b7 c0          	movzwl %r8w,%r8d
+   b:	48 89 f7             	mov    %rsi,%rdi
+   e:	89 d6                	mov    %edx,%esi
+  10:	41 8a 42 0c          	mov    0xc(%r10),%al
+  14:	45 84 c9             	test   %r9b,%r9b
+  17:	75 06                	jne    1f <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x1f>
+  19:	84 c0                	test   %al,%al
+  1b:	75 0d                	jne    2a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x2a>
+  1d:	eb 14                	jmp    33 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x33>
+  1f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 26 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x26>
+  26:	84 c0                	test   %al,%al
+  28:	74 10                	je     3a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x3a>
+  2a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 31 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x31>
+  31:	eb 07                	jmp    3a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x3a>
+  33:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 3a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x3a>
+  3a:	31 c0                	xor    %eax,%eax
+  3c:	e9 00 00 00 00       	jmp    41 <.LC12+0xe>
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partIjEEiPcjPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<unsigned int>(char*, unsigned int, char const*, unsigned int, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fa             	mov    %rdi,%r10
+   7:	48 89 f7             	mov    %rsi,%rdi
+   a:	89 d6                	mov    %edx,%esi
+   c:	41 8a 42 0c          	mov    0xc(%r10),%al
+  10:	45 84 c9             	test   %r9b,%r9b
+  13:	75 06                	jne    1b <int PropertiesBuilder::add_part<unsigned int>(char*, unsigned int, char const*, unsigned int, bool, unsigned int)+0x1b>
+  15:	84 c0                	test   %al,%al
+  17:	75 0d                	jne    26 <int PropertiesBuilder::add_part<unsigned int>(char*, unsigned int, char const*, unsigned int, bool, unsigned int)+0x26>
+  19:	eb 14                	jmp    2f <int PropertiesBuilder::add_part<unsigned int>(char*, unsigned int, char const*, unsigned int, bool, unsigned int)+0x2f>
+  1b:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 22 <int PropertiesBuilder::add_part<unsigned int>(char*, unsigned int, char const*, unsigned int, bool, unsigned int)+0x22>
+  22:	84 c0                	test   %al,%al
+  24:	74 10                	je     36 <int PropertiesBuilder::add_part<unsigned int>(char*, unsigned int, char const*, unsigned int, bool, unsigned int)+0x36>
+  26:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 2d <int PropertiesBuilder::add_part<unsigned int>(char*, unsigned int, char const*, unsigned int, bool, unsigned int)+0x2d>
+  2d:	eb 07                	jmp    36 <int PropertiesBuilder::add_part<unsigned int>(char*, unsigned int, char const*, unsigned int, bool, unsigned int)+0x36>
+  2f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 36 <int PropertiesBuilder::add_part<unsigned int>(char*, unsigned int, char const*, unsigned int, bool, unsigned int)+0x36>
+  36:	31 c0                	xor    %eax,%eax
+  38:	e9 00 00 00 00       	jmp    3d <.LC12+0xa>
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partIhEEiPcjPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<unsigned char>(char*, unsigned int, char const*, unsigned char, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fa             	mov    %rdi,%r10
+   7:	45 0f b6 c0          	movzbl %r8b,%r8d
+   b:	48 89 f7             	mov    %rsi,%rdi
+   e:	89 d6                	mov    %edx,%esi
+  10:	41 8a 42 0c          	mov    0xc(%r10),%al
+  14:	45 84 c9             	test   %r9b,%r9b
+  17:	75 06                	jne    1f <int PropertiesBuilder::add_part<unsigned char>(char*, unsigned int, char const*, unsigned char, bool, unsigned int)+0x1f>
+  19:	84 c0                	test   %al,%al
+  1b:	75 0d                	jne    2a <int PropertiesBuilder::add_part<unsigned char>(char*, unsigned int, char const*, unsigned char, bool, unsigned int)+0x2a>
+  1d:	eb 14                	jmp    33 <int PropertiesBuilder::add_part<unsigned char>(char*, unsigned int, char const*, unsigned char, bool, unsigned int)+0x33>
+  1f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 26 <int PropertiesBuilder::add_part<unsigned char>(char*, unsigned int, char const*, unsigned char, bool, unsigned int)+0x26>
+  26:	84 c0                	test   %al,%al
+  28:	74 10                	je     3a <int PropertiesBuilder::add_part<unsigned char>(char*, unsigned int, char const*, unsigned char, bool, unsigned int)+0x3a>
+  2a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 31 <int PropertiesBuilder::add_part<unsigned char>(char*, unsigned int, char const*, unsigned char, bool, unsigned int)+0x31>
+  31:	eb 07                	jmp    3a <int PropertiesBuilder::add_part<unsigned char>(char*, unsigned int, char const*, unsigned char, bool, unsigned int)+0x3a>
+  33:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 3a <int PropertiesBuilder::add_part<unsigned char>(char*, unsigned int, char const*, unsigned char, bool, unsigned int)+0x3a>
+  3a:	31 c0                	xor    %eax,%eax
+  3c:	e9 00 00 00 00       	jmp    41 <.LC12+0xe>
+
+pixeldmxparamsdump.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZNK14PixelDmxParams9isMaskSetEj:
+
+0000000000000000 <PixelDmxParams::isMaskSet(unsigned int) const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	8b 47 08             	mov    0x8(%rdi),%eax
+   7:	21 f0                	and    %esi,%eax
+   9:	39 f0                	cmp    %esi,%eax
+   b:	0f 94 c0             	sete   %al
+   e:	c3                   	ret    
+
+Disassembly of section .text._ZN14PixelDmxParams4DumpEv:
+
+0000000000000000 <PixelDmxParams::Dump()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 55                	push   %r13
+   6:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # d <PixelDmxParams::Dump()+0xd>
+   d:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 14 <PixelDmxParams::Dump()+0x14>
+  14:	41 54                	push   %r12
+  16:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 1d <PixelDmxParams::Dump()+0x1d>
+  1d:	55                   	push   %rbp
+  1e:	53                   	push   %rbx
+  1f:	48 89 fb             	mov    %rdi,%rbx
+  22:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 29 <PixelDmxParams::Dump()+0x29>
+  29:	48 83 ec 28          	sub    $0x28,%rsp
+  2d:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  34:	00 00 
+  36:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+  3b:	31 c0                	xor    %eax,%eax
+  3d:	e8 00 00 00 00       	call   42 <PixelDmxParams::Dump()+0x42>
+  42:	be 01 00 00 00       	mov    $0x1,%esi
+  47:	48 89 df             	mov    %rbx,%rdi
+  4a:	e8 00 00 00 00       	call   4f <PixelDmxParams::Dump()+0x4f>
+  4f:	84 c0                	test   %al,%al
+  51:	74 28                	je     7b <PixelDmxParams::Dump()+0x7b>
+  53:	44 0f b6 63 0c       	movzbl 0xc(%rbx),%r12d
+  58:	44 89 e7             	mov    %r12d,%edi
+  5b:	e8 00 00 00 00       	call   60 <PixelDmxParams::Dump()+0x60>
+  60:	44 89 e1             	mov    %r12d,%ecx
+  63:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 6a <PixelDmxParams::Dump()+0x6a>
+  6a:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 71 <PixelDmxParams::Dump()+0x71>
+  71:	48 89 c2             	mov    %rax,%rdx
+  74:	31 c0                	xor    %eax,%eax
+  76:	e8 00 00 00 00       	call   7b <PixelDmxParams::Dump()+0x7b>
+  7b:	be 00 02 00 00       	mov    $0x200,%esi
+  80:	48 89 df             	mov    %rbx,%rdi
+  83:	e8 00 00 00 00       	call   88 <PixelDmxParams::Dump()+0x88>
+  88:	84 c0                	test   %al,%al
+  8a:	74 25                	je     b1 <PixelDmxParams::Dump()+0xb1>
+  8c:	0f b6 7b 1b          	movzbl 0x1b(%rbx),%edi
+  90:	e8 00 00 00 00       	call   95 <PixelDmxParams::Dump()+0x95>
+  95:	0f b6 53 1b          	movzbl 0x1b(%rbx),%edx
+  99:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # a0 <PixelDmxParams::Dump()+0xa0>
+  a0:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # a7 <PixelDmxParams::Dump()+0xa7>
+  a7:	48 89 c1             	mov    %rax,%rcx
+  aa:	31 c0                	xor    %eax,%eax
+  ac:	e8 00 00 00 00       	call   b1 <PixelDmxParams::Dump()+0xb1>
+  b1:	be 00 04 00 00       	mov    $0x400,%esi
+  b6:	48 89 df             	mov    %rbx,%rdi
+  b9:	e8 00 00 00 00       	call   be <PixelDmxParams::Dump()+0xbe>
+  be:	84 c0                	test   %al,%al
+  c0:	74 29                	je     eb <PixelDmxParams::Dump()+0xeb>
+  c2:	44 0f b6 63 1c       	movzbl 0x1c(%rbx),%r12d
+  c7:	44 89 e7             	mov    %r12d,%edi
+  ca:	e8 00 00 00 00       	call   cf <PixelDmxParams::Dump()+0xcf>
+  cf:	44 89 e2             	mov    %r12d,%edx
+  d2:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # d9 <PixelDmxParams::Dump()+0xd9>
+  d9:	b0 01                	mov    $0x1,%al
+  db:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # e2 <PixelDmxParams::Dump()+0xe2>
+  e2:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+  e6:	e8 00 00 00 00       	call   eb <PixelDmxParams::Dump()+0xeb>
+  eb:	be 00 08 00 00       	mov    $0x800,%esi
+  f0:	48 89 df             	mov    %rbx,%rdi
+  f3:	e8 00 00 00 00       	call   f8 <PixelDmxParams::Dump()+0xf8>
+  f8:	84 c0                	test   %al,%al
+  fa:	74 29                	je     125 <PixelDmxParams::Dump()+0x125>
+  fc:	44 0f b6 63 1d       	movzbl 0x1d(%rbx),%r12d
+ 101:	44 89 e7             	mov    %r12d,%edi
+ 104:	e8 00 00 00 00       	call   109 <PixelDmxParams::Dump()+0x109>
+ 109:	44 89 e2             	mov    %r12d,%edx
+ 10c:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 113 <PixelDmxParams::Dump()+0x113>
+ 113:	b0 01                	mov    $0x1,%al
+ 115:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 11c <PixelDmxParams::Dump()+0x11c>
+ 11c:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+ 120:	e8 00 00 00 00       	call   125 <PixelDmxParams::Dump()+0x125>
+ 125:	be 02 00 00 00       	mov    $0x2,%esi
+ 12a:	48 89 df             	mov    %rbx,%rdi
+ 12d:	e8 00 00 00 00       	call   132 <PixelDmxParams::Dump()+0x132>
+ 132:	84 c0                	test   %al,%al
+ 134:	74 19                	je     14f <PixelDmxParams::Dump()+0x14f>
+ 136:	0f b7 53 0d          	movzwl 0xd(%rbx),%edx
+ 13a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 141 <PixelDmxParams::Dump()+0x141>
+ 141:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 148 <PixelDmxParams::Dump()+0x148>
+ 148:	31 c0                	xor    %eax,%eax
+ 14a:	e8 00 00 00 00       	call   14f <PixelDmxParams::Dump()+0x14f>
+ 14f:	45 31 e4             	xor    %r12d,%r12d
+ 152:	4c 8d 2d 00 00 00 00 	lea    0x0(%rip),%r13        # 159 <PixelDmxParams::Dump()+0x159>
+ 159:	48 8d 74 24 10       	lea    0x10(%rsp),%rsi
+ 15e:	48 8d 7c 24 08       	lea    0x8(%rsp),%rdi
+ 163:	44 89 e5             	mov    %r12d,%ebp
+ 166:	48 c7 44 24 10 01 00 	movq   $0x1,0x10(%rsp)
+ 16d:	00 00 
+ 16f:	48 c7 44 24 08 01 00 	movq   $0x1,0x8(%rsp)
+ 176:	00 00 
+ 178:	e8 00 00 00 00       	call   17d <PixelDmxParams::Dump()+0x17d>
+ 17d:	48 3b 28             	cmp    (%rax),%rbp
+ 180:	73 35                	jae    1b7 <PixelDmxParams::Dump()+0x1b7>
+ 182:	be 00 10 00 00       	mov    $0x1000,%esi
+ 187:	44 89 e1             	mov    %r12d,%ecx
+ 18a:	48 89 df             	mov    %rbx,%rdi
+ 18d:	d3 e6                	shl    %cl,%esi
+ 18f:	e8 00 00 00 00       	call   194 <PixelDmxParams::Dump()+0x194>
+ 194:	84 c0                	test   %al,%al
+ 196:	74 1a                	je     1b2 <PixelDmxParams::Dump()+0x1b2>
+ 198:	48 6b f5 14          	imul   $0x14,%rbp,%rsi
+ 19c:	0f b7 54 6b 1e       	movzwl 0x1e(%rbx,%rbp,2),%edx
+ 1a1:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 1a8 <PixelDmxParams::Dump()+0x1a8>
+ 1a8:	31 c0                	xor    %eax,%eax
+ 1aa:	4c 01 ee             	add    %r13,%rsi
+ 1ad:	e8 00 00 00 00       	call   1b2 <PixelDmxParams::Dump()+0x1b2>
+ 1b2:	41 ff c4             	inc    %r12d
+ 1b5:	eb a2                	jmp    159 <PixelDmxParams::Dump()+0x159>
+ 1b7:	be 40 00 00 00       	mov    $0x40,%esi
+ 1bc:	48 89 df             	mov    %rbx,%rdi
+ 1bf:	e8 00 00 00 00       	call   1c4 <PixelDmxParams::Dump()+0x1c4>
+ 1c4:	84 c0                	test   %al,%al
+ 1c6:	74 19                	je     1e1 <PixelDmxParams::Dump()+0x1e1>
+ 1c8:	0f b6 53 17          	movzbl 0x17(%rbx),%edx
+ 1cc:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1d3 <PixelDmxParams::Dump()+0x1d3>
+ 1d3:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 1da <PixelDmxParams::Dump()+0x1da>
+ 1da:	31 c0                	xor    %eax,%eax
+ 1dc:	e8 00 00 00 00       	call   1e1 <PixelDmxParams::Dump()+0x1e1>
+ 1e1:	be 00 01 00 00       	mov    $0x100,%esi
+ 1e6:	48 89 df             	mov    %rbx,%rdi
+ 1e9:	e8 00 00 00 00       	call   1ee <PixelDmxParams::Dump()+0x1ee>
+ 1ee:	84 c0                	test   %al,%al
+ 1f0:	74 19                	je     20b <PixelDmxParams::Dump()+0x20b>
+ 1f2:	0f b7 53 19          	movzwl 0x19(%rbx),%edx
+ 1f6:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1fd <PixelDmxParams::Dump()+0x1fd>
+ 1fd:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 204 <PixelDmxParams::Dump()+0x204>
+ 204:	31 c0                	xor    %eax,%eax
+ 206:	e8 00 00 00 00       	call   20b <PixelDmxParams::Dump()+0x20b>
+ 20b:	be 10 00 00 00       	mov    $0x10,%esi
+ 210:	48 89 df             	mov    %rbx,%rdi
+ 213:	e8 00 00 00 00       	call   218 <PixelDmxParams::Dump()+0x218>
+ 218:	84 c0                	test   %al,%al
+ 21a:	74 18                	je     234 <PixelDmxParams::Dump()+0x234>
+ 21c:	8b 53 12             	mov    0x12(%rbx),%edx
+ 21f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 226 <PixelDmxParams::Dump()+0x226>
+ 226:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 22d <PixelDmxParams::Dump()+0x22d>
+ 22d:	31 c0                	xor    %eax,%eax
+ 22f:	e8 00 00 00 00       	call   234 <PixelDmxParams::Dump()+0x234>
+ 234:	be 20 00 00 00       	mov    $0x20,%esi
+ 239:	48 89 df             	mov    %rbx,%rdi
+ 23c:	e8 00 00 00 00       	call   241 <PixelDmxParams::Dump()+0x241>
+ 241:	84 c0                	test   %al,%al
+ 243:	74 19                	je     25e <PixelDmxParams::Dump()+0x25e>
+ 245:	0f b6 53 16          	movzbl 0x16(%rbx),%edx
+ 249:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 250 <PixelDmxParams::Dump()+0x250>
+ 250:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 257 <PixelDmxParams::Dump()+0x257>
+ 257:	31 c0                	xor    %eax,%eax
+ 259:	e8 00 00 00 00       	call   25e <PixelDmxParams::Dump()+0x25e>
+ 25e:	be 04 00 00 00       	mov    $0x4,%esi
+ 263:	48 89 df             	mov    %rbx,%rdi
+ 266:	e8 00 00 00 00       	call   26b <PixelDmxParams::Dump()+0x26b>
+ 26b:	84 c0                	test   %al,%al
+ 26d:	74 19                	je     288 <PixelDmxParams::Dump()+0x288>
+ 26f:	0f b7 53 0f          	movzwl 0xf(%rbx),%edx
+ 273:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 27a <PixelDmxParams::Dump()+0x27a>
+ 27a:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 281 <PixelDmxParams::Dump()+0x281>
+ 281:	31 c0                	xor    %eax,%eax
+ 283:	e8 00 00 00 00       	call   288 <PixelDmxParams::Dump()+0x288>
+ 288:	be 08 00 00 00       	mov    $0x8,%esi
+ 28d:	48 89 df             	mov    %rbx,%rdi
+ 290:	e8 00 00 00 00       	call   295 <PixelDmxParams::Dump()+0x295>
+ 295:	84 c0                	test   %al,%al
+ 297:	74 19                	je     2b2 <PixelDmxParams::Dump()+0x2b2>
+ 299:	0f b6 53 18          	movzbl 0x18(%rbx),%edx
+ 29d:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 2a4 <PixelDmxParams::Dump()+0x2a4>
+ 2a4:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 2ab <PixelDmxParams::Dump()+0x2ab>
+ 2ab:	31 c0                	xor    %eax,%eax
+ 2ad:	e8 00 00 00 00       	call   2b2 <PixelDmxParams::Dump()+0x2b2>
+ 2b2:	be 80 00 00 00       	mov    $0x80,%esi
+ 2b7:	48 89 df             	mov    %rbx,%rdi
+ 2ba:	e8 00 00 00 00       	call   2bf <PixelDmxParams::Dump()+0x2bf>
+ 2bf:	84 c0                	test   %al,%al
+ 2c1:	74 58                	je     31b <PixelDmxParams::Dump()+0x31b>
+ 2c3:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 2ca <PixelDmxParams::Dump()+0x2ca>
+ 2ca:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 2d1 <PixelDmxParams::Dump()+0x2d1>
+ 2d1:	31 c0                	xor    %eax,%eax
+ 2d3:	e8 00 00 00 00       	call   2d8 <PixelDmxParams::Dump()+0x2d8>
+ 2d8:	0f b6 53 11          	movzbl 0x11(%rbx),%edx
+ 2dc:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+ 2e1:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 2e8:	00 00 
+ 2ea:	75 3f                	jne    32b <PixelDmxParams::Dump()+0x32b>
+ 2ec:	f3 0f 2a c2          	cvtsi2ss %edx,%xmm0
+ 2f0:	f3 0f 5e 05 00 00 00 	divss  0x0(%rip),%xmm0        # 2f8 <PixelDmxParams::Dump()+0x2f8>
+ 2f7:	00 
+ 2f8:	48 83 c4 28          	add    $0x28,%rsp
+ 2fc:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 303 <PixelDmxParams::Dump()+0x303>
+ 303:	5b                   	pop    %rbx
+ 304:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 30b <PixelDmxParams::Dump()+0x30b>
+ 30b:	5d                   	pop    %rbp
+ 30c:	b0 01                	mov    $0x1,%al
+ 30e:	41 5c                	pop    %r12
+ 310:	41 5d                	pop    %r13
+ 312:	f3 0f 5a c0          	cvtss2sd %xmm0,%xmm0
+ 316:	e9 00 00 00 00       	jmp    31b <PixelDmxParams::Dump()+0x31b>
+ 31b:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+ 320:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 327:	00 00 
+ 329:	74 05                	je     330 <PixelDmxParams::Dump()+0x330>
+ 32b:	e8 00 00 00 00       	call   330 <PixelDmxParams::Dump()+0x330>
+ 330:	48 83 c4 28          	add    $0x28,%rsp
+ 334:	5b                   	pop    %rbx
+ 335:	5d                   	pop    %rbp
+ 336:	41 5c                	pop    %r12
+ 338:	41 5d                	pop    %r13
+ 33a:	c3                   	ret    
+
+Disassembly of section .text._ZSt3minImERKT_S2_S2_:
+
+0000000000000000 <unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	48 8b 17             	mov    (%rdi),%rdx
+   7:	48 89 f8             	mov    %rdi,%rax
+   a:	48 39 16             	cmp    %rdx,(%rsi)
+   d:	73 03                	jae    12 <unsigned long const& std::min<unsigned long>(unsigned long const&, unsigned long const&)+0x12>
+   f:	48 89 f0             	mov    %rsi,%rax
+  12:	c3                   	ret    
+
+pixeldmxparamsrdm.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZN8LightSetC2Ev:
+
+0000000000000000 <LightSet::LightSet()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 13 <LightSet::LightSet()+0x13>
+  13:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  17:	48 89 10             	mov    %rdx,(%rax)
+  1a:	90                   	nop
+  1b:	5d                   	pop    %rbp
+  1c:	c3                   	ret    
+
+Disassembly of section .text._ZN8LightSetD2Ev:
+
+0000000000000000 <LightSet::~LightSet()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 13 <LightSet::~LightSet()+0x13>
+  13:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  17:	48 89 10             	mov    %rdx,(%rax)
+  1a:	90                   	nop
+  1b:	5d                   	pop    %rbp
+  1c:	c3                   	ret    
+
+Disassembly of section .text._ZN8LightSetD0Ev:
+
+0000000000000000 <LightSet::~LightSet()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  14:	48 89 c7             	mov    %rax,%rdi
+  17:	e8 00 00 00 00       	call   1c <LightSet::~LightSet()+0x1c>
+  1c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  20:	48 89 c7             	mov    %rax,%rdi
+  23:	e8 00 00 00 00       	call   28 <LightSet::~LightSet()+0x28>
+  28:	c9                   	leave  
+  29:	c3                   	ret    
+
+Disassembly of section .text._ZN8LightSet8BlackoutEb:
+
+0000000000000000 <LightSet::Blackout(bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	89 f0                	mov    %esi,%eax
+   e:	88 45 f4             	mov    %al,-0xc(%rbp)
+  11:	90                   	nop
+  12:	5d                   	pop    %rbp
+  13:	c3                   	ret    
+
+Disassembly of section .text._ZN8LightSet6FullOnEv:
+
+0000000000000000 <LightSet::FullOn()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	90                   	nop
+   d:	5d                   	pop    %rbp
+   e:	c3                   	ret    
+
+Disassembly of section .text._ZN8LightSet5PrintEv:
+
+0000000000000000 <LightSet::Print()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	90                   	nop
+   d:	5d                   	pop    %rbp
+   e:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdm18SetDmxStartAddressEt:
+
+0000000000000000 <PixelDmxParamsRdm::SetDmxStartAddress(unsigned short)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	89 f0                	mov    %esi,%eax
+   e:	66 89 45 f4          	mov    %ax,-0xc(%rbp)
+  12:	b8 00 00 00 00       	mov    $0x0,%eax
+  17:	5d                   	pop    %rbp
+  18:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdm18GetDmxStartAddressEv:
+
+0000000000000000 <PixelDmxParamsRdm::GetDmxStartAddress()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	b8 01 00 00 00       	mov    $0x1,%eax
+  11:	5d                   	pop    %rbp
+  12:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdm15GetDmxFootprintEv:
+
+0000000000000000 <PixelDmxParamsRdm::GetDmxFootprint()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	b8 06 00 00 00       	mov    $0x6,%eax
+  11:	5d                   	pop    %rbp
+  12:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdmC2EP13PixelDmxStore:
+
+0000000000000000 <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  14:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  18:	48 89 c7             	mov    %rax,%rdi
+  1b:	e8 00 00 00 00       	call   20 <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x20>
+  20:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 27 <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x27>
+  27:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  2b:	48 89 10             	mov    %rdx,(%rax)
+  2e:	b9 2c 00 00 00       	mov    $0x2c,%ecx
+  33:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 3a <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x3a>
+  3a:	48 89 c2             	mov    %rax,%rdx
+  3d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 44 <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x44>
+  44:	48 89 c6             	mov    %rax,%rsi
+  47:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4e <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x4e>
+  4e:	48 89 c7             	mov    %rax,%rdi
+  51:	b8 00 00 00 00       	mov    $0x0,%eax
+  56:	e8 00 00 00 00       	call   5b <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x5b>
+  5b:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  5f:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 66 <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x66>
+  66:	b9 30 00 00 00       	mov    $0x30,%ecx
+  6b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 72 <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x72>
+  72:	48 89 c2             	mov    %rax,%rdx
+  75:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7c <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x7c>
+  7c:	48 89 c6             	mov    %rax,%rsi
+  7f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 86 <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x86>
+  86:	48 89 c7             	mov    %rax,%rdi
+  89:	b8 00 00 00 00       	mov    $0x0,%eax
+  8e:	e8 00 00 00 00       	call   93 <PixelDmxParamsRdm::PixelDmxParamsRdm(PixelDmxStore*)+0x93>
+  93:	90                   	nop
+  94:	c9                   	leave  
+  95:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdm5StartEj:
+
+0000000000000000 <PixelDmxParamsRdm::Start(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 75 f4             	mov    %esi,-0xc(%rbp)
+  13:	b9 34 00 00 00       	mov    $0x34,%ecx
+  18:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 1f <PixelDmxParamsRdm::Start(unsigned int)+0x1f>
+  1f:	48 89 c2             	mov    %rax,%rdx
+  22:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 29 <PixelDmxParamsRdm::Start(unsigned int)+0x29>
+  29:	48 89 c6             	mov    %rax,%rsi
+  2c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 33 <PixelDmxParamsRdm::Start(unsigned int)+0x33>
+  33:	48 89 c7             	mov    %rax,%rdi
+  36:	b8 00 00 00 00       	mov    $0x0,%eax
+  3b:	e8 00 00 00 00       	call   40 <PixelDmxParamsRdm::Start(unsigned int)+0x40>
+  40:	83 7d f4 00          	cmpl   $0x0,-0xc(%rbp)
+  44:	74 28                	je     6e <PixelDmxParamsRdm::Start(unsigned int)+0x6e>
+  46:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4d <PixelDmxParamsRdm::Start(unsigned int)+0x4d>
+  4d:	48 89 c1             	mov    %rax,%rcx
+  50:	ba 35 00 00 00       	mov    $0x35,%edx
+  55:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 5c <PixelDmxParamsRdm::Start(unsigned int)+0x5c>
+  5c:	48 89 c6             	mov    %rax,%rsi
+  5f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 66 <PixelDmxParamsRdm::Start(unsigned int)+0x66>
+  66:	48 89 c7             	mov    %rax,%rdi
+  69:	e8 00 00 00 00       	call   6e <PixelDmxParamsRdm::Start(unsigned int)+0x6e>
+  6e:	b9 37 00 00 00       	mov    $0x37,%ecx
+  73:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7a <PixelDmxParamsRdm::Start(unsigned int)+0x7a>
+  7a:	48 89 c2             	mov    %rax,%rdx
+  7d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 84 <PixelDmxParamsRdm::Start(unsigned int)+0x84>
+  84:	48 89 c6             	mov    %rax,%rsi
+  87:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 8e <PixelDmxParamsRdm::Start(unsigned int)+0x8e>
+  8e:	48 89 c7             	mov    %rax,%rdi
+  91:	b8 00 00 00 00       	mov    $0x0,%eax
+  96:	e8 00 00 00 00       	call   9b <PixelDmxParamsRdm::Start(unsigned int)+0x9b>
+  9b:	90                   	nop
+  9c:	c9                   	leave  
+  9d:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdm4StopEj:
+
+0000000000000000 <PixelDmxParamsRdm::Stop(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 75 f4             	mov    %esi,-0xc(%rbp)
+  13:	b9 3b 00 00 00       	mov    $0x3b,%ecx
+  18:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 1f <PixelDmxParamsRdm::Stop(unsigned int)+0x1f>
+  1f:	48 89 c2             	mov    %rax,%rdx
+  22:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 29 <PixelDmxParamsRdm::Stop(unsigned int)+0x29>
+  29:	48 89 c6             	mov    %rax,%rsi
+  2c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 33 <PixelDmxParamsRdm::Stop(unsigned int)+0x33>
+  33:	48 89 c7             	mov    %rax,%rdi
+  36:	b8 00 00 00 00       	mov    $0x0,%eax
+  3b:	e8 00 00 00 00       	call   40 <PixelDmxParamsRdm::Stop(unsigned int)+0x40>
+  40:	83 7d f4 00          	cmpl   $0x0,-0xc(%rbp)
+  44:	74 28                	je     6e <PixelDmxParamsRdm::Stop(unsigned int)+0x6e>
+  46:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4d <PixelDmxParamsRdm::Stop(unsigned int)+0x4d>
+  4d:	48 89 c1             	mov    %rax,%rcx
+  50:	ba 3c 00 00 00       	mov    $0x3c,%edx
+  55:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 5c <PixelDmxParamsRdm::Stop(unsigned int)+0x5c>
+  5c:	48 89 c6             	mov    %rax,%rsi
+  5f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 66 <PixelDmxParamsRdm::Stop(unsigned int)+0x66>
+  66:	48 89 c7             	mov    %rax,%rdi
+  69:	e8 00 00 00 00       	call   6e <PixelDmxParamsRdm::Stop(unsigned int)+0x6e>
+  6e:	b9 3e 00 00 00       	mov    $0x3e,%ecx
+  73:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7a <PixelDmxParamsRdm::Stop(unsigned int)+0x7a>
+  7a:	48 89 c2             	mov    %rax,%rdx
+  7d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 84 <PixelDmxParamsRdm::Stop(unsigned int)+0x84>
+  84:	48 89 c6             	mov    %rax,%rsi
+  87:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 8e <PixelDmxParamsRdm::Stop(unsigned int)+0x8e>
+  8e:	48 89 c7             	mov    %rax,%rdi
+  91:	b8 00 00 00 00       	mov    $0x0,%eax
+  96:	e8 00 00 00 00       	call   9b <PixelDmxParamsRdm::Stop(unsigned int)+0x9b>
+  9b:	90                   	nop
+  9c:	c9                   	leave  
+  9d:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdm7SetDataEjPKhj:
+
+0000000000000000 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	89 75 e4             	mov    %esi,-0x1c(%rbp)
+  13:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+  17:	89 4d e0             	mov    %ecx,-0x20(%rbp)
+  1a:	83 7d e4 00          	cmpl   $0x0,-0x1c(%rbp)
+  1e:	74 28                	je     48 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x48>
+  20:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 27 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x27>
+  27:	48 89 c1             	mov    %rax,%rcx
+  2a:	ba 42 00 00 00       	mov    $0x42,%edx
+  2f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 36 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x36>
+  36:	48 89 c6             	mov    %rax,%rsi
+  39:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 40 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x40>
+  40:	48 89 c7             	mov    %rax,%rdi
+  43:	e8 00 00 00 00       	call   48 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x48>
+  48:	83 7d e0 05          	cmpl   $0x5,-0x20(%rbp)
+  4c:	0f 86 be 01 00 00    	jbe    210 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x210>
+  52:	c7 45 fc 05 00 00 00 	movl   $0x5,-0x4(%rbp)
+  59:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  5d:	48 83 c0 05          	add    $0x5,%rax
+  61:	0f b6 00             	movzbl (%rax),%eax
+  64:	84 c0                	test   %al,%al
+  66:	75 0c                	jne    74 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x74>
+  68:	c6 05 00 00 00 00 00 	movb   $0x0,0x0(%rip)        # 6f <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x6f>
+  6f:	e9 69 01 00 00       	jmp    1dd <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x1dd>
+  74:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  78:	48 83 c0 05          	add    $0x5,%rax
+  7c:	0f b6 00             	movzbl (%rax),%eax
+  7f:	3c ff                	cmp    $0xff,%al
+  81:	0f 85 56 01 00 00    	jne    1dd <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x1dd>
+  87:	0f b6 05 00 00 00 00 	movzbl 0x0(%rip),%eax        # 8e <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x8e>
+  8e:	84 c0                	test   %al,%al
+  90:	0f 85 47 01 00 00    	jne    1dd <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x1dd>
+  96:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 9d <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x9d>
+  9d:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # a4 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0xa4>
+  a4:	41 b8 59 00 00 00    	mov    $0x59,%r8d
+  aa:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # b1 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0xb1>
+  b1:	48 89 d1             	mov    %rdx,%rcx
+  b4:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # bb <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0xbb>
+  bb:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # c2 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0xc2>
+  c2:	48 89 c7             	mov    %rax,%rdi
+  c5:	b8 00 00 00 00       	mov    $0x0,%eax
+  ca:	e8 00 00 00 00       	call   cf <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0xcf>
+  cf:	c6 05 00 00 00 00 ff 	movb   $0xff,0x0(%rip)        # d6 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0xd6>
+  d6:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  da:	0f b6 00             	movzbl (%rax),%eax
+  dd:	88 45 fa             	mov    %al,-0x6(%rbp)
+  e0:	c6 45 fb 0e          	movb   $0xe,-0x5(%rbp)
+  e4:	48 8b 0d 00 00 00 00 	mov    0x0(%rip),%rcx        # eb <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0xeb>
+  eb:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # f2 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0xf2>
+  f2:	48 8b 00             	mov    (%rax),%rax
+  f5:	48 83 c0 10          	add    $0x10,%rax
+  f9:	4c 8b 00             	mov    (%rax),%r8
+  fc:	0f b6 55 fb          	movzbl -0x5(%rbp),%edx
+ 100:	0f b6 45 fa          	movzbl -0x6(%rbp),%eax
+ 104:	38 c2                	cmp    %al,%dl
+ 106:	0f 46 c2             	cmovbe %edx,%eax
+ 109:	0f b6 c0             	movzbl %al,%eax
+ 10c:	89 c6                	mov    %eax,%esi
+ 10e:	48 89 cf             	mov    %rcx,%rdi
+ 111:	41 ff d0             	call   *%r8
+ 114:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 11b <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x11b>
+ 11b:	48 8b 15 00 00 00 00 	mov    0x0(%rip),%rdx        # 122 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x122>
+ 122:	48 8b 12             	mov    (%rdx),%rdx
+ 125:	48 83 c2 18          	add    $0x18,%rdx
+ 129:	48 8b 0a             	mov    (%rdx),%rcx
+ 12c:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+ 130:	48 83 c2 01          	add    $0x1,%rdx
+ 134:	0f b6 12             	movzbl (%rdx),%edx
+ 137:	0f b6 d2             	movzbl %dl,%edx
+ 13a:	89 d6                	mov    %edx,%esi
+ 13c:	48 89 c7             	mov    %rax,%rdi
+ 13f:	ff d1                	call   *%rcx
+ 141:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 148 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x148>
+ 148:	48 8b 15 00 00 00 00 	mov    0x0(%rip),%rdx        # 14f <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x14f>
+ 14f:	48 8b 12             	mov    (%rdx),%rdx
+ 152:	48 83 c2 20          	add    $0x20,%rdx
+ 156:	48 8b 0a             	mov    (%rdx),%rcx
+ 159:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+ 15d:	48 83 c2 02          	add    $0x2,%rdx
+ 161:	0f b6 12             	movzbl (%rdx),%edx
+ 164:	0f b6 d2             	movzbl %dl,%edx
+ 167:	89 d6                	mov    %edx,%esi
+ 169:	48 89 c7             	mov    %rax,%rdi
+ 16c:	ff d1                	call   *%rcx
+ 16e:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 172:	48 83 c0 03          	add    $0x3,%rax
+ 176:	0f b6 00             	movzbl (%rax),%eax
+ 179:	88 45 fa             	mov    %al,-0x6(%rbp)
+ 17c:	c6 45 fb 06          	movb   $0x6,-0x5(%rbp)
+ 180:	48 8b 0d 00 00 00 00 	mov    0x0(%rip),%rcx        # 187 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x187>
+ 187:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 18e <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x18e>
+ 18e:	48 8b 00             	mov    (%rax),%rax
+ 191:	48 83 c0 28          	add    $0x28,%rax
+ 195:	4c 8b 00             	mov    (%rax),%r8
+ 198:	0f b6 55 fb          	movzbl -0x5(%rbp),%edx
+ 19c:	0f b6 45 fa          	movzbl -0x6(%rbp),%eax
+ 1a0:	38 c2                	cmp    %al,%dl
+ 1a2:	0f 46 c2             	cmovbe %edx,%eax
+ 1a5:	0f b6 c0             	movzbl %al,%eax
+ 1a8:	89 c6                	mov    %eax,%esi
+ 1aa:	48 89 cf             	mov    %rcx,%rdi
+ 1ad:	41 ff d0             	call   *%r8
+ 1b0:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 1b7 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x1b7>
+ 1b7:	48 8b 15 00 00 00 00 	mov    0x0(%rip),%rdx        # 1be <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x1be>
+ 1be:	48 8b 12             	mov    (%rdx),%rdx
+ 1c1:	48 83 c2 30          	add    $0x30,%rdx
+ 1c5:	48 8b 0a             	mov    (%rdx),%rcx
+ 1c8:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+ 1cc:	48 83 c2 04          	add    $0x4,%rdx
+ 1d0:	0f b6 12             	movzbl (%rdx),%edx
+ 1d3:	0f b6 d2             	movzbl %dl,%edx
+ 1d6:	89 d6                	mov    %edx,%esi
+ 1d8:	48 89 c7             	mov    %rax,%rdi
+ 1db:	ff d1                	call   *%rcx
+ 1dd:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 1e1:	48 83 c0 05          	add    $0x5,%rax
+ 1e5:	0f b6 00             	movzbl (%rax),%eax
+ 1e8:	84 c0                	test   %al,%al
+ 1ea:	74 0f                	je     1fb <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x1fb>
+ 1ec:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 1f0:	48 83 c0 05          	add    $0x5,%rax
+ 1f4:	0f b6 00             	movzbl (%rax),%eax
+ 1f7:	3c ff                	cmp    $0xff,%al
+ 1f9:	75 16                	jne    211 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x211>
+ 1fb:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+ 1ff:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 203:	48 89 d6             	mov    %rdx,%rsi
+ 206:	48 89 c7             	mov    %rax,%rdi
+ 209:	e8 00 00 00 00       	call   20e <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x20e>
+ 20e:	eb 01                	jmp    211 <PixelDmxParamsRdm::SetData(unsigned int, unsigned char const*, unsigned int)+0x211>
+ 210:	90                   	nop
+ 211:	c9                   	leave  
+ 212:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdm11GetSlotInfoEtRN8lightset8SlotInfoE:
+
+0000000000000000 <PixelDmxParamsRdm::GetSlotInfo(unsigned short, lightset::SlotInfo&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	89 f0                	mov    %esi,%eax
+   e:	48 89 55 e8          	mov    %rdx,-0x18(%rbp)
+  12:	66 89 45 f4          	mov    %ax,-0xc(%rbp)
+  16:	66 83 7d f4 05       	cmpw   $0x5,-0xc(%rbp)
+  1b:	76 07                	jbe    24 <PixelDmxParamsRdm::GetSlotInfo(unsigned short, lightset::SlotInfo&)+0x24>
+  1d:	b8 00 00 00 00       	mov    $0x0,%eax
+  22:	eb 16                	jmp    3a <PixelDmxParamsRdm::GetSlotInfo(unsigned short, lightset::SlotInfo&)+0x3a>
+  24:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  28:	c6 40 02 00          	movb   $0x0,0x2(%rax)
+  2c:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  30:	66 c7 00 ff ff       	movw   $0xffff,(%rax)
+  35:	b8 01 00 00 00       	mov    $0x1,%eax
+  3a:	5d                   	pop    %rbp
+  3b:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdm7DisplayEPKh:
+
+0000000000000000 <PixelDmxParamsRdm::Display(unsigned char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  10:	90                   	nop
+  11:	5d                   	pop    %rbp
+  12:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdmD2Ev:
+
+0000000000000000 <PixelDmxParamsRdm::~PixelDmxParamsRdm()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 17 <PixelDmxParamsRdm::~PixelDmxParamsRdm()+0x17>
+  17:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  1b:	48 89 10             	mov    %rdx,(%rax)
+  1e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  22:	48 89 c7             	mov    %rax,%rdi
+  25:	e8 00 00 00 00       	call   2a <PixelDmxParamsRdm::~PixelDmxParamsRdm()+0x2a>
+  2a:	90                   	nop
+  2b:	c9                   	leave  
+  2c:	c3                   	ret    
+
+Disassembly of section .text._ZN17PixelDmxParamsRdmD0Ev:
+
+0000000000000000 <PixelDmxParamsRdm::~PixelDmxParamsRdm()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  14:	48 89 c7             	mov    %rax,%rdi
+  17:	e8 00 00 00 00       	call   1c <PixelDmxParamsRdm::~PixelDmxParamsRdm()+0x1c>
+  1c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  20:	48 89 c7             	mov    %rax,%rdi
+  23:	e8 00 00 00 00       	call   28 <PixelDmxParamsRdm::~PixelDmxParamsRdm()+0x28>
+  28:	c9                   	leave  
+  29:	c3                   	ret    

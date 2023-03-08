@@ -1,0 +1,5 @@
+#devices.txt
+led_type=TLC59711
+led_count=4
+dmx_start_address=1
+#clock_speed_hz=0

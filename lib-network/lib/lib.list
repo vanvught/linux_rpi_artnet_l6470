@@ -1,0 +1,203 @@
+In archive lib/libnetwork.a:
+
+networkconst.o:     file format elf32-littlearm
+
+
+Disassembly of section .rodata:
+
+00000000 <NetworkConst::MSG_MDNS_STARTED>:
+   0:	534e444d 	movtpl	r4, #58445	; 0xe44d
+   4:	61747320 	cmnvs	r4, r0, lsr #6
+   8:	64657472 	strbtvs	r7, [r5], #-1138	; 0xfffffb8e
+   c:	00000000 	andeq	r0, r0, r0
+
+00000010 <NetworkConst::MSG_MDNS_CONFIG>:
+  10:	666e6f43 	strbtvs	r6, [lr], -r3, asr #30
+  14:	72756769 	rsbsvc	r6, r5, #27525120	; 0x1a40000
+  18:	20676e69 	rsbcs	r6, r7, r9, ror #28
+  1c:	534e444d 	movtpl	r4, #58445	; 0xe44d
+  20:	00000000 	andeq	r0, r0, r0
+
+00000024 <NetworkConst::MSG_NETWORK_STARTED>:
+  24:	7774654e 	ldrbvc	r6, [r4, -lr, asr #10]!
+  28:	206b726f 	rsbcs	r7, fp, pc, ror #4
+  2c:	72617473 	rsbvc	r7, r1, #1929379840	; 0x73000000
+  30:	00646574 	rsbeq	r6, r4, r4, ror r5
+
+00000034 <NetworkConst::MSG_NETWORK_INIT>:
+  34:	7774654e 	ldrbvc	r6, [r4, -lr, asr #10]!
+  38:	206b726f 	rsbcs	r7, fp, pc, ror #4
+  3c:	74696e69 	strbtvc	r6, [r9], #-3689	; 0xfffff197
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003b41 	andeq	r3, r0, r1, asr #22
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000031 	andeq	r0, r0, r1, lsr r0
+  10:	4d524105 	ldfmie	f4, [r2, #-20]	; 0xffffffec
+  14:	36373131 			; <UNDEFINED> instruction: 0x36373131
+  18:	2d465a4a 	vstrcs	s11, [r6, #-296]	; 0xfffffed8
+  1c:	07060053 	smlsdeq	r6, r3, r0, r0
+  20:	01090108 	tsteq	r9, r8, lsl #2
+  24:	0412020a 	ldreq	r0, [r2], #-522	; 0xfffffdf6
+  28:	01150114 	tsteq	r5, r4, lsl r1
+  2c:	01180317 	tsteq	r8, r7, lsl r3
+  30:	011a0119 	tsteq	sl, r9, lsl r1
+  34:	021e011c 	andseq	r0, lr, #28, 2
+  38:	01440122 	cmpeq	r4, r2, lsr #2
+
+networkparamsconst.o:     file format elf32-littlearm
+
+
+Disassembly of section .rodata:
+
+00000000 <NetworkParamsConst::NTP_UTC_OFFSET>:
+   0:	5f70746e 	svcpl	0x0070746e
+   4:	5f637475 	svcpl	0x00637475
+   8:	7366666f 	cmnvc	r6, #116391936	; 0x6f00000
+   c:	00007465 	andeq	r7, r0, r5, ror #8
+
+00000010 <NetworkParamsConst::NTP_SERVER>:
+  10:	5f70746e 	svcpl	0x0070746e
+  14:	76726573 			; <UNDEFINED> instruction: 0x76726573
+  18:	00007265 	andeq	r7, r0, r5, ror #4
+
+0000001c <NetworkParamsConst::HOSTNAME>:
+  1c:	74736f68 	ldrbtvc	r6, [r3], #-3944	; 0xfffff098
+  20:	656d616e 	strbvs	r6, [sp, #-366]!	; 0xfffffe92
+  24:	00000000 	andeq	r0, r0, r0
+
+00000028 <NetworkParamsConst::DEFAULT_GATEWAY>:
+  28:	61666564 	cmnvs	r6, r4, ror #10
+  2c:	5f746c75 	svcpl	0x00746c75
+  30:	65746167 	ldrbvs	r6, [r4, #-359]!	; 0xfffffe99
+  34:	00796177 	rsbseq	r6, r9, r7, ror r1
+
+00000038 <NetworkParamsConst::NET_MASK>:
+  38:	5f74656e 	svcpl	0x0074656e
+  3c:	6b73616d 	blvs	1cd85f8 <NetworkParamsConst::FILE_NAME+0x1cd858c>
+  40:	00000000 	andeq	r0, r0, r0
+
+00000044 <NetworkParamsConst::IP_ADDRESS>:
+  44:	615f7069 	cmpvs	pc, r9, rrx
+  48:	65726464 	ldrbvs	r6, [r2, #-1124]!	; 0xfffffb9c
+  4c:	00007373 	andeq	r7, r0, r3, ror r3
+
+00000050 <NetworkParamsConst::DHCP_RETRY_TIME>:
+  50:	70636864 	rsbvc	r6, r3, r4, ror #16
+  54:	7465725f 	strbtvc	r7, [r5], #-607	; 0xfffffda1
+  58:	745f7972 	ldrbvc	r7, [pc], #-2418	; 60 <NetworkParamsConst::USE_DHCP>
+  5c:	00656d69 	rsbeq	r6, r5, r9, ror #26
+
+00000060 <NetworkParamsConst::USE_DHCP>:
+  60:	5f657375 	svcpl	0x00657375
+  64:	70636864 	rsbvc	r6, r3, r4, ror #16
+  68:	00000000 	andeq	r0, r0, r0
+
+0000006c <NetworkParamsConst::FILE_NAME>:
+  6c:	7774656e 	ldrbvc	r6, [r4, -lr, ror #10]!
+  70:	2e6b726f 	cdpcs	2, 6, cr7, cr11, cr15, {3}
+  74:	00747874 	rsbseq	r7, r4, r4, ror r8
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003b41 	andeq	r3, r0, r1, asr #22
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000031 	andeq	r0, r0, r1, lsr r0
+  10:	4d524105 	ldfmie	f4, [r2, #-20]	; 0xffffffec
+  14:	36373131 			; <UNDEFINED> instruction: 0x36373131
+  18:	2d465a4a 	vstrcs	s11, [r6, #-296]	; 0xfffffed8
+  1c:	07060053 	smlsdeq	r6, r3, r0, r0
+  20:	01090108 	tsteq	r9, r8, lsl #2
+  24:	0412020a 	ldreq	r0, [r2], #-522	; 0xfffffdf6
+  28:	01150114 	tsteq	r5, r4, lsl r1
+  2c:	01180317 	tsteq	r8, r7, lsl r3
+  30:	011a0119 	tsteq	sl, r9, lsl r1
+  34:	021e011c 	andseq	r0, lr, #28, 2
+  38:	01440122 	cmpeq	r4, r2, lsr #2
+
+network.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Network::Network()>:
+   0:	e3a0306c 	mov	r3, #108	; 0x6c
+   4:	e1a02000 	mov	r2, r0
+   8:	e59fc018 	ldr	ip, [pc, #24]	; 28 <Network::Network()+0x28>
+   c:	e59f1018 	ldr	r1, [pc, #24]	; 2c <Network::Network()+0x2c>
+  10:	e58c0000 	str	r0, [ip]
+  14:	e3530000 	cmp	r3, #0
+  18:	e4c23001 	strb	r3, [r2], #1
+  1c:	012fff1e 	bxeq	lr
+  20:	e5f13001 	ldrb	r3, [r1, #1]!
+  24:	eafffffa 	b	14 <Network::Network()+0x14>
+	...
+
+00000030 <Network::MacAddressCopyTo(unsigned char*)>:
+  30:	e1a00001 	mov	r0, r1
+  34:	eafffffe 	b	0 <mac_address_get(unsigned char*)>
+
+Disassembly of section .bss:
+
+00000000 <Network::s_pThis>:
+   0:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.rodata.str1.4>:
+   0:	Address 0x0000000000000000 is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003241 	andeq	r3, r0, r1, asr #4
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000028 	andeq	r0, r0, r8, lsr #32
+  10:	4b5a3605 	blmi	168d82c <Network::MacAddressCopyTo(unsigned char*)+0x168d7fc>
+  14:	08070600 	stmdaeq	r7, {r9, sl}
+  18:	0a010901 	beq	42424 <Network::MacAddressCopyTo(unsigned char*)+0x423f4>
+  1c:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  20:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  24:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  28:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  2c:	22021e01 	andcs	r1, r2, #1, 28
+  30:	Address 0x0000000000000030 is out of bounds.
+

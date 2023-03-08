@@ -1,0 +1,2425 @@
+In archive lib_h3/libshowfile.a:
+
+olashowfile.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <OlaShowFile::~OlaShowFile()>:
+   0:	e12fff1e 	bx	lr
+
+00000004 <OlaShowFile::ShowFileStop()>:
+   4:	e12fff1e 	bx	lr
+
+00000008 <OlaShowFile::ShowFileResume()>:
+   8:	e3a03000 	mov	r3, #0, 0
+   c:	e5803830 	str	r3, [r0, #2096]	; 0x830
+  10:	e5803834 	str	r3, [r0, #2100]	; 0x834
+  14:	e12fff1e 	bx	lr
+
+00000018 <OlaShowFile::~OlaShowFile()>:
+  18:	e92d4010 	push	{r4, lr}
+  1c:	e1a04000 	mov	r4, r0
+  20:	ebfffffe 	bl	0 <operator delete(void*)>
+  24:	e1a00004 	mov	r0, r4
+  28:	e8bd8010 	pop	{r4, pc}
+
+0000002c <OlaShowFile::ShowFileStart()>:
+  2c:	e92d4070 	push	{r4, r5, r6, lr}
+  30:	e3a05000 	mov	r5, #0, 0
+  34:	e5805830 	str	r5, [r0, #2096]	; 0x830
+  38:	e1a04000 	mov	r4, r0
+  3c:	e5805834 	str	r5, [r0, #2100]	; 0x834
+  40:	e1a02005 	mov	r2, r5
+  44:	e5900008 	ldr	r0, [r0, #8]
+  48:	e1a01005 	mov	r1, r5
+  4c:	ebfffffe 	bl	0 <fseek>
+  50:	e584502c 	str	r5, [r4, #44]	; 0x2c
+  54:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+00000058 <OlaShowFile::OlaShowFile()>:
+  58:	e92d4010 	push	{r4, lr}
+  5c:	e1a04000 	mov	r4, r0
+  60:	ebfffffe 	bl	0 <ShowFile::ShowFile()>
+  64:	e59f2024 	ldr	r2, [pc, #36]	; 90 <OlaShowFile::OlaShowFile()+0x38>
+  68:	e3a03000 	mov	r3, #0, 0
+  6c:	e5843028 	str	r3, [r4, #40]	; 0x28
+  70:	e1a00004 	mov	r0, r4
+  74:	e5842000 	str	r2, [r4]
+  78:	e584302c 	str	r3, [r4, #44]	; 0x2c
+  7c:	e5843830 	str	r3, [r4, #2096]	; 0x830
+  80:	e5843834 	str	r3, [r4, #2100]	; 0x834
+  84:	e5843838 	str	r3, [r4, #2104]	; 0x838
+  88:	e5843a3c 	str	r3, [r4, #2620]	; 0xa3c
+  8c:	e8bd8010 	pop	{r4, pc}
+  90:	00000008 	.word	0x00000008
+
+00000094 <OlaShowFile::ParseDmxData(char const*)>:
+  94:	e5d12000 	ldrb	r2, [r1]
+  98:	e2423030 	sub	r3, r2, #48, 0	; 0x30
+  9c:	e3530009 	cmp	r3, #9, 0
+  a0:	8a00002a 	bhi	150 <OlaShowFile::ParseDmxData(char const*)+0xbc>
+  a4:	e6ef2072 	uxtb	r2, r2
+  a8:	e3a03000 	mov	r3, #0, 0
+  ac:	e2522030 	subs	r2, r2, #48, 0	; 0x30
+  b0:	e3a0c000 	mov	ip, #0, 0
+  b4:	e2c33000 	sbc	r3, r3, #0, 0
+  b8:	e92d4030 	push	{r4, r5, lr}
+  bc:	e5d1e001 	ldrb	lr, [r1, #1]
+  c0:	e24e4030 	sub	r4, lr, #48, 0	; 0x30
+  c4:	e3540009 	cmp	r4, #9, 0
+  c8:	8a000011 	bhi	114 <OlaShowFile::ParseDmxData(char const*)+0x80>
+  cc:	e0924002 	adds	r4, r2, r2
+  d0:	e2811001 	add	r1, r1, #1, 0
+  d4:	e0a35003 	adc	r5, r3, r3
+  d8:	e0944004 	adds	r4, r4, r4
+  dc:	e0a55005 	adc	r5, r5, r5
+  e0:	e0922004 	adds	r2, r2, r4
+  e4:	e0a33005 	adc	r3, r3, r5
+  e8:	e0922002 	adds	r2, r2, r2
+  ec:	e0a33003 	adc	r3, r3, r3
+  f0:	e092200e 	adds	r2, r2, lr
+  f4:	e2a33000 	adc	r3, r3, #0, 0
+  f8:	e2522030 	subs	r2, r2, #48, 0	; 0x30
+  fc:	e2c33000 	sbc	r3, r3, #0, 0
+ 100:	e3520c01 	cmp	r2, #256	; 0x100
+ 104:	e2d3e000 	sbcs	lr, r3, #0, 0
+ 108:	baffffeb 	blt	bc <OlaShowFile::ParseDmxData(char const*)+0x28>
+ 10c:	e3a00000 	mov	r0, #0, 0
+ 110:	e8bd8030 	pop	{r4, r5, pc}
+ 114:	e080e00c 	add	lr, r0, ip
+ 118:	e35c0c02 	cmp	ip, #512	; 0x200
+ 11c:	e28cc001 	add	ip, ip, #1, 0
+ 120:	8afffff9 	bhi	10c <OlaShowFile::ParseDmxData(char const*)+0x78>
+ 124:	e5ce283c 	strb	r2, [lr, #2108]	; 0x83c
+ 128:	e2811002 	add	r1, r1, #2, 0
+ 12c:	e5d12000 	ldrb	r2, [r1]
+ 130:	e2423030 	sub	r3, r2, #48, 0	; 0x30
+ 134:	e6ef2072 	uxtb	r2, r2
+ 138:	e3530009 	cmp	r3, #9, 0
+ 13c:	e3a03000 	mov	r3, #0, 0
+ 140:	8a000006 	bhi	160 <OlaShowFile::ParseDmxData(char const*)+0xcc>
+ 144:	e2522030 	subs	r2, r2, #48, 0	; 0x30
+ 148:	e2c33000 	sbc	r3, r3, #0, 0
+ 14c:	eaffffda 	b	bc <OlaShowFile::ParseDmxData(char const*)+0x28>
+ 150:	e3a0c000 	mov	ip, #0, 0
+ 154:	e580ca3c 	str	ip, [r0, #2620]	; 0xa3c
+ 158:	e3a00002 	mov	r0, #2, 0
+ 15c:	e12fff1e 	bx	lr
+ 160:	e580ca3c 	str	ip, [r0, #2620]	; 0xa3c
+ 164:	e3a00002 	mov	r0, #2, 0
+ 168:	e8bd8030 	pop	{r4, r5, pc}
+
+0000016c <OlaShowFile::ParseLine(char const*)>:
+ 16c:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 170:	e5d12000 	ldrb	r2, [r1]
+ 174:	e2423030 	sub	r3, r2, #48, 0	; 0x30
+ 178:	e3530009 	cmp	r3, #9, 0
+ 17c:	e3a03000 	mov	r3, #0, 0
+ 180:	8a00000a 	bhi	1b0 <OlaShowFile::ParseLine(char const*)+0x44>
+ 184:	e3a0e00a 	mov	lr, #10, 0
+ 188:	e023239e 	mla	r3, lr, r3, r2
+ 18c:	e5f12001 	ldrb	r2, [r1, #1]!
+ 190:	e2433030 	sub	r3, r3, #48, 0	; 0x30
+ 194:	e242c030 	sub	ip, r2, #48, 0	; 0x30
+ 198:	e35c0009 	cmp	ip, #9, 0
+ 19c:	9afffff9 	bls	188 <OlaShowFile::ParseLine(char const*)+0x1c>
+ 1a0:	e3530801 	cmp	r3, #65536	; 0x10000
+ 1a4:	ba000001 	blt	1b0 <OlaShowFile::ParseLine(char const*)+0x44>
+ 1a8:	e3a00000 	mov	r0, #0, 0
+ 1ac:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+ 1b0:	e3520020 	cmp	r2, #32, 0
+ 1b4:	0a000002 	beq	1c4 <OlaShowFile::ParseLine(char const*)+0x58>
+ 1b8:	e5803830 	str	r3, [r0, #2096]	; 0x830
+ 1bc:	e3a00001 	mov	r0, #1, 0
+ 1c0:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+ 1c4:	e5803838 	str	r3, [r0, #2104]	; 0x838
+ 1c8:	e3a03000 	mov	r3, #0, 0
+ 1cc:	e49de004 	pop	{lr}		; (ldr lr, [sp], #4)
+ 1d0:	e2811001 	add	r1, r1, #1, 0
+ 1d4:	e5803830 	str	r3, [r0, #2096]	; 0x830
+ 1d8:	eafffffe 	b	94 <OlaShowFile::ParseDmxData(char const*)>
+
+000001dc <OlaShowFile::GetNextLine()>:
+ 1dc:	e5902008 	ldr	r2, [r0, #8]
+ 1e0:	e3520000 	cmp	r2, #0, 0
+ 1e4:	0a000013 	beq	238 <OlaShowFile::GetNextLine()+0x5c>
+ 1e8:	e92d4070 	push	{r4, r5, r6, lr}
+ 1ec:	e2805030 	add	r5, r0, #48, 0	; 0x30
+ 1f0:	e1a04000 	mov	r4, r0
+ 1f4:	e30017ff 	movw	r1, #2047	; 0x7ff
+ 1f8:	e1a00005 	mov	r0, r5
+ 1fc:	ebfffffe 	bl	0 <fgets>
+ 200:	e1550000 	cmp	r5, r0
+ 204:	1a000007 	bne	228 <OlaShowFile::GetNextLine()+0x4c>
+ 208:	e5d43030 	ldrb	r3, [r4, #48]	; 0x30
+ 20c:	e2433030 	sub	r3, r3, #48, 0	; 0x30
+ 210:	e3530009 	cmp	r3, #9, 0
+ 214:	8a000005 	bhi	230 <OlaShowFile::GetNextLine()+0x54>
+ 218:	e1a01005 	mov	r1, r5
+ 21c:	e1a00004 	mov	r0, r4
+ 220:	e8bd4070 	pop	{r4, r5, r6, lr}
+ 224:	eafffffe 	b	16c <OlaShowFile::ParseLine(char const*)>
+ 228:	e3a00004 	mov	r0, #4, 0
+ 22c:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 230:	e3a00000 	mov	r0, #0, 0
+ 234:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 238:	e3a00000 	mov	r0, #0, 0
+ 23c:	e12fff1e 	bx	lr
+
+00000240 <OlaShowFile::ShowFileRun()>:
+ 240:	e590302c 	ldr	r3, [r0, #44]	; 0x2c
+ 244:	e92d4070 	push	{r4, r5, r6, lr}
+ 248:	e3530002 	cmp	r3, #2, 0
+ 24c:	e1a04000 	mov	r4, r0
+ 250:	1a00000a 	bne	280 <OlaShowFile::ShowFileRun()+0x40>
+ 254:	e5941830 	ldr	r1, [r4, #2096]	; 0x830
+ 258:	e5943834 	ldr	r3, [r4, #2100]	; 0x834
+ 25c:	e3a02b03 	mov	r2, #3072	; 0xc00
+ 260:	e34021c2 	movt	r2, #450	; 0x1c2
+ 264:	e5922084 	ldr	r2, [r2, #132]	; 0x84
+ 268:	e0423003 	sub	r3, r2, r3
+ 26c:	e1530001 	cmp	r3, r1
+ 270:	25842834 	strcs	r2, [r4, #2100]	; 0x834
+ 274:	23a03001 	movcs	r3, #1, 0
+ 278:	2584302c 	strcs	r3, [r4, #44]	; 0x2c
+ 27c:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 280:	ebfffffe 	bl	1dc <OlaShowFile::GetNextLine()>
+ 284:	e5840028 	str	r0, [r4, #40]	; 0x28
+ 288:	e3500002 	cmp	r0, #2, 0
+ 28c:	0a00000c 	beq	2c4 <OlaShowFile::ShowFileRun()+0x84>
+ 290:	e3500001 	cmp	r0, #1, 0
+ 294:	0a000018 	beq	2fc <OlaShowFile::ShowFileRun()+0xbc>
+ 298:	e3500004 	cmp	r0, #4, 0
+ 29c:	1affffec 	bne	254 <OlaShowFile::ShowFileRun()+0x14>
+ 2a0:	e5d43005 	ldrb	r3, [r4, #5]
+ 2a4:	e3530000 	cmp	r3, #0, 0
+ 2a8:	0a000021 	beq	334 <OlaShowFile::ShowFileRun()+0xf4>
+ 2ac:	e5940008 	ldr	r0, [r4, #8]
+ 2b0:	e3a02000 	mov	r2, #0, 0
+ 2b4:	e1a01002 	mov	r1, r2
+ 2b8:	ebfffffe 	bl	0 <fseek>
+ 2bc:	e5941830 	ldr	r1, [r4, #2096]	; 0x830
+ 2c0:	eaffffe4 	b	258 <OlaShowFile::ShowFileRun()+0x18>
+ 2c4:	e5943a3c 	ldr	r3, [r4, #2620]	; 0xa3c
+ 2c8:	e3530000 	cmp	r3, #0, 0
+ 2cc:	0affffe0 	beq	254 <OlaShowFile::ShowFileRun()+0x14>
+ 2d0:	e594000c 	ldr	r0, [r4, #12]
+ 2d4:	e2842e83 	add	r2, r4, #2096	; 0x830
+ 2d8:	e5941838 	ldr	r1, [r4, #2104]	; 0x838
+ 2dc:	e6ff3073 	uxth	r3, r3
+ 2e0:	e590c000 	ldr	ip, [r0]
+ 2e4:	e282200c 	add	r2, r2, #12, 0
+ 2e8:	e6ff1071 	uxth	r1, r1
+ 2ec:	e59c5008 	ldr	r5, [ip, #8]
+ 2f0:	e12fff35 	blx	r5
+ 2f4:	e5941830 	ldr	r1, [r4, #2096]	; 0x830
+ 2f8:	eaffffd6 	b	258 <OlaShowFile::ShowFileRun()+0x18>
+ 2fc:	e5941830 	ldr	r1, [r4, #2096]	; 0x830
+ 300:	e3510000 	cmp	r1, #0, 0
+ 304:	0a000007 	beq	328 <OlaShowFile::ShowFileRun()+0xe8>
+ 308:	e5943a3c 	ldr	r3, [r4, #2620]	; 0xa3c
+ 30c:	e3530000 	cmp	r3, #0, 0
+ 310:	0a000004 	beq	328 <OlaShowFile::ShowFileRun()+0xe8>
+ 314:	e594000c 	ldr	r0, [r4, #12]
+ 318:	e5903000 	ldr	r3, [r0]
+ 31c:	e593300c 	ldr	r3, [r3, #12]
+ 320:	e12fff33 	blx	r3
+ 324:	e5941830 	ldr	r1, [r4, #2096]	; 0x830
+ 328:	e3a03002 	mov	r3, #2, 0
+ 32c:	e584302c 	str	r3, [r4, #44]	; 0x2c
+ 330:	eaffffc8 	b	258 <OlaShowFile::ShowFileRun()+0x18>
+ 334:	e3a01003 	mov	r1, #3, 0
+ 338:	e1a00004 	mov	r0, r4
+ 33c:	ebfffffe 	bl	0 <ShowFile::SetShowFileStatus(ShowFileStatus)>
+ 340:	eaffffc3 	b	254 <OlaShowFile::ShowFileRun()+0x14>
+
+Disassembly of section .text._ZN11OlaShowFile13ShowFilePrintEv:
+
+00000000 <OlaShowFile::ShowFilePrint()>:
+   0:	e3000000 	movw	r0, #0
+   4:	e3400000 	movt	r0, #0
+   8:	eafffffe 	b	0 <puts>
+
+showfile.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <ShowFile::SetShowFile(unsigned char) [clone .part.0]>:
+   0:	e5903000 	ldr	r3, [r0]
+   4:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+   8:	e1a04000 	mov	r4, r0
+   c:	e593300c 	ldr	r3, [r3, #12]
+  10:	e1a05001 	mov	r5, r1
+  14:	e12fff33 	blx	r3
+  18:	e5940008 	ldr	r0, [r4, #8]
+  1c:	e3500000 	cmp	r0, #0, 0
+  20:	0a000004 	beq	38 <ShowFile::SetShowFile(unsigned char) [clone .part.0]+0x38>
+  24:	ebfffffe 	bl	0 <fclose>
+  28:	e3500000 	cmp	r0, #0, 0
+  2c:	1a00001c 	bne	a4 <ShowFile::SetShowFile(unsigned char) [clone .part.0]+0xa4>
+  30:	e3a03000 	mov	r3, #0, 0
+  34:	e5843008 	str	r3, [r4, #8]
+  38:	e5c45004 	strb	r5, [r4, #4]
+  3c:	e2847018 	add	r7, r4, #24, 0
+  40:	e1a02005 	mov	r2, r5
+  44:	e3a0100b 	mov	r1, #11, 0
+  48:	e1a00007 	mov	r0, r7
+  4c:	ebfffffe 	bl	0 <ShowFile::ShowFileNameCopyTo(char*, unsigned int, unsigned char)>
+  50:	e3001000 	movw	r1, #0
+  54:	e1a00007 	mov	r0, r7
+  58:	e3401000 	movt	r1, #0
+  5c:	ebfffffe 	bl	0 <fopen>
+  60:	e5840008 	str	r0, [r4, #8]
+  64:	e3500000 	cmp	r0, #0, 0
+  68:	e1a06000 	mov	r6, r0
+  6c:	0a000010 	beq	b4 <ShowFile::SetShowFile(unsigned char) [clone .part.0]+0xb4>
+  70:	e5940010 	ldr	r0, [r4, #16]
+  74:	e3500000 	cmp	r0, #0, 0
+  78:	08bd81f0 	popeq	{r4, r5, r6, r7, r8, pc}
+  7c:	e5903000 	ldr	r3, [r0]
+  80:	e1a02005 	mov	r2, r5
+  84:	e1a01007 	mov	r1, r7
+  88:	e5933008 	ldr	r3, [r3, #8]
+  8c:	e12fff33 	blx	r3
+  90:	e5940010 	ldr	r0, [r4, #16]
+  94:	e8bd41f0 	pop	{r4, r5, r6, r7, r8, lr}
+  98:	e5903000 	ldr	r3, [r0]
+  9c:	e593300c 	ldr	r3, [r3, #12]
+  a0:	e12fff13 	bx	r3
+  a4:	e3000000 	movw	r0, #0
+  a8:	e3400000 	movt	r0, #0
+  ac:	ebfffffe 	bl	0 <perror>
+  b0:	eaffffde 	b	30 <ShowFile::SetShowFile(unsigned char) [clone .part.0]+0x30>
+  b4:	e1a00007 	mov	r0, r7
+  b8:	ebfffffe 	bl	0 <perror>
+  bc:	e5c46018 	strb	r6, [r4, #24]
+  c0:	eaffffea 	b	70 <ShowFile::SetShowFile(unsigned char) [clone .part.0]+0x70>
+
+000000c4 <ShowFile::ShowFile()>:
+  c4:	e59f2038 	ldr	r2, [pc, #56]	; 104 <ShowFile::ShowFile()+0x40>
+  c8:	e3001000 	movw	r1, #0
+  cc:	e3401000 	movt	r1, #0
+  d0:	e3a0c064 	mov	ip, #100, 0	; 0x64
+  d4:	e5802000 	str	r2, [r0]
+  d8:	e3a02000 	mov	r2, #0, 0
+  dc:	e1c0c0b4 	strh	ip, [r0, #4]
+  e0:	e5810000 	str	r0, [r1]
+  e4:	e5802008 	str	r2, [r0, #8]
+  e8:	e580200c 	str	r2, [r0, #12]
+  ec:	e5802010 	str	r2, [r0, #16]
+  f0:	e5802014 	str	r2, [r0, #20]
+  f4:	e5c02023 	strb	r2, [r0, #35]	; 0x23
+  f8:	e5802024 	str	r2, [r0, #36]	; 0x24
+  fc:	e5c02018 	strb	r2, [r0, #24]
+ 100:	e12fff1e 	bx	lr
+ 104:	00000008 	.word	0x00000008
+
+00000108 <ShowFile::SetShowFile(unsigned char)>:
+ 108:	e3510063 	cmp	r1, #99, 0	; 0x63
+ 10c:	812fff1e 	bxhi	lr
+ 110:	eaffffba 	b	0 <ShowFile::SetShowFile(unsigned char) [clone .part.0]>
+
+00000114 <ShowFile::DeleteShowFile(unsigned char)>:
+ 114:	e5d03023 	ldrb	r3, [r0, #35]	; 0x23
+ 118:	e3530000 	cmp	r3, #0, 0
+ 11c:	1a000001 	bne	128 <ShowFile::DeleteShowFile(unsigned char)+0x14>
+ 120:	e3a00000 	mov	r0, #0, 0
+ 124:	e12fff1e 	bx	lr
+ 128:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 12c:	e24dd014 	sub	sp, sp, #20, 0
+ 130:	e1a02001 	mov	r2, r1
+ 134:	e28d0004 	add	r0, sp, #4, 0
+ 138:	e3a0100b 	mov	r1, #11, 0
+ 13c:	ebfffffe 	bl	0 <ShowFile::ShowFileNameCopyTo(char*, unsigned int, unsigned char)>
+ 140:	e3500000 	cmp	r0, #0, 0
+ 144:	03a00000 	moveq	r0, #0, 0
+ 148:	1a000001 	bne	154 <ShowFile::DeleteShowFile(unsigned char)+0x40>
+ 14c:	e28dd014 	add	sp, sp, #20, 0
+ 150:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+ 154:	e28d0004 	add	r0, sp, #4, 0
+ 158:	ebfffffe 	bl	0 <unlink>
+ 15c:	e16f0f10 	clz	r0, r0
+ 160:	e1a002a0 	lsr	r0, r0, #5
+ 164:	eafffff8 	b	14c <ShowFile::DeleteShowFile(unsigned char)+0x38>
+
+00000168 <ShowFile::SetShowFileStatus(ShowFileStatus)>:
+ 168:	e5903014 	ldr	r3, [r0, #20]
+ 16c:	e1530001 	cmp	r3, r1
+ 170:	012fff1e 	bxeq	lr
+ 174:	e3510001 	cmp	r1, #1, 0
+ 178:	e92d4010 	push	{r4, lr}
+ 17c:	e1a04000 	mov	r4, r0
+ 180:	e5801014 	str	r1, [r0, #20]
+ 184:	0a000017 	beq	1e8 <ShowFile::SetShowFileStatus(ShowFileStatus)+0x80>
+ 188:	da000013 	ble	1dc <ShowFile::SetShowFileStatus(ShowFileStatus)+0x74>
+ 18c:	e2411002 	sub	r1, r1, #2, 0
+ 190:	e3510001 	cmp	r1, #1, 0
+ 194:	8a000009 	bhi	1c0 <ShowFile::SetShowFileStatus(ShowFileStatus)+0x58>
+ 198:	e594000c 	ldr	r0, [r4, #12]
+ 19c:	e3a01001 	mov	r1, #1, 0
+ 1a0:	e5903000 	ldr	r3, [r0]
+ 1a4:	e5933018 	ldr	r3, [r3, #24]
+ 1a8:	e12fff33 	blx	r3
+ 1ac:	e3003000 	movw	r3, #0
+ 1b0:	e3a01002 	mov	r1, #2, 0
+ 1b4:	e3403000 	movt	r3, #0
+ 1b8:	e5930000 	ldr	r0, [r3]
+ 1bc:	ebfffffe 	bl	0 <LedBlink::SetMode(tLedBlinkMode)>
+ 1c0:	e5940010 	ldr	r0, [r4, #16]
+ 1c4:	e3500000 	cmp	r0, #0, 0
+ 1c8:	08bd8010 	popeq	{r4, pc}
+ 1cc:	e5903000 	ldr	r3, [r0]
+ 1d0:	e8bd4010 	pop	{r4, lr}
+ 1d4:	e593300c 	ldr	r3, [r3, #12]
+ 1d8:	e12fff13 	bx	r3
+ 1dc:	e3510000 	cmp	r1, #0, 0
+ 1e0:	0affffec 	beq	198 <ShowFile::SetShowFileStatus(ShowFileStatus)+0x30>
+ 1e4:	eafffff5 	b	1c0 <ShowFile::SetShowFileStatus(ShowFileStatus)+0x58>
+ 1e8:	e590000c 	ldr	r0, [r0, #12]
+ 1ec:	e3a01000 	mov	r1, #0, 0
+ 1f0:	e5903000 	ldr	r3, [r0]
+ 1f4:	e5933018 	ldr	r3, [r3, #24]
+ 1f8:	e12fff33 	blx	r3
+ 1fc:	e3003000 	movw	r3, #0
+ 200:	e3a01003 	mov	r1, #3, 0
+ 204:	e3403000 	movt	r3, #0
+ 208:	e5930000 	ldr	r0, [r3]
+ 20c:	ebfffffe 	bl	0 <LedBlink::SetMode(tLedBlinkMode)>
+ 210:	eaffffea 	b	1c0 <ShowFile::SetShowFileStatus(ShowFileStatus)+0x58>
+
+00000214 <ShowFile::Stop()>:
+ 214:	e5903008 	ldr	r3, [r0, #8]
+ 218:	e3530000 	cmp	r3, #0, 0
+ 21c:	012fff1e 	bxeq	lr
+ 220:	e5903000 	ldr	r3, [r0]
+ 224:	e92d4010 	push	{r4, lr}
+ 228:	e1a04000 	mov	r4, r0
+ 22c:	e593300c 	ldr	r3, [r3, #12]
+ 230:	e12fff33 	blx	r3
+ 234:	e1a00004 	mov	r0, r4
+ 238:	e3a01002 	mov	r1, #2, 0
+ 23c:	e8bd4010 	pop	{r4, lr}
+ 240:	eafffffe 	b	168 <ShowFile::SetShowFileStatus(ShowFileStatus)>
+
+00000244 <ShowFile::BlackOut()>:
+ 244:	e590300c 	ldr	r3, [r0, #12]
+ 248:	e3530000 	cmp	r3, #0, 0
+ 24c:	012fff1e 	bxeq	lr
+ 250:	e92d4010 	push	{r4, lr}
+ 254:	e1a04000 	mov	r4, r0
+ 258:	ebfffffe 	bl	214 <ShowFile::Stop()>
+ 25c:	e594000c 	ldr	r0, [r4, #12]
+ 260:	e8bd4010 	pop	{r4, lr}
+ 264:	e5903000 	ldr	r3, [r0]
+ 268:	e5933010 	ldr	r3, [r3, #16]
+ 26c:	e12fff13 	bx	r3
+
+00000270 <ShowFile::EnableTFTP(bool)>:
+ 270:	e5d03023 	ldrb	r3, [r0, #35]	; 0x23
+ 274:	e1530001 	cmp	r3, r1
+ 278:	012fff1e 	bxeq	lr
+ 27c:	e3510000 	cmp	r1, #0, 0
+ 280:	e92d4070 	push	{r4, r5, r6, lr}
+ 284:	e1a04000 	mov	r4, r0
+ 288:	e5c01023 	strb	r1, [r0, #35]	; 0x23
+ 28c:	1a000017 	bne	2f0 <ShowFile::EnableTFTP(bool)+0x80>
+ 290:	e5900024 	ldr	r0, [r0, #36]	; 0x24
+ 294:	e3500000 	cmp	r0, #0, 0
+ 298:	0a000002 	beq	2a8 <ShowFile::EnableTFTP(bool)+0x38>
+ 29c:	e5903000 	ldr	r3, [r0]
+ 2a0:	e5933004 	ldr	r3, [r3, #4]
+ 2a4:	e12fff33 	blx	r3
+ 2a8:	e5d41004 	ldrb	r1, [r4, #4]
+ 2ac:	e3a03000 	mov	r3, #0, 0
+ 2b0:	e5843024 	str	r3, [r4, #36]	; 0x24
+ 2b4:	e3510063 	cmp	r1, #99, 0	; 0x63
+ 2b8:	9a000009 	bls	2e4 <ShowFile::EnableTFTP(bool)+0x74>
+ 2bc:	e3a01000 	mov	r1, #0, 0
+ 2c0:	e1a00004 	mov	r0, r4
+ 2c4:	ebfffffe 	bl	168 <ShowFile::SetShowFileStatus(ShowFileStatus)>
+ 2c8:	e5940010 	ldr	r0, [r4, #16]
+ 2cc:	e3500000 	cmp	r0, #0, 0
+ 2d0:	08bd8070 	popeq	{r4, r5, r6, pc}
+ 2d4:	e5903000 	ldr	r3, [r0]
+ 2d8:	e8bd4070 	pop	{r4, r5, r6, lr}
+ 2dc:	e593300c 	ldr	r3, [r3, #12]
+ 2e0:	e12fff13 	bx	r3
+ 2e4:	e1a00004 	mov	r0, r4
+ 2e8:	ebffff44 	bl	0 <ShowFile::SetShowFile(unsigned char) [clone .part.0]>
+ 2ec:	eafffff2 	b	2bc <ShowFile::EnableTFTP(bool)+0x4c>
+ 2f0:	ebfffffe 	bl	214 <ShowFile::Stop()>
+ 2f4:	e5940008 	ldr	r0, [r4, #8]
+ 2f8:	e3500000 	cmp	r0, #0, 0
+ 2fc:	0a000004 	beq	314 <ShowFile::EnableTFTP(bool)+0xa4>
+ 300:	ebfffffe 	bl	0 <fclose>
+ 304:	e3500000 	cmp	r0, #0, 0
+ 308:	1a000007 	bne	32c <ShowFile::EnableTFTP(bool)+0xbc>
+ 30c:	e3a03000 	mov	r3, #0, 0
+ 310:	e5843008 	str	r3, [r4, #8]
+ 314:	e3a00f8e 	mov	r0, #568	; 0x238
+ 318:	ebfffffe 	bl	0 <operator new(unsigned int)>
+ 31c:	e1a05000 	mov	r5, r0
+ 320:	ebfffffe 	bl	0 <ShowFileTFTP::ShowFileTFTP()>
+ 324:	e5845024 	str	r5, [r4, #36]	; 0x24
+ 328:	eaffffe6 	b	2c8 <ShowFile::EnableTFTP(bool)+0x58>
+ 32c:	e3000000 	movw	r0, #0
+ 330:	e3400000 	movt	r0, #0
+ 334:	ebfffffe 	bl	0 <perror>
+ 338:	eafffff3 	b	30c <ShowFile::EnableTFTP(bool)+0x9c>
+
+0000033c <ShowFile::Start()>:
+ 33c:	e92d4010 	push	{r4, lr}
+ 340:	e1a04000 	mov	r4, r0
+ 344:	e3a01000 	mov	r1, #0, 0
+ 348:	ebfffffe 	bl	270 <ShowFile::EnableTFTP(bool)>
+ 34c:	e5943008 	ldr	r3, [r4, #8]
+ 350:	e3530000 	cmp	r3, #0, 0
+ 354:	0a000007 	beq	378 <ShowFile::Start()+0x3c>
+ 358:	e5943000 	ldr	r3, [r4]
+ 35c:	e1a00004 	mov	r0, r4
+ 360:	e5933008 	ldr	r3, [r3, #8]
+ 364:	e12fff33 	blx	r3
+ 368:	e1a00004 	mov	r0, r4
+ 36c:	e3a01001 	mov	r1, #1, 0
+ 370:	e8bd4010 	pop	{r4, lr}
+ 374:	eafffffe 	b	168 <ShowFile::SetShowFileStatus(ShowFileStatus)>
+ 378:	e1a00004 	mov	r0, r4
+ 37c:	e3a01002 	mov	r1, #2, 0
+ 380:	e8bd4010 	pop	{r4, lr}
+ 384:	eafffffe 	b	168 <ShowFile::SetShowFileStatus(ShowFileStatus)>
+
+00000388 <ShowFile::Resume()>:
+ 388:	e5903008 	ldr	r3, [r0, #8]
+ 38c:	e3530000 	cmp	r3, #0, 0
+ 390:	012fff1e 	bxeq	lr
+ 394:	e5903000 	ldr	r3, [r0]
+ 398:	e92d4010 	push	{r4, lr}
+ 39c:	e1a04000 	mov	r4, r0
+ 3a0:	e5933010 	ldr	r3, [r3, #16]
+ 3a4:	e12fff33 	blx	r3
+ 3a8:	e1a00004 	mov	r0, r4
+ 3ac:	e3a01001 	mov	r1, #1, 0
+ 3b0:	e8bd4010 	pop	{r4, lr}
+ 3b4:	eafffffe 	b	168 <ShowFile::SetShowFileStatus(ShowFileStatus)>
+
+000003b8 <ShowFile::Run()>:
+ 3b8:	e5902014 	ldr	r2, [r0, #20]
+ 3bc:	e3520001 	cmp	r2, #1, 0
+ 3c0:	0a000003 	beq	3d4 <ShowFile::Run()+0x1c>
+ 3c4:	e5900024 	ldr	r0, [r0, #36]	; 0x24
+ 3c8:	e3500000 	cmp	r0, #0, 0
+ 3cc:	012fff1e 	bxeq	lr
+ 3d0:	eafffffe 	b	0 <TFTPDaemon::Run()>
+ 3d4:	e5903000 	ldr	r3, [r0]
+ 3d8:	e5933014 	ldr	r3, [r3, #20]
+ 3dc:	e12fff13 	bx	r3
+
+000003e0 <ShowFile::Print()>:
+ 3e0:	e92d4010 	push	{r4, lr}
+ 3e4:	e1a04000 	mov	r4, r0
+ 3e8:	e3000000 	movw	r0, #0
+ 3ec:	e2841018 	add	r1, r4, #24, 0
+ 3f0:	e3400000 	movt	r0, #0
+ 3f4:	ebfffffe 	bl	0 <printf>
+ 3f8:	e5d41005 	ldrb	r1, [r4, #5]
+ 3fc:	e3002000 	movw	r2, #0
+ 400:	e3402000 	movt	r2, #0
+ 404:	e3003000 	movw	r3, #0
+ 408:	e3403000 	movt	r3, #0
+ 40c:	e3510000 	cmp	r1, #0, 0
+ 410:	e3000000 	movw	r0, #0
+ 414:	01a01003 	moveq	r1, r3
+ 418:	e3400000 	movt	r0, #0
+ 41c:	11a01002 	movne	r1, r2
+ 420:	ebfffffe 	bl	0 <printf>
+ 424:	e5943000 	ldr	r3, [r4]
+ 428:	e1a00004 	mov	r0, r4
+ 42c:	e8bd4010 	pop	{r4, lr}
+ 430:	e5933018 	ldr	r3, [r3, #24]
+ 434:	e12fff13 	bx	r3
+
+showfileconst.o:     file format elf32-littlearm
+
+
+showfileosc.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <ShowFileOSC::ShowFileOSC()>:
+   0:	e3a03d7d 	mov	r3, #8000	; 0x1f40
+   4:	e3a02000 	mov	r2, #0, 0
+   8:	e3423328 	movt	r3, #9000	; 0x2328
+   c:	e92d4070 	push	{r4, r5, r6, lr}
+  10:	e1a05000 	mov	r5, r0
+  14:	e5803000 	str	r3, [r0]
+  18:	e3003000 	movw	r3, #0
+  1c:	e3403000 	movt	r3, #0
+  20:	e3e04000 	mvn	r4, #0, 0
+  24:	e5802008 	str	r2, [r0, #8]
+  28:	e5804004 	str	r4, [r0, #4]
+  2c:	e3a00080 	mov	r0, #128, 0	; 0x80
+  30:	e1c520bc 	strh	r2, [r5, #12]
+  34:	e5852010 	str	r2, [r5, #16]
+  38:	e5835000 	str	r5, [r3]
+  3c:	ebfffffe 	bl	0 <operator new[](unsigned int)>
+  40:	e1a03005 	mov	r3, r5
+  44:	e1a02004 	mov	r2, r4
+  48:	e2851060 	add	r1, r5, #96, 0	; 0x60
+  4c:	e5a30010 	str	r0, [r3, #16]!
+  50:	e5a32004 	str	r2, [r3, #4]!
+  54:	e1530001 	cmp	r3, r1
+  58:	1afffffc 	bne	50 <ShowFileOSC::ShowFileOSC()+0x50>
+  5c:	e1a00005 	mov	r0, r5
+  60:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+00000064 <ShowFileOSC::~ShowFileOSC()>:
+  64:	e92d4010 	push	{r4, lr}
+  68:	e1a04000 	mov	r4, r0
+  6c:	e5900010 	ldr	r0, [r0, #16]
+  70:	e3500000 	cmp	r0, #0, 0
+  74:	0a000000 	beq	7c <ShowFileOSC::~ShowFileOSC()+0x18>
+  78:	ebfffffe 	bl	0 <operator delete[](void*)>
+  7c:	e1a00004 	mov	r0, r4
+  80:	e8bd8010 	pop	{r4, pc}
+
+00000084 <ShowFileOSC::Start()>:
+  84:	e3003000 	movw	r3, #0
+  88:	e3403000 	movt	r3, #0
+  8c:	e92d4010 	push	{r4, lr}
+  90:	e1a04000 	mov	r4, r0
+  94:	e5930000 	ldr	r0, [r3]
+  98:	e1d410b0 	ldrh	r1, [r4]
+  9c:	e5903000 	ldr	r3, [r0]
+  a0:	e593300c 	ldr	r3, [r3, #12]
+  a4:	e12fff33 	blx	r3
+  a8:	e5840004 	str	r0, [r4, #4]
+  ac:	e8bd8010 	pop	{r4, pc}
+
+000000b0 <ShowFileOSC::Stop()>:
+  b0:	e12fff1e 	bx	lr
+
+000000b4 <ShowFileOSC::SendStatus()>:
+  b4:	e92d4070 	push	{r4, r5, r6, lr}
+  b8:	e3006000 	movw	r6, #0
+  bc:	e3406000 	movt	r6, #0
+  c0:	e24dde81 	sub	sp, sp, #2064	; 0x810
+  c4:	e1a04000 	mov	r4, r0
+  c8:	e3005000 	movw	r5, #0
+  cc:	e5963000 	ldr	r3, [r6]
+  d0:	e300c000 	movw	ip, #0
+  d4:	e3405000 	movt	r5, #0
+  d8:	e28d0010 	add	r0, sp, #16, 0
+  dc:	e340c000 	movt	ip, #0
+  e0:	e2833018 	add	r3, r3, #24, 0
+  e4:	e58d3008 	str	r3, [sp, #8]
+  e8:	e9940006 	ldmib	r4, {r1, r2}
+  ec:	e1d430b2 	ldrh	r3, [r4, #2]
+  f0:	e58dc000 	str	ip, [sp]
+  f4:	e58d5004 	str	r5, [sp, #4]
+  f8:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+  fc:	e5963000 	ldr	r3, [r6]
+ 100:	e3002000 	movw	r2, #0
+ 104:	e3402000 	movt	r2, #0
+ 108:	e3a0100c 	mov	r1, #12, 0
+ 10c:	e5933014 	ldr	r3, [r3, #20]
+ 110:	e300c000 	movw	ip, #0
+ 114:	e340c000 	movt	ip, #0
+ 118:	e28d0e41 	add	r0, sp, #1040	; 0x410
+ 11c:	e0232391 	mla	r3, r1, r3, r2
+ 120:	e58d5004 	str	r5, [sp, #4]
+ 124:	e58d3008 	str	r3, [sp, #8]
+ 128:	e1d430b2 	ldrh	r3, [r4, #2]
+ 12c:	e9940006 	ldmib	r4, {r1, r2}
+ 130:	e58dc000 	str	ip, [sp]
+ 134:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 138:	e28dde81 	add	sp, sp, #2064	; 0x810
+ 13c:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+00000140 <ShowFileOSC::Reload()>:
+ 140:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 144:	e1a05000 	mov	r5, r0
+ 148:	e24dde46 	sub	sp, sp, #1120	; 0x460
+ 14c:	e3000000 	movw	r0, #0
+ 150:	e3400000 	movt	r0, #0
+ 154:	e24dd00c 	sub	sp, sp, #12, 0
+ 158:	ebfffffe 	bl	0 <opendir>
+ 15c:	e250b000 	subs	fp, r0, #0, 0
+ 160:	13a04000 	movne	r4, #0, 0
+ 164:	0a000106 	beq	584 <ShowFileOSC::Reload()+0x444>
+ 168:	e1a0000b 	mov	r0, fp
+ 16c:	ebfffffe 	bl	0 <readdir>
+ 170:	e2503000 	subs	r3, r0, #0, 0
+ 174:	e28d1068 	add	r1, sp, #104, 0	; 0x68
+ 178:	e2830001 	add	r0, r3, #1, 0
+ 17c:	0a0000f9 	beq	568 <ShowFileOSC::Reload()+0x428>
+ 180:	e5d33000 	ldrb	r3, [r3]
+ 184:	e3530004 	cmp	r3, #4, 0
+ 188:	0afffff6 	beq	168 <ShowFileOSC::Reload()+0x28>
+ 18c:	ebfffffe 	bl	0 <ShowFile::CheckShowFileName(char const*, unsigned char&)>
+ 190:	e0853104 	add	r3, r5, r4, lsl #2
+ 194:	e3500000 	cmp	r0, #0, 0
+ 198:	0afffff2 	beq	168 <ShowFileOSC::Reload()+0x28>
+ 19c:	e5dd2068 	ldrb	r2, [sp, #104]	; 0x68
+ 1a0:	e2844001 	add	r4, r4, #1, 0
+ 1a4:	e3540014 	cmp	r4, #20, 0
+ 1a8:	e5832014 	str	r2, [r3, #20]
+ 1ac:	1affffed 	bne	168 <ShowFileOSC::Reload()+0x28>
+ 1b0:	e285c014 	add	ip, r5, #20, 0
+ 1b4:	e3a0e000 	mov	lr, #0, 0
+ 1b8:	e2856010 	add	r6, r5, #16, 0
+ 1bc:	e1a02006 	mov	r2, r6
+ 1c0:	e3a03000 	mov	r3, #0, 0
+ 1c4:	e5b20004 	ldr	r0, [r2, #4]!
+ 1c8:	e2833001 	add	r3, r3, #1, 0
+ 1cc:	e59c1000 	ldr	r1, [ip]
+ 1d0:	e1500001 	cmp	r0, r1
+ 1d4:	c58c0000 	strgt	r0, [ip]
+ 1d8:	c5821000 	strgt	r1, [r2]
+ 1dc:	e1540003 	cmp	r4, r3
+ 1e0:	1afffff7 	bne	1c4 <ShowFileOSC::Reload()+0x84>
+ 1e4:	e28ee001 	add	lr, lr, #1, 0
+ 1e8:	e28cc004 	add	ip, ip, #4, 0
+ 1ec:	e154000e 	cmp	r4, lr
+ 1f0:	8afffff1 	bhi	1bc <ShowFileOSC::Reload()+0x7c>
+ 1f4:	e3540008 	cmp	r4, #8, 0
+ 1f8:	e2443007 	sub	r3, r4, #7, 0
+ 1fc:	e58d3014 	str	r3, [sp, #20]
+ 200:	e3003000 	movw	r3, #0
+ 204:	9a0000e8 	bls	5ac <ShowFileOSC::Reload()+0x46c>
+ 208:	e3403000 	movt	r3, #0
+ 20c:	e3009000 	movw	r9, #0
+ 210:	e58d4018 	str	r4, [sp, #24]
+ 214:	e300a000 	movw	sl, #0
+ 218:	e58db01c 	str	fp, [sp, #28]
+ 21c:	e2852024 	add	r2, r5, #36, 0	; 0x24
+ 220:	e3409000 	movt	r9, #0
+ 224:	e3a07000 	mov	r7, #0, 0
+ 228:	e340a000 	movt	sl, #0
+ 22c:	e28d6028 	add	r6, sp, #40, 0	; 0x28
+ 230:	e58d3010 	str	r3, [sp, #16]
+ 234:	e28d8024 	add	r8, sp, #36, 0	; 0x24
+ 238:	e1a04002 	mov	r4, r2
+ 23c:	e1a0b003 	mov	fp, r3
+ 240:	f5d4f000 	pld	[r4]
+ 244:	e1a03007 	mov	r3, r7
+ 248:	e1a02009 	mov	r2, r9
+ 24c:	e3a0103f 	mov	r1, #63, 0	; 0x3f
+ 250:	e1a00006 	mov	r0, r6
+ 254:	e2844020 	add	r4, r4, #32, 0
+ 258:	ebfffffe 	bl	0 <snprintf>
+ 25c:	e5143030 	ldr	r3, [r4, #-48]	; 0xffffffd0
+ 260:	e1a0200a 	mov	r2, sl
+ 264:	e3a01003 	mov	r1, #3, 0
+ 268:	e1a00008 	mov	r0, r8
+ 26c:	ebfffffe 	bl	0 <snprintf>
+ 270:	e58d8008 	str	r8, [sp, #8]
+ 274:	e28d0068 	add	r0, sp, #104, 0	; 0x68
+ 278:	e88d0840 	stm	sp, {r6, fp}
+ 27c:	e9950006 	ldmib	r5, {r1, r2}
+ 280:	e1d530b2 	ldrh	r3, [r5, #2]
+ 284:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 288:	e2873001 	add	r3, r7, #1, 0
+ 28c:	e1a02009 	mov	r2, r9
+ 290:	e3a0103f 	mov	r1, #63, 0	; 0x3f
+ 294:	e1a00006 	mov	r0, r6
+ 298:	ebfffffe 	bl	0 <snprintf>
+ 29c:	e514302c 	ldr	r3, [r4, #-44]	; 0xffffffd4
+ 2a0:	e1a0200a 	mov	r2, sl
+ 2a4:	e3a01003 	mov	r1, #3, 0
+ 2a8:	e1a00008 	mov	r0, r8
+ 2ac:	ebfffffe 	bl	0 <snprintf>
+ 2b0:	e58d8008 	str	r8, [sp, #8]
+ 2b4:	e28d0068 	add	r0, sp, #104, 0	; 0x68
+ 2b8:	e88d0840 	stm	sp, {r6, fp}
+ 2bc:	e9950006 	ldmib	r5, {r1, r2}
+ 2c0:	e1d530b2 	ldrh	r3, [r5, #2]
+ 2c4:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 2c8:	e2873002 	add	r3, r7, #2, 0
+ 2cc:	e1a02009 	mov	r2, r9
+ 2d0:	e3a0103f 	mov	r1, #63, 0	; 0x3f
+ 2d4:	e1a00006 	mov	r0, r6
+ 2d8:	ebfffffe 	bl	0 <snprintf>
+ 2dc:	e5143028 	ldr	r3, [r4, #-40]	; 0xffffffd8
+ 2e0:	e1a0200a 	mov	r2, sl
+ 2e4:	e3a01003 	mov	r1, #3, 0
+ 2e8:	e1a00008 	mov	r0, r8
+ 2ec:	ebfffffe 	bl	0 <snprintf>
+ 2f0:	e58d8008 	str	r8, [sp, #8]
+ 2f4:	e28d0068 	add	r0, sp, #104, 0	; 0x68
+ 2f8:	e88d0840 	stm	sp, {r6, fp}
+ 2fc:	e9950006 	ldmib	r5, {r1, r2}
+ 300:	e1d530b2 	ldrh	r3, [r5, #2]
+ 304:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 308:	e2873003 	add	r3, r7, #3, 0
+ 30c:	e1a02009 	mov	r2, r9
+ 310:	e3a0103f 	mov	r1, #63, 0	; 0x3f
+ 314:	e1a00006 	mov	r0, r6
+ 318:	ebfffffe 	bl	0 <snprintf>
+ 31c:	e5143024 	ldr	r3, [r4, #-36]	; 0xffffffdc
+ 320:	e1a0200a 	mov	r2, sl
+ 324:	e3a01003 	mov	r1, #3, 0
+ 328:	e1a00008 	mov	r0, r8
+ 32c:	ebfffffe 	bl	0 <snprintf>
+ 330:	e58d8008 	str	r8, [sp, #8]
+ 334:	e28d0068 	add	r0, sp, #104, 0	; 0x68
+ 338:	e88d0840 	stm	sp, {r6, fp}
+ 33c:	e9950006 	ldmib	r5, {r1, r2}
+ 340:	e1d530b2 	ldrh	r3, [r5, #2]
+ 344:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 348:	e2873004 	add	r3, r7, #4, 0
+ 34c:	e1a02009 	mov	r2, r9
+ 350:	e3a0103f 	mov	r1, #63, 0	; 0x3f
+ 354:	e1a00006 	mov	r0, r6
+ 358:	ebfffffe 	bl	0 <snprintf>
+ 35c:	e5143020 	ldr	r3, [r4, #-32]	; 0xffffffe0
+ 360:	e1a0200a 	mov	r2, sl
+ 364:	e3a01003 	mov	r1, #3, 0
+ 368:	e1a00008 	mov	r0, r8
+ 36c:	ebfffffe 	bl	0 <snprintf>
+ 370:	e58d8008 	str	r8, [sp, #8]
+ 374:	e28d0068 	add	r0, sp, #104, 0	; 0x68
+ 378:	e88d0840 	stm	sp, {r6, fp}
+ 37c:	e9950006 	ldmib	r5, {r1, r2}
+ 380:	e1d530b2 	ldrh	r3, [r5, #2]
+ 384:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 388:	e2873005 	add	r3, r7, #5, 0
+ 38c:	e1a02009 	mov	r2, r9
+ 390:	e3a0103f 	mov	r1, #63, 0	; 0x3f
+ 394:	e1a00006 	mov	r0, r6
+ 398:	ebfffffe 	bl	0 <snprintf>
+ 39c:	e514301c 	ldr	r3, [r4, #-28]	; 0xffffffe4
+ 3a0:	e1a0200a 	mov	r2, sl
+ 3a4:	e3a01003 	mov	r1, #3, 0
+ 3a8:	e1a00008 	mov	r0, r8
+ 3ac:	ebfffffe 	bl	0 <snprintf>
+ 3b0:	e58d8008 	str	r8, [sp, #8]
+ 3b4:	e28d0068 	add	r0, sp, #104, 0	; 0x68
+ 3b8:	e88d0840 	stm	sp, {r6, fp}
+ 3bc:	e9950006 	ldmib	r5, {r1, r2}
+ 3c0:	e1d530b2 	ldrh	r3, [r5, #2]
+ 3c4:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 3c8:	e2873006 	add	r3, r7, #6, 0
+ 3cc:	e1a02009 	mov	r2, r9
+ 3d0:	e3a0103f 	mov	r1, #63, 0	; 0x3f
+ 3d4:	e1a00006 	mov	r0, r6
+ 3d8:	ebfffffe 	bl	0 <snprintf>
+ 3dc:	e5143018 	ldr	r3, [r4, #-24]	; 0xffffffe8
+ 3e0:	e1a0200a 	mov	r2, sl
+ 3e4:	e3a01003 	mov	r1, #3, 0
+ 3e8:	e1a00008 	mov	r0, r8
+ 3ec:	ebfffffe 	bl	0 <snprintf>
+ 3f0:	e58d8008 	str	r8, [sp, #8]
+ 3f4:	e28d0068 	add	r0, sp, #104, 0	; 0x68
+ 3f8:	e88d0840 	stm	sp, {r6, fp}
+ 3fc:	e9950006 	ldmib	r5, {r1, r2}
+ 400:	e1d530b2 	ldrh	r3, [r5, #2]
+ 404:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 408:	e2873007 	add	r3, r7, #7, 0
+ 40c:	e1a02009 	mov	r2, r9
+ 410:	e3a0103f 	mov	r1, #63, 0	; 0x3f
+ 414:	e1a00006 	mov	r0, r6
+ 418:	ebfffffe 	bl	0 <snprintf>
+ 41c:	e5143014 	ldr	r3, [r4, #-20]	; 0xffffffec
+ 420:	e1a0200a 	mov	r2, sl
+ 424:	e3a01003 	mov	r1, #3, 0
+ 428:	e1a00008 	mov	r0, r8
+ 42c:	ebfffffe 	bl	0 <snprintf>
+ 430:	e58d8008 	str	r8, [sp, #8]
+ 434:	e28d0068 	add	r0, sp, #104, 0	; 0x68
+ 438:	e58db004 	str	fp, [sp, #4]
+ 43c:	e58d6000 	str	r6, [sp]
+ 440:	e1d530b2 	ldrh	r3, [r5, #2]
+ 444:	e9950006 	ldmib	r5, {r1, r2}
+ 448:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 44c:	e59d2014 	ldr	r2, [sp, #20]
+ 450:	e2873009 	add	r3, r7, #9, 0
+ 454:	e2877008 	add	r7, r7, #8, 0
+ 458:	e1520003 	cmp	r2, r3
+ 45c:	8affff77 	bhi	240 <ShowFileOSC::Reload()+0x100>
+ 460:	e59d4018 	ldr	r4, [sp, #24]
+ 464:	e59db01c 	ldr	fp, [sp, #28]
+ 468:	e58db014 	str	fp, [sp, #20]
+ 46c:	e3003000 	movw	r3, #0
+ 470:	e0859107 	add	r9, r5, r7, lsl #2
+ 474:	e300a000 	movw	sl, #0
+ 478:	e3403000 	movt	r3, #0
+ 47c:	e2899010 	add	r9, r9, #16, 0
+ 480:	e340a000 	movt	sl, #0
+ 484:	e1a0b003 	mov	fp, r3
+ 488:	e1a03007 	mov	r3, r7
+ 48c:	e1a0200b 	mov	r2, fp
+ 490:	e3a0103f 	mov	r1, #63, 0	; 0x3f
+ 494:	e1a00006 	mov	r0, r6
+ 498:	e2877001 	add	r7, r7, #1, 0
+ 49c:	ebfffffe 	bl	0 <snprintf>
+ 4a0:	e5b93004 	ldr	r3, [r9, #4]!
+ 4a4:	e1a0200a 	mov	r2, sl
+ 4a8:	e3a01003 	mov	r1, #3, 0
+ 4ac:	e1a00008 	mov	r0, r8
+ 4b0:	ebfffffe 	bl	0 <snprintf>
+ 4b4:	e59d3010 	ldr	r3, [sp, #16]
+ 4b8:	e28d0068 	add	r0, sp, #104, 0	; 0x68
+ 4bc:	e58d8008 	str	r8, [sp, #8]
+ 4c0:	e58d3004 	str	r3, [sp, #4]
+ 4c4:	e58d6000 	str	r6, [sp]
+ 4c8:	e1d530b2 	ldrh	r3, [r5, #2]
+ 4cc:	e9950006 	ldmib	r5, {r1, r2}
+ 4d0:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 4d4:	e1570004 	cmp	r7, r4
+ 4d8:	3affffea 	bcc	488 <ShowFileOSC::Reload()+0x348>
+ 4dc:	e59db014 	ldr	fp, [sp, #20]
+ 4e0:	e3540013 	cmp	r4, #19, 0
+ 4e4:	8a000018 	bhi	54c <ShowFileOSC::Reload()+0x40c>
+ 4e8:	e0857104 	add	r7, r5, r4, lsl #2
+ 4ec:	e3009000 	movw	r9, #0
+ 4f0:	e58db014 	str	fp, [sp, #20]
+ 4f4:	e3008000 	movw	r8, #0
+ 4f8:	e3409000 	movt	r9, #0
+ 4fc:	e2877010 	add	r7, r7, #16, 0
+ 500:	e3408000 	movt	r8, #0
+ 504:	e3e0a000 	mvn	sl, #0, 0
+ 508:	e59db010 	ldr	fp, [sp, #16]
+ 50c:	e1a03004 	mov	r3, r4
+ 510:	e1a02008 	mov	r2, r8
+ 514:	e3a0103f 	mov	r1, #63, 0	; 0x3f
+ 518:	e1a00006 	mov	r0, r6
+ 51c:	e2844001 	add	r4, r4, #1, 0
+ 520:	ebfffffe 	bl	0 <snprintf>
+ 524:	e58d9008 	str	r9, [sp, #8]
+ 528:	e28d0068 	add	r0, sp, #104, 0	; 0x68
+ 52c:	e88d0840 	stm	sp, {r6, fp}
+ 530:	e1d530b2 	ldrh	r3, [r5, #2]
+ 534:	e9950006 	ldmib	r5, {r1, r2}
+ 538:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ 53c:	e5a7a004 	str	sl, [r7, #4]!
+ 540:	e3540014 	cmp	r4, #20, 0
+ 544:	1afffff0 	bne	50c <ShowFileOSC::Reload()+0x3cc>
+ 548:	e59db014 	ldr	fp, [sp, #20]
+ 54c:	e1a0000b 	mov	r0, fp
+ 550:	ebfffffe 	bl	0 <closedir>
+ 554:	e1a00005 	mov	r0, r5
+ 558:	ebfffffe 	bl	b4 <ShowFileOSC::SendStatus()>
+ 55c:	e28dde46 	add	sp, sp, #1120	; 0x460
+ 560:	e28dd00c 	add	sp, sp, #12, 0
+ 564:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 568:	e3540000 	cmp	r4, #0, 0
+ 56c:	1affff0f 	bne	1b0 <ShowFileOSC::Reload()+0x70>
+ 570:	e3003000 	movw	r3, #0
+ 574:	e28d6028 	add	r6, sp, #40, 0	; 0x28
+ 578:	e3403000 	movt	r3, #0
+ 57c:	e58d3010 	str	r3, [sp, #16]
+ 580:	eaffffd8 	b	4e8 <ShowFileOSC::Reload()+0x3a8>
+ 584:	e3000000 	movw	r0, #0
+ 588:	e3400000 	movt	r0, #0
+ 58c:	ebfffffe 	bl	0 <perror>
+ 590:	e2853010 	add	r3, r5, #16, 0
+ 594:	e3e02000 	mvn	r2, #0, 0
+ 598:	e2855060 	add	r5, r5, #96, 0	; 0x60
+ 59c:	e5a32004 	str	r2, [r3, #4]!
+ 5a0:	e1550003 	cmp	r5, r3
+ 5a4:	1afffffc 	bne	59c <ShowFileOSC::Reload()+0x45c>
+ 5a8:	eaffffeb 	b	55c <ShowFileOSC::Reload()+0x41c>
+ 5ac:	e3403000 	movt	r3, #0
+ 5b0:	e3a07000 	mov	r7, #0, 0
+ 5b4:	e58d3010 	str	r3, [sp, #16]
+ 5b8:	e28d6028 	add	r6, sp, #40, 0	; 0x28
+ 5bc:	e28d8024 	add	r8, sp, #36, 0	; 0x24
+ 5c0:	eaffffa8 	b	468 <ShowFileOSC::Reload()+0x328>
+
+000005c4 <ShowFileOSC::Run()>:
+ 5c4:	e3003000 	movw	r3, #0
+ 5c8:	e3403000 	movt	r3, #0
+ 5cc:	e92d43f0 	push	{r4, r5, r6, r7, r8, r9, lr}
+ 5d0:	e1a04000 	mov	r4, r0
+ 5d4:	e5930000 	ldr	r0, [r3]
+ 5d8:	e24dde83 	sub	sp, sp, #2096	; 0x830
+ 5dc:	e5942010 	ldr	r2, [r4, #16]
+ 5e0:	e24dd00c 	sub	sp, sp, #12, 0
+ 5e4:	e590c000 	ldr	ip, [r0]
+ 5e8:	e284300c 	add	r3, r4, #12, 0
+ 5ec:	e58d3004 	str	r3, [sp, #4]
+ 5f0:	e2841008 	add	r1, r4, #8, 0
+ 5f4:	e58d1000 	str	r1, [sp]
+ 5f8:	e3a03080 	mov	r3, #128, 0	; 0x80
+ 5fc:	e5941004 	ldr	r1, [r4, #4]
+ 600:	e59c5020 	ldr	r5, [ip, #32]
+ 604:	e12fff35 	blx	r5
+ 608:	e350000a 	cmp	r0, #10, 0
+ 60c:	8a000002 	bhi	61c <ShowFileOSC::Run()+0x58>
+ 610:	e28dde83 	add	sp, sp, #2096	; 0x830
+ 614:	e28dd00c 	add	sp, sp, #12, 0
+ 618:	e8bd83f0 	pop	{r4, r5, r6, r7, r8, r9, pc}
+ 61c:	e5941010 	ldr	r1, [r4, #16]
+ 620:	e3002000 	movw	r2, #0
+ 624:	e3402000 	movt	r2, #0
+ 628:	e3a0c02f 	mov	ip, #47, 0	; 0x2f
+ 62c:	e2413001 	sub	r3, r1, #1, 0
+ 630:	e2815009 	add	r5, r1, #9, 0
+ 634:	ea000000 	b	63c <ShowFileOSC::Run()+0x78>
+ 638:	e5f2c001 	ldrb	ip, [r2, #1]!
+ 63c:	e5f3e001 	ldrb	lr, [r3, #1]!
+ 640:	e15e000c 	cmp	lr, ip
+ 644:	1afffff1 	bne	610 <ShowFileOSC::Run()+0x4c>
+ 648:	e1530005 	cmp	r3, r5
+ 64c:	1afffff9 	bne	638 <ShowFileOSC::Run()+0x74>
+ 650:	e59fe57c 	ldr	lr, [pc, #1404]	; bd4 <ShowFileOSC::Run()+0x610>
+ 654:	e281600a 	add	r6, r1, #10, 0
+ 658:	e1a03006 	mov	r3, r6
+ 65c:	e281500f 	add	r5, r1, #15, 0
+ 660:	e3a02073 	mov	r2, #115, 0	; 0x73
+ 664:	ea000002 	b	674 <ShowFileOSC::Run()+0xb0>
+ 668:	e1530005 	cmp	r3, r5
+ 66c:	0a000088 	beq	894 <ShowFileOSC::Run()+0x2d0>
+ 670:	e4de2001 	ldrb	r2, [lr], #1
+ 674:	e4d3c001 	ldrb	ip, [r3], #1
+ 678:	e15c0002 	cmp	ip, r2
+ 67c:	0afffff9 	beq	668 <ShowFileOSC::Run()+0xa4>
+ 680:	e59f7550 	ldr	r7, [pc, #1360]	; bd8 <ShowFileOSC::Run()+0x614>
+ 684:	e281200e 	add	r2, r1, #14, 0
+ 688:	e1a03006 	mov	r3, r6
+ 68c:	e3a0c073 	mov	ip, #115, 0	; 0x73
+ 690:	ea000002 	b	6a0 <ShowFileOSC::Run()+0xdc>
+ 694:	e1520003 	cmp	r2, r3
+ 698:	0a000084 	beq	8b0 <ShowFileOSC::Run()+0x2ec>
+ 69c:	e4d7c001 	ldrb	ip, [r7], #1
+ 6a0:	e4d3e001 	ldrb	lr, [r3], #1
+ 6a4:	e15e000c 	cmp	lr, ip
+ 6a8:	0afffff9 	beq	694 <ShowFileOSC::Run()+0xd0>
+ 6ac:	e59f7528 	ldr	r7, [pc, #1320]	; bdc <ShowFileOSC::Run()+0x618>
+ 6b0:	e2818010 	add	r8, r1, #16, 0
+ 6b4:	e1a03006 	mov	r3, r6
+ 6b8:	e3a0c072 	mov	ip, #114, 0	; 0x72
+ 6bc:	ea000002 	b	6cc <ShowFileOSC::Run()+0x108>
+ 6c0:	e1580003 	cmp	r8, r3
+ 6c4:	0a0000a3 	beq	958 <ShowFileOSC::Run()+0x394>
+ 6c8:	e5f7c001 	ldrb	ip, [r7, #1]!
+ 6cc:	e4d3e001 	ldrb	lr, [r3], #1
+ 6d0:	e15e000c 	cmp	lr, ip
+ 6d4:	0afffff9 	beq	6c0 <ShowFileOSC::Run()+0xfc>
+ 6d8:	e59f7500 	ldr	r7, [pc, #1280]	; be0 <ShowFileOSC::Run()+0x61c>
+ 6dc:	e1a03006 	mov	r3, r6
+ 6e0:	e3a0c073 	mov	ip, #115, 0	; 0x73
+ 6e4:	ea000002 	b	6f4 <ShowFileOSC::Run()+0x130>
+ 6e8:	e1520003 	cmp	r2, r3
+ 6ec:	0a0000a0 	beq	974 <ShowFileOSC::Run()+0x3b0>
+ 6f0:	e4d7c001 	ldrb	ip, [r7], #1
+ 6f4:	e4d3e001 	ldrb	lr, [r3], #1
+ 6f8:	e15e000c 	cmp	lr, ip
+ 6fc:	0afffff9 	beq	6e8 <ShowFileOSC::Run()+0x124>
+ 700:	e59f74dc 	ldr	r7, [pc, #1244]	; be4 <ShowFileOSC::Run()+0x620>
+ 704:	e1a03006 	mov	r3, r6
+ 708:	e3a0c06c 	mov	ip, #108, 0	; 0x6c
+ 70c:	ea000002 	b	71c <ShowFileOSC::Run()+0x158>
+ 710:	e1530002 	cmp	r3, r2
+ 714:	0a00006c 	beq	8cc <ShowFileOSC::Run()+0x308>
+ 718:	e4d7c001 	ldrb	ip, [r7], #1
+ 71c:	e4d3e001 	ldrb	lr, [r3], #1
+ 720:	e15e000c 	cmp	lr, ip
+ 724:	0afffff9 	beq	710 <ShowFileOSC::Run()+0x14c>
+ 728:	e59f74b8 	ldr	r7, [pc, #1208]	; be8 <ShowFileOSC::Run()+0x624>
+ 72c:	e2819012 	add	r9, r1, #18, 0
+ 730:	e1a03006 	mov	r3, r6
+ 734:	e3a0c062 	mov	ip, #98, 0	; 0x62
+ 738:	ea000002 	b	748 <ShowFileOSC::Run()+0x184>
+ 73c:	e1530009 	cmp	r3, r9
+ 740:	0a0000b7 	beq	a24 <ShowFileOSC::Run()+0x460>
+ 744:	e4d7c001 	ldrb	ip, [r7], #1
+ 748:	e4d3e001 	ldrb	lr, [r3], #1
+ 74c:	e15e000c 	cmp	lr, ip
+ 750:	0afffff9 	beq	73c <ShowFileOSC::Run()+0x178>
+ 754:	e59f7490 	ldr	r7, [pc, #1168]	; bec <ShowFileOSC::Run()+0x628>
+ 758:	e1a03006 	mov	r3, r6
+ 75c:	e3a0c06d 	mov	ip, #109, 0	; 0x6d
+ 760:	ea000002 	b	770 <ShowFileOSC::Run()+0x1ac>
+ 764:	e1530008 	cmp	r3, r8
+ 768:	0a00008e 	beq	9a8 <ShowFileOSC::Run()+0x3e4>
+ 76c:	e5f7c001 	ldrb	ip, [r7, #1]!
+ 770:	e4d3e001 	ldrb	lr, [r3], #1
+ 774:	e15e000c 	cmp	lr, ip
+ 778:	0afffff9 	beq	764 <ShowFileOSC::Run()+0x1a0>
+ 77c:	e59f746c 	ldr	r7, [pc, #1132]	; bf0 <ShowFileOSC::Run()+0x62c>
+ 780:	e1a03006 	mov	r3, r6
+ 784:	e3a0c074 	mov	ip, #116, 0	; 0x74
+ 788:	ea000002 	b	798 <ShowFileOSC::Run()+0x1d4>
+ 78c:	e1530002 	cmp	r3, r2
+ 790:	0a0000aa 	beq	a40 <ShowFileOSC::Run()+0x47c>
+ 794:	e4d7c001 	ldrb	ip, [r7], #1
+ 798:	e4d3e001 	ldrb	lr, [r3], #1
+ 79c:	e15c000e 	cmp	ip, lr
+ 7a0:	0afffff9 	beq	78c <ShowFileOSC::Run()+0x1c8>
+ 7a4:	e59fe448 	ldr	lr, [pc, #1096]	; bf4 <ShowFileOSC::Run()+0x630>
+ 7a8:	e1a03006 	mov	r3, r6
+ 7ac:	e3a02064 	mov	r2, #100, 0	; 0x64
+ 7b0:	ea000002 	b	7c0 <ShowFileOSC::Run()+0x1fc>
+ 7b4:	e1530008 	cmp	r3, r8
+ 7b8:	0a0000bc 	beq	ab0 <ShowFileOSC::Run()+0x4ec>
+ 7bc:	e5fe2001 	ldrb	r2, [lr, #1]!
+ 7c0:	e4d3c001 	ldrb	ip, [r3], #1
+ 7c4:	e152000c 	cmp	r2, ip
+ 7c8:	0afffff9 	beq	7b4 <ShowFileOSC::Run()+0x1f0>
+ 7cc:	e59fe424 	ldr	lr, [pc, #1060]	; bf8 <ShowFileOSC::Run()+0x634>
+ 7d0:	e1a03006 	mov	r3, r6
+ 7d4:	e3a02072 	mov	r2, #114, 0	; 0x72
+ 7d8:	ea000002 	b	7e8 <ShowFileOSC::Run()+0x224>
+ 7dc:	e1530008 	cmp	r3, r8
+ 7e0:	0a0000e6 	beq	b80 <ShowFileOSC::Run()+0x5bc>
+ 7e4:	e5fe2001 	ldrb	r2, [lr, #1]!
+ 7e8:	e4d3c001 	ldrb	ip, [r3], #1
+ 7ec:	e152000c 	cmp	r2, ip
+ 7f0:	0afffff9 	beq	7dc <ShowFileOSC::Run()+0x218>
+ 7f4:	e59fc400 	ldr	ip, [pc, #1024]	; bfc <ShowFileOSC::Run()+0x638>
+ 7f8:	e3a03069 	mov	r3, #105, 0	; 0x69
+ 7fc:	ea000000 	b	804 <ShowFileOSC::Run()+0x240>
+ 800:	e4dc3001 	ldrb	r3, [ip], #1
+ 804:	e4d62001 	ldrb	r2, [r6], #1
+ 808:	e1530002 	cmp	r3, r2
+ 80c:	1affff7f 	bne	610 <ShowFileOSC::Run()+0x4c>
+ 810:	e1560005 	cmp	r6, r5
+ 814:	1afffff9 	bne	800 <ShowFileOSC::Run()+0x23c>
+ 818:	e1a02000 	mov	r2, r0
+ 81c:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ 820:	e2800008 	add	r0, r0, #8, 0
+ 824:	ebfffffe 	bl	0 <OscSimpleMessage::OscSimpleMessage(void*, unsigned int)>
+ 828:	e59d3448 	ldr	r3, [sp, #1096]	; 0x448
+ 82c:	e3530000 	cmp	r3, #0, 0
+ 830:	0affff76 	beq	610 <ShowFileOSC::Run()+0x4c>
+ 834:	e59d3444 	ldr	r3, [sp, #1092]	; 0x444
+ 838:	e5d33000 	ldrb	r3, [r3]
+ 83c:	e3530066 	cmp	r3, #102, 0	; 0x66
+ 840:	1affff72 	bne	610 <ShowFileOSC::Run()+0x4c>
+ 844:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ 848:	e3a01000 	mov	r1, #0, 0
+ 84c:	e2800008 	add	r0, r0, #8, 0
+ 850:	ebfffffe 	bl	0 <OscSimpleMessage::GetFloat(unsigned int)>
+ 854:	eefc7ac0 	vcvt.u32.f32	s15, s0
+ 858:	ee173a90 	vmov	r3, s15
+ 85c:	e3530013 	cmp	r3, #19, 0
+ 860:	8affff6a 	bhi	610 <ShowFileOSC::Run()+0x4c>
+ 864:	e0843103 	add	r3, r4, r3, lsl #2
+ 868:	e5931014 	ldr	r1, [r3, #20]
+ 86c:	e3510063 	cmp	r1, #99, 0	; 0x63
+ 870:	8affff66 	bhi	610 <ShowFileOSC::Run()+0x4c>
+ 874:	e3003000 	movw	r3, #0
+ 878:	e6ef1071 	uxtb	r1, r1
+ 87c:	e3403000 	movt	r3, #0
+ 880:	e5930000 	ldr	r0, [r3]
+ 884:	ebfffffe 	bl	0 <ShowFile::SetShowFile(unsigned char)>
+ 888:	e1a00004 	mov	r0, r4
+ 88c:	ebfffffe 	bl	b4 <ShowFileOSC::SendStatus()>
+ 890:	eaffff5e 	b	610 <ShowFileOSC::Run()+0x4c>
+ 894:	e3003000 	movw	r3, #0
+ 898:	e3403000 	movt	r3, #0
+ 89c:	e5930000 	ldr	r0, [r3]
+ 8a0:	ebfffffe 	bl	0 <ShowFile::Start()>
+ 8a4:	e1a00004 	mov	r0, r4
+ 8a8:	ebfffffe 	bl	b4 <ShowFileOSC::SendStatus()>
+ 8ac:	eaffff57 	b	610 <ShowFileOSC::Run()+0x4c>
+ 8b0:	e3003000 	movw	r3, #0
+ 8b4:	e3403000 	movt	r3, #0
+ 8b8:	e5930000 	ldr	r0, [r3]
+ 8bc:	ebfffffe 	bl	0 <ShowFile::Stop()>
+ 8c0:	e1a00004 	mov	r0, r4
+ 8c4:	ebfffffe 	bl	b4 <ShowFileOSC::SendStatus()>
+ 8c8:	eaffff50 	b	610 <ShowFileOSC::Run()+0x4c>
+ 8cc:	e1a02000 	mov	r2, r0
+ 8d0:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ 8d4:	e2800008 	add	r0, r0, #8, 0
+ 8d8:	ebfffffe 	bl	0 <OscSimpleMessage::OscSimpleMessage(void*, unsigned int)>
+ 8dc:	e59d3448 	ldr	r3, [sp, #1096]	; 0x448
+ 8e0:	e3530000 	cmp	r3, #0, 0
+ 8e4:	0affff49 	beq	610 <ShowFileOSC::Run()+0x4c>
+ 8e8:	e59d3444 	ldr	r3, [sp, #1092]	; 0x444
+ 8ec:	e5d33000 	ldrb	r3, [r3]
+ 8f0:	e3530069 	cmp	r3, #105, 0	; 0x69
+ 8f4:	0a0000a4 	beq	b8c <ShowFileOSC::Run()+0x5c8>
+ 8f8:	e3530066 	cmp	r3, #102, 0	; 0x66
+ 8fc:	1affff43 	bne	610 <ShowFileOSC::Run()+0x4c>
+ 900:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ 904:	e3a01000 	mov	r1, #0, 0
+ 908:	e2800008 	add	r0, r0, #8, 0
+ 90c:	ebfffffe 	bl	0 <OscSimpleMessage::GetFloat(unsigned int)>
+ 910:	eefd7ac0 	vcvt.s32.f32	s15, s0
+ 914:	ee173a90 	vmov	r3, s15
+ 918:	e2533000 	subs	r3, r3, #0, 0
+ 91c:	e3005000 	movw	r5, #0
+ 920:	e3405000 	movt	r5, #0
+ 924:	13a03001 	movne	r3, #1, 0
+ 928:	e1a00004 	mov	r0, r4
+ 92c:	e5952000 	ldr	r2, [r5]
+ 930:	e5c23005 	strb	r3, [r2, #5]
+ 934:	ebfffffe 	bl	b4 <ShowFileOSC::SendStatus()>
+ 938:	e5953000 	ldr	r3, [r5]
+ 93c:	e5930010 	ldr	r0, [r3, #16]
+ 940:	e3500000 	cmp	r0, #0, 0
+ 944:	0affff31 	beq	610 <ShowFileOSC::Run()+0x4c>
+ 948:	e5903000 	ldr	r3, [r0]
+ 94c:	e593300c 	ldr	r3, [r3, #12]
+ 950:	e12fff33 	blx	r3
+ 954:	eaffff2d 	b	610 <ShowFileOSC::Run()+0x4c>
+ 958:	e3003000 	movw	r3, #0
+ 95c:	e3403000 	movt	r3, #0
+ 960:	e5930000 	ldr	r0, [r3]
+ 964:	ebfffffe 	bl	0 <ShowFile::Resume()>
+ 968:	e1a00004 	mov	r0, r4
+ 96c:	ebfffffe 	bl	b4 <ShowFileOSC::SendStatus()>
+ 970:	eaffff26 	b	610 <ShowFileOSC::Run()+0x4c>
+ 974:	e1a02000 	mov	r2, r0
+ 978:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ 97c:	e2800008 	add	r0, r0, #8, 0
+ 980:	ebfffffe 	bl	0 <OscSimpleMessage::OscSimpleMessage(void*, unsigned int)>
+ 984:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ 988:	e3a01000 	mov	r1, #0, 0
+ 98c:	e2800008 	add	r0, r0, #8, 0
+ 990:	ebfffffe 	bl	0 <OscSimpleMessage::GetInt(unsigned int)>
+ 994:	e3500063 	cmp	r0, #99, 0	; 0x63
+ 998:	d3003000 	movwle	r3, #0
+ 99c:	d6ef1070 	uxtble	r1, r0
+ 9a0:	caffff1a 	bgt	610 <ShowFileOSC::Run()+0x4c>
+ 9a4:	eaffffb4 	b	87c <ShowFileOSC::Run()+0x2b8>
+ 9a8:	e1a02000 	mov	r2, r0
+ 9ac:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ 9b0:	e2800008 	add	r0, r0, #8, 0
+ 9b4:	ebfffffe 	bl	0 <OscSimpleMessage::OscSimpleMessage(void*, unsigned int)>
+ 9b8:	e59d3448 	ldr	r3, [sp, #1096]	; 0x448
+ 9bc:	e3530000 	cmp	r3, #0, 0
+ 9c0:	0affff12 	beq	610 <ShowFileOSC::Run()+0x4c>
+ 9c4:	e59d3444 	ldr	r3, [sp, #1092]	; 0x444
+ 9c8:	e5d33000 	ldrb	r3, [r3]
+ 9cc:	e3530069 	cmp	r3, #105, 0	; 0x69
+ 9d0:	0a000079 	beq	bbc <ShowFileOSC::Run()+0x5f8>
+ 9d4:	e3530066 	cmp	r3, #102, 0	; 0x66
+ 9d8:	1affff0c 	bne	610 <ShowFileOSC::Run()+0x4c>
+ 9dc:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ 9e0:	e3a01000 	mov	r1, #0, 0
+ 9e4:	e2800008 	add	r0, r0, #8, 0
+ 9e8:	ebfffffe 	bl	0 <OscSimpleMessage::GetFloat(unsigned int)>
+ 9ec:	eefd7ac0 	vcvt.s32.f32	s15, s0
+ 9f0:	ee171a90 	vmov	r1, s15
+ 9f4:	e35100ff 	cmp	r1, #255, 0	; 0xff
+ 9f8:	8affff04 	bhi	610 <ShowFileOSC::Run()+0x4c>
+ 9fc:	e3003000 	movw	r3, #0
+ a00:	e3403000 	movt	r3, #0
+ a04:	e5933000 	ldr	r3, [r3]
+ a08:	e593000c 	ldr	r0, [r3, #12]
+ a0c:	e3500000 	cmp	r0, #0, 0
+ a10:	0afffefe 	beq	610 <ShowFileOSC::Run()+0x4c>
+ a14:	e5903000 	ldr	r3, [r0]
+ a18:	e5933014 	ldr	r3, [r3, #20]
+ a1c:	e12fff33 	blx	r3
+ a20:	eafffefa 	b	610 <ShowFileOSC::Run()+0x4c>
+ a24:	e3003000 	movw	r3, #0
+ a28:	e3403000 	movt	r3, #0
+ a2c:	e5930000 	ldr	r0, [r3]
+ a30:	ebfffffe 	bl	0 <ShowFile::BlackOut()>
+ a34:	e1a00004 	mov	r0, r4
+ a38:	ebfffffe 	bl	b4 <ShowFileOSC::SendStatus()>
+ a3c:	eafffef3 	b	610 <ShowFileOSC::Run()+0x4c>
+ a40:	e1a02000 	mov	r2, r0
+ a44:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ a48:	e2800008 	add	r0, r0, #8, 0
+ a4c:	ebfffffe 	bl	0 <OscSimpleMessage::OscSimpleMessage(void*, unsigned int)>
+ a50:	e59d3448 	ldr	r3, [sp, #1096]	; 0x448
+ a54:	e3530000 	cmp	r3, #0, 0
+ a58:	0afffeec 	beq	610 <ShowFileOSC::Run()+0x4c>
+ a5c:	e59d3444 	ldr	r3, [sp, #1092]	; 0x444
+ a60:	e5d33000 	ldrb	r3, [r3]
+ a64:	e3530069 	cmp	r3, #105, 0	; 0x69
+ a68:	0a00004d 	beq	ba4 <ShowFileOSC::Run()+0x5e0>
+ a6c:	e3530066 	cmp	r3, #102, 0	; 0x66
+ a70:	1afffee6 	bne	610 <ShowFileOSC::Run()+0x4c>
+ a74:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ a78:	e3a01000 	mov	r1, #0, 0
+ a7c:	e2800008 	add	r0, r0, #8, 0
+ a80:	ebfffffe 	bl	0 <OscSimpleMessage::GetFloat(unsigned int)>
+ a84:	eefd7ac0 	vcvt.s32.f32	s15, s0
+ a88:	ee171a90 	vmov	r1, s15
+ a8c:	e2511000 	subs	r1, r1, #0, 0
+ a90:	e3003000 	movw	r3, #0
+ a94:	e3403000 	movt	r3, #0
+ a98:	13a01001 	movne	r1, #1, 0
+ a9c:	e5930000 	ldr	r0, [r3]
+ aa0:	ebfffffe 	bl	0 <ShowFile::EnableTFTP(bool)>
+ aa4:	e1a00004 	mov	r0, r4
+ aa8:	ebfffffe 	bl	b4 <ShowFileOSC::SendStatus()>
+ aac:	eafffed7 	b	610 <ShowFileOSC::Run()+0x4c>
+ ab0:	e1a02000 	mov	r2, r0
+ ab4:	e28d001c 	add	r0, sp, #28, 0
+ ab8:	ebfffffe 	bl	0 <OscSimpleMessage::OscSimpleMessage(void*, unsigned int)>
+ abc:	e59d302c 	ldr	r3, [sp, #44]	; 0x2c
+ ac0:	e3530000 	cmp	r3, #0, 0
+ ac4:	0afffed1 	beq	610 <ShowFileOSC::Run()+0x4c>
+ ac8:	e59d3028 	ldr	r3, [sp, #40]	; 0x28
+ acc:	e5d33000 	ldrb	r3, [r3]
+ ad0:	e3530069 	cmp	r3, #105, 0	; 0x69
+ ad4:	1afffecd 	bne	610 <ShowFileOSC::Run()+0x4c>
+ ad8:	e28d001c 	add	r0, sp, #28, 0
+ adc:	e3a01000 	mov	r1, #0, 0
+ ae0:	ebfffffe 	bl	0 <OscSimpleMessage::GetInt(unsigned int)>
+ ae4:	e3500063 	cmp	r0, #99, 0	; 0x63
+ ae8:	cafffec8 	bgt	610 <ShowFileOSC::Run()+0x4c>
+ aec:	e6ef5070 	uxtb	r5, r0
+ af0:	e28d7010 	add	r7, sp, #16, 0
+ af4:	e1a02005 	mov	r2, r5
+ af8:	e1a00007 	mov	r0, r7
+ afc:	e3a0100b 	mov	r1, #11, 0
+ b00:	e3006000 	movw	r6, #0
+ b04:	e3406000 	movt	r6, #0
+ b08:	ebfffffe 	bl	0 <ShowFile::ShowFileNameCopyTo(char*, unsigned int, unsigned char)>
+ b0c:	e58d7008 	str	r7, [sp, #8]
+ b10:	e3003000 	movw	r3, #0
+ b14:	e3403000 	movt	r3, #0
+ b18:	e28d0038 	add	r0, sp, #56, 0	; 0x38
+ b1c:	e88d0048 	stm	sp, {r3, r6}
+ b20:	e9940006 	ldmib	r4, {r1, r2}
+ b24:	e1d430b2 	ldrh	r3, [r4, #2]
+ b28:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ b2c:	e3003000 	movw	r3, #0
+ b30:	e1a01005 	mov	r1, r5
+ b34:	e3403000 	movt	r3, #0
+ b38:	e5930000 	ldr	r0, [r3]
+ b3c:	ebfffffe 	bl	0 <ShowFile::DeleteShowFile(unsigned char)>
+ b40:	e58d6004 	str	r6, [sp, #4]
+ b44:	e3500000 	cmp	r0, #0, 0
+ b48:	13002000 	movwne	r2, #0
+ b4c:	03002000 	movweq	r2, #0
+ b50:	13402000 	movtne	r2, #0
+ b54:	e3003000 	movw	r3, #0
+ b58:	03402000 	movteq	r2, #0
+ b5c:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ b60:	e3403000 	movt	r3, #0
+ b64:	e2800008 	add	r0, r0, #8, 0
+ b68:	e58d2008 	str	r2, [sp, #8]
+ b6c:	e58d3000 	str	r3, [sp]
+ b70:	e1d430b2 	ldrh	r3, [r4, #2]
+ b74:	e9940006 	ldmib	r4, {r1, r2}
+ b78:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ b7c:	eafffea3 	b	610 <ShowFileOSC::Run()+0x4c>
+ b80:	e1a00004 	mov	r0, r4
+ b84:	ebfffffe 	bl	140 <ShowFileOSC::Reload()>
+ b88:	eafffea0 	b	610 <ShowFileOSC::Run()+0x4c>
+ b8c:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ b90:	e3a01000 	mov	r1, #0, 0
+ b94:	e2800008 	add	r0, r0, #8, 0
+ b98:	ebfffffe 	bl	0 <OscSimpleMessage::GetInt(unsigned int)>
+ b9c:	e1a03000 	mov	r3, r0
+ ba0:	eaffff5c 	b	918 <ShowFileOSC::Run()+0x354>
+ ba4:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ ba8:	e3a01000 	mov	r1, #0, 0
+ bac:	e2800008 	add	r0, r0, #8, 0
+ bb0:	ebfffffe 	bl	0 <OscSimpleMessage::GetInt(unsigned int)>
+ bb4:	e1a01000 	mov	r1, r0
+ bb8:	eaffffb3 	b	a8c <ShowFileOSC::Run()+0x4c8>
+ bbc:	e28d0e43 	add	r0, sp, #1072	; 0x430
+ bc0:	e3a01000 	mov	r1, #0, 0
+ bc4:	e2800008 	add	r0, r0, #8, 0
+ bc8:	ebfffffe 	bl	0 <OscSimpleMessage::GetInt(unsigned int)>
+ bcc:	e1a01000 	mov	r1, r0
+ bd0:	eaffff87 	b	9f4 <ShowFileOSC::Run()+0x430>
+ bd4:	0000000d 	.word	0x0000000d
+ bd8:	00000015 	.word	0x00000015
+ bdc:	0000001c 	.word	0x0000001c
+ be0:	00000025 	.word	0x00000025
+ be4:	0000002d 	.word	0x0000002d
+ be8:	00000035 	.word	0x00000035
+ bec:	00000040 	.word	0x00000040
+ bf0:	00000049 	.word	0x00000049
+ bf4:	00000050 	.word	0x00000050
+ bf8:	00000058 	.word	0x00000058
+ bfc:	00000061 	.word	0x00000061
+
+00000c00 <ShowFileOSC::Print()>:
+ c00:	e92d4010 	push	{r4, lr}
+ c04:	e1a04000 	mov	r4, r0
+ c08:	e3000000 	movw	r0, #0
+ c0c:	e3400000 	movt	r0, #0
+ c10:	ebfffffe 	bl	0 <printf>
+ c14:	e3001000 	movw	r1, #0
+ c18:	e3000000 	movw	r0, #0
+ c1c:	e3401000 	movt	r1, #0
+ c20:	e3400000 	movt	r0, #0
+ c24:	ebfffffe 	bl	0 <printf>
+ c28:	e1d410b0 	ldrh	r1, [r4]
+ c2c:	e3000000 	movw	r0, #0
+ c30:	e3400000 	movt	r0, #0
+ c34:	ebfffffe 	bl	0 <printf>
+ c38:	e1d410b2 	ldrh	r1, [r4, #2]
+ c3c:	e3000000 	movw	r0, #0
+ c40:	e8bd4010 	pop	{r4, lr}
+ c44:	e3400000 	movt	r0, #0
+ c48:	eafffffe 	b	0 <printf>
+
+showfileparams.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]>:
+   0:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+   4:	e9901020 	ldmib	r0, {r5, ip}
+   8:	e15c0005 	cmp	ip, r5
+   c:	3a000001 	bcc	18 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x18>
+  10:	e3a00000 	mov	r0, #0, 0
+  14:	ea000010 	b	5c <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x5c>
+  18:	e045500c 	sub	r5, r5, ip
+  1c:	e3530000 	cmp	r3, #0, 0
+  20:	e1a04000 	mov	r4, r0
+  24:	e1a03001 	mov	r3, r1
+  28:	e5900000 	ldr	r0, [r0]
+  2c:	e1a01005 	mov	r1, r5
+  30:	e58d2000 	str	r2, [sp]
+  34:	e080000c 	add	r0, r0, ip
+  38:	159f2024 	ldrne	r2, [pc, #36]	; 64 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x64>
+  3c:	059f2024 	ldreq	r2, [pc, #36]	; 68 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x68>
+  40:	ebfffffe 	bl	0 <snprintf>
+  44:	e1550000 	cmp	r5, r0
+  48:	bafffff0 	blt	10 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x10>
+  4c:	e5943008 	ldr	r3, [r4, #8]
+  50:	e0830000 	add	r0, r3, r0
+  54:	e5840008 	str	r0, [r4, #8]
+  58:	e3a00001 	mov	r0, #1, 0
+  5c:	e28dd00c 	add	sp, sp, #12, 0
+  60:	e8bd8030 	pop	{r4, r5, pc}
+  64:	00000000 	.word	0x00000000
+  68:	00000007 	.word	0x00000007
+
+0000006c <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]>:
+  6c:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+  70:	e9901020 	ldmib	r0, {r5, ip}
+  74:	e15c0005 	cmp	ip, r5
+  78:	3a000001 	bcc	84 <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]+0x18>
+  7c:	e3a00000 	mov	r0, #0, 0
+  80:	ea000010 	b	c8 <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]+0x5c>
+  84:	e045500c 	sub	r5, r5, ip
+  88:	e3530000 	cmp	r3, #0, 0
+  8c:	e1a04000 	mov	r4, r0
+  90:	e1a03001 	mov	r3, r1
+  94:	e5900000 	ldr	r0, [r0]
+  98:	e1a01005 	mov	r1, r5
+  9c:	e58d2000 	str	r2, [sp]
+  a0:	e080000c 	add	r0, r0, ip
+  a4:	159f2024 	ldrne	r2, [pc, #36]	; d0 <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]+0x64>
+  a8:	059f2024 	ldreq	r2, [pc, #36]	; d4 <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]+0x68>
+  ac:	ebfffffe 	bl	0 <snprintf>
+  b0:	e1550000 	cmp	r5, r0
+  b4:	bafffff0 	blt	7c <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]+0x10>
+  b8:	e5943008 	ldr	r3, [r4, #8]
+  bc:	e0830000 	add	r0, r3, r0
+  c0:	e5840008 	str	r0, [r4, #8]
+  c4:	e3a00001 	mov	r0, #1, 0
+  c8:	e28dd00c 	add	sp, sp, #12, 0
+  cc:	e8bd8030 	pop	{r4, r5, pc}
+  d0:	0000000f 	.word	0x0000000f
+  d4:	00000016 	.word	0x00000016
+
+000000d8 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int) [clone .isra.0]>:
+  d8:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+  dc:	e9901020 	ldmib	r0, {r5, ip}
+  e0:	e15c0005 	cmp	ip, r5
+  e4:	3a000001 	bcc	f0 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int) [clone .isra.0]+0x18>
+  e8:	e3a00000 	mov	r0, #0, 0
+  ec:	ea000010 	b	134 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int) [clone .isra.0]+0x5c>
+  f0:	e045500c 	sub	r5, r5, ip
+  f4:	e3530000 	cmp	r3, #0, 0
+  f8:	e1a04000 	mov	r4, r0
+  fc:	e1a03001 	mov	r3, r1
+ 100:	e5900000 	ldr	r0, [r0]
+ 104:	e1a01005 	mov	r1, r5
+ 108:	e58d2000 	str	r2, [sp]
+ 10c:	e080000c 	add	r0, r0, ip
+ 110:	159f2024 	ldrne	r2, [pc, #36]	; 13c <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int) [clone .isra.0]+0x64>
+ 114:	059f2024 	ldreq	r2, [pc, #36]	; 140 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int) [clone .isra.0]+0x68>
+ 118:	ebfffffe 	bl	0 <snprintf>
+ 11c:	e1550000 	cmp	r5, r0
+ 120:	bafffff0 	blt	e8 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int) [clone .isra.0]+0x10>
+ 124:	e5943008 	ldr	r3, [r4, #8]
+ 128:	e0830000 	add	r0, r3, r0
+ 12c:	e5840008 	str	r0, [r4, #8]
+ 130:	e3a00001 	mov	r0, #1, 0
+ 134:	e28dd00c 	add	sp, sp, #12, 0
+ 138:	e8bd8030 	pop	{r4, r5, pc}
+ 13c:	0000000f 	.word	0x0000000f
+ 140:	00000016 	.word	0x00000016
+
+00000144 <ShowFileParams::ShowFileParams(ShowFileParamsStore*)>:
+ 144:	e5801000 	str	r1, [r0]
+ 148:	e3a02000 	mov	r2, #0, 0
+ 14c:	e5802004 	str	r2, [r0, #4]
+ 150:	e5802008 	str	r2, [r0, #8]
+ 154:	e59f2014 	ldr	r2, [pc, #20]	; 170 <ShowFileParams::ShowFileParams(ShowFileParamsStore*)+0x2c>
+ 158:	e580200c 	str	r2, [r0, #12]
+ 15c:	e59f2010 	ldr	r2, [pc, #16]	; 174 <ShowFileParams::ShowFileParams(ShowFileParamsStore*)+0x30>
+ 160:	e5802010 	str	r2, [r0, #16]
+ 164:	e3e02000 	mvn	r2, #0, 0
+ 168:	e5c02014 	strb	r2, [r0, #20]
+ 16c:	e12fff1e 	bx	lr
+ 170:	23281f40 	.word	0x23281f40
+ 174:	00138800 	.word	0x00138800
+
+00000178 <ShowFileParams::~ShowFileParams()>:
+ 178:	e12fff1e 	bx	lr
+
+0000017c <ShowFileParams::Load()>:
+ 17c:	e3a03000 	mov	r3, #0, 0
+ 180:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+ 184:	e1a02000 	mov	r2, r0
+ 188:	e5803004 	str	r3, [r0, #4]
+ 18c:	e1a04000 	mov	r4, r0
+ 190:	e59f1068 	ldr	r1, [pc, #104]	; 200 <ShowFileParams::Load()+0x84>
+ 194:	e1a0000d 	mov	r0, sp
+ 198:	ebfffffe 	bl	0 <ReadConfigFile::ReadConfigFile(void (*)(void*, char const*), void*)>
+ 19c:	e59f1060 	ldr	r1, [pc, #96]	; 204 <ShowFileParams::Load()+0x88>
+ 1a0:	e1a0000d 	mov	r0, sp
+ 1a4:	ebfffffe 	bl	0 <ReadConfigFile::Read(char const*)>
+ 1a8:	e2505000 	subs	r5, r0, #0, 0
+ 1ac:	e5940000 	ldr	r0, [r4]
+ 1b0:	0a000006 	beq	1d0 <ShowFileParams::Load()+0x54>
+ 1b4:	e3500000 	cmp	r0, #0, 0
+ 1b8:	0a00000b 	beq	1ec <ShowFileParams::Load()+0x70>
+ 1bc:	e5903000 	ldr	r3, [r0]
+ 1c0:	e2841004 	add	r1, r4, #4, 0
+ 1c4:	e5933008 	ldr	r3, [r3, #8]
+ 1c8:	e12fff33 	blx	r3
+ 1cc:	ea000006 	b	1ec <ShowFileParams::Load()+0x70>
+ 1d0:	e3500000 	cmp	r0, #0, 0
+ 1d4:	0a000004 	beq	1ec <ShowFileParams::Load()+0x70>
+ 1d8:	e5903000 	ldr	r3, [r0]
+ 1dc:	e2841004 	add	r1, r4, #4, 0
+ 1e0:	e3a05001 	mov	r5, #1, 0
+ 1e4:	e593300c 	ldr	r3, [r3, #12]
+ 1e8:	e12fff33 	blx	r3
+ 1ec:	e1a0000d 	mov	r0, sp
+ 1f0:	ebfffffe 	bl	0 <ReadConfigFile::~ReadConfigFile()>
+ 1f4:	e1a00005 	mov	r0, r5
+ 1f8:	e28dd00c 	add	sp, sp, #12, 0
+ 1fc:	e8bd8030 	pop	{r4, r5, pc}
+	...
+
+00000208 <ShowFileParams::Load(char const*, unsigned int)>:
+ 208:	e5903000 	ldr	r3, [r0]
+ 20c:	e3530000 	cmp	r3, #0, 0
+ 210:	012fff1e 	bxeq	lr
+ 214:	e3a03000 	mov	r3, #0, 0
+ 218:	e92d4073 	push	{r0, r1, r4, r5, r6, lr}
+ 21c:	e1a04000 	mov	r4, r0
+ 220:	e5803004 	str	r3, [r0, #4]
+ 224:	e1a05001 	mov	r5, r1
+ 228:	e59f1040 	ldr	r1, [pc, #64]	; 270 <ShowFileParams::Load(char const*, unsigned int)+0x68>
+ 22c:	e1a06002 	mov	r6, r2
+ 230:	e1a02000 	mov	r2, r0
+ 234:	e1a0000d 	mov	r0, sp
+ 238:	ebfffffe 	bl	0 <ReadConfigFile::ReadConfigFile(void (*)(void*, char const*), void*)>
+ 23c:	e1a02006 	mov	r2, r6
+ 240:	e1a01005 	mov	r1, r5
+ 244:	e1a0000d 	mov	r0, sp
+ 248:	ebfffffe 	bl	0 <ReadConfigFile::Read(char const*, unsigned int)>
+ 24c:	e1a01004 	mov	r1, r4
+ 250:	e4910004 	ldr	r0, [r1], #4
+ 254:	e5903000 	ldr	r3, [r0]
+ 258:	e5933008 	ldr	r3, [r3, #8]
+ 25c:	e12fff33 	blx	r3
+ 260:	e1a0000d 	mov	r0, sp
+ 264:	ebfffffe 	bl	0 <ReadConfigFile::~ReadConfigFile()>
+ 268:	e28dd008 	add	sp, sp, #8, 0
+ 26c:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 270:	00000000 	.word	0x00000000
+
+00000274 <ShowFileParams::HandleOptions(char const*, char const*, unsigned short)>:
+ 274:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+ 278:	e1a04000 	mov	r4, r0
+ 27c:	e1a00001 	mov	r0, r1
+ 280:	e1a01002 	mov	r1, r2
+ 284:	e28d2007 	add	r2, sp, #7, 0
+ 288:	e1a05003 	mov	r5, r3
+ 28c:	ebfffffe 	bl	0 <sscan_uint8_t>
+ 290:	e3500002 	cmp	r0, #2, 0
+ 294:	1a00000e 	bne	2d4 <ShowFileParams::HandleOptions(char const*, char const*, unsigned short)+0x60>
+ 298:	e5dd2007 	ldrb	r2, [sp, #7]
+ 29c:	e1d430ba 	ldrh	r3, [r4, #10]
+ 2a0:	e3520000 	cmp	r2, #0, 0
+ 2a4:	11855003 	orrne	r5, r5, r3
+ 2a8:	15943004 	ldrne	r3, [r4, #4]
+ 2ac:	01c35005 	biceq	r5, r3, r5
+ 2b0:	11c450ba 	strhne	r5, [r4, #10]
+ 2b4:	13833004 	orrne	r3, r3, #4, 0
+ 2b8:	15843004 	strne	r3, [r4, #4]
+ 2bc:	01c450ba 	strheq	r5, [r4, #10]
+ 2c0:	e1d430ba 	ldrh	r3, [r4, #10]
+ 2c4:	e3530000 	cmp	r3, #0, 0
+ 2c8:	05943004 	ldreq	r3, [r4, #4]
+ 2cc:	03c33004 	biceq	r3, r3, #4, 0
+ 2d0:	05843004 	streq	r3, [r4, #4]
+ 2d4:	e28dd00c 	add	sp, sp, #12, 0
+ 2d8:	e8bd8030 	pop	{r4, r5, pc}
+
+000002dc <ShowFileParams::callbackFunction(char const*)>:
+ 2dc:	e92d4030 	push	{r4, r5, lr}
+ 2e0:	e24dd01c 	sub	sp, sp, #28, 0
+ 2e4:	e1a05001 	mov	r5, r1
+ 2e8:	e3a03005 	mov	r3, #5, 0
+ 2ec:	e5cd3004 	strb	r3, [sp, #4]
+ 2f0:	e1a04000 	mov	r4, r0
+ 2f4:	e59f12c0 	ldr	r1, [pc, #704]	; 5bc <ShowFileParams::callbackFunction(char const*)+0x2e0>
+ 2f8:	e28d3004 	add	r3, sp, #4, 0
+ 2fc:	e28d2008 	add	r2, sp, #8, 0
+ 300:	e1a00005 	mov	r0, r5
+ 304:	ebfffffe 	bl	0 <sscan_char_p>
+ 308:	e3500002 	cmp	r0, #2, 0
+ 30c:	1a00000d 	bne	348 <ShowFileParams::callbackFunction(char const*)+0x6c>
+ 310:	e5dd3004 	ldrb	r3, [sp, #4]
+ 314:	e28d2018 	add	r2, sp, #24, 0
+ 318:	e3a05000 	mov	r5, #0, 0
+ 31c:	e28d0008 	add	r0, sp, #8, 0
+ 320:	e0823003 	add	r3, r2, r3
+ 324:	e5435010 	strb	r5, [r3, #-16]
+ 328:	ebfffffe 	bl	0 <ShowFile::GetFormat(char const*)>
+ 32c:	e5943004 	ldr	r3, [r4, #4]
+ 330:	e3500002 	cmp	r0, #2, 0
+ 334:	15c40008 	strbne	r0, [r4, #8]
+ 338:	03c33001 	biceq	r3, r3, #1, 0
+ 33c:	13833001 	orrne	r3, r3, #1, 0
+ 340:	05c45008 	strbeq	r5, [r4, #8]
+ 344:	ea000089 	b	570 <ShowFileParams::callbackFunction(char const*)+0x294>
+ 348:	e59f1270 	ldr	r1, [pc, #624]	; 5c0 <ShowFileParams::callbackFunction(char const*)+0x2e4>
+ 34c:	e28d2006 	add	r2, sp, #6, 0
+ 350:	e1a00005 	mov	r0, r5
+ 354:	ebfffffe 	bl	0 <sscan_uint16_t>
+ 358:	e3500002 	cmp	r0, #2, 0
+ 35c:	1a00000c 	bne	394 <ShowFileParams::callbackFunction(char const*)+0xb8>
+ 360:	e1dd20b6 	ldrh	r2, [sp, #6]
+ 364:	e5943004 	ldr	r3, [r4, #4]
+ 368:	e2521d7d 	subs	r1, r2, #8000	; 0x1f40
+ 36c:	13a01001 	movne	r1, #1, 0
+ 370:	e3520b01 	cmp	r2, #1024	; 0x400
+ 374:	33a01000 	movcc	r1, #0, 0
+ 378:	e3510000 	cmp	r1, #0, 0
+ 37c:	03c33008 	biceq	r3, r3, #8, 0
+ 380:	03a02d7d 	moveq	r2, #8000	; 0x1f40
+ 384:	11c420bc 	strhne	r2, [r4, #12]
+ 388:	13833008 	orrne	r3, r3, #8, 0
+ 38c:	01c420bc 	strheq	r2, [r4, #12]
+ 390:	ea000076 	b	570 <ShowFileParams::callbackFunction(char const*)+0x294>
+ 394:	e59f1228 	ldr	r1, [pc, #552]	; 5c4 <ShowFileParams::callbackFunction(char const*)+0x2e8>
+ 398:	e28d2006 	add	r2, sp, #6, 0
+ 39c:	e1a00005 	mov	r0, r5
+ 3a0:	ebfffffe 	bl	0 <sscan_uint16_t>
+ 3a4:	e3500002 	cmp	r0, #2, 0
+ 3a8:	1a00000c 	bne	3e0 <ShowFileParams::callbackFunction(char const*)+0x104>
+ 3ac:	e1dd20b6 	ldrh	r2, [sp, #6]
+ 3b0:	e3021328 	movw	r1, #9000	; 0x2328
+ 3b4:	e5943004 	ldr	r3, [r4, #4]
+ 3b8:	e0520001 	subs	r0, r2, r1
+ 3bc:	13a00001 	movne	r0, #1, 0
+ 3c0:	e3520b01 	cmp	r2, #1024	; 0x400
+ 3c4:	33a00000 	movcc	r0, #0, 0
+ 3c8:	e3500000 	cmp	r0, #0, 0
+ 3cc:	03c33010 	biceq	r3, r3, #16, 0
+ 3d0:	13833010 	orrne	r3, r3, #16, 0
+ 3d4:	11c420be 	strhne	r2, [r4, #14]
+ 3d8:	01c410be 	strheq	r1, [r4, #14]
+ 3dc:	ea000063 	b	570 <ShowFileParams::callbackFunction(char const*)+0x294>
+ 3e0:	e59f11e0 	ldr	r1, [pc, #480]	; 5c8 <ShowFileParams::callbackFunction(char const*)+0x2ec>
+ 3e4:	e28d2005 	add	r2, sp, #5, 0
+ 3e8:	e1a00005 	mov	r0, r5
+ 3ec:	ebfffffe 	bl	0 <sscan_uint8_t>
+ 3f0:	e3500002 	cmp	r0, #2, 0
+ 3f4:	1a000008 	bne	41c <ShowFileParams::callbackFunction(char const*)+0x140>
+ 3f8:	e5dd2005 	ldrb	r2, [sp, #5]
+ 3fc:	e5943004 	ldr	r3, [r4, #4]
+ 400:	e3520062 	cmp	r2, #98, 0	; 0x62
+ 404:	83c33002 	bichi	r3, r3, #2, 0
+ 408:	83a02000 	movhi	r2, #0, 0
+ 40c:	95c42009 	strbls	r2, [r4, #9]
+ 410:	93833002 	orrls	r3, r3, #2, 0
+ 414:	85c42009 	strbhi	r2, [r4, #9]
+ 418:	ea000054 	b	570 <ShowFileParams::callbackFunction(char const*)+0x294>
+ 41c:	e59f11a8 	ldr	r1, [pc, #424]	; 5cc <ShowFileParams::callbackFunction(char const*)+0x2f0>
+ 420:	e3a03006 	mov	r3, #6, 0
+ 424:	e5cd3004 	strb	r3, [sp, #4]
+ 428:	e28d2008 	add	r2, sp, #8, 0
+ 42c:	e28d3004 	add	r3, sp, #4, 0
+ 430:	e1a00005 	mov	r0, r5
+ 434:	ebfffffe 	bl	0 <sscan_char_p>
+ 438:	e3500002 	cmp	r0, #2, 0
+ 43c:	1a00001d 	bne	4b8 <ShowFileParams::callbackFunction(char const*)+0x1dc>
+ 440:	e5dd3004 	ldrb	r3, [sp, #4]
+ 444:	e28d2018 	add	r2, sp, #24, 0
+ 448:	e59f0180 	ldr	r0, [pc, #384]	; 5d0 <ShowFileParams::callbackFunction(char const*)+0x2f4>
+ 44c:	e0823003 	add	r3, r2, r3
+ 450:	e3a02000 	mov	r2, #0, 0
+ 454:	e5432010 	strb	r2, [r3, #-16]
+ 458:	e28d3008 	add	r3, sp, #8, 0
+ 45c:	e4d32001 	ldrb	r2, [r3], #1
+ 460:	e2421041 	sub	r1, r2, #65, 0	; 0x41
+ 464:	e1a0c002 	mov	ip, r2
+ 468:	e3510019 	cmp	r1, #25, 0
+ 46c:	e4d01001 	ldrb	r1, [r0], #1
+ 470:	9282c020 	addls	ip, r2, #32, 0
+ 474:	e241e041 	sub	lr, r1, #65, 0	; 0x41
+ 478:	e35e0019 	cmp	lr, #25, 0
+ 47c:	92811020 	addls	r1, r1, #32, 0
+ 480:	e151000c 	cmp	r1, ip
+ 484:	1a000006 	bne	4a4 <ShowFileParams::callbackFunction(char const*)+0x1c8>
+ 488:	e3520000 	cmp	r2, #0, 0
+ 48c:	1afffff2 	bne	45c <ShowFileParams::callbackFunction(char const*)+0x180>
+ 490:	e3a03001 	mov	r3, #1, 0
+ 494:	e5c43010 	strb	r3, [r4, #16]
+ 498:	e5943004 	ldr	r3, [r4, #4]
+ 49c:	e3833020 	orr	r3, r3, #32, 0
+ 4a0:	ea000032 	b	570 <ShowFileParams::callbackFunction(char const*)+0x294>
+ 4a4:	e5943004 	ldr	r3, [r4, #4]
+ 4a8:	e3a02000 	mov	r2, #0, 0
+ 4ac:	e5c42010 	strb	r2, [r4, #16]
+ 4b0:	e2033020 	and	r3, r3, #32, 0
+ 4b4:	ea00002d 	b	570 <ShowFileParams::callbackFunction(char const*)+0x294>
+ 4b8:	e59f1114 	ldr	r1, [pc, #276]	; 5d4 <ShowFileParams::callbackFunction(char const*)+0x2f8>
+ 4bc:	e28d2006 	add	r2, sp, #6, 0
+ 4c0:	e1a00005 	mov	r0, r5
+ 4c4:	ebfffffe 	bl	0 <sscan_uint16_t>
+ 4c8:	e3500002 	cmp	r0, #2, 0
+ 4cc:	1a00000a 	bne	4fc <ShowFileParams::callbackFunction(char const*)+0x220>
+ 4d0:	e1dd20b6 	ldrh	r2, [sp, #6]
+ 4d4:	e5943004 	ldr	r3, [r4, #4]
+ 4d8:	e3520cfa 	cmp	r2, #64000	; 0xfa00
+ 4dc:	23c33040 	biccs	r3, r3, #64, 0	; 0x40
+ 4e0:	23e02077 	mvncs	r2, #119, 0	; 0x77
+ 4e4:	25c42011 	strbcs	r2, [r4, #17]
+ 4e8:	23a02013 	movcs	r2, #19, 0
+ 4ec:	25c42012 	strbcs	r2, [r4, #18]
+ 4f0:	33833040 	orrcc	r3, r3, #64, 0	; 0x40
+ 4f4:	31c421b1 	strhcc	r2, [r4, #17]
+ 4f8:	ea00001c 	b	570 <ShowFileParams::callbackFunction(char const*)+0x294>
+ 4fc:	e59f10d4 	ldr	r1, [pc, #212]	; 5d8 <ShowFileParams::callbackFunction(char const*)+0x2fc>
+ 500:	e28d2005 	add	r2, sp, #5, 0
+ 504:	e1a00005 	mov	r0, r5
+ 508:	ebfffffe 	bl	0 <sscan_uint8_t>
+ 50c:	e3500002 	cmp	r0, #2, 0
+ 510:	1a000008 	bne	538 <ShowFileParams::callbackFunction(char const*)+0x25c>
+ 514:	e5dd2005 	ldrb	r2, [sp, #5]
+ 518:	e5943004 	ldr	r3, [r4, #4]
+ 51c:	e3520000 	cmp	r2, #0, 0
+ 520:	03c33080 	biceq	r3, r3, #128, 0	; 0x80
+ 524:	13a02001 	movne	r2, #1, 0
+ 528:	15c42013 	strbne	r2, [r4, #19]
+ 52c:	13833080 	orrne	r3, r3, #128, 0	; 0x80
+ 530:	05c42013 	strbeq	r2, [r4, #19]
+ 534:	ea00000d 	b	570 <ShowFileParams::callbackFunction(char const*)+0x294>
+ 538:	e59f109c 	ldr	r1, [pc, #156]	; 5dc <ShowFileParams::callbackFunction(char const*)+0x300>
+ 53c:	e28d2005 	add	r2, sp, #5, 0
+ 540:	e1a00005 	mov	r0, r5
+ 544:	ebfffffe 	bl	0 <sscan_uint8_t>
+ 548:	e3500002 	cmp	r0, #2, 0
+ 54c:	1a000009 	bne	578 <ShowFileParams::callbackFunction(char const*)+0x29c>
+ 550:	e5dd2005 	ldrb	r2, [sp, #5]
+ 554:	e5943004 	ldr	r3, [r4, #4]
+ 558:	e35200ff 	cmp	r2, #255, 0	; 0xff
+ 55c:	03c33c01 	biceq	r3, r3, #256	; 0x100
+ 560:	13833c01 	orrne	r3, r3, #256	; 0x100
+ 564:	15c42014 	strbne	r2, [r4, #20]
+ 568:	03e02000 	mvneq	r2, #0, 0
+ 56c:	05c42014 	strbeq	r2, [r4, #20]
+ 570:	e5843004 	str	r3, [r4, #4]
+ 574:	ea00000e 	b	5b4 <ShowFileParams::callbackFunction(char const*)+0x2d8>
+ 578:	e59f2060 	ldr	r2, [pc, #96]	; 5e0 <ShowFileParams::callbackFunction(char const*)+0x304>
+ 57c:	e3a03001 	mov	r3, #1, 0
+ 580:	e1a01005 	mov	r1, r5
+ 584:	e1a00004 	mov	r0, r4
+ 588:	ebfffffe 	bl	274 <ShowFileParams::HandleOptions(char const*, char const*, unsigned short)>
+ 58c:	e59f2050 	ldr	r2, [pc, #80]	; 5e4 <ShowFileParams::callbackFunction(char const*)+0x308>
+ 590:	e3a03002 	mov	r3, #2, 0
+ 594:	e1a01005 	mov	r1, r5
+ 598:	e1a00004 	mov	r0, r4
+ 59c:	ebfffffe 	bl	274 <ShowFileParams::HandleOptions(char const*, char const*, unsigned short)>
+ 5a0:	e59f2040 	ldr	r2, [pc, #64]	; 5e8 <ShowFileParams::callbackFunction(char const*)+0x30c>
+ 5a4:	e3a03004 	mov	r3, #4, 0
+ 5a8:	e1a01005 	mov	r1, r5
+ 5ac:	e1a00004 	mov	r0, r4
+ 5b0:	ebfffffe 	bl	274 <ShowFileParams::HandleOptions(char const*, char const*, unsigned short)>
+ 5b4:	e28dd01c 	add	sp, sp, #28, 0
+ 5b8:	e8bd8030 	pop	{r4, r5, pc}
+	...
+ 5d0:	0000001e 	.word	0x0000001e
+	...
+
+000005ec <ShowFileParams::staticCallbackFunction(void*, char const*)>:
+ 5ec:	eafffffe 	b	2dc <ShowFileParams::callbackFunction(char const*)>
+
+000005f0 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)>:
+ 5f0:	e92d407f 	push	{r0, r1, r2, r3, r4, r5, r6, lr}
+ 5f4:	e1a04000 	mov	r4, r0
+ 5f8:	e1a00001 	mov	r0, r1
+ 5fc:	e1a05002 	mov	r5, r2
+ 600:	e3500000 	cmp	r0, #0, 0
+ 604:	e1a06003 	mov	r6, r3
+ 608:	e2841004 	add	r1, r4, #4, 0
+ 60c:	0a000005 	beq	628 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x38>
+ 610:	e2803011 	add	r3, r0, #17, 0
+ 614:	e1500003 	cmp	r0, r3
+ 618:	0a000006 	beq	638 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x48>
+ 61c:	e4d02001 	ldrb	r2, [r0], #1
+ 620:	e4c12001 	strb	r2, [r1], #1
+ 624:	eafffffa 	b	614 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x24>
+ 628:	e5940000 	ldr	r0, [r4]
+ 62c:	e5903000 	ldr	r3, [r0]
+ 630:	e593300c 	ldr	r3, [r3, #12]
+ 634:	e12fff33 	blx	r3
+ 638:	e59f1184 	ldr	r1, [pc, #388]	; 7c4 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1d4>
+ 63c:	e1a03006 	mov	r3, r6
+ 640:	e1a02005 	mov	r2, r5
+ 644:	e28d0004 	add	r0, sp, #4, 0
+ 648:	ebfffffe 	bl	0 <PropertiesBuilder::PropertiesBuilder(char const*, char*, unsigned int)>
+ 64c:	e5943004 	ldr	r3, [r4, #4]
+ 650:	e28d0004 	add	r0, sp, #4, 0
+ 654:	e5d42009 	ldrb	r2, [r4, #9]
+ 658:	e7e030d3 	ubfx	r3, r3, #1, #1
+ 65c:	e59f1164 	ldr	r1, [pc, #356]	; 7c8 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1d8>
+ 660:	ebfffe81 	bl	6c <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]>
+ 664:	e5d40008 	ldrb	r0, [r4, #8]
+ 668:	ebfffffe 	bl	0 <ShowFile::GetFormat(ShowFileFormats)>
+ 66c:	e5943004 	ldr	r3, [r4, #4]
+ 670:	e1a02000 	mov	r2, r0
+ 674:	e59f1150 	ldr	r1, [pc, #336]	; 7cc <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1dc>
+ 678:	e28d0004 	add	r0, sp, #4, 0
+ 67c:	e2033001 	and	r3, r3, #1, 0
+ 680:	ebfffe5e 	bl	0 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]>
+ 684:	e5d40010 	ldrb	r0, [r4, #16]
+ 688:	e5943004 	ldr	r3, [r4, #4]
+ 68c:	e59f113c 	ldr	r1, [pc, #316]	; 7d0 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1e0>
+ 690:	e3500000 	cmp	r0, #0, 0
+ 694:	e59f2138 	ldr	r2, [pc, #312]	; 7d4 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1e4>
+ 698:	e28d0004 	add	r0, sp, #4, 0
+ 69c:	e7e032d3 	ubfx	r3, r3, #5, #1
+ 6a0:	11a02001 	movne	r2, r1
+ 6a4:	e59f112c 	ldr	r1, [pc, #300]	; 7d8 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1e8>
+ 6a8:	ebfffe54 	bl	0 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]>
+ 6ac:	e59f1128 	ldr	r1, [pc, #296]	; 7dc <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1ec>
+ 6b0:	e28d0004 	add	r0, sp, #4, 0
+ 6b4:	ebfffffe 	bl	0 <PropertiesBuilder::AddComment(char const*)>
+ 6b8:	e5943004 	ldr	r3, [r4, #4]
+ 6bc:	e28d0004 	add	r0, sp, #4, 0
+ 6c0:	e5d42014 	ldrb	r2, [r4, #20]
+ 6c4:	e7e03453 	ubfx	r3, r3, #8, #1
+ 6c8:	e59f1110 	ldr	r1, [pc, #272]	; 7e0 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1f0>
+ 6cc:	ebfffe66 	bl	6c <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]>
+ 6d0:	e59f110c 	ldr	r1, [pc, #268]	; 7e4 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1f4>
+ 6d4:	e28d0004 	add	r0, sp, #4, 0
+ 6d8:	ebfffffe 	bl	0 <PropertiesBuilder::AddComment(char const*)>
+ 6dc:	e5943004 	ldr	r3, [r4, #4]
+ 6e0:	e28d0004 	add	r0, sp, #4, 0
+ 6e4:	e1d421b1 	ldrh	r2, [r4, #17]
+ 6e8:	e7e03353 	ubfx	r3, r3, #6, #1
+ 6ec:	e59f10f4 	ldr	r1, [pc, #244]	; 7e8 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1f8>
+ 6f0:	ebfffe5d 	bl	6c <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]>
+ 6f4:	e59f10f0 	ldr	r1, [pc, #240]	; 7ec <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x1fc>
+ 6f8:	e28d0004 	add	r0, sp, #4, 0
+ 6fc:	ebfffffe 	bl	0 <PropertiesBuilder::AddComment(char const*)>
+ 700:	e5943004 	ldr	r3, [r4, #4]
+ 704:	e28d0004 	add	r0, sp, #4, 0
+ 708:	e5d42013 	ldrb	r2, [r4, #19]
+ 70c:	e7e033d3 	ubfx	r3, r3, #7, #1
+ 710:	e59f10d8 	ldr	r1, [pc, #216]	; 7f0 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x200>
+ 714:	ebfffe54 	bl	6c <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]>
+ 718:	e59f10d4 	ldr	r1, [pc, #212]	; 7f4 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x204>
+ 71c:	e28d0004 	add	r0, sp, #4, 0
+ 720:	ebfffffe 	bl	0 <PropertiesBuilder::AddComment(char const*)>
+ 724:	e1d430ba 	ldrh	r3, [r4, #10]
+ 728:	e28d0004 	add	r0, sp, #4, 0
+ 72c:	e59f10c4 	ldr	r1, [pc, #196]	; 7f8 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x208>
+ 730:	e2033001 	and	r3, r3, #1, 0
+ 734:	e1a02003 	mov	r2, r3
+ 738:	ebfffe66 	bl	d8 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int) [clone .isra.0]>
+ 73c:	e1d430ba 	ldrh	r3, [r4, #10]
+ 740:	e28d0004 	add	r0, sp, #4, 0
+ 744:	e59f10b0 	ldr	r1, [pc, #176]	; 7fc <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x20c>
+ 748:	e7e030d3 	ubfx	r3, r3, #1, #1
+ 74c:	e1a02003 	mov	r2, r3
+ 750:	ebfffe60 	bl	d8 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int) [clone .isra.0]>
+ 754:	e1d430ba 	ldrh	r3, [r4, #10]
+ 758:	e28d0004 	add	r0, sp, #4, 0
+ 75c:	e59f109c 	ldr	r1, [pc, #156]	; 800 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x210>
+ 760:	e7e03153 	ubfx	r3, r3, #2, #1
+ 764:	e1a02003 	mov	r2, r3
+ 768:	ebfffe5a 	bl	d8 <bool PropertiesBuilder::Add<bool>(char const*, bool, bool, unsigned int) [clone .isra.0]>
+ 76c:	e59f1090 	ldr	r1, [pc, #144]	; 804 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x214>
+ 770:	e28d0004 	add	r0, sp, #4, 0
+ 774:	ebfffffe 	bl	0 <PropertiesBuilder::AddComment(char const*)>
+ 778:	e5943004 	ldr	r3, [r4, #4]
+ 77c:	e28d0004 	add	r0, sp, #4, 0
+ 780:	e1d420bc 	ldrh	r2, [r4, #12]
+ 784:	e7e031d3 	ubfx	r3, r3, #3, #1
+ 788:	e59f1078 	ldr	r1, [pc, #120]	; 808 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x218>
+ 78c:	ebfffe36 	bl	6c <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]>
+ 790:	e5943004 	ldr	r3, [r4, #4]
+ 794:	e28d0004 	add	r0, sp, #4, 0
+ 798:	e1d420be 	ldrh	r2, [r4, #14]
+ 79c:	e59f1068 	ldr	r1, [pc, #104]	; 80c <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)+0x21c>
+ 7a0:	e7e03253 	ubfx	r3, r3, #4, #1
+ 7a4:	ebfffe30 	bl	6c <bool PropertiesBuilder::Add<unsigned int>(char const*, unsigned int, bool, unsigned int) [clone .isra.0]>
+ 7a8:	e59d3020 	ldr	r3, [sp, #32]
+ 7ac:	e28d0004 	add	r0, sp, #4, 0
+ 7b0:	e59d200c 	ldr	r2, [sp, #12]
+ 7b4:	e5832000 	str	r2, [r3]
+ 7b8:	ebfffffe 	bl	0 <PropertiesBuilder::~PropertiesBuilder()>
+ 7bc:	e28dd010 	add	sp, sp, #16, 0
+ 7c0:	e8bd8070 	pop	{r4, r5, r6, pc}
+	...
+ 7d0:	0000001e 	.word	0x0000001e
+ 7d4:	00000025 	.word	0x00000025
+ 7d8:	00000000 	.word	0x00000000
+ 7dc:	0000002a 	.word	0x0000002a
+ 7e0:	00000000 	.word	0x00000000
+ 7e4:	0000002e 	.word	0x0000002e
+ 7e8:	00000000 	.word	0x00000000
+ 7ec:	00000033 	.word	0x00000033
+ 7f0:	00000000 	.word	0x00000000
+ 7f4:	0000003b 	.word	0x0000003b
+	...
+ 804:	00000043 	.word	0x00000043
+	...
+
+00000810 <ShowFileParams::Save(char*, unsigned int, unsigned int&)>:
+ 810:	e590c000 	ldr	ip, [r0]
+ 814:	e35c0000 	cmp	ip, #0, 0
+ 818:	1a000001 	bne	824 <ShowFileParams::Save(char*, unsigned int, unsigned int&)+0x14>
+ 81c:	e583c000 	str	ip, [r3]
+ 820:	e12fff1e 	bx	lr
+ 824:	e92d4007 	push	{r0, r1, r2, lr}
+ 828:	e58d3000 	str	r3, [sp]
+ 82c:	e1a03002 	mov	r3, r2
+ 830:	e1a02001 	mov	r2, r1
+ 834:	e3a01000 	mov	r1, #0, 0
+ 838:	ebfffffe 	bl	5f0 <ShowFileParams::Builder(TShowFileParams const*, char*, unsigned int, unsigned int&)>
+ 83c:	e28dd00c 	add	sp, sp, #12, 0
+ 840:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00000844 <ShowFileParams::Set()>:
+ 844:	e5903004 	ldr	r3, [r0, #4]
+ 848:	e92d4070 	push	{r4, r5, r6, lr}
+ 84c:	e3130008 	tst	r3, #8, 0
+ 850:	e1a04000 	mov	r4, r0
+ 854:	159f20c8 	ldrne	r2, [pc, #200]	; 924 <ShowFileParams::Set()+0xe0>
+ 858:	11d010bc 	ldrhne	r1, [r0, #12]
+ 85c:	15922000 	ldrne	r2, [r2]
+ 860:	11c210b0 	strhne	r1, [r2]
+ 864:	e3130010 	tst	r3, #16, 0
+ 868:	159f20b4 	ldrne	r2, [pc, #180]	; 924 <ShowFileParams::Set()+0xe0>
+ 86c:	11d010be 	ldrhne	r1, [r0, #14]
+ 870:	15922000 	ldrne	r2, [r2]
+ 874:	11c210b2 	strhne	r1, [r2, #2]
+ 878:	e3130040 	tst	r3, #64, 0	; 0x40
+ 87c:	0a000009 	beq	8a8 <ShowFileParams::Set()+0x64>
+ 880:	e59f30a0 	ldr	r3, [pc, #160]	; 928 <ShowFileParams::Set()+0xe4>
+ 884:	e5935000 	ldr	r5, [r3]
+ 888:	e3550000 	cmp	r5, #0, 0
+ 88c:	0a000005 	beq	8a8 <ShowFileParams::Set()+0x64>
+ 890:	e1d011b1 	ldrh	r1, [r0, #17]
+ 894:	e1a00005 	mov	r0, r5
+ 898:	e1c511b4 	strh	r1, [r5, #20]
+ 89c:	e6ff1071 	uxth	r1, r1
+ 8a0:	ebfffffe 	bl	0 <E131Controller::UniverseToMulticastIp(unsigned short) const>
+ 8a4:	e5850018 	str	r0, [r5, #24]
+ 8a8:	e5943004 	ldr	r3, [r4, #4]
+ 8ac:	e3130080 	tst	r3, #128, 0	; 0x80
+ 8b0:	0a000004 	beq	8c8 <ShowFileParams::Set()+0x84>
+ 8b4:	e59f3070 	ldr	r3, [pc, #112]	; 92c <ShowFileParams::Set()+0xe8>
+ 8b8:	e5933000 	ldr	r3, [r3]
+ 8bc:	e3530000 	cmp	r3, #0, 0
+ 8c0:	13a02000 	movne	r2, #0, 0
+ 8c4:	15c32029 	strbne	r2, [r3, #41]	; 0x29
+ 8c8:	e1d430ba 	ldrh	r3, [r4, #10]
+ 8cc:	e3130002 	tst	r3, #2, 0
+ 8d0:	13a01001 	movne	r1, #1, 0
+ 8d4:	159f2054 	ldrne	r2, [pc, #84]	; 930 <ShowFileParams::Set()+0xec>
+ 8d8:	15922000 	ldrne	r2, [r2]
+ 8dc:	15c21005 	strbne	r1, [r2, #5]
+ 8e0:	e3130004 	tst	r3, #4, 0
+ 8e4:	08bd8070 	popeq	{r4, r5, r6, pc}
+ 8e8:	e59f3038 	ldr	r3, [pc, #56]	; 928 <ShowFileParams::Set()+0xe4>
+ 8ec:	e5934000 	ldr	r4, [r3]
+ 8f0:	e3540000 	cmp	r4, #0, 0
+ 8f4:	0a000004 	beq	90c <ShowFileParams::Set()+0xc8>
+ 8f8:	e3a01000 	mov	r1, #0, 0
+ 8fc:	e1a00004 	mov	r0, r4
+ 900:	e1c411b4 	strh	r1, [r4, #20]
+ 904:	ebfffffe 	bl	0 <E131Controller::UniverseToMulticastIp(unsigned short) const>
+ 908:	e5840018 	str	r0, [r4, #24]
+ 90c:	e59f3018 	ldr	r3, [pc, #24]	; 92c <ShowFileParams::Set()+0xe8>
+ 910:	e5933000 	ldr	r3, [r3]
+ 914:	e3530000 	cmp	r3, #0, 0
+ 918:	13a02000 	movne	r2, #0, 0
+ 91c:	15c32028 	strbne	r2, [r3, #40]	; 0x28
+ 920:	e8bd8070 	pop	{r4, r5, r6, pc}
+	...
+
+00000934 <ShowFileParams::Dump()>:
+ 934:	e12fff1e 	bx	lr
+
+showfileparamsconst.o:     file format elf32-littlearm
+
+
+showfileprotocolartnettrigger.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <ShowFileProtocolArtNet::Handler(TArtNetTrigger const*)>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04001 	mov	r4, r1
+   8:	e5d13000 	ldrb	r3, [r1]
+   c:	e3530002 	cmp	r3, #2, 0
+  10:	0a000007 	beq	34 <ShowFileProtocolArtNet::Handler(TArtNetTrigger const*)+0x34>
+  14:	e3530003 	cmp	r3, #3, 0
+  18:	18bd8010 	popne	{r4, pc}
+  1c:	e5d41001 	ldrb	r1, [r4, #1]
+  20:	e3003000 	movw	r3, #0
+  24:	e3403000 	movt	r3, #0
+  28:	e8bd4010 	pop	{r4, lr}
+  2c:	e5930000 	ldr	r0, [r3]
+  30:	eafffffe 	b	0 <ShowFile::SetShowFile(unsigned char)>
+  34:	e5d13001 	ldrb	r3, [r1, #1]
+  38:	e2433042 	sub	r3, r3, #66, 0	; 0x42
+  3c:	e3530011 	cmp	r3, #17, 0
+  40:	979ff103 	ldrls	pc, [pc, r3, lsl #2]
+  44:	ea000011 	b	90 <ShowFileProtocolArtNet::Handler(TArtNetTrigger const*)+0x90>
+  48:	000000dc 	.word	0x000000dc
+  4c:	00000090 	.word	0x00000090
+  50:	00000090 	.word	0x00000090
+  54:	00000090 	.word	0x00000090
+  58:	00000090 	.word	0x00000090
+  5c:	000000c4 	.word	0x000000c4
+  60:	00000090 	.word	0x00000090
+  64:	00000090 	.word	0x00000090
+  68:	00000090 	.word	0x00000090
+  6c:	00000090 	.word	0x00000090
+  70:	00000090 	.word	0x00000090
+  74:	00000090 	.word	0x00000090
+  78:	00000090 	.word	0x00000090
+  7c:	00000090 	.word	0x00000090
+  80:	00000090 	.word	0x00000090
+  84:	00000090 	.word	0x00000090
+  88:	000000ac 	.word	0x000000ac
+  8c:	00000094 	.word	0x00000094
+  90:	e8bd8010 	pop	{r4, pc}
+  94:	e3003000 	movw	r3, #0
+  98:	e3403000 	movt	r3, #0
+  9c:	e5930000 	ldr	r0, [r3]
+  a0:	ebfffffe 	bl	0 <ShowFile::Stop()>
+  a4:	e5d43000 	ldrb	r3, [r4]
+  a8:	eaffffd9 	b	14 <ShowFileProtocolArtNet::Handler(TArtNetTrigger const*)+0x14>
+  ac:	e3003000 	movw	r3, #0
+  b0:	e3403000 	movt	r3, #0
+  b4:	e5930000 	ldr	r0, [r3]
+  b8:	ebfffffe 	bl	0 <ShowFile::Resume()>
+  bc:	e5d43000 	ldrb	r3, [r4]
+  c0:	eaffffd3 	b	14 <ShowFileProtocolArtNet::Handler(TArtNetTrigger const*)+0x14>
+  c4:	e3003000 	movw	r3, #0
+  c8:	e3403000 	movt	r3, #0
+  cc:	e5930000 	ldr	r0, [r3]
+  d0:	ebfffffe 	bl	0 <ShowFile::Start()>
+  d4:	e5d43000 	ldrb	r3, [r4]
+  d8:	eaffffcd 	b	14 <ShowFileProtocolArtNet::Handler(TArtNetTrigger const*)+0x14>
+  dc:	e3003000 	movw	r3, #0
+  e0:	e3403000 	movt	r3, #0
+  e4:	e5930000 	ldr	r0, [r3]
+  e8:	ebfffffe 	bl	0 <ShowFile::BlackOut()>
+  ec:	e5d43000 	ldrb	r3, [r4]
+  f0:	eaffffc7 	b	14 <ShowFileProtocolArtNet::Handler(TArtNetTrigger const*)+0x14>
+
+000000f4 <non-virtual thunk to ShowFileProtocolArtNet::Handler(TArtNetTrigger const*)>:
+  f4:	e2400004 	sub	r0, r0, #4, 0
+  f8:	eaffffc0 	b	0 <ShowFileProtocolArtNet::Handler(TArtNetTrigger const*)>
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNet9DmxMasterEj:
+
+00000000 <ShowFileProtocolArtNet::DmxMaster(unsigned int)>:
+   0:	e35100ff 	cmp	r1, #255, 0	; 0xff
+   4:	23a010ff 	movcs	r1, #255, 0	; 0xff
+   8:	e5801064 	str	r1, [r0, #100]	; 0x64
+   c:	e12fff1e 	bx	lr
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNet19DoRunCleanupProcessEb:
+
+00000000 <ShowFileProtocolArtNet::DoRunCleanupProcess(bool)>:
+   0:	e5c0105c 	strb	r1, [r0, #92]	; 0x5c
+   4:	e12fff1e 	bx	lr
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNet14IsSyncDisabledEv:
+
+00000000 <ShowFileProtocolArtNet::IsSyncDisabled()>:
+   0:	e5d00030 	ldrb	r0, [r0, #48]	; 0x30
+   4:	e2200001 	eor	r0, r0, #1, 0
+   8:	e12fff1e 	bx	lr
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNet4StopEv:
+
+00000000 <ShowFileProtocolArtNet::Stop()>:
+   0:	e2800008 	add	r0, r0, #8, 0
+   4:	eafffffe 	b	0 <ArtNetController::Stop()>
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNetD2Ev:
+
+00000000 <ShowFileProtocolArtNet::~ShowFileProtocolArtNet()>:
+   0:	e3003000 	movw	r3, #0
+   4:	e3403000 	movt	r3, #0
+   8:	e92d4070 	push	{r4, r5, r6, lr}
+   c:	e2832008 	add	r2, r3, #8, 0
+  10:	e5802000 	str	r2, [r0]
+  14:	e2833044 	add	r3, r3, #68, 0	; 0x44
+  18:	e5803004 	str	r3, [r0, #4]
+  1c:	e2805008 	add	r5, r0, #8, 0
+  20:	e1a04000 	mov	r4, r0
+  24:	e1a00005 	mov	r0, r5
+  28:	ebfffffe 	bl	0 <ArtNetController::Stop()>
+  2c:	e1a00005 	mov	r0, r5
+  30:	ebfffffe 	bl	0 <ArtNetController::~ArtNetController()>
+  34:	e1a00004 	mov	r0, r4
+  38:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+0000003c <non-virtual thunk to ShowFileProtocolArtNet::~ShowFileProtocolArtNet()>:
+  3c:	e3003000 	movw	r3, #0
+  40:	e92d4070 	push	{r4, r5, r6, lr}
+  44:	e1a05000 	mov	r5, r0
+  48:	e3403000 	movt	r3, #0
+  4c:	e2804004 	add	r4, r0, #4, 0
+  50:	e2832008 	add	r2, r3, #8, 0
+  54:	e2833044 	add	r3, r3, #68, 0	; 0x44
+  58:	e5002004 	str	r2, [r0, #-4]
+  5c:	e1a00004 	mov	r0, r4
+  60:	e4053004 	str	r3, [r5], #-4
+  64:	ebfffffe 	bl	0 <ArtNetController::Stop()>
+  68:	e1a00004 	mov	r0, r4
+  6c:	ebfffffe 	bl	0 <ArtNetController::~ArtNetController()>
+  70:	e1a00005 	mov	r0, r5
+  74:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNetD0Ev:
+
+00000000 <ShowFileProtocolArtNet::~ShowFileProtocolArtNet()>:
+   0:	e3003000 	movw	r3, #0
+   4:	e3403000 	movt	r3, #0
+   8:	e92d4070 	push	{r4, r5, r6, lr}
+   c:	e2832008 	add	r2, r3, #8, 0
+  10:	e5802000 	str	r2, [r0]
+  14:	e2833044 	add	r3, r3, #68, 0	; 0x44
+  18:	e5803004 	str	r3, [r0, #4]
+  1c:	e2805008 	add	r5, r0, #8, 0
+  20:	e1a04000 	mov	r4, r0
+  24:	e1a00005 	mov	r0, r5
+  28:	ebfffffe 	bl	0 <ArtNetController::Stop()>
+  2c:	e1a00005 	mov	r0, r5
+  30:	ebfffffe 	bl	0 <ArtNetController::~ArtNetController()>
+  34:	e1a00004 	mov	r0, r4
+  38:	ebfffffe 	bl	0 <operator delete(void*)>
+  3c:	e1a00004 	mov	r0, r4
+  40:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+00000044 <non-virtual thunk to ShowFileProtocolArtNet::~ShowFileProtocolArtNet()>:
+  44:	e3002000 	movw	r2, #0
+  48:	e1a03000 	mov	r3, r0
+  4c:	e92d4070 	push	{r4, r5, r6, lr}
+  50:	e1a05000 	mov	r5, r0
+  54:	e3402000 	movt	r2, #0
+  58:	e2434004 	sub	r4, r3, #4, 0
+  5c:	e2821008 	add	r1, r2, #8, 0
+  60:	e2822044 	add	r2, r2, #68, 0	; 0x44
+  64:	e5001004 	str	r1, [r0, #-4]
+  68:	e4852004 	str	r2, [r5], #4
+  6c:	e1a00005 	mov	r0, r5
+  70:	ebfffffe 	bl	0 <ArtNetController::Stop()>
+  74:	e1a00005 	mov	r0, r5
+  78:	ebfffffe 	bl	0 <ArtNetController::~ArtNetController()>
+  7c:	e1a00004 	mov	r0, r4
+  80:	ebfffffe 	bl	0 <operator delete(void*)>
+  84:	e1a00004 	mov	r0, r4
+  88:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNet5PrintEv:
+
+00000000 <ShowFileProtocolArtNet::Print()>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04000 	mov	r4, r0
+   8:	e3000000 	movw	r0, #0
+   c:	e3400000 	movt	r0, #0
+  10:	ebfffffe 	bl	0 <puts>
+  14:	e2840008 	add	r0, r4, #8, 0
+  18:	e8bd4010 	pop	{r4, lr}
+  1c:	eafffffe 	b	0 <ArtNetController::Print()>
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNet3RunEv:
+
+00000000 <ShowFileProtocolArtNet::Run()>:
+   0:	e2800008 	add	r0, r0, #8, 0
+   4:	eafffffe 	b	0 <ArtNetController::Run()>
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNet5StartEv:
+
+00000000 <ShowFileProtocolArtNet::Start()>:
+   0:	e2800008 	add	r0, r0, #8, 0
+   4:	eafffffe 	b	0 <ArtNetController::Start()>
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNet11DmxBlackoutEv:
+
+00000000 <ShowFileProtocolArtNet::DmxBlackout()>:
+   0:	e2800008 	add	r0, r0, #8, 0
+   4:	eafffffe 	b	0 <ArtNetController::HandleBlackout()>
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNet7DmxSyncEv:
+
+00000000 <ShowFileProtocolArtNet::DmxSync()>:
+   0:	e2800008 	add	r0, r0, #8, 0
+   4:	eafffffe 	b	0 <ArtNetController::HandleSync()>
+
+Disassembly of section .text._ZN22ShowFileProtocolArtNet6DmxOutEtPKht:
+
+00000000 <ShowFileProtocolArtNet::DmxOut(unsigned short, unsigned char const*, unsigned short)>:
+   0:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+   4:	e24dd00c 	sub	sp, sp, #12, 0
+   8:	e3a0c000 	mov	ip, #0, 0
+   c:	e2800008 	add	r0, r0, #8, 0
+  10:	e58dc000 	str	ip, [sp]
+  14:	ebfffffe 	bl	0 <ArtNetController::HandleDmxOut(unsigned short, unsigned char const*, unsigned short, unsigned char)>
+  18:	e28dd00c 	add	sp, sp, #12, 0
+  1c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+showfilestatic.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <ShowFile::GetFormat(char const*)>:
+   0:	e2400001 	sub	r0, r0, #1, 0
+   4:	e92d4010 	push	{r4, lr}
+   8:	e1a0c000 	mov	ip, r0
+   c:	e59fe084 	ldr	lr, [pc, #132]	; 98 <ShowFile::GetFormat(char const*)+0x98>
+  10:	ea000001 	b	1c <ShowFile::GetFormat(char const*)+0x1c>
+  14:	e3530000 	cmp	r3, #0, 0
+  18:	0a00001c 	beq	90 <ShowFile::GetFormat(char const*)+0x90>
+  1c:	e5fc3001 	ldrb	r3, [ip, #1]!
+  20:	e2432041 	sub	r2, r3, #65, 0	; 0x41
+  24:	e1a01003 	mov	r1, r3
+  28:	e3520019 	cmp	r2, #25, 0
+  2c:	e5fe2001 	ldrb	r2, [lr, #1]!
+  30:	92831020 	addls	r1, r3, #32, 0
+  34:	e2424041 	sub	r4, r2, #65, 0	; 0x41
+  38:	e3540019 	cmp	r4, #25, 0
+  3c:	92822020 	addls	r2, r2, #32, 0
+  40:	e1510002 	cmp	r1, r2
+  44:	0afffff2 	beq	14 <ShowFile::GetFormat(char const*)+0x14>
+  48:	e59fc04c 	ldr	ip, [pc, #76]	; 9c <ShowFile::GetFormat(char const*)+0x9c>
+  4c:	ea000001 	b	58 <ShowFile::GetFormat(char const*)+0x58>
+  50:	e3530000 	cmp	r3, #0, 0
+  54:	0a00000c 	beq	8c <ShowFile::GetFormat(char const*)+0x8c>
+  58:	e5f03001 	ldrb	r3, [r0, #1]!
+  5c:	e2432041 	sub	r2, r3, #65, 0	; 0x41
+  60:	e1a01003 	mov	r1, r3
+  64:	e3520019 	cmp	r2, #25, 0
+  68:	e5fc2001 	ldrb	r2, [ip, #1]!
+  6c:	92831020 	addls	r1, r3, #32, 0
+  70:	e242e041 	sub	lr, r2, #65, 0	; 0x41
+  74:	e35e0019 	cmp	lr, #25, 0
+  78:	92822020 	addls	r2, r2, #32, 0
+  7c:	e1520001 	cmp	r2, r1
+  80:	0afffff2 	beq	50 <ShowFile::GetFormat(char const*)+0x50>
+  84:	e3a00002 	mov	r0, #2, 0
+  88:	e8bd8010 	pop	{r4, pc}
+  8c:	e3a03001 	mov	r3, #1, 0
+  90:	e1a00003 	mov	r0, r3
+  94:	e8bd8010 	pop	{r4, pc}
+  98:	ffffffff 	.word	0xffffffff
+  9c:	00000005 	.word	0x00000005
+
+000000a0 <ShowFile::GetFormat(ShowFileFormats)>:
+  a0:	e3500001 	cmp	r0, #1, 0
+  a4:	d3003000 	movwle	r3, #0
+  a8:	d3a02006 	movle	r2, #6, 0
+  ac:	d3403000 	movtle	r3, #0
+  b0:	d0203092 	mlale	r0, r2, r0, r3
+  b4:	c3000000 	movwgt	r0, #0
+  b8:	c3400000 	movtgt	r0, #0
+  bc:	e12fff1e 	bx	lr
+
+000000c0 <ShowFile::ShowFileNameCopyTo(char*, unsigned int, unsigned char)>:
+  c0:	e3520062 	cmp	r2, #98, 0	; 0x62
+  c4:	9a000001 	bls	d0 <ShowFile::ShowFileNameCopyTo(char*, unsigned int, unsigned char)+0x10>
+  c8:	e3a00000 	mov	r0, #0, 0
+  cc:	e12fff1e 	bx	lr
+  d0:	e1a03002 	mov	r3, r2
+  d4:	e3002000 	movw	r2, #0
+  d8:	e3402000 	movt	r2, #0
+  dc:	e92d4010 	push	{r4, lr}
+  e0:	ebfffffe 	bl	0 <snprintf>
+  e4:	e3a00001 	mov	r0, #1, 0
+  e8:	e8bd8010 	pop	{r4, pc}
+
+000000ec <ShowFile::CheckShowFileName(char const*, unsigned char&)>:
+  ec:	e3500000 	cmp	r0, #0, 0
+  f0:	0a000018 	beq	158 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x6c>
+  f4:	e5d0c000 	ldrb	ip, [r0]
+  f8:	e35c0000 	cmp	ip, #0, 0
+  fc:	0a000015 	beq	158 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x6c>
+ 100:	e1a03000 	mov	r3, r0
+ 104:	e5f32001 	ldrb	r2, [r3, #1]!
+ 108:	e3520000 	cmp	r2, #0, 0
+ 10c:	1afffffc 	bne	104 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x18>
+ 110:	e0433000 	sub	r3, r3, r0
+ 114:	e353000a 	cmp	r3, #10, 0
+ 118:	1a00000e 	bne	158 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x6c>
+ 11c:	e3002000 	movw	r2, #0
+ 120:	e2803001 	add	r3, r0, #1, 0
+ 124:	e92d4010 	push	{r4, lr}
+ 128:	e2804004 	add	r4, r0, #4, 0
+ 12c:	e3402000 	movt	r2, #0
+ 130:	e3a0e073 	mov	lr, #115, 0	; 0x73
+ 134:	ea000003 	b	148 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x5c>
+ 138:	e1530004 	cmp	r3, r4
+ 13c:	0a000007 	beq	160 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x74>
+ 140:	e4d3c001 	ldrb	ip, [r3], #1
+ 144:	e5f2e001 	ldrb	lr, [r2, #1]!
+ 148:	e15c000e 	cmp	ip, lr
+ 14c:	0afffff9 	beq	138 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x4c>
+ 150:	e3a00000 	mov	r0, #0, 0
+ 154:	e8bd8010 	pop	{r4, pc}
+ 158:	e3a00000 	mov	r0, #0, 0
+ 15c:	e12fff1e 	bx	lr
+ 160:	e3002000 	movw	r2, #0
+ 164:	e2803006 	add	r3, r0, #6, 0
+ 168:	e3402000 	movt	r2, #0
+ 16c:	e280400a 	add	r4, r0, #10, 0
+ 170:	e3a0c02e 	mov	ip, #46, 0	; 0x2e
+ 174:	ea000002 	b	184 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x98>
+ 178:	e1530004 	cmp	r3, r4
+ 17c:	0a000004 	beq	194 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0xa8>
+ 180:	e5f2c001 	ldrb	ip, [r2, #1]!
+ 184:	e4d3e001 	ldrb	lr, [r3], #1
+ 188:	e15e000c 	cmp	lr, ip
+ 18c:	0afffff9 	beq	178 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x8c>
+ 190:	eaffffee 	b	150 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x64>
+ 194:	e5d03004 	ldrb	r3, [r0, #4]
+ 198:	e2433030 	sub	r3, r3, #48, 0	; 0x30
+ 19c:	e3530009 	cmp	r3, #9, 0
+ 1a0:	8affffea 	bhi	150 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x64>
+ 1a4:	e1a02103 	lsl	r2, r3, #2
+ 1a8:	e0833002 	add	r3, r3, r2
+ 1ac:	e1a03083 	lsl	r3, r3, #1
+ 1b0:	e6ef3073 	uxtb	r3, r3
+ 1b4:	e5c13000 	strb	r3, [r1]
+ 1b8:	e5d02005 	ldrb	r2, [r0, #5]
+ 1bc:	e2422030 	sub	r2, r2, #48, 0	; 0x30
+ 1c0:	e3520009 	cmp	r2, #9, 0
+ 1c4:	8affffe1 	bhi	150 <ShowFile::CheckShowFileName(char const*, unsigned char&)+0x64>
+ 1c8:	e0833002 	add	r3, r3, r2
+ 1cc:	e3a00001 	mov	r0, #1, 0
+ 1d0:	e5c13000 	strb	r3, [r1]
+ 1d4:	e8bd8010 	pop	{r4, pc}
+
+showfiletftp.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <ShowFileTFTP::~ShowFileTFTP()>:
+   0:	e59f3014 	ldr	r3, [pc, #20]	; 1c <ShowFileTFTP::~ShowFileTFTP()+0x1c>
+   4:	e92d4010 	push	{r4, lr}
+   8:	e1a04000 	mov	r4, r0
+   c:	e5803000 	str	r3, [r0]
+  10:	ebfffffe 	bl	0 <TFTPDaemon::~TFTPDaemon()>
+  14:	e1a00004 	mov	r0, r4
+  18:	e8bd8010 	pop	{r4, pc}
+  1c:	00000008 	.word	0x00000008
+
+00000020 <ShowFileTFTP::~ShowFileTFTP()>:
+  20:	e59f301c 	ldr	r3, [pc, #28]	; 44 <ShowFileTFTP::~ShowFileTFTP()+0x24>
+  24:	e92d4010 	push	{r4, lr}
+  28:	e1a04000 	mov	r4, r0
+  2c:	e5803000 	str	r3, [r0]
+  30:	ebfffffe 	bl	0 <TFTPDaemon::~TFTPDaemon()>
+  34:	e1a00004 	mov	r0, r4
+  38:	ebfffffe 	bl	0 <operator delete(void*)>
+  3c:	e1a00004 	mov	r0, r4
+  40:	e8bd8010 	pop	{r4, pc}
+  44:	00000008 	.word	0x00000008
+
+00000048 <ShowFileTFTP::Exit()>:
+  48:	e3003000 	movw	r3, #0
+  4c:	e3a01000 	mov	r1, #0, 0
+  50:	e3403000 	movt	r3, #0
+  54:	e5930000 	ldr	r0, [r3]
+  58:	eafffffe 	b	0 <ShowFile::EnableTFTP(bool)>
+
+0000005c <ShowFileTFTP::FileClose()>:
+  5c:	e92d4010 	push	{r4, lr}
+  60:	e1a04000 	mov	r4, r0
+  64:	e5900234 	ldr	r0, [r0, #564]	; 0x234
+  68:	e3500000 	cmp	r0, #0, 0
+  6c:	0a000002 	beq	7c <ShowFileTFTP::FileClose()+0x20>
+  70:	ebfffffe 	bl	0 <fclose>
+  74:	e3a03000 	mov	r3, #0, 0
+  78:	e5843234 	str	r3, [r4, #564]	; 0x234
+  7c:	e3a00001 	mov	r0, #1, 0
+  80:	e8bd8010 	pop	{r4, pc}
+
+00000084 <ShowFileTFTP::FileRead(void*, unsigned int, unsigned int)>:
+  84:	e5903234 	ldr	r3, [r0, #564]	; 0x234
+  88:	e1a00001 	mov	r0, r1
+  8c:	e3a01001 	mov	r1, #1, 0
+  90:	eafffffe 	b	0 <fread>
+
+00000094 <ShowFileTFTP::FileWrite(void const*, unsigned int, unsigned int)>:
+  94:	e5903234 	ldr	r3, [r0, #564]	; 0x234
+  98:	e1a00001 	mov	r0, r1
+  9c:	e3a01001 	mov	r1, #1, 0
+  a0:	eafffffe 	b	0 <fwrite>
+
+000000a4 <ShowFileTFTP::FileOpen(char const*, TFTPMode)>:
+  a4:	e92d4030 	push	{r4, r5, lr}
+  a8:	e1a04001 	mov	r4, r1
+  ac:	e24dd00c 	sub	sp, sp, #12, 0
+  b0:	e1a05000 	mov	r5, r0
+  b4:	e28d1007 	add	r1, sp, #7, 0
+  b8:	e1a00004 	mov	r0, r4
+  bc:	ebfffffe 	bl	0 <ShowFile::CheckShowFileName(char const*, unsigned char&)>
+  c0:	e3500000 	cmp	r0, #0, 0
+  c4:	0a000006 	beq	e4 <ShowFileTFTP::FileOpen(char const*, TFTPMode)+0x40>
+  c8:	e3001000 	movw	r1, #0
+  cc:	e1a00004 	mov	r0, r4
+  d0:	e3401000 	movt	r1, #0
+  d4:	ebfffffe 	bl	0 <fopen>
+  d8:	e5850234 	str	r0, [r5, #564]	; 0x234
+  dc:	e2500000 	subs	r0, r0, #0, 0
+  e0:	13a00001 	movne	r0, #1, 0
+  e4:	e28dd00c 	add	sp, sp, #12, 0
+  e8:	e8bd8030 	pop	{r4, r5, pc}
+
+000000ec <ShowFileTFTP::FileCreate(char const*, TFTPMode)>:
+  ec:	e92d4030 	push	{r4, r5, lr}
+  f0:	e1a04001 	mov	r4, r1
+  f4:	e24dd00c 	sub	sp, sp, #12, 0
+  f8:	e1a05000 	mov	r5, r0
+  fc:	e28d1007 	add	r1, sp, #7, 0
+ 100:	e1a00004 	mov	r0, r4
+ 104:	ebfffffe 	bl	0 <ShowFile::CheckShowFileName(char const*, unsigned char&)>
+ 108:	e3500000 	cmp	r0, #0, 0
+ 10c:	0a000006 	beq	12c <ShowFileTFTP::FileCreate(char const*, TFTPMode)+0x40>
+ 110:	e3001000 	movw	r1, #0
+ 114:	e1a00004 	mov	r0, r4
+ 118:	e3401000 	movt	r1, #0
+ 11c:	ebfffffe 	bl	0 <fopen>
+ 120:	e5850234 	str	r0, [r5, #564]	; 0x234
+ 124:	e2500000 	subs	r0, r0, #0, 0
+ 128:	13a00001 	movne	r0, #1, 0
+ 12c:	e28dd00c 	add	sp, sp, #12, 0
+ 130:	e8bd8030 	pop	{r4, r5, pc}
+
+00000134 <ShowFileTFTP::ShowFileTFTP()>:
+ 134:	e92d4010 	push	{r4, lr}
+ 138:	e1a04000 	mov	r4, r0
+ 13c:	ebfffffe 	bl	0 <TFTPDaemon::TFTPDaemon()>
+ 140:	e59f3010 	ldr	r3, [pc, #16]	; 158 <ShowFileTFTP::ShowFileTFTP()+0x24>
+ 144:	e3a02000 	mov	r2, #0, 0
+ 148:	e5842234 	str	r2, [r4, #564]	; 0x234
+ 14c:	e1a00004 	mov	r0, r4
+ 150:	e5843000 	str	r3, [r4]
+ 154:	e8bd8010 	pop	{r4, pc}
+ 158:	00000008 	.word	0x00000008

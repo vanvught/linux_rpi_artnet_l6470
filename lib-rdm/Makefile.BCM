@@ -1,0 +1,4 @@
+DEFINES=DMX_WORKSHOP_DEFECT NDEBUG
+
+include Rules.mk
+include ../firmware-template-bcm/lib/Rules.mk

@@ -1,0 +1,5 @@
+DEFINES =RASPPI
+
+EXTRA_INCLUDES = ../lib-tlc59711/include ../lib-tlc59711/include ../lib-lightset/include ../lib-properties/include
+
+include ../firmware-template-linux/lib/Rules.mk

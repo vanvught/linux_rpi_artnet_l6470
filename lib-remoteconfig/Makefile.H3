@@ -1,0 +1,19 @@
+DEFINES =ENABLE_TFTP_SERVER
+DEFINES+=NDEBUG
+
+ifneq ($(MAKE_FLAGS),)
+	ifneq (,$(findstring ENABLE_SHELL,$(MAKE_FLAGS)))
+		EXTRA_SRCDIR+=src/shell src/uart
+	endif
+	ifneq (,$(findstring ENABLE_HTTPD,$(MAKE_FLAGS)))
+		EXTRA_SRCDIR+=src/httpd
+	endif
+else
+	DEFINES+=LTC_READER
+	EXTRA_SRCDIR+=src/shell src/uart src/httpd
+endif
+
+EXTRA_SRCDIR+=src/tftp src/h3/tftp
+
+include Rules.mk
+include ../firmware-template-h3/lib/Rules.mk

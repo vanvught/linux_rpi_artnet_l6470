@@ -1,0 +1,7 @@
+DEFINES =PARAMS_INLCUDE_ALL 
+#DEFINES+=NDEBUG
+
+EXTRA_INCLUDES=
+
+include Rules.mk
+include ../firmware-template-linux/lib/Rules.mk

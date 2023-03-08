@@ -1,0 +1,5 @@
+#manufacturer_name=Arjan
+#device_label=Test
+#manufacturer_id=1234
+#product_category=7100
+#product_detail=0004

@@ -1,0 +1,4264 @@
+In archive lib7/libe131.a:
+
+e131bridgediscoverypacket.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <E131Bridge::FillDiscoveryPacket()>:
+   0:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+   4:	e3002504 	movw	r2, #1284	; 0x504
+   8:	e5d0350a 	ldrb	r3, [r0, #1290]	; 0x50a
+   c:	e300c477 	movw	ip, #1143	; 0x477
+  10:	e590101c 	ldr	r1, [r0, #28]
+  14:	e283303c 	add	r3, r3, #60	; 0x3c
+  18:	e2811020 	add	r1, r1, #32
+  1c:	e1a03083 	lsl	r3, r3, #1
+  20:	e18030b2 	strh	r3, [r0, r2]
+  24:	e3a02000 	mov	r2, #0
+  28:	f5d1f002 	pld	[r1, #2]
+  2c:	e24cc020 	sub	ip, ip, #32
+  30:	e5412020 	strb	r2, [r1, #-32]	; 0xffffffe0
+  34:	e35c0017 	cmp	ip, #23
+  38:	e541201f 	strb	r2, [r1, #-31]	; 0xffffffe1
+  3c:	e1a03001 	mov	r3, r1
+  40:	e541201e 	strb	r2, [r1, #-30]	; 0xffffffe2
+  44:	e2811020 	add	r1, r1, #32
+  48:	e541203d 	strb	r2, [r1, #-61]	; 0xffffffc3
+  4c:	e541203c 	strb	r2, [r1, #-60]	; 0xffffffc4
+  50:	e541203b 	strb	r2, [r1, #-59]	; 0xffffffc5
+  54:	e541203a 	strb	r2, [r1, #-58]	; 0xffffffc6
+  58:	e5412039 	strb	r2, [r1, #-57]	; 0xffffffc7
+  5c:	e5412038 	strb	r2, [r1, #-56]	; 0xffffffc8
+  60:	e5412037 	strb	r2, [r1, #-55]	; 0xffffffc9
+  64:	e5412036 	strb	r2, [r1, #-54]	; 0xffffffca
+  68:	e5412035 	strb	r2, [r1, #-53]	; 0xffffffcb
+  6c:	e5412034 	strb	r2, [r1, #-52]	; 0xffffffcc
+  70:	e5412033 	strb	r2, [r1, #-51]	; 0xffffffcd
+  74:	e5412032 	strb	r2, [r1, #-50]	; 0xffffffce
+  78:	e5412031 	strb	r2, [r1, #-49]	; 0xffffffcf
+  7c:	e5412030 	strb	r2, [r1, #-48]	; 0xffffffd0
+  80:	e541202f 	strb	r2, [r1, #-47]	; 0xffffffd1
+  84:	e541202e 	strb	r2, [r1, #-46]	; 0xffffffd2
+  88:	e541202d 	strb	r2, [r1, #-45]	; 0xffffffd3
+  8c:	e541202c 	strb	r2, [r1, #-44]	; 0xffffffd4
+  90:	e541202b 	strb	r2, [r1, #-43]	; 0xffffffd5
+  94:	e541202a 	strb	r2, [r1, #-42]	; 0xffffffd6
+  98:	e5412029 	strb	r2, [r1, #-41]	; 0xffffffd7
+  9c:	e5412028 	strb	r2, [r1, #-40]	; 0xffffffd8
+  a0:	e5412027 	strb	r2, [r1, #-39]	; 0xffffffd9
+  a4:	e5412026 	strb	r2, [r1, #-38]	; 0xffffffda
+  a8:	e5412025 	strb	r2, [r1, #-37]	; 0xffffffdb
+  ac:	e5412024 	strb	r2, [r1, #-36]	; 0xffffffdc
+  b0:	e5412023 	strb	r2, [r1, #-35]	; 0xffffffdd
+  b4:	e5412022 	strb	r2, [r1, #-34]	; 0xffffffde
+  b8:	e5412021 	strb	r2, [r1, #-33]	; 0xffffffdf
+  bc:	1affffd9 	bne	28 <E131Bridge::FillDiscoveryPacket()+0x28>
+  c0:	e2832018 	add	r2, r3, #24
+  c4:	e3a01000 	mov	r1, #0
+  c8:	e4c31001 	strb	r1, [r3], #1
+  cc:	e1530002 	cmp	r3, r2
+  d0:	1afffffc 	bne	c8 <E131Bridge::FillDiscoveryPacket()+0xc8>
+  d4:	e590c01c 	ldr	ip, [r0, #28]
+  d8:	e3002000 	movw	r2, #0
+  dc:	e3402000 	movt	r2, #0
+  e0:	e3a0e010 	mov	lr, #16
+  e4:	e5cc1000 	strb	r1, [ip]
+  e8:	e28c3003 	add	r3, ip, #3
+  ec:	e5cce001 	strb	lr, [ip, #1]
+  f0:	e28cc00f 	add	ip, ip, #15
+  f4:	e4d21001 	ldrb	r1, [r2], #1
+  f8:	e5e31001 	strb	r1, [r3, #1]!
+  fc:	e15c0003 	cmp	ip, r3
+ 100:	1afffffb 	bne	f4 <E131Bridge::FillDiscoveryPacket()+0xf4>
+ 104:	e5d0350a 	ldrb	r3, [r0, #1290]	; 0x50a
+ 108:	e3a01000 	mov	r1, #0
+ 10c:	e590201c 	ldr	r2, [r0, #28]
+ 110:	e3a0c008 	mov	ip, #8
+ 114:	e2833034 	add	r3, r3, #52	; 0x34
+ 118:	e5c21012 	strb	r1, [r2, #18]
+ 11c:	e1a03083 	lsl	r3, r3, #1
+ 120:	e5c21013 	strb	r1, [r2, #19]
+ 124:	e3833a07 	orr	r3, r3, #28672	; 0x7000
+ 128:	e6bf3fb3 	rev16	r3, r3
+ 12c:	e1c231b0 	strh	r3, [r2, #16]
+ 130:	e2803024 	add	r3, r0, #36	; 0x24
+ 134:	e5c21014 	strb	r1, [r2, #20]
+ 138:	e5e2c015 	strb	ip, [r2, #21]!
+ 13c:	e280c034 	add	ip, r0, #52	; 0x34
+ 140:	e4d31001 	ldrb	r1, [r3], #1
+ 144:	e153000c 	cmp	r3, ip
+ 148:	e5e21001 	strb	r1, [r2, #1]!
+ 14c:	1afffffb 	bne	140 <E131Bridge::FillDiscoveryPacket()+0x140>
+ 150:	e5d0150a 	ldrb	r1, [r0, #1290]	; 0x50a
+ 154:	e3a0c000 	mov	ip, #0
+ 158:	e590201c 	ldr	r2, [r0, #28]
+ 15c:	e2811029 	add	r1, r1, #41	; 0x29
+ 160:	e5c2c028 	strb	ip, [r2, #40]	; 0x28
+ 164:	e1a01081 	lsl	r1, r1, #1
+ 168:	e5c2c029 	strb	ip, [r2, #41]	; 0x29
+ 16c:	e3811a07 	orr	r1, r1, #28672	; 0x7000
+ 170:	e5c2c02a 	strb	ip, [r2, #42]	; 0x2a
+ 174:	e3a0c002 	mov	ip, #2
+ 178:	e6bf1fb1 	rev16	r1, r1
+ 17c:	e1c212b6 	strh	r1, [r2, #38]	; 0x26
+ 180:	e5e2c02b 	strb	ip, [r2, #43]!	; 0x2b
+ 184:	e280c074 	add	ip, r0, #116	; 0x74
+ 188:	e4d31001 	ldrb	r1, [r3], #1
+ 18c:	e153000c 	cmp	r3, ip
+ 190:	e5e21001 	strb	r1, [r2, #1]!
+ 194:	1afffffb 	bne	188 <E131Bridge::FillDiscoveryPacket()+0x188>
+ 198:	e5d0350a 	ldrb	r3, [r0, #1290]	; 0x50a
+ 19c:	e3a01000 	mov	r1, #0
+ 1a0:	e590201c 	ldr	r2, [r0, #28]
+ 1a4:	e3a00001 	mov	r0, #1
+ 1a8:	e2833004 	add	r3, r3, #4
+ 1ac:	e5c21072 	strb	r1, [r2, #114]	; 0x72
+ 1b0:	e1a03013 	lsl	r3, r3, r0
+ 1b4:	e5c21073 	strb	r1, [r2, #115]	; 0x73
+ 1b8:	e3833a07 	orr	r3, r3, #28672	; 0x7000
+ 1bc:	e6bf3fb3 	rev16	r3, r3
+ 1c0:	e5c21074 	strb	r1, [r2, #116]	; 0x74
+ 1c4:	e5c20075 	strb	r0, [r2, #117]	; 0x75
+ 1c8:	e1c237b0 	strh	r3, [r2, #112]	; 0x70
+ 1cc:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+000001d0 <E131Bridge::SendDiscoveryPacket()>:
+ 1d0:	e590200c 	ldr	r2, [r0, #12]
+ 1d4:	e302170f 	movw	r1, #9999	; 0x270f
+ 1d8:	e5903500 	ldr	r3, [r0, #1280]	; 0x500
+ 1dc:	e0423003 	sub	r3, r2, r3
+ 1e0:	e1530001 	cmp	r3, r1
+ 1e4:	912fff1e 	bxls	lr
+ 1e8:	e92d4070 	push	{r4, r5, r6, lr}
+ 1ec:	e1a04000 	mov	r4, r0
+ 1f0:	e5d0350a 	ldrb	r3, [r0, #1290]	; 0x50a
+ 1f4:	e24dd010 	sub	sp, sp, #16
+ 1f8:	e5802500 	str	r2, [r0, #1280]	; 0x500
+ 1fc:	e3530000 	cmp	r3, #0
+ 200:	0a000011 	beq	24c <E131Bridge::SendDiscoveryPacket()+0x7c>
+ 204:	e3a05000 	mov	r5, #0
+ 208:	e1a06005 	mov	r6, r5
+ 20c:	e1a01005 	mov	r1, r5
+ 210:	e3a03000 	mov	r3, #0
+ 214:	e28d200e 	add	r2, sp, #14
+ 218:	e1a00004 	mov	r0, r4
+ 21c:	e2855001 	add	r5, r5, #1
+ 220:	ebfffffe 	bl	0 <E131Bridge::GetUniverse(unsigned int, unsigned short&, lightset::PortDir) const>
+ 224:	e3500000 	cmp	r0, #0
+ 228:	0a000005 	beq	244 <E131Bridge::SendDiscoveryPacket()+0x74>
+ 22c:	e594301c 	ldr	r3, [r4, #28]
+ 230:	e1dd20be 	ldrh	r2, [sp, #14]
+ 234:	e0833086 	add	r3, r3, r6, lsl #1
+ 238:	e2866001 	add	r6, r6, #1
+ 23c:	e6bf2fb2 	rev16	r2, r2
+ 240:	e1c327b8 	strh	r2, [r3, #120]	; 0x78
+ 244:	e3550004 	cmp	r5, #4
+ 248:	1affffef 	bne	20c <E131Bridge::SendDiscoveryPacket()+0x3c>
+ 24c:	e5942020 	ldr	r2, [r4, #32]
+ 250:	e3000000 	movw	r0, #0
+ 254:	e3400000 	movt	r0, #0
+ 258:	e3003504 	movw	r3, #1284	; 0x504
+ 25c:	e58d2000 	str	r2, [sp]
+ 260:	e3a0cd57 	mov	ip, #5568	; 0x15c0
+ 264:	e19430b3 	ldrh	r3, [r4, r3]
+ 268:	e594201c 	ldr	r2, [r4, #28]
+ 26c:	e5941000 	ldr	r1, [r4]
+ 270:	e5900000 	ldr	r0, [r0]
+ 274:	e58dc004 	str	ip, [sp, #4]
+ 278:	ebfffffe 	bl	0 <Network::SendTo(int, void const*, unsigned short, unsigned int, unsigned short)>
+ 27c:	e28dd010 	add	sp, sp, #16
+ 280:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e131bridgeconst.o:     file format elf32-littlearm
+
+
+Disassembly of section .rodata:
+
+00000000 <E131BridgeConst::VERSION>:
+   0:	Address 0x0000000000000000 is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e131paramsdump.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <E131Params::Dump()>:
+   0:	e12fff1e 	bx	lr
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e131controller.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <E131Controller::E131Controller()>:
+   0:	e3003000 	movw	r3, #0
+   4:	e3a02000 	mov	r2, #0
+   8:	e3403000 	movt	r3, #0
+   c:	e2801020 	add	r1, r0, #32
+  10:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+  14:	e1a05000 	mov	r5, r0
+  18:	e5802004 	str	r2, [r0, #4]
+  1c:	e24dd054 	sub	sp, sp, #84	; 0x54
+  20:	e5830000 	str	r0, [r3]
+  24:	e2803008 	add	r3, r0, #8
+  28:	e5852020 	str	r2, [r5, #32]
+  2c:	e3e00000 	mvn	r0, #0
+  30:	e5850000 	str	r0, [r5]
+  34:	e3a000ff 	mov	r0, #255	; 0xff
+  38:	e5852024 	str	r2, [r5, #36]	; 0x24
+  3c:	e5852028 	str	r2, [r5, #40]	; 0x28
+  40:	e585202c 	str	r2, [r5, #44]	; 0x2c
+  44:	e5850080 	str	r0, [r5, #128]	; 0x80
+  48:	e4c32001 	strb	r2, [r3], #1
+  4c:	e1530001 	cmp	r3, r1
+  50:	1afffffc 	bne	48 <E131Controller::E131Controller()+0x48>
+  54:	e3006000 	movw	r6, #0
+  58:	e3004000 	movw	r4, #0
+  5c:	e3406000 	movt	r6, #0
+  60:	e3a02064 	mov	r2, #100	; 0x64
+  64:	e3404000 	movt	r4, #0
+  68:	e28d100b 	add	r1, sp, #11
+  6c:	e5963000 	ldr	r3, [r6]
+  70:	e5c52010 	strb	r2, [r5, #16]
+  74:	e5940000 	ldr	r0, [r4]
+  78:	e2837010 	add	r7, r3, #16
+  7c:	ebfffffe 	bl	0 <Hardware::GetBoardName(unsigned char&)>
+  80:	e58d0000 	str	r0, [sp]
+  84:	e3002000 	movw	r2, #0
+  88:	e3402000 	movt	r2, #0
+  8c:	e1a03007 	mov	r3, r7
+  90:	e3a01040 	mov	r1, #64	; 0x40
+  94:	e28d0010 	add	r0, sp, #16
+  98:	ebfffffe 	bl	0 <snprintf>
+  9c:	e2853040 	add	r3, r5, #64	; 0x40
+  a0:	e28d1010 	add	r1, sp, #16
+  a4:	e28de04f 	add	lr, sp, #79	; 0x4f
+  a8:	e285c07f 	add	ip, r5, #127	; 0x7f
+  ac:	e4d12001 	ldrb	r2, [r1], #1
+  b0:	e04c0003 	sub	r0, ip, r3
+  b4:	e3520000 	cmp	r2, #0
+  b8:	0a000032 	beq	188 <E131Controller::E131Controller()+0x188>
+  bc:	e151000e 	cmp	r1, lr
+  c0:	e4c32001 	strb	r2, [r3], #1
+  c4:	1afffff8 	bne	ac <E131Controller::E131Controller()+0xac>
+  c8:	e5940000 	ldr	r0, [r4]
+  cc:	e3a04000 	mov	r4, #0
+  d0:	e5c5407f 	strb	r4, [r5, #127]	; 0x7f
+  d4:	e2851030 	add	r1, r5, #48	; 0x30
+  d8:	ebfffffe 	bl	0 <Hardware::GetUuid(unsigned char*)>
+  dc:	e59f20c0 	ldr	r2, [pc, #192]	; 1a4 <E131Controller::E131Controller()+0x1a4>
+  e0:	e2821a01 	add	r1, r2, #4096	; 0x1000
+  e4:	e2423008 	sub	r3, r2, #8
+  e8:	e4c34001 	strb	r4, [r3], #1
+  ec:	e1530002 	cmp	r3, r2
+  f0:	1afffffc 	bne	e8 <E131Controller::E131Controller()+0xe8>
+  f4:	e2832008 	add	r2, r3, #8
+  f8:	e1520001 	cmp	r2, r1
+  fc:	1afffff8 	bne	e4 <E131Controller::E131Controller()+0xe4>
+ 100:	e3013388 	movw	r3, #5000	; 0x1388
+ 104:	e3000000 	movw	r0, #0
+ 108:	e1c531b4 	strh	r3, [r5, #20]
+ 10c:	e28d100c 	add	r1, sp, #12
+ 110:	e3400000 	movt	r0, #0
+ 114:	ebfffffe 	bl	0 <inet_aton>
+ 118:	e59d300c 	ldr	r3, [sp, #12]
+ 11c:	e3000000 	movw	r0, #0
+ 120:	e3400000 	movt	r0, #0
+ 124:	e28d100c 	add	r1, sp, #12
+ 128:	e3833322 	orr	r3, r3, #-2013265920	; 0x88000000
+ 12c:	e3833813 	orr	r3, r3, #1245184	; 0x130000
+ 130:	e5853018 	str	r3, [r5, #24]
+ 134:	ebfffffe 	bl	0 <inet_aton>
+ 138:	e59d300c 	ldr	r3, [sp, #12]
+ 13c:	e300027e 	movw	r0, #638	; 0x27e
+ 140:	e38334d6 	orr	r3, r3, #-704643072	; 0xd6000000
+ 144:	e38338fa 	orr	r3, r3, #16384000	; 0xfa0000
+ 148:	e585302c 	str	r3, [r5, #44]	; 0x2c
+ 14c:	ebfffffe 	bl	0 <operator new(unsigned int)>
+ 150:	e5850020 	str	r0, [r5, #32]
+ 154:	e3000478 	movw	r0, #1144	; 0x478
+ 158:	ebfffffe 	bl	0 <operator new(unsigned int)>
+ 15c:	e5850024 	str	r0, [r5, #36]	; 0x24
+ 160:	e3a00031 	mov	r0, #49	; 0x31
+ 164:	ebfffffe 	bl	0 <operator new(unsigned int)>
+ 168:	e5850028 	str	r0, [r5, #40]	; 0x28
+ 16c:	e3a01d57 	mov	r1, #5568	; 0x15c0
+ 170:	e5960000 	ldr	r0, [r6]
+ 174:	ebfffffe 	bl	0 <Network::Begin(unsigned short)>
+ 178:	e5850000 	str	r0, [r5]
+ 17c:	e1a00005 	mov	r0, r5
+ 180:	e28dd054 	add	sp, sp, #84	; 0x54
+ 184:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+ 188:	e3500000 	cmp	r0, #0
+ 18c:	0affffcd 	beq	c8 <E131Controller::E131Controller()+0xc8>
+ 190:	e0830000 	add	r0, r3, r0
+ 194:	e4c32001 	strb	r2, [r3], #1
+ 198:	e1530000 	cmp	r3, r0
+ 19c:	1afffffc 	bne	194 <E131Controller::E131Controller()+0x194>
+ 1a0:	eaffffc8 	b	c8 <E131Controller::E131Controller()+0xc8>
+ 1a4:	00000010 	andeq	r0, r0, r0, lsl r0
+
+000001a8 <E131Controller::~E131Controller()>:
+ 1a8:	e3003000 	movw	r3, #0
+ 1ac:	e3a01d57 	mov	r1, #5568	; 0x15c0
+ 1b0:	e3403000 	movt	r3, #0
+ 1b4:	e92d4010 	push	{r4, lr}
+ 1b8:	e1a04000 	mov	r4, r0
+ 1bc:	e5930000 	ldr	r0, [r3]
+ 1c0:	ebfffffe 	bl	0 <Network::End(unsigned short)>
+ 1c4:	e5940028 	ldr	r0, [r4, #40]	; 0x28
+ 1c8:	e3500000 	cmp	r0, #0
+ 1cc:	0a000002 	beq	1dc <E131Controller::~E131Controller()+0x34>
+ 1d0:	ebfffffe 	bl	0 <operator delete(void*)>
+ 1d4:	e3a03000 	mov	r3, #0
+ 1d8:	e5843028 	str	r3, [r4, #40]	; 0x28
+ 1dc:	e5940024 	ldr	r0, [r4, #36]	; 0x24
+ 1e0:	e3500000 	cmp	r0, #0
+ 1e4:	0a000002 	beq	1f4 <E131Controller::~E131Controller()+0x4c>
+ 1e8:	ebfffffe 	bl	0 <operator delete(void*)>
+ 1ec:	e3a03000 	mov	r3, #0
+ 1f0:	e5843024 	str	r3, [r4, #36]	; 0x24
+ 1f4:	e5940020 	ldr	r0, [r4, #32]
+ 1f8:	e3500000 	cmp	r0, #0
+ 1fc:	0a000000 	beq	204 <E131Controller::~E131Controller()+0x5c>
+ 200:	ebfffffe 	bl	0 <operator delete(void*)>
+ 204:	e1a00004 	mov	r0, r4
+ 208:	e8bd8010 	pop	{r4, pc}
+
+0000020c <E131Controller::Stop()>:
+ 20c:	e3a03000 	mov	r3, #0
+ 210:	e5c03008 	strb	r3, [r0, #8]
+ 214:	e12fff1e 	bx	lr
+
+00000218 <E131Controller::FillDataPacket()>:
+ 218:	e590c020 	ldr	ip, [r0, #32]
+ 21c:	e3a01000 	mov	r1, #0
+ 220:	e3a03010 	mov	r3, #16
+ 224:	e3002000 	movw	r2, #0
+ 228:	e5cc3001 	strb	r3, [ip, #1]
+ 22c:	e1a0300c 	mov	r3, ip
+ 230:	e5cc1000 	strb	r1, [ip]
+ 234:	e28cc00f 	add	ip, ip, #15
+ 238:	e3402000 	movt	r2, #0
+ 23c:	e54c100d 	strb	r1, [ip, #-13]
+ 240:	e5e31003 	strb	r1, [r3, #3]!
+ 244:	e4d21001 	ldrb	r1, [r2], #1
+ 248:	e5e31001 	strb	r1, [r3, #1]!
+ 24c:	e15c0003 	cmp	ip, r3
+ 250:	1afffffb 	bne	244 <E131Controller::FillDataPacket()+0x2c>
+ 254:	e5901020 	ldr	r1, [r0, #32]
+ 258:	e3a0c000 	mov	ip, #0
+ 25c:	e2803030 	add	r3, r0, #48	; 0x30
+ 260:	e5c1c012 	strb	ip, [r1, #18]
+ 264:	e1a02001 	mov	r2, r1
+ 268:	e5c1c013 	strb	ip, [r1, #19]
+ 26c:	e5c1c014 	strb	ip, [r1, #20]
+ 270:	e280c040 	add	ip, r0, #64	; 0x40
+ 274:	e3a01004 	mov	r1, #4
+ 278:	e5e21015 	strb	r1, [r2, #21]!
+ 27c:	e4d31001 	ldrb	r1, [r3], #1
+ 280:	e153000c 	cmp	r3, ip
+ 284:	e5e21001 	strb	r1, [r2, #1]!
+ 288:	1afffffb 	bne	27c <E131Controller::FillDataPacket()+0x64>
+ 28c:	e5902020 	ldr	r2, [r0, #32]
+ 290:	e3a01000 	mov	r1, #0
+ 294:	e3a0c002 	mov	ip, #2
+ 298:	e5c21028 	strb	r1, [r2, #40]	; 0x28
+ 29c:	e5c21029 	strb	r1, [r2, #41]	; 0x29
+ 2a0:	e5c2102a 	strb	r1, [r2, #42]	; 0x2a
+ 2a4:	e5e2c02b 	strb	ip, [r2, #43]!	; 0x2b
+ 2a8:	e280c080 	add	ip, r0, #128	; 0x80
+ 2ac:	e4d31001 	ldrb	r1, [r3], #1
+ 2b0:	e153000c 	cmp	r3, ip
+ 2b4:	e5e21001 	strb	r1, [r2, #1]!
+ 2b8:	1afffffb 	bne	2ac <E131Controller::FillDataPacket()+0x94>
+ 2bc:	e5903020 	ldr	r3, [r0, #32]
+ 2c0:	e5d02010 	ldrb	r2, [r0, #16]
+ 2c4:	e5c3206c 	strb	r2, [r3, #108]	; 0x6c
+ 2c8:	e3a02000 	mov	r2, #0
+ 2cc:	e5901020 	ldr	r1, [r0, #32]
+ 2d0:	e1d031b4 	ldrh	r3, [r0, #20]
+ 2d4:	e5c12070 	strb	r2, [r1, #112]	; 0x70
+ 2d8:	e6bf3fb3 	rev16	r3, r3
+ 2dc:	e590c020 	ldr	ip, [r0, #32]
+ 2e0:	e1c136bd 	strh	r3, [r1, #109]	; 0x6d
+ 2e4:	e3a03002 	mov	r3, #2
+ 2e8:	e5cc3075 	strb	r3, [ip, #117]	; 0x75
+ 2ec:	e3e0c05e 	mvn	ip, #94	; 0x5e
+ 2f0:	e5903020 	ldr	r3, [r0, #32]
+ 2f4:	e3a01001 	mov	r1, #1
+ 2f8:	e5c3c076 	strb	ip, [r3, #118]	; 0x76
+ 2fc:	e5903020 	ldr	r3, [r0, #32]
+ 300:	e5c32077 	strb	r2, [r3, #119]	; 0x77
+ 304:	e5c32078 	strb	r2, [r3, #120]	; 0x78
+ 308:	e5c32079 	strb	r2, [r3, #121]	; 0x79
+ 30c:	e5c3107a 	strb	r1, [r3, #122]	; 0x7a
+ 310:	e5c3207d 	strb	r2, [r3, #125]	; 0x7d
+ 314:	e12fff1e 	bx	lr
+
+00000318 <E131Controller::FillDiscoveryPacket()>:
+ 318:	e5901024 	ldr	r1, [r0, #36]	; 0x24
+ 31c:	e300c477 	movw	ip, #1143	; 0x477
+ 320:	e3a02000 	mov	r2, #0
+ 324:	e2811020 	add	r1, r1, #32
+ 328:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 32c:	e24cc020 	sub	ip, ip, #32
+ 330:	f5d1f002 	pld	[r1, #2]
+ 334:	e35c0017 	cmp	ip, #23
+ 338:	e5412020 	strb	r2, [r1, #-32]	; 0xffffffe0
+ 33c:	e1a03001 	mov	r3, r1
+ 340:	e541201f 	strb	r2, [r1, #-31]	; 0xffffffe1
+ 344:	e2811020 	add	r1, r1, #32
+ 348:	e541203e 	strb	r2, [r1, #-62]	; 0xffffffc2
+ 34c:	e541203d 	strb	r2, [r1, #-61]	; 0xffffffc3
+ 350:	e541203c 	strb	r2, [r1, #-60]	; 0xffffffc4
+ 354:	e541203b 	strb	r2, [r1, #-59]	; 0xffffffc5
+ 358:	e541203a 	strb	r2, [r1, #-58]	; 0xffffffc6
+ 35c:	e5412039 	strb	r2, [r1, #-57]	; 0xffffffc7
+ 360:	e5412038 	strb	r2, [r1, #-56]	; 0xffffffc8
+ 364:	e5412037 	strb	r2, [r1, #-55]	; 0xffffffc9
+ 368:	e5412036 	strb	r2, [r1, #-54]	; 0xffffffca
+ 36c:	e5412035 	strb	r2, [r1, #-53]	; 0xffffffcb
+ 370:	e5412034 	strb	r2, [r1, #-52]	; 0xffffffcc
+ 374:	e5412033 	strb	r2, [r1, #-51]	; 0xffffffcd
+ 378:	e5412032 	strb	r2, [r1, #-50]	; 0xffffffce
+ 37c:	e5412031 	strb	r2, [r1, #-49]	; 0xffffffcf
+ 380:	e5412030 	strb	r2, [r1, #-48]	; 0xffffffd0
+ 384:	e541202f 	strb	r2, [r1, #-47]	; 0xffffffd1
+ 388:	e541202e 	strb	r2, [r1, #-46]	; 0xffffffd2
+ 38c:	e541202d 	strb	r2, [r1, #-45]	; 0xffffffd3
+ 390:	e541202c 	strb	r2, [r1, #-44]	; 0xffffffd4
+ 394:	e541202b 	strb	r2, [r1, #-43]	; 0xffffffd5
+ 398:	e541202a 	strb	r2, [r1, #-42]	; 0xffffffd6
+ 39c:	e5412029 	strb	r2, [r1, #-41]	; 0xffffffd7
+ 3a0:	e5412028 	strb	r2, [r1, #-40]	; 0xffffffd8
+ 3a4:	e5412027 	strb	r2, [r1, #-39]	; 0xffffffd9
+ 3a8:	e5412026 	strb	r2, [r1, #-38]	; 0xffffffda
+ 3ac:	e5412025 	strb	r2, [r1, #-37]	; 0xffffffdb
+ 3b0:	e5412024 	strb	r2, [r1, #-36]	; 0xffffffdc
+ 3b4:	e5412023 	strb	r2, [r1, #-35]	; 0xffffffdd
+ 3b8:	e5412022 	strb	r2, [r1, #-34]	; 0xffffffde
+ 3bc:	e5412021 	strb	r2, [r1, #-33]	; 0xffffffdf
+ 3c0:	1affffd9 	bne	32c <E131Controller::FillDiscoveryPacket()+0x14>
+ 3c4:	e2832018 	add	r2, r3, #24
+ 3c8:	e3a01000 	mov	r1, #0
+ 3cc:	e4c31001 	strb	r1, [r3], #1
+ 3d0:	e1530002 	cmp	r3, r2
+ 3d4:	1afffffc 	bne	3cc <E131Controller::FillDiscoveryPacket()+0xb4>
+ 3d8:	e590c024 	ldr	ip, [r0, #36]	; 0x24
+ 3dc:	e3002000 	movw	r2, #0
+ 3e0:	e3402000 	movt	r2, #0
+ 3e4:	e3a0e010 	mov	lr, #16
+ 3e8:	e5cc1000 	strb	r1, [ip]
+ 3ec:	e28c3003 	add	r3, ip, #3
+ 3f0:	e5cce001 	strb	lr, [ip, #1]
+ 3f4:	e28cc00f 	add	ip, ip, #15
+ 3f8:	e4d21001 	ldrb	r1, [r2], #1
+ 3fc:	e5e31001 	strb	r1, [r3, #1]!
+ 400:	e15c0003 	cmp	ip, r3
+ 404:	1afffffb 	bne	3f8 <E131Controller::FillDiscoveryPacket()+0xe0>
+ 408:	e5901024 	ldr	r1, [r0, #36]	; 0x24
+ 40c:	e3a0c000 	mov	ip, #0
+ 410:	e2803030 	add	r3, r0, #48	; 0x30
+ 414:	e5c1c012 	strb	ip, [r1, #18]
+ 418:	e1a02001 	mov	r2, r1
+ 41c:	e5c1c013 	strb	ip, [r1, #19]
+ 420:	e5c1c014 	strb	ip, [r1, #20]
+ 424:	e280c040 	add	ip, r0, #64	; 0x40
+ 428:	e3a01008 	mov	r1, #8
+ 42c:	e5e21015 	strb	r1, [r2, #21]!
+ 430:	e4d31001 	ldrb	r1, [r3], #1
+ 434:	e153000c 	cmp	r3, ip
+ 438:	e5e21001 	strb	r1, [r2, #1]!
+ 43c:	1afffffb 	bne	430 <E131Controller::FillDiscoveryPacket()+0x118>
+ 440:	e5902024 	ldr	r2, [r0, #36]	; 0x24
+ 444:	e3a01000 	mov	r1, #0
+ 448:	e3a0c002 	mov	ip, #2
+ 44c:	e5c21028 	strb	r1, [r2, #40]	; 0x28
+ 450:	e5c21029 	strb	r1, [r2, #41]	; 0x29
+ 454:	e5c2102a 	strb	r1, [r2, #42]	; 0x2a
+ 458:	e5e2c02b 	strb	ip, [r2, #43]!	; 0x2b
+ 45c:	e280c080 	add	ip, r0, #128	; 0x80
+ 460:	e4d31001 	ldrb	r1, [r3], #1
+ 464:	e153000c 	cmp	r3, ip
+ 468:	e5e21001 	strb	r1, [r2, #1]!
+ 46c:	1afffffb 	bne	460 <E131Controller::FillDiscoveryPacket()+0x148>
+ 470:	e5903024 	ldr	r3, [r0, #36]	; 0x24
+ 474:	e3a02000 	mov	r2, #0
+ 478:	e3a01001 	mov	r1, #1
+ 47c:	e5c32072 	strb	r2, [r3, #114]	; 0x72
+ 480:	e5c32073 	strb	r2, [r3, #115]	; 0x73
+ 484:	e5c32074 	strb	r2, [r3, #116]	; 0x74
+ 488:	e5c31075 	strb	r1, [r3, #117]	; 0x75
+ 48c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00000490 <E131Controller::FillSynchronizationPacket()>:
+ 490:	e5903028 	ldr	r3, [r0, #40]	; 0x28
+ 494:	e3a01000 	mov	r1, #0
+ 498:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 49c:	e2832031 	add	r2, r3, #49	; 0x31
+ 4a0:	e4c31001 	strb	r1, [r3], #1
+ 4a4:	e1530002 	cmp	r3, r2
+ 4a8:	1afffffc 	bne	4a0 <E131Controller::FillSynchronizationPacket()+0x10>
+ 4ac:	e590c028 	ldr	ip, [r0, #40]	; 0x28
+ 4b0:	e3002000 	movw	r2, #0
+ 4b4:	e3402000 	movt	r2, #0
+ 4b8:	e3a0e010 	mov	lr, #16
+ 4bc:	e5cc1000 	strb	r1, [ip]
+ 4c0:	e28c3003 	add	r3, ip, #3
+ 4c4:	e5cce001 	strb	lr, [ip, #1]
+ 4c8:	e28cc00f 	add	ip, ip, #15
+ 4cc:	e4d21001 	ldrb	r1, [r2], #1
+ 4d0:	e5e31001 	strb	r1, [r3, #1]!
+ 4d4:	e153000c 	cmp	r3, ip
+ 4d8:	1afffffb 	bne	4cc <E131Controller::FillSynchronizationPacket()+0x3c>
+ 4dc:	e5901028 	ldr	r1, [r0, #40]	; 0x28
+ 4e0:	e3a0c000 	mov	ip, #0
+ 4e4:	e2803030 	add	r3, r0, #48	; 0x30
+ 4e8:	e5c1c012 	strb	ip, [r1, #18]
+ 4ec:	e1a02001 	mov	r2, r1
+ 4f0:	e5c1c013 	strb	ip, [r1, #19]
+ 4f4:	e5c1c014 	strb	ip, [r1, #20]
+ 4f8:	e3a0c070 	mov	ip, #112	; 0x70
+ 4fc:	e5c1c010 	strb	ip, [r1, #16]
+ 500:	e3a0c021 	mov	ip, #33	; 0x21
+ 504:	e5c1c011 	strb	ip, [r1, #17]
+ 508:	e280c040 	add	ip, r0, #64	; 0x40
+ 50c:	e3a01008 	mov	r1, #8
+ 510:	e5e21015 	strb	r1, [r2, #21]!
+ 514:	e4d31001 	ldrb	r1, [r3], #1
+ 518:	e153000c 	cmp	r3, ip
+ 51c:	e5e21001 	strb	r1, [r2, #1]!
+ 520:	1afffffb 	bne	514 <E131Controller::FillSynchronizationPacket()+0x84>
+ 524:	e5903028 	ldr	r3, [r0, #40]	; 0x28
+ 528:	e3a02070 	mov	r2, #112	; 0x70
+ 52c:	e3a01000 	mov	r1, #0
+ 530:	e5c32026 	strb	r2, [r3, #38]	; 0x26
+ 534:	e3a0200b 	mov	r2, #11
+ 538:	e5c32027 	strb	r2, [r3, #39]	; 0x27
+ 53c:	e1d021b4 	ldrh	r2, [r0, #20]
+ 540:	e3a00001 	mov	r0, #1
+ 544:	e5c31028 	strb	r1, [r3, #40]	; 0x28
+ 548:	e6bf2fb2 	rev16	r2, r2
+ 54c:	e5c31029 	strb	r1, [r3, #41]	; 0x29
+ 550:	e5c3102a 	strb	r1, [r3, #42]	; 0x2a
+ 554:	e5c3002b 	strb	r0, [r3, #43]	; 0x2b
+ 558:	e1c322bd 	strh	r2, [r3, #45]	; 0x2d
+ 55c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00000560 <E131Controller::Start()>:
+ 560:	e92d4010 	push	{r4, lr}
+ 564:	e1a04000 	mov	r4, r0
+ 568:	ebfffffe 	bl	218 <E131Controller::FillDataPacket()>
+ 56c:	ebfffffe 	bl	318 <E131Controller::FillDiscoveryPacket()>
+ 570:	ebfffffe 	bl	490 <E131Controller::FillSynchronizationPacket()>
+ 574:	e3a03001 	mov	r3, #1
+ 578:	e5c43008 	strb	r3, [r4, #8]
+ 57c:	e8bd8010 	pop	{r4, pc}
+
+00000580 <E131Controller::HandleSync()>:
+ 580:	e1d031b4 	ldrh	r3, [r0, #20]
+ 584:	e3530000 	cmp	r3, #0
+ 588:	012fff1e 	bxeq	lr
+ 58c:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 590:	e1a01000 	mov	r1, r0
+ 594:	e5d0301c 	ldrb	r3, [r0, #28]
+ 598:	e3002000 	movw	r2, #0
+ 59c:	e5900028 	ldr	r0, [r0, #40]	; 0x28
+ 5a0:	e24dd00c 	sub	sp, sp, #12
+ 5a4:	e3402000 	movt	r2, #0
+ 5a8:	e283c001 	add	ip, r3, #1
+ 5ac:	e5c1c01c 	strb	ip, [r1, #28]
+ 5b0:	e3a0ed57 	mov	lr, #5568	; 0x15c0
+ 5b4:	e5c0302c 	strb	r3, [r0, #44]	; 0x2c
+ 5b8:	e3a03031 	mov	r3, #49	; 0x31
+ 5bc:	e591c018 	ldr	ip, [r1, #24]
+ 5c0:	e5920000 	ldr	r0, [r2]
+ 5c4:	e88d5000 	stm	sp, {ip, lr}
+ 5c8:	e5912028 	ldr	r2, [r1, #40]	; 0x28
+ 5cc:	e5911000 	ldr	r1, [r1]
+ 5d0:	ebfffffe 	bl	0 <Network::SendTo(int, void const*, unsigned short, unsigned int, unsigned short)>
+ 5d4:	e28dd00c 	add	sp, sp, #12
+ 5d8:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+000005dc <E131Controller::GetSoftwareVersion()>:
+ 5dc:	e3000000 	movw	r0, #0
+ 5e0:	e3400000 	movt	r0, #0
+ 5e4:	e12fff1e 	bx	lr
+
+000005e8 <E131Controller::SetSourceName(char const*)>:
+ 5e8:	e2803040 	add	r3, r0, #64	; 0x40
+ 5ec:	e2412001 	sub	r2, r1, #1
+ 5f0:	e281c03e 	add	ip, r1, #62	; 0x3e
+ 5f4:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 5f8:	e04ce002 	sub	lr, ip, r2
+ 5fc:	e5f21001 	ldrb	r1, [r2, #1]!
+ 600:	e3510000 	cmp	r1, #0
+ 604:	0a000005 	beq	620 <E131Controller::SetSourceName(char const*)+0x38>
+ 608:	e152000c 	cmp	r2, ip
+ 60c:	e4c31001 	strb	r1, [r3], #1
+ 610:	1afffff8 	bne	5f8 <E131Controller::SetSourceName(char const*)+0x10>
+ 614:	e3a03000 	mov	r3, #0
+ 618:	e5c0307f 	strb	r3, [r0, #127]	; 0x7f
+ 61c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+ 620:	e35e0000 	cmp	lr, #0
+ 624:	0afffffa 	beq	614 <E131Controller::SetSourceName(char const*)+0x2c>
+ 628:	e083e00e 	add	lr, r3, lr
+ 62c:	e4c31001 	strb	r1, [r3], #1
+ 630:	e15e0003 	cmp	lr, r3
+ 634:	1afffffc 	bne	62c <E131Controller::SetSourceName(char const*)+0x44>
+ 638:	eafffff5 	b	614 <E131Controller::SetSourceName(char const*)+0x2c>
+
+0000063c <E131Controller::SetPriority(unsigned char)>:
+ 63c:	e5c01010 	strb	r1, [r0, #16]
+ 640:	e12fff1e 	bx	lr
+
+00000644 <E131Controller::SendDiscoveryPacket()>:
+ 644:	e5901004 	ldr	r1, [r0, #4]
+ 648:	e302270f 	movw	r2, #9999	; 0x270f
+ 64c:	e590300c 	ldr	r3, [r0, #12]
+ 650:	e0413003 	sub	r3, r1, r3
+ 654:	e1530002 	cmp	r3, r2
+ 658:	912fff1e 	bxls	lr
+ 65c:	e1d030ba 	ldrh	r3, [r0, #10]
+ 660:	e5902024 	ldr	r2, [r0, #36]	; 0x24
+ 664:	e2833034 	add	r3, r3, #52	; 0x34
+ 668:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 66c:	e24dd00c 	sub	sp, sp, #12
+ 670:	e1a03083 	lsl	r3, r3, #1
+ 674:	e580100c 	str	r1, [r0, #12]
+ 678:	e3833a07 	orr	r3, r3, #28672	; 0x7000
+ 67c:	e6bf3fb3 	rev16	r3, r3
+ 680:	e1c231b0 	strh	r3, [r2, #16]
+ 684:	e1d030ba 	ldrh	r3, [r0, #10]
+ 688:	e2833029 	add	r3, r3, #41	; 0x29
+ 68c:	e1a03083 	lsl	r3, r3, #1
+ 690:	e3833a07 	orr	r3, r3, #28672	; 0x7000
+ 694:	e6bf3fb3 	rev16	r3, r3
+ 698:	e1c232b6 	strh	r3, [r2, #38]	; 0x26
+ 69c:	e1d030ba 	ldrh	r3, [r0, #10]
+ 6a0:	e2833004 	add	r3, r3, #4
+ 6a4:	e1a03083 	lsl	r3, r3, #1
+ 6a8:	e3833a07 	orr	r3, r3, #28672	; 0x7000
+ 6ac:	e6bf3fb3 	rev16	r3, r3
+ 6b0:	e1c237b0 	strh	r3, [r2, #112]	; 0x70
+ 6b4:	e1d030ba 	ldrh	r3, [r0, #10]
+ 6b8:	e3530000 	cmp	r3, #0
+ 6bc:	0a000019 	beq	728 <E131Controller::SendDiscoveryPacket()+0xe4>
+ 6c0:	e300e000 	movw	lr, #0
+ 6c4:	e3a03000 	mov	r3, #0
+ 6c8:	e340e000 	movt	lr, #0
+ 6cc:	e1a01183 	lsl	r1, r3, #3
+ 6d0:	e082c083 	add	ip, r2, r3, lsl #1
+ 6d4:	e2833001 	add	r3, r3, #1
+ 6d8:	e19e10b1 	ldrh	r1, [lr, r1]
+ 6dc:	e6bf1fb1 	rev16	r1, r1
+ 6e0:	e1cc17b8 	strh	r1, [ip, #120]	; 0x78
+ 6e4:	e1d010ba 	ldrh	r1, [r0, #10]
+ 6e8:	e1510003 	cmp	r1, r3
+ 6ec:	8afffff6 	bhi	6cc <E131Controller::SendDiscoveryPacket()+0x88>
+ 6f0:	e281303c 	add	r3, r1, #60	; 0x3c
+ 6f4:	e1a03083 	lsl	r3, r3, #1
+ 6f8:	e6ff3073 	uxth	r3, r3
+ 6fc:	e590102c 	ldr	r1, [r0, #44]	; 0x2c
+ 700:	e300c000 	movw	ip, #0
+ 704:	e340c000 	movt	ip, #0
+ 708:	e58d1000 	str	r1, [sp]
+ 70c:	e5901000 	ldr	r1, [r0]
+ 710:	e59c0000 	ldr	r0, [ip]
+ 714:	e3a0cd57 	mov	ip, #5568	; 0x15c0
+ 718:	e58dc004 	str	ip, [sp, #4]
+ 71c:	ebfffffe 	bl	0 <Network::SendTo(int, void const*, unsigned short, unsigned int, unsigned short)>
+ 720:	e28dd00c 	add	sp, sp, #12
+ 724:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+ 728:	e3a03078 	mov	r3, #120	; 0x78
+ 72c:	eafffff2 	b	6fc <E131Controller::SendDiscoveryPacket()+0xb8>
+
+00000730 <E131Controller::Run()>:
+ 730:	e5d03008 	ldrb	r3, [r0, #8]
+ 734:	e3530000 	cmp	r3, #0
+ 738:	012fff1e 	bxeq	lr
+ 73c:	e92d4010 	push	{r4, lr}
+ 740:	e1a04000 	mov	r4, r0
+ 744:	ebfffffe 	bl	0 <millis>
+ 748:	e5840004 	str	r0, [r4, #4]
+ 74c:	e1a00004 	mov	r0, r4
+ 750:	e8bd4010 	pop	{r4, lr}
+ 754:	eafffffe 	b	644 <E131Controller::SendDiscoveryPacket()>
+
+00000758 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)>:
+ 758:	e92d43f0 	push	{r4, r5, r6, r7, r8, r9, lr}
+ 75c:	e1a07000 	mov	r7, r0
+ 760:	e1d000ba 	ldrh	r0, [r0, #10]
+ 764:	e3009000 	movw	r9, #0
+ 768:	e3409000 	movt	r9, #0
+ 76c:	e24dd00c 	sub	sp, sp, #12
+ 770:	e1a06001 	mov	r6, r1
+ 774:	e1a08002 	mov	r8, r2
+ 778:	e1a0c000 	mov	ip, r0
+ 77c:	e3a04000 	mov	r4, #0
+ 780:	e04c3004 	sub	r3, ip, r4
+ 784:	e08430c3 	add	r3, r4, r3, asr #1
+ 788:	e1a05183 	lsl	r5, r3, #3
+ 78c:	e0891005 	add	r1, r9, r5
+ 790:	e19920b5 	ldrh	r2, [r9, r5]
+ 794:	e1520006 	cmp	r2, r6
+ 798:	32834001 	addcc	r4, r3, #1
+ 79c:	3a000001 	bcc	7a8 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)+0x50>
+ 7a0:	9a00004e 	bls	8e0 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)+0x188>
+ 7a4:	e243c001 	sub	ip, r3, #1
+ 7a8:	e154000c 	cmp	r4, ip
+ 7ac:	dafffff3 	ble	780 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)+0x28>
+ 7b0:	e37c0001 	cmn	ip, #1
+ 7b4:	0a000036 	beq	894 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)+0x13c>
+ 7b8:	e150000c 	cmp	r0, ip
+ 7bc:	0a000034 	beq	894 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)+0x13c>
+ 7c0:	e2403001 	sub	r3, r0, #1
+ 7c4:	e1540003 	cmp	r4, r3
+ 7c8:	ca000020 	bgt	850 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)+0xf8>
+ 7cc:	e2845002 	add	r5, r4, #2
+ 7d0:	e2402002 	sub	r2, r0, #2
+ 7d4:	e1550002 	cmp	r5, r2
+ 7d8:	aa000015 	bge	834 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)+0xdc>
+ 7dc:	e2802202 	add	r2, r0, #536870912	; 0x20000000
+ 7e0:	e3e0c007 	mvn	ip, #7
+ 7e4:	e2422012 	sub	r2, r2, #18
+ 7e8:	e00c009c 	mul	ip, ip, r0
+ 7ec:	e0892182 	add	r2, r9, r2, lsl #3
+ 7f0:	e1a00180 	lsl	r0, r0, #3
+ 7f4:	e082100c 	add	r1, r2, ip
+ 7f8:	e243e005 	sub	lr, r3, #5
+ 7fc:	e0811000 	add	r1, r1, r0
+ 800:	e2433004 	sub	r3, r3, #4
+ 804:	f5d2f000 	pld	[r2]
+ 808:	e2422020 	sub	r2, r2, #32
+ 80c:	edd10b22 	vldr	d16, [r1, #136]	; 0x88
+ 810:	e155000e 	cmp	r5, lr
+ 814:	edc20b2c 	vstr	d16, [r2, #176]	; 0xb0
+ 818:	edd10b20 	vldr	d16, [r1, #128]	; 0x80
+ 81c:	edc10b22 	vstr	d16, [r1, #136]	; 0x88
+ 820:	edd10b1e 	vldr	d16, [r1, #120]	; 0x78
+ 824:	edc20b28 	vstr	d16, [r2, #160]	; 0xa0
+ 828:	edd10b1c 	vldr	d16, [r1, #112]	; 0x70
+ 82c:	edc20b26 	vstr	d16, [r2, #152]	; 0x98
+ 830:	baffffef 	blt	7f4 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)+0x9c>
+ 834:	e2832001 	add	r2, r3, #1
+ 838:	e0892182 	add	r2, r9, r2, lsl #3
+ 83c:	e2433001 	sub	r3, r3, #1
+ 840:	e16200d8 	ldrd	r0, [r2, #-8]!
+ 844:	e1540003 	cmp	r4, r3
+ 848:	e1c200f8 	strd	r0, [r2, #8]
+ 84c:	dafffffa 	ble	83c <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)+0xe4>
+ 850:	e3000000 	movw	r0, #0
+ 854:	e28d1004 	add	r1, sp, #4
+ 858:	e3400000 	movt	r0, #0
+ 85c:	e1a04184 	lsl	r4, r4, #3
+ 860:	ebfffffe 	bl	0 <inet_aton>
+ 864:	e59d3004 	ldr	r3, [sp, #4]
+ 868:	e3a02000 	mov	r2, #0
+ 86c:	e18960b4 	strh	r6, [r9, r4]
+ 870:	e1833c06 	orr	r3, r3, r6, lsl #24
+ 874:	e1a06406 	lsl	r6, r6, #8
+ 878:	e0894004 	add	r4, r9, r4
+ 87c:	e20668ff 	and	r6, r6, #16711680	; 0xff0000
+ 880:	e1833006 	orr	r3, r3, r6
+ 884:	e5843004 	str	r3, [r4, #4]
+ 888:	e5c42002 	strb	r2, [r4, #2]
+ 88c:	e5883000 	str	r3, [r8]
+ 890:	ea00000c 	b	8c8 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)+0x170>
+ 894:	e0894005 	add	r4, r9, r5
+ 898:	e3000000 	movw	r0, #0
+ 89c:	e3400000 	movt	r0, #0
+ 8a0:	e28d1004 	add	r1, sp, #4
+ 8a4:	ebfffffe 	bl	0 <inet_aton>
+ 8a8:	e59d3004 	ldr	r3, [sp, #4]
+ 8ac:	e18960b5 	strh	r6, [r9, r5]
+ 8b0:	e1833c06 	orr	r3, r3, r6, lsl #24
+ 8b4:	e1a06406 	lsl	r6, r6, #8
+ 8b8:	e20668ff 	and	r6, r6, #16711680	; 0xff0000
+ 8bc:	e1836006 	orr	r6, r3, r6
+ 8c0:	e5846004 	str	r6, [r4, #4]
+ 8c4:	e5886000 	str	r6, [r8]
+ 8c8:	e1d730ba 	ldrh	r3, [r7, #10]
+ 8cc:	e3a00000 	mov	r0, #0
+ 8d0:	e2833001 	add	r3, r3, #1
+ 8d4:	e1c730ba 	strh	r3, [r7, #10]
+ 8d8:	e28dd00c 	add	sp, sp, #12
+ 8dc:	e8bd83f0 	pop	{r4, r5, r6, r7, r8, r9, pc}
+ 8e0:	e5913004 	ldr	r3, [r1, #4]
+ 8e4:	e5883000 	str	r3, [r8]
+ 8e8:	e5d10002 	ldrb	r0, [r1, #2]
+ 8ec:	e2800001 	add	r0, r0, #1
+ 8f0:	e6ef0070 	uxtb	r0, r0
+ 8f4:	e5c10002 	strb	r0, [r1, #2]
+ 8f8:	e28dd00c 	add	sp, sp, #12
+ 8fc:	e8bd83f0 	pop	{r4, r5, r6, r7, r8, r9, pc}
+
+00000900 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)>:
+ 900:	e92d43f0 	push	{r4, r5, r6, r7, r8, r9, lr}
+ 904:	e6ff7073 	uxth	r7, r3
+ 908:	e5909020 	ldr	r9, [r0, #32]
+ 90c:	e1a05003 	mov	r5, r3
+ 910:	e287306e 	add	r3, r7, #110	; 0x6e
+ 914:	e24dd014 	sub	sp, sp, #20
+ 918:	e3833a07 	orr	r3, r3, #28672	; 0x7000
+ 91c:	e1a06000 	mov	r6, r0
+ 920:	e6bf3fb3 	rev16	r3, r3
+ 924:	e1a04002 	mov	r4, r2
+ 928:	e1c931b0 	strh	r3, [r9, #16]
+ 92c:	e2873058 	add	r3, r7, #88	; 0x58
+ 930:	e3833a07 	orr	r3, r3, #28672	; 0x7000
+ 934:	e28d200c 	add	r2, sp, #12
+ 938:	e6bf3fb3 	rev16	r3, r3
+ 93c:	e1a08001 	mov	r8, r1
+ 940:	e1c932b6 	strh	r3, [r9, #38]	; 0x26
+ 944:	e6bf8fb8 	rev16	r8, r8
+ 948:	ebfffffe 	bl	758 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)>
+ 94c:	e5c9006f 	strb	r0, [r9, #111]	; 0x6f
+ 950:	e287300b 	add	r3, r7, #11
+ 954:	e5960080 	ldr	r0, [r6, #128]	; 0x80
+ 958:	e3833a07 	orr	r3, r3, #28672	; 0x7000
+ 95c:	e5962020 	ldr	r2, [r6, #32]
+ 960:	e6bf3fb3 	rev16	r3, r3
+ 964:	e35000ff 	cmp	r0, #255	; 0xff
+ 968:	e1c287b1 	strh	r8, [r2, #113]	; 0x71
+ 96c:	e1c237b3 	strh	r3, [r2, #115]	; 0x73
+ 970:	1a000018 	bne	9d8 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0xd8>
+ 974:	e3550000 	cmp	r5, #0
+ 978:	0a000006 	beq	998 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x98>
+ 97c:	e0841005 	add	r1, r4, r5
+ 980:	e282207d 	add	r2, r2, #125	; 0x7d
+ 984:	e4d43001 	ldrb	r3, [r4], #1
+ 988:	e1540001 	cmp	r4, r1
+ 98c:	e5e23001 	strb	r3, [r2, #1]!
+ 990:	1afffffb 	bne	984 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x84>
+ 994:	e5962020 	ldr	r2, [r6, #32]
+ 998:	e5961000 	ldr	r1, [r6]
+ 99c:	e287c001 	add	ip, r7, #1
+ 9a0:	e6bfcfbc 	rev16	ip, ip
+ 9a4:	e3000000 	movw	r0, #0
+ 9a8:	e3400000 	movt	r0, #0
+ 9ac:	e287307e 	add	r3, r7, #126	; 0x7e
+ 9b0:	e1c2c7bb 	strh	ip, [r2, #123]	; 0x7b
+ 9b4:	e3a0cd57 	mov	ip, #5568	; 0x15c0
+ 9b8:	e5900000 	ldr	r0, [r0]
+ 9bc:	e6ff3073 	uxth	r3, r3
+ 9c0:	e58dc004 	str	ip, [sp, #4]
+ 9c4:	e59dc00c 	ldr	ip, [sp, #12]
+ 9c8:	e58dc000 	str	ip, [sp]
+ 9cc:	ebfffffe 	bl	0 <Network::SendTo(int, void const*, unsigned short, unsigned int, unsigned short)>
+ 9d0:	e28dd014 	add	sp, sp, #20
+ 9d4:	e8bd83f0 	pop	{r4, r5, r6, r7, r8, r9, pc}
+ 9d8:	e3500000 	cmp	r0, #0
+ 9dc:	1a000034 	bne	ab4 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x1b4>
+ 9e0:	e3550000 	cmp	r5, #0
+ 9e4:	e2451001 	sub	r1, r5, #1
+ 9e8:	e282c07e 	add	ip, r2, #126	; 0x7e
+ 9ec:	0affffe9 	beq	998 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x98>
+ 9f0:	e351001f 	cmp	r1, #31
+ 9f4:	9a000027 	bls	a98 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x198>
+ 9f8:	e282209e 	add	r2, r2, #158	; 0x9e
+ 9fc:	e1a03000 	mov	r3, r0
+ a00:	f5d2f008 	pld	[r2, #8]
+ a04:	e2411020 	sub	r1, r1, #32
+ a08:	e5423020 	strb	r3, [r2, #-32]	; 0xffffffe0
+ a0c:	e351001f 	cmp	r1, #31
+ a10:	e542301f 	strb	r3, [r2, #-31]	; 0xffffffe1
+ a14:	e1a0c002 	mov	ip, r2
+ a18:	e542301e 	strb	r3, [r2, #-30]	; 0xffffffe2
+ a1c:	e2822020 	add	r2, r2, #32
+ a20:	e542303d 	strb	r3, [r2, #-61]	; 0xffffffc3
+ a24:	e542303c 	strb	r3, [r2, #-60]	; 0xffffffc4
+ a28:	e542303b 	strb	r3, [r2, #-59]	; 0xffffffc5
+ a2c:	e542303a 	strb	r3, [r2, #-58]	; 0xffffffc6
+ a30:	e5423039 	strb	r3, [r2, #-57]	; 0xffffffc7
+ a34:	e5423038 	strb	r3, [r2, #-56]	; 0xffffffc8
+ a38:	e5423037 	strb	r3, [r2, #-55]	; 0xffffffc9
+ a3c:	e5423036 	strb	r3, [r2, #-54]	; 0xffffffca
+ a40:	e5423035 	strb	r3, [r2, #-53]	; 0xffffffcb
+ a44:	e5423034 	strb	r3, [r2, #-52]	; 0xffffffcc
+ a48:	e5423033 	strb	r3, [r2, #-51]	; 0xffffffcd
+ a4c:	e5423032 	strb	r3, [r2, #-50]	; 0xffffffce
+ a50:	e5423031 	strb	r3, [r2, #-49]	; 0xffffffcf
+ a54:	e5423030 	strb	r3, [r2, #-48]	; 0xffffffd0
+ a58:	e542302f 	strb	r3, [r2, #-47]	; 0xffffffd1
+ a5c:	e542302e 	strb	r3, [r2, #-46]	; 0xffffffd2
+ a60:	e542302d 	strb	r3, [r2, #-45]	; 0xffffffd3
+ a64:	e542302c 	strb	r3, [r2, #-44]	; 0xffffffd4
+ a68:	e542302b 	strb	r3, [r2, #-43]	; 0xffffffd5
+ a6c:	e542302a 	strb	r3, [r2, #-42]	; 0xffffffd6
+ a70:	e5423029 	strb	r3, [r2, #-41]	; 0xffffffd7
+ a74:	e5423028 	strb	r3, [r2, #-40]	; 0xffffffd8
+ a78:	e5423027 	strb	r3, [r2, #-39]	; 0xffffffd9
+ a7c:	e5423026 	strb	r3, [r2, #-38]	; 0xffffffda
+ a80:	e5423025 	strb	r3, [r2, #-37]	; 0xffffffdb
+ a84:	e5423024 	strb	r3, [r2, #-36]	; 0xffffffdc
+ a88:	e5423023 	strb	r3, [r2, #-35]	; 0xffffffdd
+ a8c:	e5423022 	strb	r3, [r2, #-34]	; 0xffffffde
+ a90:	e5423021 	strb	r3, [r2, #-33]	; 0xffffffdf
+ a94:	8affffd9 	bhi	a00 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x100>
+ a98:	e2813001 	add	r3, r1, #1
+ a9c:	e3a02000 	mov	r2, #0
+ aa0:	e08c3003 	add	r3, ip, r3
+ aa4:	e4cc2001 	strb	r2, [ip], #1
+ aa8:	e15c0003 	cmp	ip, r3
+ aac:	1afffffc 	bne	aa4 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x1a4>
+ ab0:	eaffffb7 	b	994 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x94>
+ ab4:	e3550000 	cmp	r5, #0
+ ab8:	0affffb6 	beq	998 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x98>
+ abc:	e244c001 	sub	ip, r4, #1
+ ac0:	e308e081 	movw	lr, #32897	; 0x8081
+ ac4:	e08c1005 	add	r1, ip, r5
+ ac8:	e348e080 	movt	lr, #32896	; 0x8080
+ acc:	ea000001 	b	ad8 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x1d8>
+ ad0:	e5960080 	ldr	r0, [r6, #128]	; 0x80
+ ad4:	e5962020 	ldr	r2, [r6, #32]
+ ad8:	e5dc3001 	ldrb	r3, [ip, #1]
+ adc:	e0030390 	mul	r3, r0, r3
+ ae0:	e083039e 	umull	r0, r3, lr, r3
+ ae4:	e28c0002 	add	r0, ip, #2
+ ae8:	e28cc001 	add	ip, ip, #1
+ aec:	e0400004 	sub	r0, r0, r4
+ af0:	e0822000 	add	r2, r2, r0
+ af4:	e151000c 	cmp	r1, ip
+ af8:	e1a033a3 	lsr	r3, r3, #7
+ afc:	e5c2307d 	strb	r3, [r2, #125]	; 0x7d
+ b00:	1afffff2 	bne	ad0 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x1d0>
+ b04:	eaffffa2 	b	994 <E131Controller::HandleDmxOut(unsigned short, unsigned char const*, unsigned int)+0x94>
+
+00000b08 <E131Controller::HandleBlackout()>:
+ b08:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+ b0c:	e1a04000 	mov	r4, r0
+ b10:	e3a02072 	mov	r2, #114	; 0x72
+ b14:	e3a0006e 	mov	r0, #110	; 0x6e
+ b18:	e5943020 	ldr	r3, [r4, #32]
+ b1c:	e3a01058 	mov	r1, #88	; 0x58
+ b20:	e24dd010 	sub	sp, sp, #16
+ b24:	e5c32010 	strb	r2, [r3, #16]
+ b28:	e283309e 	add	r3, r3, #158	; 0x9e
+ b2c:	e5432078 	strb	r2, [r3, #-120]	; 0xffffff88
+ b30:	e543202b 	strb	r2, [r3, #-43]	; 0xffffffd5
+ b34:	e3a0200b 	mov	r2, #11
+ b38:	e543202a 	strb	r2, [r3, #-42]	; 0xffffffd6
+ b3c:	e3a02002 	mov	r2, #2
+ b40:	e5432023 	strb	r2, [r3, #-35]	; 0xffffffdd
+ b44:	e3a02001 	mov	r2, #1
+ b48:	e543008d 	strb	r0, [r3, #-141]	; 0xffffff73
+ b4c:	e30001ff 	movw	r0, #511	; 0x1ff
+ b50:	e5431077 	strb	r1, [r3, #-119]	; 0xffffff89
+ b54:	e3a01000 	mov	r1, #0
+ b58:	e5432022 	strb	r2, [r3, #-34]	; 0xffffffde
+ b5c:	f5d3f002 	pld	[r3, #2]
+ b60:	e2400020 	sub	r0, r0, #32
+ b64:	e5431020 	strb	r1, [r3, #-32]	; 0xffffffe0
+ b68:	e350001f 	cmp	r0, #31
+ b6c:	e543101f 	strb	r1, [r3, #-31]	; 0xffffffe1
+ b70:	e1a02003 	mov	r2, r3
+ b74:	e543101e 	strb	r1, [r3, #-30]	; 0xffffffe2
+ b78:	e2833020 	add	r3, r3, #32
+ b7c:	e543103d 	strb	r1, [r3, #-61]	; 0xffffffc3
+ b80:	e543103c 	strb	r1, [r3, #-60]	; 0xffffffc4
+ b84:	e543103b 	strb	r1, [r3, #-59]	; 0xffffffc5
+ b88:	e543103a 	strb	r1, [r3, #-58]	; 0xffffffc6
+ b8c:	e5431039 	strb	r1, [r3, #-57]	; 0xffffffc7
+ b90:	e5431038 	strb	r1, [r3, #-56]	; 0xffffffc8
+ b94:	e5431037 	strb	r1, [r3, #-55]	; 0xffffffc9
+ b98:	e5431036 	strb	r1, [r3, #-54]	; 0xffffffca
+ b9c:	e5431035 	strb	r1, [r3, #-53]	; 0xffffffcb
+ ba0:	e5431034 	strb	r1, [r3, #-52]	; 0xffffffcc
+ ba4:	e5431033 	strb	r1, [r3, #-51]	; 0xffffffcd
+ ba8:	e5431032 	strb	r1, [r3, #-50]	; 0xffffffce
+ bac:	e5431031 	strb	r1, [r3, #-49]	; 0xffffffcf
+ bb0:	e5431030 	strb	r1, [r3, #-48]	; 0xffffffd0
+ bb4:	e543102f 	strb	r1, [r3, #-47]	; 0xffffffd1
+ bb8:	e543102e 	strb	r1, [r3, #-46]	; 0xffffffd2
+ bbc:	e543102d 	strb	r1, [r3, #-45]	; 0xffffffd3
+ bc0:	e543102c 	strb	r1, [r3, #-44]	; 0xffffffd4
+ bc4:	e543102b 	strb	r1, [r3, #-43]	; 0xffffffd5
+ bc8:	e543102a 	strb	r1, [r3, #-42]	; 0xffffffd6
+ bcc:	e5431029 	strb	r1, [r3, #-41]	; 0xffffffd7
+ bd0:	e5431028 	strb	r1, [r3, #-40]	; 0xffffffd8
+ bd4:	e5431027 	strb	r1, [r3, #-39]	; 0xffffffd9
+ bd8:	e5431026 	strb	r1, [r3, #-38]	; 0xffffffda
+ bdc:	e5431025 	strb	r1, [r3, #-37]	; 0xffffffdb
+ be0:	e5431024 	strb	r1, [r3, #-36]	; 0xffffffdc
+ be4:	e5431023 	strb	r1, [r3, #-35]	; 0xffffffdd
+ be8:	e5431022 	strb	r1, [r3, #-34]	; 0xffffffde
+ bec:	e5431021 	strb	r1, [r3, #-33]	; 0xffffffdf
+ bf0:	1affffd9 	bne	b5c <E131Controller::HandleBlackout()+0x54>
+ bf4:	e3a01000 	mov	r1, #0
+ bf8:	e4c21001 	strb	r1, [r2], #1
+ bfc:	e1520003 	cmp	r2, r3
+ c00:	1afffffc 	bne	bf8 <E131Controller::HandleBlackout()+0xf0>
+ c04:	e1d430ba 	ldrh	r3, [r4, #10]
+ c08:	e3530000 	cmp	r3, #0
+ c0c:	0a00001b 	beq	c80 <E131Controller::HandleBlackout()+0x178>
+ c10:	e59f60c0 	ldr	r6, [pc, #192]	; cd8 <E131Controller::HandleBlackout()+0x1d0>
+ c14:	e3008000 	movw	r8, #0
+ c18:	e3408000 	movt	r8, #0
+ c1c:	e3a07000 	mov	r7, #0
+ c20:	e3a09d57 	mov	r9, #5568	; 0x15c0
+ c24:	e15652b8 	ldrh	r5, [r6, #-40]	; 0xffffffd8
+ c28:	e28d200c 	add	r2, sp, #12
+ c2c:	e594a020 	ldr	sl, [r4, #32]
+ c30:	e1a00004 	mov	r0, r4
+ c34:	f5d6f000 	pld	[r6]
+ c38:	e1a01005 	mov	r1, r5
+ c3c:	e6bf5fb5 	rev16	r5, r5
+ c40:	ebfffffe 	bl	758 <E131Controller::GetSequenceNumber(unsigned short, unsigned int&)>
+ c44:	e5ca006f 	strb	r0, [sl, #111]	; 0x6f
+ c48:	e300327e 	movw	r3, #638	; 0x27e
+ c4c:	e5942020 	ldr	r2, [r4, #32]
+ c50:	e2877001 	add	r7, r7, #1
+ c54:	e59dc00c 	ldr	ip, [sp, #12]
+ c58:	e2866008 	add	r6, r6, #8
+ c5c:	e5941000 	ldr	r1, [r4]
+ c60:	e5980000 	ldr	r0, [r8]
+ c64:	e1c257b1 	strh	r5, [r2, #113]	; 0x71
+ c68:	e58d9004 	str	r9, [sp, #4]
+ c6c:	e58dc000 	str	ip, [sp]
+ c70:	ebfffffe 	bl	0 <Network::SendTo(int, void const*, unsigned short, unsigned int, unsigned short)>
+ c74:	e1d430ba 	ldrh	r3, [r4, #10]
+ c78:	e1530007 	cmp	r3, r7
+ c7c:	8affffe8 	bhi	c24 <E131Controller::HandleBlackout()+0x11c>
+ c80:	e1d431b4 	ldrh	r3, [r4, #20]
+ c84:	e3530000 	cmp	r3, #0
+ c88:	1a000001 	bne	c94 <E131Controller::HandleBlackout()+0x18c>
+ c8c:	e28dd010 	add	sp, sp, #16
+ c90:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+ c94:	e5d4301c 	ldrb	r3, [r4, #28]
+ c98:	e3002000 	movw	r2, #0
+ c9c:	e5941028 	ldr	r1, [r4, #40]	; 0x28
+ ca0:	e3a0cd57 	mov	ip, #5568	; 0x15c0
+ ca4:	e3402000 	movt	r2, #0
+ ca8:	e2830001 	add	r0, r3, #1
+ cac:	e5c4001c 	strb	r0, [r4, #28]
+ cb0:	e5c1302c 	strb	r3, [r1, #44]	; 0x2c
+ cb4:	e3a03031 	mov	r3, #49	; 0x31
+ cb8:	e5941018 	ldr	r1, [r4, #24]
+ cbc:	e5920000 	ldr	r0, [r2]
+ cc0:	e88d1002 	stm	sp, {r1, ip}
+ cc4:	e5942028 	ldr	r2, [r4, #40]	; 0x28
+ cc8:	e5941000 	ldr	r1, [r4]
+ ccc:	ebfffffe 	bl	0 <Network::SendTo(int, void const*, unsigned short, unsigned int, unsigned short)>
+ cd0:	e28dd010 	add	sp, sp, #16
+ cd4:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+ cd8:	00000030 	andeq	r0, r0, r0, lsr r0
+
+00000cdc <E131Controller::Print()>:
+ cdc:	e92d4010 	push	{r4, lr}
+ ce0:	e1a04000 	mov	r4, r0
+ ce4:	e3000000 	movw	r0, #0
+ ce8:	e3400000 	movt	r0, #0
+ cec:	ebfffffe 	bl	0 <printf>
+ cf0:	e3000000 	movw	r0, #0
+ cf4:	e3a01c02 	mov	r1, #512	; 0x200
+ cf8:	e3400000 	movt	r0, #0
+ cfc:	ebfffffe 	bl	0 <printf>
+ d00:	e1d411b4 	ldrh	r1, [r4, #20]
+ d04:	e3510000 	cmp	r1, #0
+ d08:	0a000003 	beq	d1c <E131Controller::Print()+0x40>
+ d0c:	e3000000 	movw	r0, #0
+ d10:	e8bd4010 	pop	{r4, lr}
+ d14:	e3400000 	movt	r0, #0
+ d18:	eafffffe 	b	0 <printf>
+ d1c:	e3000000 	movw	r0, #0
+ d20:	e8bd4010 	pop	{r4, lr}
+ d24:	e3400000 	movt	r0, #0
+ d28:	eafffffe 	b	0 <puts>
+
+Disassembly of section .bss:
+
+00000000 <E131Controller::s_pThis>:
+	...
+
+00000008 <s_SequenceNumbers>:
+	...
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.LC0>:
+   0:	38342e25 	ldmdacc	r4!, {r0, r2, r5, r9, sl, fp, sp}
+   4:	73252073 			; <UNDEFINED> instruction: 0x73252073
+   8:	00000000 	andeq	r0, r0, r0
+
+0000000c <.LC1>:
+   c:	2e393332 	mrccs	3, 1, r3, cr9, cr2, {1}
+  10:	2e353532 	mrccs	5, 1, r3, cr5, cr2, {1}
+  14:	00302e30 	eorseq	r2, r0, r0, lsr lr
+
+00000018 <.LC2>:
+  18:	4e434173 	mcrmi	1, 2, r4, cr3, cr3, {3}
+  1c:	2e314520 	cfabs64cs	mvdx4, mvdx1
+  20:	43203133 			; <UNDEFINED> instruction: 0x43203133
+  24:	72746e6f 	rsbsvc	r6, r4, #1776	; 0x6f0
+  28:	656c6c6f 	strbvs	r6, [ip, #-3183]!	; 0xfffff391
+  2c:	00000a72 	andeq	r0, r0, r2, ror sl
+
+00000030 <.LC3>:
+  30:	78614d20 	stmdavc	r1!, {r5, r8, sl, fp, lr}^
+  34:	696e5520 	stmdbvs	lr!, {r5, r8, sl, ip, lr}^
+  38:	73726576 	cmnvc	r2, #494927872	; 0x1d800000
+  3c:	3a207365 	bcc	81cdd8 <E131Controller::Print()+0x81c0fc>
+  40:	0a642520 	beq	19094c8 <E131Controller::Print()+0x19087ec>
+  44:	00000000 	andeq	r0, r0, r0
+
+00000048 <.LC4>:
+  48:	6e795320 	cdpvs	3, 7, cr5, cr9, cr0, {1}
+  4c:	6f726863 	svcvs	0x00726863
+  50:	617a696e 	cmnvs	sl, lr, ror #18
+  54:	6e6f6974 			; <UNDEFINED> instruction: 0x6e6f6974
+  58:	696e5520 	stmdbvs	lr!, {r5, r8, sl, ip, lr}^
+  5c:	73726576 	cmnvc	r2, #494927872	; 0x1d800000
+  60:	203a2065 	eorscs	r2, sl, r5, rrx
+  64:	000a7525 	andeq	r7, sl, r5, lsr #10
+
+00000068 <.LC5>:
+  68:	6e795320 	cdpvs	3, 7, cr5, cr9, cr0, {1}
+  6c:	6f726863 	svcvs	0x00726863
+  70:	617a696e 	cmnvs	sl, lr, ror #18
+  74:	6e6f6974 			; <UNDEFINED> instruction: 0x6e6f6974
+  78:	20736920 	rsbscs	r6, r3, r0, lsr #18
+  7c:	61736964 	cmnvs	r3, r4, ror #18
+  80:	64656c62 	strbtvs	r6, [r5], #-3170	; 0xfffff39e
+	...
+
+Disassembly of section .rodata:
+
+00000000 <DEVICE_SOFTWARE_VERSION>:
+   0:	Address 0x0000000000000000 is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e131params.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]>:
+   0:	e1d0c0b6 	ldrh	ip, [r0, #6]
+   4:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+   8:	e1d050b4 	ldrh	r5, [r0, #4]
+   c:	e15c0005 	cmp	ip, r5
+  10:	2a00001c 	bcs	88 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x88>
+  14:	e045500c 	sub	r5, r5, ip
+  18:	e1a04000 	mov	r4, r0
+  1c:	e5900000 	ldr	r0, [r0]
+  20:	e3530000 	cmp	r3, #0
+  24:	e080000c 	add	r0, r0, ip
+  28:	e5d4c008 	ldrb	ip, [r4, #8]
+  2c:	1a000002 	bne	3c <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x3c>
+  30:	e35c0000 	cmp	ip, #0
+  34:	1a000002 	bne	44 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x44>
+  38:	ea000009 	b	64 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x64>
+  3c:	e35c0000 	cmp	ip, #0
+  40:	0a000003 	beq	54 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x54>
+  44:	e58d2000 	str	r2, [sp]
+  48:	e1a03001 	mov	r3, r1
+  4c:	e59f203c 	ldr	r2, [pc, #60]	; 90 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x90>
+  50:	ea000006 	b	70 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x70>
+  54:	e58d2000 	str	r2, [sp]
+  58:	e1a03001 	mov	r3, r1
+  5c:	e59f2030 	ldr	r2, [pc, #48]	; 94 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x94>
+  60:	ea000002 	b	70 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x70>
+  64:	e58d2000 	str	r2, [sp]
+  68:	e1a03001 	mov	r3, r1
+  6c:	e59f2024 	ldr	r2, [pc, #36]	; 98 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]+0x98>
+  70:	e1a01005 	mov	r1, r5
+  74:	ebfffffe 	bl	0 <snprintf>
+  78:	e1550000 	cmp	r5, r0
+  7c:	a1d430b6 	ldrhge	r3, [r4, #6]
+  80:	a0830000 	addge	r0, r3, r0
+  84:	a1c400b6 	strhge	r0, [r4, #6]
+  88:	e28dd00c 	add	sp, sp, #12
+  8c:	e8bd8030 	pop	{r4, r5, pc}
+  90:	00000000 	andeq	r0, r0, r0
+  94:	0000000b 	andeq	r0, r0, fp
+  98:	00000012 	andeq	r0, r0, r2, lsl r0
+
+0000009c <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]>:
+  9c:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+  a0:	e1a03001 	mov	r3, r1
+  a4:	e1d050b4 	ldrh	r5, [r0, #4]
+  a8:	e1d010b6 	ldrh	r1, [r0, #6]
+  ac:	e1510005 	cmp	r1, r5
+  b0:	2a00001a 	bcs	120 <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]+0x84>
+  b4:	e0455001 	sub	r5, r5, r1
+  b8:	e1a04000 	mov	r4, r0
+  bc:	e5900000 	ldr	r0, [r0]
+  c0:	e3520000 	cmp	r2, #0
+  c4:	e0800001 	add	r0, r0, r1
+  c8:	e5d41008 	ldrb	r1, [r4, #8]
+  cc:	1a000002 	bne	dc <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]+0x40>
+  d0:	e3510000 	cmp	r1, #0
+  d4:	1a000002 	bne	e4 <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]+0x48>
+  d8:	ea000008 	b	100 <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]+0x64>
+  dc:	e3510000 	cmp	r1, #0
+  e0:	0a000002 	beq	f0 <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]+0x54>
+  e4:	e58d2000 	str	r2, [sp]
+  e8:	e59f2038 	ldr	r2, [pc, #56]	; 128 <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]+0x8c>
+  ec:	ea000005 	b	108 <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]+0x6c>
+  f0:	e3a02001 	mov	r2, #1
+  f4:	e58d2000 	str	r2, [sp]
+  f8:	e59f202c 	ldr	r2, [pc, #44]	; 12c <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]+0x90>
+  fc:	ea000001 	b	108 <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]+0x6c>
+ 100:	e59f2028 	ldr	r2, [pc, #40]	; 130 <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]+0x94>
+ 104:	e58d1000 	str	r1, [sp]
+ 108:	e1a01005 	mov	r1, r5
+ 10c:	ebfffffe 	bl	0 <snprintf>
+ 110:	e1550000 	cmp	r5, r0
+ 114:	a1d430b6 	ldrhge	r3, [r4, #6]
+ 118:	a0830000 	addge	r0, r3, r0
+ 11c:	a1c400b6 	strhge	r0, [r4, #6]
+ 120:	e28dd00c 	add	sp, sp, #12
+ 124:	e8bd8030 	pop	{r4, r5, pc}
+ 128:	0000001a 	andeq	r0, r0, sl, lsl r0
+ 12c:	00000023 	andeq	r0, r0, r3, lsr #32
+ 130:	0000002a 	andeq	r0, r0, sl, lsr #32
+
+00000134 <E131Params::E131Params(E131ParamsStore*)>:
+ 134:	f2c00050 	vmov.i32	q8, #0	; 0x00000000
+ 138:	e1a02000 	mov	r2, r0
+ 13c:	e4821004 	str	r1, [r2], #4
+ 140:	e3a01001 	mov	r1, #1
+ 144:	f4420a0f 	vst1.8	{d16-d17}, [r2]
+ 148:	e280200e 	add	r2, r0, #14
+ 14c:	f4420a0f 	vst1.8	{d16-d17}, [r2]
+ 150:	e5c0100b 	strb	r1, [r0, #11]
+ 154:	e3a02000 	mov	r2, #0
+ 158:	e5c0200c 	strb	r2, [r0, #12]
+ 15c:	e3a01002 	mov	r1, #2
+ 160:	e5c0200e 	strb	r2, [r0, #14]
+ 164:	e5c02010 	strb	r2, [r0, #16]
+ 168:	e5c02012 	strb	r2, [r0, #18]
+ 16c:	e3e02c9b 	mvn	r2, #39680	; 0x9b00
+ 170:	e5c0100d 	strb	r1, [r0, #13]
+ 174:	e3a01003 	mov	r1, #3
+ 178:	e1c021be 	strh	r2, [r0, #30]
+ 17c:	e3062464 	movw	r2, #25700	; 0x6464
+ 180:	e5c0100f 	strb	r1, [r0, #15]
+ 184:	e3a01004 	mov	r1, #4
+ 188:	e1c022b0 	strh	r2, [r0, #32]
+ 18c:	e3a02064 	mov	r2, #100	; 0x64
+ 190:	e5c01011 	strb	r1, [r0, #17]
+ 194:	e5c02022 	strb	r2, [r0, #34]	; 0x22
+ 198:	e12fff1e 	bx	lr
+
+0000019c <E131Params::Load()>:
+ 19c:	e3a03000 	mov	r3, #0
+ 1a0:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+ 1a4:	e1a02000 	mov	r2, r0
+ 1a8:	e5803004 	str	r3, [r0, #4]
+ 1ac:	e1a04000 	mov	r4, r0
+ 1b0:	e59f1068 	ldr	r1, [pc, #104]	; 220 <E131Params::Load()+0x84>
+ 1b4:	e1a0000d 	mov	r0, sp
+ 1b8:	ebfffffe 	bl	0 <ReadConfigFile::ReadConfigFile(void (*)(void*, char const*), void*)>
+ 1bc:	e59f1060 	ldr	r1, [pc, #96]	; 224 <E131Params::Load()+0x88>
+ 1c0:	e1a0000d 	mov	r0, sp
+ 1c4:	ebfffffe 	bl	0 <ReadConfigFile::Read(char const*)>
+ 1c8:	e2505000 	subs	r5, r0, #0
+ 1cc:	e5940000 	ldr	r0, [r4]
+ 1d0:	0a000006 	beq	1f0 <E131Params::Load()+0x54>
+ 1d4:	e3500000 	cmp	r0, #0
+ 1d8:	0a00000b 	beq	20c <E131Params::Load()+0x70>
+ 1dc:	e5903000 	ldr	r3, [r0]
+ 1e0:	e2841004 	add	r1, r4, #4
+ 1e4:	e5933008 	ldr	r3, [r3, #8]
+ 1e8:	e12fff33 	blx	r3
+ 1ec:	ea000006 	b	20c <E131Params::Load()+0x70>
+ 1f0:	e3500000 	cmp	r0, #0
+ 1f4:	0a000004 	beq	20c <E131Params::Load()+0x70>
+ 1f8:	e5903000 	ldr	r3, [r0]
+ 1fc:	e2841004 	add	r1, r4, #4
+ 200:	e3a05001 	mov	r5, #1
+ 204:	e593300c 	ldr	r3, [r3, #12]
+ 208:	e12fff33 	blx	r3
+ 20c:	e1a0000d 	mov	r0, sp
+ 210:	ebfffffe 	bl	0 <ReadConfigFile::~ReadConfigFile()>
+ 214:	e1a00005 	mov	r0, r5
+ 218:	e28dd00c 	add	sp, sp, #12
+ 21c:	e8bd8030 	pop	{r4, r5, pc}
+	...
+
+00000228 <E131Params::Load(char const*, unsigned int)>:
+ 228:	e5903000 	ldr	r3, [r0]
+ 22c:	e3530000 	cmp	r3, #0
+ 230:	012fff1e 	bxeq	lr
+ 234:	e3a03000 	mov	r3, #0
+ 238:	e92d4073 	push	{r0, r1, r4, r5, r6, lr}
+ 23c:	e1a04000 	mov	r4, r0
+ 240:	e5803004 	str	r3, [r0, #4]
+ 244:	e1a05001 	mov	r5, r1
+ 248:	e59f1040 	ldr	r1, [pc, #64]	; 290 <E131Params::Load(char const*, unsigned int)+0x68>
+ 24c:	e1a06002 	mov	r6, r2
+ 250:	e1a02000 	mov	r2, r0
+ 254:	e1a0000d 	mov	r0, sp
+ 258:	ebfffffe 	bl	0 <ReadConfigFile::ReadConfigFile(void (*)(void*, char const*), void*)>
+ 25c:	e1a02006 	mov	r2, r6
+ 260:	e1a01005 	mov	r1, r5
+ 264:	e1a0000d 	mov	r0, sp
+ 268:	ebfffffe 	bl	0 <ReadConfigFile::Read(char const*, unsigned int)>
+ 26c:	e1a01004 	mov	r1, r4
+ 270:	e4910004 	ldr	r0, [r1], #4
+ 274:	e5903000 	ldr	r3, [r0]
+ 278:	e5933008 	ldr	r3, [r3, #8]
+ 27c:	e12fff33 	blx	r3
+ 280:	e1a0000d 	mov	r0, sp
+ 284:	ebfffffe 	bl	0 <ReadConfigFile::~ReadConfigFile()>
+ 288:	e28dd008 	add	sp, sp, #8
+ 28c:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 290:	00000000 	andeq	r0, r0, r0
+
+00000294 <E131Params::callbackFunction(char const*)>:
+ 294:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 298:	e1a04000 	mov	r4, r0
+ 29c:	e59f926c 	ldr	r9, [pc, #620]	; 510 <E131Params::callbackFunction(char const*)+0x27c>
+ 2a0:	e24dd01c 	sub	sp, sp, #28
+ 2a4:	e59f8268 	ldr	r8, [pc, #616]	; 514 <E131Params::callbackFunction(char const*)+0x280>
+ 2a8:	e1a06001 	mov	r6, r1
+ 2ac:	e59fb264 	ldr	fp, [pc, #612]	; 518 <E131Params::callbackFunction(char const*)+0x284>
+ 2b0:	e3a05000 	mov	r5, #0
+ 2b4:	e59fa260 	ldr	sl, [pc, #608]	; 51c <E131Params::callbackFunction(char const*)+0x288>
+ 2b8:	e28d2002 	add	r2, sp, #2
+ 2bc:	e1a01009 	mov	r1, r9
+ 2c0:	e1a00006 	mov	r0, r6
+ 2c4:	ebfffffe 	bl	0 <Sscan::Uint16(char const*, char const*, unsigned short&)>
+ 2c8:	e3500000 	cmp	r0, #0
+ 2cc:	1a00000e 	bne	30c <E131Params::callbackFunction(char const*)+0x78>
+ 2d0:	e1dd00b2 	ldrh	r0, [sp, #2]
+ 2d4:	e30fc9ff 	movw	ip, #63999	; 0xf9ff
+ 2d8:	e5941004 	ldr	r1, [r4, #4]
+ 2dc:	e3a03010 	mov	r3, #16
+ 2e0:	e2402001 	sub	r2, r0, #1
+ 2e4:	e1a03513 	lsl	r3, r3, r5
+ 2e8:	e6ff2072 	uxth	r2, r2
+ 2ec:	e152000c 	cmp	r2, ip
+ 2f0:	e1a02085 	lsl	r2, r5, #1
+ 2f4:	22855001 	addcs	r5, r5, #1
+ 2f8:	e0842002 	add	r2, r4, r2
+ 2fc:	21c250bb 	strhcs	r5, [r2, #11]
+ 300:	31c200bb 	strhcc	r0, [r2, #11]
+ 304:	3a00005c 	bcc	47c <E131Params::callbackFunction(char const*)+0x1e8>
+ 308:	ea00005f 	b	48c <E131Params::callbackFunction(char const*)+0x1f8>
+ 30c:	e3a07012 	mov	r7, #18
+ 310:	e3a03003 	mov	r3, #3
+ 314:	e0070597 	mul	r7, r7, r5
+ 318:	e58d3004 	str	r3, [sp, #4]
+ 31c:	e28d2008 	add	r2, sp, #8
+ 320:	e08b1007 	add	r1, fp, r7
+ 324:	e28d3004 	add	r3, sp, #4
+ 328:	e1a00006 	mov	r0, r6
+ 32c:	ebfffffe 	bl	0 <Sscan::Char(char const*, char const*, char*, unsigned int&)>
+ 330:	e3500000 	cmp	r0, #0
+ 334:	1a000016 	bne	394 <E131Params::callbackFunction(char const*)+0x100>
+ 338:	e5dd1008 	ldrb	r1, [sp, #8]
+ 33c:	e3a03c01 	mov	r3, #256	; 0x100
+ 340:	e5942004 	ldr	r2, [r4, #4]
+ 344:	e1a03513 	lsl	r3, r3, r5
+ 348:	e3811020 	orr	r1, r1, #32
+ 34c:	e0845005 	add	r5, r4, r5
+ 350:	e351006c 	cmp	r1, #108	; 0x6c
+ 354:	1a00000a 	bne	384 <E131Params::callbackFunction(char const*)+0xf0>
+ 358:	e5dd1009 	ldrb	r1, [sp, #9]
+ 35c:	e3811020 	orr	r1, r1, #32
+ 360:	e3510074 	cmp	r1, #116	; 0x74
+ 364:	1a000006 	bne	384 <E131Params::callbackFunction(char const*)+0xf0>
+ 368:	e5dd100a 	ldrb	r1, [sp, #10]
+ 36c:	e3811020 	orr	r1, r1, #32
+ 370:	e3510070 	cmp	r1, #112	; 0x70
+ 374:	01833002 	orreq	r3, r3, r2
+ 378:	03a01001 	moveq	r1, #1
+ 37c:	05c51014 	strbeq	r1, [r5, #20]
+ 380:	0a00005f 	beq	504 <E131Params::callbackFunction(char const*)+0x270>
+ 384:	e1c23003 	bic	r3, r2, r3
+ 388:	e3a01000 	mov	r1, #0
+ 38c:	e5c51014 	strb	r1, [r5, #20]
+ 390:	ea00005b 	b	504 <E131Params::callbackFunction(char const*)+0x270>
+ 394:	e08a1007 	add	r1, sl, r7
+ 398:	e3a03005 	mov	r3, #5
+ 39c:	e58d3004 	str	r3, [sp, #4]
+ 3a0:	e28d2008 	add	r2, sp, #8
+ 3a4:	e28d3004 	add	r3, sp, #4
+ 3a8:	e1a00006 	mov	r0, r6
+ 3ac:	ebfffffe 	bl	0 <Sscan::Char(char const*, char const*, char*, unsigned int&)>
+ 3b0:	e3500000 	cmp	r0, #0
+ 3b4:	1a00001b 	bne	428 <E131Params::callbackFunction(char const*)+0x194>
+ 3b8:	e5d4301e 	ldrb	r3, [r4, #30]
+ 3bc:	e3a02001 	mov	r2, #1
+ 3c0:	e1c33512 	bic	r3, r3, r2, lsl r5
+ 3c4:	e5dd2008 	ldrb	r2, [sp, #8]
+ 3c8:	e5c4301e 	strb	r3, [r4, #30]
+ 3cc:	e3822020 	orr	r2, r2, #32
+ 3d0:	e3520069 	cmp	r2, #105	; 0x69
+ 3d4:	1a00000f 	bne	418 <E131Params::callbackFunction(char const*)+0x184>
+ 3d8:	e5dd2009 	ldrb	r2, [sp, #9]
+ 3dc:	e3822020 	orr	r2, r2, #32
+ 3e0:	e352006e 	cmp	r2, #110	; 0x6e
+ 3e4:	1a00000b 	bne	418 <E131Params::callbackFunction(char const*)+0x184>
+ 3e8:	e5dd200a 	ldrb	r2, [sp, #10]
+ 3ec:	e3822020 	orr	r2, r2, #32
+ 3f0:	e3520070 	cmp	r2, #112	; 0x70
+ 3f4:	1a000007 	bne	418 <E131Params::callbackFunction(char const*)+0x184>
+ 3f8:	e5dd200b 	ldrb	r2, [sp, #11]
+ 3fc:	e3822020 	orr	r2, r2, #32
+ 400:	e3520075 	cmp	r2, #117	; 0x75
+ 404:	1a000003 	bne	418 <E131Params::callbackFunction(char const*)+0x184>
+ 408:	e5dd200c 	ldrb	r2, [sp, #12]
+ 40c:	e3822020 	orr	r2, r2, #32
+ 410:	e3520074 	cmp	r2, #116	; 0x74
+ 414:	0a00003b 	beq	508 <E131Params::callbackFunction(char const*)+0x274>
+ 418:	e3a02001 	mov	r2, #1
+ 41c:	e1833512 	orr	r3, r3, r2, lsl r5
+ 420:	e5c4301e 	strb	r3, [r4, #30]
+ 424:	ea000037 	b	508 <E131Params::callbackFunction(char const*)+0x274>
+ 428:	e28d2001 	add	r2, sp, #1
+ 42c:	e1a01008 	mov	r1, r8
+ 430:	e1a00006 	mov	r0, r6
+ 434:	ebfffffe 	bl	0 <Sscan::Uint8(char const*, char const*, unsigned char&)>
+ 438:	e3500000 	cmp	r0, #0
+ 43c:	1a000014 	bne	494 <E131Params::callbackFunction(char const*)+0x200>
+ 440:	e5dd0001 	ldrb	r0, [sp, #1]
+ 444:	e3a03801 	mov	r3, #65536	; 0x10000
+ 448:	e5941004 	ldr	r1, [r4, #4]
+ 44c:	e1a03513 	lsl	r3, r3, r5
+ 450:	e2402001 	sub	r2, r0, #1
+ 454:	e0845005 	add	r5, r4, r5
+ 458:	e6ef2072 	uxtb	r2, r2
+ 45c:	e35200c7 	cmp	r2, #199	; 0xc7
+ 460:	83a02000 	movhi	r2, #0
+ 464:	93a02001 	movls	r2, #1
+ 468:	e3500064 	cmp	r0, #100	; 0x64
+ 46c:	03a02000 	moveq	r2, #0
+ 470:	e3520000 	cmp	r2, #0
+ 474:	0a000002 	beq	484 <E131Params::callbackFunction(char const*)+0x1f0>
+ 478:	e5c5001f 	strb	r0, [r5, #31]
+ 47c:	e1833001 	orr	r3, r3, r1
+ 480:	ea00001f 	b	504 <E131Params::callbackFunction(char const*)+0x270>
+ 484:	e3a02064 	mov	r2, #100	; 0x64
+ 488:	e5c5201f 	strb	r2, [r5, #31]
+ 48c:	e1c13003 	bic	r3, r1, r3
+ 490:	ea00001b 	b	504 <E131Params::callbackFunction(char const*)+0x270>
+ 494:	e2855001 	add	r5, r5, #1
+ 498:	e2899010 	add	r9, r9, #16
+ 49c:	e3550004 	cmp	r5, #4
+ 4a0:	e2888012 	add	r8, r8, #18
+ 4a4:	1affff83 	bne	2b8 <E131Params::callbackFunction(char const*)+0x24>
+ 4a8:	e59f1070 	ldr	r1, [pc, #112]	; 520 <E131Params::callbackFunction(char const*)+0x28c>
+ 4ac:	e28d2001 	add	r2, sp, #1
+ 4b0:	e1a00006 	mov	r0, r6
+ 4b4:	ebfffffe 	bl	0 <Sscan::Uint8(char const*, char const*, unsigned char&)>
+ 4b8:	e3500000 	cmp	r0, #0
+ 4bc:	1a000005 	bne	4d8 <E131Params::callbackFunction(char const*)+0x244>
+ 4c0:	e5dd2001 	ldrb	r2, [sp, #1]
+ 4c4:	e5943004 	ldr	r3, [r4, #4]
+ 4c8:	e3520000 	cmp	r2, #0
+ 4cc:	03c33a01 	biceq	r3, r3, #4096	; 0x1000
+ 4d0:	13833a01 	orrne	r3, r3, #4096	; 0x1000
+ 4d4:	ea00000a 	b	504 <E131Params::callbackFunction(char const*)+0x270>
+ 4d8:	e59f1044 	ldr	r1, [pc, #68]	; 524 <E131Params::callbackFunction(char const*)+0x290>
+ 4dc:	e28d2001 	add	r2, sp, #1
+ 4e0:	e1a00006 	mov	r0, r6
+ 4e4:	ebfffffe 	bl	0 <Sscan::Uint8(char const*, char const*, unsigned char&)>
+ 4e8:	e3500000 	cmp	r0, #0
+ 4ec:	1a000005 	bne	508 <E131Params::callbackFunction(char const*)+0x274>
+ 4f0:	e5dd2001 	ldrb	r2, [sp, #1]
+ 4f4:	e5943004 	ldr	r3, [r4, #4]
+ 4f8:	e3520000 	cmp	r2, #0
+ 4fc:	03c33a02 	biceq	r3, r3, #8192	; 0x2000
+ 500:	13833a02 	orrne	r3, r3, #8192	; 0x2000
+ 504:	e5843004 	str	r3, [r4, #4]
+ 508:	e28dd01c 	add	sp, sp, #28
+ 50c:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+	...
+
+00000528 <E131Params::staticCallbackFunction(void*, char const*)>:
+ 528:	eafffffe 	b	294 <E131Params::callbackFunction(char const*)>
+
+0000052c <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)>:
+ 52c:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+ 530:	e1a04000 	mov	r4, r0
+ 534:	e1a00001 	mov	r0, r1
+ 538:	e24dd018 	sub	sp, sp, #24
+ 53c:	e3500000 	cmp	r0, #0
+ 540:	e1a05002 	mov	r5, r2
+ 544:	e1a06003 	mov	r6, r3
+ 548:	e2841004 	add	r1, r4, #4
+ 54c:	0a000009 	beq	578 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x4c>
+ 550:	e280301c 	add	r3, r0, #28
+ 554:	e4902004 	ldr	r2, [r0], #4
+ 558:	e1500003 	cmp	r0, r3
+ 55c:	e4812004 	str	r2, [r1], #4
+ 560:	1afffffb 	bne	554 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x28>
+ 564:	e1d030b0 	ldrh	r3, [r0]
+ 568:	e1c130b0 	strh	r3, [r1]
+ 56c:	e5d03002 	ldrb	r3, [r0, #2]
+ 570:	e5c13002 	strb	r3, [r1, #2]
+ 574:	ea000003 	b	588 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x5c>
+ 578:	e5940000 	ldr	r0, [r4]
+ 57c:	e5903000 	ldr	r3, [r0]
+ 580:	e593300c 	ldr	r3, [r3, #12]
+ 584:	e12fff33 	blx	r3
+ 588:	e59f12ac 	ldr	r1, [pc, #684]	; 83c <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x310>
+ 58c:	e1a03006 	mov	r3, r6
+ 590:	e59f82a8 	ldr	r8, [pc, #680]	; 840 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x314>
+ 594:	e1a02005 	mov	r2, r5
+ 598:	e59f62a4 	ldr	r6, [pc, #676]	; 844 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x318>
+ 59c:	e28d000c 	add	r0, sp, #12
+ 5a0:	e59f72a0 	ldr	r7, [pc, #672]	; 848 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x31c>
+ 5a4:	e3a05000 	mov	r5, #0
+ 5a8:	ebfffffe 	bl	0 <PropertiesBuilder::PropertiesBuilder(char const*, char*, unsigned int)>
+ 5ac:	e5d4301e 	ldrb	r3, [r4, #30]
+ 5b0:	e1a01006 	mov	r1, r6
+ 5b4:	e28d000c 	add	r0, sp, #12
+ 5b8:	e2866012 	add	r6, r6, #18
+ 5bc:	e1a03553 	asr	r3, r3, r5
+ 5c0:	e2855001 	add	r5, r5, #1
+ 5c4:	e3130001 	tst	r3, #1
+ 5c8:	e1e03003 	mvn	r3, r3
+ 5cc:	01a02008 	moveq	r2, r8
+ 5d0:	11a02007 	movne	r2, r7
+ 5d4:	e2033001 	and	r3, r3, #1
+ 5d8:	ebfffe88 	bl	0 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]>
+ 5dc:	e3550004 	cmp	r5, #4
+ 5e0:	1afffff1 	bne	5ac <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x80>
+ 5e4:	e59fa260 	ldr	sl, [pc, #608]	; 84c <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x320>
+ 5e8:	e3a06000 	mov	r6, #0
+ 5ec:	e59f925c 	ldr	r9, [pc, #604]	; 850 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x324>
+ 5f0:	e59f825c 	ldr	r8, [pc, #604]	; 854 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x328>
+ 5f4:	e59f725c 	ldr	r7, [pc, #604]	; 858 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x32c>
+ 5f8:	e1dd11b2 	ldrh	r1, [sp, #18]
+ 5fc:	e1dd51b0 	ldrh	r5, [sp, #16]
+ 600:	e1510005 	cmp	r1, r5
+ 604:	2a00001f 	bcs	688 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x15c>
+ 608:	e5942004 	ldr	r2, [r4, #4]
+ 60c:	e3a0c010 	mov	ip, #16
+ 610:	e59d000c 	ldr	r0, [sp, #12]
+ 614:	e002261c 	and	r2, r2, ip, lsl r6
+ 618:	e0843086 	add	r3, r4, r6, lsl #1
+ 61c:	e152061c 	cmp	r2, ip, lsl r6
+ 620:	e0800001 	add	r0, r0, r1
+ 624:	e0455001 	sub	r5, r5, r1
+ 628:	e1d330bb 	ldrh	r3, [r3, #11]
+ 62c:	e5dd1014 	ldrb	r1, [sp, #20]
+ 630:	0a000002 	beq	640 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x114>
+ 634:	e3510000 	cmp	r1, #0
+ 638:	1a000005 	bne	654 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x128>
+ 63c:	ea000008 	b	664 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x138>
+ 640:	e3510000 	cmp	r1, #0
+ 644:	058d3000 	streq	r3, [sp]
+ 648:	01a02008 	moveq	r2, r8
+ 64c:	01a0300a 	moveq	r3, sl
+ 650:	0a000006 	beq	670 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x144>
+ 654:	e58d3000 	str	r3, [sp]
+ 658:	e1a02009 	mov	r2, r9
+ 65c:	e1a0300a 	mov	r3, sl
+ 660:	ea000002 	b	670 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x144>
+ 664:	e58d3000 	str	r3, [sp]
+ 668:	e1a02007 	mov	r2, r7
+ 66c:	e1a0300a 	mov	r3, sl
+ 670:	e1a01005 	mov	r1, r5
+ 674:	ebfffffe 	bl	0 <snprintf>
+ 678:	e1550000 	cmp	r5, r0
+ 67c:	a1dd31b2 	ldrhge	r3, [sp, #18]
+ 680:	a0830000 	addge	r0, r3, r0
+ 684:	a1cd01b2 	strhge	r0, [sp, #18]
+ 688:	e2866001 	add	r6, r6, #1
+ 68c:	e28aa010 	add	sl, sl, #16
+ 690:	e3560004 	cmp	r6, #4
+ 694:	1affffd7 	bne	5f8 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0xcc>
+ 698:	e59f11bc 	ldr	r1, [pc, #444]	; 85c <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x330>
+ 69c:	e28d000c 	add	r0, sp, #12
+ 6a0:	e59f61b8 	ldr	r6, [pc, #440]	; 860 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x334>
+ 6a4:	e2848014 	add	r8, r4, #20
+ 6a8:	e59fa1b4 	ldr	sl, [pc, #436]	; 864 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x338>
+ 6ac:	e3a05000 	mov	r5, #0
+ 6b0:	e59f91b0 	ldr	r9, [pc, #432]	; 868 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x33c>
+ 6b4:	e3a07c01 	mov	r7, #256	; 0x100
+ 6b8:	ebfffffe 	bl	0 <PropertiesBuilder::AddComment(char const*)>
+ 6bc:	e5943004 	ldr	r3, [r4, #4]
+ 6c0:	e1a01006 	mov	r1, r6
+ 6c4:	e4d82001 	ldrb	r2, [r8], #1
+ 6c8:	e28d000c 	add	r0, sp, #12
+ 6cc:	e0033517 	and	r3, r3, r7, lsl r5
+ 6d0:	e2866012 	add	r6, r6, #18
+ 6d4:	e1530517 	cmp	r3, r7, lsl r5
+ 6d8:	e2855001 	add	r5, r5, #1
+ 6dc:	03a03001 	moveq	r3, #1
+ 6e0:	13a03000 	movne	r3, #0
+ 6e4:	e3520000 	cmp	r2, #0
+ 6e8:	01a0200a 	moveq	r2, sl
+ 6ec:	11a02009 	movne	r2, r9
+ 6f0:	ebfffe42 	bl	0 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int) [clone .isra.0]>
+ 6f4:	e3550004 	cmp	r5, #4
+ 6f8:	1affffef 	bne	6bc <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x190>
+ 6fc:	e59f1168 	ldr	r1, [pc, #360]	; 86c <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x340>
+ 700:	e28d000c 	add	r0, sp, #12
+ 704:	e59fa164 	ldr	sl, [pc, #356]	; 870 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x344>
+ 708:	e3a06000 	mov	r6, #0
+ 70c:	e59f913c 	ldr	r9, [pc, #316]	; 850 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x324>
+ 710:	ebfffffe 	bl	0 <PropertiesBuilder::AddComment(char const*)>
+ 714:	e59f8138 	ldr	r8, [pc, #312]	; 854 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x328>
+ 718:	e59f7138 	ldr	r7, [pc, #312]	; 858 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x32c>
+ 71c:	e1dd11b2 	ldrh	r1, [sp, #18]
+ 720:	e1dd51b0 	ldrh	r5, [sp, #16]
+ 724:	e1510005 	cmp	r1, r5
+ 728:	2a00001f 	bcs	7ac <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x280>
+ 72c:	e5942004 	ldr	r2, [r4, #4]
+ 730:	e3a0c801 	mov	ip, #65536	; 0x10000
+ 734:	e59d000c 	ldr	r0, [sp, #12]
+ 738:	e284301f 	add	r3, r4, #31
+ 73c:	e002261c 	and	r2, r2, ip, lsl r6
+ 740:	e152061c 	cmp	r2, ip, lsl r6
+ 744:	e0800001 	add	r0, r0, r1
+ 748:	e0455001 	sub	r5, r5, r1
+ 74c:	e7d33006 	ldrb	r3, [r3, r6]
+ 750:	e5dd1014 	ldrb	r1, [sp, #20]
+ 754:	0a000002 	beq	764 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x238>
+ 758:	e3510000 	cmp	r1, #0
+ 75c:	1a000005 	bne	778 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x24c>
+ 760:	ea000008 	b	788 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x25c>
+ 764:	e3510000 	cmp	r1, #0
+ 768:	058d3000 	streq	r3, [sp]
+ 76c:	01a02008 	moveq	r2, r8
+ 770:	01a0300a 	moveq	r3, sl
+ 774:	0a000006 	beq	794 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x268>
+ 778:	e58d3000 	str	r3, [sp]
+ 77c:	e1a02009 	mov	r2, r9
+ 780:	e1a0300a 	mov	r3, sl
+ 784:	ea000002 	b	794 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x268>
+ 788:	e58d3000 	str	r3, [sp]
+ 78c:	e1a02007 	mov	r2, r7
+ 790:	e1a0300a 	mov	r3, sl
+ 794:	e1a01005 	mov	r1, r5
+ 798:	ebfffffe 	bl	0 <snprintf>
+ 79c:	e1550000 	cmp	r5, r0
+ 7a0:	a1dd31b2 	ldrhge	r3, [sp, #18]
+ 7a4:	a0830000 	addge	r0, r3, r0
+ 7a8:	a1cd01b2 	strhge	r0, [sp, #18]
+ 7ac:	e2866001 	add	r6, r6, #1
+ 7b0:	e28aa012 	add	sl, sl, #18
+ 7b4:	e3560004 	cmp	r6, #4
+ 7b8:	1affffd7 	bne	71c <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x1f0>
+ 7bc:	e59f10b0 	ldr	r1, [pc, #176]	; 874 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x348>
+ 7c0:	e28d000c 	add	r0, sp, #12
+ 7c4:	ebfffffe 	bl	0 <PropertiesBuilder::AddComment(char const*)>
+ 7c8:	e5942004 	ldr	r2, [r4, #4]
+ 7cc:	e28d000c 	add	r0, sp, #12
+ 7d0:	e59f10a0 	ldr	r1, [pc, #160]	; 878 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x34c>
+ 7d4:	e7e02652 	ubfx	r2, r2, #12, #1
+ 7d8:	ebfffe2f 	bl	9c <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]>
+ 7dc:	e5942004 	ldr	r2, [r4, #4]
+ 7e0:	e28d000c 	add	r0, sp, #12
+ 7e4:	e59f1090 	ldr	r1, [pc, #144]	; 87c <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x350>
+ 7e8:	e7e026d2 	ubfx	r2, r2, #13, #1
+ 7ec:	ebfffe2a 	bl	9c <PropertiesBuilder::Add(char const*, bool) [clone .isra.0]>
+ 7f0:	e5dd3014 	ldrb	r3, [sp, #20]
+ 7f4:	e3530000 	cmp	r3, #0
+ 7f8:	0a00000a 	beq	828 <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)+0x2fc>
+ 7fc:	e1dd21b2 	ldrh	r2, [sp, #18]
+ 800:	e59d300c 	ldr	r3, [sp, #12]
+ 804:	e0833002 	add	r3, r3, r2
+ 808:	e3a0207d 	mov	r2, #125	; 0x7d
+ 80c:	e5432001 	strb	r2, [r3, #-1]
+ 810:	e59d100c 	ldr	r1, [sp, #12]
+ 814:	e1dd31b2 	ldrh	r3, [sp, #18]
+ 818:	e7c12003 	strb	r2, [r1, r3]
+ 81c:	e1dd31b2 	ldrh	r3, [sp, #18]
+ 820:	e2833001 	add	r3, r3, #1
+ 824:	e1cd31b2 	strh	r3, [sp, #18]
+ 828:	e1dd21b2 	ldrh	r2, [sp, #18]
+ 82c:	e59d3038 	ldr	r3, [sp, #56]	; 0x38
+ 830:	e5832000 	str	r2, [r3]
+ 834:	e28dd018 	add	sp, sp, #24
+ 838:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+ 83c:	00000000 	andeq	r0, r0, r0
+ 840:	00000032 	andeq	r0, r0, r2, lsr r0
+ 844:	00000000 	andeq	r0, r0, r0
+ 848:	00000038 	andeq	r0, r0, r8, lsr r0
+ 84c:	00000000 	andeq	r0, r0, r0
+ 850:	0000001a 	andeq	r0, r0, sl, lsl r0
+ 854:	00000023 	andeq	r0, r0, r3, lsr #32
+ 858:	0000002a 	andeq	r0, r0, sl, lsr #32
+ 85c:	00000047 	andeq	r0, r0, r7, asr #32
+ 860:	00000000 	andeq	r0, r0, r0
+ 864:	0000003f 	andeq	r0, r0, pc, lsr r0
+ 868:	00000043 	andeq	r0, r0, r3, asr #32
+ 86c:	00000052 	andeq	r0, r0, r2, asr r0
+ 870:	00000000 	andeq	r0, r0, r0
+ 874:	0000005c 	andeq	r0, r0, ip, asr r0
+	...
+
+00000880 <E131Params::Save(char*, unsigned int, unsigned int&)>:
+ 880:	e590c000 	ldr	ip, [r0]
+ 884:	e35c0000 	cmp	ip, #0
+ 888:	1a000001 	bne	894 <E131Params::Save(char*, unsigned int, unsigned int&)+0x14>
+ 88c:	e583c000 	str	ip, [r3]
+ 890:	e12fff1e 	bx	lr
+ 894:	e92d4007 	push	{r0, r1, r2, lr}
+ 898:	e58d3000 	str	r3, [sp]
+ 89c:	e1a03002 	mov	r3, r2
+ 8a0:	e1a02001 	mov	r2, r1
+ 8a4:	e3a01000 	mov	r1, #0
+ 8a8:	ebfffffe 	bl	52c <E131Params::Builder(e131params::Params const*, char*, unsigned int, unsigned int&)>
+ 8ac:	e28dd00c 	add	sp, sp, #12
+ 8b0:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+000008b4 <E131Params::Set(E131Bridge*)>:
+ 8b4:	e5903004 	ldr	r3, [r0, #4]
+ 8b8:	e3530000 	cmp	r3, #0
+ 8bc:	012fff1e 	bxeq	lr
+ 8c0:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+ 8c4:	e281ed15 	add	lr, r1, #1344	; 0x540
+ 8c8:	e2802014 	add	r2, r0, #20
+ 8cc:	e3a03000 	mov	r3, #0
+ 8d0:	e3a05c01 	mov	r5, #256	; 0x100
+ 8d4:	e28ee00c 	add	lr, lr, #12
+ 8d8:	e3a07044 	mov	r7, #68	; 0x44
+ 8dc:	e3a04801 	mov	r4, #65536	; 0x10000
+ 8e0:	e590c004 	ldr	ip, [r0, #4]
+ 8e4:	e00c6315 	and	r6, ip, r5, lsl r3
+ 8e8:	e1560315 	cmp	r6, r5, lsl r3
+ 8ec:	00060397 	muleq	r6, r7, r3
+ 8f0:	05d28000 	ldrbeq	r8, [r2]
+ 8f4:	e00cc314 	and	ip, ip, r4, lsl r3
+ 8f8:	078e8006 	streq	r8, [lr, r6]
+ 8fc:	e15c0314 	cmp	ip, r4, lsl r3
+ 900:	1a000004 	bne	918 <E131Params::Set(E131Bridge*)+0x64>
+ 904:	e5d2600b 	ldrb	r6, [r2, #11]
+ 908:	e246c001 	sub	ip, r6, #1
+ 90c:	e6efc07c 	uxtb	ip, ip
+ 910:	e35c00c7 	cmp	ip, #199	; 0xc7
+ 914:	95c16629 	strbls	r6, [r1, #1577]	; 0x629
+ 918:	e2833001 	add	r3, r3, #1
+ 91c:	e2822001 	add	r2, r2, #1
+ 920:	e3530004 	cmp	r3, #4
+ 924:	1affffed 	bne	8e0 <E131Params::Set(E131Bridge*)+0x2c>
+ 928:	e5903004 	ldr	r3, [r0, #4]
+ 92c:	e3130a01 	tst	r3, #4096	; 0x1000
+ 930:	13a02001 	movne	r2, #1
+ 934:	15c124f9 	strbne	r2, [r1, #1273]	; 0x4f9
+ 938:	e3130a02 	tst	r3, #8192	; 0x2000
+ 93c:	13a03001 	movne	r3, #1
+ 940:	15c134fa 	strbne	r3, [r1, #1274]	; 0x4fa
+ 944:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+
+Disassembly of section .rodata.str1.1:
+
+00000000 <.rodata.str1.1>:
+   0:	22732522 	rsbscs	r2, r3, #142606336	; 0x8800000
+   4:	7325223a 			; <UNDEFINED> instruction: 0x7325223a
+   8:	25002c22 	strcs	r2, [r0, #-3106]	; 0xfffff3de
+   c:	73253d73 			; <UNDEFINED> instruction: 0x73253d73
+  10:	2523000a 	strcs	r0, [r3, #-10]!
+  14:	73253d73 			; <UNDEFINED> instruction: 0x73253d73
+  18:	2522000a 	strcs	r0, [r2, #-10]!
+  1c:	253a2273 	ldrcs	r2, [sl, #-627]!	; 0xfffffd8d
+  20:	25002c64 	strcs	r2, [r0, #-3172]	; 0xfffff39c
+  24:	64253d73 	strtvs	r3, [r5], #-3443	; 0xfffff28d
+  28:	2523000a 	strcs	r0, [r3, #-10]!
+  2c:	64253d73 	strtvs	r3, [r5], #-3443	; 0xfffff28d
+  30:	6e69000a 	cdpvs	0, 6, cr0, cr9, cr10, {0}
+  34:	00747570 	rsbseq	r7, r4, r0, ror r5
+  38:	7074756f 	rsbsvc	r7, r4, pc, ror #10
+  3c:	68007475 	stmdavs	r0, {r0, r2, r4, r5, r6, sl, ip, sp, lr}
+  40:	6c007074 	stcvs	0, cr7, [r0], {116}	; 0x74
+  44:	44007074 	strmi	r7, [r0], #-116	; 0xffffff8c
+  48:	4f20584d 	svcmi	0x0020584d
+  4c:	75707475 	ldrbvc	r7, [r0, #-1141]!	; 0xfffffb8b
+  50:	4d440074 	stclmi	0, cr0, [r4, #-464]	; 0xfffffe30
+  54:	6e492058 	mcrvs	0, 2, r2, cr9, cr8, {2}
+  58:	00747570 	rsbseq	r7, r4, r0, ror r5
+  5c:	6568744f 	strbvs	r7, [r8, #-1103]!	; 0xfffffbb1
+  60:	Address 0x0000000000000060 is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e117const.o:     file format elf32-littlearm
+
+
+Disassembly of section .rodata:
+
+00000000 <E117Const::ACN_PACKET_IDENTIFIER>:
+   0:	2d435341 	stclcs	3, cr5, [r3, #-260]	; 0xfffffefc
+   4:	312e3145 			; <UNDEFINED> instruction: 0x312e3145
+   8:	00000037 	andeq	r0, r0, r7, lsr r0
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e131bridgehandledmxin.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <E131Bridge::FillDataPacket()>:
+   0:	e590c018 	ldr	ip, [r0, #24]
+   4:	e3a01000 	mov	r1, #0
+   8:	e3a03010 	mov	r3, #16
+   c:	e3002000 	movw	r2, #0
+  10:	e5cc3001 	strb	r3, [ip, #1]
+  14:	e1a0300c 	mov	r3, ip
+  18:	e5cc1000 	strb	r1, [ip]
+  1c:	e28cc00f 	add	ip, ip, #15
+  20:	e3402000 	movt	r2, #0
+  24:	e54c100d 	strb	r1, [ip, #-13]
+  28:	e5e31003 	strb	r1, [r3, #3]!
+  2c:	e4d21001 	ldrb	r1, [r2], #1
+  30:	e5e31001 	strb	r1, [r3, #1]!
+  34:	e15c0003 	cmp	ip, r3
+  38:	1afffffb 	bne	2c <E131Bridge::FillDataPacket()+0x2c>
+  3c:	e5901018 	ldr	r1, [r0, #24]
+  40:	e3a0c000 	mov	ip, #0
+  44:	e2803024 	add	r3, r0, #36	; 0x24
+  48:	e5c1c012 	strb	ip, [r1, #18]
+  4c:	e1a02001 	mov	r2, r1
+  50:	e5c1c013 	strb	ip, [r1, #19]
+  54:	e5c1c014 	strb	ip, [r1, #20]
+  58:	e280c034 	add	ip, r0, #52	; 0x34
+  5c:	e3a01004 	mov	r1, #4
+  60:	e5e21015 	strb	r1, [r2, #21]!
+  64:	e4d31001 	ldrb	r1, [r3], #1
+  68:	e153000c 	cmp	r3, ip
+  6c:	e5e21001 	strb	r1, [r2, #1]!
+  70:	1afffffb 	bne	64 <E131Bridge::FillDataPacket()+0x64>
+  74:	e5902018 	ldr	r2, [r0, #24]
+  78:	e3a01000 	mov	r1, #0
+  7c:	e3a0c002 	mov	ip, #2
+  80:	e5c21028 	strb	r1, [r2, #40]	; 0x28
+  84:	e5c21029 	strb	r1, [r2, #41]	; 0x29
+  88:	e5c2102a 	strb	r1, [r2, #42]	; 0x2a
+  8c:	e5e2c02b 	strb	ip, [r2, #43]!	; 0x2b
+  90:	e280c074 	add	ip, r0, #116	; 0x74
+  94:	e4d31001 	ldrb	r1, [r3], #1
+  98:	e153000c 	cmp	r3, ip
+  9c:	e5e21001 	strb	r1, [r2, #1]!
+  a0:	1afffffb 	bne	94 <E131Bridge::FillDataPacket()+0x94>
+  a4:	e5902018 	ldr	r2, [r0, #24]
+  a8:	e3a03000 	mov	r3, #0
+  ac:	e3a0c002 	mov	ip, #2
+  b0:	e5c23070 	strb	r3, [r2, #112]	; 0x70
+  b4:	e5901018 	ldr	r1, [r0, #24]
+  b8:	e5c2306d 	strb	r3, [r2, #109]	; 0x6d
+  bc:	e5c2306e 	strb	r3, [r2, #110]	; 0x6e
+  c0:	e5c1c075 	strb	ip, [r1, #117]	; 0x75
+  c4:	e3e0105e 	mvn	r1, #94	; 0x5e
+  c8:	e5902018 	ldr	r2, [r0, #24]
+  cc:	e5c21076 	strb	r1, [r2, #118]	; 0x76
+  d0:	e3a01001 	mov	r1, #1
+  d4:	e5902018 	ldr	r2, [r0, #24]
+  d8:	e5c23077 	strb	r3, [r2, #119]	; 0x77
+  dc:	e5c23078 	strb	r3, [r2, #120]	; 0x78
+  e0:	e5c23079 	strb	r3, [r2, #121]	; 0x79
+  e4:	e5c2107a 	strb	r1, [r2, #122]	; 0x7a
+  e8:	e12fff1e 	bx	lr
+
+000000ec <E131Bridge::HandleDmxIn()>:
+  ec:	e92d43f0 	push	{r4, r5, r6, r7, r8, r9, lr}
+  f0:	e3007000 	movw	r7, #0
+  f4:	e3407000 	movt	r7, #0
+  f8:	e3008000 	movw	r8, #0
+  fc:	e3408000 	movt	r8, #0
+ 100:	e24dd014 	sub	sp, sp, #20
+ 104:	e1a06000 	mov	r6, r0
+ 108:	e2804e62 	add	r4, r0, #1568	; 0x620
+ 10c:	e3a05000 	mov	r5, #0
+ 110:	e5d43002 	ldrb	r3, [r4, #2]
+ 114:	e3530000 	cmp	r3, #0
+ 118:	0a000013 	beq	16c <E131Bridge::HandleDmxIn()+0x80>
+ 11c:	e5960014 	ldr	r0, [r6, #20]
+ 120:	e28d300c 	add	r3, sp, #12
+ 124:	e28d2008 	add	r2, sp, #8
+ 128:	e5901000 	ldr	r1, [r0]
+ 12c:	e5919010 	ldr	r9, [r1, #16]
+ 130:	e1a01005 	mov	r1, r5
+ 134:	e12fff39 	blx	r9
+ 138:	e2503000 	subs	r3, r0, #0
+ 13c:	1a000010 	bne	184 <E131Bridge::HandleDmxIn()+0x98>
+ 140:	e59d300c 	ldr	r3, [sp, #12]
+ 144:	e3530000 	cmp	r3, #0
+ 148:	1a000007 	bne	16c <E131Bridge::HandleDmxIn()+0x80>
+ 14c:	e5973000 	ldr	r3, [r7]
+ 150:	e3a02001 	mov	r2, #1
+ 154:	e1c33512 	bic	r3, r3, r2, lsl r5
+ 158:	e5873000 	str	r3, [r7]
+ 15c:	e3530000 	cmp	r3, #0
+ 160:	05d6350d 	ldrbeq	r3, [r6, #1293]	; 0x50d
+ 164:	03c33001 	biceq	r3, r3, #1
+ 168:	05c6350d 	strbeq	r3, [r6, #1293]	; 0x50d
+ 16c:	e2855001 	add	r5, r5, #1
+ 170:	e284400c 	add	r4, r4, #12
+ 174:	e3550004 	cmp	r5, #4
+ 178:	1affffe4 	bne	110 <E131Bridge::HandleDmxIn()+0x24>
+ 17c:	e28dd014 	add	sp, sp, #20
+ 180:	e8bd83f0 	pop	{r4, r5, r6, r7, r8, r9, pc}
+ 184:	e59d0008 	ldr	r0, [sp, #8]
+ 188:	e596e018 	ldr	lr, [r6, #24]
+ 18c:	e6ff2070 	uxth	r2, r0
+ 190:	e3500000 	cmp	r0, #0
+ 194:	e282106d 	add	r1, r2, #109	; 0x6d
+ 198:	e282c057 	add	ip, r2, #87	; 0x57
+ 19c:	e3811a07 	orr	r1, r1, #28672	; 0x7000
+ 1a0:	e38cca07 	orr	ip, ip, #28672	; 0x7000
+ 1a4:	e6bf1fb1 	rev16	r1, r1
+ 1a8:	e1ce11b0 	strh	r1, [lr, #16]
+ 1ac:	e282100a 	add	r1, r2, #10
+ 1b0:	e6bf2fbc 	rev16	r2, ip
+ 1b4:	e3811a07 	orr	r1, r1, #28672	; 0x7000
+ 1b8:	e1ce22b6 	strh	r2, [lr, #38]	; 0x26
+ 1bc:	e5d42009 	ldrb	r2, [r4, #9]
+ 1c0:	e6bf1fb1 	rev16	r1, r1
+ 1c4:	e5ce206c 	strb	r2, [lr, #108]	; 0x6c
+ 1c8:	e5d42008 	ldrb	r2, [r4, #8]
+ 1cc:	e282c001 	add	ip, r2, #1
+ 1d0:	e5c4c008 	strb	ip, [r4, #8]
+ 1d4:	e596c018 	ldr	ip, [r6, #24]
+ 1d8:	e5cc206f 	strb	r2, [ip, #111]	; 0x6f
+ 1dc:	e1d4c0b0 	ldrh	ip, [r4]
+ 1e0:	e5962018 	ldr	r2, [r6, #24]
+ 1e4:	e6bfcfbc 	rev16	ip, ip
+ 1e8:	e1c2c7b1 	strh	ip, [r2, #113]	; 0x71
+ 1ec:	e1c217b3 	strh	r1, [r2, #115]	; 0x73
+ 1f0:	0a00001a 	beq	260 <E131Bridge::HandleDmxIn()+0x174>
+ 1f4:	e0830000 	add	r0, r3, r0
+ 1f8:	e282207c 	add	r2, r2, #124	; 0x7c
+ 1fc:	e4d31001 	ldrb	r1, [r3], #1
+ 200:	e1530000 	cmp	r3, r0
+ 204:	e5e21001 	strb	r1, [r2, #1]!
+ 208:	1afffffb 	bne	1fc <E131Bridge::HandleDmxIn()+0x110>
+ 20c:	e1dd30b8 	ldrh	r3, [sp, #8]
+ 210:	e5962018 	ldr	r2, [r6, #24]
+ 214:	e6bf1fb3 	rev16	r1, r3
+ 218:	e3a0cd57 	mov	ip, #5568	; 0x15c0
+ 21c:	e1c217bb 	strh	r1, [r2, #123]	; 0x7b
+ 220:	e283307d 	add	r3, r3, #125	; 0x7d
+ 224:	e5961000 	ldr	r1, [r6]
+ 228:	e6ff3073 	uxth	r3, r3
+ 22c:	e58dc004 	str	ip, [sp, #4]
+ 230:	e594c004 	ldr	ip, [r4, #4]
+ 234:	e5980000 	ldr	r0, [r8]
+ 238:	e58dc000 	str	ip, [sp]
+ 23c:	ebfffffe 	bl	0 <Network::SendTo(int, void const*, unsigned short, unsigned int, unsigned short)>
+ 240:	e5d6250d 	ldrb	r2, [r6, #1293]	; 0x50d
+ 244:	e5973000 	ldr	r3, [r7]
+ 248:	e3822001 	orr	r2, r2, #1
+ 24c:	e5c6250d 	strb	r2, [r6, #1293]	; 0x50d
+ 250:	e3a02001 	mov	r2, #1
+ 254:	e1833512 	orr	r3, r3, r2, lsl r5
+ 258:	e5873000 	str	r3, [r7]
+ 25c:	eaffffc2 	b	16c <E131Bridge::HandleDmxIn()+0x80>
+ 260:	e1a03000 	mov	r3, r0
+ 264:	eaffffea 	b	214 <E131Bridge::HandleDmxIn()+0x128>
+
+Disassembly of section .bss:
+
+00000000 <s_ReceivingMask>:
+   0:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e131bridgeprint.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <E131Bridge::Print()>:
+   0:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+   4:	e24dd034 	sub	sp, sp, #52	; 0x34
+   8:	e28d1008 	add	r1, sp, #8
+   c:	e1a04000 	mov	r4, r0
+  10:	e3a05000 	mov	r5, #0
+  14:	e2800024 	add	r0, r0, #36	; 0x24
+  18:	e5cd502c 	strb	r5, [sp, #44]	; 0x2c
+  1c:	ebfffffe 	bl	0 <uuid_unparse>
+  20:	e59f0114 	ldr	r0, [pc, #276]	; 13c <E131Bridge::Print()+0x13c>
+  24:	ebfffffe 	bl	0 <printf>
+  28:	e59f3110 	ldr	r3, [pc, #272]	; 140 <E131Bridge::Print()+0x140>
+  2c:	e59f0110 	ldr	r0, [pc, #272]	; 144 <E131Bridge::Print()+0x144>
+  30:	e5d31000 	ldrb	r1, [r3]
+  34:	e5d32001 	ldrb	r2, [r3, #1]
+  38:	ebfffffe 	bl	0 <printf>
+  3c:	e59f0104 	ldr	r0, [pc, #260]	; 148 <E131Bridge::Print()+0x148>
+  40:	e28d1008 	add	r1, sp, #8
+  44:	ebfffffe 	bl	0 <printf>
+  48:	e5d4350b 	ldrb	r3, [r4, #1291]	; 0x50b
+  4c:	e1530005 	cmp	r3, r5
+  50:	0a000018 	beq	b8 <E131Bridge::Print()+0xb8>
+  54:	e59f00f0 	ldr	r0, [pc, #240]	; 14c <E131Bridge::Print()+0x14c>
+  58:	e2846d15 	add	r6, r4, #1344	; 0x540
+  5c:	e59f70ec 	ldr	r7, [pc, #236]	; 150 <E131Bridge::Print()+0x150>
+  60:	e286600c 	add	r6, r6, #12
+  64:	ebfffffe 	bl	0 <printf>
+  68:	e3a03001 	mov	r3, #1
+  6c:	e28d2006 	add	r2, sp, #6
+  70:	e1a01005 	mov	r1, r5
+  74:	e1a00004 	mov	r0, r4
+  78:	ebfffffe 	bl	0 <E131Bridge::GetUniverse(unsigned int, unsigned short&, lightset::PortDir) const>
+  7c:	e3500000 	cmp	r0, #0
+  80:	0a000009 	beq	ac <E131Bridge::Print()+0xac>
+  84:	e59f00c8 	ldr	r0, [pc, #200]	; 154 <E131Bridge::Print()+0x154>
+  88:	e3a03044 	mov	r3, #68	; 0x44
+  8c:	e0030593 	mul	r3, r3, r5
+  90:	e1a01005 	mov	r1, r5
+  94:	e7962003 	ldr	r2, [r6, r3]
+  98:	e59f30b8 	ldr	r3, [pc, #184]	; 158 <E131Bridge::Print()+0x158>
+  9c:	e3520000 	cmp	r2, #0
+  a0:	e1dd20b6 	ldrh	r2, [sp, #6]
+  a4:	01a03007 	moveq	r3, r7
+  a8:	ebfffffe 	bl	0 <printf>
+  ac:	e2855001 	add	r5, r5, #1
+  b0:	e3550004 	cmp	r5, #4
+  b4:	1affffeb 	bne	68 <E131Bridge::Print()+0x68>
+  b8:	e5d4350a 	ldrb	r3, [r4, #1290]	; 0x50a
+  bc:	e3530000 	cmp	r3, #0
+  c0:	0a000016 	beq	120 <E131Bridge::Print()+0x120>
+  c4:	e59f0090 	ldr	r0, [pc, #144]	; 15c <E131Bridge::Print()+0x15c>
+  c8:	e2846e62 	add	r6, r4, #1568	; 0x620
+  cc:	e59f708c 	ldr	r7, [pc, #140]	; 160 <E131Bridge::Print()+0x160>
+  d0:	e3a05000 	mov	r5, #0
+  d4:	e2866009 	add	r6, r6, #9
+  d8:	ebfffffe 	bl	0 <printf>
+  dc:	e3a03000 	mov	r3, #0
+  e0:	e28d2006 	add	r2, sp, #6
+  e4:	e1a01005 	mov	r1, r5
+  e8:	e1a00004 	mov	r0, r4
+  ec:	ebfffffe 	bl	0 <E131Bridge::GetUniverse(unsigned int, unsigned short&, lightset::PortDir) const>
+  f0:	e3500000 	cmp	r0, #0
+  f4:	0a000006 	beq	114 <E131Bridge::Print()+0x114>
+  f8:	e1dd20b6 	ldrh	r2, [sp, #6]
+  fc:	e3a0300c 	mov	r3, #12
+ 100:	e0030593 	mul	r3, r3, r5
+ 104:	e1a01005 	mov	r1, r5
+ 108:	e1a00007 	mov	r0, r7
+ 10c:	e7d63003 	ldrb	r3, [r6, r3]
+ 110:	ebfffffe 	bl	0 <printf>
+ 114:	e2855001 	add	r5, r5, #1
+ 118:	e3550004 	cmp	r5, #4
+ 11c:	1affffee 	bne	dc <E131Bridge::Print()+0xdc>
+ 120:	e5d434fb 	ldrb	r3, [r4, #1275]	; 0x4fb
+ 124:	e3530000 	cmp	r3, #0
+ 128:	0a000001 	beq	134 <E131Bridge::Print()+0x134>
+ 12c:	e59f0030 	ldr	r0, [pc, #48]	; 164 <E131Bridge::Print()+0x164>
+ 130:	ebfffffe 	bl	0 <printf>
+ 134:	e28dd034 	add	sp, sp, #52	; 0x34
+ 138:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+ 13c:	00000008 	andeq	r0, r0, r8
+ 140:	00000000 	andeq	r0, r0, r0
+ 144:	00000010 	andeq	r0, r0, r0, lsl r0
+ 148:	00000023 	andeq	r0, r0, r3, lsr #32
+ 14c:	00000033 	andeq	r0, r0, r3, lsr r0
+ 150:	00000000 	andeq	r0, r0, r0
+ 154:	0000003c 	andeq	r0, r0, ip, lsr r0
+ 158:	00000004 	andeq	r0, r0, r4
+ 15c:	0000005b 	andeq	r0, r0, fp, asr r0
+ 160:	00000063 	andeq	r0, r0, r3, rrx
+ 164:	00000082 	andeq	r0, r0, r2, lsl #1
+
+Disassembly of section .rodata.str1.1:
+
+00000000 <.rodata.str1.1>:
+   0:	00505448 	subseq	r5, r0, r8, asr #8
+   4:	0050544c 	subseq	r5, r0, ip, asr #8
+   8:	64697242 	strbtvs	r7, [r9], #-578	; 0xfffffdbe
+   c:	000a6567 	andeq	r6, sl, r7, ror #10
+  10:	72694620 	rsbvc	r4, r9, #32, 12	; 0x2000000
+  14:	7261776d 	rsbvc	r7, r1, #28573696	; 0x1b40000
+  18:	203a2065 	eorscs	r2, sl, r5, rrx
+  1c:	252e6425 	strcs	r6, [lr, #-1061]!	; 0xfffffbdb
+  20:	20000a64 	andcs	r0, r0, r4, ror #20
+  24:	20444943 	subcs	r4, r4, r3, asr #18
+  28:	20202020 	eorcs	r2, r0, r0, lsr #32
+  2c:	25203a20 	strcs	r3, [r0, #-2592]!	; 0xfffff5e0
+  30:	20000a73 	andcs	r0, r0, r3, ror sl
+  34:	7074754f 	rsbsvc	r7, r4, pc, asr #10
+  38:	000a7475 	andeq	r7, sl, r5, ror r4
+  3c:	6f502020 	svcvs	0x00502020
+  40:	25207472 	strcs	r7, [r0, #-1138]!	; 0xfffffb8e
+  44:	55206432 	strpl	r6, [r0, #-1074]!	; 0xfffffbce
+  48:	6576696e 	ldrbvs	r6, [r6, #-2414]!	; 0xfffff692
+  4c:	20657372 	rsbcs	r7, r5, r2, ror r3
+  50:	64332d25 	ldrtvs	r2, [r3], #-3365	; 0xfffff2db
+  54:	73255b20 			; <UNDEFINED> instruction: 0x73255b20
+  58:	20000a5d 	andcs	r0, r0, sp, asr sl
+  5c:	75706e49 	ldrbvc	r6, [r0, #-3657]!	; 0xfffff1b7
+  60:	20000a74 	andcs	r0, r0, r4, ror sl
+  64:	726f5020 	rsbvc	r5, pc, #32
+  68:	32252074 	eorcc	r2, r5, #116	; 0x74
+  6c:	6e552064 	cdpvs	0, 5, cr2, cr5, cr4, {3}
+  70:	72657669 	rsbvc	r7, r5, #110100480	; 0x6900000
+  74:	25206573 	strcs	r6, [r0, #-1395]!	; 0xfffffa8d
+  78:	2064332d 	rsbcs	r3, r4, sp, lsr #6
+  7c:	5d64255b 	cfstr64pl	mvdx2, [r4, #-364]!	; 0xfffffe94
+  80:	5320000a 			; <UNDEFINED> instruction: 0x5320000a
+  84:	68636e79 	stmdavs	r3!, {r0, r3, r4, r5, r6, r9, sl, fp, sp, lr}^
+  88:	696e6f72 	stmdbvs	lr!, {r1, r4, r5, r6, r8, r9, sl, fp, sp, lr}^
+  8c:	6920657a 	stmdbvs	r0!, {r1, r3, r4, r5, r6, r8, sl, sp, lr}
+  90:	69642073 	stmdbvs	r4!, {r0, r1, r4, r5, r6, sp}^
+  94:	6c626173 	stfvse	f6, [r2], #-460	; 0xfffffe34
+  98:	000a6465 	andeq	r6, sl, r5, ror #8
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e131msgconst.o:     file format elf32-littlearm
+
+
+Disassembly of section .rodata:
+
+00000000 <E131MsgConst::STARTED>:
+   0:	4e434173 	mcrmi	1, 2, r4, cr3, cr3, {3}
+   4:	2e314520 	cfabs64cs	mvdx4, mvdx1
+   8:	73203133 			; <UNDEFINED> instruction: 0x73203133
+   c:	74726174 	ldrbtvc	r6, [r2], #-372	; 0xfffffe8c
+  10:	00006465 	andeq	r6, r0, r5, ror #8
+
+00000014 <E131MsgConst::START>:
+  14:	72617453 	rsbvc	r7, r1, #1392508928	; 0x53000000
+  18:	676e6974 			; <UNDEFINED> instruction: 0x676e6974
+  1c:	43417320 	movtmi	r7, #4896	; 0x1320
+  20:	3145204e 	cmpcc	r5, lr, asr #32
+  24:	0031332e 	eorseq	r3, r1, lr, lsr #6
+
+00000028 <E131MsgConst::PARAMS>:
+  28:	666e6f43 	strbtvs	r6, [lr], -r3, asr #30
+  2c:	72756769 	rsbsvc	r6, r5, #27525120	; 0x1a40000
+  30:	20676e69 	rsbcs	r6, r7, r9, ror #28
+  34:	4e434173 	mcrmi	1, 2, r4, cr3, cr3, {3}
+  38:	2e314520 	cfabs64cs	mvdx4, mvdx1
+  3c:	Address 0x000000000000003c is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e131bridge.o:     file format elf32-littlearm
+
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000008 	andeq	r0, r0, r8
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000009 	andeq	r0, r0, r9
+
+Disassembly of section .text:
+
+00000000 <E131Bridge::E131Bridge()>:
+       0:	e3003000 	movw	r3, #0
+       4:	e280ce62 	add	ip, r0, #1568	; 0x620
+       8:	e3403000 	movt	r3, #0
+       c:	e2801e55 	add	r1, r0, #1360	; 0x550
+      10:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+      14:	e1a04000 	mov	r4, r0
+      18:	e5830000 	str	r0, [r3]
+      1c:	e2800e65 	add	r0, r0, #1616	; 0x650
+      20:	e3e03000 	mvn	r3, #0
+      24:	e24dd054 	sub	sp, sp, #84	; 0x54
+      28:	e5843000 	str	r3, [r4]
+      2c:	e28cc00c 	add	ip, ip, #12
+      30:	e2811004 	add	r1, r1, #4
+      34:	e280000c 	add	r0, r0, #12
+      38:	e3a0e064 	mov	lr, #100	; 0x64
+      3c:	e3a02000 	mov	r2, #0
+      40:	e5842004 	str	r2, [r4, #4]
+      44:	e3a03001 	mov	r3, #1
+      48:	e584200c 	str	r2, [r4, #12]
+      4c:	e5842010 	str	r2, [r4, #16]
+      50:	e5842014 	str	r2, [r4, #20]
+      54:	e5842018 	str	r2, [r4, #24]
+      58:	e584201c 	str	r2, [r4, #28]
+      5c:	e5842020 	str	r2, [r4, #32]
+      60:	e5842074 	str	r2, [r4, #116]	; 0x74
+      64:	e5c43008 	strb	r3, [r4, #8]
+      68:	e2413044 	sub	r3, r1, #68	; 0x44
+      6c:	e4c32001 	strb	r2, [r3], #1
+      70:	e1530001 	cmp	r3, r1
+      74:	1afffffc 	bne	6c <E131Bridge::E131Bridge()+0x6c>
+      78:	e24c300c 	sub	r3, ip, #12
+      7c:	e4c32001 	strb	r2, [r3], #1
+      80:	e153000c 	cmp	r3, ip
+      84:	1afffffc 	bne	7c <E131Bridge::E131Bridge()+0x7c>
+      88:	e543e003 	strb	lr, [r3, #-3]
+      8c:	e283c00c 	add	ip, r3, #12
+      90:	e15c0000 	cmp	ip, r0
+      94:	e2811044 	add	r1, r1, #68	; 0x44
+      98:	1afffff2 	bne	68 <E131Bridge::E131Bridge()+0x68>
+      9c:	e2843e4f 	add	r3, r4, #1264	; 0x4f0
+      a0:	e2841e51 	add	r1, r4, #1296	; 0x510
+      a4:	e2833004 	add	r3, r3, #4
+      a8:	e3a02000 	mov	r2, #0
+      ac:	e4c32001 	strb	r2, [r3], #1
+      b0:	e1530001 	cmp	r3, r1
+      b4:	1afffffc 	bne	ac <E131Bridge::E131Bridge()+0xac>
+      b8:	e3006000 	movw	r6, #0
+      bc:	e3005000 	movw	r5, #0
+      c0:	e3406000 	movt	r6, #0
+      c4:	e3a03001 	mov	r3, #1
+      c8:	e3405000 	movt	r5, #0
+      cc:	e28d100f 	add	r1, sp, #15
+      d0:	e5967000 	ldr	r7, [r6]
+      d4:	e5c4350c 	strb	r3, [r4, #1292]	; 0x50c
+      d8:	e5950000 	ldr	r0, [r5]
+      dc:	e2877010 	add	r7, r7, #16
+      e0:	ebfffffe 	bl	0 <Hardware::GetBoardName(unsigned char&)>
+      e4:	e58d0000 	str	r0, [sp]
+      e8:	e3002000 	movw	r2, #0
+      ec:	e3402000 	movt	r2, #0
+      f0:	e1a03007 	mov	r3, r7
+      f4:	e3a01040 	mov	r1, #64	; 0x40
+      f8:	e28d0010 	add	r0, sp, #16
+      fc:	ebfffffe 	bl	0 <snprintf>
+     100:	e2843034 	add	r3, r4, #52	; 0x34
+     104:	e28d1010 	add	r1, sp, #16
+     108:	e28de04f 	add	lr, sp, #79	; 0x4f
+     10c:	e284c073 	add	ip, r4, #115	; 0x73
+     110:	e4d12001 	ldrb	r2, [r1], #1
+     114:	e04c0003 	sub	r0, ip, r3
+     118:	e3520000 	cmp	r2, #0
+     11c:	0a00000f 	beq	160 <E131Bridge::E131Bridge()+0x160>
+     120:	e151000e 	cmp	r1, lr
+     124:	e4c32001 	strb	r2, [r3], #1
+     128:	1afffff8 	bne	110 <E131Bridge::E131Bridge()+0x110>
+     12c:	e5960000 	ldr	r0, [r6]
+     130:	e3a03000 	mov	r3, #0
+     134:	e5c43073 	strb	r3, [r4, #115]	; 0x73
+     138:	e3a01d57 	mov	r1, #5568	; 0x15c0
+     13c:	ebfffffe 	bl	0 <Network::Begin(unsigned short)>
+     140:	e1a01004 	mov	r1, r4
+     144:	e1a03000 	mov	r3, r0
+     148:	e5950000 	ldr	r0, [r5]
+     14c:	e4813024 	str	r3, [r1], #36	; 0x24
+     150:	ebfffffe 	bl	0 <Hardware::GetUuid(unsigned char*)>
+     154:	e1a00004 	mov	r0, r4
+     158:	e28dd054 	add	sp, sp, #84	; 0x54
+     15c:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+     160:	e3500000 	cmp	r0, #0
+     164:	0afffff0 	beq	12c <E131Bridge::E131Bridge()+0x12c>
+     168:	e0830000 	add	r0, r3, r0
+     16c:	e4c32001 	strb	r2, [r3], #1
+     170:	e1530000 	cmp	r3, r0
+     174:	1afffffc 	bne	16c <E131Bridge::E131Bridge()+0x16c>
+     178:	eaffffeb 	b	12c <E131Bridge::E131Bridge()+0x12c>
+
+0000017c <E131Bridge::Start()>:
+     17c:	e5903014 	ldr	r3, [r0, #20]
+     180:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+     184:	e3530000 	cmp	r3, #0
+     188:	e24dd00c 	sub	sp, sp, #12
+     18c:	0a000013 	beq	1e0 <E131Bridge::Start()+0x64>
+     190:	e5903018 	ldr	r3, [r0, #24]
+     194:	e1a05000 	mov	r5, r0
+     198:	e3530000 	cmp	r3, #0
+     19c:	0a000016 	beq	1fc <E131Bridge::Start()+0x80>
+     1a0:	e2856e62 	add	r6, r5, #1568	; 0x620
+     1a4:	e3a04000 	mov	r4, #0
+     1a8:	e2866002 	add	r6, r6, #2
+     1ac:	e3a0700c 	mov	r7, #12
+     1b0:	e0030497 	mul	r3, r7, r4
+     1b4:	e1a01004 	mov	r1, r4
+     1b8:	e2844001 	add	r4, r4, #1
+     1bc:	e7d63003 	ldrb	r3, [r6, r3]
+     1c0:	e3530000 	cmp	r3, #0
+     1c4:	0a000003 	beq	1d8 <E131Bridge::Start()+0x5c>
+     1c8:	e5950014 	ldr	r0, [r5, #20]
+     1cc:	e5903000 	ldr	r3, [r0]
+     1d0:	e5933008 	ldr	r3, [r3, #8]
+     1d4:	e12fff33 	blx	r3
+     1d8:	e3540004 	cmp	r4, #4
+     1dc:	1afffff3 	bne	1b0 <E131Bridge::Start()+0x34>
+     1e0:	e3003000 	movw	r3, #0
+     1e4:	e3a01002 	mov	r1, #2
+     1e8:	e3403000 	movt	r3, #0
+     1ec:	e5930000 	ldr	r0, [r3]
+     1f0:	e28dd00c 	add	sp, sp, #12
+     1f4:	e8bd40f0 	pop	{r4, r5, r6, r7, lr}
+     1f8:	eafffffe 	b	0 <LedBlink::SetMode(ledblink::Mode)>
+     1fc:	e3000000 	movw	r0, #0
+     200:	e28d1004 	add	r1, sp, #4
+     204:	e3400000 	movt	r0, #0
+     208:	ebfffffe 	bl	0 <inet_aton>
+     20c:	e59d3004 	ldr	r3, [sp, #4]
+     210:	e300027e 	movw	r0, #638	; 0x27e
+     214:	e38334d6 	orr	r3, r3, #-704643072	; 0xd6000000
+     218:	e38338fa 	orr	r3, r3, #16384000	; 0xfa0000
+     21c:	e5853020 	str	r3, [r5, #32]
+     220:	ebfffffe 	bl	0 <operator new(unsigned int)>
+     224:	e5850018 	str	r0, [r5, #24]
+     228:	e1a00005 	mov	r0, r5
+     22c:	ebfffffe 	bl	0 <E131Bridge::FillDataPacket()>
+     230:	e3000478 	movw	r0, #1144	; 0x478
+     234:	ebfffffe 	bl	0 <operator new(unsigned int)>
+     238:	e585001c 	str	r0, [r5, #28]
+     23c:	e1a00005 	mov	r0, r5
+     240:	ebfffffe 	bl	0 <E131Bridge::FillDiscoveryPacket()>
+     244:	eaffffd5 	b	1a0 <E131Bridge::Start()+0x24>
+
+00000248 <E131Bridge::Stop()>:
+     248:	e92d4ff8 	push	{r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+     24c:	e3004000 	movw	r4, #0
+     250:	e3404000 	movt	r4, #0
+     254:	e3a05000 	mov	r5, #0
+     258:	e300b000 	movw	fp, #0
+     25c:	e1a06000 	mov	r6, r0
+     260:	e340b000 	movt	fp, #0
+     264:	e2809e55 	add	r9, r0, #1360	; 0x550
+     268:	e1a07005 	mov	r7, r5
+     26c:	e3a08044 	mov	r8, #68	; 0x44
+     270:	e3a0a001 	mov	sl, #1
+     274:	e5c0a4f4 	strb	sl, [r0, #1268]	; 0x4f4
+     278:	e5963004 	ldr	r3, [r6, #4]
+     27c:	e1a01005 	mov	r1, r5
+     280:	e3530000 	cmp	r3, #0
+     284:	e1a00003 	mov	r0, r3
+     288:	0a000002 	beq	298 <E131Bridge::Stop()+0x50>
+     28c:	e5933000 	ldr	r3, [r3]
+     290:	e593300c 	ldr	r3, [r3, #12]
+     294:	e12fff33 	blx	r3
+     298:	e59b2000 	ldr	r2, [fp]
+     29c:	e2844c06 	add	r4, r4, #1536	; 0x600
+     2a0:	e0030598 	mul	r3, r8, r5
+     2a4:	e5847000 	str	r7, [r4]
+     2a8:	e3120001 	tst	r2, #1
+     2ac:	058ba000 	streq	sl, [fp]
+     2b0:	e2855001 	add	r5, r5, #1
+     2b4:	e7c97003 	strb	r7, [r9, r3]
+     2b8:	e3550004 	cmp	r5, #4
+     2bc:	e2844004 	add	r4, r4, #4
+     2c0:	1affffec 	bne	278 <E131Bridge::Stop()+0x30>
+     2c4:	e5963014 	ldr	r3, [r6, #20]
+     2c8:	e3530000 	cmp	r3, #0
+     2cc:	0a00000f 	beq	310 <E131Bridge::Stop()+0xc8>
+     2d0:	e2865e62 	add	r5, r6, #1568	; 0x620
+     2d4:	e3a04000 	mov	r4, #0
+     2d8:	e2855002 	add	r5, r5, #2
+     2dc:	e3a0700c 	mov	r7, #12
+     2e0:	e0030497 	mul	r3, r7, r4
+     2e4:	e1a01004 	mov	r1, r4
+     2e8:	e2844001 	add	r4, r4, #1
+     2ec:	e7d53003 	ldrb	r3, [r5, r3]
+     2f0:	e3530000 	cmp	r3, #0
+     2f4:	0a000003 	beq	308 <E131Bridge::Stop()+0xc0>
+     2f8:	e5960014 	ldr	r0, [r6, #20]
+     2fc:	e5903000 	ldr	r3, [r0]
+     300:	e593300c 	ldr	r3, [r3, #12]
+     304:	e12fff33 	blx	r3
+     308:	e3540004 	cmp	r4, #4
+     30c:	1afffff3 	bne	2e0 <E131Bridge::Stop()+0x98>
+     310:	e3003000 	movw	r3, #0
+     314:	e3a01000 	mov	r1, #0
+     318:	e3403000 	movt	r3, #0
+     31c:	e5930000 	ldr	r0, [r3]
+     320:	e8bd4ff8 	pop	{r3, r4, r5, r6, r7, r8, r9, sl, fp, lr}
+     324:	eafffffe 	b	0 <LedBlink::SetMode(ledblink::Mode)>
+
+00000328 <E131Bridge::SetSourceName(char const*)>:
+     328:	e2803034 	add	r3, r0, #52	; 0x34
+     32c:	e2412001 	sub	r2, r1, #1
+     330:	e281c03e 	add	ip, r1, #62	; 0x3e
+     334:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+     338:	e04ce002 	sub	lr, ip, r2
+     33c:	e5f21001 	ldrb	r1, [r2, #1]!
+     340:	e3510000 	cmp	r1, #0
+     344:	0a000005 	beq	360 <E131Bridge::SetSourceName(char const*)+0x38>
+     348:	e152000c 	cmp	r2, ip
+     34c:	e4c31001 	strb	r1, [r3], #1
+     350:	1afffff8 	bne	338 <E131Bridge::SetSourceName(char const*)+0x10>
+     354:	e3a03000 	mov	r3, #0
+     358:	e5c03073 	strb	r3, [r0, #115]	; 0x73
+     35c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+     360:	e35e0000 	cmp	lr, #0
+     364:	0afffffa 	beq	354 <E131Bridge::SetSourceName(char const*)+0x2c>
+     368:	e083e00e 	add	lr, r3, lr
+     36c:	e4c31001 	strb	r1, [r3], #1
+     370:	e15e0003 	cmp	lr, r3
+     374:	1afffffc 	bne	36c <E131Bridge::SetSourceName(char const*)+0x44>
+     378:	eafffff5 	b	354 <E131Bridge::SetSourceName(char const*)+0x2c>
+
+0000037c <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)>:
+     37c:	e3510000 	cmp	r1, #0
+     380:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+     384:	e1a04000 	mov	r4, r0
+     388:	e24dd00c 	sub	sp, sp, #12
+     38c:	e1a05003 	mov	r5, r3
+     390:	0a000030 	beq	458 <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0xdc>
+     394:	e3003506 	movw	r3, #1286	; 0x506
+     398:	e0807003 	add	r7, r0, r3
+     39c:	e19010b3 	ldrh	r1, [r0, r3]
+     3a0:	e3510000 	cmp	r1, #0
+     3a4:	01c750b0 	strheq	r5, [r7]
+     3a8:	028d6004 	addeq	r6, sp, #4
+     3ac:	0a000017 	beq	410 <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0x94>
+     3b0:	e1510005 	cmp	r1, r5
+     3b4:	0a000031 	beq	480 <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0x104>
+     3b8:	e2843e51 	add	r3, r4, #1296	; 0x510
+     3bc:	e1d330b0 	ldrh	r3, [r3]
+     3c0:	e1530001 	cmp	r3, r1
+     3c4:	0a00002f 	beq	488 <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0x10c>
+     3c8:	e3003554 	movw	r3, #1364	; 0x554
+     3cc:	e19430b3 	ldrh	r3, [r4, r3]
+     3d0:	e1530001 	cmp	r3, r1
+     3d4:	0a00002b 	beq	488 <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0x10c>
+     3d8:	e3003598 	movw	r3, #1432	; 0x598
+     3dc:	e19430b3 	ldrh	r3, [r4, r3]
+     3e0:	e1530001 	cmp	r3, r1
+     3e4:	0a000027 	beq	488 <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0x10c>
+     3e8:	e30035dc 	movw	r3, #1500	; 0x5dc
+     3ec:	e28d6004 	add	r6, sp, #4
+     3f0:	e19430b3 	ldrh	r3, [r4, r3]
+     3f4:	e1530001 	cmp	r3, r1
+     3f8:	0a000003 	beq	40c <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0x90>
+     3fc:	e3000000 	movw	r0, #0
+     400:	e1a01006 	mov	r1, r6
+     404:	e3400000 	movt	r0, #0
+     408:	ebfffffe 	bl	0 <inet_aton>
+     40c:	e1c750b0 	strh	r5, [r7]
+     410:	e5947000 	ldr	r7, [r4]
+     414:	e300c000 	movw	ip, #0
+     418:	e340c000 	movt	ip, #0
+     41c:	e3000000 	movw	r0, #0
+     420:	e3400000 	movt	r0, #0
+     424:	e1a01006 	mov	r1, r6
+     428:	e59c4000 	ldr	r4, [ip]
+     42c:	ebfffffe 	bl	0 <inet_aton>
+     430:	e59d2004 	ldr	r2, [sp, #4]
+     434:	e1a01007 	mov	r1, r7
+     438:	e1a0c405 	lsl	ip, r5, #8
+     43c:	e1a00004 	mov	r0, r4
+     440:	e1822c05 	orr	r2, r2, r5, lsl #24
+     444:	e20cc8ff 	and	ip, ip, #16711680	; 0xff0000
+     448:	e182200c 	orr	r2, r2, ip
+     44c:	e28dd00c 	add	sp, sp, #12
+     450:	e8bd40f0 	pop	{r4, r5, r6, r7, lr}
+     454:	eafffffe 	b	0 <Network::JoinGroup(int, unsigned int)>
+     458:	e3520000 	cmp	r2, #0
+     45c:	0a000007 	beq	480 <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0x104>
+     460:	e3003508 	movw	r3, #1288	; 0x508
+     464:	e0807003 	add	r7, r0, r3
+     468:	e19010b3 	ldrh	r1, [r0, r3]
+     46c:	e3510000 	cmp	r1, #0
+     470:	01c750b0 	strheq	r5, [r7]
+     474:	028d6004 	addeq	r6, sp, #4
+     478:	0affffe4 	beq	410 <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0x94>
+     47c:	eaffffcb 	b	3b0 <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0x34>
+     480:	e28dd00c 	add	sp, sp, #12
+     484:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+     488:	e28d6004 	add	r6, sp, #4
+     48c:	eaffffde 	b	40c <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)+0x90>
+
+00000490 <E131Bridge::LeaveUniverse(unsigned int, unsigned short)>:
+     490:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+     494:	e3a03000 	mov	r3, #0
+     498:	e24dd00c 	sub	sp, sp, #12
+     49c:	e2800e51 	add	r0, r0, #1296	; 0x510
+     4a0:	e3a0e044 	mov	lr, #68	; 0x44
+     4a4:	e1510003 	cmp	r1, r3
+     4a8:	e00c039e 	mul	ip, lr, r3
+     4ac:	e2833001 	add	r3, r3, #1
+     4b0:	0a000002 	beq	4c0 <E131Bridge::LeaveUniverse(unsigned int, unsigned short)+0x30>
+     4b4:	e190c0bc 	ldrh	ip, [r0, ip]
+     4b8:	e15c0002 	cmp	ip, r2
+     4bc:	0a000005 	beq	4d8 <E131Bridge::LeaveUniverse(unsigned int, unsigned short)+0x48>
+     4c0:	e3530004 	cmp	r3, #4
+     4c4:	1afffff6 	bne	4a4 <E131Bridge::LeaveUniverse(unsigned int, unsigned short)+0x14>
+     4c8:	e3000000 	movw	r0, #0
+     4cc:	e28d1004 	add	r1, sp, #4
+     4d0:	e3400000 	movt	r0, #0
+     4d4:	ebfffffe 	bl	0 <inet_aton>
+     4d8:	e28dd00c 	add	sp, sp, #12
+     4dc:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+000004e0 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)>:
+     4e0:	e3510003 	cmp	r1, #3
+     4e4:	93520000 	cmpls	r2, #0
+     4e8:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+     4ec:	e1a05003 	mov	r5, r3
+     4f0:	e24dd008 	sub	sp, sp, #8
+     4f4:	e1a04001 	mov	r4, r1
+     4f8:	e1a06000 	mov	r6, r0
+     4fc:	03a03001 	moveq	r3, #1
+     500:	13a03000 	movne	r3, #0
+     504:	1a000018 	bne	56c <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x8c>
+     508:	e3a0300c 	mov	r3, #12
+     50c:	e0230193 	mla	r3, r3, r1, r0
+     510:	e5d32622 	ldrb	r2, [r3, #1570]	; 0x622
+     514:	e3520000 	cmp	r2, #0
+     518:	0a00004a 	beq	648 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x168>
+     51c:	e2833e62 	add	r3, r3, #1568	; 0x620
+     520:	e1d330b0 	ldrh	r3, [r3]
+     524:	e1530005 	cmp	r3, r5
+     528:	0a00000d 	beq	564 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x84>
+     52c:	e3a0100c 	mov	r1, #12
+     530:	e3000000 	movw	r0, #0
+     534:	e0246491 	mla	r4, r1, r4, r6
+     538:	e3400000 	movt	r0, #0
+     53c:	e28d1004 	add	r1, sp, #4
+     540:	e2843e62 	add	r3, r4, #1568	; 0x620
+     544:	e1c350b0 	strh	r5, [r3]
+     548:	ebfffffe 	bl	0 <inet_aton>
+     54c:	e59d3004 	ldr	r3, [sp, #4]
+     550:	e1a02405 	lsl	r2, r5, #8
+     554:	e1835c05 	orr	r5, r3, r5, lsl #24
+     558:	e20238ff 	and	r3, r2, #16711680	; 0xff0000
+     55c:	e1855003 	orr	r5, r5, r3
+     560:	e5845624 	str	r5, [r4, #1572]	; 0x624
+     564:	e28dd008 	add	sp, sp, #8
+     568:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+     56c:	e3520002 	cmp	r2, #2
+     570:	0a00003a 	beq	660 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x180>
+     574:	e3a01044 	mov	r1, #68	; 0x44
+     578:	e0220491 	mla	r2, r1, r4, r0
+     57c:	e5d20512 	ldrb	r0, [r2, #1298]	; 0x512
+     580:	e3500000 	cmp	r0, #0
+     584:	0a000013 	beq	5d8 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0xf8>
+     588:	e2822e51 	add	r2, r2, #1296	; 0x510
+     58c:	e1d220b0 	ldrh	r2, [r2]
+     590:	e1520005 	cmp	r2, r5
+     594:	0afffff2 	beq	564 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x84>
+     598:	e2860e51 	add	r0, r6, #1296	; 0x510
+     59c:	e1540003 	cmp	r4, r3
+     5a0:	e0020391 	mul	r2, r1, r3
+     5a4:	e2833001 	add	r3, r3, #1
+     5a8:	0a000002 	beq	5b8 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0xd8>
+     5ac:	e19020b2 	ldrh	r2, [r0, r2]
+     5b0:	e1520005 	cmp	r2, r5
+     5b4:	0a00000c 	beq	5ec <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x10c>
+     5b8:	e3530004 	cmp	r3, #4
+     5bc:	1afffff6 	bne	59c <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0xbc>
+     5c0:	e28d7004 	add	r7, sp, #4
+     5c4:	e3000000 	movw	r0, #0
+     5c8:	e3400000 	movt	r0, #0
+     5cc:	e1a01007 	mov	r1, r7
+     5d0:	ebfffffe 	bl	0 <inet_aton>
+     5d4:	ea000005 	b	5f0 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x110>
+     5d8:	e5d6350b 	ldrb	r3, [r6, #1291]	; 0x50b
+     5dc:	e2833001 	add	r3, r3, #1
+     5e0:	e5c6350b 	strb	r3, [r6, #1291]	; 0x50b
+     5e4:	e3a03001 	mov	r3, #1
+     5e8:	e5c23512 	strb	r3, [r2, #1298]	; 0x512
+     5ec:	e28d7004 	add	r7, sp, #4
+     5f0:	e5968000 	ldr	r8, [r6]
+     5f4:	e3003000 	movw	r3, #0
+     5f8:	e3403000 	movt	r3, #0
+     5fc:	e3000000 	movw	r0, #0
+     600:	e3400000 	movt	r0, #0
+     604:	e1a01007 	mov	r1, r7
+     608:	e5937000 	ldr	r7, [r3]
+     60c:	ebfffffe 	bl	0 <inet_aton>
+     610:	e59d2004 	ldr	r2, [sp, #4]
+     614:	e1a01008 	mov	r1, r8
+     618:	e1a03405 	lsl	r3, r5, #8
+     61c:	e1a00007 	mov	r0, r7
+     620:	e1822c05 	orr	r2, r2, r5, lsl #24
+     624:	e20338ff 	and	r3, r3, #16711680	; 0xff0000
+     628:	e1822003 	orr	r2, r2, r3
+     62c:	ebfffffe 	bl	0 <Network::JoinGroup(int, unsigned int)>
+     630:	e3a01044 	mov	r1, #68	; 0x44
+     634:	e0246491 	mla	r4, r1, r4, r6
+     638:	e2844e51 	add	r4, r4, #1296	; 0x510
+     63c:	e1c450b0 	strh	r5, [r4]
+     640:	e28dd008 	add	sp, sp, #8
+     644:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+     648:	e5d0250a 	ldrb	r2, [r0, #1290]	; 0x50a
+     64c:	e2822001 	add	r2, r2, #1
+     650:	e5c0250a 	strb	r2, [r0, #1290]	; 0x50a
+     654:	e3a02001 	mov	r2, #1
+     658:	e5c32622 	strb	r2, [r3, #1570]	; 0x622
+     65c:	eaffffb2 	b	52c <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x4c>
+     660:	e3510003 	cmp	r1, #3
+     664:	8affffbe 	bhi	564 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x84>
+     668:	e3a02044 	mov	r2, #68	; 0x44
+     66c:	e0210192 	mla	r1, r2, r1, r0
+     670:	e5d10512 	ldrb	r0, [r1, #1298]	; 0x512
+     674:	e3500000 	cmp	r0, #0
+     678:	1a00000a 	bne	6a8 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x1c8>
+     67c:	e3a0300c 	mov	r3, #12
+     680:	e0246493 	mla	r4, r3, r4, r6
+     684:	e5d43622 	ldrb	r3, [r4, #1570]	; 0x622
+     688:	e3530000 	cmp	r3, #0
+     68c:	0affffb4 	beq	564 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x84>
+     690:	e3a03000 	mov	r3, #0
+     694:	e5c43622 	strb	r3, [r4, #1570]	; 0x622
+     698:	e5d6350a 	ldrb	r3, [r6, #1290]	; 0x50a
+     69c:	e2433001 	sub	r3, r3, #1
+     6a0:	e5c6350a 	strb	r3, [r6, #1290]	; 0x50a
+     6a4:	eaffffae 	b	564 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x84>
+     6a8:	e5c13512 	strb	r3, [r1, #1298]	; 0x512
+     6ac:	e2860e51 	add	r0, r6, #1296	; 0x510
+     6b0:	e5d6150b 	ldrb	r1, [r6, #1291]	; 0x50b
+     6b4:	e2411001 	sub	r1, r1, #1
+     6b8:	e5c6150b 	strb	r1, [r6, #1291]	; 0x50b
+     6bc:	e1540003 	cmp	r4, r3
+     6c0:	e0010392 	mul	r1, r2, r3
+     6c4:	e2833001 	add	r3, r3, #1
+     6c8:	0a000002 	beq	6d8 <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x1f8>
+     6cc:	e19010b1 	ldrh	r1, [r0, r1]
+     6d0:	e1510005 	cmp	r1, r5
+     6d4:	0affffe8 	beq	67c <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x19c>
+     6d8:	e3530004 	cmp	r3, #4
+     6dc:	1afffff6 	bne	6bc <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x1dc>
+     6e0:	e3000000 	movw	r0, #0
+     6e4:	e28d1004 	add	r1, sp, #4
+     6e8:	e3400000 	movt	r0, #0
+     6ec:	ebfffffe 	bl	0 <inet_aton>
+     6f0:	eaffffe1 	b	67c <E131Bridge::SetUniverse(unsigned int, lightset::PortDir, unsigned short)+0x19c>
+
+000006f4 <E131Bridge::GetUniverse(unsigned int, unsigned short&, lightset::PortDir) const>:
+     6f4:	e3530000 	cmp	r3, #0
+     6f8:	1a000008 	bne	720 <E131Bridge::GetUniverse(unsigned int, unsigned short&, lightset::PortDir) const+0x2c>
+     6fc:	e3510003 	cmp	r1, #3
+     700:	8a00000d 	bhi	73c <E131Bridge::GetUniverse(unsigned int, unsigned short&, lightset::PortDir) const+0x48>
+     704:	e3a0300c 	mov	r3, #12
+     708:	e0210193 	mla	r1, r3, r1, r0
+     70c:	e5d10622 	ldrb	r0, [r1, #1570]	; 0x622
+     710:	e2811e62 	add	r1, r1, #1568	; 0x620
+     714:	e1d130b0 	ldrh	r3, [r1]
+     718:	e1c230b0 	strh	r3, [r2]
+     71c:	e12fff1e 	bx	lr
+     720:	e3a03044 	mov	r3, #68	; 0x44
+     724:	e0210193 	mla	r1, r3, r1, r0
+     728:	e5d10512 	ldrb	r0, [r1, #1298]	; 0x512
+     72c:	e2811e51 	add	r1, r1, #1296	; 0x510
+     730:	e1d130b0 	ldrh	r3, [r1]
+     734:	e1c230b0 	strh	r3, [r2]
+     738:	e12fff1e 	bx	lr
+     73c:	e1a00003 	mov	r0, r3
+     740:	e12fff1e 	bx	lr
+
+00000744 <E131Bridge::UpdateMergeStatus(unsigned int)>:
+     744:	e5d034f5 	ldrb	r3, [r0, #1269]	; 0x4f5
+     748:	e3a02044 	mov	r2, #68	; 0x44
+     74c:	e3530000 	cmp	r3, #0
+     750:	03a03001 	moveq	r3, #1
+     754:	05c034f5 	strbeq	r3, [r0, #1269]	; 0x4f5
+     758:	05c034f8 	strbeq	r3, [r0, #1272]	; 0x4f8
+     75c:	e3a03001 	mov	r3, #1
+     760:	e0200192 	mla	r0, r2, r1, r0
+     764:	e5c03551 	strb	r3, [r0, #1361]	; 0x551
+     768:	e12fff1e 	bx	lr
+
+0000076c <E131Bridge::CheckMergeTimeouts(unsigned int)>:
+     76c:	e590c00c 	ldr	ip, [r0, #12]
+     770:	e3a03044 	mov	r3, #68	; 0x44
+     774:	e0030193 	mul	r3, r3, r1
+     778:	e92d4010 	push	{r4, lr}
+     77c:	e3024710 	movw	r4, #10000	; 0x2710
+     780:	e080e003 	add	lr, r0, r3
+     784:	e59e2514 	ldr	r2, [lr, #1300]	; 0x514
+     788:	e04c2002 	sub	r2, ip, r2
+     78c:	e1520004 	cmp	r2, r4
+     790:	9a00000c 	bls	7c8 <E131Bridge::CheckMergeTimeouts(unsigned int)+0x5c>
+     794:	e2833e51 	add	r3, r3, #1296	; 0x510
+     798:	e3a02000 	mov	r2, #0
+     79c:	e58e2518 	str	r2, [lr, #1304]	; 0x518
+     7a0:	e283300c 	add	r3, r3, #12
+     7a4:	e0803003 	add	r3, r0, r3
+     7a8:	e283c010 	add	ip, r3, #16
+     7ac:	e4c32001 	strb	r2, [r3], #1
+     7b0:	e153000c 	cmp	r3, ip
+     7b4:	1afffffc 	bne	7ac <E131Bridge::CheckMergeTimeouts(unsigned int)+0x40>
+     7b8:	e590c00c 	ldr	ip, [r0, #12]
+     7bc:	e3a03044 	mov	r3, #68	; 0x44
+     7c0:	e0230193 	mla	r3, r3, r1, r0
+     7c4:	e5c32551 	strb	r2, [r3, #1361]	; 0x551
+     7c8:	e3a03044 	mov	r3, #68	; 0x44
+     7cc:	e3022710 	movw	r2, #10000	; 0x2710
+     7d0:	e0030193 	mul	r3, r3, r1
+     7d4:	e080e003 	add	lr, r0, r3
+     7d8:	e59e4530 	ldr	r4, [lr, #1328]	; 0x530
+     7dc:	e04cc004 	sub	ip, ip, r4
+     7e0:	e15c0002 	cmp	ip, r2
+     7e4:	9a00000b 	bls	818 <E131Bridge::CheckMergeTimeouts(unsigned int)+0xac>
+     7e8:	e2833e53 	add	r3, r3, #1328	; 0x530
+     7ec:	e3a02000 	mov	r2, #0
+     7f0:	e58e2534 	str	r2, [lr, #1332]	; 0x534
+     7f4:	e2833008 	add	r3, r3, #8
+     7f8:	e0803003 	add	r3, r0, r3
+     7fc:	e283c010 	add	ip, r3, #16
+     800:	e4c32001 	strb	r2, [r3], #1
+     804:	e153000c 	cmp	r3, ip
+     808:	1afffffc 	bne	800 <E131Bridge::CheckMergeTimeouts(unsigned int)+0x94>
+     80c:	e3a03044 	mov	r3, #68	; 0x44
+     810:	e0210193 	mla	r1, r3, r1, r0
+     814:	e5c12551 	strb	r2, [r1, #1361]	; 0x551
+     818:	e5d03551 	ldrb	r3, [r0, #1361]	; 0x551
+     81c:	e5d0c595 	ldrb	ip, [r0, #1429]	; 0x595
+     820:	e5d015d9 	ldrb	r1, [r0, #1497]	; 0x5d9
+     824:	e5d0261d 	ldrb	r2, [r0, #1565]	; 0x61d
+     828:	e183300c 	orr	r3, r3, ip
+     82c:	e1833001 	orr	r3, r3, r1
+     830:	e1933002 	orrs	r3, r3, r2
+     834:	05c034f5 	strbeq	r3, [r0, #1269]	; 0x4f5
+     838:	03a03001 	moveq	r3, #1
+     83c:	05c034f8 	strbeq	r3, [r0, #1272]	; 0x4f8
+     840:	e8bd8010 	pop	{r4, pc}
+
+00000844 <E131Bridge::IsPriorityTimeOut(unsigned int) const>:
+     844:	e3a03044 	mov	r3, #68	; 0x44
+     848:	e0210193 	mla	r1, r3, r1, r0
+     84c:	e590300c 	ldr	r3, [r0, #12]
+     850:	e591c518 	ldr	ip, [r1, #1304]	; 0x518
+     854:	e5910530 	ldr	r0, [r1, #1328]	; 0x530
+     858:	e35c0000 	cmp	ip, #0
+     85c:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+     860:	e0432000 	sub	r2, r3, r0
+     864:	e591e514 	ldr	lr, [r1, #1300]	; 0x514
+     868:	e5911534 	ldr	r1, [r1, #1332]	; 0x534
+     86c:	1a000005 	bne	888 <E131Bridge::IsPriorityTimeOut(unsigned int) const+0x44>
+     870:	e3020710 	movw	r0, #10000	; 0x2710
+     874:	e3510000 	cmp	r1, #0
+     878:	11520000 	cmpne	r2, r0
+     87c:	83a00001 	movhi	r0, #1
+     880:	93a00000 	movls	r0, #0
+     884:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+     888:	e043300e 	sub	r3, r3, lr
+     88c:	e3510000 	cmp	r1, #0
+     890:	0a000006 	beq	8b0 <E131Bridge::IsPriorityTimeOut(unsigned int) const+0x6c>
+     894:	e302070f 	movw	r0, #9999	; 0x270f
+     898:	e1520000 	cmp	r2, r0
+     89c:	81530000 	cmphi	r3, r0
+     8a0:	93a00001 	movls	r0, #1
+     8a4:	83a00000 	movhi	r0, #0
+     8a8:	e2200001 	eor	r0, r0, #1
+     8ac:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+     8b0:	e3020710 	movw	r0, #10000	; 0x2710
+     8b4:	e1530000 	cmp	r3, r0
+     8b8:	93a00000 	movls	r0, #0
+     8bc:	83a00001 	movhi	r0, #1
+     8c0:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+000008c4 <E131Bridge::isIpCidMatch(e131bridge::Source const*) const>:
+     8c4:	e5903078 	ldr	r3, [r0, #120]	; 0x78
+     8c8:	e5912004 	ldr	r2, [r1, #4]
+     8cc:	e1520003 	cmp	r2, r3
+     8d0:	1a000009 	bne	8fc <E131Bridge::isIpCidMatch(e131bridge::Source const*) const+0x38>
+     8d4:	e2813007 	add	r3, r1, #7
+     8d8:	e2800091 	add	r0, r0, #145	; 0x91
+     8dc:	e2811017 	add	r1, r1, #23
+     8e0:	ea000001 	b	8ec <E131Bridge::isIpCidMatch(e131bridge::Source const*) const+0x28>
+     8e4:	e1530001 	cmp	r3, r1
+     8e8:	0a000005 	beq	904 <E131Bridge::isIpCidMatch(e131bridge::Source const*) const+0x40>
+     8ec:	e5f3c001 	ldrb	ip, [r3, #1]!
+     8f0:	e5f02001 	ldrb	r2, [r0, #1]!
+     8f4:	e15c0002 	cmp	ip, r2
+     8f8:	0afffff9 	beq	8e4 <E131Bridge::isIpCidMatch(e131bridge::Source const*) const+0x20>
+     8fc:	e3a00000 	mov	r0, #0
+     900:	e12fff1e 	bx	lr
+     904:	e3a00001 	mov	r0, #1
+     908:	e12fff1e 	bx	lr
+
+0000090c <E131Bridge::SetNetworkDataLossCondition(bool, bool)>:
+     90c:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+     910:	e3a08001 	mov	r8, #1
+     914:	e0116002 	ands	r6, r1, r2
+     918:	e24dd00c 	sub	sp, sp, #12
+     91c:	e5c084f8 	strb	r8, [r0, #1272]	; 0x4f8
+     920:	e1a07000 	mov	r7, r0
+     924:	0a000034 	beq	9fc <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0xf0>
+     928:	e58084f4 	str	r8, [r0, #1268]	; 0x4f4
+     92c:	e3006000 	movw	r6, #0
+     930:	e3406000 	movt	r6, #0
+     934:	e2804d15 	add	r4, r0, #1344	; 0x540
+     938:	e5c0850c 	strb	r8, [r0, #1292]	; 0x50c
+     93c:	e3a09000 	mov	r9, #0
+     940:	e300a000 	movw	sl, #0
+     944:	e2844008 	add	r4, r4, #8
+     948:	e340a000 	movt	sl, #0
+     94c:	e1a05009 	mov	r5, r9
+     950:	e5d4300a 	ldrb	r3, [r4, #10]
+     954:	e3530000 	cmp	r3, #0
+     958:	1a00000f 	bne	99c <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x90>
+     95c:	e2899001 	add	r9, r9, #1
+     960:	e2866c06 	add	r6, r6, #1536	; 0x600
+     964:	e3590004 	cmp	r9, #4
+     968:	e2866004 	add	r6, r6, #4
+     96c:	e2844044 	add	r4, r4, #68	; 0x44
+     970:	1afffff6 	bne	950 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x44>
+     974:	e3003000 	movw	r3, #0
+     978:	e3a01002 	mov	r1, #2
+     97c:	e3403000 	movt	r3, #0
+     980:	e5930000 	ldr	r0, [r3]
+     984:	ebfffffe 	bl	0 <LedBlink::SetMode(ledblink::Mode)>
+     988:	e5d7350d 	ldrb	r3, [r7, #1293]	; 0x50d
+     98c:	e3c33002 	bic	r3, r3, #2
+     990:	e5c7350d 	strb	r3, [r7, #1293]	; 0x50d
+     994:	e28dd00c 	add	sp, sp, #12
+     998:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+     99c:	e5970004 	ldr	r0, [r7, #4]
+     9a0:	e1a01009 	mov	r1, r9
+     9a4:	e5903000 	ldr	r3, [r0]
+     9a8:	e593300c 	ldr	r3, [r3, #12]
+     9ac:	e12fff33 	blx	r3
+     9b0:	e5045030 	str	r5, [r4, #-48]	; 0xffffffd0
+     9b4:	e244302c 	sub	r3, r4, #44	; 0x2c
+     9b8:	e244201c 	sub	r2, r4, #28
+     9bc:	e4c35001 	strb	r5, [r3], #1
+     9c0:	e1530002 	cmp	r3, r2
+     9c4:	1afffffc 	bne	9bc <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0xb0>
+     9c8:	e5045014 	str	r5, [r4, #-20]	; 0xffffffec
+     9cc:	e2443010 	sub	r3, r4, #16
+     9d0:	e4c35001 	strb	r5, [r3], #1
+     9d4:	e1530004 	cmp	r3, r4
+     9d8:	1afffffc 	bne	9d0 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0xc4>
+     9dc:	e59a3000 	ldr	r3, [sl]
+     9e0:	e5865600 	str	r5, [r6, #1536]	; 0x600
+     9e4:	e3130001 	tst	r3, #1
+     9e8:	058a8000 	streq	r8, [sl]
+     9ec:	e5c45008 	strb	r5, [r4, #8]
+     9f0:	e5c4500a 	strb	r5, [r4, #10]
+     9f4:	e5c45009 	strb	r5, [r4, #9]
+     9f8:	eaffffd7 	b	95c <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x50>
+     9fc:	e1a0a002 	mov	sl, r2
+     a00:	e3005000 	movw	r5, #0
+     a04:	e3405000 	movt	r5, #0
+     a08:	e2804e53 	add	r4, r0, #1328	; 0x530
+     a0c:	e3002000 	movw	r2, #0
+     a10:	e1a09001 	mov	r9, r1
+     a14:	e3402000 	movt	r2, #0
+     a18:	e2844008 	add	r4, r4, #8
+     a1c:	e1a0b006 	mov	fp, r6
+     a20:	e5d4301a 	ldrb	r3, [r4, #26]
+     a24:	e3530000 	cmp	r3, #0
+     a28:	0a000016 	beq	a88 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x17c>
+     a2c:	e3590000 	cmp	r9, #0
+     a30:	1a00001b 	bne	aa4 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x198>
+     a34:	e35a0000 	cmp	sl, #0
+     a38:	0a000002 	beq	a48 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x13c>
+     a3c:	e5143004 	ldr	r3, [r4, #-4]
+     a40:	e3530000 	cmp	r3, #0
+     a44:	1a000021 	bne	ad0 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x1c4>
+     a48:	e5d734f5 	ldrb	r3, [r7, #1269]	; 0x4f5
+     a4c:	e3530000 	cmp	r3, #0
+     a50:	1a00000c 	bne	a88 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x17c>
+     a54:	e5970004 	ldr	r0, [r7, #4]
+     a58:	e1a01006 	mov	r1, r6
+     a5c:	e58d2004 	str	r2, [sp, #4]
+     a60:	e5903000 	ldr	r3, [r0]
+     a64:	e593300c 	ldr	r3, [r3, #12]
+     a68:	e12fff33 	blx	r3
+     a6c:	e59d2004 	ldr	r2, [sp, #4]
+     a70:	e585b600 	str	fp, [r5, #1536]	; 0x600
+     a74:	e5923000 	ldr	r3, [r2]
+     a78:	e3130001 	tst	r3, #1
+     a7c:	05828000 	streq	r8, [r2]
+     a80:	e5c4b018 	strb	fp, [r4, #24]
+     a84:	e5c4b01a 	strb	fp, [r4, #26]
+     a88:	e2866001 	add	r6, r6, #1
+     a8c:	e2855c06 	add	r5, r5, #1536	; 0x600
+     a90:	e3560004 	cmp	r6, #4
+     a94:	e2855004 	add	r5, r5, #4
+     a98:	e2844044 	add	r4, r4, #68	; 0x44
+     a9c:	1affffdf 	bne	a20 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x114>
+     aa0:	eaffffb3 	b	974 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x68>
+     aa4:	e5143020 	ldr	r3, [r4, #-32]	; 0xffffffe0
+     aa8:	e3530000 	cmp	r3, #0
+     aac:	0affffe5 	beq	a48 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x13c>
+     ab0:	e504b020 	str	fp, [r4, #-32]	; 0xffffffe0
+     ab4:	e244301c 	sub	r3, r4, #28
+     ab8:	e244100c 	sub	r1, r4, #12
+     abc:	e4c3b001 	strb	fp, [r3], #1
+     ac0:	e1530001 	cmp	r3, r1
+     ac4:	1afffffc 	bne	abc <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x1b0>
+     ac8:	e5c4b019 	strb	fp, [r4, #25]
+     acc:	eaffffdd 	b	a48 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x13c>
+     ad0:	e5049004 	str	r9, [r4, #-4]
+     ad4:	e1a03004 	mov	r3, r4
+     ad8:	e2841010 	add	r1, r4, #16
+     adc:	e4c3b001 	strb	fp, [r3], #1
+     ae0:	e1530001 	cmp	r3, r1
+     ae4:	1afffffc 	bne	adc <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x1d0>
+     ae8:	e5c4b019 	strb	fp, [r4, #25]
+     aec:	eaffffd5 	b	a48 <E131Bridge::SetNetworkDataLossCondition(bool, bool)+0x13c>
+
+00000af0 <E131Bridge::HandleDmx()>:
+     af0:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+     af4:	e3006000 	movw	r6, #0
+     af8:	e1d03fb7 	ldrh	r3, [r0, #247]	; 0xf7
+     afc:	e24dd02c 	sub	sp, sp, #44	; 0x2c
+     b00:	e3406000 	movt	r6, #0
+     b04:	e28020fa 	add	r2, r0, #250	; 0xfa
+     b08:	e6bf3fb3 	rev16	r3, r3
+     b0c:	e2804e51 	add	r4, r0, #1296	; 0x510
+     b10:	e58d201c 	str	r2, [sp, #28]
+     b14:	e6ff2073 	uxth	r2, r3
+     b18:	e59fb918 	ldr	fp, [pc, #2328]	; 1438 <E131Bridge::HandleDmx()+0x948>
+     b1c:	e2463001 	sub	r3, r6, #1
+     b20:	e0839002 	add	r9, r3, r2
+     b24:	e2803e4f 	add	r3, r0, #1264	; 0x4f0
+     b28:	e58d2020 	str	r2, [sp, #32]
+     b2c:	e2833006 	add	r3, r3, #6
+     b30:	e58d3024 	str	r3, [sp, #36]	; 0x24
+     b34:	e3003000 	movw	r3, #0
+     b38:	e3403000 	movt	r3, #0
+     b3c:	e1a05000 	mov	r5, r0
+     b40:	e58d3010 	str	r3, [sp, #16]
+     b44:	e2423001 	sub	r3, r2, #1
+     b48:	e58d3014 	str	r3, [sp, #20]
+     b4c:	e1a03009 	mov	r3, r9
+     b50:	e3a07000 	mov	r7, #0
+     b54:	e1a0900b 	mov	r9, fp
+     b58:	e284400b 	add	r4, r4, #11
+     b5c:	e286ab01 	add	sl, r6, #1024	; 0x400
+     b60:	e1a0b003 	mov	fp, r3
+     b64:	e5548009 	ldrb	r8, [r4, #-9]
+     b68:	f5d4f03b 	pld	[r4, #59]	; 0x3b
+     b6c:	e3580000 	cmp	r8, #0
+     b70:	0a00002c 	beq	c28 <E131Bridge::HandleDmx()+0x138>
+     b74:	e15430bb 	ldrh	r3, [r4, #-11]
+     b78:	e1d52ebd 	ldrh	r2, [r5, #237]	; 0xed
+     b7c:	e6bf3fb3 	rev16	r3, r3
+     b80:	f5d4f039 	pld	[r4, #57]	; 0x39
+     b84:	e6ff3073 	uxth	r3, r3
+     b88:	e1520003 	cmp	r2, r3
+     b8c:	1a000025 	bne	c28 <E131Bridge::HandleDmx()+0x138>
+     b90:	e5143003 	ldr	r3, [r4, #-3]
+     b94:	e5952078 	ldr	r2, [r5, #120]	; 0x78
+     b98:	e58d300c 	str	r3, [sp, #12]
+     b9c:	e1530002 	cmp	r3, r2
+     ba0:	e5943019 	ldr	r3, [r4, #25]
+     ba4:	e58d3008 	str	r3, [sp, #8]
+     ba8:	0a000029 	beq	c54 <E131Bridge::HandleDmx()+0x164>
+     bac:	e1530002 	cmp	r3, r2
+     bb0:	1a000036 	bne	c90 <E131Bridge::HandleDmx()+0x1a0>
+     bb4:	e2853092 	add	r3, r5, #146	; 0x92
+     bb8:	e58d3018 	str	r3, [sp, #24]
+     bbc:	e3a03000 	mov	r3, #0
+     bc0:	e58d3004 	str	r3, [sp, #4]
+     bc4:	e59d3018 	ldr	r3, [sp, #24]
+     bc8:	e284c02c 	add	ip, r4, #44	; 0x2c
+     bcc:	e2432001 	sub	r2, r3, #1
+     bd0:	e284301c 	add	r3, r4, #28
+     bd4:	ea000001 	b	be0 <E131Bridge::HandleDmx()+0xf0>
+     bd8:	e153000c 	cmp	r3, ip
+     bdc:	0a0000fa 	beq	fcc <E131Bridge::HandleDmx()+0x4dc>
+     be0:	e5f30001 	ldrb	r0, [r3, #1]!
+     be4:	e5f21001 	ldrb	r1, [r2, #1]!
+     be8:	e1500001 	cmp	r0, r1
+     bec:	0afffff9 	beq	bd8 <E131Bridge::HandleDmx()+0xe8>
+     bf0:	e59d3004 	ldr	r3, [sp, #4]
+     bf4:	e3530000 	cmp	r3, #0
+     bf8:	0a000100 	beq	1000 <E131Bridge::HandleDmx()+0x510>
+     bfc:	e5d520eb 	ldrb	r2, [r5, #235]	; 0xeb
+     c00:	e3a03000 	mov	r3, #0
+     c04:	e58d3004 	str	r3, [sp, #4]
+     c08:	e2823013 	add	r3, r2, #19
+     c0c:	e6ef3073 	uxtb	r3, r3
+     c10:	e5d41011 	ldrb	r1, [r4, #17]
+     c14:	e5c42011 	strb	r2, [r4, #17]
+     c18:	e0433001 	sub	r3, r3, r1
+     c1c:	e6ef3073 	uxtb	r3, r3
+     c20:	e3530013 	cmp	r3, #19
+     c24:	8a00001b 	bhi	c98 <E131Bridge::HandleDmx()+0x1a8>
+     c28:	e2877001 	add	r7, r7, #1
+     c2c:	e3003604 	movw	r3, #1540	; 0x604
+     c30:	e0866003 	add	r6, r6, r3
+     c34:	e3570004 	cmp	r7, #4
+     c38:	e08aa003 	add	sl, sl, r3
+     c3c:	e2844044 	add	r4, r4, #68	; 0x44
+     c40:	e0899003 	add	r9, r9, r3
+     c44:	e08bb003 	add	fp, fp, r3
+     c48:	1affffc5 	bne	b64 <E131Bridge::HandleDmx()+0x74>
+     c4c:	e28dd02c 	add	sp, sp, #44	; 0x2c
+     c50:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+     c54:	e2853092 	add	r3, r5, #146	; 0x92
+     c58:	e2851091 	add	r1, r5, #145	; 0x91
+     c5c:	e58d3018 	str	r3, [sp, #24]
+     c60:	e284e010 	add	lr, r4, #16
+     c64:	e1a03004 	mov	r3, r4
+     c68:	ea000001 	b	c74 <E131Bridge::HandleDmx()+0x184>
+     c6c:	e153000e 	cmp	r3, lr
+     c70:	0a0000e4 	beq	1008 <E131Bridge::HandleDmx()+0x518>
+     c74:	e5f3c001 	ldrb	ip, [r3, #1]!
+     c78:	e5f10001 	ldrb	r0, [r1, #1]!
+     c7c:	e15c0000 	cmp	ip, r0
+     c80:	0afffff9 	beq	c6c <E131Bridge::HandleDmx()+0x17c>
+     c84:	e59d3008 	ldr	r3, [sp, #8]
+     c88:	e1530002 	cmp	r3, r2
+     c8c:	0affffca 	beq	bbc <E131Bridge::HandleDmx()+0xcc>
+     c90:	e3a08000 	mov	r8, #0
+     c94:	e58d8004 	str	r8, [sp, #4]
+     c98:	e1d53edc 	ldrsb	r3, [r5, #236]	; 0xec
+     c9c:	e5d520ec 	ldrb	r2, [r5, #236]	; 0xec
+     ca0:	e3530000 	cmp	r3, #0
+     ca4:	baffffdf 	blt	c28 <E131Bridge::HandleDmx()+0x138>
+     ca8:	e3120040 	tst	r2, #64	; 0x40
+     cac:	1a0000da 	bne	101c <E131Bridge::HandleDmx()+0x52c>
+     cb0:	e5d534f5 	ldrb	r3, [r5, #1269]	; 0x4f5
+     cb4:	e3530000 	cmp	r3, #0
+     cb8:	0a000005 	beq	cd4 <E131Bridge::HandleDmx()+0x1e4>
+     cbc:	e5d534fa 	ldrb	r3, [r5, #1274]	; 0x4fa
+     cc0:	e3530000 	cmp	r3, #0
+     cc4:	1a000002 	bne	cd4 <E131Bridge::HandleDmx()+0x1e4>
+     cc8:	e1a01007 	mov	r1, r7
+     ccc:	e1a00005 	mov	r0, r5
+     cd0:	ebfffffe 	bl	76c <E131Bridge::CheckMergeTimeouts(unsigned int)>
+     cd4:	e5d520e8 	ldrb	r2, [r5, #232]	; 0xe8
+     cd8:	e5d5350c 	ldrb	r3, [r5, #1292]	; 0x50c
+     cdc:	e1520003 	cmp	r2, r3
+     ce0:	3a000060 	bcc	e68 <E131Bridge::HandleDmx()+0x378>
+     ce4:	83a03000 	movhi	r3, #0
+     ce8:	85043003 	strhi	r3, [r4, #-3]
+     cec:	85843019 	strhi	r3, [r4, #25]
+     cf0:	85c534f5 	strbhi	r3, [r5, #1269]	; 0x4f5
+     cf4:	85c5250c 	strbhi	r2, [r5, #1292]	; 0x50c
+     cf8:	e1cd20d8 	ldrd	r2, [sp, #8]
+     cfc:	e1933002 	orrs	r3, r3, r2
+     d00:	0a000063 	beq	e94 <E131Bridge::HandleDmx()+0x3a4>
+     d04:	e59d3008 	ldr	r3, [sp, #8]
+     d08:	e16f3f13 	clz	r3, r3
+     d0c:	e1a032a3 	lsr	r3, r3, #5
+     d10:	e1130008 	tst	r3, r8
+     d14:	1a0000e9 	bne	10c0 <E131Bridge::HandleDmx()+0x5d0>
+     d18:	e59d200c 	ldr	r2, [sp, #12]
+     d1c:	e16f1f12 	clz	r1, r2
+     d20:	e59d2004 	ldr	r2, [sp, #4]
+     d24:	e1a012a1 	lsr	r1, r1, #5
+     d28:	e1110002 	tst	r1, r2
+     d2c:	1a0000c4 	bne	1044 <E131Bridge::HandleDmx()+0x554>
+     d30:	e2282001 	eor	r2, r8, #1
+     d34:	e1130002 	tst	r3, r2
+     d38:	1a000132 	bne	1208 <E131Bridge::HandleDmx()+0x718>
+     d3c:	e59d3004 	ldr	r3, [sp, #4]
+     d40:	e2233001 	eor	r3, r3, #1
+     d44:	e1130001 	tst	r3, r1
+     d48:	e6ef3073 	uxtb	r3, r3
+     d4c:	1a00015f 	bne	12d0 <E131Bridge::HandleDmx()+0x7e0>
+     d50:	e1130008 	tst	r3, r8
+     d54:	1a0000f7 	bne	1138 <E131Bridge::HandleDmx()+0x648>
+     d58:	e59d3004 	ldr	r3, [sp, #4]
+     d5c:	e1120003 	tst	r2, r3
+     d60:	0a0001af 	beq	1424 <E131Bridge::HandleDmx()+0x934>
+     d64:	e5d530eb 	ldrb	r3, [r5, #235]	; 0xeb
+     d68:	e59d2010 	ldr	r2, [sp, #16]
+     d6c:	e5c4302d 	strb	r3, [r4, #45]	; 0x2d
+     d70:	e595300c 	ldr	r3, [r5, #12]
+     d74:	e594e031 	ldr	lr, [r4, #49]	; 0x31
+     d78:	e5843015 	str	r3, [r4, #21]
+     d7c:	e5d534f5 	ldrb	r3, [r5, #1269]	; 0x4f5
+     d80:	e3530000 	cmp	r3, #0
+     d84:	03a03001 	moveq	r3, #1
+     d88:	05c534f5 	strbeq	r3, [r5, #1269]	; 0x4f5
+     d8c:	05c534f8 	strbeq	r3, [r5, #1272]	; 0x4f8
+     d90:	e5923000 	ldr	r3, [r2]
+     d94:	e3130001 	tst	r3, #1
+     d98:	e3a03001 	mov	r3, #1
+     d9c:	e5c43036 	strb	r3, [r4, #54]	; 0x36
+     da0:	05823000 	streq	r3, [r2]
+     da4:	e59d3014 	ldr	r3, [sp, #20]
+     da8:	e3530000 	cmp	r3, #0
+     dac:	0a000112 	beq	11fc <E131Bridge::HandleDmx()+0x70c>
+     db0:	e59d3020 	ldr	r3, [sp, #32]
+     db4:	e2861f7f 	add	r1, r6, #508	; 0x1fc
+     db8:	e59d201c 	ldr	r2, [sp, #28]
+     dbc:	e2811003 	add	r1, r1, #3
+     dc0:	e28330f9 	add	r3, r3, #249	; 0xf9
+     dc4:	e085c003 	add	ip, r5, r3
+     dc8:	e4d20001 	ldrb	r0, [r2], #1
+     dcc:	e152000c 	cmp	r2, ip
+     dd0:	e5e10001 	strb	r0, [r1, #1]!
+     dd4:	1afffffb 	bne	dc8 <E131Bridge::HandleDmx()+0x2d8>
+     dd8:	e59d2014 	ldr	r2, [sp, #20]
+     ddc:	e35e0000 	cmp	lr, #0
+     de0:	e5862600 	str	r2, [r6, #1536]	; 0x600
+     de4:	0a00017c 	beq	13dc <E131Bridge::HandleDmx()+0x8ec>
+     de8:	e0853003 	add	r3, r5, r3
+     dec:	e1a01009 	mov	r1, r9
+     df0:	e59d201c 	ldr	r2, [sp, #28]
+     df4:	e4d20001 	ldrb	r0, [r2], #1
+     df8:	e1520003 	cmp	r2, r3
+     dfc:	e5e10001 	strb	r0, [r1, #1]!
+     e00:	1afffffb 	bne	df4 <E131Bridge::HandleDmx()+0x304>
+     e04:	e5d530ec 	ldrb	r3, [r5, #236]	; 0xec
+     e08:	e3130020 	tst	r3, #32
+     e0c:	1a000049 	bne	f38 <E131Bridge::HandleDmx()+0x448>
+     e10:	e1d53eb9 	ldrh	r3, [r5, #233]	; 0xe9
+     e14:	e6ff2073 	uxth	r2, r3
+     e18:	e3520000 	cmp	r2, #0
+     e1c:	0a000047 	beq	f40 <E131Bridge::HandleDmx()+0x450>
+     e20:	e5d524f7 	ldrb	r2, [r5, #1271]	; 0x4f7
+     e24:	e3520000 	cmp	r2, #0
+     e28:	1a000044 	bne	f40 <E131Bridge::HandleDmx()+0x450>
+     e2c:	e59d2004 	ldr	r2, [sp, #4]
+     e30:	e6bf3fb3 	rev16	r3, r3
+     e34:	e1882002 	orr	r2, r8, r2
+     e38:	e6ff3073 	uxth	r3, r3
+     e3c:	e6ef2072 	uxtb	r2, r2
+     e40:	e3520000 	cmp	r2, #0
+     e44:	0a0000e3 	beq	11d8 <E131Bridge::HandleDmx()+0x6e8>
+     e48:	e59d2004 	ldr	r2, [sp, #4]
+     e4c:	e1a01008 	mov	r1, r8
+     e50:	e1a00005 	mov	r0, r5
+     e54:	ebfffffe 	bl	37c <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)>
+     e58:	e59d2024 	ldr	r2, [sp, #36]	; 0x24
+     e5c:	e3003101 	movw	r3, #257	; 0x101
+     e60:	e1c230b0 	strh	r3, [r2]
+     e64:	ea000038 	b	f4c <E131Bridge::HandleDmx()+0x45c>
+     e68:	e58d2018 	str	r2, [sp, #24]
+     e6c:	e1a01007 	mov	r1, r7
+     e70:	e1a00005 	mov	r0, r5
+     e74:	ebfffffe 	bl	844 <E131Bridge::IsPriorityTimeOut(unsigned int) const>
+     e78:	e3500000 	cmp	r0, #0
+     e7c:	0affff69 	beq	c28 <E131Bridge::HandleDmx()+0x138>
+     e80:	e59d2018 	ldr	r2, [sp, #24]
+     e84:	e5c5250c 	strb	r2, [r5, #1292]	; 0x50c
+     e88:	e1cd20d8 	ldrd	r2, [sp, #8]
+     e8c:	e1933002 	orrs	r3, r3, r2
+     e90:	1affff9b 	bne	d04 <E131Bridge::HandleDmx()+0x214>
+     e94:	e5953078 	ldr	r3, [r5, #120]	; 0x78
+     e98:	e28500a2 	add	r0, r5, #162	; 0xa2
+     e9c:	e5043003 	str	r3, [r4, #-3]
+     ea0:	e2853092 	add	r3, r5, #146	; 0x92
+     ea4:	e5d520eb 	ldrb	r2, [r5, #235]	; 0xeb
+     ea8:	e5c42011 	strb	r2, [r4, #17]
+     eac:	e1a02004 	mov	r2, r4
+     eb0:	e4d31001 	ldrb	r1, [r3], #1
+     eb4:	e1530000 	cmp	r3, r0
+     eb8:	e5e21001 	strb	r1, [r2, #1]!
+     ebc:	1afffffb 	bne	eb0 <E131Bridge::HandleDmx()+0x3c0>
+     ec0:	e595300c 	ldr	r3, [r5, #12]
+     ec4:	e59d2010 	ldr	r2, [sp, #16]
+     ec8:	e5043007 	str	r3, [r4, #-7]
+     ecc:	e5923000 	ldr	r3, [r2]
+     ed0:	e3130001 	tst	r3, #1
+     ed4:	03a03001 	moveq	r3, #1
+     ed8:	05823000 	streq	r3, [r2]
+     edc:	e59d3014 	ldr	r3, [sp, #20]
+     ee0:	e3530000 	cmp	r3, #0
+     ee4:	0a0000c4 	beq	11fc <E131Bridge::HandleDmx()+0x70c>
+     ee8:	e59d3020 	ldr	r3, [sp, #32]
+     eec:	e2461001 	sub	r1, r6, #1
+     ef0:	e28320f9 	add	r2, r3, #249	; 0xf9
+     ef4:	e0852002 	add	r2, r5, r2
+     ef8:	e59d301c 	ldr	r3, [sp, #28]
+     efc:	e4d30001 	ldrb	r0, [r3], #1
+     f00:	e1530002 	cmp	r3, r2
+     f04:	e5e10001 	strb	r0, [r1, #1]!
+     f08:	1afffffb 	bne	efc <E131Bridge::HandleDmx()+0x40c>
+     f0c:	e59d3014 	ldr	r3, [sp, #20]
+     f10:	e1a01009 	mov	r1, r9
+     f14:	e5863600 	str	r3, [r6, #1536]	; 0x600
+     f18:	e59d301c 	ldr	r3, [sp, #28]
+     f1c:	e4d30001 	ldrb	r0, [r3], #1
+     f20:	e1530002 	cmp	r3, r2
+     f24:	e5e10001 	strb	r0, [r1, #1]!
+     f28:	1afffffb 	bne	f1c <E131Bridge::HandleDmx()+0x42c>
+     f2c:	e5d530ec 	ldrb	r3, [r5, #236]	; 0xec
+     f30:	e3130020 	tst	r3, #32
+     f34:	0affffb5 	beq	e10 <E131Bridge::HandleDmx()+0x320>
+     f38:	e3a03000 	mov	r3, #0
+     f3c:	e5c534f7 	strb	r3, [r5, #1271]	; 0x4f7
+     f40:	e5d534f6 	ldrb	r3, [r5, #1270]	; 0x4f6
+     f44:	e3530000 	cmp	r3, #0
+     f48:	0a000002 	beq	f58 <E131Bridge::HandleDmx()+0x468>
+     f4c:	e5d534fb 	ldrb	r3, [r5, #1275]	; 0x4fb
+     f50:	e3530000 	cmp	r3, #0
+     f54:	0a000018 	beq	fbc <E131Bridge::HandleDmx()+0x4cc>
+     f58:	e59d3010 	ldr	r3, [sp, #16]
+     f5c:	e5950004 	ldr	r0, [r5, #4]
+     f60:	e5933000 	ldr	r3, [r3]
+     f64:	e3130001 	tst	r3, #1
+     f68:	059d2010 	ldreq	r2, [sp, #16]
+     f6c:	03a03001 	moveq	r3, #1
+     f70:	05823000 	streq	r3, [r2]
+     f74:	e5903000 	ldr	r3, [r0]
+     f78:	e1a0200a 	mov	r2, sl
+     f7c:	f5d6fc04 	pld	[r6, #3076]	; 0xc04
+     f80:	e1a01007 	mov	r1, r7
+     f84:	e5938010 	ldr	r8, [r3, #16]
+     f88:	e5963600 	ldr	r3, [r6, #1536]	; 0x600
+     f8c:	e12fff38 	blx	r8
+     f90:	e5d43037 	ldrb	r3, [r4, #55]	; 0x37
+     f94:	e3530000 	cmp	r3, #0
+     f98:	1a000007 	bne	fbc <E131Bridge::HandleDmx()+0x4cc>
+     f9c:	e5950004 	ldr	r0, [r5, #4]
+     fa0:	e1a01007 	mov	r1, r7
+     fa4:	e5903000 	ldr	r3, [r0]
+     fa8:	e5933008 	ldr	r3, [r3, #8]
+     fac:	e12fff33 	blx	r3
+     fb0:	e3a03001 	mov	r3, #1
+     fb4:	e5c534f8 	strb	r3, [r5, #1272]	; 0x4f8
+     fb8:	e5c43037 	strb	r3, [r4, #55]	; 0x37
+     fbc:	e5d5350d 	ldrb	r3, [r5, #1293]	; 0x50d
+     fc0:	e3833002 	orr	r3, r3, #2
+     fc4:	e5c5350d 	strb	r3, [r5, #1293]	; 0x50d
+     fc8:	eaffff16 	b	c28 <E131Bridge::HandleDmx()+0x138>
+     fcc:	e59d3004 	ldr	r3, [sp, #4]
+     fd0:	e5d520eb 	ldrb	r2, [r5, #235]	; 0xeb
+     fd4:	e3530000 	cmp	r3, #0
+     fd8:	e2823013 	add	r3, r2, #19
+     fdc:	e6ef3073 	uxtb	r3, r3
+     fe0:	1affff0a 	bne	c10 <E131Bridge::HandleDmx()+0x120>
+     fe4:	e5d4102d 	ldrb	r1, [r4, #45]	; 0x2d
+     fe8:	e5c4202d 	strb	r2, [r4, #45]	; 0x2d
+     fec:	e0433001 	sub	r3, r3, r1
+     ff0:	e6ef3073 	uxtb	r3, r3
+     ff4:	e3530013 	cmp	r3, #19
+     ff8:	9affff0a 	bls	c28 <E131Bridge::HandleDmx()+0x138>
+     ffc:	e58d8004 	str	r8, [sp, #4]
+    1000:	e3a08000 	mov	r8, #0
+    1004:	eaffff23 	b	c98 <E131Bridge::HandleDmx()+0x1a8>
+    1008:	e59d3008 	ldr	r3, [sp, #8]
+    100c:	e1530002 	cmp	r3, r2
+    1010:	058d8004 	streq	r8, [sp, #4]
+    1014:	1afffef8 	bne	bfc <E131Bridge::HandleDmx()+0x10c>
+    1018:	eafffee9 	b	bc4 <E131Bridge::HandleDmx()+0xd4>
+    101c:	e59d3004 	ldr	r3, [sp, #4]
+    1020:	e1883003 	orr	r3, r8, r3
+    1024:	e6ef3073 	uxtb	r3, r3
+    1028:	e3530000 	cmp	r3, #0
+    102c:	0afffefd 	beq	c28 <E131Bridge::HandleDmx()+0x138>
+    1030:	e59d2004 	ldr	r2, [sp, #4]
+    1034:	e1a01008 	mov	r1, r8
+    1038:	e1a00005 	mov	r0, r5
+    103c:	ebfffffe 	bl	90c <E131Bridge::SetNetworkDataLossCondition(bool, bool)>
+    1040:	eafffef8 	b	c28 <E131Bridge::HandleDmx()+0x138>
+    1044:	e5d530eb 	ldrb	r3, [r5, #235]	; 0xeb
+    1048:	e59d2010 	ldr	r2, [sp, #16]
+    104c:	e5c4302d 	strb	r3, [r4, #45]	; 0x2d
+    1050:	e595300c 	ldr	r3, [r5, #12]
+    1054:	e5843015 	str	r3, [r4, #21]
+    1058:	e5923000 	ldr	r3, [r2]
+    105c:	e3130001 	tst	r3, #1
+    1060:	03a03001 	moveq	r3, #1
+    1064:	05823000 	streq	r3, [r2]
+    1068:	e59d3014 	ldr	r3, [sp, #20]
+    106c:	e3530000 	cmp	r3, #0
+    1070:	0a000061 	beq	11fc <E131Bridge::HandleDmx()+0x70c>
+    1074:	e59d3020 	ldr	r3, [sp, #32]
+    1078:	e2861f7f 	add	r1, r6, #508	; 0x1fc
+    107c:	e2811003 	add	r1, r1, #3
+    1080:	e28320f9 	add	r2, r3, #249	; 0xf9
+    1084:	e0852002 	add	r2, r5, r2
+    1088:	e59d301c 	ldr	r3, [sp, #28]
+    108c:	e4d30001 	ldrb	r0, [r3], #1
+    1090:	e1520003 	cmp	r2, r3
+    1094:	e5e10001 	strb	r0, [r1, #1]!
+    1098:	1afffffb 	bne	108c <E131Bridge::HandleDmx()+0x59c>
+    109c:	e59d3014 	ldr	r3, [sp, #20]
+    10a0:	e1a01009 	mov	r1, r9
+    10a4:	e5863600 	str	r3, [r6, #1536]	; 0x600
+    10a8:	e59d301c 	ldr	r3, [sp, #28]
+    10ac:	e4d30001 	ldrb	r0, [r3], #1
+    10b0:	e1520003 	cmp	r2, r3
+    10b4:	e5e10001 	strb	r0, [r1, #1]!
+    10b8:	1afffffb 	bne	10ac <E131Bridge::HandleDmx()+0x5bc>
+    10bc:	eaffff50 	b	e04 <E131Bridge::HandleDmx()+0x314>
+    10c0:	e5d530eb 	ldrb	r3, [r5, #235]	; 0xeb
+    10c4:	e59d2010 	ldr	r2, [sp, #16]
+    10c8:	e5c43011 	strb	r3, [r4, #17]
+    10cc:	e595300c 	ldr	r3, [r5, #12]
+    10d0:	e5043007 	str	r3, [r4, #-7]
+    10d4:	e5923000 	ldr	r3, [r2]
+    10d8:	e3130001 	tst	r3, #1
+    10dc:	03a03001 	moveq	r3, #1
+    10e0:	05823000 	streq	r3, [r2]
+    10e4:	e59d3014 	ldr	r3, [sp, #20]
+    10e8:	e3530000 	cmp	r3, #0
+    10ec:	0a000042 	beq	11fc <E131Bridge::HandleDmx()+0x70c>
+    10f0:	e59d3020 	ldr	r3, [sp, #32]
+    10f4:	e2461001 	sub	r1, r6, #1
+    10f8:	e28320f9 	add	r2, r3, #249	; 0xf9
+    10fc:	e0852002 	add	r2, r5, r2
+    1100:	e59d301c 	ldr	r3, [sp, #28]
+    1104:	e4d30001 	ldrb	r0, [r3], #1
+    1108:	e1530002 	cmp	r3, r2
+    110c:	e5e10001 	strb	r0, [r1, #1]!
+    1110:	1afffffb 	bne	1104 <E131Bridge::HandleDmx()+0x614>
+    1114:	e59d3014 	ldr	r3, [sp, #20]
+    1118:	e1a01009 	mov	r1, r9
+    111c:	e5863600 	str	r3, [r6, #1536]	; 0x600
+    1120:	e59d301c 	ldr	r3, [sp, #28]
+    1124:	e4d30001 	ldrb	r0, [r3], #1
+    1128:	e1530002 	cmp	r3, r2
+    112c:	e5e10001 	strb	r0, [r1, #1]!
+    1130:	1afffffb 	bne	1124 <E131Bridge::HandleDmx()+0x634>
+    1134:	eaffff32 	b	e04 <E131Bridge::HandleDmx()+0x314>
+    1138:	e5d530eb 	ldrb	r3, [r5, #235]	; 0xeb
+    113c:	e59d2010 	ldr	r2, [sp, #16]
+    1140:	e5c43011 	strb	r3, [r4, #17]
+    1144:	e595300c 	ldr	r3, [r5, #12]
+    1148:	e594e031 	ldr	lr, [r4, #49]	; 0x31
+    114c:	e5043007 	str	r3, [r4, #-7]
+    1150:	e5d534f5 	ldrb	r3, [r5, #1269]	; 0x4f5
+    1154:	e3530000 	cmp	r3, #0
+    1158:	03a03001 	moveq	r3, #1
+    115c:	05c534f5 	strbeq	r3, [r5, #1269]	; 0x4f5
+    1160:	05c534f8 	strbeq	r3, [r5, #1272]	; 0x4f8
+    1164:	e5923000 	ldr	r3, [r2]
+    1168:	e3130001 	tst	r3, #1
+    116c:	e3a03001 	mov	r3, #1
+    1170:	e5c43036 	strb	r3, [r4, #54]	; 0x36
+    1174:	05823000 	streq	r3, [r2]
+    1178:	e59d3014 	ldr	r3, [sp, #20]
+    117c:	e3530000 	cmp	r3, #0
+    1180:	0a00001d 	beq	11fc <E131Bridge::HandleDmx()+0x70c>
+    1184:	e59d3020 	ldr	r3, [sp, #32]
+    1188:	e2461001 	sub	r1, r6, #1
+    118c:	e59d201c 	ldr	r2, [sp, #28]
+    1190:	e28330f9 	add	r3, r3, #249	; 0xf9
+    1194:	e085c003 	add	ip, r5, r3
+    1198:	e4d20001 	ldrb	r0, [r2], #1
+    119c:	e152000c 	cmp	r2, ip
+    11a0:	e5e10001 	strb	r0, [r1, #1]!
+    11a4:	1afffffb 	bne	1198 <E131Bridge::HandleDmx()+0x6a8>
+    11a8:	e59d2014 	ldr	r2, [sp, #20]
+    11ac:	e35e0000 	cmp	lr, #0
+    11b0:	e5862600 	str	r2, [r6, #1536]	; 0x600
+    11b4:	0a000076 	beq	1394 <E131Bridge::HandleDmx()+0x8a4>
+    11b8:	e0853003 	add	r3, r5, r3
+    11bc:	e1a01009 	mov	r1, r9
+    11c0:	e59d201c 	ldr	r2, [sp, #28]
+    11c4:	e4d20001 	ldrb	r0, [r2], #1
+    11c8:	e1520003 	cmp	r2, r3
+    11cc:	e5e10001 	strb	r0, [r1, #1]!
+    11d0:	1afffffb 	bne	11c4 <E131Bridge::HandleDmx()+0x6d4>
+    11d4:	eaffff0a 	b	e04 <E131Bridge::HandleDmx()+0x314>
+    11d8:	e5942019 	ldr	r2, [r4, #25]
+    11dc:	e1a00005 	mov	r0, r5
+    11e0:	e5141003 	ldr	r1, [r4, #-3]
+    11e4:	e2522000 	subs	r2, r2, #0
+    11e8:	13a02001 	movne	r2, #1
+    11ec:	e2511000 	subs	r1, r1, #0
+    11f0:	13a01001 	movne	r1, #1
+    11f4:	ebfffffe 	bl	37c <E131Bridge::SetSynchronizationAddress(bool, bool, unsigned short)>
+    11f8:	eaffff16 	b	e58 <E131Bridge::HandleDmx()+0x368>
+    11fc:	e59d3014 	ldr	r3, [sp, #20]
+    1200:	e5863600 	str	r3, [r6, #1536]	; 0x600
+    1204:	eafffefe 	b	e04 <E131Bridge::HandleDmx()+0x314>
+    1208:	e5953078 	ldr	r3, [r5, #120]	; 0x78
+    120c:	e28500a2 	add	r0, r5, #162	; 0xa2
+    1210:	e5843019 	str	r3, [r4, #25]
+    1214:	e2853092 	add	r3, r5, #146	; 0x92
+    1218:	e5d520eb 	ldrb	r2, [r5, #235]	; 0xeb
+    121c:	e5c4202d 	strb	r2, [r4, #45]	; 0x2d
+    1220:	e284201c 	add	r2, r4, #28
+    1224:	e4d31001 	ldrb	r1, [r3], #1
+    1228:	e1530000 	cmp	r3, r0
+    122c:	e5e21001 	strb	r1, [r2, #1]!
+    1230:	1afffffb 	bne	1224 <E131Bridge::HandleDmx()+0x734>
+    1234:	e595300c 	ldr	r3, [r5, #12]
+    1238:	e59d2010 	ldr	r2, [sp, #16]
+    123c:	e5843015 	str	r3, [r4, #21]
+    1240:	e5d534f5 	ldrb	r3, [r5, #1269]	; 0x4f5
+    1244:	e594e031 	ldr	lr, [r4, #49]	; 0x31
+    1248:	e3530000 	cmp	r3, #0
+    124c:	03a03001 	moveq	r3, #1
+    1250:	05c534f5 	strbeq	r3, [r5, #1269]	; 0x4f5
+    1254:	05c534f8 	strbeq	r3, [r5, #1272]	; 0x4f8
+    1258:	e5923000 	ldr	r3, [r2]
+    125c:	e3130001 	tst	r3, #1
+    1260:	e3a03001 	mov	r3, #1
+    1264:	e5c43036 	strb	r3, [r4, #54]	; 0x36
+    1268:	05823000 	streq	r3, [r2]
+    126c:	e59d3014 	ldr	r3, [sp, #20]
+    1270:	e3530000 	cmp	r3, #0
+    1274:	0affffe0 	beq	11fc <E131Bridge::HandleDmx()+0x70c>
+    1278:	e59d3020 	ldr	r3, [sp, #32]
+    127c:	e2861f7f 	add	r1, r6, #508	; 0x1fc
+    1280:	e59d201c 	ldr	r2, [sp, #28]
+    1284:	e2811003 	add	r1, r1, #3
+    1288:	e28330f9 	add	r3, r3, #249	; 0xf9
+    128c:	e085c003 	add	ip, r5, r3
+    1290:	e4d20001 	ldrb	r0, [r2], #1
+    1294:	e15c0002 	cmp	ip, r2
+    1298:	e5e10001 	strb	r0, [r1, #1]!
+    129c:	1afffffb 	bne	1290 <E131Bridge::HandleDmx()+0x7a0>
+    12a0:	e59d2014 	ldr	r2, [sp, #20]
+    12a4:	e35e0000 	cmp	lr, #0
+    12a8:	e5862600 	str	r2, [r6, #1536]	; 0x600
+    12ac:	0a000041 	beq	13b8 <E131Bridge::HandleDmx()+0x8c8>
+    12b0:	e0853003 	add	r3, r5, r3
+    12b4:	e1a01009 	mov	r1, r9
+    12b8:	e59d201c 	ldr	r2, [sp, #28]
+    12bc:	e4d20001 	ldrb	r0, [r2], #1
+    12c0:	e1520003 	cmp	r2, r3
+    12c4:	e5e10001 	strb	r0, [r1, #1]!
+    12c8:	1afffffb 	bne	12bc <E131Bridge::HandleDmx()+0x7cc>
+    12cc:	eafffecc 	b	e04 <E131Bridge::HandleDmx()+0x314>
+    12d0:	e5953078 	ldr	r3, [r5, #120]	; 0x78
+    12d4:	e28500a2 	add	r0, r5, #162	; 0xa2
+    12d8:	e5043003 	str	r3, [r4, #-3]
+    12dc:	e2853092 	add	r3, r5, #146	; 0x92
+    12e0:	e5d520eb 	ldrb	r2, [r5, #235]	; 0xeb
+    12e4:	e5c42011 	strb	r2, [r4, #17]
+    12e8:	e1a02004 	mov	r2, r4
+    12ec:	e4d31001 	ldrb	r1, [r3], #1
+    12f0:	e1530000 	cmp	r3, r0
+    12f4:	e5e21001 	strb	r1, [r2, #1]!
+    12f8:	1afffffb 	bne	12ec <E131Bridge::HandleDmx()+0x7fc>
+    12fc:	e595300c 	ldr	r3, [r5, #12]
+    1300:	e59d2010 	ldr	r2, [sp, #16]
+    1304:	e5043007 	str	r3, [r4, #-7]
+    1308:	e5d534f5 	ldrb	r3, [r5, #1269]	; 0x4f5
+    130c:	e594e031 	ldr	lr, [r4, #49]	; 0x31
+    1310:	e3530000 	cmp	r3, #0
+    1314:	03a03001 	moveq	r3, #1
+    1318:	05c534f5 	strbeq	r3, [r5, #1269]	; 0x4f5
+    131c:	05c534f8 	strbeq	r3, [r5, #1272]	; 0x4f8
+    1320:	e5923000 	ldr	r3, [r2]
+    1324:	e3130001 	tst	r3, #1
+    1328:	e3a03001 	mov	r3, #1
+    132c:	e5c43036 	strb	r3, [r4, #54]	; 0x36
+    1330:	05823000 	streq	r3, [r2]
+    1334:	e59d3014 	ldr	r3, [sp, #20]
+    1338:	e3530000 	cmp	r3, #0
+    133c:	0affffae 	beq	11fc <E131Bridge::HandleDmx()+0x70c>
+    1340:	e59d3020 	ldr	r3, [sp, #32]
+    1344:	e2461001 	sub	r1, r6, #1
+    1348:	e59d201c 	ldr	r2, [sp, #28]
+    134c:	e28330f9 	add	r3, r3, #249	; 0xf9
+    1350:	e085c003 	add	ip, r5, r3
+    1354:	e4d20001 	ldrb	r0, [r2], #1
+    1358:	e152000c 	cmp	r2, ip
+    135c:	e5e10001 	strb	r0, [r1, #1]!
+    1360:	1afffffb 	bne	1354 <E131Bridge::HandleDmx()+0x864>
+    1364:	e59d2014 	ldr	r2, [sp, #20]
+    1368:	e35e0000 	cmp	lr, #0
+    136c:	e5862600 	str	r2, [r6, #1536]	; 0x600
+    1370:	0a000022 	beq	1400 <E131Bridge::HandleDmx()+0x910>
+    1374:	e0853003 	add	r3, r5, r3
+    1378:	e1a01009 	mov	r1, r9
+    137c:	e59d201c 	ldr	r2, [sp, #28]
+    1380:	e4d20001 	ldrb	r0, [r2], #1
+    1384:	e1530002 	cmp	r3, r2
+    1388:	e5e10001 	strb	r0, [r1, #1]!
+    138c:	1afffffb 	bne	1380 <E131Bridge::HandleDmx()+0x890>
+    1390:	eafffe9b 	b	e04 <E131Bridge::HandleDmx()+0x314>
+    1394:	e1a03006 	mov	r3, r6
+    1398:	e4d31001 	ldrb	r1, [r3], #1
+    139c:	e5d321ff 	ldrb	r2, [r3, #511]	; 0x1ff
+    13a0:	e1520001 	cmp	r2, r1
+    13a4:	31a02001 	movcc	r2, r1
+    13a8:	e153000b 	cmp	r3, fp
+    13ac:	e5c323ff 	strb	r2, [r3, #1023]	; 0x3ff
+    13b0:	1afffff8 	bne	1398 <E131Bridge::HandleDmx()+0x8a8>
+    13b4:	eafffe92 	b	e04 <E131Bridge::HandleDmx()+0x314>
+    13b8:	e1a03006 	mov	r3, r6
+    13bc:	e4d31001 	ldrb	r1, [r3], #1
+    13c0:	e5d321ff 	ldrb	r2, [r3, #511]	; 0x1ff
+    13c4:	e1520001 	cmp	r2, r1
+    13c8:	31a02001 	movcc	r2, r1
+    13cc:	e153000b 	cmp	r3, fp
+    13d0:	e5c323ff 	strb	r2, [r3, #1023]	; 0x3ff
+    13d4:	1afffff8 	bne	13bc <E131Bridge::HandleDmx()+0x8cc>
+    13d8:	eafffe89 	b	e04 <E131Bridge::HandleDmx()+0x314>
+    13dc:	e1a03006 	mov	r3, r6
+    13e0:	e4d31001 	ldrb	r1, [r3], #1
+    13e4:	e5d321ff 	ldrb	r2, [r3, #511]	; 0x1ff
+    13e8:	e1520001 	cmp	r2, r1
+    13ec:	31a02001 	movcc	r2, r1
+    13f0:	e153000b 	cmp	r3, fp
+    13f4:	e5c323ff 	strb	r2, [r3, #1023]	; 0x3ff
+    13f8:	1afffff8 	bne	13e0 <E131Bridge::HandleDmx()+0x8f0>
+    13fc:	eafffe80 	b	e04 <E131Bridge::HandleDmx()+0x314>
+    1400:	e1a03006 	mov	r3, r6
+    1404:	e4d31001 	ldrb	r1, [r3], #1
+    1408:	e5d321ff 	ldrb	r2, [r3, #511]	; 0x1ff
+    140c:	e1520001 	cmp	r2, r1
+    1410:	31a02001 	movcc	r2, r1
+    1414:	e153000b 	cmp	r3, fp
+    1418:	e5c323ff 	strb	r2, [r3, #1023]	; 0x3ff
+    141c:	1afffff8 	bne	1404 <E131Bridge::HandleDmx()+0x914>
+    1420:	eafffe77 	b	e04 <E131Bridge::HandleDmx()+0x314>
+    1424:	e3000000 	movw	r0, #0
+    1428:	e3400000 	movt	r0, #0
+    142c:	e28dd02c 	add	sp, sp, #44	; 0x2c
+    1430:	e8bd4ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    1434:	eafffffe 	b	0 <printf>
+    1438:	000003ff 	strdeq	r0, [r0], -pc	; <UNPREDICTABLE>
+
+0000143c <E131Bridge::IsStatusChanged()>:
+    143c:	e1a03000 	mov	r3, r0
+    1440:	e5d004f8 	ldrb	r0, [r0, #1272]	; 0x4f8
+    1444:	e3500000 	cmp	r0, #0
+    1448:	13a02000 	movne	r2, #0
+    144c:	15c324f8 	strbne	r2, [r3, #1272]	; 0x4f8
+    1450:	e12fff1e 	bx	lr
+
+00001454 <E131Bridge::Clear(unsigned int)>:
+    1454:	e3003000 	movw	r3, #0
+    1458:	e3403000 	movt	r3, #0
+    145c:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+    1460:	e3006000 	movw	r6, #0
+    1464:	e5932000 	ldr	r2, [r3]
+    1468:	e1a04000 	mov	r4, r0
+    146c:	e3406000 	movt	r6, #0
+    1470:	e1a05001 	mov	r5, r1
+    1474:	e5900004 	ldr	r0, [r0, #4]
+    1478:	e3120001 	tst	r2, #1
+    147c:	03a02001 	moveq	r2, #1
+    1480:	e3a0e000 	mov	lr, #0
+    1484:	05832000 	streq	r2, [r3]
+    1488:	e3002604 	movw	r2, #1540	; 0x604
+    148c:	e0020192 	mul	r2, r2, r1
+    1490:	e30011ff 	movw	r1, #511	; 0x1ff
+    1494:	e2822b01 	add	r2, r2, #1024	; 0x400
+    1498:	e0862002 	add	r2, r6, r2
+    149c:	e282c020 	add	ip, r2, #32
+    14a0:	f5dcf002 	pld	[ip, #2]
+    14a4:	e2411020 	sub	r1, r1, #32
+    14a8:	e54ce020 	strb	lr, [ip, #-32]	; 0xffffffe0
+    14ac:	e351001f 	cmp	r1, #31
+    14b0:	e54ce01f 	strb	lr, [ip, #-31]	; 0xffffffe1
+    14b4:	e1a0300c 	mov	r3, ip
+    14b8:	e54ce01e 	strb	lr, [ip, #-30]	; 0xffffffe2
+    14bc:	e28cc020 	add	ip, ip, #32
+    14c0:	e54ce03d 	strb	lr, [ip, #-61]	; 0xffffffc3
+    14c4:	e54ce03c 	strb	lr, [ip, #-60]	; 0xffffffc4
+    14c8:	e54ce03b 	strb	lr, [ip, #-59]	; 0xffffffc5
+    14cc:	e54ce03a 	strb	lr, [ip, #-58]	; 0xffffffc6
+    14d0:	e54ce039 	strb	lr, [ip, #-57]	; 0xffffffc7
+    14d4:	e54ce038 	strb	lr, [ip, #-56]	; 0xffffffc8
+    14d8:	e54ce037 	strb	lr, [ip, #-55]	; 0xffffffc9
+    14dc:	e54ce036 	strb	lr, [ip, #-54]	; 0xffffffca
+    14e0:	e54ce035 	strb	lr, [ip, #-53]	; 0xffffffcb
+    14e4:	e54ce034 	strb	lr, [ip, #-52]	; 0xffffffcc
+    14e8:	e54ce033 	strb	lr, [ip, #-51]	; 0xffffffcd
+    14ec:	e54ce032 	strb	lr, [ip, #-50]	; 0xffffffce
+    14f0:	e54ce031 	strb	lr, [ip, #-49]	; 0xffffffcf
+    14f4:	e54ce030 	strb	lr, [ip, #-48]	; 0xffffffd0
+    14f8:	e54ce02f 	strb	lr, [ip, #-47]	; 0xffffffd1
+    14fc:	e54ce02e 	strb	lr, [ip, #-46]	; 0xffffffd2
+    1500:	e54ce02d 	strb	lr, [ip, #-45]	; 0xffffffd3
+    1504:	e54ce02c 	strb	lr, [ip, #-44]	; 0xffffffd4
+    1508:	e54ce02b 	strb	lr, [ip, #-43]	; 0xffffffd5
+    150c:	e54ce02a 	strb	lr, [ip, #-42]	; 0xffffffd6
+    1510:	e54ce029 	strb	lr, [ip, #-41]	; 0xffffffd7
+    1514:	e54ce028 	strb	lr, [ip, #-40]	; 0xffffffd8
+    1518:	e54ce027 	strb	lr, [ip, #-39]	; 0xffffffd9
+    151c:	e54ce026 	strb	lr, [ip, #-38]	; 0xffffffda
+    1520:	e54ce025 	strb	lr, [ip, #-37]	; 0xffffffdb
+    1524:	e54ce024 	strb	lr, [ip, #-36]	; 0xffffffdc
+    1528:	e54ce023 	strb	lr, [ip, #-35]	; 0xffffffdd
+    152c:	e54ce022 	strb	lr, [ip, #-34]	; 0xffffffde
+    1530:	e54ce021 	strb	lr, [ip, #-33]	; 0xffffffdf
+    1534:	1affffd9 	bne	14a0 <E131Bridge::Clear(unsigned int)+0x4c>
+    1538:	e3a01000 	mov	r1, #0
+    153c:	e4c31001 	strb	r1, [r3], #1
+    1540:	e153000c 	cmp	r3, ip
+    1544:	1afffffc 	bne	153c <E131Bridge::Clear(unsigned int)+0xe8>
+    1548:	e5903000 	ldr	r3, [r0]
+    154c:	e1a01005 	mov	r1, r5
+    1550:	e5937010 	ldr	r7, [r3, #16]
+    1554:	e3003604 	movw	r3, #1540	; 0x604
+    1558:	e0266593 	mla	r6, r3, r5, r6
+    155c:	e3a03c02 	mov	r3, #512	; 0x200
+    1560:	e5863600 	str	r3, [r6, #1536]	; 0x600
+    1564:	e3a06044 	mov	r6, #68	; 0x44
+    1568:	e0264596 	mla	r6, r6, r5, r4
+    156c:	e12fff37 	blx	r7
+    1570:	e5d63512 	ldrb	r3, [r6, #1298]	; 0x512
+    1574:	e3530000 	cmp	r3, #0
+    1578:	0a000009 	beq	15a4 <E131Bridge::Clear(unsigned int)+0x150>
+    157c:	e5d63552 	ldrb	r3, [r6, #1362]	; 0x552
+    1580:	e3530000 	cmp	r3, #0
+    1584:	1a000006 	bne	15a4 <E131Bridge::Clear(unsigned int)+0x150>
+    1588:	e5940004 	ldr	r0, [r4, #4]
+    158c:	e1a01005 	mov	r1, r5
+    1590:	e5903000 	ldr	r3, [r0]
+    1594:	e5933008 	ldr	r3, [r3, #8]
+    1598:	e12fff33 	blx	r3
+    159c:	e3a03001 	mov	r3, #1
+    15a0:	e5c63552 	strb	r3, [r6, #1362]	; 0x552
+    15a4:	e3a03000 	mov	r3, #0
+    15a8:	e5c434f4 	strb	r3, [r4, #1268]	; 0x4f4
+    15ac:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+
+000015b0 <E131Bridge::IsValidRoot()>:
+    15b0:	e3002000 	movw	r2, #0
+    15b4:	e280307f 	add	r3, r0, #127	; 0x7f
+    15b8:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+    15bc:	e280e08b 	add	lr, r0, #139	; 0x8b
+    15c0:	e3402000 	movt	r2, #0
+    15c4:	ea000001 	b	15d0 <E131Bridge::IsValidRoot()+0x20>
+    15c8:	e153000e 	cmp	r3, lr
+    15cc:	0a000005 	beq	15e8 <E131Bridge::IsValidRoot()+0x38>
+    15d0:	e5f3c001 	ldrb	ip, [r3, #1]!
+    15d4:	e4d21001 	ldrb	r1, [r2], #1
+    15d8:	e15c0001 	cmp	ip, r1
+    15dc:	0afffff9 	beq	15c8 <E131Bridge::IsValidRoot()+0x18>
+    15e0:	e3a00000 	mov	r0, #0
+    15e4:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+    15e8:	e590308e 	ldr	r3, [r0, #142]	; 0x8e
+    15ec:	e283333f 	add	r3, r3, #-67108864	; 0xfc000000
+    15f0:	e3d33301 	bics	r3, r3, #67108864	; 0x4000000
+    15f4:	03a00001 	moveq	r0, #1
+    15f8:	13a00000 	movne	r0, #0
+    15fc:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00001600 <E131Bridge::IsValidDataPacket()>:
+    1600:	e5d030f1 	ldrb	r3, [r0, #241]	; 0xf1
+    1604:	e3530002 	cmp	r3, #2
+    1608:	1a000002 	bne	1618 <E131Bridge::IsValidDataPacket()+0x18>
+    160c:	e5d030f2 	ldrb	r3, [r0, #242]	; 0xf2
+    1610:	e35300a1 	cmp	r3, #161	; 0xa1
+    1614:	0a000001 	beq	1620 <E131Bridge::IsValidDataPacket()+0x20>
+    1618:	e3a00000 	mov	r0, #0
+    161c:	e12fff1e 	bx	lr
+    1620:	e1d03fb3 	ldrh	r3, [r0, #243]	; 0xf3
+    1624:	e3530000 	cmp	r3, #0
+    1628:	1afffffa 	bne	1618 <E131Bridge::IsValidDataPacket()+0x18>
+    162c:	e1d00fb5 	ldrh	r0, [r0, #245]	; 0xf5
+    1630:	e2400c01 	sub	r0, r0, #256	; 0x100
+    1634:	e16f0f10 	clz	r0, r0
+    1638:	e1a002a0 	lsr	r0, r0, #5
+    163c:	e12fff1e 	bx	lr
+
+00001640 <E131Bridge::Run()>:
+    1640:	e3003000 	movw	r3, #0
+    1644:	e3403000 	movt	r3, #0
+    1648:	e92d4030 	push	{r4, r5, lr}
+    164c:	e1a04000 	mov	r4, r0
+    1650:	e5930000 	ldr	r0, [r3]
+    1654:	e1a03004 	mov	r3, r4
+    1658:	e24dd014 	sub	sp, sp, #20
+    165c:	e284207c 	add	r2, r4, #124	; 0x7c
+    1660:	e4931078 	ldr	r1, [r3], #120	; 0x78
+    1664:	e28dc00e 	add	ip, sp, #14
+    1668:	e58dc004 	str	ip, [sp, #4]
+    166c:	e58d3000 	str	r3, [sp]
+    1670:	e3003478 	movw	r3, #1144	; 0x478
+    1674:	ebfffffe 	bl	0 <Network::RecvFrom(int, void*, unsigned short, unsigned int*, unsigned short*)>
+    1678:	e1a05000 	mov	r5, r0
+    167c:	ebfffffe 	bl	0 <millis>
+    1680:	e584000c 	str	r0, [r4, #12]
+    1684:	e3550000 	cmp	r5, #0
+    1688:	e1a05000 	mov	r5, r0
+    168c:	1a000037 	bne	1770 <E131Bridge::Run()+0x130>
+    1690:	e5d4350b 	ldrb	r3, [r4, #1291]	; 0x50b
+    1694:	e3530000 	cmp	r3, #0
+    1698:	1a000016 	bne	16f8 <E131Bridge::Run()+0xb8>
+    169c:	e5943014 	ldr	r3, [r4, #20]
+    16a0:	e3530000 	cmp	r3, #0
+    16a4:	0a000003 	beq	16b8 <E131Bridge::Run()+0x78>
+    16a8:	e1a00004 	mov	r0, r4
+    16ac:	ebfffffe 	bl	0 <E131Bridge::HandleDmxIn()>
+    16b0:	e1a00004 	mov	r0, r4
+    16b4:	ebfffffe 	bl	0 <E131Bridge::SendDiscoveryPacket()>
+    16b8:	e5d43008 	ldrb	r3, [r4, #8]
+    16bc:	e3530000 	cmp	r3, #0
+    16c0:	0a00000a 	beq	16f0 <E131Bridge::Run()+0xb0>
+    16c4:	e3003000 	movw	r3, #0
+    16c8:	e3403000 	movt	r3, #0
+    16cc:	e5930000 	ldr	r0, [r3]
+    16d0:	e5903004 	ldr	r3, [r0, #4]
+    16d4:	e3530004 	cmp	r3, #4
+    16d8:	0a000004 	beq	16f0 <E131Bridge::Run()+0xb0>
+    16dc:	e5d4350d 	ldrb	r3, [r4, #1293]	; 0x50d
+    16e0:	e3530000 	cmp	r3, #0
+    16e4:	13a01003 	movne	r1, #3
+    16e8:	03a01002 	moveq	r1, #2
+    16ec:	ebfffffe 	bl	0 <LedBlink::SetMode(ledblink::Mode)>
+    16f0:	e28dd014 	add	sp, sp, #20
+    16f4:	e8bd8030 	pop	{r4, r5, pc}
+    16f8:	e5d434f9 	ldrb	r3, [r4, #1273]	; 0x4f9
+    16fc:	e5940010 	ldr	r0, [r4, #16]
+    1700:	e3530000 	cmp	r3, #0
+    1704:	e0455000 	sub	r5, r5, r0
+    1708:	1a000013 	bne	175c <E131Bridge::Run()+0x11c>
+    170c:	e30039c3 	movw	r3, #2499	; 0x9c3
+    1710:	e1550003 	cmp	r5, r3
+    1714:	9a000010 	bls	175c <E131Bridge::Run()+0x11c>
+    1718:	e5943004 	ldr	r3, [r4, #4]
+    171c:	e3530000 	cmp	r3, #0
+    1720:	0a000002 	beq	1730 <E131Bridge::Run()+0xf0>
+    1724:	e5d434f4 	ldrb	r3, [r4, #1268]	; 0x4f4
+    1728:	e3530000 	cmp	r3, #0
+    172c:	0a000003 	beq	1740 <E131Bridge::Run()+0x100>
+    1730:	e5d4350d 	ldrb	r3, [r4, #1293]	; 0x50d
+    1734:	e3c33002 	bic	r3, r3, #2
+    1738:	e5c4350d 	strb	r3, [r4, #1293]	; 0x50d
+    173c:	eaffffd6 	b	169c <E131Bridge::Run()+0x5c>
+    1740:	e3a02001 	mov	r2, #1
+    1744:	e1a00004 	mov	r0, r4
+    1748:	e1a01002 	mov	r1, r2
+    174c:	ebfffffe 	bl	90c <E131Bridge::SetNetworkDataLossCondition(bool, bool)>
+    1750:	e594500c 	ldr	r5, [r4, #12]
+    1754:	e5943010 	ldr	r3, [r4, #16]
+    1758:	e0455003 	sub	r5, r5, r3
+    175c:	e3550ffa 	cmp	r5, #1000	; 0x3e8
+    1760:	25d4350d 	ldrbcs	r3, [r4, #1293]	; 0x50d
+    1764:	23c33002 	biccs	r3, r3, #2
+    1768:	25c4350d 	strbcs	r3, [r4, #1293]	; 0x50d
+    176c:	eaffffca 	b	169c <E131Bridge::Run()+0x5c>
+    1770:	e1a00004 	mov	r0, r4
+    1774:	ebfffffe 	bl	15b0 <E131Bridge::IsValidRoot()>
+    1778:	e3500000 	cmp	r0, #0
+    177c:	0affffdb 	beq	16f0 <E131Bridge::Run()+0xb0>
+    1780:	e5d434f6 	ldrb	r3, [r4, #1270]	; 0x4f6
+    1784:	e3a02000 	mov	r2, #0
+    1788:	e5c424f4 	strb	r2, [r4, #1268]	; 0x4f4
+    178c:	e1530002 	cmp	r3, r2
+    1790:	e5845010 	str	r5, [r4, #16]
+    1794:	0a000007 	beq	17b8 <E131Bridge::Run()+0x178>
+    1798:	e5d434f7 	ldrb	r3, [r4, #1271]	; 0x4f7
+    179c:	e1530002 	cmp	r3, r2
+    17a0:	1a000004 	bne	17b8 <E131Bridge::Run()+0x178>
+    17a4:	e59414fc 	ldr	r1, [r4, #1276]	; 0x4fc
+    17a8:	e30029c3 	movw	r2, #2499	; 0x9c3
+    17ac:	e0455001 	sub	r5, r5, r1
+    17b0:	e1550002 	cmp	r5, r2
+    17b4:	85c434f6 	strbhi	r3, [r4, #1270]	; 0x4f6
+    17b8:	e5943004 	ldr	r3, [r4, #4]
+    17bc:	e3530000 	cmp	r3, #0
+    17c0:	0affffb5 	beq	169c <E131Bridge::Run()+0x5c>
+    17c4:	e594308e 	ldr	r3, [r4, #142]	; 0x8e
+    17c8:	e6bf2f33 	rev	r2, r3
+    17cc:	e3530301 	cmp	r3, #67108864	; 0x4000000
+    17d0:	0a000007 	beq	17f4 <E131Bridge::Run()+0x1b4>
+    17d4:	e3520008 	cmp	r2, #8
+    17d8:	1affffaf 	bne	169c <E131Bridge::Run()+0x5c>
+    17dc:	e59430a4 	ldr	r3, [r4, #164]	; 0xa4
+    17e0:	e3530401 	cmp	r3, #16777216	; 0x1000000
+    17e4:	1affffac 	bne	169c <E131Bridge::Run()+0x5c>
+    17e8:	e1a00004 	mov	r0, r4
+    17ec:	ebfffffe 	bl	0 <E131Bridge::HandleSynchronization()>
+    17f0:	eaffffa9 	b	169c <E131Bridge::Run()+0x5c>
+    17f4:	e5d430f1 	ldrb	r3, [r4, #241]	; 0xf1
+    17f8:	e3530002 	cmp	r3, #2
+    17fc:	1affffa6 	bne	169c <E131Bridge::Run()+0x5c>
+    1800:	e5d430f2 	ldrb	r3, [r4, #242]	; 0xf2
+    1804:	e35300a1 	cmp	r3, #161	; 0xa1
+    1808:	1affffa3 	bne	169c <E131Bridge::Run()+0x5c>
+    180c:	e1d43fb3 	ldrh	r3, [r4, #243]	; 0xf3
+    1810:	e3530000 	cmp	r3, #0
+    1814:	1affffa0 	bne	169c <E131Bridge::Run()+0x5c>
+    1818:	e1d43fb5 	ldrh	r3, [r4, #245]	; 0xf5
+    181c:	e3530c01 	cmp	r3, #256	; 0x100
+    1820:	1affff9d 	bne	169c <E131Bridge::Run()+0x5c>
+    1824:	e1a00004 	mov	r0, r4
+    1828:	ebfffffe 	bl	af0 <E131Bridge::HandleDmx()>
+    182c:	eaffff9a 	b	169c <E131Bridge::Run()+0x5c>
+
+Disassembly of section .bss:
+
+00000000 <E131Bridge::s_pThis>:
+   0:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.LC0>:
+   0:	38342e25 	ldmdacc	r4!, {r0, r2, r5, r9, sl, fp, sp}
+   4:	73252073 			; <UNDEFINED> instruction: 0x73252073
+   8:	00000000 	andeq	r0, r0, r0
+
+0000000c <.LC1>:
+   c:	2e393332 	mrccs	3, 1, r3, cr9, cr2, {1}
+  10:	2e353532 	mrccs	5, 1, r3, cr5, cr2, {1}
+  14:	00302e30 	eorseq	r2, r0, r0, lsr lr
+
+00000018 <.LC2>:
+  18:	4e202e30 	mcrmi	14, 1, r2, cr0, cr0, {1}
+  1c:	6163206f 	cmnvs	r3, pc, rrx
+  20:	20736573 	rsbscs	r6, r3, r3, ror r5
+  24:	6374616d 	cmnvs	r4, #1073741851	; 0x4000001b
+  28:	2c646568 	cfstr64cs	mvdx6, [r4], #-416	; 0xfffffe60
+  2c:	69687420 	stmdbvs	r8!, {r5, sl, ip, sp, lr}^
+  30:	68732073 	ldmdavs	r3!, {r0, r1, r4, r5, r6, sp}^
+  34:	646c756f 	strbtvs	r7, [ip], #-1391	; 0xfffffa91
+  38:	2074276e 	rsbscs	r2, r4, lr, ror #14
+  3c:	70706168 	rsbsvc	r6, r0, r8, ror #2
+  40:	0a216e65 	beq	85b9dc <E131Bridge::Run()+0x85a39c>
+	...
+
+Disassembly of section .bss._ZGVZN8lightset4Data3GetEvE8instance:
+
+00000000 <guard variable for lightset::Data::Get()::instance>:
+   0:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section .bss._ZZN8lightset4Data3GetEvE8instance:
+
+00000000 <lightset::Data::Get()::instance>:
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e131bridgehandlesynchronization.o:     file format elf32-littlearm
+
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000007 	andeq	r0, r0, r7
+
+Disassembly of section .group:
+
+00000000 <.group>:
+   0:	00000001 	andeq	r0, r0, r1
+   4:	00000008 	andeq	r0, r0, r8
+
+Disassembly of section .text:
+
+00000000 <E131Bridge::HandleSynchronization()>:
+   0:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   4:	e3002506 	movw	r2, #1286	; 0x506
+   8:	e1d03ab9 	ldrh	r3, [r0, #169]	; 0xa9
+   c:	e24dd004 	sub	sp, sp, #4
+  10:	e19020b2 	ldrh	r2, [r0, r2]
+  14:	e1a07000 	mov	r7, r0
+  18:	e6bf3fb3 	rev16	r3, r3
+  1c:	e6ff3073 	uxth	r3, r3
+  20:	e1520003 	cmp	r2, r3
+  24:	0a000003 	beq	38 <E131Bridge::HandleSynchronization()+0x38>
+  28:	e3002508 	movw	r2, #1288	; 0x508
+  2c:	e19020b2 	ldrh	r2, [r0, r2]
+  30:	e1520003 	cmp	r2, r3
+  34:	1a000031 	bne	100 <E131Bridge::HandleSynchronization()+0x100>
+  38:	e597300c 	ldr	r3, [r7, #12]
+  3c:	e3a05000 	mov	r5, #0
+  40:	e59f40dc 	ldr	r4, [pc, #220]	; 124 <E131Bridge::HandleSynchronization()+0x124>
+  44:	e3008000 	movw	r8, #0
+  48:	e3408000 	movt	r8, #0
+  4c:	e1a06007 	mov	r6, r7
+  50:	e58734fc 	str	r3, [r7, #1276]	; 0x4fc
+  54:	e1a0a005 	mov	sl, r5
+  58:	e3a09001 	mov	r9, #1
+  5c:	e5d63512 	ldrb	r3, [r6, #1298]	; 0x512
+  60:	e3530000 	cmp	r3, #0
+  64:	1a00000d 	bne	a0 <E131Bridge::HandleSynchronization()+0xa0>
+  68:	e2855001 	add	r5, r5, #1
+  6c:	e2844c06 	add	r4, r4, #1536	; 0x600
+  70:	e3550004 	cmp	r5, #4
+  74:	e2866044 	add	r6, r6, #68	; 0x44
+  78:	e2844004 	add	r4, r4, #4
+  7c:	1afffff6 	bne	5c <E131Bridge::HandleSynchronization()+0x5c>
+  80:	e5970074 	ldr	r0, [r7, #116]	; 0x74
+  84:	e3500000 	cmp	r0, #0
+  88:	0a000023 	beq	11c <E131Bridge::HandleSynchronization()+0x11c>
+  8c:	e5903000 	ldr	r3, [r0]
+  90:	e5933008 	ldr	r3, [r3, #8]
+  94:	e28dd004 	add	sp, sp, #4
+  98:	e8bd4ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+  9c:	e12fff13 	bx	r3
+  a0:	e5983000 	ldr	r3, [r8]
+  a4:	e1a02004 	mov	r2, r4
+  a8:	e5970004 	ldr	r0, [r7, #4]
+  ac:	e1a01005 	mov	r1, r5
+  b0:	e3130001 	tst	r3, #1
+  b4:	e5903000 	ldr	r3, [r0]
+  b8:	05889000 	streq	r9, [r8]
+  bc:	e593b010 	ldr	fp, [r3, #16]
+  c0:	e5943200 	ldr	r3, [r4, #512]	; 0x200
+  c4:	e12fff3b 	blx	fp
+  c8:	e5d63552 	ldrb	r3, [r6, #1362]	; 0x552
+  cc:	e3530000 	cmp	r3, #0
+  d0:	1a000005 	bne	ec <E131Bridge::HandleSynchronization()+0xec>
+  d4:	e5970004 	ldr	r0, [r7, #4]
+  d8:	e1a01005 	mov	r1, r5
+  dc:	e5903000 	ldr	r3, [r0]
+  e0:	e5933008 	ldr	r3, [r3, #8]
+  e4:	e12fff33 	blx	r3
+  e8:	e5c69552 	strb	r9, [r6, #1362]	; 0x552
+  ec:	e5983000 	ldr	r3, [r8]
+  f0:	e584a200 	str	sl, [r4, #512]	; 0x200
+  f4:	e3130001 	tst	r3, #1
+  f8:	05889000 	streq	r9, [r8]
+  fc:	eaffffd9 	b	68 <E131Bridge::HandleSynchronization()+0x68>
+ 100:	e3003000 	movw	r3, #0
+ 104:	e3a01002 	mov	r1, #2
+ 108:	e3403000 	movt	r3, #0
+ 10c:	e5930000 	ldr	r0, [r3]
+ 110:	e28dd004 	add	sp, sp, #4
+ 114:	e8bd4ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+ 118:	eafffffe 	b	0 <LedBlink::SetMode(ledblink::Mode)>
+ 11c:	e28dd004 	add	sp, sp, #4
+ 120:	e8bd8ff0 	pop	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+ 124:	00000400 	andeq	r0, r0, r0, lsl #8
+
+Disassembly of section .bss._ZGVZN8lightset4Data3GetEvE8instance:
+
+00000000 <guard variable for lightset::Data::Get()::instance>:
+   0:	00000000 	andeq	r0, r0, r0
+
+Disassembly of section .bss._ZZN8lightset4Data3GetEvE8instance:
+
+00000000 <lightset::Data::Get()::instance>:
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+e131paramsconst.o:     file format elf32-littlearm
+
+
+Disassembly of section .rodata:
+
+00000000 <E131ParamsConst::DISABLE_MERGE_TIMEOUT>:
+   0:	61736964 	cmnvs	r3, r4, ror #18
+   4:	5f656c62 	svcpl	0x00656c62
+   8:	6772656d 	ldrbvs	r6, [r2, -sp, ror #10]!
+   c:	69745f65 	ldmdbvs	r4!, {r0, r2, r5, r6, r8, r9, sl, fp, ip, lr}^
+  10:	756f656d 	strbvc	r6, [pc, #-1389]!	; fffffaab <E131ParamsConst::FILE_NAME+0xfffffa27>
+  14:	00000074 	andeq	r0, r0, r4, ror r0
+
+00000018 <E131ParamsConst::DISABLE_NETWORK_DATA_LOSS_TIMEOUT>:
+  18:	61736964 	cmnvs	r3, r4, ror #18
+  1c:	5f656c62 	svcpl	0x00656c62
+  20:	7774656e 	ldrbvc	r6, [r4, -lr, ror #10]!
+  24:	5f6b726f 	svcpl	0x006b726f
+  28:	61746164 	cmnvs	r4, r4, ror #2
+  2c:	736f6c5f 	cmnvc	pc, #24320	; 0x5f00
+  30:	69745f73 	ldmdbvs	r4!, {r0, r1, r4, r5, r6, r8, r9, sl, fp, ip, lr}^
+  34:	756f656d 	strbvc	r6, [pc, #-1389]!	; fffffacf <E131ParamsConst::FILE_NAME+0xfffffa4b>
+  38:	00000074 	andeq	r0, r0, r4, ror r0
+
+0000003c <E131ParamsConst::PRIORITY>:
+  3c:	6f697270 	svcvs	0x00697270
+  40:	79746972 	ldmdbvc	r4!, {r1, r4, r5, r6, r8, fp, sp, lr}^
+  44:	726f705f 	rsbvc	r7, pc, #95	; 0x5f
+  48:	00615f74 	rsbeq	r5, r1, r4, ror pc
+  4c:	72700000 	rsbsvc	r0, r0, #0
+  50:	69726f69 	ldmdbvs	r2!, {r0, r3, r5, r6, r8, r9, sl, fp, sp, lr}^
+  54:	705f7974 	subsvc	r7, pc, r4, ror r9	; <UNPREDICTABLE>
+  58:	5f74726f 	svcpl	0x0074726f
+  5c:	00000062 	andeq	r0, r0, r2, rrx
+  60:	6f697270 	svcvs	0x00697270
+  64:	79746972 	ldmdbvc	r4!, {r1, r4, r5, r6, r8, fp, sp, lr}^
+  68:	726f705f 	rsbvc	r7, pc, #95	; 0x5f
+  6c:	00635f74 	rsbeq	r5, r3, r4, ror pc
+  70:	72700000 	rsbsvc	r0, r0, #0
+  74:	69726f69 	ldmdbvs	r2!, {r0, r3, r5, r6, r8, r9, sl, fp, sp, lr}^
+  78:	705f7974 	subsvc	r7, pc, r4, ror r9	; <UNPREDICTABLE>
+  7c:	5f74726f 	svcpl	0x0074726f
+  80:	00000064 	andeq	r0, r0, r4, rrx
+
+00000084 <E131ParamsConst::FILE_NAME>:
+  84:	31333165 	teqcc	r3, r5, ror #2
+  88:	7478742e 	ldrbtvc	r7, [r8], #-1070	; 0xfffffbd2
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+

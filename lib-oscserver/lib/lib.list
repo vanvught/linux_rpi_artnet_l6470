@@ -1,0 +1,1827 @@
+In archive lib/liboscserver.a:
+
+oscservermsgconst.o:     file format elf32-littlearm
+
+
+Disassembly of section .rodata:
+
+00000000 <OscServerMsgConst::STARTED>:
+   0:	2043534f 	subcs	r5, r3, pc, asr #6
+   4:	76726553 			; <UNDEFINED> instruction: 0x76726553
+   8:	73207265 			; <UNDEFINED> instruction: 0x73207265
+   c:	74726174 	ldrbtvc	r6, [r2], #-372	; 0xfffffe8c
+  10:	00006465 	andeq	r6, r0, r5, ror #8
+
+00000014 <OscServerMsgConst::START>:
+  14:	72617453 	rsbvc	r7, r1, #1392508928	; 0x53000000
+  18:	676e6974 			; <UNDEFINED> instruction: 0x676e6974
+  1c:	65687420 	strbvs	r7, [r8, #-1056]!	; 0xfffffbe0
+  20:	43534f20 	cmpmi	r3, #32, 30	; 0x80
+  24:	72655320 	rsbvc	r5, r5, #32, 6	; 0x80000000
+  28:	00726576 	rsbseq	r6, r2, r6, ror r5
+
+0000002c <OscServerMsgConst::PARAMS>:
+  2c:	666e6f43 	strbtvs	r6, [lr], -r3, asr #30
+  30:	72756769 	rsbsvc	r6, r5, #27525120	; 0x1a40000
+  34:	20676e69 	rsbcs	r6, r7, r9, ror #28
+  38:	2043534f 	subcs	r5, r3, pc, asr #6
+  3c:	76726553 			; <UNDEFINED> instruction: 0x76726553
+  40:	Address 0x0000000000000040 is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003b41 	andeq	r3, r0, r1, asr #22
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000031 	andeq	r0, r0, r1, lsr r0
+  10:	4d524105 	ldfmie	f4, [r2, #-20]	; 0xffffffec
+  14:	36373131 			; <UNDEFINED> instruction: 0x36373131
+  18:	2d465a4a 	vstrcs	s11, [r6, #-296]	; 0xfffffed8
+  1c:	07060053 	smlsdeq	r6, r3, r0, r0
+  20:	01090108 	tsteq	r9, r8, lsl #2
+  24:	0412020a 	ldreq	r0, [r2], #-522	; 0xfffffdf6
+  28:	01150114 	tsteq	r5, r4, lsl r1
+  2c:	01180317 	tsteq	r8, r7, lsl r3
+  30:	011a0119 	tsteq	sl, r9, lsl r1
+  34:	021e011c 	andseq	r0, lr, #28, 2
+  38:	01440122 	cmpeq	r4, r2, lsr #2
+
+oscserverconst.o:     file format elf32-littlearm
+
+
+Disassembly of section .rodata:
+
+00000000 <OSCServerConst::PARAMS_PATH_BLACKOUT>:
+   0:	68746170 	ldmdavs	r4!, {r4, r5, r6, r8, sp, lr}^
+   4:	616c625f 	cmnvs	ip, pc, asr r2
+   8:	756f6b63 	strbvc	r6, [pc, #-2915]!	; fffff4ad <OSCServerConst::MSG_BRIDGE_PARAMS+0xfffff445>
+   c:	00000074 	andeq	r0, r0, r4, ror r0
+
+00000010 <OSCServerConst::PARAMS_PATH_INFO>:
+  10:	68746170 	ldmdavs	r4!, {r4, r5, r6, r8, sp, lr}^
+  14:	666e695f 			; <UNDEFINED> instruction: 0x666e695f
+  18:	0000006f 	andeq	r0, r0, pc, rrx
+
+0000001c <OSCServerConst::PARAMS_TRANSMISSION>:
+  1c:	74726170 	ldrbtvc	r6, [r2], #-368	; 0xfffffe90
+  20:	5f6c6169 	svcpl	0x006c6169
+  24:	6e617274 	mcrvs	2, 3, r7, cr1, cr4, {3}
+  28:	73696d73 	cmnvc	r9, #7360	; 0x1cc0
+  2c:	6e6f6973 			; <UNDEFINED> instruction: 0x6e6f6973
+  30:	00000000 	andeq	r0, r0, r0
+
+00000034 <OSCServerConst::PARAMS_PATH>:
+  34:	68746170 	ldmdavs	r4!, {r4, r5, r6, r8, sp, lr}^
+  38:	00000000 	andeq	r0, r0, r0
+
+0000003c <OSCServerConst::PARAMS_FILE_NAME>:
+  3c:	2e63736f 	cdpcs	3, 6, cr7, cr3, cr15, {3}
+  40:	00747874 	rsbseq	r7, r4, r4, ror r8
+
+00000044 <OSCServerConst::MSG_BRIDGE_STARTED>:
+  44:	64697242 	strbtvs	r7, [r9], #-578	; 0xfffffdbe
+  48:	73206567 			; <UNDEFINED> instruction: 0x73206567
+  4c:	74726174 	ldrbtvc	r6, [r2], #-372	; 0xfffffe8c
+  50:	00006465 	andeq	r6, r0, r5, ror #8
+
+00000054 <OSCServerConst::MSG_BRIDGE_START>:
+  54:	72617453 	rsbvc	r7, r1, #1392508928	; 0x53000000
+  58:	676e6974 			; <UNDEFINED> instruction: 0x676e6974
+  5c:	65687420 	strbvs	r7, [r8, #-1056]!	; 0xfffffbe0
+  60:	69724220 	ldmdbvs	r2!, {r5, r9, lr}^
+  64:	00656764 	rsbeq	r6, r5, r4, ror #14
+
+00000068 <OSCServerConst::MSG_BRIDGE_PARAMS>:
+  68:	74746553 	ldrbtvc	r6, [r4], #-1363	; 0xfffffaad
+  6c:	20676e69 	rsbcs	r6, r7, r9, ror #28
+  70:	64697242 	strbtvs	r7, [r9], #-578	; 0xfffffdbe
+  74:	70206567 	eorvc	r6, r0, r7, ror #10
+  78:	6d617261 	sfmvs	f7, 2, [r1, #-388]!	; 0xfffffe7c
+  7c:	72657465 	rsbvc	r7, r5, #1694498816	; 0x65000000
+  80:	Address 0x0000000000000080 is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003b41 	andeq	r3, r0, r1, asr #22
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000031 	andeq	r0, r0, r1, lsr r0
+  10:	4d524105 	ldfmie	f4, [r2, #-20]	; 0xffffffec
+  14:	36373131 			; <UNDEFINED> instruction: 0x36373131
+  18:	2d465a4a 	vstrcs	s11, [r6, #-296]	; 0xfffffed8
+  1c:	07060053 	smlsdeq	r6, r3, r0, r0
+  20:	01090108 	tsteq	r9, r8, lsl #2
+  24:	0412020a 	ldreq	r0, [r2], #-522	; 0xfffffdf6
+  28:	01150114 	tsteq	r5, r4, lsl r1
+  2c:	01180317 	tsteq	r8, r7, lsl r3
+  30:	011a0119 	tsteq	sl, r9, lsl r1
+  34:	021e011c 	andseq	r0, lr, #28, 2
+  38:	01440122 	cmpeq	r4, r2, lsr #2
+
+oscserverparams.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <OSCServerParams::OSCServerParams(OSCServerParamsStore*)>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04000 	mov	r4, r0
+   8:	e59f2018 	ldr	r2, [pc, #24]	; 28 <OSCServerParams::OSCServerParams(OSCServerParamsStore*)+0x28>
+   c:	e4801004 	str	r1, [r0], #4
+  10:	e3a01000 	mov	r1, #0
+  14:	ebfffffe 	bl	0 <memset>
+  18:	e59f300c 	ldr	r3, [pc, #12]	; 2c <OSCServerParams::OSCServerParams(OSCServerParamsStore*)+0x2c>
+  1c:	e1a00004 	mov	r0, r4
+  20:	e5843008 	str	r3, [r4, #8]
+  24:	e8bd8010 	pop	{r4, pc}
+  28:	0000018b 	andeq	r0, r0, fp, lsl #3
+  2c:	23281f40 			; <UNDEFINED> instruction: 0x23281f40
+
+00000030 <OSCServerParams::Load()>:
+  30:	e3a03000 	mov	r3, #0
+  34:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+  38:	e1a02000 	mov	r2, r0
+  3c:	e5803004 	str	r3, [r0, #4]
+  40:	e1a04000 	mov	r4, r0
+  44:	e59f1068 	ldr	r1, [pc, #104]	; b4 <OSCServerParams::Load()+0x84>
+  48:	e1a0000d 	mov	r0, sp
+  4c:	ebfffffe 	bl	0 <ReadConfigFile::ReadConfigFile(void (*)(void*, char const*), void*)>
+  50:	e1a0000d 	mov	r0, sp
+  54:	e59f105c 	ldr	r1, [pc, #92]	; b8 <OSCServerParams::Load()+0x88>
+  58:	ebfffffe 	bl	0 <ReadConfigFile::Read(char const*)>
+  5c:	e2505000 	subs	r5, r0, #0
+  60:	e5940000 	ldr	r0, [r4]
+  64:	0a000006 	beq	84 <OSCServerParams::Load()+0x54>
+  68:	e3500000 	cmp	r0, #0
+  6c:	0a00000b 	beq	a0 <OSCServerParams::Load()+0x70>
+  70:	e5903000 	ldr	r3, [r0]
+  74:	e2841004 	add	r1, r4, #4
+  78:	e5933008 	ldr	r3, [r3, #8]
+  7c:	e12fff33 	blx	r3
+  80:	ea000006 	b	a0 <OSCServerParams::Load()+0x70>
+  84:	e3500000 	cmp	r0, #0
+  88:	0a000004 	beq	a0 <OSCServerParams::Load()+0x70>
+  8c:	e5903000 	ldr	r3, [r0]
+  90:	e2841004 	add	r1, r4, #4
+  94:	e593300c 	ldr	r3, [r3, #12]
+  98:	e12fff33 	blx	r3
+  9c:	e3a05001 	mov	r5, #1
+  a0:	e1a0000d 	mov	r0, sp
+  a4:	ebfffffe 	bl	0 <ReadConfigFile::~ReadConfigFile()>
+  a8:	e1a00005 	mov	r0, r5
+  ac:	e28dd00c 	add	sp, sp, #12
+  b0:	e8bd8030 	pop	{r4, r5, pc}
+	...
+
+000000bc <OSCServerParams::Load(char const*, unsigned int)>:
+  bc:	e5903000 	ldr	r3, [r0]
+  c0:	e3530000 	cmp	r3, #0
+  c4:	012fff1e 	bxeq	lr
+  c8:	e3a03000 	mov	r3, #0
+  cc:	e92d4073 	push	{r0, r1, r4, r5, r6, lr}
+  d0:	e1a05001 	mov	r5, r1
+  d4:	e1a06002 	mov	r6, r2
+  d8:	e1a04000 	mov	r4, r0
+  dc:	e5803004 	str	r3, [r0, #4]
+  e0:	e1a02000 	mov	r2, r0
+  e4:	e59f1038 	ldr	r1, [pc, #56]	; 124 <OSCServerParams::Load(char const*, unsigned int)+0x68>
+  e8:	e1a0000d 	mov	r0, sp
+  ec:	ebfffffe 	bl	0 <ReadConfigFile::ReadConfigFile(void (*)(void*, char const*), void*)>
+  f0:	e1a02006 	mov	r2, r6
+  f4:	e1a01005 	mov	r1, r5
+  f8:	e1a0000d 	mov	r0, sp
+  fc:	ebfffffe 	bl	0 <ReadConfigFile::Read(char const*, unsigned int)>
+ 100:	e1a01004 	mov	r1, r4
+ 104:	e4910004 	ldr	r0, [r1], #4
+ 108:	e5903000 	ldr	r3, [r0]
+ 10c:	e5933008 	ldr	r3, [r3, #8]
+ 110:	e12fff33 	blx	r3
+ 114:	e1a0000d 	mov	r0, sp
+ 118:	ebfffffe 	bl	0 <ReadConfigFile::~ReadConfigFile()>
+ 11c:	e28dd008 	add	sp, sp, #8
+ 120:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 124:	00000000 	andeq	r0, r0, r0
+
+00000128 <OSCServerParams::callbackFunction(char const*)>:
+ 128:	e92d4073 	push	{r0, r1, r4, r5, r6, lr}
+ 12c:	e1a05001 	mov	r5, r1
+ 130:	e1a04000 	mov	r4, r0
+ 134:	e59f1120 	ldr	r1, [pc, #288]	; 25c <OSCServerParams::callbackFunction(char const*)+0x134>
+ 138:	e1a00005 	mov	r0, r5
+ 13c:	e28d2002 	add	r2, sp, #2
+ 140:	ebfffffe 	bl	0 <Sscan::Uint16(char const*, char const*, unsigned short&)>
+ 144:	e3500000 	cmp	r0, #0
+ 148:	1a000006 	bne	168 <OSCServerParams::callbackFunction(char const*)+0x40>
+ 14c:	e1dd30b2 	ldrh	r3, [sp, #2]
+ 150:	e3530b01 	cmp	r3, #1024	; 0x400
+ 154:	21c430b8 	strhcs	r3, [r4, #8]
+ 158:	25943004 	ldrcs	r3, [r4, #4]
+ 15c:	23833001 	orrcs	r3, r3, #1
+ 160:	2a00003a 	bcs	250 <OSCServerParams::callbackFunction(char const*)+0x128>
+ 164:	ea00003a 	b	254 <OSCServerParams::callbackFunction(char const*)+0x12c>
+ 168:	e1a00005 	mov	r0, r5
+ 16c:	e59f10ec 	ldr	r1, [pc, #236]	; 260 <OSCServerParams::callbackFunction(char const*)+0x138>
+ 170:	e28d2002 	add	r2, sp, #2
+ 174:	ebfffffe 	bl	0 <Sscan::Uint16(char const*, char const*, unsigned short&)>
+ 178:	e3500000 	cmp	r0, #0
+ 17c:	1a000006 	bne	19c <OSCServerParams::callbackFunction(char const*)+0x74>
+ 180:	e1dd30b2 	ldrh	r3, [sp, #2]
+ 184:	e3530b01 	cmp	r3, #1024	; 0x400
+ 188:	21c430ba 	strhcs	r3, [r4, #10]
+ 18c:	25943004 	ldrcs	r3, [r4, #4]
+ 190:	23833002 	orrcs	r3, r3, #2
+ 194:	2a00002d 	bcs	250 <OSCServerParams::callbackFunction(char const*)+0x128>
+ 198:	ea00002d 	b	254 <OSCServerParams::callbackFunction(char const*)+0x12c>
+ 19c:	e1a00005 	mov	r0, r5
+ 1a0:	e59f10bc 	ldr	r1, [pc, #188]	; 264 <OSCServerParams::callbackFunction(char const*)+0x13c>
+ 1a4:	e28d2001 	add	r2, sp, #1
+ 1a8:	ebfffffe 	bl	0 <Sscan::Uint8(char const*, char const*, unsigned char&)>
+ 1ac:	e3500000 	cmp	r0, #0
+ 1b0:	1a000006 	bne	1d0 <OSCServerParams::callbackFunction(char const*)+0xa8>
+ 1b4:	e5dd3001 	ldrb	r3, [sp, #1]
+ 1b8:	e2533000 	subs	r3, r3, #0
+ 1bc:	13a03001 	movne	r3, #1
+ 1c0:	e5c4300d 	strb	r3, [r4, #13]
+ 1c4:	e5943004 	ldr	r3, [r4, #4]
+ 1c8:	e3833008 	orr	r3, r3, #8
+ 1cc:	ea00001f 	b	250 <OSCServerParams::callbackFunction(char const*)+0x128>
+ 1d0:	e3a0607f 	mov	r6, #127	; 0x7f
+ 1d4:	e28d3004 	add	r3, sp, #4
+ 1d8:	e1a00005 	mov	r0, r5
+ 1dc:	e59f1084 	ldr	r1, [pc, #132]	; 268 <OSCServerParams::callbackFunction(char const*)+0x140>
+ 1e0:	e284200e 	add	r2, r4, #14
+ 1e4:	e58d6004 	str	r6, [sp, #4]
+ 1e8:	ebfffffe 	bl	0 <Sscan::Char(char const*, char const*, char*, unsigned int&)>
+ 1ec:	e3500000 	cmp	r0, #0
+ 1f0:	05943004 	ldreq	r3, [r4, #4]
+ 1f4:	03833004 	orreq	r3, r3, #4
+ 1f8:	0a000014 	beq	250 <OSCServerParams::callbackFunction(char const*)+0x128>
+ 1fc:	e28d3004 	add	r3, sp, #4
+ 200:	e1a00005 	mov	r0, r5
+ 204:	e59f1060 	ldr	r1, [pc, #96]	; 26c <OSCServerParams::callbackFunction(char const*)+0x144>
+ 208:	e284208e 	add	r2, r4, #142	; 0x8e
+ 20c:	e58d6004 	str	r6, [sp, #4]
+ 210:	ebfffffe 	bl	0 <Sscan::Char(char const*, char const*, char*, unsigned int&)>
+ 214:	e3500000 	cmp	r0, #0
+ 218:	05943004 	ldreq	r3, [r4, #4]
+ 21c:	03833020 	orreq	r3, r3, #32
+ 220:	0a00000a 	beq	250 <OSCServerParams::callbackFunction(char const*)+0x128>
+ 224:	e2842f43 	add	r2, r4, #268	; 0x10c
+ 228:	e1a00005 	mov	r0, r5
+ 22c:	e59f1038 	ldr	r1, [pc, #56]	; 26c <OSCServerParams::callbackFunction(char const*)+0x144>
+ 230:	e28d3004 	add	r3, sp, #4
+ 234:	e2822002 	add	r2, r2, #2
+ 238:	e58d6004 	str	r6, [sp, #4]
+ 23c:	ebfffffe 	bl	0 <Sscan::Char(char const*, char const*, char*, unsigned int&)>
+ 240:	e3500000 	cmp	r0, #0
+ 244:	1a000002 	bne	254 <OSCServerParams::callbackFunction(char const*)+0x12c>
+ 248:	e5943004 	ldr	r3, [r4, #4]
+ 24c:	e3833040 	orr	r3, r3, #64	; 0x40
+ 250:	e5843004 	str	r3, [r4, #4]
+ 254:	e28dd008 	add	sp, sp, #8
+ 258:	e8bd8070 	pop	{r4, r5, r6, pc}
+	...
+
+00000270 <OSCServerParams::staticCallbackFunction(void*, char const*)>:
+ 270:	eafffffe 	b	128 <OSCServerParams::callbackFunction(char const*)>
+
+00000274 <OSCServerParams::Dump()>:
+ 274:	e12fff1e 	bx	lr
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003241 	andeq	r3, r0, r1, asr #4
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000028 	andeq	r0, r0, r8, lsr #32
+  10:	4b5a3605 	blmi	168d82c <OSCServerParams::Dump()+0x168d5b8>
+  14:	08070600 	stmdaeq	r7, {r9, sl}
+  18:	0a010901 	beq	42424 <OSCServerParams::Dump()+0x421b0>
+  1c:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  20:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  24:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  28:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  2c:	22021e01 	andcs	r1, r2, #1, 28
+  30:	Address 0x0000000000000030 is out of bounds.
+
+
+oscserverparamssave.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]>:
+   0:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+   4:	e1d0c0b6 	ldrh	ip, [r0, #6]
+   8:	e1d050b4 	ldrh	r5, [r0, #4]
+   c:	e15c0005 	cmp	ip, r5
+  10:	2a00001c 	bcs	88 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]+0x88>
+  14:	e1a04000 	mov	r4, r0
+  18:	e5900000 	ldr	r0, [r0]
+  1c:	e3530000 	cmp	r3, #0
+  20:	e080000c 	add	r0, r0, ip
+  24:	e045500c 	sub	r5, r5, ip
+  28:	e5d4c008 	ldrb	ip, [r4, #8]
+  2c:	1a000002 	bne	3c <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]+0x3c>
+  30:	e35c0000 	cmp	ip, #0
+  34:	1a000002 	bne	44 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]+0x44>
+  38:	ea000009 	b	64 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]+0x64>
+  3c:	e35c0000 	cmp	ip, #0
+  40:	0a000003 	beq	54 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]+0x54>
+  44:	e58d2000 	str	r2, [sp]
+  48:	e1a03001 	mov	r3, r1
+  4c:	e59f203c 	ldr	r2, [pc, #60]	; 90 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]+0x90>
+  50:	ea000006 	b	70 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]+0x70>
+  54:	e58d2000 	str	r2, [sp]
+  58:	e1a03001 	mov	r3, r1
+  5c:	e59f2030 	ldr	r2, [pc, #48]	; 94 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]+0x94>
+  60:	ea000002 	b	70 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]+0x70>
+  64:	e1a03001 	mov	r3, r1
+  68:	e58d2000 	str	r2, [sp]
+  6c:	e59f2024 	ldr	r2, [pc, #36]	; 98 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]+0x98>
+  70:	e1a01005 	mov	r1, r5
+  74:	ebfffffe 	bl	0 <snprintf>
+  78:	e1550000 	cmp	r5, r0
+  7c:	a1d430b6 	ldrhge	r3, [r4, #6]
+  80:	a0830000 	addge	r0, r3, r0
+  84:	a1c400b6 	strhge	r0, [r4, #6]
+  88:	e28dd00c 	add	sp, sp, #12
+  8c:	e8bd8030 	pop	{r4, r5, pc}
+  90:	00000000 	andeq	r0, r0, r0
+  94:	00000009 	andeq	r0, r0, r9
+  98:	00000010 	andeq	r0, r0, r0, lsl r0
+
+0000009c <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]>:
+  9c:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+  a0:	e1d0c0b6 	ldrh	ip, [r0, #6]
+  a4:	e1d050b4 	ldrh	r5, [r0, #4]
+  a8:	e15c0005 	cmp	ip, r5
+  ac:	2a00001c 	bcs	124 <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]+0x88>
+  b0:	e1a04000 	mov	r4, r0
+  b4:	e5900000 	ldr	r0, [r0]
+  b8:	e3530000 	cmp	r3, #0
+  bc:	e080000c 	add	r0, r0, ip
+  c0:	e045500c 	sub	r5, r5, ip
+  c4:	e5d4c008 	ldrb	ip, [r4, #8]
+  c8:	1a000002 	bne	d8 <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]+0x3c>
+  cc:	e35c0000 	cmp	ip, #0
+  d0:	1a000002 	bne	e0 <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]+0x44>
+  d4:	ea000009 	b	100 <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]+0x64>
+  d8:	e35c0000 	cmp	ip, #0
+  dc:	0a000003 	beq	f0 <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]+0x54>
+  e0:	e58d2000 	str	r2, [sp]
+  e4:	e1a03001 	mov	r3, r1
+  e8:	e59f203c 	ldr	r2, [pc, #60]	; 12c <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]+0x90>
+  ec:	ea000006 	b	10c <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]+0x70>
+  f0:	e58d2000 	str	r2, [sp]
+  f4:	e1a03001 	mov	r3, r1
+  f8:	e59f2030 	ldr	r2, [pc, #48]	; 130 <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]+0x94>
+  fc:	ea000002 	b	10c <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]+0x70>
+ 100:	e1a03001 	mov	r3, r1
+ 104:	e58d2000 	str	r2, [sp]
+ 108:	e59f2024 	ldr	r2, [pc, #36]	; 134 <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]+0x98>
+ 10c:	e1a01005 	mov	r1, r5
+ 110:	ebfffffe 	bl	0 <snprintf>
+ 114:	e1550000 	cmp	r5, r0
+ 118:	a1d430b6 	ldrhge	r3, [r4, #6]
+ 11c:	a0830000 	addge	r0, r3, r0
+ 120:	a1c400b6 	strhge	r0, [r4, #6]
+ 124:	e28dd00c 	add	sp, sp, #12
+ 128:	e8bd8030 	pop	{r4, r5, pc}
+ 12c:	00000018 	andeq	r0, r0, r8, lsl r0
+ 130:	00000023 	andeq	r0, r0, r3, lsr #32
+ 134:	0000002a 	andeq	r0, r0, sl, lsr #32
+
+00000138 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)>:
+ 138:	e92d4070 	push	{r4, r5, r6, lr}
+ 13c:	e3510000 	cmp	r1, #0
+ 140:	e1a04000 	mov	r4, r0
+ 144:	e1a05002 	mov	r5, r2
+ 148:	e1a06003 	mov	r6, r3
+ 14c:	e24dd018 	sub	sp, sp, #24
+ 150:	e2800004 	add	r0, r0, #4
+ 154:	0a000002 	beq	164 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x2c>
+ 158:	e59f2190 	ldr	r2, [pc, #400]	; 2f0 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1b8>
+ 15c:	ebfffffe 	bl	0 <memcpy>
+ 160:	ea000005 	b	17c <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x44>
+ 164:	e5943000 	ldr	r3, [r4]
+ 168:	e1a01000 	mov	r1, r0
+ 16c:	e5932000 	ldr	r2, [r3]
+ 170:	e1a00003 	mov	r0, r3
+ 174:	e592200c 	ldr	r2, [r2, #12]
+ 178:	e12fff32 	blx	r2
+ 17c:	e1a02005 	mov	r2, r5
+ 180:	e1a03006 	mov	r3, r6
+ 184:	e59f1168 	ldr	r1, [pc, #360]	; 2f4 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1bc>
+ 188:	e28d000c 	add	r0, sp, #12
+ 18c:	ebfffffe 	bl	0 <PropertiesBuilder::PropertiesBuilder(char const*, char*, unsigned int)>
+ 190:	e5943004 	ldr	r3, [r4, #4]
+ 194:	e1d420b8 	ldrh	r2, [r4, #8]
+ 198:	e59f1158 	ldr	r1, [pc, #344]	; 2f8 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1c0>
+ 19c:	e2033001 	and	r3, r3, #1
+ 1a0:	e28d000c 	add	r0, sp, #12
+ 1a4:	ebffff95 	bl	0 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]>
+ 1a8:	e5943004 	ldr	r3, [r4, #4]
+ 1ac:	e1d420ba 	ldrh	r2, [r4, #10]
+ 1b0:	e1a030a3 	lsr	r3, r3, #1
+ 1b4:	e59f1140 	ldr	r1, [pc, #320]	; 2fc <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1c4>
+ 1b8:	e2033001 	and	r3, r3, #1
+ 1bc:	e28d000c 	add	r0, sp, #12
+ 1c0:	ebffff8e 	bl	0 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int) [clone .isra.0]>
+ 1c4:	e5943004 	ldr	r3, [r4, #4]
+ 1c8:	e59f1130 	ldr	r1, [pc, #304]	; 300 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1c8>
+ 1cc:	e1a03123 	lsr	r3, r3, #2
+ 1d0:	e2033001 	and	r3, r3, #1
+ 1d4:	e284200e 	add	r2, r4, #14
+ 1d8:	e28d000c 	add	r0, sp, #12
+ 1dc:	ebffffae 	bl	9c <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]>
+ 1e0:	e5943004 	ldr	r3, [r4, #4]
+ 1e4:	e59f1118 	ldr	r1, [pc, #280]	; 304 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1cc>
+ 1e8:	e1a032a3 	lsr	r3, r3, #5
+ 1ec:	e2033001 	and	r3, r3, #1
+ 1f0:	e284208e 	add	r2, r4, #142	; 0x8e
+ 1f4:	e28d000c 	add	r0, sp, #12
+ 1f8:	ebffffa7 	bl	9c <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]>
+ 1fc:	e5943004 	ldr	r3, [r4, #4]
+ 200:	e2842f43 	add	r2, r4, #268	; 0x10c
+ 204:	e1a03323 	lsr	r3, r3, #6
+ 208:	e59f10f8 	ldr	r1, [pc, #248]	; 308 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1d0>
+ 20c:	e2033001 	and	r3, r3, #1
+ 210:	e2822002 	add	r2, r2, #2
+ 214:	e28d000c 	add	r0, sp, #12
+ 218:	ebffff9f 	bl	9c <bool PropertiesBuilder::Add<char*>(char const*, char*, bool, unsigned int) [clone .isra.0]>
+ 21c:	e1dd11b2 	ldrh	r1, [sp, #18]
+ 220:	e1dd51b0 	ldrh	r5, [sp, #16]
+ 224:	e1510005 	cmp	r1, r5
+ 228:	2a00001d 	bcs	2a4 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x16c>
+ 22c:	e59d000c 	ldr	r0, [sp, #12]
+ 230:	e0455001 	sub	r5, r5, r1
+ 234:	e0800001 	add	r0, r0, r1
+ 238:	e5941004 	ldr	r1, [r4, #4]
+ 23c:	e5dd2014 	ldrb	r2, [sp, #20]
+ 240:	e3110008 	tst	r1, #8
+ 244:	e5d4300d 	ldrb	r3, [r4, #13]
+ 248:	1a000002 	bne	258 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x120>
+ 24c:	e3520000 	cmp	r2, #0
+ 250:	1a000002 	bne	260 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x128>
+ 254:	ea000009 	b	280 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x148>
+ 258:	e3520000 	cmp	r2, #0
+ 25c:	0a000003 	beq	270 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x138>
+ 260:	e58d3000 	str	r3, [sp]
+ 264:	e59f20a0 	ldr	r2, [pc, #160]	; 30c <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1d4>
+ 268:	e59f30a0 	ldr	r3, [pc, #160]	; 310 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1d8>
+ 26c:	ea000006 	b	28c <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x154>
+ 270:	e58d3000 	str	r3, [sp]
+ 274:	e59f2098 	ldr	r2, [pc, #152]	; 314 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1dc>
+ 278:	e59f3090 	ldr	r3, [pc, #144]	; 310 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1d8>
+ 27c:	ea000002 	b	28c <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x154>
+ 280:	e58d3000 	str	r3, [sp]
+ 284:	e59f208c 	ldr	r2, [pc, #140]	; 318 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1e0>
+ 288:	e59f3080 	ldr	r3, [pc, #128]	; 310 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1d8>
+ 28c:	e1a01005 	mov	r1, r5
+ 290:	ebfffffe 	bl	0 <snprintf>
+ 294:	e1550000 	cmp	r5, r0
+ 298:	a1dd31b2 	ldrhge	r3, [sp, #18]
+ 29c:	a0830000 	addge	r0, r3, r0
+ 2a0:	a1cd01b2 	strhge	r0, [sp, #18]
+ 2a4:	e5dd3014 	ldrb	r3, [sp, #20]
+ 2a8:	e3530000 	cmp	r3, #0
+ 2ac:	0a00000a 	beq	2dc <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)+0x1a4>
+ 2b0:	e1dd21b2 	ldrh	r2, [sp, #18]
+ 2b4:	e59d300c 	ldr	r3, [sp, #12]
+ 2b8:	e0833002 	add	r3, r3, r2
+ 2bc:	e3a0207d 	mov	r2, #125	; 0x7d
+ 2c0:	e5432001 	strb	r2, [r3, #-1]
+ 2c4:	e1dd31b2 	ldrh	r3, [sp, #18]
+ 2c8:	e59d100c 	ldr	r1, [sp, #12]
+ 2cc:	e7c12003 	strb	r2, [r1, r3]
+ 2d0:	e1dd31b2 	ldrh	r3, [sp, #18]
+ 2d4:	e2833001 	add	r3, r3, #1
+ 2d8:	e1cd31b2 	strh	r3, [sp, #18]
+ 2dc:	e1dd21b2 	ldrh	r2, [sp, #18]
+ 2e0:	e59d3028 	ldr	r3, [sp, #40]	; 0x28
+ 2e4:	e5832000 	str	r2, [r3]
+ 2e8:	e28dd018 	add	sp, sp, #24
+ 2ec:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 2f0:	0000018b 	andeq	r0, r0, fp, lsl #3
+	...
+ 314:	00000009 	andeq	r0, r0, r9
+ 318:	00000010 	andeq	r0, r0, r0, lsl r0
+
+0000031c <OSCServerParams::Save(char*, unsigned int, unsigned int&)>:
+ 31c:	e590c000 	ldr	ip, [r0]
+ 320:	e35c0000 	cmp	ip, #0
+ 324:	1a000001 	bne	330 <OSCServerParams::Save(char*, unsigned int, unsigned int&)+0x14>
+ 328:	e583c000 	str	ip, [r3]
+ 32c:	e12fff1e 	bx	lr
+ 330:	e92d4007 	push	{r0, r1, r2, lr}
+ 334:	e58d3000 	str	r3, [sp]
+ 338:	e1a03002 	mov	r3, r2
+ 33c:	e1a02001 	mov	r2, r1
+ 340:	e3a01000 	mov	r1, #0
+ 344:	ebfffffe 	bl	138 <OSCServerParams::Builder(TOSCServerParams const*, char*, unsigned int, unsigned int&)>
+ 348:	e28dd00c 	add	sp, sp, #12
+ 34c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+Disassembly of section .rodata.str1.1:
+
+00000000 <.rodata.str1.1>:
+   0:	22732522 	rsbscs	r2, r3, #142606336	; 0x8800000
+   4:	2c64253a 	cfstr64cs	mvdx2, [r4], #-232	; 0xffffff18
+   8:	3d732500 	cfldr64cc	mvdx2, [r3, #-0]
+   c:	000a6425 	andeq	r6, sl, r5, lsr #8
+  10:	3d732523 	cfldr64cc	mvdx2, [r3, #-140]!	; 0xffffff74
+  14:	000a6425 	andeq	r6, sl, r5, lsr #8
+  18:	22732522 	rsbscs	r2, r3, #142606336	; 0x8800000
+  1c:	7325223a 			; <UNDEFINED> instruction: 0x7325223a
+  20:	25002c22 	strcs	r2, [r0, #-3106]	; 0xfffff3de
+  24:	73253d73 			; <UNDEFINED> instruction: 0x73253d73
+  28:	2523000a 	strcs	r0, [r3, #-10]!
+  2c:	73253d73 			; <UNDEFINED> instruction: 0x73253d73
+  30:	Address 0x0000000000000030 is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003241 	andeq	r3, r0, r1, asr #4
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000028 	andeq	r0, r0, r8, lsr #32
+  10:	4b5a3605 	blmi	168d82c <OSCServerParams::Save(char*, unsigned int, unsigned int&)+0x168d510>
+  14:	08070600 	stmdaeq	r7, {r9, sl}
+  18:	0a010901 	beq	42424 <OSCServerParams::Save(char*, unsigned int, unsigned int&)+0x42108>
+  1c:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  20:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  24:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  28:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  2c:	22021e01 	andcs	r1, r2, #1, 28
+  30:	Address 0x0000000000000030 is out of bounds.
+
+
+oscserverprint.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <OscServer::Print()>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04000 	mov	r4, r0
+   8:	e59f0058 	ldr	r0, [pc, #88]	; 68 <OscServer::Print()+0x68>
+   c:	ebfffffe 	bl	0 <printf>
+  10:	e1d410b0 	ldrh	r1, [r4]
+  14:	e59f0050 	ldr	r0, [pc, #80]	; 6c <OscServer::Print()+0x6c>
+  18:	ebfffffe 	bl	0 <printf>
+  1c:	e1d410b2 	ldrh	r1, [r4, #2]
+  20:	e59f0048 	ldr	r0, [pc, #72]	; 70 <OscServer::Print()+0x70>
+  24:	ebfffffe 	bl	0 <printf>
+  28:	e284208c 	add	r2, r4, #140	; 0x8c
+  2c:	e284100c 	add	r1, r4, #12
+  30:	e59f003c 	ldr	r0, [pc, #60]	; 74 <OscServer::Print()+0x74>
+  34:	ebfffffe 	bl	0 <printf>
+  38:	e2841f63 	add	r1, r4, #396	; 0x18c
+  3c:	e59f0034 	ldr	r0, [pc, #52]	; 78 <OscServer::Print()+0x78>
+  40:	ebfffffe 	bl	0 <printf>
+  44:	e5d41008 	ldrb	r1, [r4, #8]
+  48:	e59f202c 	ldr	r2, [pc, #44]	; 7c <OscServer::Print()+0x7c>
+  4c:	e59f302c 	ldr	r3, [pc, #44]	; 80 <OscServer::Print()+0x80>
+  50:	e3510000 	cmp	r1, #0
+  54:	11a01002 	movne	r1, r2
+  58:	e8bd4010 	pop	{r4, lr}
+  5c:	01a01003 	moveq	r1, r3
+  60:	e59f001c 	ldr	r0, [pc, #28]	; 84 <OscServer::Print()+0x84>
+  64:	eafffffe 	b	0 <printf>
+  68:	00000008 	andeq	r0, r0, r8
+  6c:	00000014 	andeq	r0, r0, r4, lsl r0
+  70:	00000030 	andeq	r0, r0, r0, lsr r0
+  74:	0000004c 	andeq	r0, r0, ip, asr #32
+  78:	00000070 	andeq	r0, r0, r0, ror r0
+  7c:	00000000 	andeq	r0, r0, r0
+  80:	00000004 	andeq	r0, r0, r4
+  84:	00000090 	muleq	r0, r0, r0
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.rodata.str1.4>:
+   0:	00736559 	rsbseq	r6, r3, r9, asr r5
+   4:	00006f4e 	andeq	r6, r0, lr, asr #30
+   8:	2043534f 	subcs	r5, r3, pc, asr #6
+   c:	76726553 			; <UNDEFINED> instruction: 0x76726553
+  10:	000a7265 	andeq	r7, sl, r5, ror #4
+  14:	636e4920 	cmnvs	lr, #32, 18	; 0x80000
+  18:	6e696d6f 	cdpvs	13, 6, cr6, cr9, cr15, {3}
+  1c:	6f502067 	svcvs	0x00502067
+  20:	20207472 	eorcs	r7, r0, r2, ror r4
+  24:	20202020 	eorcs	r2, r0, r0, lsr #32
+  28:	203a2020 	eorscs	r2, sl, r0, lsr #32
+  2c:	000a6425 	andeq	r6, sl, r5, lsr #8
+  30:	74754f20 	ldrbtvc	r4, [r5], #-3872	; 0xfffff0e0
+  34:	6e696f67 	cdpvs	15, 6, cr6, cr9, cr7, {3}
+  38:	6f502067 	svcvs	0x00502067
+  3c:	20207472 	eorcs	r7, r0, r2, ror r4
+  40:	20202020 	eorcs	r2, r0, r0, lsr #32
+  44:	203a2020 	eorscs	r2, sl, r0, lsr #32
+  48:	000a6425 	andeq	r6, sl, r5, lsr #8
+  4c:	584d4420 	stmdapl	sp, {r5, sl, lr}^
+  50:	74615020 	strbtvc	r5, [r1], #-32	; 0xffffffe0
+  54:	20202068 	eorcs	r2, r0, r8, rrx
+  58:	20202020 	eorcs	r2, r0, r0, lsr #32
+  5c:	20202020 	eorcs	r2, r0, r0, lsr #32
+  60:	203a2020 	eorscs	r2, sl, r0, lsr #32
+  64:	5d73255b 	cfldr64pl	mvdx2, [r3, #-364]!	; 0xfffffe94
+  68:	5d73255b 	cfldr64pl	mvdx2, [r3, #-364]!	; 0xfffffe94
+  6c:	0000000a 	andeq	r0, r0, sl
+  70:	6c422020 	mcrrvs	0, 2, r2, r2, cr0
+  74:	6f6b6361 	svcvs	0x006b6361
+  78:	50207475 	eorpl	r7, r0, r5, ror r4
+  7c:	20687461 	rsbcs	r7, r8, r1, ror #8
+  80:	20202020 	eorcs	r2, r0, r0, lsr #32
+  84:	203a2020 	eorscs	r2, sl, r0, lsr #32
+  88:	5d73255b 	cfldr64pl	mvdx2, [r3, #-364]!	; 0xfffffe94
+  8c:	0000000a 	andeq	r0, r0, sl
+  90:	72615020 	rsbvc	r5, r1, #32
+  94:	6c616974 			; <UNDEFINED> instruction: 0x6c616974
+  98:	61725420 	cmnvs	r2, r0, lsr #8
+  9c:	696d736e 	stmdbvs	sp!, {r1, r2, r3, r5, r6, r8, r9, ip, sp, lr}^
+  a0:	6f697373 	svcvs	0x00697373
+  a4:	203a206e 	eorscs	r2, sl, lr, rrx
+  a8:	000a7325 	andeq	r7, sl, r5, lsr #6
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003241 	andeq	r3, r0, r1, asr #4
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000028 	andeq	r0, r0, r8, lsr #32
+  10:	4b5a3605 	blmi	168d82c <OscServer::Print()+0x168d82c>
+  14:	08070600 	stmdaeq	r7, {r9, sl}
+  18:	0a010901 	beq	42424 <OscServer::Print()+0x42424>
+  1c:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  20:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  24:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  28:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  2c:	22021e01 	andcs	r1, r2, #1, 28
+  30:	Address 0x0000000000000030 is out of bounds.
+
+
+oscserver.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <OscServer::OscServer()>:
+   0:	e3e03000 	mvn	r3, #0
+   4:	e59f21b0 	ldr	r2, [pc, #432]	; 1bc <OscServer::OscServer()+0x1bc>
+   8:	e3a0c000 	mov	ip, #0
+   c:	e280100c 	add	r1, r0, #12
+  10:	e92d4030 	push	{r4, r5, lr}
+  14:	e1c020f0 	strd	r2, [r0]
+  18:	e1a05000 	mov	r5, r0
+  1c:	e1a03001 	mov	r3, r1
+  20:	e24dd014 	sub	sp, sp, #20
+  24:	e1c0c0b8 	strh	ip, [r0, #8]
+  28:	e580c20c 	str	ip, [r0, #524]	; 0x20c
+  2c:	e580c210 	str	ip, [r0, #528]	; 0x210
+  30:	e5c0c214 	strb	ip, [r0, #532]	; 0x214
+  34:	e580c218 	str	ip, [r0, #536]	; 0x218
+  38:	e580c21c 	str	ip, [r0, #540]	; 0x21c
+  3c:	e580c220 	str	ip, [r0, #544]	; 0x220
+  40:	e280208c 	add	r2, r0, #140	; 0x8c
+  44:	e4c3c001 	strb	ip, [r3], #1
+  48:	e1530002 	cmp	r3, r2
+  4c:	1afffffc 	bne	44 <OscServer::OscServer()+0x44>
+  50:	e3a0302f 	mov	r3, #47	; 0x2f
+  54:	e59f0164 	ldr	r0, [pc, #356]	; 1c0 <OscServer::OscServer()+0x1c0>
+  58:	ea000000 	b	60 <OscServer::OscServer()+0x60>
+  5c:	e5f03001 	ldrb	r3, [r0, #1]!
+  60:	e3530000 	cmp	r3, #0
+  64:	e4c13001 	strb	r3, [r1], #1
+  68:	1afffffb 	bne	5c <OscServer::OscServer()+0x5c>
+  6c:	e1a00002 	mov	r0, r2
+  70:	e2851f43 	add	r1, r5, #268	; 0x10c
+  74:	e4c03001 	strb	r3, [r0], #1
+  78:	e1500001 	cmp	r0, r1
+  7c:	1afffffc 	bne	74 <OscServer::OscServer()+0x74>
+  80:	e3a0302f 	mov	r3, #47	; 0x2f
+  84:	e59f0138 	ldr	r0, [pc, #312]	; 1c4 <OscServer::OscServer()+0x1c4>
+  88:	ea000000 	b	90 <OscServer::OscServer()+0x90>
+  8c:	e5f03001 	ldrb	r3, [r0, #1]!
+  90:	e3530000 	cmp	r3, #0
+  94:	e4c23001 	strb	r3, [r2], #1
+  98:	1afffffb 	bne	8c <OscServer::OscServer()+0x8c>
+  9c:	e1a00001 	mov	r0, r1
+  a0:	e2852f63 	add	r2, r5, #396	; 0x18c
+  a4:	e4c03001 	strb	r3, [r0], #1
+  a8:	e1500002 	cmp	r0, r2
+  ac:	1afffffc 	bne	a4 <OscServer::OscServer()+0xa4>
+  b0:	e3a0302f 	mov	r3, #47	; 0x2f
+  b4:	e59f010c 	ldr	r0, [pc, #268]	; 1c8 <OscServer::OscServer()+0x1c8>
+  b8:	ea000000 	b	c0 <OscServer::OscServer()+0xc0>
+  bc:	e5f03001 	ldrb	r3, [r0, #1]!
+  c0:	e3530000 	cmp	r3, #0
+  c4:	e4c13001 	strb	r3, [r1], #1
+  c8:	1afffffb 	bne	bc <OscServer::OscServer()+0xbc>
+  cc:	e1a01002 	mov	r1, r2
+  d0:	e2850f83 	add	r0, r5, #524	; 0x20c
+  d4:	e4c13001 	strb	r3, [r1], #1
+  d8:	e1510000 	cmp	r1, r0
+  dc:	1afffffc 	bne	d4 <OscServer::OscServer()+0xd4>
+  e0:	e3a0402f 	mov	r4, #47	; 0x2f
+  e4:	e59f30e0 	ldr	r3, [pc, #224]	; 1cc <OscServer::OscServer()+0x1cc>
+  e8:	ea000000 	b	f0 <OscServer::OscServer()+0xf0>
+  ec:	e5f34001 	ldrb	r4, [r3, #1]!
+  f0:	e3540000 	cmp	r4, #0
+  f4:	e4c24001 	strb	r4, [r2], #1
+  f8:	1afffffb 	bne	ec <OscServer::OscServer()+0xec>
+  fc:	e3a00a01 	mov	r0, #4096	; 0x1000
+ 100:	ebfffffe 	bl	0 <operator new[](unsigned int)>
+ 104:	e1a03000 	mov	r3, r0
+ 108:	e3a00c02 	mov	r0, #512	; 0x200
+ 10c:	e5853218 	str	r3, [r5, #536]	; 0x218
+ 110:	ebfffffe 	bl	0 <operator new[](unsigned int)>
+ 114:	e1a02004 	mov	r2, r4
+ 118:	e585021c 	str	r0, [r5, #540]	; 0x21c
+ 11c:	ea000000 	b	124 <OscServer::OscServer()+0x124>
+ 120:	e595021c 	ldr	r0, [r5, #540]	; 0x21c
+ 124:	e7c02004 	strb	r2, [r0, r4]
+ 128:	e2844001 	add	r4, r4, #1
+ 12c:	e3540c02 	cmp	r4, #512	; 0x200
+ 130:	1afffffa 	bne	120 <OscServer::OscServer()+0x120>
+ 134:	e1a00004 	mov	r0, r4
+ 138:	ebfffffe 	bl	0 <operator new[](unsigned int)>
+ 13c:	e1a0c000 	mov	ip, r0
+ 140:	e59f1088 	ldr	r1, [pc, #136]	; 1d0 <OscServer::OscServer()+0x1d0>
+ 144:	e59f4088 	ldr	r4, [pc, #136]	; 1d4 <OscServer::OscServer()+0x1d4>
+ 148:	e59f3088 	ldr	r3, [pc, #136]	; 1d8 <OscServer::OscServer()+0x1d8>
+ 14c:	e59f2088 	ldr	r2, [pc, #136]	; 1dc <OscServer::OscServer()+0x1dc>
+ 150:	e58d1000 	str	r1, [sp]
+ 154:	e2850f89 	add	r0, r5, #548	; 0x224
+ 158:	e585c220 	str	ip, [r5, #544]	; 0x220
+ 15c:	e3a01020 	mov	r1, #32
+ 160:	ebfffffe 	bl	0 <snprintf>
+ 164:	e28d100f 	add	r1, sp, #15
+ 168:	e5940000 	ldr	r0, [r4]
+ 16c:	ebfffffe 	bl	0 <Hardware::GetBoardName(unsigned char&)>
+ 170:	e1a03000 	mov	r3, r0
+ 174:	e28d100f 	add	r1, sp, #15
+ 178:	e5853244 	str	r3, [r5, #580]	; 0x244
+ 17c:	e5940000 	ldr	r0, [r4]
+ 180:	ebfffffe 	bl	0 <Hardware::GetSocName(unsigned char&)>
+ 184:	e5850248 	str	r0, [r5, #584]	; 0x248
+ 188:	e5d03000 	ldrb	r3, [r0]
+ 18c:	e3530000 	cmp	r3, #0
+ 190:	0a000002 	beq	1a0 <OscServer::OscServer()+0x1a0>
+ 194:	e1a00005 	mov	r0, r5
+ 198:	e28dd014 	add	sp, sp, #20
+ 19c:	e8bd8030 	pop	{r4, r5, pc}
+ 1a0:	e5940000 	ldr	r0, [r4]
+ 1a4:	e28d100f 	add	r1, sp, #15
+ 1a8:	ebfffffe 	bl	0 <Hardware::GetCpuName(unsigned char&)>
+ 1ac:	e5850248 	str	r0, [r5, #584]	; 0x248
+ 1b0:	e1a00005 	mov	r0, r5
+ 1b4:	e28dd014 	add	sp, sp, #20
+ 1b8:	e8bd8030 	pop	{r4, r5, pc}
+ 1bc:	23281f40 			; <UNDEFINED> instruction: 0x23281f40
+ 1c0:	00000000 	andeq	r0, r0, r0
+ 1c4:	00000008 	andeq	r0, r0, r8
+ 1c8:	00000010 	andeq	r0, r0, r0, lsl r0
+ 1cc:	00000014 	andeq	r0, r0, r4, lsl r0
+ 1d0:	00000034 	andeq	r0, r0, r4, lsr r0
+ 1d4:	00000000 	andeq	r0, r0, r0
+ 1d8:	00000024 	andeq	r0, r0, r4, lsr #32
+ 1dc:	00000028 	andeq	r0, r0, r8, lsr #32
+
+000001e0 <OscServer::~OscServer()>:
+ 1e0:	e92d4010 	push	{r4, lr}
+ 1e4:	e1a04000 	mov	r4, r0
+ 1e8:	e5900210 	ldr	r0, [r0, #528]	; 0x210
+ 1ec:	e3500000 	cmp	r0, #0
+ 1f0:	0a000005 	beq	20c <OscServer::~OscServer()+0x2c>
+ 1f4:	e5903000 	ldr	r3, [r0]
+ 1f8:	e3a01000 	mov	r1, #0
+ 1fc:	e593300c 	ldr	r3, [r3, #12]
+ 200:	e12fff33 	blx	r3
+ 204:	e3a03000 	mov	r3, #0
+ 208:	e5843210 	str	r3, [r4, #528]	; 0x210
+ 20c:	e5940218 	ldr	r0, [r4, #536]	; 0x218
+ 210:	e3500000 	cmp	r0, #0
+ 214:	0a000000 	beq	21c <OscServer::~OscServer()+0x3c>
+ 218:	ebfffffe 	bl	0 <operator delete[](void*)>
+ 21c:	e3a03000 	mov	r3, #0
+ 220:	e594021c 	ldr	r0, [r4, #540]	; 0x21c
+ 224:	e5843218 	str	r3, [r4, #536]	; 0x218
+ 228:	e1500003 	cmp	r0, r3
+ 22c:	0a000000 	beq	234 <OscServer::~OscServer()+0x54>
+ 230:	ebfffffe 	bl	0 <operator delete[](void*)>
+ 234:	e3a03000 	mov	r3, #0
+ 238:	e5940220 	ldr	r0, [r4, #544]	; 0x220
+ 23c:	e584321c 	str	r3, [r4, #540]	; 0x21c
+ 240:	e1500003 	cmp	r0, r3
+ 244:	0a000000 	beq	24c <OscServer::~OscServer()+0x6c>
+ 248:	ebfffffe 	bl	0 <operator delete[](void*)>
+ 24c:	e1a00004 	mov	r0, r4
+ 250:	e8bd8010 	pop	{r4, pc}
+
+00000254 <OscServer::Start()>:
+ 254:	e92d4030 	push	{r4, r5, lr}
+ 258:	e1a04000 	mov	r4, r0
+ 25c:	e59f5064 	ldr	r5, [pc, #100]	; 2c8 <OscServer::Start()+0x74>
+ 260:	e24ddb01 	sub	sp, sp, #1024	; 0x400
+ 264:	e24dd00c 	sub	sp, sp, #12
+ 268:	e1d410b0 	ldrh	r1, [r4]
+ 26c:	e5950000 	ldr	r0, [r5]
+ 270:	ebfffffe 	bl	0 <Network::Begin(unsigned short)>
+ 274:	e1a01000 	mov	r1, r0
+ 278:	e595c000 	ldr	ip, [r5]
+ 27c:	e5841004 	str	r1, [r4, #4]
+ 280:	e59c200c 	ldr	r2, [ip, #12]
+ 284:	e3a05000 	mov	r5, #0
+ 288:	e1e02002 	mvn	r2, r2
+ 28c:	e59cc004 	ldr	ip, [ip, #4]
+ 290:	e59fe034 	ldr	lr, [pc, #52]	; 2cc <OscServer::Start()+0x78>
+ 294:	e1d430b0 	ldrh	r3, [r4]
+ 298:	e182200c 	orr	r2, r2, ip
+ 29c:	e58de000 	str	lr, [sp]
+ 2a0:	e28d0008 	add	r0, sp, #8
+ 2a4:	e58d5004 	str	r5, [sp, #4]
+ 2a8:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*)>
+ 2ac:	e59f301c 	ldr	r3, [pc, #28]	; 2d0 <OscServer::Start()+0x7c>
+ 2b0:	e3a01002 	mov	r1, #2
+ 2b4:	e5930000 	ldr	r0, [r3]
+ 2b8:	ebfffffe 	bl	0 <LedBlink::SetMode(ledblink::Mode)>
+ 2bc:	e28ddb01 	add	sp, sp, #1024	; 0x400
+ 2c0:	e28dd00c 	add	sp, sp, #12
+ 2c4:	e8bd8030 	pop	{r4, r5, pc}
+ 2c8:	00000000 	andeq	r0, r0, r0
+ 2cc:	00000040 	andeq	r0, r0, r0, asr #32
+ 2d0:	00000000 	andeq	r0, r0, r0
+
+000002d4 <OscServer::Stop()>:
+ 2d4:	e5900210 	ldr	r0, [r0, #528]	; 0x210
+ 2d8:	e3500000 	cmp	r0, #0
+ 2dc:	012fff1e 	bxeq	lr
+ 2e0:	e5903000 	ldr	r3, [r0]
+ 2e4:	e3a01000 	mov	r1, #0
+ 2e8:	e593300c 	ldr	r3, [r3, #12]
+ 2ec:	e12fff13 	bx	r3
+
+000002f0 <OscServer::GetPortIncoming() const>:
+ 2f0:	e1d000b0 	ldrh	r0, [r0]
+ 2f4:	e12fff1e 	bx	lr
+
+000002f8 <OscServer::SetPortIncoming(unsigned short)>:
+ 2f8:	e1c010b0 	strh	r1, [r0]
+ 2fc:	e12fff1e 	bx	lr
+
+00000300 <OscServer::GetPortOutgoing() const>:
+ 300:	e1d000b2 	ldrh	r0, [r0, #2]
+ 304:	e12fff1e 	bx	lr
+
+00000308 <OscServer::SetPortOutgoing(unsigned short)>:
+ 308:	e1c010b2 	strh	r1, [r0, #2]
+ 30c:	e12fff1e 	bx	lr
+
+00000310 <OscServer::SetOutput(LightSet*)>:
+ 310:	e5801210 	str	r1, [r0, #528]	; 0x210
+ 314:	e12fff1e 	bx	lr
+
+00000318 <OscServer::SetOscServerHandler(OscServerHandler*)>:
+ 318:	e580120c 	str	r1, [r0, #524]	; 0x20c
+ 31c:	e12fff1e 	bx	lr
+
+00000320 <OscServer::SetPath(char const*)>:
+ 320:	e5d12000 	ldrb	r2, [r1]
+ 324:	e352002f 	cmp	r2, #47	; 0x2f
+ 328:	112fff1e 	bxne	lr
+ 32c:	e92d4030 	push	{r4, r5, lr}
+ 330:	e280400c 	add	r4, r0, #12
+ 334:	e1a03004 	mov	r3, r4
+ 338:	e2805089 	add	r5, r0, #137	; 0x89
+ 33c:	ea000002 	b	34c <OscServer::SetPath(char const*)+0x2c>
+ 340:	e5f12001 	ldrb	r2, [r1, #1]!
+ 344:	e3520000 	cmp	r2, #0
+ 348:	0a00002f 	beq	40c <OscServer::SetPath(char const*)+0xec>
+ 34c:	e1a0e003 	mov	lr, r3
+ 350:	e4c32001 	strb	r2, [r3], #1
+ 354:	e2632089 	rsb	r2, r3, #137	; 0x89
+ 358:	e1530005 	cmp	r3, r5
+ 35c:	e080c002 	add	ip, r0, r2
+ 360:	1afffff6 	bne	340 <OscServer::SetPath(char const*)+0x20>
+ 364:	e5d0300c 	ldrb	r3, [r0, #12]
+ 368:	e3530000 	cmp	r3, #0
+ 36c:	0a00005b 	beq	4e0 <OscServer::SetPath(char const*)+0x1c0>
+ 370:	e1a02004 	mov	r2, r4
+ 374:	e5f21001 	ldrb	r1, [r2, #1]!
+ 378:	e3510000 	cmp	r1, #0
+ 37c:	1afffffc 	bne	374 <OscServer::SetPath(char const*)+0x54>
+ 380:	e0422004 	sub	r2, r2, r4
+ 384:	e2422001 	sub	r2, r2, #1
+ 388:	e0802002 	add	r2, r0, r2
+ 38c:	e5d2100c 	ldrb	r1, [r2, #12]
+ 390:	e351002f 	cmp	r1, #47	; 0x2f
+ 394:	03a03000 	moveq	r3, #0
+ 398:	e280108c 	add	r1, r0, #140	; 0x8c
+ 39c:	05c2300c 	strbeq	r3, [r2, #12]
+ 3a0:	05d0300c 	ldrbeq	r3, [r0, #12]
+ 3a4:	e1a02001 	mov	r2, r1
+ 3a8:	ea000000 	b	3b0 <OscServer::SetPath(char const*)+0x90>
+ 3ac:	e5523080 	ldrb	r3, [r2, #-128]	; 0xffffff80
+ 3b0:	e3530000 	cmp	r3, #0
+ 3b4:	e4c23001 	strb	r3, [r2], #1
+ 3b8:	1afffffb 	bne	3ac <OscServer::SetPath(char const*)+0x8c>
+ 3bc:	e5d0208c 	ldrb	r2, [r0, #140]	; 0x8c
+ 3c0:	e3520000 	cmp	r2, #0
+ 3c4:	0a000047 	beq	4e8 <OscServer::SetPath(char const*)+0x1c8>
+ 3c8:	e1a03001 	mov	r3, r1
+ 3cc:	e5f32001 	ldrb	r2, [r3, #1]!
+ 3d0:	e3520000 	cmp	r2, #0
+ 3d4:	1afffffc 	bne	3cc <OscServer::SetPath(char const*)+0xac>
+ 3d8:	e0433001 	sub	r3, r3, r1
+ 3dc:	e2832001 	add	r2, r3, #1
+ 3e0:	e2831002 	add	r1, r3, #2
+ 3e4:	e0803003 	add	r3, r0, r3
+ 3e8:	e0802002 	add	r2, r0, r2
+ 3ec:	e3a0e02f 	mov	lr, #47	; 0x2f
+ 3f0:	e0800001 	add	r0, r0, r1
+ 3f4:	e3a0c02a 	mov	ip, #42	; 0x2a
+ 3f8:	e3a01000 	mov	r1, #0
+ 3fc:	e5c3e08c 	strb	lr, [r3, #140]	; 0x8c
+ 400:	e5c2c08c 	strb	ip, [r2, #140]	; 0x8c
+ 404:	e5c0108c 	strb	r1, [r0, #140]	; 0x8c
+ 408:	e8bd8030 	pop	{r4, r5, pc}
+ 40c:	e24c1001 	sub	r1, ip, #1
+ 410:	e351001f 	cmp	r1, #31
+ 414:	9a00002b 	bls	4c8 <OscServer::SetPath(char const*)+0x1a8>
+ 418:	e28c101f 	add	r1, ip, #31
+ 41c:	e28ee021 	add	lr, lr, #33	; 0x21
+ 420:	e083c00c 	add	ip, r3, ip
+ 424:	e0831001 	add	r1, r3, r1
+ 428:	e1a0300e 	mov	r3, lr
+ 42c:	e54e2020 	strb	r2, [lr, #-32]	; 0xffffffe0
+ 430:	e54e201f 	strb	r2, [lr, #-31]	; 0xffffffe1
+ 434:	e54e201e 	strb	r2, [lr, #-30]	; 0xffffffe2
+ 438:	e54e201d 	strb	r2, [lr, #-29]	; 0xffffffe3
+ 43c:	e54e201c 	strb	r2, [lr, #-28]	; 0xffffffe4
+ 440:	e54e201b 	strb	r2, [lr, #-27]	; 0xffffffe5
+ 444:	e54e201a 	strb	r2, [lr, #-26]	; 0xffffffe6
+ 448:	e54e2019 	strb	r2, [lr, #-25]	; 0xffffffe7
+ 44c:	e54e2018 	strb	r2, [lr, #-24]	; 0xffffffe8
+ 450:	e54e2017 	strb	r2, [lr, #-23]	; 0xffffffe9
+ 454:	e54e2016 	strb	r2, [lr, #-22]	; 0xffffffea
+ 458:	e54e2015 	strb	r2, [lr, #-21]	; 0xffffffeb
+ 45c:	e54e2014 	strb	r2, [lr, #-20]	; 0xffffffec
+ 460:	e54e2013 	strb	r2, [lr, #-19]	; 0xffffffed
+ 464:	e54e2012 	strb	r2, [lr, #-18]	; 0xffffffee
+ 468:	e54e2011 	strb	r2, [lr, #-17]	; 0xffffffef
+ 46c:	e54e2010 	strb	r2, [lr, #-16]
+ 470:	e54e200f 	strb	r2, [lr, #-15]
+ 474:	e54e200e 	strb	r2, [lr, #-14]
+ 478:	e54e200d 	strb	r2, [lr, #-13]
+ 47c:	e54e200c 	strb	r2, [lr, #-12]
+ 480:	e54e200b 	strb	r2, [lr, #-11]
+ 484:	e54e200a 	strb	r2, [lr, #-10]
+ 488:	e54e2009 	strb	r2, [lr, #-9]
+ 48c:	e54e2008 	strb	r2, [lr, #-8]
+ 490:	e54e2007 	strb	r2, [lr, #-7]
+ 494:	e54e2006 	strb	r2, [lr, #-6]
+ 498:	e54e2005 	strb	r2, [lr, #-5]
+ 49c:	e54e2004 	strb	r2, [lr, #-4]
+ 4a0:	e54e2003 	strb	r2, [lr, #-3]
+ 4a4:	e54e2002 	strb	r2, [lr, #-2]
+ 4a8:	f5def008 	pld	[lr, #8]
+ 4ac:	e54e2001 	strb	r2, [lr, #-1]
+ 4b0:	e28ee020 	add	lr, lr, #32
+ 4b4:	e041500e 	sub	r5, r1, lr
+ 4b8:	e355001f 	cmp	r5, #31
+ 4bc:	e04c5003 	sub	r5, ip, r3
+ 4c0:	8affffd8 	bhi	428 <OscServer::SetPath(char const*)+0x108>
+ 4c4:	e1a0c005 	mov	ip, r5
+ 4c8:	e3a01000 	mov	r1, #0
+ 4cc:	e083200c 	add	r2, r3, ip
+ 4d0:	e4c31001 	strb	r1, [r3], #1
+ 4d4:	e1530002 	cmp	r3, r2
+ 4d8:	1afffffc 	bne	4d0 <OscServer::SetPath(char const*)+0x1b0>
+ 4dc:	eaffffa0 	b	364 <OscServer::SetPath(char const*)+0x44>
+ 4e0:	e3e02000 	mvn	r2, #0
+ 4e4:	eaffffa7 	b	388 <OscServer::SetPath(char const*)+0x68>
+ 4e8:	e3a01002 	mov	r1, #2
+ 4ec:	e3a02001 	mov	r2, #1
+ 4f0:	eaffffbb 	b	3e4 <OscServer::SetPath(char const*)+0xc4>
+
+000004f4 <OscServer::GetPath()>:
+ 4f4:	e280000c 	add	r0, r0, #12
+ 4f8:	e12fff1e 	bx	lr
+
+000004fc <OscServer::SetPathInfo(char const*)>:
+ 4fc:	e5d12000 	ldrb	r2, [r1]
+ 500:	e352002f 	cmp	r2, #47	; 0x2f
+ 504:	112fff1e 	bxne	lr
+ 508:	e92d4070 	push	{r4, r5, r6, lr}
+ 50c:	e2804f43 	add	r4, r0, #268	; 0x10c
+ 510:	e2805f62 	add	r5, r0, #392	; 0x188
+ 514:	e1a03004 	mov	r3, r4
+ 518:	e59f6140 	ldr	r6, [pc, #320]	; 660 <OscServer::SetPathInfo(char const*)+0x164>
+ 51c:	e2855003 	add	r5, r5, #3
+ 520:	ea000002 	b	530 <OscServer::SetPathInfo(char const*)+0x34>
+ 524:	e5f12001 	ldrb	r2, [r1, #1]!
+ 528:	e3520000 	cmp	r2, #0
+ 52c:	0a000014 	beq	584 <OscServer::SetPathInfo(char const*)+0x88>
+ 530:	e1a0e003 	mov	lr, r3
+ 534:	e4c32001 	strb	r2, [r3], #1
+ 538:	e0462003 	sub	r2, r6, r3
+ 53c:	e1530005 	cmp	r3, r5
+ 540:	e080c002 	add	ip, r0, r2
+ 544:	1afffff6 	bne	524 <OscServer::SetPathInfo(char const*)+0x28>
+ 548:	e5d0310c 	ldrb	r3, [r0, #268]	; 0x10c
+ 54c:	e3530000 	cmp	r3, #0
+ 550:	0a000040 	beq	658 <OscServer::SetPathInfo(char const*)+0x15c>
+ 554:	e1a03004 	mov	r3, r4
+ 558:	e5f32001 	ldrb	r2, [r3, #1]!
+ 55c:	e3520000 	cmp	r2, #0
+ 560:	1afffffc 	bne	558 <OscServer::SetPathInfo(char const*)+0x5c>
+ 564:	e0433004 	sub	r3, r3, r4
+ 568:	e2433001 	sub	r3, r3, #1
+ 56c:	e0803003 	add	r3, r0, r3
+ 570:	e5d3210c 	ldrb	r2, [r3, #268]	; 0x10c
+ 574:	e352002f 	cmp	r2, #47	; 0x2f
+ 578:	03a02000 	moveq	r2, #0
+ 57c:	05c3210c 	strbeq	r2, [r3, #268]	; 0x10c
+ 580:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 584:	e24c1001 	sub	r1, ip, #1
+ 588:	e351001f 	cmp	r1, #31
+ 58c:	9a00002b 	bls	640 <OscServer::SetPathInfo(char const*)+0x144>
+ 590:	e28c101f 	add	r1, ip, #31
+ 594:	e28ee021 	add	lr, lr, #33	; 0x21
+ 598:	e083c00c 	add	ip, r3, ip
+ 59c:	e0831001 	add	r1, r3, r1
+ 5a0:	e1a0300e 	mov	r3, lr
+ 5a4:	e54e2020 	strb	r2, [lr, #-32]	; 0xffffffe0
+ 5a8:	e54e201f 	strb	r2, [lr, #-31]	; 0xffffffe1
+ 5ac:	e54e201e 	strb	r2, [lr, #-30]	; 0xffffffe2
+ 5b0:	e54e201d 	strb	r2, [lr, #-29]	; 0xffffffe3
+ 5b4:	e54e201c 	strb	r2, [lr, #-28]	; 0xffffffe4
+ 5b8:	e54e201b 	strb	r2, [lr, #-27]	; 0xffffffe5
+ 5bc:	e54e201a 	strb	r2, [lr, #-26]	; 0xffffffe6
+ 5c0:	e54e2019 	strb	r2, [lr, #-25]	; 0xffffffe7
+ 5c4:	e54e2018 	strb	r2, [lr, #-24]	; 0xffffffe8
+ 5c8:	e54e2017 	strb	r2, [lr, #-23]	; 0xffffffe9
+ 5cc:	e54e2016 	strb	r2, [lr, #-22]	; 0xffffffea
+ 5d0:	e54e2015 	strb	r2, [lr, #-21]	; 0xffffffeb
+ 5d4:	e54e2014 	strb	r2, [lr, #-20]	; 0xffffffec
+ 5d8:	e54e2013 	strb	r2, [lr, #-19]	; 0xffffffed
+ 5dc:	e54e2012 	strb	r2, [lr, #-18]	; 0xffffffee
+ 5e0:	e54e2011 	strb	r2, [lr, #-17]	; 0xffffffef
+ 5e4:	e54e2010 	strb	r2, [lr, #-16]
+ 5e8:	e54e200f 	strb	r2, [lr, #-15]
+ 5ec:	e54e200e 	strb	r2, [lr, #-14]
+ 5f0:	e54e200d 	strb	r2, [lr, #-13]
+ 5f4:	e54e200c 	strb	r2, [lr, #-12]
+ 5f8:	e54e200b 	strb	r2, [lr, #-11]
+ 5fc:	e54e200a 	strb	r2, [lr, #-10]
+ 600:	e54e2009 	strb	r2, [lr, #-9]
+ 604:	e54e2008 	strb	r2, [lr, #-8]
+ 608:	e54e2007 	strb	r2, [lr, #-7]
+ 60c:	e54e2006 	strb	r2, [lr, #-6]
+ 610:	e54e2005 	strb	r2, [lr, #-5]
+ 614:	e54e2004 	strb	r2, [lr, #-4]
+ 618:	e54e2003 	strb	r2, [lr, #-3]
+ 61c:	e54e2002 	strb	r2, [lr, #-2]
+ 620:	f5def008 	pld	[lr, #8]
+ 624:	e54e2001 	strb	r2, [lr, #-1]
+ 628:	e28ee020 	add	lr, lr, #32
+ 62c:	e041500e 	sub	r5, r1, lr
+ 630:	e355001f 	cmp	r5, #31
+ 634:	e04c5003 	sub	r5, ip, r3
+ 638:	8affffd8 	bhi	5a0 <OscServer::SetPathInfo(char const*)+0xa4>
+ 63c:	e1a0c005 	mov	ip, r5
+ 640:	e3a01000 	mov	r1, #0
+ 644:	e083200c 	add	r2, r3, ip
+ 648:	e4c31001 	strb	r1, [r3], #1
+ 64c:	e1530002 	cmp	r3, r2
+ 650:	1afffffc 	bne	648 <OscServer::SetPathInfo(char const*)+0x14c>
+ 654:	eaffffbb 	b	548 <OscServer::SetPathInfo(char const*)+0x4c>
+ 658:	e3e03000 	mvn	r3, #0
+ 65c:	eaffffc2 	b	56c <OscServer::SetPathInfo(char const*)+0x70>
+ 660:	0000018b 	andeq	r0, r0, fp, lsl #3
+
+00000664 <OscServer::GetPathInfo()>:
+ 664:	e2800f43 	add	r0, r0, #268	; 0x10c
+ 668:	e12fff1e 	bx	lr
+
+0000066c <OscServer::SetPathBlackOut(char const*)>:
+ 66c:	e5d12000 	ldrb	r2, [r1]
+ 670:	e352002f 	cmp	r2, #47	; 0x2f
+ 674:	112fff1e 	bxne	lr
+ 678:	e92d4070 	push	{r4, r5, r6, lr}
+ 67c:	e2804f63 	add	r4, r0, #396	; 0x18c
+ 680:	e2805f82 	add	r5, r0, #520	; 0x208
+ 684:	e1a03004 	mov	r3, r4
+ 688:	e59f6140 	ldr	r6, [pc, #320]	; 7d0 <OscServer::SetPathBlackOut(char const*)+0x164>
+ 68c:	e2855003 	add	r5, r5, #3
+ 690:	ea000002 	b	6a0 <OscServer::SetPathBlackOut(char const*)+0x34>
+ 694:	e5f12001 	ldrb	r2, [r1, #1]!
+ 698:	e3520000 	cmp	r2, #0
+ 69c:	0a000014 	beq	6f4 <OscServer::SetPathBlackOut(char const*)+0x88>
+ 6a0:	e1a0e003 	mov	lr, r3
+ 6a4:	e4c32001 	strb	r2, [r3], #1
+ 6a8:	e0462003 	sub	r2, r6, r3
+ 6ac:	e1530005 	cmp	r3, r5
+ 6b0:	e080c002 	add	ip, r0, r2
+ 6b4:	1afffff6 	bne	694 <OscServer::SetPathBlackOut(char const*)+0x28>
+ 6b8:	e5d0318c 	ldrb	r3, [r0, #396]	; 0x18c
+ 6bc:	e3530000 	cmp	r3, #0
+ 6c0:	0a000040 	beq	7c8 <OscServer::SetPathBlackOut(char const*)+0x15c>
+ 6c4:	e1a03004 	mov	r3, r4
+ 6c8:	e5f32001 	ldrb	r2, [r3, #1]!
+ 6cc:	e3520000 	cmp	r2, #0
+ 6d0:	1afffffc 	bne	6c8 <OscServer::SetPathBlackOut(char const*)+0x5c>
+ 6d4:	e0433004 	sub	r3, r3, r4
+ 6d8:	e2433001 	sub	r3, r3, #1
+ 6dc:	e0803003 	add	r3, r0, r3
+ 6e0:	e5d3218c 	ldrb	r2, [r3, #396]	; 0x18c
+ 6e4:	e352002f 	cmp	r2, #47	; 0x2f
+ 6e8:	03a02000 	moveq	r2, #0
+ 6ec:	05c3218c 	strbeq	r2, [r3, #396]	; 0x18c
+ 6f0:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 6f4:	e24c1001 	sub	r1, ip, #1
+ 6f8:	e351001f 	cmp	r1, #31
+ 6fc:	9a00002b 	bls	7b0 <OscServer::SetPathBlackOut(char const*)+0x144>
+ 700:	e28c101f 	add	r1, ip, #31
+ 704:	e28ee021 	add	lr, lr, #33	; 0x21
+ 708:	e083c00c 	add	ip, r3, ip
+ 70c:	e0831001 	add	r1, r3, r1
+ 710:	e1a0300e 	mov	r3, lr
+ 714:	e54e2020 	strb	r2, [lr, #-32]	; 0xffffffe0
+ 718:	e54e201f 	strb	r2, [lr, #-31]	; 0xffffffe1
+ 71c:	e54e201e 	strb	r2, [lr, #-30]	; 0xffffffe2
+ 720:	e54e201d 	strb	r2, [lr, #-29]	; 0xffffffe3
+ 724:	e54e201c 	strb	r2, [lr, #-28]	; 0xffffffe4
+ 728:	e54e201b 	strb	r2, [lr, #-27]	; 0xffffffe5
+ 72c:	e54e201a 	strb	r2, [lr, #-26]	; 0xffffffe6
+ 730:	e54e2019 	strb	r2, [lr, #-25]	; 0xffffffe7
+ 734:	e54e2018 	strb	r2, [lr, #-24]	; 0xffffffe8
+ 738:	e54e2017 	strb	r2, [lr, #-23]	; 0xffffffe9
+ 73c:	e54e2016 	strb	r2, [lr, #-22]	; 0xffffffea
+ 740:	e54e2015 	strb	r2, [lr, #-21]	; 0xffffffeb
+ 744:	e54e2014 	strb	r2, [lr, #-20]	; 0xffffffec
+ 748:	e54e2013 	strb	r2, [lr, #-19]	; 0xffffffed
+ 74c:	e54e2012 	strb	r2, [lr, #-18]	; 0xffffffee
+ 750:	e54e2011 	strb	r2, [lr, #-17]	; 0xffffffef
+ 754:	e54e2010 	strb	r2, [lr, #-16]
+ 758:	e54e200f 	strb	r2, [lr, #-15]
+ 75c:	e54e200e 	strb	r2, [lr, #-14]
+ 760:	e54e200d 	strb	r2, [lr, #-13]
+ 764:	e54e200c 	strb	r2, [lr, #-12]
+ 768:	e54e200b 	strb	r2, [lr, #-11]
+ 76c:	e54e200a 	strb	r2, [lr, #-10]
+ 770:	e54e2009 	strb	r2, [lr, #-9]
+ 774:	e54e2008 	strb	r2, [lr, #-8]
+ 778:	e54e2007 	strb	r2, [lr, #-7]
+ 77c:	e54e2006 	strb	r2, [lr, #-6]
+ 780:	e54e2005 	strb	r2, [lr, #-5]
+ 784:	e54e2004 	strb	r2, [lr, #-4]
+ 788:	e54e2003 	strb	r2, [lr, #-3]
+ 78c:	e54e2002 	strb	r2, [lr, #-2]
+ 790:	f5def008 	pld	[lr, #8]
+ 794:	e54e2001 	strb	r2, [lr, #-1]
+ 798:	e28ee020 	add	lr, lr, #32
+ 79c:	e041500e 	sub	r5, r1, lr
+ 7a0:	e355001f 	cmp	r5, #31
+ 7a4:	e04c5003 	sub	r5, ip, r3
+ 7a8:	8affffd8 	bhi	710 <OscServer::SetPathBlackOut(char const*)+0xa4>
+ 7ac:	e1a0c005 	mov	ip, r5
+ 7b0:	e3a01000 	mov	r1, #0
+ 7b4:	e083200c 	add	r2, r3, ip
+ 7b8:	e4c31001 	strb	r1, [r3], #1
+ 7bc:	e1530002 	cmp	r3, r2
+ 7c0:	1afffffc 	bne	7b8 <OscServer::SetPathBlackOut(char const*)+0x14c>
+ 7c4:	eaffffbb 	b	6b8 <OscServer::SetPathBlackOut(char const*)+0x4c>
+ 7c8:	e3e03000 	mvn	r3, #0
+ 7cc:	eaffffc2 	b	6dc <OscServer::SetPathBlackOut(char const*)+0x70>
+ 7d0:	0000020b 	andeq	r0, r0, fp, lsl #4
+
+000007d4 <OscServer::GetPathBlackOut()>:
+ 7d4:	e2800f63 	add	r0, r0, #396	; 0x18c
+ 7d8:	e12fff1e 	bx	lr
+
+000007dc <OscServer::IsPartialTransmission() const>:
+ 7dc:	e5d00008 	ldrb	r0, [r0, #8]
+ 7e0:	e12fff1e 	bx	lr
+
+000007e4 <OscServer::SetPartialTransmission(bool)>:
+ 7e4:	e5c01008 	strb	r1, [r0, #8]
+ 7e8:	e12fff1e 	bx	lr
+
+000007ec <OscServer::GetChannel(char const*)>:
+ 7ec:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 7f0:	e5d0300c 	ldrb	r3, [r0, #12]
+ 7f4:	e3530000 	cmp	r3, #0
+ 7f8:	0a000018 	beq	860 <OscServer::GetChannel(char const*)+0x74>
+ 7fc:	e280000c 	add	r0, r0, #12
+ 800:	e1a03000 	mov	r3, r0
+ 804:	e5f32001 	ldrb	r2, [r3, #1]!
+ 808:	e3520000 	cmp	r2, #0
+ 80c:	1afffffc 	bne	804 <OscServer::GetChannel(char const*)+0x18>
+ 810:	e0433000 	sub	r3, r3, r0
+ 814:	e2833001 	add	r3, r3, #1
+ 818:	e3a00000 	mov	r0, #0
+ 81c:	e0813003 	add	r3, r1, r3
+ 820:	e243c001 	sub	ip, r3, #1
+ 824:	e2833002 	add	r3, r3, #2
+ 828:	e5fc2001 	ldrb	r2, [ip, #1]!
+ 82c:	e0801100 	add	r1, r0, r0, lsl #2
+ 830:	e3520000 	cmp	r2, #0
+ 834:	e242e030 	sub	lr, r2, #48	; 0x30
+ 838:	e0822081 	add	r2, r2, r1, lsl #1
+ 83c:	0a000004 	beq	854 <OscServer::GetChannel(char const*)+0x68>
+ 840:	e35e0009 	cmp	lr, #9
+ 844:	8a000007 	bhi	868 <OscServer::GetChannel(char const*)+0x7c>
+ 848:	e153000c 	cmp	r3, ip
+ 84c:	e2420030 	sub	r0, r2, #48	; 0x30
+ 850:	1afffff4 	bne	828 <OscServer::GetChannel(char const*)+0x3c>
+ 854:	e3500c02 	cmp	r0, #512	; 0x200
+ 858:	c3e00000 	mvngt	r0, #0
+ 85c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+ 860:	e3a03001 	mov	r3, #1
+ 864:	eaffffeb 	b	818 <OscServer::GetChannel(char const*)+0x2c>
+ 868:	e3e00000 	mvn	r0, #0
+ 86c:	e49df004 	pop	{pc}		; (ldr pc, [sp], #4)
+
+00000870 <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)>:
+ 870:	e92d4070 	push	{r4, r5, r6, lr}
+ 874:	e590621c 	ldr	r6, [r0, #540]	; 0x21c
+ 878:	e2420001 	sub	r0, r2, #1
+ 87c:	e6ff0070 	uxth	r0, r0
+ 880:	e0803003 	add	r3, r0, r3
+ 884:	e1500003 	cmp	r0, r3
+ 888:	2a000010 	bcs	8d0 <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x60>
+ 88c:	e2400001 	sub	r0, r0, #1
+ 890:	e0866000 	add	r6, r6, r0
+ 894:	e1a0c006 	mov	ip, r6
+ 898:	e3a00000 	mov	r0, #0
+ 89c:	e2414001 	sub	r4, r1, #1
+ 8a0:	e5fc5001 	ldrb	r5, [ip, #1]!
+ 8a4:	e5f4e001 	ldrb	lr, [r4, #1]!
+ 8a8:	e24c1001 	sub	r1, ip, #1
+ 8ac:	e0821001 	add	r1, r2, r1
+ 8b0:	e0411006 	sub	r1, r1, r6
+ 8b4:	e155000e 	cmp	r5, lr
+ 8b8:	e6ff1071 	uxth	r1, r1
+ 8bc:	13a00001 	movne	r0, #1
+ 8c0:	15cce000 	strbne	lr, [ip]
+ 8c4:	e1510003 	cmp	r1, r3
+ 8c8:	3afffff4 	bcc	8a0 <OscServer::IsDmxDataChanged(unsigned char const*, unsigned short, unsigned int)+0x30>
+ 8cc:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 8d0:	e3a00000 	mov	r0, #0
+ 8d4:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+000008d8 <OscServer::Run()>:
+ 8d8:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+ 8dc:	e1a04000 	mov	r4, r0
+ 8e0:	e24ddd31 	sub	sp, sp, #3136	; 0xc40
+ 8e4:	e24dd004 	sub	sp, sp, #4
+ 8e8:	e59f04c0 	ldr	r0, [pc, #1216]	; db0 <OscServer::Run()+0x4d8>
+ 8ec:	e28d2020 	add	r2, sp, #32
+ 8f0:	e28d101e 	add	r1, sp, #30
+ 8f4:	e5900000 	ldr	r0, [r0]
+ 8f8:	e58d1004 	str	r1, [sp, #4]
+ 8fc:	e58d2000 	str	r2, [sp]
+ 900:	e3a03a01 	mov	r3, #4096	; 0x1000
+ 904:	e5942218 	ldr	r2, [r4, #536]	; 0x218
+ 908:	e5941004 	ldr	r1, [r4, #4]
+ 90c:	ebfffffe 	bl	0 <Network::RecvFrom(int, void*, unsigned short, unsigned int*, unsigned short*)>
+ 910:	e2505000 	subs	r5, r0, #0
+ 914:	1a000002 	bne	924 <OscServer::Run()+0x4c>
+ 918:	e28ddd31 	add	sp, sp, #3136	; 0xc40
+ 91c:	e28dd004 	add	sp, sp, #4
+ 920:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+ 924:	e1a02005 	mov	r2, r5
+ 928:	e5941218 	ldr	r1, [r4, #536]	; 0x218
+ 92c:	e28d0024 	add	r0, sp, #36	; 0x24
+ 930:	ebfffffe 	bl	0 <OscSimpleMessage::OscSimpleMessage(void*, unsigned int)>
+ 934:	e5940218 	ldr	r0, [r4, #536]	; 0x218
+ 938:	e284100c 	add	r1, r4, #12
+ 93c:	ebfffffe 	bl	0 <lo_pattern_match>
+ 940:	e2506000 	subs	r6, r0, #0
+ 944:	0a000048 	beq	a6c <OscServer::Run()+0x194>
+ 948:	e5dd502c 	ldrb	r5, [sp, #44]	; 0x2c
+ 94c:	e3550000 	cmp	r5, #0
+ 950:	0afffff0 	beq	918 <OscServer::Run()+0x40>
+ 954:	e59d3034 	ldr	r3, [sp, #52]	; 0x34
+ 958:	e3530001 	cmp	r3, #1
+ 95c:	0a0000d8 	beq	cc4 <OscServer::Run()+0x3ec>
+ 960:	e3530002 	cmp	r3, #2
+ 964:	1affffeb 	bne	918 <OscServer::Run()+0x40>
+ 968:	e59d3030 	ldr	r3, [sp, #48]	; 0x30
+ 96c:	e5d33000 	ldrb	r3, [r3]
+ 970:	e3530069 	cmp	r3, #105	; 0x69
+ 974:	1affffe7 	bne	918 <OscServer::Run()+0x40>
+ 978:	e3a01000 	mov	r1, #0
+ 97c:	e28d0024 	add	r0, sp, #36	; 0x24
+ 980:	ebfffffe 	bl	0 <OscSimpleMessage::GetInt(unsigned int)>
+ 984:	e6ff7070 	uxth	r7, r0
+ 988:	e3570c02 	cmp	r7, #512	; 0x200
+ 98c:	e1a06000 	mov	r6, r0
+ 990:	2affffe0 	bcs	918 <OscServer::Run()+0x40>
+ 994:	e59d3034 	ldr	r3, [sp, #52]	; 0x34
+ 998:	e3530001 	cmp	r3, #1
+ 99c:	9affffdd 	bls	918 <OscServer::Run()+0x40>
+ 9a0:	e59d3030 	ldr	r3, [sp, #48]	; 0x30
+ 9a4:	e5d33001 	ldrb	r3, [r3, #1]
+ 9a8:	e3530069 	cmp	r3, #105	; 0x69
+ 9ac:	0a000114 	beq	e04 <OscServer::Run()+0x52c>
+ 9b0:	e3530066 	cmp	r3, #102	; 0x66
+ 9b4:	1affffd7 	bne	918 <OscServer::Run()+0x40>
+ 9b8:	e3a01001 	mov	r1, #1
+ 9bc:	e28d0024 	add	r0, sp, #36	; 0x24
+ 9c0:	ebfffffe 	bl	0 <OscSimpleMessage::GetFloat(unsigned int)>
+ 9c4:	eddf7af8 	vldr	s15, [pc, #992]	; dac <OscServer::Run()+0x4d4>
+ 9c8:	ee200a27 	vmul.f32	s0, s0, s15
+ 9cc:	eefc7ac0 	vcvt.u32.f32	s15, s0
+ 9d0:	ee173a90 	vmov	r3, s15
+ 9d4:	e5cd3840 	strb	r3, [sp, #2112]	; 0x840
+ 9d8:	e6ff6076 	uxth	r6, r6
+ 9dc:	e594321c 	ldr	r3, [r4, #540]	; 0x21c
+ 9e0:	e286c001 	add	ip, r6, #1
+ 9e4:	e2466001 	sub	r6, r6, #1
+ 9e8:	e0836006 	add	r6, r3, r6
+ 9ec:	e1a02006 	mov	r2, r6
+ 9f0:	e3a0e000 	mov	lr, #0
+ 9f4:	e28d1e83 	add	r1, sp, #2096	; 0x830
+ 9f8:	e281100f 	add	r1, r1, #15
+ 9fc:	e5f20001 	ldrb	r0, [r2, #1]!
+ a00:	e5f13001 	ldrb	r3, [r1, #1]!
+ a04:	e1500003 	cmp	r0, r3
+ a08:	15c23000 	strbne	r3, [r2]
+ a0c:	e0873002 	add	r3, r7, r2
+ a10:	e0433006 	sub	r3, r3, r6
+ a14:	e6ff3073 	uxth	r3, r3
+ a18:	11a0e005 	movne	lr, r5
+ a1c:	e15c0003 	cmp	ip, r3
+ a20:	8afffff5 	bhi	9fc <OscServer::Run()+0x124>
+ a24:	e35e0000 	cmp	lr, #0
+ a28:	0a0000eb 	beq	ddc <OscServer::Run()+0x504>
+ a2c:	e5940210 	ldr	r0, [r4, #528]	; 0x210
+ a30:	e5d41008 	ldrb	r1, [r4, #8]
+ a34:	e5903000 	ldr	r3, [r0]
+ a38:	e3510000 	cmp	r1, #0
+ a3c:	e594221c 	ldr	r2, [r4, #540]	; 0x21c
+ a40:	e5935010 	ldr	r5, [r3, #16]
+ a44:	0a0000d0 	beq	d8c <OscServer::Run()+0x4b4>
+ a48:	e1d410ba 	ldrh	r1, [r4, #10]
+ a4c:	e2873001 	add	r3, r7, #1
+ a50:	e6ff3073 	uxth	r3, r3
+ a54:	e1510003 	cmp	r1, r3
+ a58:	21a03001 	movcs	r3, r1
+ a5c:	e3a01000 	mov	r1, #0
+ a60:	e1c430ba 	strh	r3, [r4, #10]
+ a64:	e12fff35 	blx	r5
+ a68:	ea000032 	b	b38 <OscServer::Run()+0x260>
+ a6c:	e5940218 	ldr	r0, [r4, #536]	; 0x218
+ a70:	e284108c 	add	r1, r4, #140	; 0x8c
+ a74:	ebfffffe 	bl	0 <lo_pattern_match>
+ a78:	e2507000 	subs	r7, r0, #0
+ a7c:	0a000037 	beq	b60 <OscServer::Run()+0x288>
+ a80:	e5dd302c 	ldrb	r3, [sp, #44]	; 0x2c
+ a84:	e3530000 	cmp	r3, #0
+ a88:	0affffa2 	beq	918 <OscServer::Run()+0x40>
+ a8c:	e59d3034 	ldr	r3, [sp, #52]	; 0x34
+ a90:	e3530001 	cmp	r3, #1
+ a94:	1affff9f 	bne	918 <OscServer::Run()+0x40>
+ a98:	e1a00004 	mov	r0, r4
+ a9c:	e5941218 	ldr	r1, [r4, #536]	; 0x218
+ aa0:	ebfffffe 	bl	7ec <OscServer::GetChannel(char const*)>
+ aa4:	e6ff7070 	uxth	r7, r0
+ aa8:	e2475001 	sub	r5, r7, #1
+ aac:	e6ff5075 	uxth	r5, r5
+ ab0:	e3550c02 	cmp	r5, #512	; 0x200
+ ab4:	2affff97 	bcs	918 <OscServer::Run()+0x40>
+ ab8:	e59d3030 	ldr	r3, [sp, #48]	; 0x30
+ abc:	e5d33000 	ldrb	r3, [r3]
+ ac0:	e3530069 	cmp	r3, #105	; 0x69
+ ac4:	0a0000b3 	beq	d98 <OscServer::Run()+0x4c0>
+ ac8:	e3530066 	cmp	r3, #102	; 0x66
+ acc:	1affff91 	bne	918 <OscServer::Run()+0x40>
+ ad0:	e1a01006 	mov	r1, r6
+ ad4:	e28d0024 	add	r0, sp, #36	; 0x24
+ ad8:	ebfffffe 	bl	0 <OscSimpleMessage::GetFloat(unsigned int)>
+ adc:	eddf7ab2 	vldr	s15, [pc, #712]	; dac <OscServer::Run()+0x4d4>
+ ae0:	ee200a27 	vmul.f32	s0, s0, s15
+ ae4:	eefc7ac0 	vcvt.u32.f32	s15, s0
+ ae8:	edcd7a05 	vstr	s15, [sp, #20]
+ aec:	e5dd3014 	ldrb	r3, [sp, #20]
+ af0:	e594221c 	ldr	r2, [r4, #540]	; 0x21c
+ af4:	e7d21005 	ldrb	r1, [r2, r5]
+ af8:	e1510003 	cmp	r1, r3
+ afc:	0a00009e 	beq	d7c <OscServer::Run()+0x4a4>
+ b00:	e7c23005 	strb	r3, [r2, r5]
+ b04:	e594221c 	ldr	r2, [r4, #540]	; 0x21c
+ b08:	e5940210 	ldr	r0, [r4, #528]	; 0x210
+ b0c:	e5d41008 	ldrb	r1, [r4, #8]
+ b10:	e5903000 	ldr	r3, [r0]
+ b14:	e3510000 	cmp	r1, #0
+ b18:	e5935010 	ldr	r5, [r3, #16]
+ b1c:	0a00009a 	beq	d8c <OscServer::Run()+0x4b4>
+ b20:	e1d430ba 	ldrh	r3, [r4, #10]
+ b24:	e3a01000 	mov	r1, #0
+ b28:	e1530007 	cmp	r3, r7
+ b2c:	31a03007 	movcc	r3, r7
+ b30:	e1c430ba 	strh	r3, [r4, #10]
+ b34:	e12fff35 	blx	r5
+ b38:	e5d41214 	ldrb	r1, [r4, #532]	; 0x214
+ b3c:	e3510000 	cmp	r1, #0
+ b40:	1affff74 	bne	918 <OscServer::Run()+0x40>
+ b44:	e3a02001 	mov	r2, #1
+ b48:	e5940210 	ldr	r0, [r4, #528]	; 0x210
+ b4c:	e5903000 	ldr	r3, [r0]
+ b50:	e5933008 	ldr	r3, [r3, #8]
+ b54:	e5c42214 	strb	r2, [r4, #532]	; 0x214
+ b58:	e12fff33 	blx	r3
+ b5c:	eaffff6d 	b	918 <OscServer::Run()+0x40>
+ b60:	e594320c 	ldr	r3, [r4, #524]	; 0x20c
+ b64:	e5940218 	ldr	r0, [r4, #536]	; 0x218
+ b68:	e3530000 	cmp	r3, #0
+ b6c:	0a000004 	beq	b84 <OscServer::Run()+0x2ac>
+ b70:	e2841f63 	add	r1, r4, #396	; 0x18c
+ b74:	ebfffffe 	bl	0 <lo_pattern_match>
+ b78:	e3500000 	cmp	r0, #0
+ b7c:	1a00003a 	bne	c6c <OscServer::Run()+0x394>
+ b80:	e5940218 	ldr	r0, [r4, #536]	; 0x218
+ b84:	e59f1228 	ldr	r1, [pc, #552]	; db4 <OscServer::Run()+0x4dc>
+ b88:	ebfffffe 	bl	0 <lo_pattern_match>
+ b8c:	e3500000 	cmp	r0, #0
+ b90:	1a00002b 	bne	c44 <OscServer::Run()+0x36c>
+ b94:	e5940218 	ldr	r0, [r4, #536]	; 0x218
+ b98:	e2841f43 	add	r1, r4, #268	; 0x10c
+ b9c:	ebfffffe 	bl	0 <lo_pattern_match>
+ ba0:	e3500000 	cmp	r0, #0
+ ba4:	0affff5b 	beq	918 <OscServer::Run()+0x40>
+ ba8:	e59f5208 	ldr	r5, [pc, #520]	; db8 <OscServer::Run()+0x4e0>
+ bac:	e59f1208 	ldr	r1, [pc, #520]	; dbc <OscServer::Run()+0x4e4>
+ bb0:	e1d430b2 	ldrh	r3, [r4, #2]
+ bb4:	e88d0022 	stm	sp, {r1, r5}
+ bb8:	e2842f89 	add	r2, r4, #548	; 0x224
+ bbc:	e58d2008 	str	r2, [sp, #8]
+ bc0:	e5941004 	ldr	r1, [r4, #4]
+ bc4:	e59d2020 	ldr	r2, [sp, #32]
+ bc8:	e28d0040 	add	r0, sp, #64	; 0x40
+ bcc:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ bd0:	e59f21e8 	ldr	r2, [pc, #488]	; dc0 <OscServer::Run()+0x4e8>
+ bd4:	e5941244 	ldr	r1, [r4, #580]	; 0x244
+ bd8:	e1d430b2 	ldrh	r3, [r4, #2]
+ bdc:	e88d0024 	stm	sp, {r2, r5}
+ be0:	e58d1008 	str	r1, [sp, #8]
+ be4:	e59d2020 	ldr	r2, [sp, #32]
+ be8:	e5941004 	ldr	r1, [r4, #4]
+ bec:	e28d0d11 	add	r0, sp, #1088	; 0x440
+ bf0:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ bf4:	e5942248 	ldr	r2, [r4, #584]	; 0x248
+ bf8:	e59f01c4 	ldr	r0, [pc, #452]	; dc4 <OscServer::Run()+0x4ec>
+ bfc:	e1d430b2 	ldrh	r3, [r4, #2]
+ c00:	e58d2008 	str	r2, [sp, #8]
+ c04:	e58d5004 	str	r5, [sp, #4]
+ c08:	e5941004 	ldr	r1, [r4, #4]
+ c0c:	e59d2020 	ldr	r2, [sp, #32]
+ c10:	e58d0000 	str	r0, [sp]
+ c14:	e28d0d21 	add	r0, sp, #2112	; 0x840
+ c18:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*, char const*)>
+ c1c:	e594020c 	ldr	r0, [r4, #524]	; 0x20c
+ c20:	e3500000 	cmp	r0, #0
+ c24:	0affff3b 	beq	918 <OscServer::Run()+0x40>
+ c28:	e5903000 	ldr	r3, [r0]
+ c2c:	e59d2020 	ldr	r2, [sp, #32]
+ c30:	e5935010 	ldr	r5, [r3, #16]
+ c34:	e5941004 	ldr	r1, [r4, #4]
+ c38:	e1d430b2 	ldrh	r3, [r4, #2]
+ c3c:	e12fff35 	blx	r5
+ c40:	eaffff34 	b	918 <OscServer::Run()+0x40>
+ c44:	e3a0c000 	mov	ip, #0
+ c48:	e59f0178 	ldr	r0, [pc, #376]	; dc8 <OscServer::Run()+0x4f0>
+ c4c:	e1d430b2 	ldrh	r3, [r4, #2]
+ c50:	e5941004 	ldr	r1, [r4, #4]
+ c54:	e59d2020 	ldr	r2, [sp, #32]
+ c58:	e58d0000 	str	r0, [sp]
+ c5c:	e58dc004 	str	ip, [sp, #4]
+ c60:	e28d0d21 	add	r0, sp, #2112	; 0x840
+ c64:	ebfffffe 	bl	0 <OscSimpleSend::OscSimpleSend(int, unsigned int, unsigned short, char const*, char const*)>
+ c68:	eaffff2a 	b	918 <OscServer::Run()+0x40>
+ c6c:	e1a02005 	mov	r2, r5
+ c70:	e5941218 	ldr	r1, [r4, #536]	; 0x218
+ c74:	e28d0d21 	add	r0, sp, #2112	; 0x840
+ c78:	ebfffffe 	bl	0 <OscSimpleMessage::OscSimpleMessage(void*, unsigned int)>
+ c7c:	e59d3850 	ldr	r3, [sp, #2128]	; 0x850
+ c80:	e3530000 	cmp	r3, #0
+ c84:	0affff23 	beq	918 <OscServer::Run()+0x40>
+ c88:	e59d384c 	ldr	r3, [sp, #2124]	; 0x84c
+ c8c:	e5d33000 	ldrb	r3, [r3]
+ c90:	e3530066 	cmp	r3, #102	; 0x66
+ c94:	1affff1f 	bne	918 <OscServer::Run()+0x40>
+ c98:	e28d0d21 	add	r0, sp, #2112	; 0x840
+ c9c:	e1a01007 	mov	r1, r7
+ ca0:	ebfffffe 	bl	0 <OscSimpleMessage::GetFloat(unsigned int)>
+ ca4:	eeb50a40 	vcmp.f32	s0, #0.0
+ ca8:	eef1fa10 	vmrs	APSR_nzcv, fpscr
+ cac:	e594020c 	ldr	r0, [r4, #524]	; 0x20c
+ cb0:	e5903000 	ldr	r3, [r0]
+ cb4:	15933008 	ldrne	r3, [r3, #8]
+ cb8:	0593300c 	ldreq	r3, [r3, #12]
+ cbc:	e12fff33 	blx	r3
+ cc0:	eaffff14 	b	918 <OscServer::Run()+0x40>
+ cc4:	e59d3030 	ldr	r3, [sp, #48]	; 0x30
+ cc8:	e5d33000 	ldrb	r3, [r3]
+ ccc:	e3530062 	cmp	r3, #98	; 0x62
+ cd0:	1affff10 	bne	918 <OscServer::Run()+0x40>
+ cd4:	e3a02000 	mov	r2, #0
+ cd8:	e28d1024 	add	r1, sp, #36	; 0x24
+ cdc:	e28d0d21 	add	r0, sp, #2112	; 0x840
+ ce0:	ebfffffe 	bl	0 <OscSimpleMessage::GetBlob(unsigned int)>
+ ce4:	e59dc844 	ldr	ip, [sp, #2116]	; 0x844
+ ce8:	e6ffe07c 	uxth	lr, ip
+ cec:	e35e0c02 	cmp	lr, #512	; 0x200
+ cf0:	8affff08 	bhi	918 <OscServer::Run()+0x40>
+ cf4:	e35e0000 	cmp	lr, #0
+ cf8:	13a07000 	movne	r7, #0
+ cfc:	e59d0840 	ldr	r0, [sp, #2112]	; 0x840
+ d00:	e594221c 	ldr	r2, [r4, #540]	; 0x21c
+ d04:	e1a0c00e 	mov	ip, lr
+ d08:	11a03007 	movne	r3, r7
+ d0c:	12422001 	subne	r2, r2, #1
+ d10:	12400001 	subne	r0, r0, #1
+ d14:	0a00002c 	beq	dcc <OscServer::Run()+0x4f4>
+ d18:	e5f01001 	ldrb	r1, [r0, #1]!
+ d1c:	e5f26001 	ldrb	r6, [r2, #1]!
+ d20:	e2833001 	add	r3, r3, #1
+ d24:	e1560001 	cmp	r6, r1
+ d28:	e6ff3073 	uxth	r3, r3
+ d2c:	11a07005 	movne	r7, r5
+ d30:	15c21000 	strbne	r1, [r2]
+ d34:	e15c0003 	cmp	ip, r3
+ d38:	8afffff6 	bhi	d18 <OscServer::Run()+0x440>
+ d3c:	e3570000 	cmp	r7, #0
+ d40:	0a000021 	beq	dcc <OscServer::Run()+0x4f4>
+ d44:	e5d41008 	ldrb	r1, [r4, #8]
+ d48:	e5940210 	ldr	r0, [r4, #528]	; 0x210
+ d4c:	e2211001 	eor	r1, r1, #1
+ d50:	e35e0c02 	cmp	lr, #512	; 0x200
+ d54:	03811001 	orreq	r1, r1, #1
+ d58:	e5903000 	ldr	r3, [r0]
+ d5c:	e3510000 	cmp	r1, #0
+ d60:	e594221c 	ldr	r2, [r4, #540]	; 0x21c
+ d64:	e5935010 	ldr	r5, [r3, #16]
+ d68:	0a00001f 	beq	dec <OscServer::Run()+0x514>
+ d6c:	e3a03c02 	mov	r3, #512	; 0x200
+ d70:	e3a01000 	mov	r1, #0
+ d74:	e12fff35 	blx	r5
+ d78:	eaffff6e 	b	b38 <OscServer::Run()+0x260>
+ d7c:	e5d43009 	ldrb	r3, [r4, #9]
+ d80:	e3530000 	cmp	r3, #0
+ d84:	0afffee3 	beq	918 <OscServer::Run()+0x40>
+ d88:	eaffff5e 	b	b08 <OscServer::Run()+0x230>
+ d8c:	e3a03c02 	mov	r3, #512	; 0x200
+ d90:	e12fff35 	blx	r5
+ d94:	eaffff67 	b	b38 <OscServer::Run()+0x260>
+ d98:	e1a01006 	mov	r1, r6
+ d9c:	e28d0024 	add	r0, sp, #36	; 0x24
+ da0:	ebfffffe 	bl	0 <OscSimpleMessage::GetInt(unsigned int)>
+ da4:	e6ef3070 	uxtb	r3, r0
+ da8:	eaffff50 	b	af0 <OscServer::Run()+0x218>
+ dac:	437f0000 	cmnmi	pc, #0
+ db0:	00000000 	andeq	r0, r0, r0
+ db4:	00000040 	andeq	r0, r0, r0, asr #32
+ db8:	00000050 	andeq	r0, r0, r0, asr r0
+ dbc:	00000054 	andeq	r0, r0, r4, asr r0
+ dc0:	00000060 	andeq	r0, r0, r0, rrx
+ dc4:	0000006c 	andeq	r0, r0, ip, rrx
+ dc8:	00000048 	andeq	r0, r0, r8, asr #32
+ dcc:	e5d43009 	ldrb	r3, [r4, #9]
+ dd0:	e3530000 	cmp	r3, #0
+ dd4:	1affffda 	bne	d44 <OscServer::Run()+0x46c>
+ dd8:	eafffece 	b	918 <OscServer::Run()+0x40>
+ ddc:	e5d43009 	ldrb	r3, [r4, #9]
+ de0:	e3530000 	cmp	r3, #0
+ de4:	1affff10 	bne	a2c <OscServer::Run()+0x154>
+ de8:	eafffeca 	b	918 <OscServer::Run()+0x40>
+ dec:	e1d430ba 	ldrh	r3, [r4, #10]
+ df0:	e153000e 	cmp	r3, lr
+ df4:	31a0300e 	movcc	r3, lr
+ df8:	e1c430ba 	strh	r3, [r4, #10]
+ dfc:	e12fff35 	blx	r5
+ e00:	eaffff4c 	b	b38 <OscServer::Run()+0x260>
+ e04:	e3a01001 	mov	r1, #1
+ e08:	e28d0024 	add	r0, sp, #36	; 0x24
+ e0c:	ebfffffe 	bl	0 <OscSimpleMessage::GetInt(unsigned int)>
+ e10:	e5cd0840 	strb	r0, [sp, #2112]	; 0x840
+ e14:	eafffeef 	b	9d8 <OscServer::Run()+0x100>
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.rodata.str1.4>:
+   0:	786d642f 	stmdavc	sp!, {r0, r1, r2, r3, r5, sl, sp, lr}^
+   4:	00000031 	andeq	r0, r0, r1, lsr r0
+   8:	786d642f 	stmdavc	sp!, {r0, r1, r2, r3, r5, sl, sp, lr}^
+   c:	002a2f31 	eoreq	r2, sl, r1, lsr pc
+  10:	0000322f 	andeq	r3, r0, pc, lsr #4
+  14:	786d642f 	stmdavc	sp!, {r0, r1, r2, r3, r5, sl, sp, lr}^
+  18:	6c622f31 	stclvs	15, cr2, [r2], #-196	; 0xffffff3c
+  1c:	6f6b6361 	svcvs	0x006b6361
+  20:	00007475 	andeq	r7, r0, r5, ror r4
+  24:	00302e31 	eorseq	r2, r0, r1, lsr lr
+  28:	7325565b 			; <UNDEFINED> instruction: 0x7325565b
+  2c:	7325205d 			; <UNDEFINED> instruction: 0x7325205d
+  30:	00000000 	andeq	r0, r0, r0
+  34:	20636544 	rsbcs	r6, r3, r4, asr #10
+  38:	32203931 	eorcc	r3, r0, #802816	; 0xc4000
+  3c:	00313230 	eorseq	r3, r1, r0, lsr r2
+  40:	6e69702f 	cdpvs	0, 6, cr7, cr9, cr15, {1}
+  44:	00000067 	andeq	r0, r0, r7, rrx
+  48:	6e6f702f 	cdpvs	0, 6, cr7, cr15, cr15, {1}
+  4c:	00000067 	andeq	r0, r0, r7, rrx
+  50:	00000073 	andeq	r0, r0, r3, ror r0
+  54:	666e692f 	strbtvs	r6, [lr], -pc, lsr #18
+  58:	736f2f6f 	cmnvc	pc, #444	; 0x1bc
+  5c:	00000000 	andeq	r0, r0, r0
+  60:	666e692f 	strbtvs	r6, [lr], -pc, lsr #18
+  64:	6f6d2f6f 	svcvs	0x006d2f6f
+  68:	006c6564 	rsbeq	r6, ip, r4, ror #10
+  6c:	666e692f 	strbtvs	r6, [lr], -pc, lsr #18
+  70:	6f732f6f 	svcvs	0x00732f6f
+  74:	Address 0x0000000000000074 is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003241 	andeq	r3, r0, r1, asr #4
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000028 	andeq	r0, r0, r8, lsr #32
+  10:	4b5a3605 	blmi	168d82c <OscServer::Run()+0x168cf54>
+  14:	08070600 	stmdaeq	r7, {r9, sl}
+  18:	0a010901 	beq	42424 <OscServer::Run()+0x41b4c>
+  1c:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  20:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  24:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  28:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  2c:	22021e01 	andcs	r1, r2, #1, 28
+  30:	Address 0x0000000000000030 is out of bounds.
+
+
+oscserverparamsset.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <OSCServerParams::Set(OscServer*)>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04000 	mov	r4, r0
+   8:	e5943004 	ldr	r3, [r4, #4]
+   c:	e1a00001 	mov	r0, r1
+  10:	e3130001 	tst	r3, #1
+  14:	e24dd008 	sub	sp, sp, #8
+  18:	1a00000b 	bne	4c <OSCServerParams::Set(OscServer*)+0x4c>
+  1c:	e3130002 	tst	r3, #2
+  20:	1a000010 	bne	68 <OSCServerParams::Set(OscServer*)+0x68>
+  24:	e3130004 	tst	r3, #4
+  28:	1a000015 	bne	84 <OSCServerParams::Set(OscServer*)+0x84>
+  2c:	e3130020 	tst	r3, #32
+  30:	1a00001a 	bne	a0 <OSCServerParams::Set(OscServer*)+0xa0>
+  34:	e3130040 	tst	r3, #64	; 0x40
+  38:	1a00001f 	bne	bc <OSCServerParams::Set(OscServer*)+0xbc>
+  3c:	e3130008 	tst	r3, #8
+  40:	1a000025 	bne	dc <OSCServerParams::Set(OscServer*)+0xdc>
+  44:	e28dd008 	add	sp, sp, #8
+  48:	e8bd8010 	pop	{r4, pc}
+  4c:	e58d1004 	str	r1, [sp, #4]
+  50:	e1d410b8 	ldrh	r1, [r4, #8]
+  54:	ebfffffe 	bl	0 <OscServer::SetPortIncoming(unsigned short)>
+  58:	e5943004 	ldr	r3, [r4, #4]
+  5c:	e59d0004 	ldr	r0, [sp, #4]
+  60:	e3130002 	tst	r3, #2
+  64:	0affffee 	beq	24 <OSCServerParams::Set(OscServer*)+0x24>
+  68:	e1d410ba 	ldrh	r1, [r4, #10]
+  6c:	e58d0004 	str	r0, [sp, #4]
+  70:	ebfffffe 	bl	0 <OscServer::SetPortOutgoing(unsigned short)>
+  74:	e5943004 	ldr	r3, [r4, #4]
+  78:	e59d0004 	ldr	r0, [sp, #4]
+  7c:	e3130004 	tst	r3, #4
+  80:	0affffe9 	beq	2c <OSCServerParams::Set(OscServer*)+0x2c>
+  84:	e284100e 	add	r1, r4, #14
+  88:	e58d0004 	str	r0, [sp, #4]
+  8c:	ebfffffe 	bl	0 <OscServer::SetPath(char const*)>
+  90:	e5943004 	ldr	r3, [r4, #4]
+  94:	e59d0004 	ldr	r0, [sp, #4]
+  98:	e3130020 	tst	r3, #32
+  9c:	0affffe4 	beq	34 <OSCServerParams::Set(OscServer*)+0x34>
+  a0:	e284108e 	add	r1, r4, #142	; 0x8e
+  a4:	e58d0004 	str	r0, [sp, #4]
+  a8:	ebfffffe 	bl	0 <OscServer::SetPathInfo(char const*)>
+  ac:	e5943004 	ldr	r3, [r4, #4]
+  b0:	e59d0004 	ldr	r0, [sp, #4]
+  b4:	e3130040 	tst	r3, #64	; 0x40
+  b8:	0affffdf 	beq	3c <OSCServerParams::Set(OscServer*)+0x3c>
+  bc:	e2841f43 	add	r1, r4, #268	; 0x10c
+  c0:	e2811002 	add	r1, r1, #2
+  c4:	e58d0004 	str	r0, [sp, #4]
+  c8:	ebfffffe 	bl	0 <OscServer::SetPathBlackOut(char const*)>
+  cc:	e5943004 	ldr	r3, [r4, #4]
+  d0:	e59d0004 	ldr	r0, [sp, #4]
+  d4:	e3130008 	tst	r3, #8
+  d8:	0affffd9 	beq	44 <OSCServerParams::Set(OscServer*)+0x44>
+  dc:	e5d4100d 	ldrb	r1, [r4, #13]
+  e0:	e28dd008 	add	sp, sp, #8
+  e4:	e8bd4010 	pop	{r4, lr}
+  e8:	eafffffe 	b	0 <OscServer::SetPartialTransmission(bool)>
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003241 	andeq	r3, r0, r1, asr #4
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	00000028 	andeq	r0, r0, r8, lsr #32
+  10:	4b5a3605 	blmi	168d82c <OSCServerParams::Set(OscServer*)+0x168d82c>
+  14:	08070600 	stmdaeq	r7, {r9, sl}
+  18:	0a010901 	beq	42424 <OSCServerParams::Set(OscServer*)+0x42424>
+  1c:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  20:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  24:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  28:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  2c:	22021e01 	andcs	r1, r2, #1, 28
+  30:	Address 0x0000000000000030 is out of bounds.
+

@@ -1,0 +1,8 @@
+DEFINES=ENABLE_TFTP_SERVER
+DEFINES+=ENABLE_CONTENT
+DEFINES+=NDEBUG
+
+EXTRA_SRCDIR=src/httpd
+
+include Rules.mk
+include ../firmware-template-linux/lib/Rules.mk

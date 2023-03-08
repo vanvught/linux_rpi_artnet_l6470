@@ -1,0 +1,1338 @@
+In archive lib_linux/libtlc59711.a:
+
+tlc59711.o:     file format elf64-x86-64
+
+
+Disassembly of section .text.spi_begin:
+
+0000000000000000 <spi_begin>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	90                   	nop
+   5:	5d                   	pop    %rbp
+   6:	c3                   	ret    
+
+Disassembly of section .text.spi_chipSelect:
+
+0000000000000000 <spi_chipSelect>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	89 f8                	mov    %edi,%eax
+   6:	88 45 fc             	mov    %al,-0x4(%rbp)
+   9:	90                   	nop
+   a:	5d                   	pop    %rbp
+   b:	c3                   	ret    
+
+Disassembly of section .text.spi_setDataMode:
+
+0000000000000000 <spi_setDataMode>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	89 f8                	mov    %edi,%eax
+   6:	88 45 fc             	mov    %al,-0x4(%rbp)
+   9:	90                   	nop
+   a:	5d                   	pop    %rbp
+   b:	c3                   	ret    
+
+Disassembly of section .text.spi_set_speed_hz:
+
+0000000000000000 <spi_set_speed_hz>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	89 7d fc             	mov    %edi,-0x4(%rbp)
+   7:	90                   	nop
+   8:	5d                   	pop    %rbp
+   9:	c3                   	ret    
+
+Disassembly of section .text.spi_writenb:
+
+0000000000000000 <spi_writenb>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   8:	89 75 f4             	mov    %esi,-0xc(%rbp)
+   b:	90                   	nop
+   c:	5d                   	pop    %rbp
+   d:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC59711C2Ehj:
+
+0000000000000000 <TLC59711::TLC59711(unsigned char, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	89 55 e0             	mov    %edx,-0x20(%rbp)
+  15:	88 45 e4             	mov    %al,-0x1c(%rbp)
+  18:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  1c:	0f b6 55 e4          	movzbl -0x1c(%rbp),%edx
+  20:	88 10                	mov    %dl,(%rax)
+  22:	8b 45 e0             	mov    -0x20(%rbp),%eax
+  25:	85 c0                	test   %eax,%eax
+  27:	74 08                	je     31 <TLC59711::TLC59711(unsigned char, unsigned int)+0x31>
+  29:	48 8d 45 e0          	lea    -0x20(%rbp),%rax
+  2d:	8b 00                	mov    (%rax),%eax
+  2f:	eb 05                	jmp    36 <TLC59711::TLC59711(unsigned char, unsigned int)+0x36>
+  31:	b8 40 4b 4c 00       	mov    $0x4c4b40,%eax
+  36:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+  3a:	89 42 04             	mov    %eax,0x4(%rdx)
+  3d:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  41:	c7 40 08 00 00 00 00 	movl   $0x0,0x8(%rax)
+  48:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  4c:	48 c7 40 10 00 00 00 	movq   $0x0,0x10(%rax)
+  53:	00 
+  54:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  58:	48 c7 40 18 00 00 00 	movq   $0x0,0x18(%rax)
+  5f:	00 
+  60:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  64:	c7 40 20 00 00 00 00 	movl   $0x0,0x20(%rax)
+  6b:	e8 00 00 00 00       	call   70 <TLC59711::TLC59711(unsigned char, unsigned int)+0x70>
+  70:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  74:	8b 40 04             	mov    0x4(%rax),%eax
+  77:	3d 80 96 98 00       	cmp    $0x989680,%eax
+  7c:	76 0b                	jbe    89 <TLC59711::TLC59711(unsigned char, unsigned int)+0x89>
+  7e:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  82:	c7 40 04 80 96 98 00 	movl   $0x989680,0x4(%rax)
+  89:	80 7d e4 00          	cmpb   $0x0,-0x1c(%rbp)
+  8d:	75 04                	jne    93 <TLC59711::TLC59711(unsigned char, unsigned int)+0x93>
+  8f:	c6 45 e4 01          	movb   $0x1,-0x1c(%rbp)
+  93:	0f b6 45 e4          	movzbl -0x1c(%rbp),%eax
+  97:	6b d0 0e             	imul   $0xe,%eax,%edx
+  9a:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  9e:	89 50 20             	mov    %edx,0x20(%rax)
+  a1:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  a5:	8b 40 20             	mov    0x20(%rax),%eax
+  a8:	89 c0                	mov    %eax,%eax
+  aa:	48 ba fc ff ff ff ff 	movabs $0x3ffffffffffffffc,%rdx
+  b1:	ff ff 3f 
+  b4:	48 39 d0             	cmp    %rdx,%rax
+  b7:	77 05                	ja     be <TLC59711::TLC59711(unsigned char, unsigned int)+0xbe>
+  b9:	48 01 c0             	add    %rax,%rax
+  bc:	eb 07                	jmp    c5 <TLC59711::TLC59711(unsigned char, unsigned int)+0xc5>
+  be:	48 c7 c0 ff ff ff ff 	mov    $0xffffffffffffffff,%rax
+  c5:	48 89 c7             	mov    %rax,%rdi
+  c8:	e8 00 00 00 00       	call   cd <TLC59711::TLC59711(unsigned char, unsigned int)+0xcd>
+  cd:	48 89 c2             	mov    %rax,%rdx
+  d0:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  d4:	48 89 50 10          	mov    %rdx,0x10(%rax)
+  d8:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  dc:	48 8b 40 10          	mov    0x10(%rax),%rax
+  e0:	48 85 c0             	test   %rax,%rax
+  e3:	75 28                	jne    10d <TLC59711::TLC59711(unsigned char, unsigned int)+0x10d>
+  e5:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # ec <TLC59711::TLC59711(unsigned char, unsigned int)+0xec>
+  ec:	48 89 c1             	mov    %rax,%rcx
+  ef:	ba 52 00 00 00       	mov    $0x52,%edx
+  f4:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # fb <TLC59711::TLC59711(unsigned char, unsigned int)+0xfb>
+  fb:	48 89 c6             	mov    %rax,%rsi
+  fe:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 105 <TLC59711::TLC59711(unsigned char, unsigned int)+0x105>
+ 105:	48 89 c7             	mov    %rax,%rdi
+ 108:	e8 00 00 00 00       	call   10d <TLC59711::TLC59711(unsigned char, unsigned int)+0x10d>
+ 10d:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 111:	8b 40 20             	mov    0x20(%rax),%eax
+ 114:	89 c0                	mov    %eax,%eax
+ 116:	48 ba fc ff ff ff ff 	movabs $0x3ffffffffffffffc,%rdx
+ 11d:	ff ff 3f 
+ 120:	48 39 d0             	cmp    %rdx,%rax
+ 123:	77 05                	ja     12a <TLC59711::TLC59711(unsigned char, unsigned int)+0x12a>
+ 125:	48 01 c0             	add    %rax,%rax
+ 128:	eb 07                	jmp    131 <TLC59711::TLC59711(unsigned char, unsigned int)+0x131>
+ 12a:	48 c7 c0 ff ff ff ff 	mov    $0xffffffffffffffff,%rax
+ 131:	48 89 c7             	mov    %rax,%rdi
+ 134:	e8 00 00 00 00       	call   139 <TLC59711::TLC59711(unsigned char, unsigned int)+0x139>
+ 139:	48 89 c2             	mov    %rax,%rdx
+ 13c:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 140:	48 89 50 18          	mov    %rdx,0x18(%rax)
+ 144:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 148:	48 8b 40 18          	mov    0x18(%rax),%rax
+ 14c:	48 85 c0             	test   %rax,%rax
+ 14f:	75 28                	jne    179 <TLC59711::TLC59711(unsigned char, unsigned int)+0x179>
+ 151:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 158 <TLC59711::TLC59711(unsigned char, unsigned int)+0x158>
+ 158:	48 89 c1             	mov    %rax,%rcx
+ 15b:	ba 55 00 00 00       	mov    $0x55,%edx
+ 160:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 167 <TLC59711::TLC59711(unsigned char, unsigned int)+0x167>
+ 167:	48 89 c6             	mov    %rax,%rsi
+ 16a:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 171 <TLC59711::TLC59711(unsigned char, unsigned int)+0x171>
+ 171:	48 89 c7             	mov    %rax,%rdi
+ 174:	e8 00 00 00 00       	call   179 <TLC59711::TLC59711(unsigned char, unsigned int)+0x179>
+ 179:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+ 180:	eb 1a                	jmp    19c <TLC59711::TLC59711(unsigned char, unsigned int)+0x19c>
+ 182:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 186:	48 8b 50 10          	mov    0x10(%rax),%rdx
+ 18a:	8b 45 fc             	mov    -0x4(%rbp),%eax
+ 18d:	48 01 c0             	add    %rax,%rax
+ 190:	48 01 d0             	add    %rdx,%rax
+ 193:	66 c7 00 00 00       	movw   $0x0,(%rax)
+ 198:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+ 19c:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 1a0:	8b 40 20             	mov    0x20(%rax),%eax
+ 1a3:	39 45 fc             	cmp    %eax,-0x4(%rbp)
+ 1a6:	72 da                	jb     182 <TLC59711::TLC59711(unsigned char, unsigned int)+0x182>
+ 1a8:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 1ac:	8b 40 08             	mov    0x8(%rax),%eax
+ 1af:	0d 00 00 00 94       	or     $0x94000000,%eax
+ 1b4:	89 c2                	mov    %eax,%edx
+ 1b6:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 1ba:	89 50 08             	mov    %edx,0x8(%rax)
+ 1bd:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 1c1:	be 00 00 00 00       	mov    $0x0,%esi
+ 1c6:	48 89 c7             	mov    %rax,%rdi
+ 1c9:	e8 00 00 00 00       	call   1ce <TLC59711::TLC59711(unsigned char, unsigned int)+0x1ce>
+ 1ce:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 1d2:	be 00 00 00 00       	mov    $0x0,%esi
+ 1d7:	48 89 c7             	mov    %rax,%rdi
+ 1da:	e8 00 00 00 00       	call   1df <TLC59711::TLC59711(unsigned char, unsigned int)+0x1df>
+ 1df:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 1e3:	be 01 00 00 00       	mov    $0x1,%esi
+ 1e8:	48 89 c7             	mov    %rax,%rdi
+ 1eb:	e8 00 00 00 00       	call   1f0 <TLC59711::TLC59711(unsigned char, unsigned int)+0x1f0>
+ 1f0:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 1f4:	be 01 00 00 00       	mov    $0x1,%esi
+ 1f9:	48 89 c7             	mov    %rax,%rdi
+ 1fc:	e8 00 00 00 00       	call   201 <TLC59711::TLC59711(unsigned char, unsigned int)+0x201>
+ 201:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 205:	be 00 00 00 00       	mov    $0x0,%esi
+ 20a:	48 89 c7             	mov    %rax,%rdi
+ 20d:	e8 00 00 00 00       	call   212 <TLC59711::TLC59711(unsigned char, unsigned int)+0x212>
+ 212:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 216:	be 7f 00 00 00       	mov    $0x7f,%esi
+ 21b:	48 89 c7             	mov    %rax,%rdi
+ 21e:	e8 00 00 00 00       	call   223 <TLC59711::TLC59711(unsigned char, unsigned int)+0x223>
+ 223:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 227:	be 7f 00 00 00       	mov    $0x7f,%esi
+ 22c:	48 89 c7             	mov    %rax,%rdi
+ 22f:	e8 00 00 00 00       	call   234 <TLC59711::TLC59711(unsigned char, unsigned int)+0x234>
+ 234:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 238:	be 7f 00 00 00       	mov    $0x7f,%esi
+ 23d:	48 89 c7             	mov    %rax,%rdi
+ 240:	e8 00 00 00 00       	call   245 <TLC59711::TLC59711(unsigned char, unsigned int)+0x245>
+ 245:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 249:	8b 40 20             	mov    0x20(%rax),%eax
+ 24c:	01 c0                	add    %eax,%eax
+ 24e:	89 c2                	mov    %eax,%edx
+ 250:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 254:	48 8b 48 10          	mov    0x10(%rax),%rcx
+ 258:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 25c:	48 8b 40 18          	mov    0x18(%rax),%rax
+ 260:	48 89 ce             	mov    %rcx,%rsi
+ 263:	48 89 c7             	mov    %rax,%rdi
+ 266:	e8 00 00 00 00       	call   26b <TLC59711::TLC59711(unsigned char, unsigned int)+0x26b>
+ 26b:	90                   	nop
+ 26c:	c9                   	leave  
+ 26d:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC59711D2Ev:
+
+0000000000000000 <TLC59711::~TLC59711()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  14:	48 8b 40 10          	mov    0x10(%rax),%rax
+  18:	48 85 c0             	test   %rax,%rax
+  1b:	74 10                	je     2d <TLC59711::~TLC59711()+0x2d>
+  1d:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  21:	48 8b 40 10          	mov    0x10(%rax),%rax
+  25:	48 89 c7             	mov    %rax,%rdi
+  28:	e8 00 00 00 00       	call   2d <TLC59711::~TLC59711()+0x2d>
+  2d:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  31:	48 c7 40 10 00 00 00 	movq   $0x0,0x10(%rax)
+  38:	00 
+  39:	90                   	nop
+  3a:	c9                   	leave  
+  3b:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597113GetEjRt:
+
+0000000000000000 <TLC59711::Get(unsigned int, unsigned short&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+   c:	89 75 e4             	mov    %esi,-0x1c(%rbp)
+   f:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+  13:	8b 45 e4             	mov    -0x1c(%rbp),%eax
+  16:	89 c2                	mov    %eax,%edx
+  18:	b8 ab aa aa aa       	mov    $0xaaaaaaab,%eax
+  1d:	48 0f af c2          	imul   %rdx,%rax
+  21:	48 c1 e8 20          	shr    $0x20,%rax
+  25:	c1 e8 03             	shr    $0x3,%eax
+  28:	89 45 f8             	mov    %eax,-0x8(%rbp)
+  2b:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  2f:	0f b6 00             	movzbl (%rax),%eax
+  32:	0f b6 c0             	movzbl %al,%eax
+  35:	39 45 f8             	cmp    %eax,-0x8(%rbp)
+  38:	73 3a                	jae    74 <TLC59711::Get(unsigned int, unsigned short&)+0x74>
+  3a:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  3d:	6b c0 1a             	imul   $0x1a,%eax,%eax
+  40:	2b 45 e4             	sub    -0x1c(%rbp),%eax
+  43:	83 c0 0d             	add    $0xd,%eax
+  46:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  49:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  4d:	48 8b 50 10          	mov    0x10(%rax),%rdx
+  51:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  54:	48 01 c0             	add    %rax,%rax
+  57:	48 01 d0             	add    %rdx,%rax
+  5a:	0f b7 00             	movzwl (%rax),%eax
+  5d:	0f b7 c0             	movzwl %ax,%eax
+  60:	89 c2                	mov    %eax,%edx
+  62:	66 c1 c2 08          	rol    $0x8,%dx
+  66:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  6a:	66 89 10             	mov    %dx,(%rax)
+  6d:	b8 01 00 00 00       	mov    $0x1,%eax
+  72:	eb 05                	jmp    79 <TLC59711::Get(unsigned int, unsigned short&)+0x79>
+  74:	b8 00 00 00 00       	mov    $0x0,%eax
+  79:	5d                   	pop    %rbp
+  7a:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597113SetEjt:
+
+0000000000000000 <TLC59711::Set(unsigned int, unsigned short)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	89 75 e4             	mov    %esi,-0x1c(%rbp)
+  13:	89 d0                	mov    %edx,%eax
+  15:	66 89 45 e0          	mov    %ax,-0x20(%rbp)
+  19:	8b 45 e4             	mov    -0x1c(%rbp),%eax
+  1c:	89 c2                	mov    %eax,%edx
+  1e:	b8 ab aa aa aa       	mov    $0xaaaaaaab,%eax
+  23:	48 0f af c2          	imul   %rdx,%rax
+  27:	48 c1 e8 20          	shr    $0x20,%rax
+  2b:	c1 e8 03             	shr    $0x3,%eax
+  2e:	89 45 f8             	mov    %eax,-0x8(%rbp)
+  31:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  35:	0f b6 00             	movzbl (%rax),%eax
+  38:	0f b6 c0             	movzbl %al,%eax
+  3b:	39 45 f8             	cmp    %eax,-0x8(%rbp)
+  3e:	73 2d                	jae    6d <TLC59711::Set(unsigned int, unsigned short)+0x6d>
+  40:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  43:	6b c0 1a             	imul   $0x1a,%eax,%eax
+  46:	2b 45 e4             	sub    -0x1c(%rbp),%eax
+  49:	83 c0 0d             	add    $0xd,%eax
+  4c:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  4f:	0f b7 55 e0          	movzwl -0x20(%rbp),%edx
+  53:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  57:	48 8b 48 10          	mov    0x10(%rax),%rcx
+  5b:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  5e:	48 01 c0             	add    %rax,%rax
+  61:	48 01 c8             	add    %rcx,%rax
+  64:	66 c1 c2 08          	rol    $0x8,%dx
+  68:	66 89 10             	mov    %dx,(%rax)
+  6b:	eb 26                	jmp    93 <TLC59711::Set(unsigned int, unsigned short)+0x93>
+  6d:	8b 4d e4             	mov    -0x1c(%rbp),%ecx
+  70:	8b 55 f8             	mov    -0x8(%rbp),%edx
+  73:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  77:	0f b6 00             	movzbl (%rax),%eax
+  7a:	0f b6 c0             	movzbl %al,%eax
+  7d:	89 c6                	mov    %eax,%esi
+  7f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 86 <TLC59711::Set(unsigned int, unsigned short)+0x86>
+  86:	48 89 c7             	mov    %rax,%rdi
+  89:	b8 00 00 00 00       	mov    $0x0,%eax
+  8e:	e8 00 00 00 00       	call   93 <TLC59711::Set(unsigned int, unsigned short)+0x93>
+  93:	90                   	nop
+  94:	c9                   	leave  
+  95:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597116GetRgbEhRtS0_S0_:
+
+0000000000000000 <TLC59711::GetRgb(unsigned char, unsigned short&, unsigned short&, unsigned short&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+   c:	89 f0                	mov    %esi,%eax
+   e:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+  12:	48 89 4d d0          	mov    %rcx,-0x30(%rbp)
+  16:	4c 89 45 c8          	mov    %r8,-0x38(%rbp)
+  1a:	88 45 e4             	mov    %al,-0x1c(%rbp)
+  1d:	0f b6 45 e4          	movzbl -0x1c(%rbp),%eax
+  21:	c0 e8 02             	shr    $0x2,%al
+  24:	0f b6 c0             	movzbl %al,%eax
+  27:	89 45 f8             	mov    %eax,-0x8(%rbp)
+  2a:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  2e:	0f b6 00             	movzbl (%rax),%eax
+  31:	0f b6 c0             	movzbl %al,%eax
+  34:	39 45 f8             	cmp    %eax,-0x8(%rbp)
+  37:	0f 83 a5 00 00 00    	jae    e2 <TLC59711::GetRgb(unsigned char, unsigned short&, unsigned short&, unsigned short&)+0xe2>
+  3d:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  40:	6b c8 0e             	imul   $0xe,%eax,%ecx
+  43:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  46:	c1 e0 02             	shl    $0x2,%eax
+  49:	0f b6 75 e4          	movzbl -0x1c(%rbp),%esi
+  4d:	29 f0                	sub    %esi,%eax
+  4f:	89 c2                	mov    %eax,%edx
+  51:	89 d0                	mov    %edx,%eax
+  53:	01 c0                	add    %eax,%eax
+  55:	01 d0                	add    %edx,%eax
+  57:	01 c8                	add    %ecx,%eax
+  59:	83 c0 0b             	add    $0xb,%eax
+  5c:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  5f:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  63:	48 8b 48 10          	mov    0x10(%rax),%rcx
+  67:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  6a:	8d 50 01             	lea    0x1(%rax),%edx
+  6d:	89 55 fc             	mov    %edx,-0x4(%rbp)
+  70:	89 c0                	mov    %eax,%eax
+  72:	48 01 c0             	add    %rax,%rax
+  75:	48 01 c8             	add    %rcx,%rax
+  78:	0f b7 00             	movzwl (%rax),%eax
+  7b:	0f b7 c0             	movzwl %ax,%eax
+  7e:	89 c2                	mov    %eax,%edx
+  80:	66 c1 c2 08          	rol    $0x8,%dx
+  84:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+  88:	66 89 10             	mov    %dx,(%rax)
+  8b:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  8f:	48 8b 48 10          	mov    0x10(%rax),%rcx
+  93:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  96:	8d 50 01             	lea    0x1(%rax),%edx
+  99:	89 55 fc             	mov    %edx,-0x4(%rbp)
+  9c:	89 c0                	mov    %eax,%eax
+  9e:	48 01 c0             	add    %rax,%rax
+  a1:	48 01 c8             	add    %rcx,%rax
+  a4:	0f b7 00             	movzwl (%rax),%eax
+  a7:	0f b7 c0             	movzwl %ax,%eax
+  aa:	89 c2                	mov    %eax,%edx
+  ac:	66 c1 c2 08          	rol    $0x8,%dx
+  b0:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  b4:	66 89 10             	mov    %dx,(%rax)
+  b7:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  bb:	48 8b 50 10          	mov    0x10(%rax),%rdx
+  bf:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  c2:	48 01 c0             	add    %rax,%rax
+  c5:	48 01 d0             	add    %rdx,%rax
+  c8:	0f b7 00             	movzwl (%rax),%eax
+  cb:	0f b7 c0             	movzwl %ax,%eax
+  ce:	89 c2                	mov    %eax,%edx
+  d0:	66 c1 c2 08          	rol    $0x8,%dx
+  d4:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  d8:	66 89 10             	mov    %dx,(%rax)
+  db:	b8 01 00 00 00       	mov    $0x1,%eax
+  e0:	eb 05                	jmp    e7 <TLC59711::GetRgb(unsigned char, unsigned short&, unsigned short&, unsigned short&)+0xe7>
+  e2:	b8 00 00 00 00       	mov    $0x0,%eax
+  e7:	5d                   	pop    %rbp
+  e8:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597113SetEjh:
+
+0000000000000000 <TLC59711::Set(unsigned int, unsigned char)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	89 75 e4             	mov    %esi,-0x1c(%rbp)
+  13:	89 d0                	mov    %edx,%eax
+  15:	88 45 e0             	mov    %al,-0x20(%rbp)
+  18:	8b 45 e4             	mov    -0x1c(%rbp),%eax
+  1b:	89 c2                	mov    %eax,%edx
+  1d:	b8 ab aa aa aa       	mov    $0xaaaaaaab,%eax
+  22:	48 0f af c2          	imul   %rdx,%rax
+  26:	48 c1 e8 20          	shr    $0x20,%rax
+  2a:	c1 e8 03             	shr    $0x3,%eax
+  2d:	89 45 f8             	mov    %eax,-0x8(%rbp)
+  30:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  34:	0f b6 00             	movzbl (%rax),%eax
+  37:	0f b6 c0             	movzbl %al,%eax
+  3a:	39 45 f8             	cmp    %eax,-0x8(%rbp)
+  3d:	73 34                	jae    73 <TLC59711::Set(unsigned int, unsigned char)+0x73>
+  3f:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  42:	6b c0 1a             	imul   $0x1a,%eax,%eax
+  45:	2b 45 e4             	sub    -0x1c(%rbp),%eax
+  48:	83 c0 0d             	add    $0xd,%eax
+  4b:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  4e:	0f b6 45 e0          	movzbl -0x20(%rbp),%eax
+  52:	c1 e0 08             	shl    $0x8,%eax
+  55:	89 c2                	mov    %eax,%edx
+  57:	0f b6 45 e0          	movzbl -0x20(%rbp),%eax
+  5b:	09 c2                	or     %eax,%edx
+  5d:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  61:	48 8b 48 10          	mov    0x10(%rax),%rcx
+  65:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  68:	48 01 c0             	add    %rax,%rax
+  6b:	48 01 c8             	add    %rcx,%rax
+  6e:	66 89 10             	mov    %dx,(%rax)
+  71:	eb 26                	jmp    99 <TLC59711::Set(unsigned int, unsigned char)+0x99>
+  73:	8b 4d e4             	mov    -0x1c(%rbp),%ecx
+  76:	8b 55 f8             	mov    -0x8(%rbp),%edx
+  79:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  7d:	0f b6 00             	movzbl (%rax),%eax
+  80:	0f b6 c0             	movzbl %al,%eax
+  83:	89 c6                	mov    %eax,%esi
+  85:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 8c <TLC59711::Set(unsigned int, unsigned char)+0x8c>
+  8c:	48 89 c7             	mov    %rax,%rdi
+  8f:	b8 00 00 00 00       	mov    $0x0,%eax
+  94:	e8 00 00 00 00       	call   99 <TLC59711::Set(unsigned int, unsigned char)+0x99>
+  99:	90                   	nop
+  9a:	c9                   	leave  
+  9b:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597116SetRgbEhttt:
+
+0000000000000000 <TLC59711::SetRgb(unsigned char, unsigned short, unsigned short, unsigned short)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	89 c8                	mov    %ecx,%eax
+  12:	44 89 c1             	mov    %r8d,%ecx
+  15:	40 88 75 e4          	mov    %sil,-0x1c(%rbp)
+  19:	66 89 55 e0          	mov    %dx,-0x20(%rbp)
+  1d:	66 89 45 dc          	mov    %ax,-0x24(%rbp)
+  21:	89 c8                	mov    %ecx,%eax
+  23:	66 89 45 d8          	mov    %ax,-0x28(%rbp)
+  27:	0f b6 45 e4          	movzbl -0x1c(%rbp),%eax
+  2b:	c0 e8 02             	shr    $0x2,%al
+  2e:	0f b6 c0             	movzbl %al,%eax
+  31:	89 45 f8             	mov    %eax,-0x8(%rbp)
+  34:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  38:	0f b6 00             	movzbl (%rax),%eax
+  3b:	0f b6 c0             	movzbl %al,%eax
+  3e:	39 45 f8             	cmp    %eax,-0x8(%rbp)
+  41:	0f 83 8c 00 00 00    	jae    d3 <TLC59711::SetRgb(unsigned char, unsigned short, unsigned short, unsigned short)+0xd3>
+  47:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  4a:	6b c8 0e             	imul   $0xe,%eax,%ecx
+  4d:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  50:	c1 e0 02             	shl    $0x2,%eax
+  53:	0f b6 75 e4          	movzbl -0x1c(%rbp),%esi
+  57:	29 f0                	sub    %esi,%eax
+  59:	89 c2                	mov    %eax,%edx
+  5b:	89 d0                	mov    %edx,%eax
+  5d:	01 c0                	add    %eax,%eax
+  5f:	01 d0                	add    %edx,%eax
+  61:	01 c8                	add    %ecx,%eax
+  63:	83 c0 0b             	add    $0xb,%eax
+  66:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  69:	0f b7 4d d8          	movzwl -0x28(%rbp),%ecx
+  6d:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  71:	48 8b 70 10          	mov    0x10(%rax),%rsi
+  75:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  78:	8d 50 01             	lea    0x1(%rax),%edx
+  7b:	89 55 fc             	mov    %edx,-0x4(%rbp)
+  7e:	89 c0                	mov    %eax,%eax
+  80:	48 01 c0             	add    %rax,%rax
+  83:	48 01 f0             	add    %rsi,%rax
+  86:	89 ca                	mov    %ecx,%edx
+  88:	66 c1 c2 08          	rol    $0x8,%dx
+  8c:	66 89 10             	mov    %dx,(%rax)
+  8f:	0f b7 4d dc          	movzwl -0x24(%rbp),%ecx
+  93:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  97:	48 8b 70 10          	mov    0x10(%rax),%rsi
+  9b:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  9e:	8d 50 01             	lea    0x1(%rax),%edx
+  a1:	89 55 fc             	mov    %edx,-0x4(%rbp)
+  a4:	89 c0                	mov    %eax,%eax
+  a6:	48 01 c0             	add    %rax,%rax
+  a9:	48 01 f0             	add    %rsi,%rax
+  ac:	89 ca                	mov    %ecx,%edx
+  ae:	66 c1 c2 08          	rol    $0x8,%dx
+  b2:	66 89 10             	mov    %dx,(%rax)
+  b5:	0f b7 55 e0          	movzwl -0x20(%rbp),%edx
+  b9:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  bd:	48 8b 48 10          	mov    0x10(%rax),%rcx
+  c1:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  c4:	48 01 c0             	add    %rax,%rax
+  c7:	48 01 c8             	add    %rcx,%rax
+  ca:	66 c1 c2 08          	rol    $0x8,%dx
+  ce:	66 89 10             	mov    %dx,(%rax)
+  d1:	eb 27                	jmp    fa <TLC59711::SetRgb(unsigned char, unsigned short, unsigned short, unsigned short)+0xfa>
+  d3:	0f b6 4d e4          	movzbl -0x1c(%rbp),%ecx
+  d7:	8b 55 f8             	mov    -0x8(%rbp),%edx
+  da:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  de:	0f b6 00             	movzbl (%rax),%eax
+  e1:	0f b6 c0             	movzbl %al,%eax
+  e4:	89 c6                	mov    %eax,%esi
+  e6:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # ed <TLC59711::SetRgb(unsigned char, unsigned short, unsigned short, unsigned short)+0xed>
+  ed:	48 89 c7             	mov    %rax,%rdi
+  f0:	b8 00 00 00 00       	mov    $0x0,%eax
+  f5:	e8 00 00 00 00       	call   fa <TLC59711::SetRgb(unsigned char, unsigned short, unsigned short, unsigned short)+0xfa>
+  fa:	90                   	nop
+  fb:	c9                   	leave  
+  fc:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597116SetRgbEhhhh:
+
+0000000000000000 <TLC59711::SetRgb(unsigned char, unsigned char, unsigned char, unsigned char)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	89 c8                	mov    %ecx,%eax
+  12:	44 89 c7             	mov    %r8d,%edi
+  15:	89 f1                	mov    %esi,%ecx
+  17:	88 4d e4             	mov    %cl,-0x1c(%rbp)
+  1a:	88 55 e0             	mov    %dl,-0x20(%rbp)
+  1d:	88 45 dc             	mov    %al,-0x24(%rbp)
+  20:	89 f8                	mov    %edi,%eax
+  22:	88 45 d8             	mov    %al,-0x28(%rbp)
+  25:	0f b6 45 e4          	movzbl -0x1c(%rbp),%eax
+  29:	c0 e8 02             	shr    $0x2,%al
+  2c:	0f b6 c0             	movzbl %al,%eax
+  2f:	89 45 f8             	mov    %eax,-0x8(%rbp)
+  32:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  36:	0f b6 00             	movzbl (%rax),%eax
+  39:	0f b6 c0             	movzbl %al,%eax
+  3c:	39 45 f8             	cmp    %eax,-0x8(%rbp)
+  3f:	0f 83 a5 00 00 00    	jae    ea <TLC59711::SetRgb(unsigned char, unsigned char, unsigned char, unsigned char)+0xea>
+  45:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  48:	6b c8 0e             	imul   $0xe,%eax,%ecx
+  4b:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  4e:	c1 e0 02             	shl    $0x2,%eax
+  51:	0f b6 75 e4          	movzbl -0x1c(%rbp),%esi
+  55:	29 f0                	sub    %esi,%eax
+  57:	89 c2                	mov    %eax,%edx
+  59:	89 d0                	mov    %edx,%eax
+  5b:	01 c0                	add    %eax,%eax
+  5d:	01 d0                	add    %edx,%eax
+  5f:	01 c8                	add    %ecx,%eax
+  61:	83 c0 0b             	add    $0xb,%eax
+  64:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  67:	0f b6 45 d8          	movzbl -0x28(%rbp),%eax
+  6b:	c1 e0 08             	shl    $0x8,%eax
+  6e:	89 c2                	mov    %eax,%edx
+  70:	0f b6 45 d8          	movzbl -0x28(%rbp),%eax
+  74:	89 d1                	mov    %edx,%ecx
+  76:	09 c1                	or     %eax,%ecx
+  78:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  7c:	48 8b 70 10          	mov    0x10(%rax),%rsi
+  80:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  83:	8d 50 01             	lea    0x1(%rax),%edx
+  86:	89 55 fc             	mov    %edx,-0x4(%rbp)
+  89:	89 c0                	mov    %eax,%eax
+  8b:	48 01 c0             	add    %rax,%rax
+  8e:	48 01 f0             	add    %rsi,%rax
+  91:	89 ca                	mov    %ecx,%edx
+  93:	66 89 10             	mov    %dx,(%rax)
+  96:	0f b6 45 dc          	movzbl -0x24(%rbp),%eax
+  9a:	c1 e0 08             	shl    $0x8,%eax
+  9d:	89 c2                	mov    %eax,%edx
+  9f:	0f b6 45 dc          	movzbl -0x24(%rbp),%eax
+  a3:	89 d1                	mov    %edx,%ecx
+  a5:	09 c1                	or     %eax,%ecx
+  a7:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  ab:	48 8b 70 10          	mov    0x10(%rax),%rsi
+  af:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  b2:	8d 50 01             	lea    0x1(%rax),%edx
+  b5:	89 55 fc             	mov    %edx,-0x4(%rbp)
+  b8:	89 c0                	mov    %eax,%eax
+  ba:	48 01 c0             	add    %rax,%rax
+  bd:	48 01 f0             	add    %rsi,%rax
+  c0:	89 ca                	mov    %ecx,%edx
+  c2:	66 89 10             	mov    %dx,(%rax)
+  c5:	0f b6 45 e0          	movzbl -0x20(%rbp),%eax
+  c9:	c1 e0 08             	shl    $0x8,%eax
+  cc:	89 c2                	mov    %eax,%edx
+  ce:	0f b6 45 e0          	movzbl -0x20(%rbp),%eax
+  d2:	09 c2                	or     %eax,%edx
+  d4:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  d8:	48 8b 48 10          	mov    0x10(%rax),%rcx
+  dc:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  df:	48 01 c0             	add    %rax,%rax
+  e2:	48 01 c8             	add    %rcx,%rax
+  e5:	66 89 10             	mov    %dx,(%rax)
+  e8:	eb 27                	jmp    111 <TLC59711::SetRgb(unsigned char, unsigned char, unsigned char, unsigned char)+0x111>
+  ea:	0f b6 4d e4          	movzbl -0x1c(%rbp),%ecx
+  ee:	8b 55 f8             	mov    -0x8(%rbp),%edx
+  f1:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  f5:	0f b6 00             	movzbl (%rax),%eax
+  f8:	0f b6 c0             	movzbl %al,%eax
+  fb:	89 c6                	mov    %eax,%esi
+  fd:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 104 <TLC59711::SetRgb(unsigned char, unsigned char, unsigned char, unsigned char)+0x104>
+ 104:	48 89 c7             	mov    %rax,%rdi
+ 107:	b8 00 00 00 00       	mov    $0x0,%eax
+ 10c:	e8 00 00 00 00       	call   111 <TLC59711::SetRgb(unsigned char, unsigned char, unsigned char, unsigned char)+0x111>
+ 111:	90                   	nop
+ 112:	c9                   	leave  
+ 113:	c3                   	ret    
+
+Disassembly of section .text._ZNK8TLC597118GetBlankEv:
+
+0000000000000000 <TLC59711::GetBlank() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 08             	mov    0x8(%rax),%eax
+  13:	25 00 00 20 00       	and    $0x200000,%eax
+  18:	85 c0                	test   %eax,%eax
+  1a:	0f 95 c0             	setne  %al
+  1d:	0f b6 c0             	movzbl %al,%eax
+  20:	5d                   	pop    %rbp
+  21:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597118SetBlankEb:
+
+0000000000000000 <TLC59711::SetBlank(bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	88 45 f4             	mov    %al,-0xc(%rbp)
+  15:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  19:	8b 40 08             	mov    0x8(%rax),%eax
+  1c:	25 ff ff df ff       	and    $0xffdfffff,%eax
+  21:	89 c2                	mov    %eax,%edx
+  23:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  27:	89 50 08             	mov    %edx,0x8(%rax)
+  2a:	80 7d f4 00          	cmpb   $0x0,-0xc(%rbp)
+  2e:	74 15                	je     45 <TLC59711::SetBlank(bool)+0x45>
+  30:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  34:	8b 40 08             	mov    0x8(%rax),%eax
+  37:	0d 00 00 20 00       	or     $0x200000,%eax
+  3c:	89 c2                	mov    %eax,%edx
+  3e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  42:	89 50 08             	mov    %edx,0x8(%rax)
+  45:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  49:	48 89 c7             	mov    %rax,%rdi
+  4c:	e8 00 00 00 00       	call   51 <TLC59711::SetBlank(bool)+0x51>
+  51:	90                   	nop
+  52:	c9                   	leave  
+  53:	c3                   	ret    
+
+Disassembly of section .text._ZNK8TLC5971116GetDisplayRepeatEv:
+
+0000000000000000 <TLC59711::GetDisplayRepeat() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 08             	mov    0x8(%rax),%eax
+  13:	25 00 00 40 00       	and    $0x400000,%eax
+  18:	85 c0                	test   %eax,%eax
+  1a:	0f 95 c0             	setne  %al
+  1d:	0f b6 c0             	movzbl %al,%eax
+  20:	5d                   	pop    %rbp
+  21:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC5971116SetDisplayRepeatEb:
+
+0000000000000000 <TLC59711::SetDisplayRepeat(bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	88 45 f4             	mov    %al,-0xc(%rbp)
+  15:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  19:	8b 40 08             	mov    0x8(%rax),%eax
+  1c:	25 ff ff bf ff       	and    $0xffbfffff,%eax
+  21:	89 c2                	mov    %eax,%edx
+  23:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  27:	89 50 08             	mov    %edx,0x8(%rax)
+  2a:	80 7d f4 00          	cmpb   $0x0,-0xc(%rbp)
+  2e:	74 15                	je     45 <TLC59711::SetDisplayRepeat(bool)+0x45>
+  30:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  34:	8b 40 08             	mov    0x8(%rax),%eax
+  37:	0d 00 00 40 00       	or     $0x400000,%eax
+  3c:	89 c2                	mov    %eax,%edx
+  3e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  42:	89 50 08             	mov    %edx,0x8(%rax)
+  45:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  49:	48 89 c7             	mov    %rax,%rdi
+  4c:	e8 00 00 00 00       	call   51 <TLC59711::SetDisplayRepeat(bool)+0x51>
+  51:	90                   	nop
+  52:	c9                   	leave  
+  53:	c3                   	ret    
+
+Disassembly of section .text._ZNK8TLC5971121GetDisplayTimingResetEv:
+
+0000000000000000 <TLC59711::GetDisplayTimingReset() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 08             	mov    0x8(%rax),%eax
+  13:	25 00 00 80 00       	and    $0x800000,%eax
+  18:	85 c0                	test   %eax,%eax
+  1a:	0f 95 c0             	setne  %al
+  1d:	0f b6 c0             	movzbl %al,%eax
+  20:	5d                   	pop    %rbp
+  21:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC5971121SetDisplayTimingResetEb:
+
+0000000000000000 <TLC59711::SetDisplayTimingReset(bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	88 45 f4             	mov    %al,-0xc(%rbp)
+  15:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  19:	8b 40 08             	mov    0x8(%rax),%eax
+  1c:	25 ff ff 7f ff       	and    $0xff7fffff,%eax
+  21:	89 c2                	mov    %eax,%edx
+  23:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  27:	89 50 08             	mov    %edx,0x8(%rax)
+  2a:	80 7d f4 00          	cmpb   $0x0,-0xc(%rbp)
+  2e:	74 15                	je     45 <TLC59711::SetDisplayTimingReset(bool)+0x45>
+  30:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  34:	8b 40 08             	mov    0x8(%rax),%eax
+  37:	0d 00 00 80 00       	or     $0x800000,%eax
+  3c:	89 c2                	mov    %eax,%edx
+  3e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  42:	89 50 08             	mov    %edx,0x8(%rax)
+  45:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  49:	48 89 c7             	mov    %rax,%rdi
+  4c:	e8 00 00 00 00       	call   51 <TLC59711::SetDisplayTimingReset(bool)+0x51>
+  51:	90                   	nop
+  52:	c9                   	leave  
+  53:	c3                   	ret    
+
+Disassembly of section .text._ZNK8TLC5971116GetExternalClockEv:
+
+0000000000000000 <TLC59711::GetExternalClock() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 08             	mov    0x8(%rax),%eax
+  13:	25 00 00 00 01       	and    $0x1000000,%eax
+  18:	85 c0                	test   %eax,%eax
+  1a:	0f 95 c0             	setne  %al
+  1d:	0f b6 c0             	movzbl %al,%eax
+  20:	5d                   	pop    %rbp
+  21:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC5971116SetExternalClockEb:
+
+0000000000000000 <TLC59711::SetExternalClock(bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	88 45 f4             	mov    %al,-0xc(%rbp)
+  15:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  19:	8b 40 08             	mov    0x8(%rax),%eax
+  1c:	25 ff ff ff fe       	and    $0xfeffffff,%eax
+  21:	89 c2                	mov    %eax,%edx
+  23:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  27:	89 50 08             	mov    %edx,0x8(%rax)
+  2a:	80 7d f4 00          	cmpb   $0x0,-0xc(%rbp)
+  2e:	74 15                	je     45 <TLC59711::SetExternalClock(bool)+0x45>
+  30:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  34:	8b 40 08             	mov    0x8(%rax),%eax
+  37:	0d 00 00 00 01       	or     $0x1000000,%eax
+  3c:	89 c2                	mov    %eax,%edx
+  3e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  42:	89 50 08             	mov    %edx,0x8(%rax)
+  45:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  49:	48 89 c7             	mov    %rax,%rdi
+  4c:	e8 00 00 00 00       	call   51 <TLC59711::SetExternalClock(bool)+0x51>
+  51:	90                   	nop
+  52:	c9                   	leave  
+  53:	c3                   	ret    
+
+Disassembly of section .text._ZNK8TLC5971114GetOnOffTimingEv:
+
+0000000000000000 <TLC59711::GetOnOffTiming() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 08             	mov    0x8(%rax),%eax
+  13:	25 00 00 00 02       	and    $0x2000000,%eax
+  18:	85 c0                	test   %eax,%eax
+  1a:	0f 95 c0             	setne  %al
+  1d:	0f b6 c0             	movzbl %al,%eax
+  20:	5d                   	pop    %rbp
+  21:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC5971114SetOnOffTimingEb:
+
+0000000000000000 <TLC59711::SetOnOffTiming(bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	88 45 f4             	mov    %al,-0xc(%rbp)
+  15:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  19:	8b 40 08             	mov    0x8(%rax),%eax
+  1c:	25 ff ff ff fd       	and    $0xfdffffff,%eax
+  21:	89 c2                	mov    %eax,%edx
+  23:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  27:	89 50 08             	mov    %edx,0x8(%rax)
+  2a:	80 7d f4 00          	cmpb   $0x0,-0xc(%rbp)
+  2e:	74 15                	je     45 <TLC59711::SetOnOffTiming(bool)+0x45>
+  30:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  34:	8b 40 08             	mov    0x8(%rax),%eax
+  37:	0d 00 00 00 02       	or     $0x2000000,%eax
+  3c:	89 c2                	mov    %eax,%edx
+  3e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  42:	89 50 08             	mov    %edx,0x8(%rax)
+  45:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  49:	48 89 c7             	mov    %rax,%rdi
+  4c:	e8 00 00 00 00       	call   51 <TLC59711::SetOnOffTiming(bool)+0x51>
+  51:	90                   	nop
+  52:	c9                   	leave  
+  53:	c3                   	ret    
+
+Disassembly of section .text._ZNK8TLC597119GetGbcRedEv:
+
+0000000000000000 <TLC59711::GetGbcRed() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 08             	mov    0x8(%rax),%eax
+  13:	83 e0 7f             	and    $0x7f,%eax
+  16:	5d                   	pop    %rbp
+  17:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597119SetGbcRedEh:
+
+0000000000000000 <TLC59711::SetGbcRed(unsigned char)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	88 45 f4             	mov    %al,-0xc(%rbp)
+  15:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  19:	8b 40 08             	mov    0x8(%rax),%eax
+  1c:	83 e0 80             	and    $0xffffff80,%eax
+  1f:	89 c2                	mov    %eax,%edx
+  21:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  25:	89 50 08             	mov    %edx,0x8(%rax)
+  28:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  2c:	8b 50 08             	mov    0x8(%rax),%edx
+  2f:	0f b6 45 f4          	movzbl -0xc(%rbp),%eax
+  33:	83 e0 7f             	and    $0x7f,%eax
+  36:	09 c2                	or     %eax,%edx
+  38:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  3c:	89 50 08             	mov    %edx,0x8(%rax)
+  3f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  43:	48 89 c7             	mov    %rax,%rdi
+  46:	e8 00 00 00 00       	call   4b <TLC59711::SetGbcRed(unsigned char)+0x4b>
+  4b:	90                   	nop
+  4c:	c9                   	leave  
+  4d:	c3                   	ret    
+
+Disassembly of section .text._ZNK8TLC5971111GetGbcGreenEv:
+
+0000000000000000 <TLC59711::GetGbcGreen() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 08             	mov    0x8(%rax),%eax
+  13:	c1 e8 07             	shr    $0x7,%eax
+  16:	83 e0 7f             	and    $0x7f,%eax
+  19:	5d                   	pop    %rbp
+  1a:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC5971111SetGbcGreenEh:
+
+0000000000000000 <TLC59711::SetGbcGreen(unsigned char)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	88 45 f4             	mov    %al,-0xc(%rbp)
+  15:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  19:	8b 40 08             	mov    0x8(%rax),%eax
+  1c:	25 7f c0 ff ff       	and    $0xffffc07f,%eax
+  21:	89 c2                	mov    %eax,%edx
+  23:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  27:	89 50 08             	mov    %edx,0x8(%rax)
+  2a:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  2e:	8b 50 08             	mov    0x8(%rax),%edx
+  31:	0f b6 45 f4          	movzbl -0xc(%rbp),%eax
+  35:	c1 e0 07             	shl    $0x7,%eax
+  38:	25 80 3f 00 00       	and    $0x3f80,%eax
+  3d:	09 c2                	or     %eax,%edx
+  3f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  43:	89 50 08             	mov    %edx,0x8(%rax)
+  46:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  4a:	48 89 c7             	mov    %rax,%rdi
+  4d:	e8 00 00 00 00       	call   52 <TLC59711::SetGbcGreen(unsigned char)+0x52>
+  52:	90                   	nop
+  53:	c9                   	leave  
+  54:	c3                   	ret    
+
+Disassembly of section .text._ZNK8TLC5971110GetGbcBlueEv:
+
+0000000000000000 <TLC59711::GetGbcBlue() const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	8b 40 08             	mov    0x8(%rax),%eax
+  13:	c1 e8 0e             	shr    $0xe,%eax
+  16:	83 e0 7f             	and    $0x7f,%eax
+  19:	5d                   	pop    %rbp
+  1a:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC5971110SetGbcBlueEh:
+
+0000000000000000 <TLC59711::SetGbcBlue(unsigned char)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	88 45 f4             	mov    %al,-0xc(%rbp)
+  15:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  19:	8b 40 08             	mov    0x8(%rax),%eax
+  1c:	25 ff 3f e0 ff       	and    $0xffe03fff,%eax
+  21:	89 c2                	mov    %eax,%edx
+  23:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  27:	89 50 08             	mov    %edx,0x8(%rax)
+  2a:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  2e:	8b 50 08             	mov    0x8(%rax),%edx
+  31:	0f b6 45 f4          	movzbl -0xc(%rbp),%eax
+  35:	c1 e0 0e             	shl    $0xe,%eax
+  38:	25 00 c0 1f 00       	and    $0x1fc000,%eax
+  3d:	09 c2                	or     %eax,%edx
+  3f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  43:	89 50 08             	mov    %edx,0x8(%rax)
+  46:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  4a:	48 89 c7             	mov    %rax,%rdi
+  4d:	e8 00 00 00 00       	call   52 <TLC59711::SetGbcBlue(unsigned char)+0x52>
+  52:	90                   	nop
+  53:	c9                   	leave  
+  54:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC5971113UpdateFirst32Ev:
+
+0000000000000000 <TLC59711::UpdateFirst32()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+   c:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+  13:	eb 59                	jmp    6e <TLC59711::UpdateFirst32()+0x6e>
+  15:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  18:	6b c0 0e             	imul   $0xe,%eax,%eax
+  1b:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  1e:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  22:	8b 40 08             	mov    0x8(%rax),%eax
+  25:	c1 e8 10             	shr    $0x10,%eax
+  28:	0f b7 d0             	movzwl %ax,%edx
+  2b:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  2f:	48 8b 48 10          	mov    0x10(%rax),%rcx
+  33:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  36:	48 01 c0             	add    %rax,%rax
+  39:	48 01 c8             	add    %rcx,%rax
+  3c:	66 c1 c2 08          	rol    $0x8,%dx
+  40:	66 89 10             	mov    %dx,(%rax)
+  43:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  47:	8b 40 08             	mov    0x8(%rax),%eax
+  4a:	0f b7 d0             	movzwl %ax,%edx
+  4d:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  51:	48 8b 48 10          	mov    0x10(%rax),%rcx
+  55:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  58:	83 c0 01             	add    $0x1,%eax
+  5b:	89 c0                	mov    %eax,%eax
+  5d:	48 01 c0             	add    %rax,%rax
+  60:	48 01 c8             	add    %rcx,%rax
+  63:	66 c1 c2 08          	rol    $0x8,%dx
+  67:	66 89 10             	mov    %dx,(%rax)
+  6a:	83 45 f8 01          	addl   $0x1,-0x8(%rbp)
+  6e:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  72:	0f b6 00             	movzbl (%rax),%eax
+  75:	0f b6 c0             	movzbl %al,%eax
+  78:	39 45 f8             	cmp    %eax,-0x8(%rbp)
+  7b:	72 98                	jb     15 <TLC59711::UpdateFirst32()+0x15>
+  7d:	90                   	nop
+  7e:	90                   	nop
+  7f:	5d                   	pop    %rbp
+  80:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597114DumpEv:
+
+0000000000000000 <TLC59711::Dump()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+  10:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  17:	00 00 
+  19:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  1d:	31 c0                	xor    %eax,%eax
+  1f:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  23:	8b 40 08             	mov    0x8(%rax),%eax
+  26:	c1 e8 1a             	shr    $0x1a,%eax
+  29:	89 c6                	mov    %eax,%esi
+  2b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 32 <TLC59711::Dump()+0x32>
+  32:	48 89 c7             	mov    %rax,%rdi
+  35:	b8 00 00 00 00       	mov    $0x0,%eax
+  3a:	e8 00 00 00 00       	call   3f <TLC59711::Dump()+0x3f>
+  3f:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  43:	48 89 c7             	mov    %rax,%rdi
+  46:	e8 00 00 00 00       	call   4b <TLC59711::Dump()+0x4b>
+  4b:	ba 00 00 00 00       	mov    $0x0,%edx
+  50:	89 c6                	mov    %eax,%esi
+  52:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 59 <TLC59711::Dump()+0x59>
+  59:	48 89 c7             	mov    %rax,%rdi
+  5c:	b8 00 00 00 00       	mov    $0x0,%eax
+  61:	e8 00 00 00 00       	call   66 <TLC59711::Dump()+0x66>
+  66:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  6a:	48 89 c7             	mov    %rax,%rdi
+  6d:	e8 00 00 00 00       	call   72 <TLC59711::Dump()+0x72>
+  72:	ba 00 00 00 00       	mov    $0x0,%edx
+  77:	89 c6                	mov    %eax,%esi
+  79:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 80 <TLC59711::Dump()+0x80>
+  80:	48 89 c7             	mov    %rax,%rdi
+  83:	b8 00 00 00 00       	mov    $0x0,%eax
+  88:	e8 00 00 00 00       	call   8d <TLC59711::Dump()+0x8d>
+  8d:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  91:	48 89 c7             	mov    %rax,%rdi
+  94:	e8 00 00 00 00       	call   99 <TLC59711::Dump()+0x99>
+  99:	ba 01 00 00 00       	mov    $0x1,%edx
+  9e:	89 c6                	mov    %eax,%esi
+  a0:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # a7 <TLC59711::Dump()+0xa7>
+  a7:	48 89 c7             	mov    %rax,%rdi
+  aa:	b8 00 00 00 00       	mov    $0x0,%eax
+  af:	e8 00 00 00 00       	call   b4 <TLC59711::Dump()+0xb4>
+  b4:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  b8:	48 89 c7             	mov    %rax,%rdi
+  bb:	e8 00 00 00 00       	call   c0 <TLC59711::Dump()+0xc0>
+  c0:	ba 01 00 00 00       	mov    $0x1,%edx
+  c5:	89 c6                	mov    %eax,%esi
+  c7:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # ce <TLC59711::Dump()+0xce>
+  ce:	48 89 c7             	mov    %rax,%rdi
+  d1:	b8 00 00 00 00       	mov    $0x0,%eax
+  d6:	e8 00 00 00 00       	call   db <TLC59711::Dump()+0xdb>
+  db:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  df:	48 89 c7             	mov    %rax,%rdi
+  e2:	e8 00 00 00 00       	call   e7 <TLC59711::Dump()+0xe7>
+  e7:	ba 00 00 00 00       	mov    $0x0,%edx
+  ec:	89 c6                	mov    %eax,%esi
+  ee:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # f5 <TLC59711::Dump()+0xf5>
+  f5:	48 89 c7             	mov    %rax,%rdi
+  f8:	b8 00 00 00 00       	mov    $0x0,%eax
+  fd:	e8 00 00 00 00       	call   102 <TLC59711::Dump()+0x102>
+ 102:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 109 <TLC59711::Dump()+0x109>
+ 109:	48 89 c7             	mov    %rax,%rdi
+ 10c:	e8 00 00 00 00       	call   111 <TLC59711::Dump()+0x111>
+ 111:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 115:	48 89 c7             	mov    %rax,%rdi
+ 118:	e8 00 00 00 00       	call   11d <TLC59711::Dump()+0x11d>
+ 11d:	0f b6 c0             	movzbl %al,%eax
+ 120:	ba 7f 00 00 00       	mov    $0x7f,%edx
+ 125:	89 c6                	mov    %eax,%esi
+ 127:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 12e <TLC59711::Dump()+0x12e>
+ 12e:	48 89 c7             	mov    %rax,%rdi
+ 131:	b8 00 00 00 00       	mov    $0x0,%eax
+ 136:	e8 00 00 00 00       	call   13b <TLC59711::Dump()+0x13b>
+ 13b:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 13f:	48 89 c7             	mov    %rax,%rdi
+ 142:	e8 00 00 00 00       	call   147 <TLC59711::Dump()+0x147>
+ 147:	0f b6 c0             	movzbl %al,%eax
+ 14a:	ba 7f 00 00 00       	mov    $0x7f,%edx
+ 14f:	89 c6                	mov    %eax,%esi
+ 151:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 158 <TLC59711::Dump()+0x158>
+ 158:	48 89 c7             	mov    %rax,%rdi
+ 15b:	b8 00 00 00 00       	mov    $0x0,%eax
+ 160:	e8 00 00 00 00       	call   165 <TLC59711::Dump()+0x165>
+ 165:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 169:	48 89 c7             	mov    %rax,%rdi
+ 16c:	e8 00 00 00 00       	call   171 <TLC59711::Dump()+0x171>
+ 171:	0f b6 c0             	movzbl %al,%eax
+ 174:	ba 7f 00 00 00       	mov    $0x7f,%edx
+ 179:	89 c6                	mov    %eax,%esi
+ 17b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 182 <TLC59711::Dump()+0x182>
+ 182:	48 89 c7             	mov    %rax,%rdi
+ 185:	b8 00 00 00 00       	mov    $0x0,%eax
+ 18a:	e8 00 00 00 00       	call   18f <TLC59711::Dump()+0x18f>
+ 18f:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 193:	0f b6 00             	movzbl (%rax),%eax
+ 196:	0f b6 c0             	movzbl %al,%eax
+ 199:	89 c6                	mov    %eax,%esi
+ 19b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 1a2 <TLC59711::Dump()+0x1a2>
+ 1a2:	48 89 c7             	mov    %rax,%rdi
+ 1a5:	b8 00 00 00 00       	mov    $0x0,%eax
+ 1aa:	e8 00 00 00 00       	call   1af <TLC59711::Dump()+0x1af>
+ 1af:	c6 45 e5 00          	movb   $0x0,-0x1b(%rbp)
+ 1b3:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+ 1ba:	e9 88 00 00 00       	jmp    247 <TLC59711::Dump()+0x247>
+ 1bf:	c7 45 f0 00 00 00 00 	movl   $0x0,-0x10(%rbp)
+ 1c6:	eb 75                	jmp    23d <TLC59711::Dump()+0x23d>
+ 1c8:	66 c7 45 e6 00 00    	movw   $0x0,-0x1a(%rbp)
+ 1ce:	66 c7 45 e8 00 00    	movw   $0x0,-0x18(%rbp)
+ 1d4:	66 c7 45 ea 00 00    	movw   $0x0,-0x16(%rbp)
+ 1da:	0f b6 75 e5          	movzbl -0x1b(%rbp),%esi
+ 1de:	48 8d 7d ea          	lea    -0x16(%rbp),%rdi
+ 1e2:	48 8d 4d e8          	lea    -0x18(%rbp),%rcx
+ 1e6:	48 8d 55 e6          	lea    -0x1a(%rbp),%rdx
+ 1ea:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 1ee:	49 89 f8             	mov    %rdi,%r8
+ 1f1:	48 89 c7             	mov    %rax,%rdi
+ 1f4:	e8 00 00 00 00       	call   1f9 <TLC59711::Dump()+0x1f9>
+ 1f9:	84 c0                	test   %al,%al
+ 1fb:	74 32                	je     22f <TLC59711::Dump()+0x22f>
+ 1fd:	0f b7 45 ea          	movzwl -0x16(%rbp),%eax
+ 201:	0f b7 f0             	movzwl %ax,%esi
+ 204:	0f b7 45 e8          	movzwl -0x18(%rbp),%eax
+ 208:	0f b7 c8             	movzwl %ax,%ecx
+ 20b:	0f b7 45 e6          	movzwl -0x1a(%rbp),%eax
+ 20f:	0f b7 d0             	movzwl %ax,%edx
+ 212:	0f b6 45 e5          	movzbl -0x1b(%rbp),%eax
+ 216:	41 89 f0             	mov    %esi,%r8d
+ 219:	89 c6                	mov    %eax,%esi
+ 21b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 222 <TLC59711::Dump()+0x222>
+ 222:	48 89 c7             	mov    %rax,%rdi
+ 225:	b8 00 00 00 00       	mov    $0x0,%eax
+ 22a:	e8 00 00 00 00       	call   22f <TLC59711::Dump()+0x22f>
+ 22f:	0f b6 45 e5          	movzbl -0x1b(%rbp),%eax
+ 233:	83 c0 01             	add    $0x1,%eax
+ 236:	88 45 e5             	mov    %al,-0x1b(%rbp)
+ 239:	83 45 f0 01          	addl   $0x1,-0x10(%rbp)
+ 23d:	83 7d f0 03          	cmpl   $0x3,-0x10(%rbp)
+ 241:	76 85                	jbe    1c8 <TLC59711::Dump()+0x1c8>
+ 243:	83 45 ec 01          	addl   $0x1,-0x14(%rbp)
+ 247:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 24b:	0f b6 00             	movzbl (%rax),%eax
+ 24e:	0f b6 c0             	movzbl %al,%eax
+ 251:	39 45 ec             	cmp    %eax,-0x14(%rbp)
+ 254:	0f 82 65 ff ff ff    	jb     1bf <TLC59711::Dump()+0x1bf>
+ 25a:	bf 0a 00 00 00       	mov    $0xa,%edi
+ 25f:	e8 00 00 00 00       	call   264 <TLC59711::Dump()+0x264>
+ 264:	c7 45 f4 00 00 00 00 	movl   $0x0,-0xc(%rbp)
+ 26b:	eb 43                	jmp    2b0 <TLC59711::Dump()+0x2b0>
+ 26d:	66 c7 45 ea 00 00    	movw   $0x0,-0x16(%rbp)
+ 273:	48 8d 55 ea          	lea    -0x16(%rbp),%rdx
+ 277:	8b 4d f4             	mov    -0xc(%rbp),%ecx
+ 27a:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 27e:	89 ce                	mov    %ecx,%esi
+ 280:	48 89 c7             	mov    %rax,%rdi
+ 283:	e8 00 00 00 00       	call   288 <TLC59711::Dump()+0x288>
+ 288:	84 c0                	test   %al,%al
+ 28a:	74 20                	je     2ac <TLC59711::Dump()+0x2ac>
+ 28c:	0f b7 45 ea          	movzwl -0x16(%rbp),%eax
+ 290:	0f b7 d0             	movzwl %ax,%edx
+ 293:	8b 45 f4             	mov    -0xc(%rbp),%eax
+ 296:	89 c6                	mov    %eax,%esi
+ 298:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 29f <TLC59711::Dump()+0x29f>
+ 29f:	48 89 c7             	mov    %rax,%rdi
+ 2a2:	b8 00 00 00 00       	mov    $0x0,%eax
+ 2a7:	e8 00 00 00 00       	call   2ac <TLC59711::Dump()+0x2ac>
+ 2ac:	83 45 f4 01          	addl   $0x1,-0xc(%rbp)
+ 2b0:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+ 2b4:	0f b6 00             	movzbl (%rax),%eax
+ 2b7:	0f b6 d0             	movzbl %al,%edx
+ 2ba:	89 d0                	mov    %edx,%eax
+ 2bc:	01 c0                	add    %eax,%eax
+ 2be:	01 d0                	add    %edx,%eax
+ 2c0:	c1 e0 02             	shl    $0x2,%eax
+ 2c3:	39 45 f4             	cmp    %eax,-0xc(%rbp)
+ 2c6:	72 a5                	jb     26d <TLC59711::Dump()+0x26d>
+ 2c8:	bf 0a 00 00 00       	mov    $0xa,%edi
+ 2cd:	e8 00 00 00 00       	call   2d2 <TLC59711::Dump()+0x2d2>
+ 2d2:	90                   	nop
+ 2d3:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 2d7:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 2de:	00 00 
+ 2e0:	74 05                	je     2e7 <TLC59711::Dump()+0x2e7>
+ 2e2:	e8 00 00 00 00       	call   2e7 <TLC59711::Dump()+0x2e7>
+ 2e7:	c9                   	leave  
+ 2e8:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597116UpdateEv:
+
+0000000000000000 <TLC59711::Update()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  14:	48 8b 40 10          	mov    0x10(%rax),%rax
+  18:	48 85 c0             	test   %rax,%rax
+  1b:	75 28                	jne    45 <TLC59711::Update()+0x45>
+  1d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 24 <TLC59711::Update()+0x24>
+  24:	48 89 c1             	mov    %rax,%rcx
+  27:	ba 61 01 00 00       	mov    $0x161,%edx
+  2c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 33 <TLC59711::Update()+0x33>
+  33:	48 89 c6             	mov    %rax,%rsi
+  36:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 3d <TLC59711::Update()+0x3d>
+  3d:	48 89 c7             	mov    %rax,%rdi
+  40:	e8 00 00 00 00       	call   45 <TLC59711::Update()+0x45>
+  45:	bf 00 00 00 00       	mov    $0x0,%edi
+  4a:	e8 00 00 00 00       	call   4f <TLC59711::Update()+0x4f>
+  4f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  53:	8b 40 04             	mov    0x4(%rax),%eax
+  56:	89 c7                	mov    %eax,%edi
+  58:	e8 00 00 00 00       	call   5d <TLC59711::Update()+0x5d>
+  5d:	bf 00 00 00 00       	mov    $0x0,%edi
+  62:	e8 00 00 00 00       	call   67 <TLC59711::Update()+0x67>
+  67:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  6b:	8b 40 20             	mov    0x20(%rax),%eax
+  6e:	8d 14 00             	lea    (%rax,%rax,1),%edx
+  71:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  75:	48 8b 40 10          	mov    0x10(%rax),%rax
+  79:	89 d6                	mov    %edx,%esi
+  7b:	48 89 c7             	mov    %rax,%rdi
+  7e:	e8 00 00 00 00       	call   83 <TLC59711::Update()+0x83>
+  83:	90                   	nop
+  84:	c9                   	leave  
+  85:	c3                   	ret    
+
+Disassembly of section .text._ZN8TLC597118BlackoutEv:
+
+0000000000000000 <TLC59711::Blackout()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  14:	48 8b 40 18          	mov    0x18(%rax),%rax
+  18:	48 85 c0             	test   %rax,%rax
+  1b:	75 28                	jne    45 <TLC59711::Blackout()+0x45>
+  1d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 24 <TLC59711::Blackout()+0x24>
+  24:	48 89 c1             	mov    %rax,%rcx
+  27:	ba 6a 01 00 00       	mov    $0x16a,%edx
+  2c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 33 <TLC59711::Blackout()+0x33>
+  33:	48 89 c6             	mov    %rax,%rsi
+  36:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 3d <TLC59711::Blackout()+0x3d>
+  3d:	48 89 c7             	mov    %rax,%rdi
+  40:	e8 00 00 00 00       	call   45 <TLC59711::Blackout()+0x45>
+  45:	bf 00 00 00 00       	mov    $0x0,%edi
+  4a:	e8 00 00 00 00       	call   4f <TLC59711::Blackout()+0x4f>
+  4f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  53:	8b 40 04             	mov    0x4(%rax),%eax
+  56:	89 c7                	mov    %eax,%edi
+  58:	e8 00 00 00 00       	call   5d <TLC59711::Blackout()+0x5d>
+  5d:	bf 00 00 00 00       	mov    $0x0,%edi
+  62:	e8 00 00 00 00       	call   67 <TLC59711::Blackout()+0x67>
+  67:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  6b:	8b 40 20             	mov    0x20(%rax),%eax
+  6e:	8d 14 00             	lea    (%rax,%rax,1),%edx
+  71:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  75:	48 8b 40 18          	mov    0x18(%rax),%rax
+  79:	89 d6                	mov    %edx,%esi
+  7b:	48 89 c7             	mov    %rax,%rdi
+  7e:	e8 00 00 00 00       	call   83 <TLC59711::Blackout()+0x83>
+  83:	90                   	nop
+  84:	c9                   	leave  
+  85:	c3                   	ret    

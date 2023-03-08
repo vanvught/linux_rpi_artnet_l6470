@@ -1,0 +1,7 @@
+DEFINES=CONFIG_DISPLAY_ENABLE_CURSOR_MODE
+#DEFINES+=NDEBUG
+
+EXTRA_INCLUDES=../lib-hal/include
+
+include Rules.mk
+include ../firmware-template-linux/lib/Rules.mk

@@ -1,0 +1,2170 @@
+In archive lib_linux/libhal.a:
+
+console_status.o:     file format elf64-x86-64
+
+
+Disassembly of section .text.console_status:
+
+0000000000000000 <console_status>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	89 7d fc             	mov    %edi,-0x4(%rbp)
+   f:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  13:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  17:	48 89 c7             	mov    %rax,%rdi
+  1a:	e8 00 00 00 00       	call   1f <console_status+0x1f>
+  1f:	90                   	nop
+  20:	c9                   	leave  
+  21:	c3                   	ret    
+
+firmwareversion.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZN8Hardware3GetEv:
+
+0000000000000000 <Hardware::Get()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # b <Hardware::Get()+0xb>
+   b:	c3                   	ret    
+
+Disassembly of section .text._ZN15FirmwareVersionC2EPKcS1_S1_:
+
+0000000000000000 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 f0             	mov    %rsi,%rax
+   8:	48 89 d6             	mov    %rdx,%rsi
+   b:	48 89 ca             	mov    %rcx,%rdx
+   e:	53                   	push   %rbx
+   f:	48 83 ec 18          	sub    $0x18,%rsp
+  13:	64 48 8b 0c 25 28 00 	mov    %fs:0x28,%rcx
+  1a:	00 00 
+  1c:	48 89 4c 24 08       	mov    %rcx,0x8(%rsp)
+  21:	31 c9                	xor    %ecx,%ecx
+  23:	48 85 c0             	test   %rax,%rax
+  26:	75 1c                	jne    44 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x44>
+  28:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 2f <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x2f>
+  2f:	ba 2d 00 00 00       	mov    $0x2d,%edx
+  34:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 3b <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x3b>
+  3b:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 42 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x42>
+  42:	eb 1f                	jmp    63 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x63>
+  44:	48 85 f6             	test   %rsi,%rsi
+  47:	75 1f                	jne    68 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x68>
+  49:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 50 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x50>
+  50:	ba 2e 00 00 00       	mov    $0x2e,%edx
+  55:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 5c <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x5c>
+  5c:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 63 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x63>
+  63:	e8 00 00 00 00       	call   68 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x68>
+  68:	48 85 d2             	test   %rdx,%rdx
+  6b:	75 1c                	jne    89 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x89>
+  6d:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 74 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x74>
+  74:	ba 2f 00 00 00       	mov    $0x2f,%edx
+  79:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 80 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x80>
+  80:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 87 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x87>
+  87:	eb da                	jmp    63 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x63>
+  89:	48 83 3d 00 00 00 00 	cmpq   $0x0,0x0(%rip)        # 91 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x91>
+  90:	00 
+  91:	74 1c                	je     af <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0xaf>
+  93:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 9a <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x9a>
+  9a:	ba 31 00 00 00       	mov    $0x31,%edx
+  9f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # a6 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0xa6>
+  a6:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # ad <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0xad>
+  ad:	eb b4                	jmp    63 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x63>
+  af:	48 89 3d 00 00 00 00 	mov    %rdi,0x0(%rip)        # b6 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0xb6>
+  b6:	66 8b 08             	mov    (%rax),%cx
+  b9:	48 8d 1d 00 00 00 00 	lea    0x0(%rip),%rbx        # c0 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0xc0>
+  c0:	48 89 df             	mov    %rbx,%rdi
+  c3:	66 89 0d 00 00 00 00 	mov    %cx,0x0(%rip)        # ca <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0xca>
+  ca:	8a 40 02             	mov    0x2(%rax),%al
+  cd:	b9 0b 00 00 00       	mov    $0xb,%ecx
+  d2:	88 05 00 00 00 00    	mov    %al,0x0(%rip)        # d8 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0xd8>
+  d8:	f3 a4                	rep movsb %ds:(%rsi),%es:(%rdi)
+  da:	48 8b 02             	mov    (%rdx),%rax
+  dd:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # e4 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0xe4>
+  e4:	48 89 fd             	mov    %rdi,%rbp
+  e7:	e8 00 00 00 00       	call   ec <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0xec>
+  ec:	48 8d 74 24 07       	lea    0x7(%rsp),%rsi
+  f1:	48 89 c7             	mov    %rax,%rdi
+  f4:	e8 00 00 00 00       	call   f9 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0xf9>
+  f9:	55                   	push   %rbp
+  fa:	4c 8d 43 fd          	lea    -0x3(%rbx),%r8
+  fe:	b9 03 00 00 00       	mov    $0x3,%ecx
+ 103:	6a 08                	push   $0x8
+ 105:	49 89 c1             	mov    %rax,%r9
+ 108:	31 c0                	xor    %eax,%eax
+ 10a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 111 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x111>
+ 111:	53                   	push   %rbx
+ 112:	be 3f 00 00 00       	mov    $0x3f,%esi
+ 117:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 11e <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x11e>
+ 11e:	6a 0b                	push   $0xb
+ 120:	e8 00 00 00 00       	call   125 <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x125>
+ 125:	48 83 c4 20          	add    $0x20,%rsp
+ 129:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+ 12e:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 135:	00 00 
+ 137:	74 05                	je     13e <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x13e>
+ 139:	e8 00 00 00 00       	call   13e <FirmwareVersion::FirmwareVersion(char const*, char const*, char const*)+0x13e>
+ 13e:	48 83 c4 18          	add    $0x18,%rsp
+ 142:	5b                   	pop    %rbx
+ 143:	5d                   	pop    %rbp
+ 144:	c3                   	ret    
+
+hardware.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZN8Hardware12SetFrequencyEj:
+
+0000000000000000 <Hardware::SetFrequency(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 75 f4             	mov    %esi,-0xc(%rbp)
+  13:	83 7d f4 00          	cmpl   $0x0,-0xc(%rbp)
+  17:	75 13                	jne    2c <Hardware::SetFrequency(unsigned int)+0x2c>
+  19:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  1d:	be 00 00 00 00       	mov    $0x0,%esi
+  22:	48 89 c7             	mov    %rax,%rdi
+  25:	e8 00 00 00 00       	call   2a <Hardware::SetFrequency(unsigned int)+0x2a>
+  2a:	eb 43                	jmp    6f <Hardware::SetFrequency(unsigned int)+0x6f>
+  2c:	83 7d f4 14          	cmpl   $0x14,-0xc(%rbp)
+  30:	76 13                	jbe    45 <Hardware::SetFrequency(unsigned int)+0x45>
+  32:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  36:	be 01 00 00 00       	mov    $0x1,%esi
+  3b:	48 89 c7             	mov    %rax,%rdi
+  3e:	e8 00 00 00 00       	call   43 <Hardware::SetFrequency(unsigned int)+0x43>
+  43:	eb 2a                	jmp    6f <Hardware::SetFrequency(unsigned int)+0x6f>
+  45:	83 7d f4 01          	cmpl   $0x1,-0xc(%rbp)
+  49:	76 13                	jbe    5e <Hardware::SetFrequency(unsigned int)+0x5e>
+  4b:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  4f:	be 02 00 00 00       	mov    $0x2,%esi
+  54:	48 89 c7             	mov    %rax,%rdi
+  57:	e8 00 00 00 00       	call   5c <Hardware::SetFrequency(unsigned int)+0x5c>
+  5c:	eb 11                	jmp    6f <Hardware::SetFrequency(unsigned int)+0x6f>
+  5e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  62:	be 03 00 00 00       	mov    $0x3,%esi
+  67:	48 89 c7             	mov    %rax,%rdi
+  6a:	e8 00 00 00 00       	call   6f <Hardware::SetFrequency(unsigned int)+0x6f>
+  6f:	90                   	nop
+  70:	c9                   	leave  
+  71:	c3                   	ret    
+
+Disassembly of section .text._ZN8hardware8ledblink7displayEj:
+
+0000000000000000 <hardware::ledblink::display(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	89 7d fc             	mov    %edi,-0x4(%rbp)
+   b:	90                   	nop
+   c:	5d                   	pop    %rbp
+   d:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware15SetModeWithLockEN8hardware8ledblink4ModeEb:
+
+0000000000000000 <Hardware::SetModeWithLock(hardware::ledblink::Mode, bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 75 f4             	mov    %esi,-0xc(%rbp)
+  13:	89 d0                	mov    %edx,%eax
+  15:	88 45 f0             	mov    %al,-0x10(%rbp)
+  18:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  1c:	c6 80 54 02 00 00 00 	movb   $0x0,0x254(%rax)
+  23:	8b 55 f4             	mov    -0xc(%rbp),%edx
+  26:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  2a:	89 d6                	mov    %edx,%esi
+  2c:	48 89 c7             	mov    %rax,%rdi
+  2f:	e8 00 00 00 00       	call   34 <Hardware::SetModeWithLock(hardware::ledblink::Mode, bool)+0x34>
+  34:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  38:	0f b6 55 f0          	movzbl -0x10(%rbp),%edx
+  3c:	88 90 54 02 00 00    	mov    %dl,0x254(%rax)
+  42:	90                   	nop
+  43:	c9                   	leave  
+  44:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware7SetModeEN8hardware8ledblink4ModeE:
+
+0000000000000000 <Hardware::SetMode(hardware::ledblink::Mode)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 75 f4             	mov    %esi,-0xc(%rbp)
+  13:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  17:	0f b6 80 54 02 00 00 	movzbl 0x254(%rax),%eax
+  1e:	84 c0                	test   %al,%al
+  20:	0f 85 2c 01 00 00    	jne    152 <Hardware::SetMode(hardware::ledblink::Mode)+0x152>
+  26:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  2a:	8b 80 50 02 00 00    	mov    0x250(%rax),%eax
+  30:	39 45 f4             	cmp    %eax,-0xc(%rbp)
+  33:	0f 84 19 01 00 00    	je     152 <Hardware::SetMode(hardware::ledblink::Mode)+0x152>
+  39:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  3d:	8b 55 f4             	mov    -0xc(%rbp),%edx
+  40:	89 90 50 02 00 00    	mov    %edx,0x250(%rax)
+  46:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  4a:	8b 80 50 02 00 00    	mov    0x250(%rax),%eax
+  50:	83 f8 05             	cmp    $0x5,%eax
+  53:	0f 87 95 00 00 00    	ja     ee <Hardware::SetMode(hardware::ledblink::Mode)+0xee>
+  59:	89 c0                	mov    %eax,%eax
+  5b:	48 8d 14 85 00 00 00 	lea    0x0(,%rax,4),%rdx
+  62:	00 
+  63:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 6a <Hardware::SetMode(hardware::ledblink::Mode)+0x6a>
+  6a:	8b 04 02             	mov    (%rdx,%rax,1),%eax
+  6d:	48 98                	cltq   
+  6f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 76 <Hardware::SetMode(hardware::ledblink::Mode)+0x76>
+  76:	48 01 d0             	add    %rdx,%rax
+  79:	3e ff e0             	notrack jmp *%rax
+  7c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  80:	be 00 00 00 00       	mov    $0x0,%esi
+  85:	48 89 c7             	mov    %rax,%rdi
+  88:	e8 00 00 00 00       	call   8d <Hardware::SetMode(hardware::ledblink::Mode)+0x8d>
+  8d:	eb 71                	jmp    100 <Hardware::SetMode(hardware::ledblink::Mode)+0x100>
+  8f:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  93:	be ff 00 00 00       	mov    $0xff,%esi
+  98:	48 89 c7             	mov    %rax,%rdi
+  9b:	e8 00 00 00 00       	call   a0 <Hardware::SetMode(hardware::ledblink::Mode)+0xa0>
+  a0:	eb 5e                	jmp    100 <Hardware::SetMode(hardware::ledblink::Mode)+0x100>
+  a2:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  a6:	be 01 00 00 00       	mov    $0x1,%esi
+  ab:	48 89 c7             	mov    %rax,%rdi
+  ae:	e8 00 00 00 00       	call   b3 <Hardware::SetMode(hardware::ledblink::Mode)+0xb3>
+  b3:	eb 4b                	jmp    100 <Hardware::SetMode(hardware::ledblink::Mode)+0x100>
+  b5:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  b9:	be 03 00 00 00       	mov    $0x3,%esi
+  be:	48 89 c7             	mov    %rax,%rdi
+  c1:	e8 00 00 00 00       	call   c6 <Hardware::SetMode(hardware::ledblink::Mode)+0xc6>
+  c6:	eb 38                	jmp    100 <Hardware::SetMode(hardware::ledblink::Mode)+0x100>
+  c8:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  cc:	be 05 00 00 00       	mov    $0x5,%esi
+  d1:	48 89 c7             	mov    %rax,%rdi
+  d4:	e8 00 00 00 00       	call   d9 <Hardware::SetMode(hardware::ledblink::Mode)+0xd9>
+  d9:	eb 25                	jmp    100 <Hardware::SetMode(hardware::ledblink::Mode)+0x100>
+  db:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  df:	be 08 00 00 00       	mov    $0x8,%esi
+  e4:	48 89 c7             	mov    %rax,%rdi
+  e7:	e8 00 00 00 00       	call   ec <Hardware::SetMode(hardware::ledblink::Mode)+0xec>
+  ec:	eb 12                	jmp    100 <Hardware::SetMode(hardware::ledblink::Mode)+0x100>
+  ee:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  f2:	be 00 00 00 00       	mov    $0x0,%esi
+  f7:	48 89 c7             	mov    %rax,%rdi
+  fa:	e8 00 00 00 00       	call   ff <Hardware::SetMode(hardware::ledblink::Mode)+0xff>
+  ff:	90                   	nop
+ 100:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 104:	8b 80 50 02 00 00    	mov    0x250(%rax),%eax
+ 10a:	89 c7                	mov    %eax,%edi
+ 10c:	e8 00 00 00 00       	call   111 <Hardware::SetMode(hardware::ledblink::Mode)+0x111>
+ 111:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 115:	8b 90 50 02 00 00    	mov    0x250(%rax),%edx
+ 11b:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 122 <Hardware::SetMode(hardware::ledblink::Mode)+0x122>
+ 122:	41 89 d1             	mov    %edx,%r9d
+ 125:	41 b8 50 00 00 00    	mov    $0x50,%r8d
+ 12b:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 132 <Hardware::SetMode(hardware::ledblink::Mode)+0x132>
+ 132:	48 89 d1             	mov    %rdx,%rcx
+ 135:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 13c <Hardware::SetMode(hardware::ledblink::Mode)+0x13c>
+ 13c:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 143 <Hardware::SetMode(hardware::ledblink::Mode)+0x143>
+ 143:	48 89 c7             	mov    %rax,%rdi
+ 146:	b8 00 00 00 00       	mov    $0x0,%eax
+ 14b:	e8 00 00 00 00       	call   150 <Hardware::SetMode(hardware::ledblink::Mode)+0x150>
+ 150:	eb 01                	jmp    153 <Hardware::SetMode(hardware::ledblink::Mode)+0x153>
+ 152:	90                   	nop
+ 153:	c9                   	leave  
+ 154:	c3                   	ret    
+
+utc.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZN3Utc8ValidateEf:
+
+0000000000000000 <Utc::Validate(float)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	f3 0f 11 45 ec       	movss  %xmm0,-0x14(%rbp)
+   d:	f3 0f 10 45 ec       	movss  -0x14(%rbp),%xmm0
+  12:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+  16:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  19:	83 7d fc f4          	cmpl   $0xfffffff4,-0x4(%rbp)
+  1d:	7c 73                	jl     92 <Utc::Validate(float)+0x92>
+  1f:	83 7d fc 0e          	cmpl   $0xe,-0x4(%rbp)
+  23:	7f 6d                	jg     92 <Utc::Validate(float)+0x92>
+  25:	66 0f ef c0          	pxor   %xmm0,%xmm0
+  29:	f3 0f 2a 45 fc       	cvtsi2ssl -0x4(%rbp),%xmm0
+  2e:	0f 2e 45 ec          	ucomiss -0x14(%rbp),%xmm0
+  32:	7a 11                	jp     45 <Utc::Validate(float)+0x45>
+  34:	0f 2e 45 ec          	ucomiss -0x14(%rbp),%xmm0
+  38:	75 0b                	jne    45 <Utc::Validate(float)+0x45>
+  3a:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  3d:	69 c0 10 0e 00 00    	imul   $0xe10,%eax,%eax
+  43:	eb 52                	jmp    97 <Utc::Validate(float)+0x97>
+  45:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+  4c:	eb 3e                	jmp    8c <Utc::Validate(float)+0x8c>
+  4e:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  51:	48 8d 14 85 00 00 00 	lea    0x0(,%rax,4),%rdx
+  58:	00 
+  59:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 60 <Utc::Validate(float)+0x60>
+  60:	f3 0f 10 04 02       	movss  (%rdx,%rax,1),%xmm0
+  65:	0f 2e 45 ec          	ucomiss -0x14(%rbp),%xmm0
+  69:	7a 1d                	jp     88 <Utc::Validate(float)+0x88>
+  6b:	0f 2e 45 ec          	ucomiss -0x14(%rbp),%xmm0
+  6f:	75 17                	jne    88 <Utc::Validate(float)+0x88>
+  71:	f3 0f 10 4d ec       	movss  -0x14(%rbp),%xmm1
+  76:	f3 0f 10 05 00 00 00 	movss  0x0(%rip),%xmm0        # 7e <Utc::Validate(float)+0x7e>
+  7d:	00 
+  7e:	f3 0f 59 c1          	mulss  %xmm1,%xmm0
+  82:	f3 0f 2c c0          	cvttss2si %xmm0,%eax
+  86:	eb 0f                	jmp    97 <Utc::Validate(float)+0x97>
+  88:	83 45 f8 01          	addl   $0x1,-0x8(%rbp)
+  8c:	83 7d f8 0a          	cmpl   $0xa,-0x8(%rbp)
+  90:	76 bc                	jbe    4e <Utc::Validate(float)+0x4e>
+  92:	b8 00 00 00 00       	mov    $0x0,%eax
+  97:	5d                   	pop    %rbp
+  98:	c3                   	ret    
+
+hardware.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZL16str_find_replacePcPKcS1_:
+
+0000000000000000 <str_find_replace(char*, char const*, char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	53                   	push   %rbx
+   9:	48 83 ec 48          	sub    $0x48,%rsp
+   d:	48 89 7d c8          	mov    %rdi,-0x38(%rbp)
+  11:	48 89 75 c0          	mov    %rsi,-0x40(%rbp)
+  15:	48 89 55 b8          	mov    %rdx,-0x48(%rbp)
+  19:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+  1d:	48 89 c7             	mov    %rax,%rdi
+  20:	e8 00 00 00 00       	call   25 <str_find_replace(char*, char const*, char const*)+0x25>
+  25:	48 89 c3             	mov    %rax,%rbx
+  28:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+  2c:	48 89 c7             	mov    %rax,%rdi
+  2f:	e8 00 00 00 00       	call   34 <str_find_replace(char*, char const*, char const*)+0x34>
+  34:	48 39 c3             	cmp    %rax,%rbx
+  37:	76 28                	jbe    61 <str_find_replace(char*, char const*, char const*)+0x61>
+  39:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 40 <str_find_replace(char*, char const*, char const*)+0x40>
+  40:	48 89 c1             	mov    %rax,%rcx
+  43:	ba 36 00 00 00       	mov    $0x36,%edx
+  48:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4f <str_find_replace(char*, char const*, char const*)+0x4f>
+  4f:	48 89 c6             	mov    %rax,%rsi
+  52:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 59 <str_find_replace(char*, char const*, char const*)+0x59>
+  59:	48 89 c7             	mov    %rax,%rdi
+  5c:	e8 00 00 00 00       	call   61 <str_find_replace(char*, char const*, char const*)+0x61>
+  61:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+  68:	8b 45 e8             	mov    -0x18(%rbp),%eax
+  6b:	89 45 ec             	mov    %eax,-0x14(%rbp)
+  6e:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  71:	89 45 e0             	mov    %eax,-0x20(%rbp)
+  74:	8b 45 e0             	mov    -0x20(%rbp),%eax
+  77:	89 45 dc             	mov    %eax,-0x24(%rbp)
+  7a:	e9 af 00 00 00       	jmp    12e <str_find_replace(char*, char const*, char const*)+0x12e>
+  7f:	8b 55 ec             	mov    -0x14(%rbp),%edx
+  82:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+  86:	48 01 d0             	add    %rdx,%rax
+  89:	0f b6 10             	movzbl (%rax),%edx
+  8c:	8b 4d e8             	mov    -0x18(%rbp),%ecx
+  8f:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+  93:	48 01 c8             	add    %rcx,%rax
+  96:	0f b6 00             	movzbl (%rax),%eax
+  99:	38 c2                	cmp    %al,%dl
+  9b:	75 63                	jne    100 <str_find_replace(char*, char const*, char const*)+0x100>
+  9d:	83 45 ec 01          	addl   $0x1,-0x14(%rbp)
+  a1:	83 45 e8 01          	addl   $0x1,-0x18(%rbp)
+  a5:	8b 55 e8             	mov    -0x18(%rbp),%edx
+  a8:	48 8b 45 c0          	mov    -0x40(%rbp),%rax
+  ac:	48 01 d0             	add    %rdx,%rax
+  af:	0f b6 00             	movzbl (%rax),%eax
+  b2:	84 c0                	test   %al,%al
+  b4:	75 78                	jne    12e <str_find_replace(char*, char const*, char const*)+0x12e>
+  b6:	c7 45 e4 00 00 00 00 	movl   $0x0,-0x1c(%rbp)
+  bd:	eb 21                	jmp    e0 <str_find_replace(char*, char const*, char const*)+0xe0>
+  bf:	8b 55 e4             	mov    -0x1c(%rbp),%edx
+  c2:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+  c6:	48 01 d0             	add    %rdx,%rax
+  c9:	8b 4d e0             	mov    -0x20(%rbp),%ecx
+  cc:	48 8b 55 c8          	mov    -0x38(%rbp),%rdx
+  d0:	48 01 ca             	add    %rcx,%rdx
+  d3:	0f b6 00             	movzbl (%rax),%eax
+  d6:	88 02                	mov    %al,(%rdx)
+  d8:	83 45 e4 01          	addl   $0x1,-0x1c(%rbp)
+  dc:	83 45 e0 01          	addl   $0x1,-0x20(%rbp)
+  e0:	8b 55 e4             	mov    -0x1c(%rbp),%edx
+  e3:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+  e7:	48 01 d0             	add    %rdx,%rax
+  ea:	0f b6 00             	movzbl (%rax),%eax
+  ed:	84 c0                	test   %al,%al
+  ef:	75 ce                	jne    bf <str_find_replace(char*, char const*, char const*)+0xbf>
+  f1:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+  f8:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  fb:	89 45 dc             	mov    %eax,-0x24(%rbp)
+  fe:	eb 2e                	jmp    12e <str_find_replace(char*, char const*, char const*)+0x12e>
+ 100:	8b 55 dc             	mov    -0x24(%rbp),%edx
+ 103:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+ 107:	48 01 d0             	add    %rdx,%rax
+ 10a:	8b 4d e0             	mov    -0x20(%rbp),%ecx
+ 10d:	48 8b 55 c8          	mov    -0x38(%rbp),%rdx
+ 111:	48 01 ca             	add    %rcx,%rdx
+ 114:	0f b6 00             	movzbl (%rax),%eax
+ 117:	88 02                	mov    %al,(%rdx)
+ 119:	83 45 e0 01          	addl   $0x1,-0x20(%rbp)
+ 11d:	83 45 dc 01          	addl   $0x1,-0x24(%rbp)
+ 121:	8b 45 dc             	mov    -0x24(%rbp),%eax
+ 124:	89 45 ec             	mov    %eax,-0x14(%rbp)
+ 127:	c7 45 e8 00 00 00 00 	movl   $0x0,-0x18(%rbp)
+ 12e:	8b 55 dc             	mov    -0x24(%rbp),%edx
+ 131:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+ 135:	48 01 d0             	add    %rdx,%rax
+ 138:	0f b6 00             	movzbl (%rax),%eax
+ 13b:	84 c0                	test   %al,%al
+ 13d:	0f 85 3c ff ff ff    	jne    7f <str_find_replace(char*, char const*, char const*)+0x7f>
+ 143:	eb 11                	jmp    156 <str_find_replace(char*, char const*, char const*)+0x156>
+ 145:	8b 55 e0             	mov    -0x20(%rbp),%edx
+ 148:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+ 14c:	48 01 d0             	add    %rdx,%rax
+ 14f:	c6 00 00             	movb   $0x0,(%rax)
+ 152:	83 45 e0 01          	addl   $0x1,-0x20(%rbp)
+ 156:	8b 45 e0             	mov    -0x20(%rbp),%eax
+ 159:	3b 45 dc             	cmp    -0x24(%rbp),%eax
+ 15c:	72 e7                	jb     145 <str_find_replace(char*, char const*, char const*)+0x145>
+ 15e:	48 8b 45 c8          	mov    -0x38(%rbp),%rax
+ 162:	48 8b 5d f8          	mov    -0x8(%rbp),%rbx
+ 166:	c9                   	leave  
+ 167:	c3                   	ret    
+
+Disassembly of section .text._ZN8HardwareC2Ev:
+
+0000000000000000 <Hardware::Hardware()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	41 57                	push   %r15
+   a:	41 56                	push   %r14
+   c:	48 81 ec f0 00 00 00 	sub    $0xf0,%rsp
+  13:	48 89 bd 08 ff ff ff 	mov    %rdi,-0xf8(%rbp)
+  1a:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  21:	00 00 
+  23:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+  27:	31 c0                	xor    %eax,%eax
+  29:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+  30:	c7 00 00 00 00 00    	movl   $0x0,(%rax)
+  36:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+  3d:	c7 80 50 02 00 00 06 	movl   $0x6,0x250(%rax)
+  44:	00 00 00 
+  47:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+  4e:	c6 80 54 02 00 00 00 	movb   $0x0,0x254(%rax)
+  55:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+  5c:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 63 <Hardware::Hardware()+0x63>
+  63:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+  6a:	48 83 c0 04          	add    $0x4,%rax
+  6e:	ba 86 01 00 00       	mov    $0x186,%edx
+  73:	be 00 00 00 00       	mov    $0x0,%esi
+  78:	48 89 c7             	mov    %rax,%rdi
+  7b:	e8 00 00 00 00       	call   80 <Hardware::Hardware()+0x80>
+  80:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+  87:	48 8d 90 8a 01 00 00 	lea    0x18a(%rax),%rdx
+  8e:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 95 <Hardware::Hardware()+0x95>
+  95:	48 89 02             	mov    %rax,(%rdx)
+  98:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+  9f:	48 8d 90 0a 02 00 00 	lea    0x20a(%rax),%rdx
+  a6:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # ad <Hardware::Hardware()+0xad>
+  ad:	48 89 02             	mov    %rax,(%rdx)
+  b0:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+  b7:	c6 80 ca 01 00 00 00 	movb   $0x0,0x1ca(%rax)
+  be:	48 b8 77 68 69 63 68 	movabs $0x6f2f206863696877,%rax
+  c5:	20 2f 6f 
+  c8:	48 ba 70 74 2f 76 63 	movabs $0x69622f63762f7470,%rdx
+  cf:	2f 62 69 
+  d2:	48 89 85 30 ff ff ff 	mov    %rax,-0xd0(%rbp)
+  d9:	48 89 95 38 ff ff ff 	mov    %rdx,-0xc8(%rbp)
+  e0:	48 b8 6e 2f 76 63 67 	movabs $0x636e656763762f6e,%rax
+  e7:	65 6e 63 
+  ea:	48 89 85 40 ff ff ff 	mov    %rax,-0xc0(%rbp)
+  f1:	66 c7 85 48 ff ff ff 	movw   $0x646d,-0xb8(%rbp)
+  f8:	6d 64 
+  fa:	c6 85 4a ff ff ff 00 	movb   $0x0,-0xb6(%rbp)
+ 101:	48 8d 85 30 ff ff ff 	lea    -0xd0(%rbp),%rax
+ 108:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 10f <Hardware::Hardware()+0x10f>
+ 10f:	48 89 d6             	mov    %rdx,%rsi
+ 112:	48 89 c7             	mov    %rax,%rdi
+ 115:	e8 00 00 00 00       	call   11a <Hardware::Hardware()+0x11a>
+ 11a:	48 89 85 18 ff ff ff 	mov    %rax,-0xe8(%rbp)
+ 121:	48 8b 95 18 ff ff ff 	mov    -0xe8(%rbp),%rdx
+ 128:	48 8d 85 20 ff ff ff 	lea    -0xe0(%rbp),%rax
+ 12f:	be 0f 00 00 00       	mov    $0xf,%esi
+ 134:	48 89 c7             	mov    %rax,%rdi
+ 137:	e8 00 00 00 00       	call   13c <Hardware::Hardware()+0x13c>
+ 13c:	48 85 c0             	test   %rax,%rax
+ 13f:	0f 95 c0             	setne  %al
+ 142:	84 c0                	test   %al,%al
+ 144:	74 1e                	je     164 <Hardware::Hardware()+0x164>
+ 146:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 14d:	c7 00 02 00 00 00    	movl   $0x2,(%rax)
+ 153:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 15a <Hardware::Hardware()+0x15a>
+ 15a:	48 89 c7             	mov    %rax,%rdi
+ 15d:	e8 00 00 00 00       	call   162 <Hardware::Hardware()+0x162>
+ 162:	85 c0                	test   %eax,%eax
+ 164:	48 83 bd 18 ff ff ff 	cmpq   $0x0,-0xe8(%rbp)
+ 16b:	00 
+ 16c:	74 0f                	je     17d <Hardware::Hardware()+0x17d>
+ 16e:	48 8b 85 18 ff ff ff 	mov    -0xe8(%rbp),%rax
+ 175:	48 89 c7             	mov    %rax,%rdi
+ 178:	e8 00 00 00 00       	call   17d <Hardware::Hardware()+0x17d>
+ 17d:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 184:	8b 00                	mov    (%rax),%eax
+ 186:	83 f8 04             	cmp    $0x4,%eax
+ 189:	74 13                	je     19e <Hardware::Hardware()+0x19e>
+ 18b:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 192:	48 83 c0 04          	add    $0x4,%rax
+ 196:	48 89 c7             	mov    %rax,%rdi
+ 199:	e8 00 00 00 00       	call   19e <Hardware::Hardware()+0x19e>
+ 19e:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 1a5:	8b 00                	mov    (%rax),%eax
+ 1a7:	89 c6                	mov    %eax,%esi
+ 1a9:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 1b0 <Hardware::Hardware()+0x1b0>
+ 1b0:	48 89 c7             	mov    %rax,%rdi
+ 1b3:	b8 00 00 00 00       	mov    $0x0,%eax
+ 1b8:	e8 00 00 00 00       	call   1bd <Hardware::Hardware()+0x1bd>
+ 1bd:	48 b8 63 61 74 20 2f 	movabs $0x7379732f20746163,%rax
+ 1c4:	73 79 73 
+ 1c7:	48 ba 2f 66 69 72 6d 	movabs $0x7261776d7269662f,%rdx
+ 1ce:	77 61 72 
+ 1d1:	48 89 45 80          	mov    %rax,-0x80(%rbp)
+ 1d5:	48 89 55 88          	mov    %rdx,-0x78(%rbp)
+ 1d9:	48 b8 65 2f 64 65 76 	movabs $0x6563697665642f65,%rax
+ 1e0:	69 63 65 
+ 1e3:	48 ba 74 72 65 65 2f 	movabs $0x7361622f65657274,%rdx
+ 1ea:	62 61 73 
+ 1ed:	48 89 45 90          	mov    %rax,-0x70(%rbp)
+ 1f1:	48 89 55 98          	mov    %rdx,-0x68(%rbp)
+ 1f5:	48 b8 65 2f 6d 6f 64 	movabs $0x6c65646f6d2f65,%rax
+ 1fc:	65 6c 00 
+ 1ff:	48 89 45 a0          	mov    %rax,-0x60(%rbp)
+ 203:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 20a:	48 8d 90 0a 02 00 00 	lea    0x20a(%rax),%rdx
+ 211:	48 8d 75 80          	lea    -0x80(%rbp),%rsi
+ 215:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 21c:	b9 40 00 00 00       	mov    $0x40,%ecx
+ 221:	48 89 c7             	mov    %rax,%rdi
+ 224:	e8 00 00 00 00       	call   229 <Hardware::Hardware()+0x229>
+ 229:	83 f0 01             	xor    $0x1,%eax
+ 22c:	84 c0                	test   %al,%al
+ 22e:	74 74                	je     2a4 <Hardware::Hardware()+0x2a4>
+ 230:	48 b8 63 61 74 20 2f 	movabs $0x7379732f20746163,%rax
+ 237:	73 79 73 
+ 23a:	48 ba 2f 63 6c 61 73 	movabs $0x642f7373616c632f,%rdx
+ 241:	73 2f 64 
+ 244:	48 89 85 50 ff ff ff 	mov    %rax,-0xb0(%rbp)
+ 24b:	48 89 95 58 ff ff ff 	mov    %rdx,-0xa8(%rbp)
+ 252:	48 b8 6d 69 2f 69 64 	movabs $0x6f622f64692f696d,%rax
+ 259:	2f 62 6f 
+ 25c:	48 ba 61 72 64 5f 6e 	movabs $0x656d616e5f647261,%rdx
+ 263:	61 6d 65 
+ 266:	48 89 85 60 ff ff ff 	mov    %rax,-0xa0(%rbp)
+ 26d:	48 89 95 68 ff ff ff 	mov    %rdx,-0x98(%rbp)
+ 274:	c6 85 70 ff ff ff 00 	movb   $0x0,-0x90(%rbp)
+ 27b:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 282:	48 8d 90 0a 02 00 00 	lea    0x20a(%rax),%rdx
+ 289:	48 8d b5 50 ff ff ff 	lea    -0xb0(%rbp),%rsi
+ 290:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 297:	b9 40 00 00 00       	mov    $0x40,%ecx
+ 29c:	48 89 c7             	mov    %rax,%rdi
+ 29f:	e8 00 00 00 00       	call   2a4 <Hardware::Hardware()+0x2a4>
+ 2a4:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 2ab:	48 05 0a 02 00 00    	add    $0x20a,%rax
+ 2b1:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 2b8 <Hardware::Hardware()+0x2b8>
+ 2b8:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 2bf <Hardware::Hardware()+0x2bf>
+ 2bf:	48 89 ce             	mov    %rcx,%rsi
+ 2c2:	48 89 c7             	mov    %rax,%rdi
+ 2c5:	e8 00 00 00 00       	call   2ca <Hardware::Hardware()+0x2ca>
+ 2ca:	49 be 63 61 74 20 2f 	movabs $0x6f72702f20746163,%r14
+ 2d1:	70 72 6f 
+ 2d4:	49 bf 63 2f 63 70 75 	movabs $0x666e697570632f63,%r15
+ 2db:	69 6e 66 
+ 2de:	4c 89 75 80          	mov    %r14,-0x80(%rbp)
+ 2e2:	4c 89 7d 88          	mov    %r15,-0x78(%rbp)
+ 2e6:	48 b8 6f 20 7c 20 67 	movabs $0x70657267207c206f,%rax
+ 2ed:	72 65 70 
+ 2f0:	48 ba 20 27 6d 6f 64 	movabs $0x206c65646f6d2720,%rdx
+ 2f7:	65 6c 20 
+ 2fa:	48 89 45 90          	mov    %rax,-0x70(%rbp)
+ 2fe:	48 89 55 98          	mov    %rdx,-0x68(%rbp)
+ 302:	48 b8 6e 61 6d 65 27 	movabs $0x207c2027656d616e,%rax
+ 309:	20 7c 20 
+ 30c:	48 ba 68 65 61 64 20 	movabs $0x206e2d2064616568,%rdx
+ 313:	2d 6e 20 
+ 316:	48 89 45 a0          	mov    %rax,-0x60(%rbp)
+ 31a:	48 89 55 a8          	mov    %rdx,-0x58(%rbp)
+ 31e:	48 b8 31 20 7c 20 73 	movabs $0x20646573207c2031,%rax
+ 325:	65 64 20 
+ 328:	48 ba 27 73 2f 5e 5b 	movabs $0x5d3a5e5b5e2f7327,%rdx
+ 32f:	5e 3a 5d 
+ 332:	48 89 45 b0          	mov    %rax,-0x50(%rbp)
+ 336:	48 89 55 b8          	mov    %rdx,-0x48(%rbp)
+ 33a:	48 b8 2a 3a 2f 2f 67 	movabs $0x7c2027672f2f3a2a,%rax
+ 341:	27 20 7c 
+ 344:	48 ba 20 20 73 65 64 	movabs $0x7327206465732020,%rdx
+ 34b:	20 27 73 
+ 34e:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+ 352:	48 89 55 c8          	mov    %rdx,-0x38(%rbp)
+ 356:	48 b8 2f 5e 5b 5e 20 	movabs $0x202a5d205e5b5e2f,%rax
+ 35d:	5d 2a 20 
+ 360:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+ 364:	c7 45 d8 2f 2f 67 27 	movl   $0x27672f2f,-0x28(%rbp)
+ 36b:	c6 45 dc 00          	movb   $0x0,-0x24(%rbp)
+ 36f:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 376:	48 8d 90 8a 01 00 00 	lea    0x18a(%rax),%rdx
+ 37d:	48 8d 75 80          	lea    -0x80(%rbp),%rsi
+ 381:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 388:	b9 40 00 00 00       	mov    $0x40,%ecx
+ 38d:	48 89 c7             	mov    %rax,%rdi
+ 390:	e8 00 00 00 00       	call   395 <Hardware::Hardware()+0x395>
+ 395:	4c 89 75 80          	mov    %r14,-0x80(%rbp)
+ 399:	4c 89 7d 88          	mov    %r15,-0x78(%rbp)
+ 39d:	48 b8 6f 20 7c 20 67 	movabs $0x70657267207c206f,%rax
+ 3a4:	72 65 70 
+ 3a7:	48 ba 20 27 48 61 72 	movabs $0x6177647261482720,%rdx
+ 3ae:	64 77 61 
+ 3b1:	48 89 45 90          	mov    %rax,-0x70(%rbp)
+ 3b5:	48 89 55 98          	mov    %rdx,-0x68(%rbp)
+ 3b9:	48 b8 72 65 27 20 7c 	movabs $0x7761207c20276572,%rax
+ 3c0:	20 61 77 
+ 3c3:	48 ba 6b 20 27 7b 70 	movabs $0x6e6972707b27206b,%rdx
+ 3ca:	72 69 6e 
+ 3cd:	48 89 45 a0          	mov    %rax,-0x60(%rbp)
+ 3d1:	48 89 55 a8          	mov    %rdx,-0x58(%rbp)
+ 3d5:	c7 45 b0 74 20 24 33 	movl   $0x33242074,-0x50(%rbp)
+ 3dc:	66 c7 45 b4 7d 27    	movw   $0x277d,-0x4c(%rbp)
+ 3e2:	c6 45 b6 00          	movb   $0x0,-0x4a(%rbp)
+ 3e6:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 3ed:	48 8d 90 ca 01 00 00 	lea    0x1ca(%rax),%rdx
+ 3f4:	48 8d 75 80          	lea    -0x80(%rbp),%rsi
+ 3f8:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 3ff:	b9 40 00 00 00       	mov    $0x40,%ecx
+ 404:	48 89 c7             	mov    %rax,%rdi
+ 407:	e8 00 00 00 00       	call   40c <Hardware::Hardware()+0x40c>
+ 40c:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 413:	8b 00                	mov    (%rax),%eax
+ 415:	83 f8 02             	cmp    $0x2,%eax
+ 418:	0f 85 98 00 00 00    	jne    4b6 <Hardware::Hardware()+0x4b6>
+ 41e:	4c 89 75 80          	mov    %r14,-0x80(%rbp)
+ 422:	4c 89 7d 88          	mov    %r15,-0x78(%rbp)
+ 426:	48 b8 6f 20 7c 20 67 	movabs $0x70657267207c206f,%rax
+ 42d:	72 65 70 
+ 430:	48 ba 20 27 52 65 76 	movabs $0x6973697665522720,%rdx
+ 437:	69 73 69 
+ 43a:	48 89 45 90          	mov    %rax,-0x70(%rbp)
+ 43e:	48 89 55 98          	mov    %rdx,-0x68(%rbp)
+ 442:	48 b8 6f 6e 27 20 7c 	movabs $0x7761207c20276e6f,%rax
+ 449:	20 61 77 
+ 44c:	48 ba 6b 20 27 7b 70 	movabs $0x6e6972707b27206b,%rdx
+ 453:	72 69 6e 
+ 456:	48 89 45 a0          	mov    %rax,-0x60(%rbp)
+ 45a:	48 89 55 a8          	mov    %rdx,-0x58(%rbp)
+ 45e:	c7 45 b0 74 20 24 33 	movl   $0x33242074,-0x50(%rbp)
+ 465:	66 c7 45 b4 7d 27    	movw   $0x277d,-0x4c(%rbp)
+ 46b:	c6 45 b6 00          	movb   $0x0,-0x4a(%rbp)
+ 46f:	48 8d 95 50 ff ff ff 	lea    -0xb0(%rbp),%rdx
+ 476:	48 8d 75 80          	lea    -0x80(%rbp),%rsi
+ 47a:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 481:	b9 10 00 00 00       	mov    $0x10,%ecx
+ 486:	48 89 c7             	mov    %rax,%rdi
+ 489:	e8 00 00 00 00       	call   48e <Hardware::Hardware()+0x48e>
+ 48e:	48 8d 85 50 ff ff ff 	lea    -0xb0(%rbp),%rax
+ 495:	ba 10 00 00 00       	mov    $0x10,%edx
+ 49a:	be 00 00 00 00       	mov    $0x0,%esi
+ 49f:	48 89 c7             	mov    %rax,%rdi
+ 4a2:	e8 00 00 00 00       	call   4a7 <Hardware::Hardware()+0x4a7>
+ 4a7:	89 c2                	mov    %eax,%edx
+ 4a9:	48 8b 85 08 ff ff ff 	mov    -0xf8(%rbp),%rax
+ 4b0:	89 90 4c 02 00 00    	mov    %edx,0x24c(%rax)
+ 4b6:	90                   	nop
+ 4b7:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 4bb:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 4c2:	00 00 
+ 4c4:	74 05                	je     4cb <Hardware::Hardware()+0x4cb>
+ 4c6:	e8 00 00 00 00       	call   4cb <Hardware::Hardware()+0x4cb>
+ 4cb:	48 81 c4 f0 00 00 00 	add    $0xf0,%rsp
+ 4d2:	41 5e                	pop    %r14
+ 4d4:	41 5f                	pop    %r15
+ 4d6:	5d                   	pop    %rbp
+ 4d7:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware10GetMachineERh:
+
+0000000000000000 <Hardware::GetMachine(unsigned char&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  14:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  18:	48 05 08 01 00 00    	add    $0x108,%rax
+  1e:	48 89 c7             	mov    %rax,%rdi
+  21:	e8 00 00 00 00       	call   26 <Hardware::GetMachine(unsigned char&)+0x26>
+  26:	89 c2                	mov    %eax,%edx
+  28:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  2c:	88 10                	mov    %dl,(%rax)
+  2e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  32:	48 05 08 01 00 00    	add    $0x108,%rax
+  38:	c9                   	leave  
+  39:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware10GetSysNameERh:
+
+0000000000000000 <Hardware::GetSysName(unsigned char&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  14:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  18:	48 83 c0 04          	add    $0x4,%rax
+  1c:	48 89 c7             	mov    %rax,%rdi
+  1f:	e8 00 00 00 00       	call   24 <Hardware::GetSysName(unsigned char&)+0x24>
+  24:	89 c2                	mov    %eax,%edx
+  26:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  2a:	88 10                	mov    %dl,(%rax)
+  2c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  30:	48 83 c0 04          	add    $0x4,%rax
+  34:	c9                   	leave  
+  35:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware10GetCpuNameERh:
+
+0000000000000000 <Hardware::GetCpuName(unsigned char&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  14:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  18:	48 05 8a 01 00 00    	add    $0x18a,%rax
+  1e:	48 89 c7             	mov    %rax,%rdi
+  21:	e8 00 00 00 00       	call   26 <Hardware::GetCpuName(unsigned char&)+0x26>
+  26:	89 c2                	mov    %eax,%edx
+  28:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  2c:	88 10                	mov    %dl,(%rax)
+  2e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  32:	48 05 8a 01 00 00    	add    $0x18a,%rax
+  38:	c9                   	leave  
+  39:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware10GetSocNameERh:
+
+0000000000000000 <Hardware::GetSocName(unsigned char&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  14:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  18:	48 05 ca 01 00 00    	add    $0x1ca,%rax
+  1e:	48 89 c7             	mov    %rax,%rdi
+  21:	e8 00 00 00 00       	call   26 <Hardware::GetSocName(unsigned char&)+0x26>
+  26:	89 c2                	mov    %eax,%edx
+  28:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  2c:	88 10                	mov    %dl,(%rax)
+  2e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  32:	48 05 ca 01 00 00    	add    $0x1ca,%rax
+  38:	c9                   	leave  
+  39:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware12GetReleaseIdEv:
+
+0000000000000000 <Hardware::GetReleaseId()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+  10:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  14:	48 05 86 00 00 00    	add    $0x86,%rax
+  1a:	48 89 c7             	mov    %rax,%rdi
+  1d:	e8 00 00 00 00       	call   22 <Hardware::GetReleaseId()+0x22>
+  22:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  26:	c7 45 ec 00 00 00 00 	movl   $0x0,-0x14(%rbp)
+  2d:	48 c7 45 f0 00 00 00 	movq   $0x0,-0x10(%rbp)
+  34:	00 
+  35:	eb 5d                	jmp    94 <Hardware::GetReleaseId()+0x94>
+  37:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+  3b:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  3f:	48 01 d0             	add    %rdx,%rax
+  42:	48 05 86 00 00 00    	add    $0x86,%rax
+  48:	0f b6 00             	movzbl (%rax),%eax
+  4b:	0f be c0             	movsbl %al,%eax
+  4e:	83 e8 30             	sub    $0x30,%eax
+  51:	83 f8 09             	cmp    $0x9,%eax
+  54:	0f 96 c0             	setbe  %al
+  57:	0f b6 c0             	movzbl %al,%eax
+  5a:	85 c0                	test   %eax,%eax
+  5c:	74 31                	je     8f <Hardware::GetReleaseId()+0x8f>
+  5e:	8b 55 ec             	mov    -0x14(%rbp),%edx
+  61:	89 d0                	mov    %edx,%eax
+  63:	c1 e0 02             	shl    $0x2,%eax
+  66:	01 d0                	add    %edx,%eax
+  68:	01 c0                	add    %eax,%eax
+  6a:	89 45 ec             	mov    %eax,-0x14(%rbp)
+  6d:	48 8b 55 d8          	mov    -0x28(%rbp),%rdx
+  71:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  75:	48 01 d0             	add    %rdx,%rax
+  78:	48 05 86 00 00 00    	add    $0x86,%rax
+  7e:	0f b6 00             	movzbl (%rax),%eax
+  81:	0f be d0             	movsbl %al,%edx
+  84:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  87:	01 d0                	add    %edx,%eax
+  89:	83 e8 30             	sub    $0x30,%eax
+  8c:	89 45 ec             	mov    %eax,-0x14(%rbp)
+  8f:	48 83 45 f0 01       	addq   $0x1,-0x10(%rbp)
+  94:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  98:	48 3b 45 f8          	cmp    -0x8(%rbp),%rax
+  9c:	72 99                	jb     37 <Hardware::GetReleaseId()+0x37>
+  9e:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  a1:	c9                   	leave  
+  a2:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware12GetBoardNameERh:
+
+0000000000000000 <Hardware::GetBoardName(unsigned char&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  14:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  18:	48 05 0a 02 00 00    	add    $0x20a,%rax
+  1e:	48 89 c7             	mov    %rax,%rdi
+  21:	e8 00 00 00 00       	call   26 <Hardware::GetBoardName(unsigned char&)+0x26>
+  26:	89 c2                	mov    %eax,%edx
+  28:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  2c:	88 10                	mov    %dl,(%rax)
+  2e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  32:	48 05 0a 02 00 00    	add    $0x20a,%rax
+  38:	c9                   	leave  
+  39:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware9GetUpTimeEv:
+
+0000000000000000 <Hardware::GetUpTime()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 81 ec a0 00 00 00 	sub    $0xa0,%rsp
+   f:	48 89 bd 68 ff ff ff 	mov    %rdi,-0x98(%rbp)
+  16:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  1d:	00 00 
+  1f:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  23:	31 c0                	xor    %eax,%eax
+  25:	48 8d 45 80          	lea    -0x80(%rbp),%rax
+  29:	48 89 c7             	mov    %rax,%rdi
+  2c:	e8 00 00 00 00       	call   31 <Hardware::GetUpTime()+0x31>
+  31:	89 85 7c ff ff ff    	mov    %eax,-0x84(%rbp)
+  37:	83 bd 7c ff ff ff 00 	cmpl   $0x0,-0x84(%rbp)
+  3e:	74 1c                	je     5c <Hardware::GetUpTime()+0x5c>
+  40:	8b 85 7c ff ff ff    	mov    -0x84(%rbp),%eax
+  46:	89 c6                	mov    %eax,%esi
+  48:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4f <Hardware::GetUpTime()+0x4f>
+  4f:	48 89 c7             	mov    %rax,%rdi
+  52:	b8 00 00 00 00       	mov    $0x0,%eax
+  57:	e8 00 00 00 00       	call   5c <Hardware::GetUpTime()+0x5c>
+  5c:	48 8b 45 80          	mov    -0x80(%rbp),%rax
+  60:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  64:	64 48 2b 14 25 28 00 	sub    %fs:0x28,%rdx
+  6b:	00 00 
+  6d:	74 05                	je     74 <Hardware::GetUpTime()+0x74>
+  6f:	e8 00 00 00 00       	call   74 <Hardware::GetUpTime()+0x74>
+  74:	c9                   	leave  
+  75:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware10SetSysTimeEl:
+
+0000000000000000 <Hardware::SetSysTime(long)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  14:	48 8d 45 f0          	lea    -0x10(%rbp),%rax
+  18:	48 89 c7             	mov    %rax,%rdi
+  1b:	e8 00 00 00 00       	call   20 <Hardware::SetSysTime(long)+0x20>
+  20:	48 89 c7             	mov    %rax,%rdi
+  23:	e8 00 00 00 00       	call   28 <Hardware::SetSysTime(long)+0x28>
+  28:	48 89 c2             	mov    %rax,%rdx
+  2b:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 32 <Hardware::SetSysTime(long)+0x32>
+  32:	49 89 d1             	mov    %rdx,%r9
+  35:	41 b8 10 01 00 00    	mov    $0x110,%r8d
+  3b:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 42 <Hardware::SetSysTime(long)+0x42>
+  42:	48 89 d1             	mov    %rdx,%rcx
+  45:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 4c <Hardware::SetSysTime(long)+0x4c>
+  4c:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 53 <Hardware::SetSysTime(long)+0x53>
+  53:	48 89 c7             	mov    %rax,%rdi
+  56:	b8 00 00 00 00       	mov    $0x0,%eax
+  5b:	e8 00 00 00 00       	call   60 <Hardware::SetSysTime(long)+0x60>
+  60:	90                   	nop
+  61:	c9                   	leave  
+  62:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware7SetTimeEPK2tm:
+
+0000000000000000 <Hardware::SetTime(tm const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 89 75 f0          	mov    %rsi,-0x10(%rbp)
+  14:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  18:	48 89 c7             	mov    %rax,%rdi
+  1b:	e8 00 00 00 00       	call   20 <Hardware::SetTime(tm const*)+0x20>
+  20:	48 89 c2             	mov    %rax,%rdx
+  23:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 2a <Hardware::SetTime(tm const*)+0x2a>
+  2a:	49 89 d1             	mov    %rdx,%r9
+  2d:	41 b8 14 01 00 00    	mov    $0x114,%r8d
+  33:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 3a <Hardware::SetTime(tm const*)+0x3a>
+  3a:	48 89 d1             	mov    %rdx,%rcx
+  3d:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 44 <Hardware::SetTime(tm const*)+0x44>
+  44:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 4b <Hardware::SetTime(tm const*)+0x4b>
+  4b:	48 89 c7             	mov    %rax,%rdi
+  4e:	b8 00 00 00 00       	mov    $0x0,%eax
+  53:	e8 00 00 00 00       	call   58 <Hardware::SetTime(tm const*)+0x58>
+  58:	b8 01 00 00 00       	mov    $0x1,%eax
+  5d:	c9                   	leave  
+  5e:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware7GetTimeEP2tm:
+
+0000000000000000 <Hardware::GetTime(tm*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+  10:	48 89 75 d0          	mov    %rsi,-0x30(%rbp)
+  14:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  1b:	00 00 
+  1d:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  21:	31 c0                	xor    %eax,%eax
+  23:	bf 00 00 00 00       	mov    $0x0,%edi
+  28:	e8 00 00 00 00       	call   2d <Hardware::GetTime(tm*)+0x2d>
+  2d:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+  31:	48 8d 45 e8          	lea    -0x18(%rbp),%rax
+  35:	48 89 c7             	mov    %rax,%rdi
+  38:	e8 00 00 00 00       	call   3d <Hardware::GetTime(tm*)+0x3d>
+  3d:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  41:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  45:	8b 50 14             	mov    0x14(%rax),%edx
+  48:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  4c:	89 50 14             	mov    %edx,0x14(%rax)
+  4f:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  53:	8b 50 10             	mov    0x10(%rax),%edx
+  56:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  5a:	89 50 10             	mov    %edx,0x10(%rax)
+  5d:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  61:	8b 50 0c             	mov    0xc(%rax),%edx
+  64:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  68:	89 50 0c             	mov    %edx,0xc(%rax)
+  6b:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  6f:	8b 50 08             	mov    0x8(%rax),%edx
+  72:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  76:	89 50 08             	mov    %edx,0x8(%rax)
+  79:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  7d:	8b 50 04             	mov    0x4(%rax),%edx
+  80:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  84:	89 50 04             	mov    %edx,0x4(%rax)
+  87:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  8b:	8b 10                	mov    (%rax),%edx
+  8d:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+  91:	89 10                	mov    %edx,(%rax)
+  93:	90                   	nop
+  94:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  98:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+  9f:	00 00 
+  a1:	74 05                	je     a8 <Hardware::GetTime(tm*)+0xa8>
+  a3:	e8 00 00 00 00       	call   a8 <Hardware::GetTime(tm*)+0xa8>
+  a8:	c9                   	leave  
+  a9:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware6RebootEv:
+
+0000000000000000 <Hardware::Reboot()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	e8 00 00 00 00       	call   15 <Hardware::Reboot()+0x15>
+  15:	85 c0                	test   %eax,%eax
+  17:	0f 94 c0             	sete   %al
+  1a:	84 c0                	test   %al,%al
+  1c:	74 2e                	je     4c <Hardware::Reboot()+0x4c>
+  1e:	e8 00 00 00 00       	call   23 <Hardware::Reboot()+0x23>
+  23:	bf 67 45 23 01       	mov    $0x1234567,%edi
+  28:	e8 00 00 00 00       	call   2d <Hardware::Reboot()+0x2d>
+  2d:	85 c0                	test   %eax,%eax
+  2f:	0f 94 c0             	sete   %al
+  32:	84 c0                	test   %al,%al
+  34:	74 07                	je     3d <Hardware::Reboot()+0x3d>
+  36:	b8 01 00 00 00       	mov    $0x1,%eax
+  3b:	eb 23                	jmp    60 <Hardware::Reboot()+0x60>
+  3d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 44 <Hardware::Reboot()+0x44>
+  44:	48 89 c7             	mov    %rax,%rdi
+  47:	e8 00 00 00 00       	call   4c <Hardware::Reboot()+0x4c>
+  4c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 53 <Hardware::Reboot()+0x53>
+  53:	48 89 c7             	mov    %rax,%rdi
+  56:	e8 00 00 00 00       	call   5b <Hardware::Reboot()+0x5b>
+  5b:	b8 00 00 00 00       	mov    $0x0,%eax
+  60:	c9                   	leave  
+  61:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware8PowerOffEv:
+
+0000000000000000 <Hardware::PowerOff()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	e8 00 00 00 00       	call   15 <Hardware::PowerOff()+0x15>
+  15:	85 c0                	test   %eax,%eax
+  17:	0f 94 c0             	sete   %al
+  1a:	84 c0                	test   %al,%al
+  1c:	74 35                	je     53 <Hardware::PowerOff()+0x53>
+  1e:	e8 00 00 00 00       	call   23 <Hardware::PowerOff()+0x23>
+  23:	bf dc fe 21 43       	mov    $0x4321fedc,%edi
+  28:	e8 00 00 00 00       	call   2d <Hardware::PowerOff()+0x2d>
+  2d:	85 c0                	test   %eax,%eax
+  2f:	0f 94 c0             	sete   %al
+  32:	84 c0                	test   %al,%al
+  34:	74 07                	je     3d <Hardware::PowerOff()+0x3d>
+  36:	b8 01 00 00 00       	mov    $0x1,%eax
+  3b:	eb 2a                	jmp    67 <Hardware::PowerOff()+0x67>
+  3d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 44 <Hardware::PowerOff()+0x44>
+  44:	48 89 c7             	mov    %rax,%rdi
+  47:	e8 00 00 00 00       	call   4c <Hardware::PowerOff()+0x4c>
+  4c:	b8 00 00 00 00       	mov    $0x0,%eax
+  51:	eb 14                	jmp    67 <Hardware::PowerOff()+0x67>
+  53:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 5a <Hardware::PowerOff()+0x5a>
+  5a:	48 89 c7             	mov    %rax,%rdi
+  5d:	e8 00 00 00 00       	call   62 <Hardware::PowerOff()+0x62>
+  62:	b8 00 00 00 00       	mov    $0x0,%eax
+  67:	c9                   	leave  
+  68:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware18GetCoreTemperatureEv:
+
+0000000000000000 <Hardware::GetCoreTemperature()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 c4 80          	add    $0xffffffffffffff80,%rsp
+   c:	48 89 7d 88          	mov    %rdi,-0x78(%rbp)
+  10:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  17:	00 00 
+  19:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  1d:	31 c0                	xor    %eax,%eax
+  1f:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+  23:	8b 00                	mov    (%rax),%eax
+  25:	83 f8 02             	cmp    $0x2,%eax
+  28:	0f 85 cd 00 00 00    	jne    fb <Hardware::GetCoreTemperature()+0xfb>
+  2e:	48 b8 2f 6f 70 74 2f 	movabs $0x2f63762f74706f2f,%rax
+  35:	76 63 2f 
+  38:	48 ba 62 69 6e 2f 76 	movabs $0x656763762f6e6962,%rdx
+  3f:	63 67 65 
+  42:	48 89 45 b0          	mov    %rax,-0x50(%rbp)
+  46:	48 89 55 b8          	mov    %rdx,-0x48(%rbp)
+  4a:	48 b8 6e 63 6d 64 20 	movabs $0x61656d20646d636e,%rax
+  51:	6d 65 61 
+  54:	48 ba 73 75 72 65 5f 	movabs $0x6d65745f65727573,%rdx
+  5b:	74 65 6d 
+  5e:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+  62:	48 89 55 c8          	mov    %rdx,-0x38(%rbp)
+  66:	48 b8 70 7c 20 65 67 	movabs $0x7065726765207c70,%rax
+  6d:	72 65 70 
+  70:	48 ba 20 22 5b 30 2d 	movabs $0x5d2e392d305b2220,%rdx
+  77:	39 2e 5d 
+  7a:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+  7e:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+  82:	48 b8 7b 34 2c 7d 22 	movabs $0x6f2d20227d2c347b,%rax
+  89:	20 2d 6f 
+  8c:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+  90:	c6 45 e8 00          	movb   $0x0,-0x18(%rbp)
+  94:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+  98:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 9f <Hardware::GetCoreTemperature()+0x9f>
+  9f:	48 89 d6             	mov    %rdx,%rsi
+  a2:	48 89 c7             	mov    %rax,%rdi
+  a5:	e8 00 00 00 00       	call   aa <Hardware::GetCoreTemperature()+0xaa>
+  aa:	48 89 45 a0          	mov    %rax,-0x60(%rbp)
+  ae:	48 8b 55 a0          	mov    -0x60(%rbp),%rdx
+  b2:	48 8d 45 a8          	lea    -0x58(%rbp),%rax
+  b6:	be 07 00 00 00       	mov    $0x7,%esi
+  bb:	48 89 c7             	mov    %rax,%rdi
+  be:	e8 00 00 00 00       	call   c3 <Hardware::GetCoreTemperature()+0xc3>
+  c3:	48 85 c0             	test   %rax,%rax
+  c6:	0f 94 c0             	sete   %al
+  c9:	84 c0                	test   %al,%al
+  cb:	74 19                	je     e6 <Hardware::GetCoreTemperature()+0xe6>
+  cd:	48 8b 45 a0          	mov    -0x60(%rbp),%rax
+  d1:	48 89 c7             	mov    %rax,%rdi
+  d4:	e8 00 00 00 00       	call   d9 <Hardware::GetCoreTemperature()+0xd9>
+  d9:	f3 0f 10 05 00 00 00 	movss  0x0(%rip),%xmm0        # e1 <Hardware::GetCoreTemperature()+0xe1>
+  e0:	00 
+  e1:	e9 d9 00 00 00       	jmp    1bf <Hardware::GetCoreTemperature()+0x1bf>
+  e6:	48 8d 45 a8          	lea    -0x58(%rbp),%rax
+  ea:	48 89 c7             	mov    %rax,%rdi
+  ed:	e8 00 00 00 00       	call   f2 <Hardware::GetCoreTemperature()+0xf2>
+  f2:	f2 0f 5a c0          	cvtsd2ss %xmm0,%xmm0
+  f6:	e9 c4 00 00 00       	jmp    1bf <Hardware::GetCoreTemperature()+0x1bf>
+  fb:	48 b8 73 65 6e 73 6f 	movabs $0x2073726f736e6573,%rax
+ 102:	72 73 20 
+ 105:	48 ba 7c 20 67 72 65 	movabs $0x272070657267207c,%rdx
+ 10c:	70 20 27 
+ 10f:	48 89 45 b0          	mov    %rax,-0x50(%rbp)
+ 113:	48 89 55 b8          	mov    %rdx,-0x48(%rbp)
+ 117:	48 b8 43 6f 72 65 20 	movabs $0x2027302065726f43,%rax
+ 11e:	30 27 20 
+ 121:	48 ba 7c 20 61 77 6b 	movabs $0x7b27206b7761207c,%rdx
+ 128:	20 27 7b 
+ 12b:	48 89 45 c0          	mov    %rax,-0x40(%rbp)
+ 12f:	48 89 55 c8          	mov    %rdx,-0x38(%rbp)
+ 133:	48 b8 70 72 69 6e 74 	movabs $0x332420746e697270,%rax
+ 13a:	20 24 33 
+ 13d:	48 ba 7d 27 20 7c 20 	movabs $0x747563207c20277d,%rdx
+ 144:	63 75 74 
+ 147:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+ 14b:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+ 14f:	c7 45 e0 20 2d 63 32 	movl   $0x32632d20,-0x20(%rbp)
+ 156:	66 c7 45 e4 2d 33    	movw   $0x332d,-0x1c(%rbp)
+ 15c:	c6 45 e6 00          	movb   $0x0,-0x1a(%rbp)
+ 160:	48 8d 45 b0          	lea    -0x50(%rbp),%rax
+ 164:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 16b <Hardware::GetCoreTemperature()+0x16b>
+ 16b:	48 89 d6             	mov    %rdx,%rsi
+ 16e:	48 89 c7             	mov    %rax,%rdi
+ 171:	e8 00 00 00 00       	call   176 <Hardware::GetCoreTemperature()+0x176>
+ 176:	48 89 45 98          	mov    %rax,-0x68(%rbp)
+ 17a:	48 8b 55 98          	mov    -0x68(%rbp),%rdx
+ 17e:	48 8d 45 a8          	lea    -0x58(%rbp),%rax
+ 182:	be 07 00 00 00       	mov    $0x7,%esi
+ 187:	48 89 c7             	mov    %rax,%rdi
+ 18a:	e8 00 00 00 00       	call   18f <Hardware::GetCoreTemperature()+0x18f>
+ 18f:	48 85 c0             	test   %rax,%rax
+ 192:	0f 94 c0             	sete   %al
+ 195:	84 c0                	test   %al,%al
+ 197:	74 16                	je     1af <Hardware::GetCoreTemperature()+0x1af>
+ 199:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+ 19d:	48 89 c7             	mov    %rax,%rdi
+ 1a0:	e8 00 00 00 00       	call   1a5 <Hardware::GetCoreTemperature()+0x1a5>
+ 1a5:	f3 0f 10 05 00 00 00 	movss  0x0(%rip),%xmm0        # 1ad <Hardware::GetCoreTemperature()+0x1ad>
+ 1ac:	00 
+ 1ad:	eb 10                	jmp    1bf <Hardware::GetCoreTemperature()+0x1bf>
+ 1af:	48 8d 45 a8          	lea    -0x58(%rbp),%rax
+ 1b3:	48 89 c7             	mov    %rax,%rdi
+ 1b6:	e8 00 00 00 00       	call   1bb <Hardware::GetCoreTemperature()+0x1bb>
+ 1bb:	f2 0f 5a c0          	cvtsd2ss %xmm0,%xmm0
+ 1bf:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 1c3:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 1ca:	00 00 
+ 1cc:	74 05                	je     1d3 <Hardware::GetCoreTemperature()+0x1d3>
+ 1ce:	e8 00 00 00 00       	call   1d3 <Hardware::GetCoreTemperature()+0x1d3>
+ 1d3:	c9                   	leave  
+ 1d4:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware21GetCoreTemperatureMaxEv:
+
+0000000000000000 <Hardware::GetCoreTemperatureMax()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	f3 0f 10 05 00 00 00 	movss  0x0(%rip),%xmm0        # 14 <Hardware::GetCoreTemperatureMax()+0x14>
+  13:	00 
+  14:	5d                   	pop    %rbp
+  15:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware6SetLedEN8hardware9LedStatusE:
+
+0000000000000000 <Hardware::SetLed(hardware::LedStatus)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	89 75 e4             	mov    %esi,-0x1c(%rbp)
+  13:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  17:	8b 00                	mov    (%rax),%eax
+  19:	83 f8 02             	cmp    $0x2,%eax
+  1c:	0f 85 93 00 00 00    	jne    b5 <Hardware::SetLed(hardware::LedStatus)+0xb5>
+  22:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 28 <Hardware::SetLed(hardware::LedStatus)+0x28>
+  28:	39 45 e4             	cmp    %eax,-0x1c(%rbp)
+  2b:	0f 84 83 00 00 00    	je     b4 <Hardware::SetLed(hardware::LedStatus)+0xb4>
+  31:	8b 45 e4             	mov    -0x1c(%rbp),%eax
+  34:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 3a <Hardware::SetLed(hardware::LedStatus)+0x3a>
+  3a:	48 c7 45 f8 00 00 00 	movq   $0x0,-0x8(%rbp)
+  41:	00 
+  42:	83 7d e4 03          	cmpl   $0x3,-0x1c(%rbp)
+  46:	74 47                	je     8f <Hardware::SetLed(hardware::LedStatus)+0x8f>
+  48:	83 7d e4 03          	cmpl   $0x3,-0x1c(%rbp)
+  4c:	7f 4e                	jg     9c <Hardware::SetLed(hardware::LedStatus)+0x9c>
+  4e:	83 7d e4 02          	cmpl   $0x2,-0x1c(%rbp)
+  52:	74 2e                	je     82 <Hardware::SetLed(hardware::LedStatus)+0x82>
+  54:	83 7d e4 02          	cmpl   $0x2,-0x1c(%rbp)
+  58:	7f 42                	jg     9c <Hardware::SetLed(hardware::LedStatus)+0x9c>
+  5a:	83 7d e4 00          	cmpl   $0x0,-0x1c(%rbp)
+  5e:	74 08                	je     68 <Hardware::SetLed(hardware::LedStatus)+0x68>
+  60:	83 7d e4 01          	cmpl   $0x1,-0x1c(%rbp)
+  64:	74 0f                	je     75 <Hardware::SetLed(hardware::LedStatus)+0x75>
+  66:	eb 34                	jmp    9c <Hardware::SetLed(hardware::LedStatus)+0x9c>
+  68:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 6f <Hardware::SetLed(hardware::LedStatus)+0x6f>
+  6f:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  73:	eb 28                	jmp    9d <Hardware::SetLed(hardware::LedStatus)+0x9d>
+  75:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7c <Hardware::SetLed(hardware::LedStatus)+0x7c>
+  7c:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  80:	eb 1b                	jmp    9d <Hardware::SetLed(hardware::LedStatus)+0x9d>
+  82:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 89 <Hardware::SetLed(hardware::LedStatus)+0x89>
+  89:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  8d:	eb 0e                	jmp    9d <Hardware::SetLed(hardware::LedStatus)+0x9d>
+  8f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 96 <Hardware::SetLed(hardware::LedStatus)+0x96>
+  96:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  9a:	eb 01                	jmp    9d <Hardware::SetLed(hardware::LedStatus)+0x9d>
+  9c:	90                   	nop
+  9d:	48 83 7d f8 00       	cmpq   $0x0,-0x8(%rbp)
+  a2:	74 11                	je     b5 <Hardware::SetLed(hardware::LedStatus)+0xb5>
+  a4:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  a8:	48 89 c7             	mov    %rax,%rdi
+  ab:	e8 00 00 00 00       	call   b0 <Hardware::SetLed(hardware::LedStatus)+0xb0>
+  b0:	85 c0                	test   %eax,%eax
+  b2:	eb 01                	jmp    b5 <Hardware::SetLed(hardware::LedStatus)+0xb5>
+  b4:	90                   	nop
+  b5:	c9                   	leave  
+  b6:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware7ExecCmdEPKcPci:
+
+0000000000000000 <Hardware::ExecCmd(char const*, char*, int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+  14:	48 89 55 d8          	mov    %rdx,-0x28(%rbp)
+  18:	89 4d d4             	mov    %ecx,-0x2c(%rbp)
+  1b:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  1f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 26 <Hardware::ExecCmd(char const*, char*, int)+0x26>
+  26:	48 89 d6             	mov    %rdx,%rsi
+  29:	48 89 c7             	mov    %rax,%rdi
+  2c:	e8 00 00 00 00       	call   31 <Hardware::ExecCmd(char const*, char*, int)+0x31>
+  31:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  35:	8b 45 d4             	mov    -0x2c(%rbp),%eax
+  38:	8d 48 ff             	lea    -0x1(%rax),%ecx
+  3b:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+  3f:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  43:	89 ce                	mov    %ecx,%esi
+  45:	48 89 c7             	mov    %rax,%rdi
+  48:	e8 00 00 00 00       	call   4d <Hardware::ExecCmd(char const*, char*, int)+0x4d>
+  4d:	48 85 c0             	test   %rax,%rax
+  50:	0f 94 c0             	sete   %al
+  53:	84 c0                	test   %al,%al
+  55:	74 13                	je     6a <Hardware::ExecCmd(char const*, char*, int)+0x6a>
+  57:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  5b:	48 89 c7             	mov    %rax,%rdi
+  5e:	e8 00 00 00 00       	call   63 <Hardware::ExecCmd(char const*, char*, int)+0x63>
+  63:	b8 00 00 00 00       	mov    $0x0,%eax
+  68:	eb 49                	jmp    b3 <Hardware::ExecCmd(char const*, char*, int)+0xb3>
+  6a:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  6e:	48 89 c7             	mov    %rax,%rdi
+  71:	e8 00 00 00 00       	call   76 <Hardware::ExecCmd(char const*, char*, int)+0x76>
+  76:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  7a:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  7e:	48 8d 50 ff          	lea    -0x1(%rax),%rdx
+  82:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  86:	48 01 d0             	add    %rdx,%rax
+  89:	0f b6 00             	movzbl (%rax),%eax
+  8c:	3c 1f                	cmp    $0x1f,%al
+  8e:	7f 12                	jg     a2 <Hardware::ExecCmd(char const*, char*, int)+0xa2>
+  90:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  94:	48 8d 50 ff          	lea    -0x1(%rax),%rdx
+  98:	48 8b 45 d8          	mov    -0x28(%rbp),%rax
+  9c:	48 01 d0             	add    %rdx,%rax
+  9f:	c6 00 00             	movb   $0x0,(%rax)
+  a2:	48 8b 45 f0          	mov    -0x10(%rbp),%rax
+  a6:	48 89 c7             	mov    %rax,%rdi
+  a9:	e8 00 00 00 00       	call   ae <Hardware::ExecCmd(char const*, char*, int)+0xae>
+  ae:	b8 01 00 00 00       	mov    $0x1,%eax
+  b3:	c9                   	leave  
+  b4:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware6MicrosEv:
+
+0000000000000000 <Hardware::Micros()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+  10:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  17:	00 00 
+  19:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  1d:	31 c0                	xor    %eax,%eax
+  1f:	48 8d 45 e0          	lea    -0x20(%rbp),%rax
+  23:	be 00 00 00 00       	mov    $0x0,%esi
+  28:	48 89 c7             	mov    %rax,%rdi
+  2b:	e8 00 00 00 00       	call   30 <Hardware::Micros()+0x30>
+  30:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  34:	69 d0 40 42 0f 00    	imul   $0xf4240,%eax,%edx
+  3a:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  3e:	01 d0                	add    %edx,%eax
+  40:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  44:	64 48 2b 14 25 28 00 	sub    %fs:0x28,%rdx
+  4b:	00 00 
+  4d:	74 05                	je     54 <Hardware::Micros()+0x54>
+  4f:	e8 00 00 00 00       	call   54 <Hardware::Micros()+0x54>
+  54:	c9                   	leave  
+  55:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware6MillisEv:
+
+0000000000000000 <Hardware::Millis()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	48 89 7d d8          	mov    %rdi,-0x28(%rbp)
+  10:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  17:	00 00 
+  19:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  1d:	31 c0                	xor    %eax,%eax
+  1f:	48 8d 45 e0          	lea    -0x20(%rbp),%rax
+  23:	be 00 00 00 00       	mov    $0x0,%esi
+  28:	48 89 c7             	mov    %rax,%rdi
+  2b:	e8 00 00 00 00       	call   30 <Hardware::Millis()+0x30>
+  30:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  34:	69 f0 e8 03 00 00    	imul   $0x3e8,%eax,%esi
+  3a:	48 8b 4d e8          	mov    -0x18(%rbp),%rcx
+  3e:	48 ba cf f7 53 e3 a5 	movabs $0x20c49ba5e353f7cf,%rdx
+  45:	9b c4 20 
+  48:	48 89 c8             	mov    %rcx,%rax
+  4b:	48 f7 ea             	imul   %rdx
+  4e:	48 89 d0             	mov    %rdx,%rax
+  51:	48 c1 f8 07          	sar    $0x7,%rax
+  55:	48 c1 f9 3f          	sar    $0x3f,%rcx
+  59:	48 89 ca             	mov    %rcx,%rdx
+  5c:	48 29 d0             	sub    %rdx,%rax
+  5f:	01 f0                	add    %esi,%eax
+  61:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  65:	64 48 2b 14 25 28 00 	sub    %fs:0x28,%rdx
+  6c:	00 00 
+  6e:	74 05                	je     75 <Hardware::Millis()+0x75>
+  70:	e8 00 00 00 00       	call   75 <Hardware::Millis()+0x75>
+  75:	c9                   	leave  
+  76:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware7GetUuidEPh:
+
+0000000000000000 <Hardware::GetUuid(unsigned char*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 70          	sub    $0x70,%rsp
+   c:	48 89 7d 98          	mov    %rdi,-0x68(%rbp)
+  10:	48 89 75 90          	mov    %rsi,-0x70(%rbp)
+  14:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  1b:	00 00 
+  1d:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  21:	31 c0                	xor    %eax,%eax
+  23:	48 b8 63 61 74 20 2f 	movabs $0x6374652f20746163,%rax
+  2a:	65 74 63 
+  2d:	48 ba 2f 6d 61 63 68 	movabs $0x656e696863616d2f,%rdx
+  34:	69 6e 65 
+  37:	48 89 45 b0          	mov    %rax,-0x50(%rbp)
+  3b:	48 89 55 b8          	mov    %rdx,-0x48(%rbp)
+  3f:	c7 45 c0 2d 69 64 00 	movl   $0x64692d,-0x40(%rbp)
+  46:	48 8d 55 d0          	lea    -0x30(%rbp),%rdx
+  4a:	48 8d 75 b0          	lea    -0x50(%rbp),%rsi
+  4e:	48 8b 45 98          	mov    -0x68(%rbp),%rax
+  52:	b9 26 00 00 00       	mov    $0x26,%ecx
+  57:	48 89 c7             	mov    %rax,%rdi
+  5a:	e8 00 00 00 00       	call   5f <Hardware::GetUuid(unsigned char*)+0x5f>
+  5f:	c7 45 a0 0d 00 00 00 	movl   $0xd,-0x60(%rbp)
+  66:	eb 1d                	jmp    85 <Hardware::GetUuid(unsigned char*)+0x85>
+  68:	8b 45 a0             	mov    -0x60(%rbp),%eax
+  6b:	8d 48 13             	lea    0x13(%rax),%ecx
+  6e:	8b 45 a0             	mov    -0x60(%rbp),%eax
+  71:	8d 50 17             	lea    0x17(%rax),%edx
+  74:	89 c8                	mov    %ecx,%eax
+  76:	0f b6 44 05 d0       	movzbl -0x30(%rbp,%rax,1),%eax
+  7b:	89 d2                	mov    %edx,%edx
+  7d:	88 44 15 d0          	mov    %al,-0x30(%rbp,%rdx,1)
+  81:	83 6d a0 01          	subl   $0x1,-0x60(%rbp)
+  85:	83 7d a0 00          	cmpl   $0x0,-0x60(%rbp)
+  89:	75 dd                	jne    68 <Hardware::GetUuid(unsigned char*)+0x68>
+  8b:	c7 45 a4 05 00 00 00 	movl   $0x5,-0x5c(%rbp)
+  92:	eb 1d                	jmp    b1 <Hardware::GetUuid(unsigned char*)+0xb1>
+  94:	8b 45 a4             	mov    -0x5c(%rbp),%eax
+  97:	8d 48 0f             	lea    0xf(%rax),%ecx
+  9a:	8b 45 a4             	mov    -0x5c(%rbp),%eax
+  9d:	8d 50 12             	lea    0x12(%rax),%edx
+  a0:	89 c8                	mov    %ecx,%eax
+  a2:	0f b6 44 05 d0       	movzbl -0x30(%rbp,%rax,1),%eax
+  a7:	89 d2                	mov    %edx,%edx
+  a9:	88 44 15 d0          	mov    %al,-0x30(%rbp,%rdx,1)
+  ad:	83 6d a4 01          	subl   $0x1,-0x5c(%rbp)
+  b1:	83 7d a4 00          	cmpl   $0x0,-0x5c(%rbp)
+  b5:	75 dd                	jne    94 <Hardware::GetUuid(unsigned char*)+0x94>
+  b7:	c7 45 a8 05 00 00 00 	movl   $0x5,-0x58(%rbp)
+  be:	eb 1d                	jmp    dd <Hardware::GetUuid(unsigned char*)+0xdd>
+  c0:	8b 45 a8             	mov    -0x58(%rbp),%eax
+  c3:	8d 48 0b             	lea    0xb(%rax),%ecx
+  c6:	8b 45 a8             	mov    -0x58(%rbp),%eax
+  c9:	8d 50 0d             	lea    0xd(%rax),%edx
+  cc:	89 c8                	mov    %ecx,%eax
+  ce:	0f b6 44 05 d0       	movzbl -0x30(%rbp,%rax,1),%eax
+  d3:	89 d2                	mov    %edx,%edx
+  d5:	88 44 15 d0          	mov    %al,-0x30(%rbp,%rdx,1)
+  d9:	83 6d a8 01          	subl   $0x1,-0x58(%rbp)
+  dd:	83 7d a8 00          	cmpl   $0x0,-0x58(%rbp)
+  e1:	75 dd                	jne    c0 <Hardware::GetUuid(unsigned char*)+0xc0>
+  e3:	c7 45 ac 05 00 00 00 	movl   $0x5,-0x54(%rbp)
+  ea:	eb 1d                	jmp    109 <Hardware::GetUuid(unsigned char*)+0x109>
+  ec:	8b 45 ac             	mov    -0x54(%rbp),%eax
+  ef:	8d 48 07             	lea    0x7(%rax),%ecx
+  f2:	8b 45 ac             	mov    -0x54(%rbp),%eax
+  f5:	8d 50 08             	lea    0x8(%rax),%edx
+  f8:	89 c8                	mov    %ecx,%eax
+  fa:	0f b6 44 05 d0       	movzbl -0x30(%rbp,%rax,1),%eax
+  ff:	89 d2                	mov    %edx,%edx
+ 101:	88 44 15 d0          	mov    %al,-0x30(%rbp,%rdx,1)
+ 105:	83 6d ac 01          	subl   $0x1,-0x54(%rbp)
+ 109:	83 7d ac 00          	cmpl   $0x0,-0x54(%rbp)
+ 10d:	75 dd                	jne    ec <Hardware::GetUuid(unsigned char*)+0xec>
+ 10f:	c6 45 e7 2d          	movb   $0x2d,-0x19(%rbp)
+ 113:	c6 45 e2 2d          	movb   $0x2d,-0x1e(%rbp)
+ 117:	c6 45 dd 2d          	movb   $0x2d,-0x23(%rbp)
+ 11b:	c6 45 d8 2d          	movb   $0x2d,-0x28(%rbp)
+ 11f:	48 8b 55 90          	mov    -0x70(%rbp),%rdx
+ 123:	48 8d 45 d0          	lea    -0x30(%rbp),%rax
+ 127:	48 89 d6             	mov    %rdx,%rsi
+ 12a:	48 89 c7             	mov    %rax,%rdi
+ 12d:	e8 00 00 00 00       	call   132 <Hardware::GetUuid(unsigned char*)+0x132>
+ 132:	90                   	nop
+ 133:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+ 137:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 13e:	00 00 
+ 140:	74 05                	je     147 <Hardware::GetUuid(unsigned char*)+0x147>
+ 142:	e8 00 00 00 00       	call   147 <Hardware::GetUuid(unsigned char*)+0x147>
+ 147:	c9                   	leave  
+ 148:	c3                   	ret    
+
+Disassembly of section .text._ZN8Hardware5PrintEv:
+
+0000000000000000 <Hardware::Print()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 50          	sub    $0x50,%rsp
+   c:	48 89 7d b8          	mov    %rdi,-0x48(%rbp)
+  10:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  17:	00 00 
+  19:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  1d:	31 c0                	xor    %eax,%eax
+  1f:	c6 45 f4 00          	movb   $0x0,-0xc(%rbp)
+  23:	48 8d 55 c0          	lea    -0x40(%rbp),%rdx
+  27:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+  2b:	48 89 d6             	mov    %rdx,%rsi
+  2e:	48 89 c7             	mov    %rax,%rdi
+  31:	e8 00 00 00 00       	call   36 <Hardware::Print()+0x36>
+  36:	48 8d 55 d0          	lea    -0x30(%rbp),%rdx
+  3a:	48 8d 45 c0          	lea    -0x40(%rbp),%rax
+  3e:	48 89 d6             	mov    %rdx,%rsi
+  41:	48 89 c7             	mov    %rax,%rdi
+  44:	e8 00 00 00 00       	call   49 <Hardware::Print()+0x49>
+  49:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+  4d:	48 05 8a 01 00 00    	add    $0x18a,%rax
+  53:	48 89 c6             	mov    %rax,%rsi
+  56:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 5d <Hardware::Print()+0x5d>
+  5d:	48 89 c7             	mov    %rax,%rdi
+  60:	b8 00 00 00 00       	mov    $0x0,%eax
+  65:	e8 00 00 00 00       	call   6a <Hardware::Print()+0x6a>
+  6a:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+  6e:	48 05 ca 01 00 00    	add    $0x1ca,%rax
+  74:	48 89 c6             	mov    %rax,%rsi
+  77:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7e <Hardware::Print()+0x7e>
+  7e:	48 89 c7             	mov    %rax,%rdi
+  81:	b8 00 00 00 00       	mov    $0x0,%eax
+  86:	e8 00 00 00 00       	call   8b <Hardware::Print()+0x8b>
+  8b:	48 8b 45 b8          	mov    -0x48(%rbp),%rax
+  8f:	48 05 0a 02 00 00    	add    $0x20a,%rax
+  95:	48 89 c6             	mov    %rax,%rsi
+  98:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 9f <Hardware::Print()+0x9f>
+  9f:	48 89 c7             	mov    %rax,%rdi
+  a2:	b8 00 00 00 00       	mov    $0x0,%eax
+  a7:	e8 00 00 00 00       	call   ac <Hardware::Print()+0xac>
+  ac:	48 8d 45 d0          	lea    -0x30(%rbp),%rax
+  b0:	48 89 c6             	mov    %rax,%rsi
+  b3:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # ba <Hardware::Print()+0xba>
+  ba:	48 89 c7             	mov    %rax,%rdi
+  bd:	b8 00 00 00 00       	mov    $0x0,%eax
+  c2:	e8 00 00 00 00       	call   c7 <Hardware::Print()+0xc7>
+  c7:	90                   	nop
+  c8:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  cc:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+  d3:	00 00 
+  d5:	74 05                	je     dc <Hardware::Print()+0xdc>
+  d7:	e8 00 00 00 00       	call   dc <Hardware::Print()+0xdc>
+  dc:	c9                   	leave  
+  dd:	c3                   	ret    
+
+uart.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZL19s_configure_termiosv:
+
+0000000000000000 <s_configure_termios()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	53                   	push   %rbx
+   9:	48 81 ec a8 00 00 00 	sub    $0xa8,%rsp
+  10:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  17:	00 00 
+  19:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+  1d:	31 c0                	xor    %eax,%eax
+  1f:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 25 <s_configure_termios()+0x25>
+  25:	83 f8 02             	cmp    $0x2,%eax
+  28:	76 0a                	jbe    34 <s_configure_termios()+0x34>
+  2a:	c7 05 00 00 00 00 00 	movl   $0x0,0x0(%rip)        # 34 <s_configure_termios()+0x34>
+  31:	00 00 00 
+  34:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 3a <s_configure_termios()+0x3a>
+  3a:	89 c0                	mov    %eax,%eax
+  3c:	48 c1 e0 06          	shl    $0x6,%rax
+  40:	48 89 c2             	mov    %rax,%rdx
+  43:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4a <s_configure_termios()+0x4a>
+  4a:	48 8d 3c 02          	lea    (%rdx,%rax,1),%rdi
+  4e:	48 8d 85 50 ff ff ff 	lea    -0xb0(%rbp),%rax
+  55:	48 89 c1             	mov    %rax,%rcx
+  58:	ba 00 00 00 00       	mov    $0x0,%edx
+  5d:	be 00 00 00 00       	mov    $0x0,%esi
+  62:	e8 00 00 00 00       	call   67 <s_configure_termios()+0x67>
+  67:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 6d <s_configure_termios()+0x6d>
+  6d:	85 c0                	test   %eax,%eax
+  6f:	7e 0d                	jle    7e <s_configure_termios()+0x7e>
+  71:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 77 <s_configure_termios()+0x77>
+  77:	89 c7                	mov    %eax,%edi
+  79:	e8 00 00 00 00       	call   7e <s_configure_termios()+0x7e>
+  7e:	48 8b 85 50 ff ff ff 	mov    -0xb0(%rbp),%rax
+  85:	48 85 c0             	test   %rax,%rax
+  88:	74 2e                	je     b8 <s_configure_termios()+0xb8>
+  8a:	48 8b 85 58 ff ff ff 	mov    -0xa8(%rbp),%rax
+  91:	48 8b 00             	mov    (%rax),%rax
+  94:	be 02 09 00 00       	mov    $0x902,%esi
+  99:	48 89 c7             	mov    %rax,%rdi
+  9c:	b8 00 00 00 00       	mov    $0x0,%eax
+  a1:	e8 00 00 00 00       	call   a6 <s_configure_termios()+0xa6>
+  a6:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # ac <s_configure_termios()+0xac>
+  ac:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # b2 <s_configure_termios()+0xb2>
+  b2:	85 c0                	test   %eax,%eax
+  b4:	79 74                	jns    12a <s_configure_termios()+0x12a>
+  b6:	eb 3c                	jmp    f4 <s_configure_termios()+0xf4>
+  b8:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # be <s_configure_termios()+0xbe>
+  be:	89 c0                	mov    %eax,%eax
+  c0:	48 c1 e0 06          	shl    $0x6,%rax
+  c4:	48 89 c2             	mov    %rax,%rdx
+  c7:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # ce <s_configure_termios()+0xce>
+  ce:	48 01 c2             	add    %rax,%rdx
+  d1:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # d8 <s_configure_termios()+0xd8>
+  d8:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # df <s_configure_termios()+0xdf>
+  df:	48 89 ce             	mov    %rcx,%rsi
+  e2:	48 89 c7             	mov    %rax,%rdi
+  e5:	b8 00 00 00 00       	mov    $0x0,%eax
+  ea:	e8 00 00 00 00       	call   ef <s_configure_termios()+0xef>
+  ef:	e9 e2 01 00 00       	jmp    2d6 <s_configure_termios()+0x2d6>
+  f4:	e8 00 00 00 00       	call   f9 <s_configure_termios()+0xf9>
+  f9:	8b 00                	mov    (%rax),%eax
+  fb:	89 c7                	mov    %eax,%edi
+  fd:	e8 00 00 00 00       	call   102 <s_configure_termios()+0x102>
+ 102:	48 89 c3             	mov    %rax,%rbx
+ 105:	e8 00 00 00 00       	call   10a <s_configure_termios()+0x10a>
+ 10a:	8b 00                	mov    (%rax),%eax
+ 10c:	48 89 da             	mov    %rbx,%rdx
+ 10f:	89 c6                	mov    %eax,%esi
+ 111:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 118 <s_configure_termios()+0x118>
+ 118:	48 89 c7             	mov    %rax,%rdi
+ 11b:	b8 00 00 00 00       	mov    $0x0,%eax
+ 120:	e8 00 00 00 00       	call   125 <s_configure_termios()+0x125>
+ 125:	e9 ac 01 00 00       	jmp    2d6 <s_configure_termios()+0x2d6>
+ 12a:	48 8b 85 58 ff ff ff 	mov    -0xa8(%rbp),%rax
+ 131:	48 8b 00             	mov    (%rax),%rax
+ 134:	48 89 c6             	mov    %rax,%rsi
+ 137:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 13e <s_configure_termios()+0x13e>
+ 13e:	48 89 c7             	mov    %rax,%rdi
+ 141:	b8 00 00 00 00       	mov    $0x0,%eax
+ 146:	e8 00 00 00 00       	call   14b <s_configure_termios()+0x14b>
+ 14b:	48 8d 85 50 ff ff ff 	lea    -0xb0(%rbp),%rax
+ 152:	48 89 c7             	mov    %rax,%rdi
+ 155:	e8 00 00 00 00       	call   15a <s_configure_termios()+0x15a>
+ 15a:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 160 <s_configure_termios()+0x160>
+ 160:	ba 00 00 00 00       	mov    $0x0,%edx
+ 165:	be 04 00 00 00       	mov    $0x4,%esi
+ 16a:	89 c7                	mov    %eax,%edi
+ 16c:	b8 00 00 00 00       	mov    $0x0,%eax
+ 171:	e8 00 00 00 00       	call   176 <s_configure_termios()+0x176>
+ 176:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 17c <s_configure_termios()+0x17c>
+ 17c:	48 8d 55 a0          	lea    -0x60(%rbp),%rdx
+ 180:	48 89 d6             	mov    %rdx,%rsi
+ 183:	89 c7                	mov    %eax,%edi
+ 185:	e8 00 00 00 00       	call   18a <s_configure_termios()+0x18a>
+ 18a:	85 c0                	test   %eax,%eax
+ 18c:	0f 95 c0             	setne  %al
+ 18f:	84 c0                	test   %al,%al
+ 191:	74 36                	je     1c9 <s_configure_termios()+0x1c9>
+ 193:	e8 00 00 00 00       	call   198 <s_configure_termios()+0x198>
+ 198:	8b 00                	mov    (%rax),%eax
+ 19a:	89 c7                	mov    %eax,%edi
+ 19c:	e8 00 00 00 00       	call   1a1 <s_configure_termios()+0x1a1>
+ 1a1:	48 89 c3             	mov    %rax,%rbx
+ 1a4:	e8 00 00 00 00       	call   1a9 <s_configure_termios()+0x1a9>
+ 1a9:	8b 00                	mov    (%rax),%eax
+ 1ab:	48 89 da             	mov    %rbx,%rdx
+ 1ae:	89 c6                	mov    %eax,%esi
+ 1b0:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 1b7 <s_configure_termios()+0x1b7>
+ 1b7:	48 89 c7             	mov    %rax,%rdi
+ 1ba:	b8 00 00 00 00       	mov    $0x0,%eax
+ 1bf:	e8 00 00 00 00       	call   1c4 <s_configure_termios()+0x1c4>
+ 1c4:	e9 0d 01 00 00       	jmp    2d6 <s_configure_termios()+0x2d6>
+ 1c9:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 1cf <s_configure_termios()+0x1cf>
+ 1cf:	3d 00 c2 01 00       	cmp    $0x1c200,%eax
+ 1d4:	75 24                	jne    1fa <s_configure_termios()+0x1fa>
+ 1d6:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+ 1da:	be 02 10 00 00       	mov    $0x1002,%esi
+ 1df:	48 89 c7             	mov    %rax,%rdi
+ 1e2:	e8 00 00 00 00       	call   1e7 <s_configure_termios()+0x1e7>
+ 1e7:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+ 1eb:	be 02 10 00 00       	mov    $0x1002,%esi
+ 1f0:	48 89 c7             	mov    %rax,%rdi
+ 1f3:	e8 00 00 00 00       	call   1f8 <s_configure_termios()+0x1f8>
+ 1f8:	eb 22                	jmp    21c <s_configure_termios()+0x21c>
+ 1fa:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+ 1fe:	be 0d 00 00 00       	mov    $0xd,%esi
+ 203:	48 89 c7             	mov    %rax,%rdi
+ 206:	e8 00 00 00 00       	call   20b <s_configure_termios()+0x20b>
+ 20b:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+ 20f:	be 0d 00 00 00       	mov    $0xd,%esi
+ 214:	48 89 c7             	mov    %rax,%rdi
+ 217:	e8 00 00 00 00       	call   21c <s_configure_termios()+0x21c>
+ 21c:	8b 45 a8             	mov    -0x58(%rbp),%eax
+ 21f:	80 e4 fe             	and    $0xfe,%ah
+ 222:	89 45 a8             	mov    %eax,-0x58(%rbp)
+ 225:	8b 45 a8             	mov    -0x58(%rbp),%eax
+ 228:	83 e0 bf             	and    $0xffffffbf,%eax
+ 22b:	89 45 a8             	mov    %eax,-0x58(%rbp)
+ 22e:	8b 45 a8             	mov    -0x58(%rbp),%eax
+ 231:	83 e0 cf             	and    $0xffffffcf,%eax
+ 234:	89 45 a8             	mov    %eax,-0x58(%rbp)
+ 237:	8b 45 a8             	mov    -0x58(%rbp),%eax
+ 23a:	83 c8 30             	or     $0x30,%eax
+ 23d:	89 45 a8             	mov    %eax,-0x58(%rbp)
+ 240:	8b 45 a8             	mov    -0x58(%rbp),%eax
+ 243:	25 ff ff ff 7f       	and    $0x7fffffff,%eax
+ 248:	89 45 a8             	mov    %eax,-0x58(%rbp)
+ 24b:	8b 45 a8             	mov    -0x58(%rbp),%eax
+ 24e:	0d 80 08 00 00       	or     $0x880,%eax
+ 253:	89 45 a8             	mov    %eax,-0x58(%rbp)
+ 256:	8b 45 ac             	mov    -0x54(%rbp),%eax
+ 259:	83 e0 fd             	and    $0xfffffffd,%eax
+ 25c:	89 45 ac             	mov    %eax,-0x54(%rbp)
+ 25f:	8b 45 ac             	mov    -0x54(%rbp),%eax
+ 262:	83 e0 f7             	and    $0xfffffff7,%eax
+ 265:	89 45 ac             	mov    %eax,-0x54(%rbp)
+ 268:	8b 45 ac             	mov    -0x54(%rbp),%eax
+ 26b:	83 e0 ef             	and    $0xffffffef,%eax
+ 26e:	89 45 ac             	mov    %eax,-0x54(%rbp)
+ 271:	8b 45 ac             	mov    -0x54(%rbp),%eax
+ 274:	83 e0 bf             	and    $0xffffffbf,%eax
+ 277:	89 45 ac             	mov    %eax,-0x54(%rbp)
+ 27a:	8b 45 ac             	mov    -0x54(%rbp),%eax
+ 27d:	83 e0 fe             	and    $0xfffffffe,%eax
+ 280:	89 45 ac             	mov    %eax,-0x54(%rbp)
+ 283:	8b 45 a0             	mov    -0x60(%rbp),%eax
+ 286:	80 e4 e3             	and    $0xe3,%ah
+ 289:	89 45 a0             	mov    %eax,-0x60(%rbp)
+ 28c:	8b 45 a0             	mov    -0x60(%rbp),%eax
+ 28f:	25 14 fe ff ff       	and    $0xfffffe14,%eax
+ 294:	89 45 a0             	mov    %eax,-0x60(%rbp)
+ 297:	8b 45 a4             	mov    -0x5c(%rbp),%eax
+ 29a:	83 e0 fe             	and    $0xfffffffe,%eax
+ 29d:	89 45 a4             	mov    %eax,-0x5c(%rbp)
+ 2a0:	8b 45 a4             	mov    -0x5c(%rbp),%eax
+ 2a3:	83 e0 fb             	and    $0xfffffffb,%eax
+ 2a6:	89 45 a4             	mov    %eax,-0x5c(%rbp)
+ 2a9:	c6 45 b6 01          	movb   $0x1,-0x4a(%rbp)
+ 2ad:	c6 45 b7 00          	movb   $0x0,-0x49(%rbp)
+ 2b1:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 2b7 <s_configure_termios()+0x2b7>
+ 2b7:	48 8d 55 a0          	lea    -0x60(%rbp),%rdx
+ 2bb:	be 00 00 00 00       	mov    $0x0,%esi
+ 2c0:	89 c7                	mov    %eax,%edi
+ 2c2:	e8 00 00 00 00       	call   2c7 <s_configure_termios()+0x2c7>
+ 2c7:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2ce <s_configure_termios()+0x2ce>
+ 2ce:	48 89 c7             	mov    %rax,%rdi
+ 2d1:	e8 00 00 00 00       	call   2d6 <s_configure_termios()+0x2d6>
+ 2d6:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 2da:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 2e1:	00 00 
+ 2e3:	74 05                	je     2ea <s_configure_termios()+0x2ea>
+ 2e5:	e8 00 00 00 00       	call   2ea <s_configure_termios()+0x2ea>
+ 2ea:	48 8b 5d f8          	mov    -0x8(%rbp),%rbx
+ 2ee:	c9                   	leave  
+ 2ef:	c3                   	ret    
+
+Disassembly of section .text.uart_begin:
+
+0000000000000000 <uart_begin>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	89 7d fc             	mov    %edi,-0x4(%rbp)
+   f:	89 75 f8             	mov    %esi,-0x8(%rbp)
+  12:	89 55 f4             	mov    %edx,-0xc(%rbp)
+  15:	89 4d f0             	mov    %ecx,-0x10(%rbp)
+  18:	44 89 45 ec          	mov    %r8d,-0x14(%rbp)
+  1c:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  1f:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 25 <uart_begin+0x25>
+  25:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  28:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 2e <uart_begin+0x2e>
+  2e:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  31:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 37 <uart_begin+0x37>
+  37:	8b 45 f0             	mov    -0x10(%rbp),%eax
+  3a:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 40 <uart_begin+0x40>
+  40:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  43:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 49 <uart_begin+0x49>
+  49:	e8 00 00 00 00       	call   4e <uart_begin+0x4e>
+  4e:	90                   	nop
+  4f:	c9                   	leave  
+  50:	c3                   	ret    
+
+Disassembly of section .text.uart_set_baudrate:
+
+0000000000000000 <uart_set_baudrate>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	89 7d fc             	mov    %edi,-0x4(%rbp)
+   f:	89 75 f8             	mov    %esi,-0x8(%rbp)
+  12:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  15:	89 05 00 00 00 00    	mov    %eax,0x0(%rip)        # 1b <uart_set_baudrate+0x1b>
+  1b:	e8 00 00 00 00       	call   20 <uart_set_baudrate+0x20>
+  20:	90                   	nop
+  21:	c9                   	leave  
+  22:	c3                   	ret    
+
+Disassembly of section .text.uart_transmit:
+
+0000000000000000 <uart_transmit>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	89 7d ec             	mov    %edi,-0x14(%rbp)
+   f:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+  13:	89 55 e8             	mov    %edx,-0x18(%rbp)
+  16:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 1c <uart_transmit+0x1c>
+  1c:	85 c0                	test   %eax,%eax
+  1e:	79 2f                	jns    4f <uart_transmit+0x4f>
+  20:	b9 9b 00 00 00       	mov    $0x9b,%ecx
+  25:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2c <uart_transmit+0x2c>
+  2c:	48 89 c2             	mov    %rax,%rdx
+  2f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 36 <uart_transmit+0x36>
+  36:	48 89 c6             	mov    %rax,%rsi
+  39:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 40 <uart_transmit+0x40>
+  40:	48 89 c7             	mov    %rax,%rdi
+  43:	b8 00 00 00 00       	mov    $0x0,%eax
+  48:	e8 00 00 00 00       	call   4d <uart_transmit+0x4d>
+  4d:	eb 43                	jmp    92 <uart_transmit+0x92>
+  4f:	8b 55 e8             	mov    -0x18(%rbp),%edx
+  52:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 58 <uart_transmit+0x58>
+  58:	48 8b 4d e0          	mov    -0x20(%rbp),%rcx
+  5c:	48 89 ce             	mov    %rcx,%rsi
+  5f:	89 c7                	mov    %eax,%edi
+  61:	e8 00 00 00 00       	call   66 <uart_transmit+0x66>
+  66:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  69:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  6c:	3b 45 e8             	cmp    -0x18(%rbp),%eax
+  6f:	74 21                	je     92 <uart_transmit+0x92>
+  71:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 78 <uart_transmit+0x78>
+  78:	8b 4d e8             	mov    -0x18(%rbp),%ecx
+  7b:	8b 55 fc             	mov    -0x4(%rbp),%edx
+  7e:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 85 <uart_transmit+0x85>
+  85:	48 89 c7             	mov    %rax,%rdi
+  88:	b8 00 00 00 00       	mov    $0x0,%eax
+  8d:	e8 00 00 00 00       	call   92 <uart_transmit+0x92>
+  92:	c9                   	leave  
+  93:	c3                   	ret    
+
+Disassembly of section .text.uart_transmit_string:
+
+0000000000000000 <uart_transmit_string>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	89 7d ec             	mov    %edi,-0x14(%rbp)
+   f:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+  13:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 19 <uart_transmit_string+0x19>
+  19:	85 c0                	test   %eax,%eax
+  1b:	79 2f                	jns    4c <uart_transmit_string+0x4c>
+  1d:	b9 a8 00 00 00       	mov    $0xa8,%ecx
+  22:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 29 <uart_transmit_string+0x29>
+  29:	48 89 c2             	mov    %rax,%rdx
+  2c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 33 <uart_transmit_string+0x33>
+  33:	48 89 c6             	mov    %rax,%rsi
+  36:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 3d <uart_transmit_string+0x3d>
+  3d:	48 89 c7             	mov    %rax,%rdi
+  40:	b8 00 00 00 00       	mov    $0x0,%eax
+  45:	e8 00 00 00 00       	call   4a <uart_transmit_string+0x4a>
+  4a:	eb 58                	jmp    a4 <uart_transmit_string+0xa4>
+  4c:	48 8b 45 e0          	mov    -0x20(%rbp),%rax
+  50:	48 89 c7             	mov    %rax,%rdi
+  53:	e8 00 00 00 00       	call   58 <uart_transmit_string+0x58>
+  58:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  5c:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 62 <uart_transmit_string+0x62>
+  62:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  66:	48 8b 4d e0          	mov    -0x20(%rbp),%rcx
+  6a:	48 89 ce             	mov    %rcx,%rsi
+  6d:	89 c7                	mov    %eax,%edi
+  6f:	e8 00 00 00 00       	call   74 <uart_transmit_string+0x74>
+  74:	89 45 f4             	mov    %eax,-0xc(%rbp)
+  77:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  7a:	48 39 45 f8          	cmp    %rax,-0x8(%rbp)
+  7e:	74 24                	je     a4 <uart_transmit_string+0xa4>
+  80:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  84:	89 c1                	mov    %eax,%ecx
+  86:	48 8b 05 00 00 00 00 	mov    0x0(%rip),%rax        # 8d <uart_transmit_string+0x8d>
+  8d:	8b 55 f4             	mov    -0xc(%rbp),%edx
+  90:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 97 <uart_transmit_string+0x97>
+  97:	48 89 c7             	mov    %rax,%rdi
+  9a:	b8 00 00 00 00       	mov    $0x0,%eax
+  9f:	e8 00 00 00 00       	call   a4 <uart_transmit_string+0xa4>
+  a4:	c9                   	leave  
+  a5:	c3                   	ret    
+
+Disassembly of section .text.uart_get_rx_fifo_level:
+
+0000000000000000 <uart_get_rx_fifo_level>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	89 7d ec             	mov    %edi,-0x14(%rbp)
+   f:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  16:	00 00 
+  18:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  1c:	31 c0                	xor    %eax,%eax
+  1e:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 24 <uart_get_rx_fifo_level+0x24>
+  24:	85 c0                	test   %eax,%eax
+  26:	79 34                	jns    5c <uart_get_rx_fifo_level+0x5c>
+  28:	b9 b6 00 00 00       	mov    $0xb6,%ecx
+  2d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 34 <uart_get_rx_fifo_level+0x34>
+  34:	48 89 c2             	mov    %rax,%rdx
+  37:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 3e <uart_get_rx_fifo_level+0x3e>
+  3e:	48 89 c6             	mov    %rax,%rsi
+  41:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 48 <uart_get_rx_fifo_level+0x48>
+  48:	48 89 c7             	mov    %rax,%rdi
+  4b:	b8 00 00 00 00       	mov    $0x0,%eax
+  50:	e8 00 00 00 00       	call   55 <uart_get_rx_fifo_level+0x55>
+  55:	b8 00 00 00 00       	mov    $0x0,%eax
+  5a:	eb 4a                	jmp    a6 <uart_get_rx_fifo_level+0xa6>
+  5c:	c7 45 f0 00 00 00 00 	movl   $0x0,-0x10(%rbp)
+  63:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 69 <uart_get_rx_fifo_level+0x69>
+  69:	48 8d 55 f0          	lea    -0x10(%rbp),%rdx
+  6d:	be 1b 54 00 00       	mov    $0x541b,%esi
+  72:	89 c7                	mov    %eax,%edi
+  74:	b8 00 00 00 00       	mov    $0x0,%eax
+  79:	e8 00 00 00 00       	call   7e <uart_get_rx_fifo_level+0x7e>
+  7e:	89 45 f4             	mov    %eax,-0xc(%rbp)
+  81:	83 7d f4 00          	cmpl   $0x0,-0xc(%rbp)
+  85:	7f 1c                	jg     a3 <uart_get_rx_fifo_level+0xa3>
+  87:	83 7d f4 ff          	cmpl   $0xffffffff,-0xc(%rbp)
+  8b:	75 0f                	jne    9c <uart_get_rx_fifo_level+0x9c>
+  8d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 94 <uart_get_rx_fifo_level+0x94>
+  94:	48 89 c7             	mov    %rax,%rdi
+  97:	e8 00 00 00 00       	call   9c <uart_get_rx_fifo_level+0x9c>
+  9c:	b8 00 00 00 00       	mov    $0x0,%eax
+  a1:	eb 03                	jmp    a6 <uart_get_rx_fifo_level+0xa6>
+  a3:	8b 45 f0             	mov    -0x10(%rbp),%eax
+  a6:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  aa:	64 48 2b 14 25 28 00 	sub    %fs:0x28,%rdx
+  b1:	00 00 
+  b3:	74 05                	je     ba <uart_get_rx_fifo_level+0xba>
+  b5:	e8 00 00 00 00       	call   ba <uart_get_rx_fifo_level+0xba>
+  ba:	c9                   	leave  
+  bb:	c3                   	ret    
+
+Disassembly of section .text.uart_get_rx_data:
+
+0000000000000000 <uart_get_rx_data>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 30          	sub    $0x30,%rsp
+   c:	89 7d dc             	mov    %edi,-0x24(%rbp)
+   f:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  16:	00 00 
+  18:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  1c:	31 c0                	xor    %eax,%eax
+  1e:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 24 <uart_get_rx_data+0x24>
+  24:	85 c0                	test   %eax,%eax
+  26:	79 34                	jns    5c <uart_get_rx_data+0x5c>
+  28:	b9 c9 00 00 00       	mov    $0xc9,%ecx
+  2d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 34 <uart_get_rx_data+0x34>
+  34:	48 89 c2             	mov    %rax,%rdx
+  37:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 3e <uart_get_rx_data+0x3e>
+  3e:	48 89 c6             	mov    %rax,%rsi
+  41:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 48 <uart_get_rx_data+0x48>
+  48:	48 89 c7             	mov    %rax,%rdi
+  4b:	b8 00 00 00 00       	mov    $0x0,%eax
+  50:	e8 00 00 00 00       	call   55 <uart_get_rx_data+0x55>
+  55:	b8 20 00 00 00       	mov    $0x20,%eax
+  5a:	eb 2f                	jmp    8b <uart_get_rx_data+0x8b>
+  5c:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 62 <uart_get_rx_data+0x62>
+  62:	48 8d 4d ef          	lea    -0x11(%rbp),%rcx
+  66:	ba 01 00 00 00       	mov    $0x1,%edx
+  6b:	48 89 ce             	mov    %rcx,%rsi
+  6e:	89 c7                	mov    %eax,%edi
+  70:	e8 00 00 00 00       	call   75 <uart_get_rx_data+0x75>
+  75:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+  79:	48 83 7d f0 00       	cmpq   $0x0,-0x10(%rbp)
+  7e:	7f 07                	jg     87 <uart_get_rx_data+0x87>
+  80:	b8 20 00 00 00       	mov    $0x20,%eax
+  85:	eb 04                	jmp    8b <uart_get_rx_data+0x8b>
+  87:	0f b6 45 ef          	movzbl -0x11(%rbp),%eax
+  8b:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  8f:	64 48 2b 14 25 28 00 	sub    %fs:0x28,%rdx
+  96:	00 00 
+  98:	74 05                	je     9f <uart_get_rx_data+0x9f>
+  9a:	e8 00 00 00 00       	call   9f <uart_get_rx_data+0x9f>
+  9f:	c9                   	leave  
+  a0:	c3                   	ret    
+
+Disassembly of section .text.uart_get_rx:
+
+0000000000000000 <uart_get_rx>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	89 7d ec             	mov    %edi,-0x14(%rbp)
+   f:	48 89 75 e0          	mov    %rsi,-0x20(%rbp)
+  13:	89 55 e8             	mov    %edx,-0x18(%rbp)
+  16:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 1c <uart_get_rx+0x1c>
+  1c:	85 c0                	test   %eax,%eax
+  1e:	79 34                	jns    54 <uart_get_rx+0x54>
+  20:	b9 da 00 00 00       	mov    $0xda,%ecx
+  25:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2c <uart_get_rx+0x2c>
+  2c:	48 89 c2             	mov    %rax,%rdx
+  2f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 36 <uart_get_rx+0x36>
+  36:	48 89 c6             	mov    %rax,%rsi
+  39:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 40 <uart_get_rx+0x40>
+  40:	48 89 c7             	mov    %rax,%rdi
+  43:	b8 00 00 00 00       	mov    $0x0,%eax
+  48:	e8 00 00 00 00       	call   4d <uart_get_rx+0x4d>
+  4d:	b8 00 00 00 00       	mov    $0x0,%eax
+  52:	eb 2c                	jmp    80 <uart_get_rx+0x80>
+  54:	8b 55 e8             	mov    -0x18(%rbp),%edx
+  57:	8b 05 00 00 00 00    	mov    0x0(%rip),%eax        # 5d <uart_get_rx+0x5d>
+  5d:	48 8b 4d e0          	mov    -0x20(%rbp),%rcx
+  61:	48 89 ce             	mov    %rcx,%rsi
+  64:	89 c7                	mov    %eax,%edi
+  66:	e8 00 00 00 00       	call   6b <uart_get_rx+0x6b>
+  6b:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  6f:	48 83 7d f8 00       	cmpq   $0x0,-0x8(%rbp)
+  74:	7f 06                	jg     7c <uart_get_rx+0x7c>
+  76:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  7a:	eb 04                	jmp    80 <uart_get_rx+0x80>
+  7c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  80:	c9                   	leave  
+  81:	c3                   	ret    
+
+i2cdetect.o:     file format elf64-x86-64
+
+
+Disassembly of section .text.i2c_begin:
+
+0000000000000000 <i2c_begin>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	90                   	nop
+   5:	5d                   	pop    %rbp
+   6:	c3                   	ret    
+
+Disassembly of section .text.i2c_set_baudrate:
+
+0000000000000000 <i2c_set_baudrate>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	89 7d fc             	mov    %edi,-0x4(%rbp)
+   7:	90                   	nop
+   8:	5d                   	pop    %rbp
+   9:	c3                   	ret    
+
+Disassembly of section .text.i2c_set_address:
+
+0000000000000000 <i2c_set_address>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	89 f8                	mov    %edi,%eax
+   6:	88 45 fc             	mov    %al,-0x4(%rbp)
+   9:	90                   	nop
+   a:	5d                   	pop    %rbp
+   b:	c3                   	ret    
+
+Disassembly of section .text.i2c_write:
+
+0000000000000000 <i2c_write>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   8:	89 75 f4             	mov    %esi,-0xc(%rbp)
+   b:	b8 01 00 00 00       	mov    $0x1,%eax
+  10:	5d                   	pop    %rbp
+  11:	c3                   	ret    
+
+Disassembly of section .text.i2c_read:
+
+0000000000000000 <i2c_read>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   8:	89 75 f4             	mov    %esi,-0xc(%rbp)
+   b:	b8 01 00 00 00       	mov    $0x1,%eax
+  10:	5d                   	pop    %rbp
+  11:	c3                   	ret    
+
+Disassembly of section .text._ZL16i2c_is_connectedh:
+
+0000000000000000 <i2c_is_connected(unsigned char)>:
+   0:	55                   	push   %rbp
+   1:	48 89 e5             	mov    %rsp,%rbp
+   4:	48 83 ec 20          	sub    $0x20,%rsp
+   8:	89 f8                	mov    %edi,%eax
+   a:	88 45 ec             	mov    %al,-0x14(%rbp)
+   d:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  14:	00 00 
+  16:	48 89 45 f8          	mov    %rax,-0x8(%rbp)
+  1a:	31 c0                	xor    %eax,%eax
+  1c:	0f b6 45 ec          	movzbl -0x14(%rbp),%eax
+  20:	89 c7                	mov    %eax,%edi
+  22:	e8 00 00 00 00       	call   27 <i2c_is_connected(unsigned char)+0x27>
+  27:	80 7d ec 2f          	cmpb   $0x2f,-0x14(%rbp)
+  2b:	76 06                	jbe    33 <i2c_is_connected(unsigned char)+0x33>
+  2d:	80 7d ec 37          	cmpb   $0x37,-0x14(%rbp)
+  31:	76 0c                	jbe    3f <i2c_is_connected(unsigned char)+0x3f>
+  33:	80 7d ec 4f          	cmpb   $0x4f,-0x14(%rbp)
+  37:	76 1c                	jbe    55 <i2c_is_connected(unsigned char)+0x55>
+  39:	80 7d ec 5f          	cmpb   $0x5f,-0x14(%rbp)
+  3d:	77 16                	ja     55 <i2c_is_connected(unsigned char)+0x55>
+  3f:	48 8d 45 f6          	lea    -0xa(%rbp),%rax
+  43:	be 01 00 00 00       	mov    $0x1,%esi
+  48:	48 89 c7             	mov    %rax,%rdi
+  4b:	e8 00 00 00 00       	call   50 <i2c_is_connected(unsigned char)+0x50>
+  50:	88 45 f7             	mov    %al,-0x9(%rbp)
+  53:	eb 12                	jmp    67 <i2c_is_connected(unsigned char)+0x67>
+  55:	be 00 00 00 00       	mov    $0x0,%esi
+  5a:	bf 00 00 00 00       	mov    $0x0,%edi
+  5f:	e8 00 00 00 00       	call   64 <i2c_is_connected(unsigned char)+0x64>
+  64:	88 45 f7             	mov    %al,-0x9(%rbp)
+  67:	80 7d f7 00          	cmpb   $0x0,-0x9(%rbp)
+  6b:	0f 94 c0             	sete   %al
+  6e:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  72:	64 48 2b 14 25 28 00 	sub    %fs:0x28,%rdx
+  79:	00 00 
+  7b:	74 05                	je     82 <i2c_is_connected(unsigned char)+0x82>
+  7d:	e8 00 00 00 00       	call   82 <i2c_is_connected(unsigned char)+0x82>
+  82:	c9                   	leave  
+  83:	c3                   	ret    
+
+Disassembly of section .text._ZN9I2cDetectC2Ev:
+
+0000000000000000 <I2cDetect::I2cDetect()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	bf a0 86 01 00       	mov    $0x186a0,%edi
+  15:	e8 00 00 00 00       	call   1a <I2cDetect::I2cDetect()+0x1a>
+  1a:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 21 <I2cDetect::I2cDetect()+0x21>
+  21:	48 89 c7             	mov    %rax,%rdi
+  24:	e8 00 00 00 00       	call   29 <I2cDetect::I2cDetect()+0x29>
+  29:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+  30:	e9 c2 00 00 00       	jmp    f7 <I2cDetect::I2cDetect()+0xf7>
+  35:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  38:	89 c6                	mov    %eax,%esi
+  3a:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 41 <I2cDetect::I2cDetect()+0x41>
+  41:	48 89 c7             	mov    %rax,%rdi
+  44:	b8 00 00 00 00       	mov    $0x0,%eax
+  49:	e8 00 00 00 00       	call   4e <I2cDetect::I2cDetect()+0x4e>
+  4e:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+  55:	e9 80 00 00 00       	jmp    da <I2cDetect::I2cDetect()+0xda>
+  5a:	8b 55 f8             	mov    -0x8(%rbp),%edx
+  5d:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  60:	01 d0                	add    %edx,%eax
+  62:	83 f8 02             	cmp    $0x2,%eax
+  65:	76 0d                	jbe    74 <I2cDetect::I2cDetect()+0x74>
+  67:	8b 55 f8             	mov    -0x8(%rbp),%edx
+  6a:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  6d:	01 d0                	add    %edx,%eax
+  6f:	83 f8 77             	cmp    $0x77,%eax
+  72:	76 16                	jbe    8a <I2cDetect::I2cDetect()+0x8a>
+  74:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7b <I2cDetect::I2cDetect()+0x7b>
+  7b:	48 89 c7             	mov    %rax,%rdi
+  7e:	b8 00 00 00 00       	mov    $0x0,%eax
+  83:	e8 00 00 00 00       	call   88 <I2cDetect::I2cDetect()+0x88>
+  88:	eb 4c                	jmp    d6 <I2cDetect::I2cDetect()+0xd6>
+  8a:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  8d:	89 c2                	mov    %eax,%edx
+  8f:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  92:	01 d0                	add    %edx,%eax
+  94:	0f b6 c0             	movzbl %al,%eax
+  97:	89 c7                	mov    %eax,%edi
+  99:	e8 00 00 00 00       	call   9e <I2cDetect::I2cDetect()+0x9e>
+  9e:	84 c0                	test   %al,%al
+  a0:	74 20                	je     c2 <I2cDetect::I2cDetect()+0xc2>
+  a2:	8b 55 f8             	mov    -0x8(%rbp),%edx
+  a5:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  a8:	01 d0                	add    %edx,%eax
+  aa:	89 c6                	mov    %eax,%esi
+  ac:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # b3 <I2cDetect::I2cDetect()+0xb3>
+  b3:	48 89 c7             	mov    %rax,%rdi
+  b6:	b8 00 00 00 00       	mov    $0x0,%eax
+  bb:	e8 00 00 00 00       	call   c0 <I2cDetect::I2cDetect()+0xc0>
+  c0:	eb 14                	jmp    d6 <I2cDetect::I2cDetect()+0xd6>
+  c2:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # c9 <I2cDetect::I2cDetect()+0xc9>
+  c9:	48 89 c7             	mov    %rax,%rdi
+  cc:	b8 00 00 00 00       	mov    $0x0,%eax
+  d1:	e8 00 00 00 00       	call   d6 <I2cDetect::I2cDetect()+0xd6>
+  d6:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+  da:	83 7d fc 0f          	cmpl   $0xf,-0x4(%rbp)
+  de:	0f 86 76 ff ff ff    	jbe    5a <I2cDetect::I2cDetect()+0x5a>
+  e4:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # eb <I2cDetect::I2cDetect()+0xeb>
+  eb:	48 89 c7             	mov    %rax,%rdi
+  ee:	e8 00 00 00 00       	call   f3 <I2cDetect::I2cDetect()+0xf3>
+  f3:	83 45 f8 10          	addl   $0x10,-0x8(%rbp)
+  f7:	83 7d f8 7f          	cmpl   $0x7f,-0x8(%rbp)
+  fb:	0f 86 34 ff ff ff    	jbe    35 <I2cDetect::I2cDetect()+0x35>
+ 101:	e8 00 00 00 00       	call   106 <I2cDetect::I2cDetect()+0x106>
+ 106:	90                   	nop
+ 107:	c9                   	leave  
+ 108:	c3                   	ret    

@@ -1,0 +1,1942 @@
+In archive lib7/libproperties.a:
+
+devicesparamsconst.o:     file format elf32-littlearm
+
+
+Disassembly of section .rodata:
+
+00000000 <DevicesParamsConst::GAMMA_VALUE>:
+   0:	6d6d6167 	stfvse	f6, [sp, #-412]!	; 0xfffffe64
+   4:	61765f61 	cmnvs	r6, r1, ror #30
+   8:	0065756c 	rsbeq	r7, r5, ip, ror #10
+
+0000000c <DevicesParamsConst::GAMMA_CORRECTION>:
+   c:	6d6d6167 	stfvse	f6, [sp, #-412]!	; 0xfffffe64
+  10:	6f635f61 	svcvs	0x00635f61
+  14:	63657272 	cmnvs	r5, #536870919	; 0x20000007
+  18:	6e6f6974 			; <UNDEFINED> instruction: 0x6e6f6974
+  1c:	00000000 	andeq	r0, r0, r0
+
+00000020 <DevicesParamsConst::TEST_PATTERN>:
+  20:	74736574 	ldrbtvc	r6, [r3], #-1396	; 0xfffffa8c
+  24:	7461705f 	strbtvc	r7, [r1], #-95	; 0xffffffa1
+  28:	6e726574 	mrcvs	5, 3, r6, cr2, cr4, {3}
+  2c:	00000000 	andeq	r0, r0, r0
+
+00000030 <DevicesParamsConst::ACTIVE_OUT>:
+  30:	69746361 	ldmdbvs	r4!, {r0, r5, r6, r8, r9, sp, lr}^
+  34:	6f5f6576 	svcvs	0x005f6576
+  38:	00007475 	andeq	r7, r0, r5, ror r4
+
+0000003c <DevicesParamsConst::GLOBAL_BRIGHTNESS>:
+  3c:	626f6c67 	rsbvs	r6, pc, #26368	; 0x6700
+  40:	625f6c61 	subsvs	r6, pc, #24832	; 0x6100
+  44:	68676972 	stmdavs	r7!, {r1, r4, r5, r6, r8, fp, sp, lr}^
+  48:	73656e74 	cmnvc	r5, #116, 28	; 0x740
+  4c:	00000073 	andeq	r0, r0, r3, ror r0
+
+00000050 <DevicesParamsConst::SPI_SPEED_HZ>:
+  50:	636f6c63 	cmnvs	pc, #25344	; 0x6300
+  54:	70735f6b 	rsbsvc	r5, r3, fp, ror #30
+  58:	5f646565 	svcpl	0x00646565
+  5c:	00007a68 	andeq	r7, r0, r8, ror #20
+
+00000060 <DevicesParamsConst::GROUPING_COUNT>:
+  60:	5f64656c 	svcpl	0x0064656c
+  64:	756f7267 	strbvc	r7, [pc, #-615]!	; fffffe05 <DevicesParamsConst::FILE_NAME+0xfffffd4d>
+  68:	6f635f70 	svcvs	0x00635f70
+  6c:	00746e75 	rsbseq	r6, r4, r5, ror lr
+
+00000070 <DevicesParamsConst::GROUPING_ENABLED>:
+  70:	5f64656c 	svcpl	0x0064656c
+  74:	756f7267 	strbvc	r7, [pc, #-615]!	; fffffe15 <DevicesParamsConst::FILE_NAME+0xfffffd5d>
+  78:	676e6970 			; <UNDEFINED> instruction: 0x676e6970
+  7c:	00000000 	andeq	r0, r0, r0
+
+00000080 <DevicesParamsConst::COUNT>:
+  80:	5f64656c 	svcpl	0x0064656c
+  84:	6e756f63 	cdpvs	15, 7, cr6, cr5, cr3, {3}
+  88:	00000074 	andeq	r0, r0, r4, ror r0
+
+0000008c <DevicesParamsConst::LED_T1H>:
+  8c:	5f64656c 	svcpl	0x0064656c
+  90:	00683174 	rsbeq	r3, r8, r4, ror r1
+
+00000094 <DevicesParamsConst::LED_T0H>:
+  94:	5f64656c 	svcpl	0x0064656c
+  98:	00683074 	rsbeq	r3, r8, r4, ror r0
+
+0000009c <DevicesParamsConst::MAP>:
+  9c:	5f64656c 	svcpl	0x0064656c
+  a0:	5f626772 	svcpl	0x00626772
+  a4:	7070616d 	rsbsvc	r6, r0, sp, ror #2
+  a8:	00676e69 	rsbeq	r6, r7, r9, ror #28
+
+000000ac <DevicesParamsConst::TYPE>:
+  ac:	5f64656c 	svcpl	0x0064656c
+  b0:	65707974 	ldrbvs	r7, [r0, #-2420]!	; 0xfffff68c
+  b4:	00000000 	andeq	r0, r0, r0
+
+000000b8 <DevicesParamsConst::FILE_NAME>:
+  b8:	69766564 	ldmdbvs	r6!, {r2, r5, r6, r8, sl, sp, lr}^
+  bc:	2e736563 	cdpcs	5, 7, cr6, cr3, cr3, {3}
+  c0:	00747874 	rsbseq	r7, r4, r4, ror r8
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+parse.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Parse::DmxSlotInfo(char*, bool&, unsigned char&, unsigned short&)>:
+   0:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+   4:	e2807002 	add	r7, r0, #2
+   8:	e3a04000 	mov	r4, #0
+   c:	e1a05000 	mov	r5, r0
+  10:	e4d0c001 	ldrb	ip, [r0], #1
+  14:	e35c003a 	cmp	ip, #58	; 0x3a
+  18:	e38c6020 	orr	r6, ip, #32
+  1c:	e24ce030 	sub	lr, ip, #48	; 0x30
+  20:	e2466061 	sub	r6, r6, #97	; 0x61
+  24:	0a00000d 	beq	60 <Parse::DmxSlotInfo(char*, bool&, unsigned char&, unsigned short&)+0x60>
+  28:	e35e0009 	cmp	lr, #9
+  2c:	9a000001 	bls	38 <Parse::DmxSlotInfo(char*, bool&, unsigned char&, unsigned short&)+0x38>
+  30:	e3560005 	cmp	r6, #5
+  34:	8a00002e 	bhi	f4 <Parse::DmxSlotInfo(char*, bool&, unsigned char&, unsigned short&)+0xf4>
+  38:	e35c0039 	cmp	ip, #57	; 0x39
+  3c:	e38cc020 	orr	ip, ip, #32
+  40:	e24cc057 	sub	ip, ip, #87	; 0x57
+  44:	e6efe07e 	uxtb	lr, lr
+  48:	86efe07c 	uxtbhi	lr, ip
+  4c:	e1a05000 	mov	r5, r0
+  50:	e1570000 	cmp	r7, r0
+  54:	e18ee204 	orr	lr, lr, r4, lsl #4
+  58:	e6ff407e 	uxth	r4, lr
+  5c:	1affffea 	bne	c <Parse::DmxSlotInfo(char*, bool&, unsigned char&, unsigned short&)+0xc>
+  60:	e5c24000 	strb	r4, [r2]
+  64:	e285e001 	add	lr, r5, #1
+  68:	e3a00000 	mov	r0, #0
+  6c:	e2855005 	add	r5, r5, #5
+  70:	e1a0600e 	mov	r6, lr
+  74:	e4de2001 	ldrb	r2, [lr], #1
+  78:	e352002c 	cmp	r2, #44	; 0x2c
+  7c:	13520000 	cmpne	r2, #0
+  80:	e3824020 	orr	r4, r2, #32
+  84:	e242c030 	sub	ip, r2, #48	; 0x30
+  88:	e2444061 	sub	r4, r4, #97	; 0x61
+  8c:	0a000018 	beq	f4 <Parse::DmxSlotInfo(char*, bool&, unsigned char&, unsigned short&)+0xf4>
+  90:	e35c0009 	cmp	ip, #9
+  94:	8a000014 	bhi	ec <Parse::DmxSlotInfo(char*, bool&, unsigned char&, unsigned short&)+0xec>
+  98:	e3520039 	cmp	r2, #57	; 0x39
+  9c:	e3822020 	orr	r2, r2, #32
+  a0:	e2422057 	sub	r2, r2, #87	; 0x57
+  a4:	e6efc07c 	uxtb	ip, ip
+  a8:	86efc072 	uxtbhi	ip, r2
+  ac:	e15e0005 	cmp	lr, r5
+  b0:	e18cc200 	orr	ip, ip, r0, lsl #4
+  b4:	e6ff007c 	uxth	r0, ip
+  b8:	1affffec 	bne	70 <Parse::DmxSlotInfo(char*, bool&, unsigned char&, unsigned short&)+0x70>
+  bc:	e5de2000 	ldrb	r2, [lr]
+  c0:	e202c0df 	and	ip, r2, #223	; 0xdf
+  c4:	e352002c 	cmp	r2, #44	; 0x2c
+  c8:	135c0000 	cmpne	ip, #0
+  cc:	1a000008 	bne	f4 <Parse::DmxSlotInfo(char*, bool&, unsigned char&, unsigned short&)+0xf4>
+  d0:	e1c300b0 	strh	r0, [r3]
+  d4:	e3a03001 	mov	r3, #1
+  d8:	e5c13000 	strb	r3, [r1]
+  dc:	e5de0000 	ldrb	r0, [lr]
+  e0:	e3500000 	cmp	r0, #0
+  e4:	12860002 	addne	r0, r6, #2
+  e8:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+  ec:	e3540005 	cmp	r4, #5
+  f0:	9affffe8 	bls	98 <Parse::DmxSlotInfo(char*, bool&, unsigned char&, unsigned short&)+0x98>
+  f4:	e3a00000 	mov	r0, #0
+  f8:	e5c10000 	strb	r0, [r1]
+  fc:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+propertiesbuilderaddhex.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)>:
+   0:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+   4:	e1d0e0b6 	ldrh	lr, [r0, #6]
+   8:	e1d050b4 	ldrh	r5, [r0, #4]
+   c:	e59dc018 	ldr	ip, [sp, #24]
+  10:	e15e0005 	cmp	lr, r5
+  14:	3a000001 	bcc	20 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0x20>
+  18:	e3a00000 	mov	r0, #0
+  1c:	ea000021 	b	a8 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0xa8>
+  20:	e045500e 	sub	r5, r5, lr
+  24:	e1a04000 	mov	r4, r0
+  28:	e5900000 	ldr	r0, [r0]
+  2c:	e3530000 	cmp	r3, #0
+  30:	e080000e 	add	r0, r0, lr
+  34:	e5d4e008 	ldrb	lr, [r4, #8]
+  38:	1a000002 	bne	48 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0x48>
+  3c:	e35e0000 	cmp	lr, #0
+  40:	1a000002 	bne	50 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0x50>
+  44:	ea00000b 	b	78 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0x78>
+  48:	e35e0000 	cmp	lr, #0
+  4c:	0a000004 	beq	64 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0x64>
+  50:	e58d2004 	str	r2, [sp, #4]
+  54:	e1a03001 	mov	r3, r1
+  58:	e59f2050 	ldr	r2, [pc, #80]	; b0 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0xb0>
+  5c:	e58dc000 	str	ip, [sp]
+  60:	ea000008 	b	88 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0x88>
+  64:	e58d2004 	str	r2, [sp, #4]
+  68:	e1a03001 	mov	r3, r1
+  6c:	e59f2040 	ldr	r2, [pc, #64]	; b4 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0xb4>
+  70:	e58dc000 	str	ip, [sp]
+  74:	ea000003 	b	88 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0x88>
+  78:	e58d2004 	str	r2, [sp, #4]
+  7c:	e1a03001 	mov	r3, r1
+  80:	e59f2030 	ldr	r2, [pc, #48]	; b8 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0xb8>
+  84:	e58dc000 	str	ip, [sp]
+  88:	e1a01005 	mov	r1, r5
+  8c:	ebfffffe 	bl	0 <snprintf>
+  90:	e1550000 	cmp	r5, r0
+  94:	baffffdf 	blt	18 <PropertiesBuilder::AddHex(char const*, unsigned int, bool, unsigned int)+0x18>
+  98:	e1d430b6 	ldrh	r3, [r4, #6]
+  9c:	e0830000 	add	r0, r3, r0
+  a0:	e1c400b6 	strh	r0, [r4, #6]
+  a4:	e3a00001 	mov	r0, #1
+  a8:	e28dd00c 	add	sp, sp, #12
+  ac:	e8bd8030 	pop	{r4, r5, pc}
+  b0:	00000000 	andeq	r0, r0, r0
+  b4:	0000000d 	andeq	r0, r0, sp
+  b8:	00000016 	andeq	r0, r0, r6, lsl r0
+
+Disassembly of section .rodata.str1.1:
+
+00000000 <.rodata.str1.1>:
+   0:	22732522 	rsbscs	r2, r3, #142606336	; 0x8800000
+   4:	2e25223a 	mcrcs	2, 1, r2, cr5, cr10, {1}
+   8:	2c22782a 	stccs	8, cr7, [r2], #-168	; 0xffffff58
+   c:	3d732500 	cfldr64cc	mvdx2, [r3, #-0]
+  10:	782a2e25 	stmdavc	sl!, {r0, r2, r5, r9, sl, fp, sp}
+  14:	2523000a 	strcs	r0, [r3, #-10]!
+  18:	2e253d73 	mcrcs	13, 1, r3, cr5, cr3, {3}
+  1c:	000a782a 	andeq	r7, sl, sl, lsr #16
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+propertiesbuilder.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <PropertiesBuilder::PropertiesBuilder(char const*, char*, unsigned int)>:
+   0:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+   4:	e1a04002 	mov	r4, r2
+   8:	e5802000 	str	r2, [r0]
+   c:	e3a02000 	mov	r2, #0
+  10:	e1c020b6 	strh	r2, [r0, #6]
+  14:	e1a06000 	mov	r6, r0
+  18:	e59f20b4 	ldr	r2, [pc, #180]	; d4 <PropertiesBuilder::PropertiesBuilder(char const*, char*, unsigned int)+0xd4>
+  1c:	e1a0c001 	mov	ip, r1
+  20:	e1c030b4 	strh	r3, [r0, #4]
+  24:	e5d20000 	ldrb	r0, [r2]
+  28:	e2000001 	and	r0, r0, #1
+  2c:	e5c60008 	strb	r0, [r6, #8]
+  30:	e1a0500c 	mov	r5, ip
+  34:	e28cc001 	add	ip, ip, #1
+  38:	e5d52000 	ldrb	r2, [r5]
+  3c:	e3520000 	cmp	r2, #0
+  40:	1afffffa 	bne	30 <PropertiesBuilder::PropertiesBuilder(char const*, char*, unsigned int)+0x30>
+  44:	e0455001 	sub	r5, r5, r1
+  48:	e3500000 	cmp	r0, #0
+  4c:	e6ff3073 	uxth	r3, r3
+  50:	0a000011 	beq	9c <PropertiesBuilder::PropertiesBuilder(char const*, char*, unsigned int)+0x9c>
+  54:	e2857004 	add	r7, r5, #4
+  58:	e1570003 	cmp	r7, r3
+  5c:	8a00001a 	bhi	cc <PropertiesBuilder::PropertiesBuilder(char const*, char*, unsigned int)+0xcc>
+  60:	e3a0807b 	mov	r8, #123	; 0x7b
+  64:	e3a09022 	mov	r9, #34	; 0x22
+  68:	e5c48000 	strb	r8, [r4]
+  6c:	e1a02005 	mov	r2, r5
+  70:	e5c49001 	strb	r9, [r4, #1]
+  74:	e2840002 	add	r0, r4, #2
+  78:	ebfffffe 	bl	0 <memcpy>
+  7c:	e0843005 	add	r3, r4, r5
+  80:	e3a0203a 	mov	r2, #58	; 0x3a
+  84:	e2855005 	add	r5, r5, #5
+  88:	e5c39002 	strb	r9, [r3, #2]
+  8c:	e5c32003 	strb	r2, [r3, #3]
+  90:	e1c650b6 	strh	r5, [r6, #6]
+  94:	e7c48007 	strb	r8, [r4, r7]
+  98:	ea00000b 	b	cc <PropertiesBuilder::PropertiesBuilder(char const*, char*, unsigned int)+0xcc>
+  9c:	e2857002 	add	r7, r5, #2
+  a0:	e1570003 	cmp	r7, r3
+  a4:	8a000008 	bhi	cc <PropertiesBuilder::PropertiesBuilder(char const*, char*, unsigned int)+0xcc>
+  a8:	e1a00004 	mov	r0, r4
+  ac:	e3a03023 	mov	r3, #35	; 0x23
+  b0:	e0844005 	add	r4, r4, r5
+  b4:	e1a02005 	mov	r2, r5
+  b8:	e4c03001 	strb	r3, [r0], #1
+  bc:	ebfffffe 	bl	0 <memcpy>
+  c0:	e1c670b6 	strh	r7, [r6, #6]
+  c4:	e3a0300a 	mov	r3, #10
+  c8:	e5c43001 	strb	r3, [r4, #1]
+  cc:	e1a00006 	mov	r0, r6
+  d0:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+  d4:	00000000 	andeq	r0, r0, r0
+
+000000d8 <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)>:
+  d8:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+  dc:	e24dd014 	sub	sp, sp, #20
+  e0:	e1d0c0b6 	ldrh	ip, [r0, #6]
+  e4:	e1d050b4 	ldrh	r5, [r0, #4]
+  e8:	e15c0005 	cmp	ip, r5
+  ec:	3a000001 	bcc	f8 <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0x20>
+  f0:	e3a00000 	mov	r0, #0
+  f4:	ea000028 	b	19c <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0xc4>
+  f8:	e045500c 	sub	r5, r5, ip
+  fc:	e1a04000 	mov	r4, r0
+ 100:	e5900000 	ldr	r0, [r0]
+ 104:	e3530000 	cmp	r3, #0
+ 108:	e7e7e452 	ubfx	lr, r2, #8, #8
+ 10c:	e080000c 	add	r0, r0, ip
+ 110:	e6efc072 	uxtb	ip, r2
+ 114:	e7e76852 	ubfx	r6, r2, #16, #8
+ 118:	e5d47008 	ldrb	r7, [r4, #8]
+ 11c:	e1a02c22 	lsr	r2, r2, #24
+ 120:	1a000002 	bne	130 <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0x58>
+ 124:	e3570000 	cmp	r7, #0
+ 128:	1a000002 	bne	138 <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0x60>
+ 12c:	ea00000d 	b	168 <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0x90>
+ 130:	e3570000 	cmp	r7, #0
+ 134:	0a000005 	beq	150 <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0x78>
+ 138:	e58d200c 	str	r2, [sp, #12]
+ 13c:	e1a03001 	mov	r3, r1
+ 140:	e59f205c 	ldr	r2, [pc, #92]	; 1a4 <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0xcc>
+ 144:	e58d6008 	str	r6, [sp, #8]
+ 148:	e88d5000 	stm	sp, {ip, lr}
+ 14c:	ea00000a 	b	17c <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0xa4>
+ 150:	e58d200c 	str	r2, [sp, #12]
+ 154:	e1a03001 	mov	r3, r1
+ 158:	e59f2048 	ldr	r2, [pc, #72]	; 1a8 <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0xd0>
+ 15c:	e58d6008 	str	r6, [sp, #8]
+ 160:	e88d5000 	stm	sp, {ip, lr}
+ 164:	ea000004 	b	17c <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0xa4>
+ 168:	e58d200c 	str	r2, [sp, #12]
+ 16c:	e1a03001 	mov	r3, r1
+ 170:	e59f2034 	ldr	r2, [pc, #52]	; 1ac <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0xd4>
+ 174:	e58d6008 	str	r6, [sp, #8]
+ 178:	e88d5000 	stm	sp, {ip, lr}
+ 17c:	e1a01005 	mov	r1, r5
+ 180:	ebfffffe 	bl	0 <snprintf>
+ 184:	e1550000 	cmp	r5, r0
+ 188:	baffffd8 	blt	f0 <PropertiesBuilder::AddIpAddress(char const*, unsigned int, bool)+0x18>
+ 18c:	e1d430b6 	ldrh	r3, [r4, #6]
+ 190:	e0830000 	add	r0, r3, r0
+ 194:	e1c400b6 	strh	r0, [r4, #6]
+ 198:	e3a00001 	mov	r0, #1
+ 19c:	e28dd014 	add	sp, sp, #20
+ 1a0:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+ 1a4:	00000000 	andeq	r0, r0, r0
+ 1a8:	00000014 	andeq	r0, r0, r4, lsl r0
+ 1ac:	00000024 	andeq	r0, r0, r4, lsr #32
+
+000001b0 <PropertiesBuilder::AddComment(char const*)>:
+ 1b0:	e92d4070 	push	{r4, r5, r6, lr}
+ 1b4:	e5d06008 	ldrb	r6, [r0, #8]
+ 1b8:	e3560000 	cmp	r6, #0
+ 1bc:	1a000010 	bne	204 <PropertiesBuilder::AddComment(char const*)+0x54>
+ 1c0:	e1a04000 	mov	r4, r0
+ 1c4:	e1d000b6 	ldrh	r0, [r0, #6]
+ 1c8:	e1d450b4 	ldrh	r5, [r4, #4]
+ 1cc:	e1500005 	cmp	r0, r5
+ 1d0:	2a00000b 	bcs	204 <PropertiesBuilder::AddComment(char const*)+0x54>
+ 1d4:	e594c000 	ldr	ip, [r4]
+ 1d8:	e1a03001 	mov	r3, r1
+ 1dc:	e0455000 	sub	r5, r5, r0
+ 1e0:	e59f2024 	ldr	r2, [pc, #36]	; 20c <PropertiesBuilder::AddComment(char const*)+0x5c>
+ 1e4:	e1a01005 	mov	r1, r5
+ 1e8:	e08c0000 	add	r0, ip, r0
+ 1ec:	ebfffffe 	bl	0 <snprintf>
+ 1f0:	e1550000 	cmp	r5, r0
+ 1f4:	a3a06001 	movge	r6, #1
+ 1f8:	a1d430b6 	ldrhge	r3, [r4, #6]
+ 1fc:	a0830000 	addge	r0, r3, r0
+ 200:	a1c400b6 	strhge	r0, [r4, #6]
+ 204:	e1a00006 	mov	r0, r6
+ 208:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 20c:	00000035 	andeq	r0, r0, r5, lsr r0
+
+Disassembly of section .rodata.str1.1:
+
+00000000 <.rodata.str1.1>:
+   0:	22732522 	rsbscs	r2, r3, #142606336	; 0x8800000
+   4:	6425223a 	strtvs	r2, [r5], #-570	; 0xfffffdc6
+   8:	2e64252e 	cdpcs	5, 6, cr2, cr4, cr14, {1}
+   c:	252e6425 	strcs	r6, [lr, #-1061]!	; 0xfffffbdb
+  10:	002c2264 	eoreq	r2, ip, r4, ror #4
+  14:	253d7325 	ldrcs	r7, [sp, #-805]!	; 0xfffffcdb
+  18:	64252e64 	strtvs	r2, [r5], #-3684	; 0xfffff19c
+  1c:	2e64252e 	cdpcs	5, 6, cr2, cr4, cr14, {1}
+  20:	000a6425 	andeq	r6, sl, r5, lsr #8
+  24:	3d732523 	cfldr64cc	mvdx2, [r3, #-140]!	; 0xffffff74
+  28:	252e6425 	strcs	r6, [lr, #-1061]!	; 0xfffffbdb
+  2c:	64252e64 	strtvs	r2, [r5], #-3684	; 0xfffff19c
+  30:	0a64252e 	beq	19094f0 <PropertiesBuilder::AddComment(char const*)+0x1909340>
+  34:	25202300 	strcs	r2, [r0, #-768]!	; 0xfffffd00
+  38:	0a232073 	beq	8c820c <PropertiesBuilder::AddComment(char const*)+0x8c805c>
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+propertiesconfig.o:     file format elf32-littlearm
+
+
+Disassembly of section .bss:
+
+00000000 <PropertiesConfig::s_Config>:
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+properties.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <properties::convert_json_file(char*, unsigned short, bool)>:
+   0:	e5d03000 	ldrb	r3, [r0]
+   4:	e353007b 	cmp	r3, #123	; 0x7b
+   8:	1a0000d2 	bne	358 <properties::convert_json_file(char*, unsigned short, bool)+0x358>
+   c:	e3520000 	cmp	r2, #0
+  10:	e92d47f0 	push	{r4, r5, r6, r7, r8, r9, sl, lr}
+  14:	0a00006c 	beq	1cc <properties::convert_json_file(char*, unsigned short, bool)+0x1cc>
+  18:	e3a0c001 	mov	ip, #1
+  1c:	e1a04000 	mov	r4, r0
+  20:	e1a0500c 	mov	r5, ip
+  24:	e15c0001 	cmp	ip, r1
+  28:	2a00004f 	bcs	16c <properties::convert_json_file(char*, unsigned short, bool)+0x16c>
+  2c:	e3520000 	cmp	r2, #0
+  30:	e3a0703d 	mov	r7, #61	; 0x3d
+  34:	03a0600a 	moveq	r6, #10
+  38:	13a06000 	movne	r6, #0
+  3c:	ea000003 	b	50 <properties::convert_json_file(char*, unsigned short, bool)+0x50>
+  40:	e3530022 	cmp	r3, #34	; 0x22
+  44:	05de3001 	ldrbeq	r3, [lr, #1]
+  48:	01a0e000 	moveq	lr, r0
+  4c:	0a000006 	beq	6c <properties::convert_json_file(char*, unsigned short, bool)+0x6c>
+  50:	e15c0001 	cmp	ip, r1
+  54:	e1a0200c 	mov	r2, ip
+  58:	e5d03000 	ldrb	r3, [r0]
+  5c:	e1a0e000 	mov	lr, r0
+  60:	e28cc001 	add	ip, ip, #1
+  64:	e2800001 	add	r0, r0, #1
+  68:	3afffff4 	bcc	40 <properties::convert_json_file(char*, unsigned short, bool)+0x40>
+  6c:	e3530022 	cmp	r3, #34	; 0x22
+  70:	01a0000e 	moveq	r0, lr
+  74:	0a00000f 	beq	b8 <properties::convert_json_file(char*, unsigned short, bool)+0xb8>
+  78:	e15c0001 	cmp	ip, r1
+  7c:	e2822002 	add	r2, r2, #2
+  80:	2a0000a4 	bcs	318 <properties::convert_json_file(char*, unsigned short, bool)+0x318>
+  84:	e045800e 	sub	r8, r5, lr
+  88:	e28ee001 	add	lr, lr, #1
+  8c:	ea000001 	b	98 <properties::convert_json_file(char*, unsigned short, bool)+0x98>
+  90:	e15c0001 	cmp	ip, r1
+  94:	2a000010 	bcs	dc <properties::convert_json_file(char*, unsigned short, bool)+0xdc>
+  98:	e088500e 	add	r5, r8, lr
+  9c:	e1a0000e 	mov	r0, lr
+  a0:	e4c43001 	strb	r3, [r4], #1
+  a4:	e1a0c002 	mov	ip, r2
+  a8:	e4de3001 	ldrb	r3, [lr], #1
+  ac:	e2822001 	add	r2, r2, #1
+  b0:	e3530022 	cmp	r3, #34	; 0x22
+  b4:	1afffff5 	bne	90 <properties::convert_json_file(char*, unsigned short, bool)+0x90>
+  b8:	e4c47001 	strb	r7, [r4], #1
+  bc:	e2855001 	add	r5, r5, #1
+  c0:	e5d03000 	ldrb	r3, [r0]
+  c4:	e1a0200c 	mov	r2, ip
+  c8:	ea000003 	b	dc <properties::convert_json_file(char*, unsigned short, bool)+0xdc>
+  cc:	e5d0e000 	ldrb	lr, [r0]
+  d0:	e353003a 	cmp	r3, #58	; 0x3a
+  d4:	e1a0300e 	mov	r3, lr
+  d8:	0a00006f 	beq	29c <properties::convert_json_file(char*, unsigned short, bool)+0x29c>
+  dc:	e1520001 	cmp	r2, r1
+  e0:	e1a0c002 	mov	ip, r2
+  e4:	e1a08000 	mov	r8, r0
+  e8:	e2822001 	add	r2, r2, #1
+  ec:	e2800001 	add	r0, r0, #1
+  f0:	3afffff5 	bcc	cc <properties::convert_json_file(char*, unsigned short, bool)+0xcc>
+  f4:	e353002f 	cmp	r3, #47	; 0x2f
+  f8:	81a0c002 	movhi	ip, r2
+  fc:	8a000029 	bhi	1a8 <properties::convert_json_file(char*, unsigned short, bool)+0x1a8>
+ 100:	e1520001 	cmp	r2, r1
+ 104:	e28c2002 	add	r2, ip, #2
+ 108:	3288e001 	addcc	lr, r8, #1
+ 10c:	3a000002 	bcc	11c <properties::convert_json_file(char*, unsigned short, bool)+0x11c>
+ 110:	ea000065 	b	2ac <properties::convert_json_file(char*, unsigned short, bool)+0x2ac>
+ 114:	e15c0001 	cmp	ip, r1
+ 118:	2a000063 	bcs	2ac <properties::convert_json_file(char*, unsigned short, bool)+0x2ac>
+ 11c:	e1a0800e 	mov	r8, lr
+ 120:	e1a0c002 	mov	ip, r2
+ 124:	e4de3001 	ldrb	r3, [lr], #1
+ 128:	e2822001 	add	r2, r2, #1
+ 12c:	e353002f 	cmp	r3, #47	; 0x2f
+ 130:	e1a0000e 	mov	r0, lr
+ 134:	9afffff6 	bls	114 <properties::convert_json_file(char*, unsigned short, bool)+0x114>
+ 138:	e3530022 	cmp	r3, #34	; 0x22
+ 13c:	1353002c 	cmpne	r3, #44	; 0x2c
+ 140:	01a0c002 	moveq	ip, r2
+ 144:	1a000017 	bne	1a8 <properties::convert_json_file(char*, unsigned short, bool)+0x1a8>
+ 148:	e353002c 	cmp	r3, #44	; 0x2c
+ 14c:	13530022 	cmpne	r3, #34	; 0x22
+ 150:	0a000001 	beq	15c <properties::convert_json_file(char*, unsigned short, bool)+0x15c>
+ 154:	e353007d 	cmp	r3, #125	; 0x7d
+ 158:	1a000001 	bne	164 <properties::convert_json_file(char*, unsigned short, bool)+0x164>
+ 15c:	e4c46001 	strb	r6, [r4], #1
+ 160:	e2855001 	add	r5, r5, #1
+ 164:	e151000c 	cmp	r1, ip
+ 168:	8affffb8 	bhi	50 <properties::convert_json_file(char*, unsigned short, bool)+0x50>
+ 16c:	e1a00005 	mov	r0, r5
+ 170:	e8bd87f0 	pop	{r4, r5, r6, r7, r8, r9, sl, pc}
+ 174:	e15e0001 	cmp	lr, r1
+ 178:	2a000058 	bcs	2e0 <properties::convert_json_file(char*, unsigned short, bool)+0x2e0>
+ 17c:	e359005a 	cmp	r9, #90	; 0x5a
+ 180:	8a000004 	bhi	198 <properties::convert_json_file(char*, unsigned short, bool)+0x198>
+ 184:	e4c23001 	strb	r3, [r2], #1
+ 188:	e1a08000 	mov	r8, r0
+ 18c:	e2855001 	add	r5, r5, #1
+ 190:	e1a04002 	mov	r4, r2
+ 194:	e1a0000a 	mov	r0, sl
+ 198:	e5d83000 	ldrb	r3, [r8]
+ 19c:	e3530022 	cmp	r3, #34	; 0x22
+ 1a0:	1353002c 	cmpne	r3, #44	; 0x2c
+ 1a4:	0a000051 	beq	2f0 <properties::convert_json_file(char*, unsigned short, bool)+0x2f0>
+ 1a8:	e353007d 	cmp	r3, #125	; 0x7d
+ 1ac:	e1a0e00c 	mov	lr, ip
+ 1b0:	e2439020 	sub	r9, r3, #32
+ 1b4:	e1a02004 	mov	r2, r4
+ 1b8:	e288a002 	add	sl, r8, #2
+ 1bc:	e2880001 	add	r0, r8, #1
+ 1c0:	e28cc001 	add	ip, ip, #1
+ 1c4:	1affffea 	bne	174 <properties::convert_json_file(char*, unsigned short, bool)+0x174>
+ 1c8:	eaffffe3 	b	15c <properties::convert_json_file(char*, unsigned short, bool)+0x15c>
+ 1cc:	e1a06000 	mov	r6, r0
+ 1d0:	e3510001 	cmp	r1, #1
+ 1d4:	e3a03023 	mov	r3, #35	; 0x23
+ 1d8:	e2804002 	add	r4, r0, #2
+ 1dc:	e4c63001 	strb	r3, [r6], #1
+ 1e0:	9a000056 	bls	340 <properties::convert_json_file(char*, unsigned short, bool)+0x340>
+ 1e4:	e1a00006 	mov	r0, r6
+ 1e8:	e3a03001 	mov	r3, #1
+ 1ec:	ea000002 	b	1fc <properties::convert_json_file(char*, unsigned short, bool)+0x1fc>
+ 1f0:	e2833001 	add	r3, r3, #1
+ 1f4:	e1530001 	cmp	r3, r1
+ 1f8:	0a000048 	beq	320 <properties::convert_json_file(char*, unsigned short, bool)+0x320>
+ 1fc:	e4d0c001 	ldrb	ip, [r0], #1
+ 200:	e35c0022 	cmp	ip, #34	; 0x22
+ 204:	1afffff9 	bne	1f0 <properties::convert_json_file(char*, unsigned short, bool)+0x1f0>
+ 208:	e1530001 	cmp	r3, r1
+ 20c:	2a000056 	bcs	36c <properties::convert_json_file(char*, unsigned short, bool)+0x36c>
+ 210:	e1a0c000 	mov	ip, r0
+ 214:	e1a04006 	mov	r4, r6
+ 218:	e2637002 	rsb	r7, r3, #2
+ 21c:	ea000004 	b	234 <properties::convert_json_file(char*, unsigned short, bool)+0x234>
+ 220:	e544e001 	strb	lr, [r4, #-1]
+ 224:	e2833001 	add	r3, r3, #1
+ 228:	e1530001 	cmp	r3, r1
+ 22c:	e1a0000c 	mov	r0, ip
+ 230:	0a00004f 	beq	374 <properties::convert_json_file(char*, unsigned short, bool)+0x374>
+ 234:	e5dce000 	ldrb	lr, [ip]
+ 238:	e1a0000c 	mov	r0, ip
+ 23c:	e0875003 	add	r5, r7, r3
+ 240:	e1a06004 	mov	r6, r4
+ 244:	e35e0022 	cmp	lr, #34	; 0x22
+ 248:	e28cc001 	add	ip, ip, #1
+ 24c:	e2844001 	add	r4, r4, #1
+ 250:	1afffff2 	bne	220 <properties::convert_json_file(char*, unsigned short, bool)+0x220>
+ 254:	e3a0c00a 	mov	ip, #10
+ 258:	e5c6c000 	strb	ip, [r6]
+ 25c:	e5d0c000 	ldrb	ip, [r0]
+ 260:	e35c007b 	cmp	ip, #123	; 0x7b
+ 264:	0a000047 	beq	388 <properties::convert_json_file(char*, unsigned short, bool)+0x388>
+ 268:	e1530001 	cmp	r3, r1
+ 26c:	e283c001 	add	ip, r3, #1
+ 270:	30413003 	subcc	r3, r1, r3
+ 274:	30803003 	addcc	r3, r0, r3
+ 278:	3a000003 	bcc	28c <properties::convert_json_file(char*, unsigned short, bool)+0x28c>
+ 27c:	ea000043 	b	390 <properties::convert_json_file(char*, unsigned short, bool)+0x390>
+ 280:	e1500003 	cmp	r0, r3
+ 284:	e28cc001 	add	ip, ip, #1
+ 288:	0affff65 	beq	24 <properties::convert_json_file(char*, unsigned short, bool)+0x24>
+ 28c:	e5f0e001 	ldrb	lr, [r0, #1]!
+ 290:	e35e007b 	cmp	lr, #123	; 0x7b
+ 294:	1afffff9 	bne	280 <properties::convert_json_file(char*, unsigned short, bool)+0x280>
+ 298:	eaffff61 	b	24 <properties::convert_json_file(char*, unsigned short, bool)+0x24>
+ 29c:	e2889002 	add	r9, r8, #2
+ 2a0:	e1a08000 	mov	r8, r0
+ 2a4:	e1a00009 	mov	r0, r9
+ 2a8:	eaffff91 	b	f4 <properties::convert_json_file(char*, unsigned short, bool)+0xf4>
+ 2ac:	e3530022 	cmp	r3, #34	; 0x22
+ 2b0:	e282e001 	add	lr, r2, #1
+ 2b4:	1a00000f 	bne	2f8 <properties::convert_json_file(char*, unsigned short, bool)+0x2f8>
+ 2b8:	e5d83001 	ldrb	r3, [r8, #1]
+ 2bc:	e1a0c002 	mov	ip, r2
+ 2c0:	e1a0200e 	mov	r2, lr
+ 2c4:	e1a08000 	mov	r8, r0
+ 2c8:	e3530022 	cmp	r3, #34	; 0x22
+ 2cc:	1353002c 	cmpne	r3, #44	; 0x2c
+ 2d0:	e2800001 	add	r0, r0, #1
+ 2d4:	01a0c002 	moveq	ip, r2
+ 2d8:	1affffb2 	bne	1a8 <properties::convert_json_file(char*, unsigned short, bool)+0x1a8>
+ 2dc:	eaffff99 	b	148 <properties::convert_json_file(char*, unsigned short, bool)+0x148>
+ 2e0:	e353002c 	cmp	r3, #44	; 0x2c
+ 2e4:	e28ec002 	add	ip, lr, #2
+ 2e8:	0affff9b 	beq	15c <properties::convert_json_file(char*, unsigned short, bool)+0x15c>
+ 2ec:	eaffff9c 	b	164 <properties::convert_json_file(char*, unsigned short, bool)+0x164>
+ 2f0:	e28ec002 	add	ip, lr, #2
+ 2f4:	eaffff93 	b	148 <properties::convert_json_file(char*, unsigned short, bool)+0x148>
+ 2f8:	e5d83000 	ldrb	r3, [r8]
+ 2fc:	e1a0c002 	mov	ip, r2
+ 300:	e1a0200e 	mov	r2, lr
+ 304:	e3530022 	cmp	r3, #34	; 0x22
+ 308:	1353002c 	cmpne	r3, #44	; 0x2c
+ 30c:	01a0c002 	moveq	ip, r2
+ 310:	1affffa4 	bne	1a8 <properties::convert_json_file(char*, unsigned short, bool)+0x1a8>
+ 314:	eaffff8b 	b	148 <properties::convert_json_file(char*, unsigned short, bool)+0x148>
+ 318:	e1a0000e 	mov	r0, lr
+ 31c:	eaffff6e 	b	dc <properties::convert_json_file(char*, unsigned short, bool)+0xdc>
+ 320:	e3a05002 	mov	r5, #2
+ 324:	e3a0300a 	mov	r3, #10
+ 328:	e5c63000 	strb	r3, [r6]
+ 32c:	e5d03000 	ldrb	r3, [r0]
+ 330:	e353007b 	cmp	r3, #123	; 0x7b
+ 334:	1a000009 	bne	360 <properties::convert_json_file(char*, unsigned short, bool)+0x360>
+ 338:	e1a0c001 	mov	ip, r1
+ 33c:	eaffff38 	b	24 <properties::convert_json_file(char*, unsigned short, bool)+0x24>
+ 340:	e3a0c002 	mov	ip, #2
+ 344:	e3a0300a 	mov	r3, #10
+ 348:	e5c03001 	strb	r3, [r0, #1]
+ 34c:	e1a0500c 	mov	r5, ip
+ 350:	e1a00006 	mov	r0, r6
+ 354:	eaffff32 	b	24 <properties::convert_json_file(char*, unsigned short, bool)+0x24>
+ 358:	e3e00000 	mvn	r0, #0
+ 35c:	e12fff1e 	bx	lr
+ 360:	e1a06000 	mov	r6, r0
+ 364:	e281c001 	add	ip, r1, #1
+ 368:	eafffff8 	b	350 <properties::convert_json_file(char*, unsigned short, bool)+0x350>
+ 36c:	e3a05002 	mov	r5, #2
+ 370:	eaffffb7 	b	254 <properties::convert_json_file(char*, unsigned short, bool)+0x254>
+ 374:	e2863002 	add	r3, r6, #2
+ 378:	e2855001 	add	r5, r5, #1
+ 37c:	e1a06004 	mov	r6, r4
+ 380:	e1a04003 	mov	r4, r3
+ 384:	eaffffe6 	b	324 <properties::convert_json_file(char*, unsigned short, bool)+0x324>
+ 388:	e1a0c003 	mov	ip, r3
+ 38c:	eaffff24 	b	24 <properties::convert_json_file(char*, unsigned short, bool)+0x24>
+ 390:	e1a06000 	mov	r6, r0
+ 394:	eaffffed 	b	350 <properties::convert_json_file(char*, unsigned short, bool)+0x350>
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+readconfigfile.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <ReadConfigFile::ReadConfigFile(void (*)(void*, char const*), void*)>:
+   0:	e8800006 	stm	r0, {r1, r2}
+   4:	e12fff1e 	bx	lr
+
+00000008 <ReadConfigFile::~ReadConfigFile()>:
+   8:	e12fff1e 	bx	lr
+
+0000000c <ReadConfigFile::Read(char const*)>:
+   c:	e1a03001 	mov	r3, r1
+  10:	e3001000 	movw	r1, #0
+  14:	e92d40f0 	push	{r4, r5, r6, r7, lr}
+  18:	e1a06000 	mov	r6, r0
+  1c:	e3401000 	movt	r1, #0
+  20:	e24dd084 	sub	sp, sp, #132	; 0x84
+  24:	e1a00003 	mov	r0, r3
+  28:	ebfffffe 	bl	0 <fopen>
+  2c:	e2505000 	subs	r5, r0, #0
+  30:	01a00005 	moveq	r0, r5
+  34:	0a000010 	beq	7c <ReadConfigFile::Read(char const*)+0x70>
+  38:	e1a0400d 	mov	r4, sp
+  3c:	e3a07000 	mov	r7, #0
+  40:	ea000004 	b	58 <ReadConfigFile::Read(char const*)+0x4c>
+  44:	e5dd3000 	ldrb	r3, [sp]
+  48:	e3530060 	cmp	r3, #96	; 0x60
+  4c:	81a01004 	movhi	r1, r4
+  50:	828d207e 	addhi	r2, sp, #126	; 0x7e
+  54:	8a00000a 	bhi	84 <ReadConfigFile::Read(char const*)+0x78>
+  58:	e1a02005 	mov	r2, r5
+  5c:	e3a0107f 	mov	r1, #127	; 0x7f
+  60:	e1a00004 	mov	r0, r4
+  64:	ebfffffe 	bl	0 <fgets>
+  68:	e1540000 	cmp	r4, r0
+  6c:	0afffff4 	beq	44 <ReadConfigFile::Read(char const*)+0x38>
+  70:	e1a00005 	mov	r0, r5
+  74:	ebfffffe 	bl	0 <fclose>
+  78:	e3a00001 	mov	r0, #1
+  7c:	e28dd084 	add	sp, sp, #132	; 0x84
+  80:	e8bd80f0 	pop	{r4, r5, r6, r7, pc}
+  84:	e353000a 	cmp	r3, #10
+  88:	1353000d 	cmpne	r3, #13
+  8c:	05c17000 	strbeq	r7, [r1]
+  90:	e1520001 	cmp	r2, r1
+  94:	0a000002 	beq	a4 <ReadConfigFile::Read(char const*)+0x98>
+  98:	e5f13001 	ldrb	r3, [r1, #1]!
+  9c:	e3530000 	cmp	r3, #0
+  a0:	1afffff7 	bne	84 <ReadConfigFile::Read(char const*)+0x78>
+  a4:	e5963000 	ldr	r3, [r6]
+  a8:	e1a01004 	mov	r1, r4
+  ac:	e5960004 	ldr	r0, [r6, #4]
+  b0:	e12fff33 	blx	r3
+  b4:	eaffffe7 	b	58 <ReadConfigFile::Read(char const*)+0x4c>
+
+000000b8 <ReadConfigFile::Read(char const*, unsigned int)>:
+  b8:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+  bc:	e2524000 	subs	r4, r2, #0
+  c0:	e24dd080 	sub	sp, sp, #128	; 0x80
+  c4:	0a000024 	beq	15c <ReadConfigFile::Read(char const*, unsigned int)+0xa4>
+  c8:	e1a08000 	mov	r8, r0
+  cc:	e1a05001 	mov	r5, r1
+  d0:	e1a0600d 	mov	r6, sp
+  d4:	e3a07000 	mov	r7, #0
+  d8:	e1a02005 	mov	r2, r5
+  dc:	e1a0c006 	mov	ip, r6
+  e0:	ea000006 	b	100 <ReadConfigFile::Read(char const*, unsigned int)+0x48>
+  e4:	e4cc3001 	strb	r3, [ip], #1
+  e8:	e1a05002 	mov	r5, r2
+  ec:	e04c3006 	sub	r3, ip, r6
+  f0:	e353007f 	cmp	r3, #127	; 0x7f
+  f4:	ca000018 	bgt	15c <ReadConfigFile::Read(char const*, unsigned int)+0xa4>
+  f8:	e2544001 	subs	r4, r4, #1
+  fc:	0a000018 	beq	164 <ReadConfigFile::Read(char const*, unsigned int)+0xac>
+ 100:	e1a05002 	mov	r5, r2
+ 104:	e4d23001 	ldrb	r3, [r2], #1
+ 108:	e353000d 	cmp	r3, #13
+ 10c:	1353000a 	cmpne	r3, #10
+ 110:	1afffff3 	bne	e4 <ReadConfigFile::Read(char const*, unsigned int)+0x2c>
+ 114:	ea000003 	b	128 <ReadConfigFile::Read(char const*, unsigned int)+0x70>
+ 118:	e2544001 	subs	r4, r4, #1
+ 11c:	e2855001 	add	r5, r5, #1
+ 120:	0a00000f 	beq	164 <ReadConfigFile::Read(char const*, unsigned int)+0xac>
+ 124:	e5d53000 	ldrb	r3, [r5]
+ 128:	e353000d 	cmp	r3, #13
+ 12c:	1353000a 	cmpne	r3, #10
+ 130:	0afffff8 	beq	118 <ReadConfigFile::Read(char const*, unsigned int)+0x60>
+ 134:	e5dd3000 	ldrb	r3, [sp]
+ 138:	e3530060 	cmp	r3, #96	; 0x60
+ 13c:	9affffe5 	bls	d8 <ReadConfigFile::Read(char const*, unsigned int)+0x20>
+ 140:	e5983000 	ldr	r3, [r8]
+ 144:	e1a01006 	mov	r1, r6
+ 148:	e5980004 	ldr	r0, [r8, #4]
+ 14c:	e5cc7000 	strb	r7, [ip]
+ 150:	e12fff33 	blx	r3
+ 154:	e3540000 	cmp	r4, #0
+ 158:	1affffde 	bne	d8 <ReadConfigFile::Read(char const*, unsigned int)+0x20>
+ 15c:	e28dd080 	add	sp, sp, #128	; 0x80
+ 160:	e8bd81f0 	pop	{r4, r5, r6, r7, r8, pc}
+ 164:	e5dd3000 	ldrb	r3, [sp]
+ 168:	e3530060 	cmp	r3, #96	; 0x60
+ 16c:	9afffffa 	bls	15c <ReadConfigFile::Read(char const*, unsigned int)+0xa4>
+ 170:	e3a04000 	mov	r4, #0
+ 174:	eafffff1 	b	140 <ReadConfigFile::Read(char const*, unsigned int)+0x88>
+
+Disassembly of section .rodata.str1.4:
+
+00000000 <.LC0>:
+   0:	Address 0x0000000000000000 is out of bounds.
+
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscanchar.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::Char(char const*, char const*, char*, unsigned int&)>:
+   0:	e92d4070 	push	{r4, r5, r6, lr}
+   4:	e1a05002 	mov	r5, r2
+   8:	e1a04003 	mov	r4, r3
+   c:	ebfffffe 	bl	0 <Sscan::checkName(char const*, char const*)>
+  10:	e3500000 	cmp	r0, #0
+  14:	0a00000e 	beq	54 <Sscan::Char(char const*, char const*, char*, unsigned int&)+0x54>
+  18:	e3a01000 	mov	r1, #0
+  1c:	e7d03001 	ldrb	r3, [r0, r1]
+  20:	e6ff2071 	uxth	r2, r1
+  24:	e594c000 	ldr	ip, [r4]
+  28:	e3530000 	cmp	r3, #0
+  2c:	0a000005 	beq	48 <Sscan::Char(char const*, char const*, char*, unsigned int&)+0x48>
+  30:	e15c0002 	cmp	ip, r2
+  34:	87c53001 	strbhi	r3, [r5, r1]
+  38:	82811001 	addhi	r1, r1, #1
+  3c:	8afffff6 	bhi	1c <Sscan::Char(char const*, char const*, char*, unsigned int&)+0x1c>
+  40:	e353000a 	cmp	r3, #10
+  44:	1a000004 	bne	5c <Sscan::Char(char const*, char const*, char*, unsigned int&)+0x5c>
+  48:	e5842000 	str	r2, [r4]
+  4c:	e3a00000 	mov	r0, #0
+  50:	e8bd8070 	pop	{r4, r5, r6, pc}
+  54:	e3a00001 	mov	r0, #1
+  58:	e8bd8070 	pop	{r4, r5, r6, pc}
+  5c:	e3a00002 	mov	r0, #2
+  60:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscan.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::fromHex(char const*)>:
+   0:	e5d03001 	ldrb	r3, [r0, #1]
+   4:	e5d02000 	ldrb	r2, [r0]
+   8:	e3530000 	cmp	r3, #0
+   c:	0a00000a 	beq	3c <Sscan::fromHex(char const*)+0x3c>
+  10:	e3530039 	cmp	r3, #57	; 0x39
+  14:	83833020 	orrhi	r3, r3, #32
+  18:	92430030 	subls	r0, r3, #48	; 0x30
+  1c:	82430057 	subhi	r0, r3, #87	; 0x57
+  20:	e3520039 	cmp	r2, #57	; 0x39
+  24:	83822020 	orrhi	r2, r2, #32
+  28:	92422030 	subls	r2, r2, #48	; 0x30
+  2c:	82422057 	subhi	r2, r2, #87	; 0x57
+  30:	e1800202 	orr	r0, r0, r2, lsl #4
+  34:	e6ef0070 	uxtb	r0, r0
+  38:	e12fff1e 	bx	lr
+  3c:	e3520039 	cmp	r2, #57	; 0x39
+  40:	83820020 	orrhi	r0, r2, #32
+  44:	92420030 	subls	r0, r2, #48	; 0x30
+  48:	82400057 	subhi	r0, r0, #87	; 0x57
+  4c:	e6ef0070 	uxtb	r0, r0
+  50:	e12fff1e 	bx	lr
+
+00000054 <Sscan::checkName(char const*, char const*)>:
+  54:	e2411001 	sub	r1, r1, #1
+  58:	ea000003 	b	6c <Sscan::checkName(char const*, char const*)+0x18>
+  5c:	e3530000 	cmp	r3, #0
+  60:	0a00000d 	beq	9c <Sscan::checkName(char const*, char const*)+0x48>
+  64:	e1520003 	cmp	r2, r3
+  68:	1a00000b 	bne	9c <Sscan::checkName(char const*, char const*)+0x48>
+  6c:	e5f12001 	ldrb	r2, [r1, #1]!
+  70:	e1a0c000 	mov	ip, r0
+  74:	e4d03001 	ldrb	r3, [r0], #1
+  78:	e3520000 	cmp	r2, #0
+  7c:	1afffff6 	bne	5c <Sscan::checkName(char const*, char const*)+0x8>
+  80:	e353003d 	cmp	r3, #61	; 0x3d
+  84:	1a000004 	bne	9c <Sscan::checkName(char const*, char const*)+0x48>
+  88:	e5dc3001 	ldrb	r3, [ip, #1]
+  8c:	e21330df 	ands	r3, r3, #223	; 0xdf
+  90:	0a000001 	beq	9c <Sscan::checkName(char const*, char const*)+0x48>
+  94:	e28c0001 	add	r0, ip, #1
+  98:	e12fff1e 	bx	lr
+  9c:	e3a00000 	mov	r0, #0
+  a0:	e12fff1e 	bx	lr
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscanfloat.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::Float(char const*, char const*, float&)>:
+   0:	e92d4070 	push	{r4, r5, r6, lr}
+   4:	e1a04002 	mov	r4, r2
+   8:	ebfffffe 	bl	0 <Sscan::checkName(char const*, char const*)>
+   c:	e3500000 	cmp	r0, #0
+  10:	0a00003b 	beq	104 <Sscan::Float(char const*, char const*, float&)+0x104>
+  14:	e5d03000 	ldrb	r3, [r0]
+  18:	e353002d 	cmp	r3, #45	; 0x2d
+  1c:	02800001 	addeq	r0, r0, #1
+  20:	03a0e001 	moveq	lr, #1
+  24:	13a0e000 	movne	lr, #0
+  28:	e5d03000 	ldrb	r3, [r0]
+  2c:	e31300df 	tst	r3, #223	; 0xdf
+  30:	13a03000 	movne	r3, #0
+  34:	13a0100a 	movne	r1, #10
+  38:	1a000008 	bne	60 <Sscan::Float(char const*, char const*, float&)+0x60>
+  3c:	e3a00002 	mov	r0, #2
+  40:	e8bd8070 	pop	{r4, r5, r6, pc}
+  44:	e0232391 	mla	r3, r1, r3, r2
+  48:	e5f02001 	ldrb	r2, [r0, #1]!
+  4c:	e2433030 	sub	r3, r3, #48	; 0x30
+  50:	e202c0df 	and	ip, r2, #223	; 0xdf
+  54:	e35c0000 	cmp	ip, #0
+  58:	1352002e 	cmpne	r2, #46	; 0x2e
+  5c:	0a000004 	beq	74 <Sscan::Float(char const*, char const*, float&)+0x74>
+  60:	e5d02000 	ldrb	r2, [r0]
+  64:	e242c030 	sub	ip, r2, #48	; 0x30
+  68:	e35c0009 	cmp	ip, #9
+  6c:	8afffff2 	bhi	3c <Sscan::Float(char const*, char const*, float&)+0x3c>
+  70:	eafffff3 	b	44 <Sscan::Float(char const*, char const*, float&)+0x44>
+  74:	ee073a90 	vmov	s15, r3
+  78:	eef87a67 	vcvt.f32.u32	s15, s15
+  7c:	edc47a00 	vstr	s15, [r4]
+  80:	e5d03000 	ldrb	r3, [r0]
+  84:	e353002e 	cmp	r3, #46	; 0x2e
+  88:	0a000005 	beq	a4 <Sscan::Float(char const*, char const*, float&)+0xa4>
+  8c:	e35e0000 	cmp	lr, #0
+  90:	0a000001 	beq	9c <Sscan::Float(char const*, char const*, float&)+0x9c>
+  94:	eef17a67 	vneg.f32	s15, s15
+  98:	edc47a00 	vstr	s15, [r4]
+  9c:	e3a00000 	mov	r0, #0
+  a0:	e8bd8070 	pop	{r4, r5, r6, pc}
+  a4:	e1a03000 	mov	r3, r0
+  a8:	e3a01001 	mov	r1, #1
+  ac:	e3a0c000 	mov	ip, #0
+  b0:	e3a0500a 	mov	r5, #10
+  b4:	e5f32001 	ldrb	r2, [r3, #1]!
+  b8:	e21200df 	ands	r0, r2, #223	; 0xdf
+  bc:	0a000005 	beq	d8 <Sscan::Float(char const*, char const*, float&)+0xd8>
+  c0:	e2422030 	sub	r2, r2, #48	; 0x30
+  c4:	e3520009 	cmp	r2, #9
+  c8:	8affffdb 	bhi	3c <Sscan::Float(char const*, char const*, float&)+0x3c>
+  cc:	e02c2c95 	mla	ip, r5, ip, r2
+  d0:	e0010195 	mul	r1, r5, r1
+  d4:	eafffff6 	b	b4 <Sscan::Float(char const*, char const*, float&)+0xb4>
+  d8:	ee07ca10 	vmov	s14, ip
+  dc:	e35e0000 	cmp	lr, #0
+  e0:	eeb86a47 	vcvt.f32.u32	s12, s14
+  e4:	ee071a10 	vmov	s14, r1
+  e8:	eef86a47 	vcvt.f32.u32	s13, s14
+  ec:	ee867a26 	vdiv.f32	s14, s12, s13
+  f0:	ee777a27 	vadd.f32	s15, s14, s15
+  f4:	0affffe7 	beq	98 <Sscan::Float(char const*, char const*, float&)+0x98>
+  f8:	eef17a67 	vneg.f32	s15, s15
+  fc:	edc47a00 	vstr	s15, [r4]
+ 100:	e8bd8070 	pop	{r4, r5, r6, pc}
+ 104:	e3a00001 	mov	r0, #1
+ 108:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscanhex24uint32.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::Hex24Uint32(char const*, char const*, unsigned int&)>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04002 	mov	r4, r2
+   8:	ebfffffe 	bl	0 <Sscan::checkName(char const*, char const*)>
+   c:	e2502000 	subs	r2, r0, #0
+  10:	13a03000 	movne	r3, #0
+  14:	15843000 	strne	r3, [r4]
+  18:	1a00000f 	bne	5c <Sscan::Hex24Uint32(char const*, char const*, unsigned int&)+0x5c>
+  1c:	e3a00001 	mov	r0, #1
+  20:	e8bd8010 	pop	{r4, pc}
+  24:	e3530006 	cmp	r3, #6
+  28:	0a000014 	beq	80 <Sscan::Hex24Uint32(char const*, char const*, unsigned int&)+0x80>
+  2c:	e2401030 	sub	r1, r0, #48	; 0x30
+  30:	e3510009 	cmp	r1, #9
+  34:	8a00000c 	bhi	6c <Sscan::Hex24Uint32(char const*, char const*, unsigned int&)+0x6c>
+  38:	e3500039 	cmp	r0, #57	; 0x39
+  3c:	e2833001 	add	r3, r3, #1
+  40:	83800020 	orrhi	r0, r0, #32
+  44:	96ef0071 	uxtbls	r0, r1
+  48:	e5941000 	ldr	r1, [r4]
+  4c:	82400057 	subhi	r0, r0, #87	; 0x57
+  50:	86ef0070 	uxtbhi	r0, r0
+  54:	e1800201 	orr	r0, r0, r1, lsl #4
+  58:	e5840000 	str	r0, [r4]
+  5c:	e7d20003 	ldrb	r0, [r2, r3]
+  60:	e3500000 	cmp	r0, #0
+  64:	1affffee 	bne	24 <Sscan::Hex24Uint32(char const*, char const*, unsigned int&)+0x24>
+  68:	ea000007 	b	8c <Sscan::Hex24Uint32(char const*, char const*, unsigned int&)+0x8c>
+  6c:	e380c020 	orr	ip, r0, #32
+  70:	e24cc061 	sub	ip, ip, #97	; 0x61
+  74:	e35c0005 	cmp	ip, #5
+  78:	8affffe7 	bhi	1c <Sscan::Hex24Uint32(char const*, char const*, unsigned int&)+0x1c>
+  7c:	eaffffed 	b	38 <Sscan::Hex24Uint32(char const*, char const*, unsigned int&)+0x38>
+  80:	e2500020 	subs	r0, r0, #32
+  84:	13a00001 	movne	r0, #1
+  88:	e8bd8010 	pop	{r4, pc}
+  8c:	e3530006 	cmp	r3, #6
+  90:	13a00002 	movne	r0, #2
+  94:	e8bd8010 	pop	{r4, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscanhexuint16.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::HexUint16(char const*, char const*, unsigned short&)>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04002 	mov	r4, r2
+   8:	ebfffffe 	bl	0 <Sscan::checkName(char const*, char const*)>
+   c:	e2502000 	subs	r2, r0, #0
+  10:	13a03000 	movne	r3, #0
+  14:	11c430b0 	strhne	r3, [r4]
+  18:	1a00000f 	bne	5c <Sscan::HexUint16(char const*, char const*, unsigned short&)+0x5c>
+  1c:	e3a00001 	mov	r0, #1
+  20:	e8bd8010 	pop	{r4, pc}
+  24:	e3530004 	cmp	r3, #4
+  28:	0a000014 	beq	80 <Sscan::HexUint16(char const*, char const*, unsigned short&)+0x80>
+  2c:	e2401030 	sub	r1, r0, #48	; 0x30
+  30:	e3510009 	cmp	r1, #9
+  34:	8a00000c 	bhi	6c <Sscan::HexUint16(char const*, char const*, unsigned short&)+0x6c>
+  38:	e3500039 	cmp	r0, #57	; 0x39
+  3c:	e2833001 	add	r3, r3, #1
+  40:	83800020 	orrhi	r0, r0, #32
+  44:	96ef0071 	uxtbls	r0, r1
+  48:	e1d410b0 	ldrh	r1, [r4]
+  4c:	82400057 	subhi	r0, r0, #87	; 0x57
+  50:	86ef0070 	uxtbhi	r0, r0
+  54:	e1800201 	orr	r0, r0, r1, lsl #4
+  58:	e1c400b0 	strh	r0, [r4]
+  5c:	e7d20003 	ldrb	r0, [r2, r3]
+  60:	e3500000 	cmp	r0, #0
+  64:	1affffee 	bne	24 <Sscan::HexUint16(char const*, char const*, unsigned short&)+0x24>
+  68:	ea000007 	b	8c <Sscan::HexUint16(char const*, char const*, unsigned short&)+0x8c>
+  6c:	e380c020 	orr	ip, r0, #32
+  70:	e24cc061 	sub	ip, ip, #97	; 0x61
+  74:	e35c0005 	cmp	ip, #5
+  78:	8affffe7 	bhi	1c <Sscan::HexUint16(char const*, char const*, unsigned short&)+0x1c>
+  7c:	eaffffed 	b	38 <Sscan::HexUint16(char const*, char const*, unsigned short&)+0x38>
+  80:	e2500020 	subs	r0, r0, #32
+  84:	13a00001 	movne	r0, #1
+  88:	e8bd8010 	pop	{r4, pc}
+  8c:	e3530004 	cmp	r3, #4
+  90:	13a00002 	movne	r0, #2
+  94:	e8bd8010 	pop	{r4, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscani2caddress.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::I2cAddress(char const*, char const*, unsigned char&)>:
+   0:	e92d4013 	push	{r0, r1, r4, lr}
+   4:	e1a04002 	mov	r4, r2
+   8:	ebfffffe 	bl	0 <Sscan::checkName(char const*, char const*)>
+   c:	e3500000 	cmp	r0, #0
+  10:	1a000001 	bne	1c <Sscan::I2cAddress(char const*, char const*, unsigned char&)+0x1c>
+  14:	e3a00001 	mov	r0, #1
+  18:	ea00001a 	b	88 <Sscan::I2cAddress(char const*, char const*, unsigned char&)+0x88>
+  1c:	e3a03000 	mov	r3, #0
+  20:	e28d2004 	add	r2, sp, #4
+  24:	e1cd30b4 	strh	r3, [sp, #4]
+  28:	e240c001 	sub	ip, r0, #1
+  2c:	e2803002 	add	r3, r0, #2
+  30:	e1a00002 	mov	r0, r2
+  34:	e5fc1001 	ldrb	r1, [ip, #1]!
+  38:	e3510000 	cmp	r1, #0
+  3c:	0a00000c 	beq	74 <Sscan::I2cAddress(char const*, char const*, unsigned char&)+0x74>
+  40:	e153000c 	cmp	r3, ip
+  44:	0a000008 	beq	6c <Sscan::I2cAddress(char const*, char const*, unsigned char&)+0x6c>
+  48:	e241e030 	sub	lr, r1, #48	; 0x30
+  4c:	e35e0009 	cmp	lr, #9
+  50:	9a000003 	bls	64 <Sscan::I2cAddress(char const*, char const*, unsigned char&)+0x64>
+  54:	e381e020 	orr	lr, r1, #32
+  58:	e24ee061 	sub	lr, lr, #97	; 0x61
+  5c:	e35e0005 	cmp	lr, #5
+  60:	8affffeb 	bhi	14 <Sscan::I2cAddress(char const*, char const*, unsigned char&)+0x14>
+  64:	e4c21001 	strb	r1, [r2], #1
+  68:	eafffff1 	b	34 <Sscan::I2cAddress(char const*, char const*, unsigned char&)+0x34>
+  6c:	e3510020 	cmp	r1, #32
+  70:	1affffe7 	bne	14 <Sscan::I2cAddress(char const*, char const*, unsigned char&)+0x14>
+  74:	ebfffffe 	bl	0 <Sscan::fromHex(char const*)>
+  78:	e5c40000 	strb	r0, [r4]
+  7c:	e350007f 	cmp	r0, #127	; 0x7f
+  80:	33a00000 	movcc	r0, #0
+  84:	23a00002 	movcs	r0, #2
+  88:	e28dd008 	add	sp, sp, #8
+  8c:	e8bd8010 	pop	{r4, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscani2c.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)>:
+   0:	e92d4073 	push	{r0, r1, r4, r5, r6, lr}
+   4:	e1a05003 	mov	r5, r3
+   8:	e59d4018 	ldr	r4, [sp, #24]
+   c:	e3a0e000 	mov	lr, #0
+  10:	e1a0c000 	mov	ip, r0
+  14:	e4d03001 	ldrb	r3, [r0], #1
+  18:	e353002c 	cmp	r3, #44	; 0x2c
+  1c:	13530000 	cmpne	r3, #0
+  20:	0a000004 	beq	38 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0x38>
+  24:	e5d26000 	ldrb	r6, [r2]
+  28:	e156000e 	cmp	r6, lr
+  2c:	87c1300e 	strbhi	r3, [r1, lr]
+  30:	828ee001 	addhi	lr, lr, #1
+  34:	8afffff5 	bhi	10 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0x10>
+  38:	e5c2e000 	strb	lr, [r2]
+  3c:	e5dc2000 	ldrb	r2, [ip]
+  40:	e3520000 	cmp	r2, #0
+  44:	1352002c 	cmpne	r2, #44	; 0x2c
+  48:	13a02001 	movne	r2, #1
+  4c:	03a02000 	moveq	r2, #0
+  50:	13a00001 	movne	r0, #1
+  54:	1a00002c 	bne	10c <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0x10c>
+  58:	e5cd2005 	strb	r2, [sp, #5]
+  5c:	e28d3004 	add	r3, sp, #4
+  60:	e28c1001 	add	r1, ip, #1
+  64:	e1a00003 	mov	r0, r3
+  68:	e1a06001 	mov	r6, r1
+  6c:	e4d1c001 	ldrb	ip, [r1], #1
+  70:	e35c003a 	cmp	ip, #58	; 0x3a
+  74:	135c0000 	cmpne	ip, #0
+  78:	0a000015 	beq	d4 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0xd4>
+  7c:	e3520002 	cmp	r2, #2
+  80:	1a000007 	bne	a4 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0xa4>
+  84:	ebfffffe 	bl	0 <Sscan::fromHex(char const*)>
+  88:	e5c50000 	strb	r0, [r5]
+  8c:	e3e03000 	mvn	r3, #0
+  90:	e5c43000 	strb	r3, [r4]
+  94:	e5d63000 	ldrb	r3, [r6]
+  98:	e21300df 	ands	r0, r3, #223	; 0xdf
+  9c:	1a00000f 	bne	e0 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0xe0>
+  a0:	ea000019 	b	10c <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0x10c>
+  a4:	e24ce030 	sub	lr, ip, #48	; 0x30
+  a8:	e35e0009 	cmp	lr, #9
+  ac:	9a000005 	bls	c8 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0xc8>
+  b0:	e38ce020 	orr	lr, ip, #32
+  b4:	e24ee061 	sub	lr, lr, #97	; 0x61
+  b8:	e35e0005 	cmp	lr, #5
+  bc:	9a000001 	bls	c8 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0xc8>
+  c0:	e3a00002 	mov	r0, #2
+  c4:	ea000010 	b	10c <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0x10c>
+  c8:	e4c3c001 	strb	ip, [r3], #1
+  cc:	e2822001 	add	r2, r2, #1
+  d0:	eaffffe4 	b	68 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0x68>
+  d4:	e3520000 	cmp	r2, #0
+  d8:	0afffff8 	beq	c0 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0xc0>
+  dc:	eaffffe8 	b	84 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0x84>
+  e0:	e353003a 	cmp	r3, #58	; 0x3a
+  e4:	1afffff5 	bne	c0 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0xc0>
+  e8:	e5d63001 	ldrb	r3, [r6, #1]
+  ec:	e2433030 	sub	r3, r3, #48	; 0x30
+  f0:	e3530009 	cmp	r3, #9
+  f4:	8afffff1 	bhi	c0 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0xc0>
+  f8:	e6ef3073 	uxtb	r3, r3
+  fc:	e3530007 	cmp	r3, #7
+ 100:	95c43000 	strbls	r3, [r4]
+ 104:	93a00000 	movls	r0, #0
+ 108:	8affffec 	bhi	c0 <Sscan::I2c(char const*, char*, unsigned char&, unsigned char&, unsigned char&)+0xc0>
+ 10c:	e28dd008 	add	sp, sp, #8
+ 110:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscanipaddress.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::IpAddress(char const*, char const*, unsigned int&)>:
+   0:	e92d4073 	push	{r0, r1, r4, r5, r6, lr}
+   4:	e1a04002 	mov	r4, r2
+   8:	ebfffffe 	bl	0 <Sscan::checkName(char const*, char const*)>
+   c:	e3500000 	cmp	r0, #0
+  10:	03a00001 	moveq	r0, #1
+  14:	0a00002d 	beq	d0 <Sscan::IpAddress(char const*, char const*, unsigned int&)+0xd0>
+  18:	e28de004 	add	lr, sp, #4
+  1c:	e3a0c000 	mov	ip, #0
+  20:	e3a0500a 	mov	r5, #10
+  24:	e1a03000 	mov	r3, r0
+  28:	e2806004 	add	r6, r0, #4
+  2c:	e3a01000 	mov	r1, #0
+  30:	e1a00003 	mov	r0, r3
+  34:	e4d02001 	ldrb	r2, [r0], #1
+  38:	e3520000 	cmp	r2, #0
+  3c:	1352002e 	cmpne	r2, #46	; 0x2e
+  40:	0a00000a 	beq	70 <Sscan::IpAddress(char const*, char const*, unsigned int&)+0x70>
+  44:	e1560000 	cmp	r6, r0
+  48:	1a000001 	bne	54 <Sscan::IpAddress(char const*, char const*, unsigned int&)+0x54>
+  4c:	e3a00002 	mov	r0, #2
+  50:	ea00001e 	b	d0 <Sscan::IpAddress(char const*, char const*, unsigned int&)+0xd0>
+  54:	e2423030 	sub	r3, r2, #48	; 0x30
+  58:	e3530009 	cmp	r3, #9
+  5c:	8afffffa 	bhi	4c <Sscan::IpAddress(char const*, char const*, unsigned int&)+0x4c>
+  60:	e0212195 	mla	r1, r5, r1, r2
+  64:	e1a03000 	mov	r3, r0
+  68:	e2411030 	sub	r1, r1, #48	; 0x30
+  6c:	eaffffef 	b	30 <Sscan::IpAddress(char const*, char const*, unsigned int&)+0x30>
+  70:	e35100ff 	cmp	r1, #255	; 0xff
+  74:	8afffff4 	bhi	4c <Sscan::IpAddress(char const*, char const*, unsigned int&)+0x4c>
+  78:	e4ce1001 	strb	r1, [lr], #1
+  7c:	e28cc001 	add	ip, ip, #1
+  80:	e35c0003 	cmp	ip, #3
+  84:	1affffe6 	bne	24 <Sscan::IpAddress(char const*, char const*, unsigned int&)+0x24>
+  88:	e283e004 	add	lr, r3, #4
+  8c:	e3a0c000 	mov	ip, #0
+  90:	e3a0200a 	mov	r2, #10
+  94:	e5f31001 	ldrb	r1, [r3, #1]!
+  98:	e21100df 	ands	r0, r1, #223	; 0xdf
+  9c:	0a000006 	beq	bc <Sscan::IpAddress(char const*, char const*, unsigned int&)+0xbc>
+  a0:	e153000e 	cmp	r3, lr
+  a4:	0affffe8 	beq	4c <Sscan::IpAddress(char const*, char const*, unsigned int&)+0x4c>
+  a8:	e2411030 	sub	r1, r1, #48	; 0x30
+  ac:	e3510009 	cmp	r1, #9
+  b0:	8affffe5 	bhi	4c <Sscan::IpAddress(char const*, char const*, unsigned int&)+0x4c>
+  b4:	e02c1c92 	mla	ip, r2, ip, r1
+  b8:	eafffff5 	b	94 <Sscan::IpAddress(char const*, char const*, unsigned int&)+0x94>
+  bc:	e35c00ff 	cmp	ip, #255	; 0xff
+  c0:	95cdc007 	strbls	ip, [sp, #7]
+  c4:	959d3004 	ldrls	r3, [sp, #4]
+  c8:	95843000 	strls	r3, [r4]
+  cc:	8affffde 	bhi	4c <Sscan::IpAddress(char const*, char const*, unsigned int&)+0x4c>
+  d0:	e28dd008 	add	sp, sp, #8
+  d4:	e8bd8070 	pop	{r4, r5, r6, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscanspi.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)>:
+   0:	e92d4037 	push	{r0, r1, r2, r4, r5, lr}
+   4:	e5d0c000 	ldrb	ip, [r0]
+   8:	e24cc030 	sub	ip, ip, #48	; 0x30
+   c:	e35c0009 	cmp	ip, #9
+  10:	9a000004 	bls	28 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x28>
+  14:	e5d0e001 	ldrb	lr, [r0, #1]
+  18:	e35e002c 	cmp	lr, #44	; 0x2c
+  1c:	0a000001 	beq	28 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x28>
+  20:	e3a00002 	mov	r0, #2
+  24:	ea000068 	b	1cc <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x1cc>
+  28:	e5c1c000 	strb	ip, [r1]
+  2c:	e2800002 	add	r0, r0, #2
+  30:	e3a01000 	mov	r1, #0
+  34:	e1a05000 	mov	r5, r0
+  38:	e4d0c001 	ldrb	ip, [r0], #1
+  3c:	e35c0000 	cmp	ip, #0
+  40:	0a000005 	beq	5c <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x5c>
+  44:	e5d3e000 	ldrb	lr, [r3]
+  48:	e35c002c 	cmp	ip, #44	; 0x2c
+  4c:	115e0001 	cmpne	lr, r1
+  50:	84c2c001 	strbhi	ip, [r2], #1
+  54:	82811001 	addhi	r1, r1, #1
+  58:	8afffff5 	bhi	34 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x34>
+  5c:	e5c31000 	strb	r1, [r3]
+  60:	e3a03000 	mov	r3, #0
+  64:	e5c23000 	strb	r3, [r2]
+  68:	e5d52000 	ldrb	r2, [r5]
+  6c:	e352002c 	cmp	r2, #44	; 0x2c
+  70:	13a00001 	movne	r0, #1
+  74:	1a000054 	bne	1cc <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x1cc>
+  78:	e5cd3005 	strb	r3, [sp, #5]
+  7c:	e28d1004 	add	r1, sp, #4
+  80:	e2855001 	add	r5, r5, #1
+  84:	e1a00001 	mov	r0, r1
+  88:	e5d52000 	ldrb	r2, [r5]
+  8c:	e352002c 	cmp	r2, #44	; 0x2c
+  90:	13520000 	cmpne	r2, #0
+  94:	0a00000c 	beq	cc <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0xcc>
+  98:	e3530002 	cmp	r3, #2
+  9c:	0affffdf 	beq	20 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x20>
+  a0:	e242c030 	sub	ip, r2, #48	; 0x30
+  a4:	e35c0009 	cmp	ip, #9
+  a8:	9a000003 	bls	bc <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0xbc>
+  ac:	e382c020 	orr	ip, r2, #32
+  b0:	e24cc061 	sub	ip, ip, #97	; 0x61
+  b4:	e35c0005 	cmp	ip, #5
+  b8:	8affffd8 	bhi	20 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x20>
+  bc:	e4c12001 	strb	r2, [r1], #1
+  c0:	e2855001 	add	r5, r5, #1
+  c4:	e2833001 	add	r3, r3, #1
+  c8:	eaffffee 	b	88 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x88>
+  cc:	e16f3f13 	clz	r3, r3
+  d0:	e1a032a3 	lsr	r3, r3, #5
+  d4:	e352002c 	cmp	r2, #44	; 0x2c
+  d8:	01a04003 	moveq	r4, r3
+  dc:	13834001 	orrne	r4, r3, #1
+  e0:	e3540000 	cmp	r4, #0
+  e4:	1affffcd 	bne	20 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x20>
+  e8:	e2855001 	add	r5, r5, #1
+  ec:	ebfffffe 	bl	0 <Sscan::fromHex(char const*)>
+  f0:	e59d3018 	ldr	r3, [sp, #24]
+  f4:	e1a02004 	mov	r2, r4
+  f8:	e5c30000 	strb	r0, [r3]
+  fc:	e1a03004 	mov	r3, r4
+ 100:	e5d51000 	ldrb	r1, [r5]
+ 104:	e351002c 	cmp	r1, #44	; 0x2c
+ 108:	13510000 	cmpne	r1, #0
+ 10c:	0a00000b 	beq	140 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x140>
+ 110:	e3520003 	cmp	r2, #3
+ 114:	0affffc1 	beq	20 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x20>
+ 118:	e2410030 	sub	r0, r1, #48	; 0x30
+ 11c:	e3500009 	cmp	r0, #9
+ 120:	8affffbe 	bhi	20 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x20>
+ 124:	e0833103 	add	r3, r3, r3, lsl #2
+ 128:	e2822001 	add	r2, r2, #1
+ 12c:	e2855001 	add	r5, r5, #1
+ 130:	e0813083 	add	r3, r1, r3, lsl #1
+ 134:	e2433030 	sub	r3, r3, #48	; 0x30
+ 138:	e6ff3073 	uxth	r3, r3
+ 13c:	eaffffef 	b	100 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x100>
+ 140:	e16f2f12 	clz	r2, r2
+ 144:	e1a022a2 	lsr	r2, r2, #5
+ 148:	e351002c 	cmp	r1, #44	; 0x2c
+ 14c:	13822001 	orrne	r2, r2, #1
+ 150:	e3520000 	cmp	r2, #0
+ 154:	1affffb1 	bne	20 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x20>
+ 158:	e59d101c 	ldr	r1, [sp, #28]
+ 15c:	e3530c02 	cmp	r3, #512	; 0x200
+ 160:	e1c130b0 	strh	r3, [r1]
+ 164:	8affffad 	bhi	20 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x20>
+ 168:	e1a03002 	mov	r3, r2
+ 16c:	e1a01002 	mov	r1, r2
+ 170:	e3a0000a 	mov	r0, #10
+ 174:	e5f52001 	ldrb	r2, [r5, #1]!
+ 178:	e3520000 	cmp	r2, #0
+ 17c:	0a00000f 	beq	1c0 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x1c0>
+ 180:	e3510009 	cmp	r1, #9
+ 184:	0a000007 	beq	1a8 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x1a8>
+ 188:	e3520020 	cmp	r2, #32
+ 18c:	0a00000b 	beq	1c0 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x1c0>
+ 190:	e2422030 	sub	r2, r2, #48	; 0x30
+ 194:	e3520009 	cmp	r2, #9
+ 198:	8affffa0 	bhi	20 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x20>
+ 19c:	e0232390 	mla	r3, r0, r3, r2
+ 1a0:	e2811001 	add	r1, r1, #1
+ 1a4:	eafffff2 	b	174 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x174>
+ 1a8:	e3520020 	cmp	r2, #32
+ 1ac:	1affff9b 	bne	20 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x20>
+ 1b0:	e59d2020 	ldr	r2, [sp, #32]
+ 1b4:	e3a00000 	mov	r0, #0
+ 1b8:	e5823000 	str	r3, [r2]
+ 1bc:	ea000002 	b	1cc <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x1cc>
+ 1c0:	e3510000 	cmp	r1, #0
+ 1c4:	0affff95 	beq	20 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x20>
+ 1c8:	eafffff8 	b	1b0 <Sscan::Spi(char const*, char&, char*, unsigned char&, unsigned char&, unsigned short&, unsigned int&)+0x1b0>
+ 1cc:	e28dd00c 	add	sp, sp, #12
+ 1d0:	e8bd8030 	pop	{r4, r5, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscanuint16.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::Uint16(char const*, char const*, unsigned short&)>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04002 	mov	r4, r2
+   8:	ebfffffe 	bl	0 <Sscan::checkName(char const*, char const*)>
+   c:	e2501000 	subs	r1, r0, #0
+  10:	0a00000e 	beq	50 <Sscan::Uint16(char const*, char const*, unsigned short&)+0x50>
+  14:	e3a03000 	mov	r3, #0
+  18:	e3a0c00a 	mov	ip, #10
+  1c:	e5d12000 	ldrb	r2, [r1]
+  20:	e2420030 	sub	r0, r2, #48	; 0x30
+  24:	e3500009 	cmp	r0, #9
+  28:	8a00000a 	bhi	58 <Sscan::Uint16(char const*, char const*, unsigned short&)+0x58>
+  2c:	e5f10001 	ldrb	r0, [r1, #1]!
+  30:	e023239c 	mla	r3, ip, r3, r2
+  34:	e21000df 	ands	r0, r0, #223	; 0xdf
+  38:	e2433030 	sub	r3, r3, #48	; 0x30
+  3c:	1afffff6 	bne	1c <Sscan::Uint16(char const*, char const*, unsigned short&)+0x1c>
+  40:	e3530801 	cmp	r3, #65536	; 0x10000
+  44:	2a000003 	bcs	58 <Sscan::Uint16(char const*, char const*, unsigned short&)+0x58>
+  48:	e1c430b0 	strh	r3, [r4]
+  4c:	e8bd8010 	pop	{r4, pc}
+  50:	e3a00001 	mov	r0, #1
+  54:	e8bd8010 	pop	{r4, pc}
+  58:	e3a00002 	mov	r0, #2
+  5c:	e8bd8010 	pop	{r4, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscanuint32.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::Uint32(char const*, char const*, unsigned int&)>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04002 	mov	r4, r2
+   8:	ebfffffe 	bl	0 <Sscan::checkName(char const*, char const*)>
+   c:	e2501000 	subs	r1, r0, #0
+  10:	0a000015 	beq	6c <Sscan::Uint32(char const*, char const*, unsigned int&)+0x6c>
+  14:	e3a03000 	mov	r3, #0
+  18:	e3a0e00a 	mov	lr, #10
+  1c:	e1a0c003 	mov	ip, r3
+  20:	e5d12000 	ldrb	r2, [r1]
+  24:	e2420030 	sub	r0, r2, #48	; 0x30
+  28:	e3500009 	cmp	r0, #9
+  2c:	8a000010 	bhi	74 <Sscan::Uint32(char const*, char const*, unsigned int&)+0x74>
+  30:	e0803e93 	umull	r3, r0, r3, lr
+  34:	e0200c9e 	mla	r0, lr, ip, r0
+  38:	e2533030 	subs	r3, r3, #48	; 0x30
+  3c:	e2c00000 	sbc	r0, r0, #0
+  40:	e0923003 	adds	r3, r2, r3
+  44:	e2a0c000 	adc	ip, r0, #0
+  48:	e5f10001 	ldrb	r0, [r1, #1]!
+  4c:	e21000df 	ands	r0, r0, #223	; 0xdf
+  50:	1afffff2 	bne	20 <Sscan::Uint32(char const*, char const*, unsigned int&)+0x20>
+  54:	e3e02000 	mvn	r2, #0
+  58:	e1520003 	cmp	r2, r3
+  5c:	e0d0200c 	sbcs	r2, r0, ip
+  60:	3a000003 	bcc	74 <Sscan::Uint32(char const*, char const*, unsigned int&)+0x74>
+  64:	e5843000 	str	r3, [r4]
+  68:	e8bd8010 	pop	{r4, pc}
+  6c:	e3a00001 	mov	r0, #1
+  70:	e8bd8010 	pop	{r4, pc}
+  74:	e3a00002 	mov	r0, #2
+  78:	e8bd8010 	pop	{r4, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+
+
+sscanuint8.o:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <Sscan::Uint8(char const*, char const*, unsigned char&)>:
+   0:	e92d4010 	push	{r4, lr}
+   4:	e1a04002 	mov	r4, r2
+   8:	ebfffffe 	bl	0 <Sscan::checkName(char const*, char const*)>
+   c:	e2501000 	subs	r1, r0, #0
+  10:	0a00000e 	beq	50 <Sscan::Uint8(char const*, char const*, unsigned char&)+0x50>
+  14:	e3a03000 	mov	r3, #0
+  18:	e3a0c00a 	mov	ip, #10
+  1c:	e5d12000 	ldrb	r2, [r1]
+  20:	e2420030 	sub	r0, r2, #48	; 0x30
+  24:	e3500009 	cmp	r0, #9
+  28:	8a00000a 	bhi	58 <Sscan::Uint8(char const*, char const*, unsigned char&)+0x58>
+  2c:	e5f10001 	ldrb	r0, [r1, #1]!
+  30:	e023239c 	mla	r3, ip, r3, r2
+  34:	e21000df 	ands	r0, r0, #223	; 0xdf
+  38:	e2433030 	sub	r3, r3, #48	; 0x30
+  3c:	1afffff6 	bne	1c <Sscan::Uint8(char const*, char const*, unsigned char&)+0x1c>
+  40:	e35300ff 	cmp	r3, #255	; 0xff
+  44:	8a000003 	bhi	58 <Sscan::Uint8(char const*, char const*, unsigned char&)+0x58>
+  48:	e5c43000 	strb	r3, [r4]
+  4c:	e8bd8010 	pop	{r4, pc}
+  50:	e3a00001 	mov	r0, #1
+  54:	e8bd8010 	pop	{r4, pc}
+  58:	e3a00002 	mov	r0, #2
+  5c:	e8bd8010 	pop	{r4, pc}
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	43434700 	movtmi	r4, #14080	; 0x3700
+   4:	4728203a 			; <UNDEFINED> instruction: 0x4728203a
+   8:	2029554e 	eorcs	r5, r9, lr, asr #10
+   c:	322e3031 	eorcc	r3, lr, #49	; 0x31
+  10:	Address 0x0000000000000010 is out of bounds.
+
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00003441 	andeq	r3, r0, r1, asr #8
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000002a 	andeq	r0, r0, sl, lsr #32
+  10:	412d3705 			; <UNDEFINED> instruction: 0x412d3705
+  14:	070a0600 	streq	r0, [sl, -r0, lsl #12]
+  18:	09010841 	stmdbeq	r1, {r0, r6, fp}
+  1c:	0c050a02 			; <UNDEFINED> instruction: 0x0c050a02
+  20:	14041202 	strne	r1, [r4], #-514	; 0xfffffdfe
+  24:	17011501 	strne	r1, [r1, -r1, lsl #10]
+  28:	19011803 	stmdbne	r1, {r0, r1, fp, ip}
+  2c:	1c011a01 			; <UNDEFINED> instruction: 0x1c011a01
+  30:	22021e01 	andcs	r1, r2, #1, 28
+  34:	Address 0x0000000000000034 is out of bounds.
+

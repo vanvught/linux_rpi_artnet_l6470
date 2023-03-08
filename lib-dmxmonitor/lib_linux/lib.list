@@ -1,0 +1,1327 @@
+In archive lib_linux/libdmxmonitor.a:
+
+dmxmonitorparamsconst.o:     file format elf64-x86-64
+
+
+dmxmonitorparams.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZN10DMXMonitor9SetFormatEN10dmxmonitor6FormatE:
+
+0000000000000000 <DMXMonitor::SetFormat(dmxmonitor::Format)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	89 77 08             	mov    %esi,0x8(%rdi)
+   7:	c3                   	ret    
+
+Disassembly of section .text._ZNK16DMXMonitorParams9isMaskSetEj:
+
+0000000000000000 <DMXMonitorParams::isMaskSet(unsigned int) const>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	8b 47 08             	mov    0x8(%rdi),%eax
+   7:	21 f0                	and    %esi,%eax
+   9:	39 f0                	cmp    %esi,%eax
+   b:	0f 94 c0             	sete   %al
+   e:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder7GetSizeEv:
+
+0000000000000000 <PropertiesBuilder::GetSize()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	80 7f 0c 00          	cmpb   $0x0,0xc(%rdi)
+   8:	74 1b                	je     25 <PropertiesBuilder::GetSize()+0x25>
+   a:	0f b7 47 0a          	movzwl 0xa(%rdi),%eax
+   e:	48 8b 17             	mov    (%rdi),%rdx
+  11:	c6 44 02 ff 7d       	movb   $0x7d,-0x1(%rdx,%rax,1)
+  16:	0f b7 47 0a          	movzwl 0xa(%rdi),%eax
+  1a:	48 8b 17             	mov    (%rdi),%rdx
+  1d:	c6 04 02 7d          	movb   $0x7d,(%rdx,%rax,1)
+  21:	66 ff 47 0a          	incw   0xa(%rdi)
+  25:	66 8b 47 0a          	mov    0xa(%rdi),%ax
+  29:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partIPcEEiS1_jPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fa             	mov    %rdi,%r10
+   7:	48 89 f7             	mov    %rsi,%rdi
+   a:	89 d6                	mov    %edx,%esi
+   c:	41 8a 42 0c          	mov    0xc(%r10),%al
+  10:	45 84 c9             	test   %r9b,%r9b
+  13:	75 06                	jne    1b <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x1b>
+  15:	84 c0                	test   %al,%al
+  17:	75 0d                	jne    26 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x26>
+  19:	eb 14                	jmp    2f <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x2f>
+  1b:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 22 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x22>
+  22:	84 c0                	test   %al,%al
+  24:	74 10                	je     36 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x36>
+  26:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 2d <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x2d>
+  2d:	eb 07                	jmp    36 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x36>
+  2f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 36 <int PropertiesBuilder::add_part<char*>(char*, unsigned int, char const*, char*, bool, unsigned int)+0x36>
+  36:	31 c0                	xor    %eax,%eax
+  38:	e9 00 00 00 00       	jmp    3d <.LC20+0x8>
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partIPKcEEiPcjS2_T_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<char const*>(char*, unsigned int, char const*, char const*, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	45 0f b6 c9          	movzbl %r9b,%r9d
+   8:	e9 00 00 00 00       	jmp    d <.LC11+0x1>
+
+Disassembly of section .text._ZN16DMXMonitorParamsC2EP21DMXMonitorParamsStore:
+
+0000000000000000 <DMXMonitorParams::DMXMonitorParams(DMXMonitorParamsStore*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	b8 01 00 00 02       	mov    $0x2000001,%eax
+   9:	48 89 37             	mov    %rsi,(%rdi)
+   c:	48 c1 e0 20          	shl    $0x20,%rax
+  10:	c6 47 10 00          	movb   $0x0,0x10(%rdi)
+  14:	48 89 47 08          	mov    %rax,0x8(%rdi)
+  18:	c3                   	ret    
+
+Disassembly of section .text._ZN16DMXMonitorParams4LoadEv:
+
+0000000000000000 <DMXMonitorParams::Load()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 54                	push   %r12
+   6:	48 89 fa             	mov    %rdi,%rdx
+   9:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 10 <DMXMonitorParams::Load()+0x10>
+  10:	55                   	push   %rbp
+  11:	53                   	push   %rbx
+  12:	48 89 fb             	mov    %rdi,%rbx
+  15:	48 83 ec 20          	sub    $0x20,%rsp
+  19:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  20:	00 00 
+  22:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+  27:	31 c0                	xor    %eax,%eax
+  29:	c7 47 08 00 00 00 00 	movl   $0x0,0x8(%rdi)
+  30:	48 8d 6c 24 08       	lea    0x8(%rsp),%rbp
+  35:	48 89 ef             	mov    %rbp,%rdi
+  38:	e8 00 00 00 00       	call   3d <DMXMonitorParams::Load()+0x3d>
+  3d:	48 89 ef             	mov    %rbp,%rdi
+  40:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 47 <DMXMonitorParams::Load()+0x47>
+  47:	e8 00 00 00 00       	call   4c <DMXMonitorParams::Load()+0x4c>
+  4c:	48 8b 3b             	mov    (%rbx),%rdi
+  4f:	84 c0                	test   %al,%al
+  51:	41 89 c4             	mov    %eax,%r12d
+  54:	74 11                	je     67 <DMXMonitorParams::Load()+0x67>
+  56:	48 85 ff             	test   %rdi,%rdi
+  59:	74 1e                	je     79 <DMXMonitorParams::Load()+0x79>
+  5b:	48 8b 07             	mov    (%rdi),%rax
+  5e:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+  62:	ff 50 10             	call   *0x10(%rax)
+  65:	eb 12                	jmp    79 <DMXMonitorParams::Load()+0x79>
+  67:	48 85 ff             	test   %rdi,%rdi
+  6a:	74 0d                	je     79 <DMXMonitorParams::Load()+0x79>
+  6c:	48 8b 07             	mov    (%rdi),%rax
+  6f:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+  73:	41 b4 01             	mov    $0x1,%r12b
+  76:	ff 50 18             	call   *0x18(%rax)
+  79:	48 89 ef             	mov    %rbp,%rdi
+  7c:	e8 00 00 00 00       	call   81 <DMXMonitorParams::Load()+0x81>
+  81:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+  86:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+  8d:	00 00 
+  8f:	74 05                	je     96 <DMXMonitorParams::Load()+0x96>
+  91:	e8 00 00 00 00       	call   96 <DMXMonitorParams::Load()+0x96>
+  96:	48 83 c4 20          	add    $0x20,%rsp
+  9a:	44 89 e0             	mov    %r12d,%eax
+  9d:	5b                   	pop    %rbx
+  9e:	5d                   	pop    %rbp
+  9f:	41 5c                	pop    %r12
+  a1:	c3                   	ret    
+
+Disassembly of section .text._ZN16DMXMonitorParams4LoadEPKcj:
+
+0000000000000000 <DMXMonitorParams::Load(char const*, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 55                	push   %r13
+   6:	41 54                	push   %r12
+   8:	55                   	push   %rbp
+   9:	53                   	push   %rbx
+   a:	48 83 ec 28          	sub    $0x28,%rsp
+   e:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  15:	00 00 
+  17:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+  1c:	31 c0                	xor    %eax,%eax
+  1e:	48 85 f6             	test   %rsi,%rsi
+  21:	75 1c                	jne    3f <DMXMonitorParams::Load(char const*, unsigned int)+0x3f>
+  23:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 2a <DMXMonitorParams::Load(char const*, unsigned int)+0x2a>
+  2a:	ba 54 00 00 00       	mov    $0x54,%edx
+  2f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 36 <DMXMonitorParams::Load(char const*, unsigned int)+0x36>
+  36:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 3d <DMXMonitorParams::Load(char const*, unsigned int)+0x3d>
+  3d:	eb 21                	jmp    60 <DMXMonitorParams::Load(char const*, unsigned int)+0x60>
+  3f:	41 89 d4             	mov    %edx,%r12d
+  42:	85 d2                	test   %edx,%edx
+  44:	75 1f                	jne    65 <DMXMonitorParams::Load(char const*, unsigned int)+0x65>
+  46:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 4d <DMXMonitorParams::Load(char const*, unsigned int)+0x4d>
+  4d:	ba 55 00 00 00       	mov    $0x55,%edx
+  52:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 59 <DMXMonitorParams::Load(char const*, unsigned int)+0x59>
+  59:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 60 <DMXMonitorParams::Load(char const*, unsigned int)+0x60>
+  60:	e8 00 00 00 00       	call   65 <DMXMonitorParams::Load(char const*, unsigned int)+0x65>
+  65:	48 83 3f 00          	cmpq   $0x0,(%rdi)
+  69:	48 89 fb             	mov    %rdi,%rbx
+  6c:	75 1c                	jne    8a <DMXMonitorParams::Load(char const*, unsigned int)+0x8a>
+  6e:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 75 <DMXMonitorParams::Load(char const*, unsigned int)+0x75>
+  75:	ba 56 00 00 00       	mov    $0x56,%edx
+  7a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 81 <DMXMonitorParams::Load(char const*, unsigned int)+0x81>
+  81:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 88 <DMXMonitorParams::Load(char const*, unsigned int)+0x88>
+  88:	eb d6                	jmp    60 <DMXMonitorParams::Load(char const*, unsigned int)+0x60>
+  8a:	c7 47 08 00 00 00 00 	movl   $0x0,0x8(%rdi)
+  91:	4c 8d 6c 24 08       	lea    0x8(%rsp),%r13
+  96:	48 89 fa             	mov    %rdi,%rdx
+  99:	48 89 f5             	mov    %rsi,%rbp
+  9c:	4c 89 ef             	mov    %r13,%rdi
+  9f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # a6 <DMXMonitorParams::Load(char const*, unsigned int)+0xa6>
+  a6:	e8 00 00 00 00       	call   ab <DMXMonitorParams::Load(char const*, unsigned int)+0xab>
+  ab:	44 89 e2             	mov    %r12d,%edx
+  ae:	48 89 ee             	mov    %rbp,%rsi
+  b1:	4c 89 ef             	mov    %r13,%rdi
+  b4:	e8 00 00 00 00       	call   b9 <DMXMonitorParams::Load(char const*, unsigned int)+0xb9>
+  b9:	48 8b 3b             	mov    (%rbx),%rdi
+  bc:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+  c0:	48 8b 07             	mov    (%rdi),%rax
+  c3:	ff 50 10             	call   *0x10(%rax)
+  c6:	4c 89 ef             	mov    %r13,%rdi
+  c9:	e8 00 00 00 00       	call   ce <DMXMonitorParams::Load(char const*, unsigned int)+0xce>
+  ce:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+  d3:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+  da:	00 00 
+  dc:	74 05                	je     e3 <DMXMonitorParams::Load(char const*, unsigned int)+0xe3>
+  de:	e8 00 00 00 00       	call   e3 <DMXMonitorParams::Load(char const*, unsigned int)+0xe3>
+  e3:	48 83 c4 28          	add    $0x28,%rsp
+  e7:	5b                   	pop    %rbx
+  e8:	5d                   	pop    %rbp
+  e9:	41 5c                	pop    %r12
+  eb:	41 5d                	pop    %r13
+  ed:	c3                   	ret    
+
+Disassembly of section .text._ZN16DMXMonitorParams7BuilderEPK17TDMXMonitorParamsPcjRj:
+
+0000000000000000 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 57                	push   %r15
+   6:	4c 8d 3d 00 00 00 00 	lea    0x0(%rip),%r15        # d <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0xd>
+   d:	41 56                	push   %r14
+   f:	41 89 ce             	mov    %ecx,%r14d
+  12:	b9 66 00 00 00       	mov    $0x66,%ecx
+  17:	41 55                	push   %r13
+  19:	49 89 f5             	mov    %rsi,%r13
+  1c:	41 54                	push   %r12
+  1e:	49 89 d4             	mov    %rdx,%r12
+  21:	4c 89 fa             	mov    %r15,%rdx
+  24:	55                   	push   %rbp
+  25:	48 8d 2d 00 00 00 00 	lea    0x0(%rip),%rbp        # 2c <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x2c>
+  2c:	53                   	push   %rbx
+  2d:	48 89 ee             	mov    %rbp,%rsi
+  30:	48 89 fb             	mov    %rdi,%rbx
+  33:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 3a <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x3a>
+  3a:	48 83 ec 38          	sub    $0x38,%rsp
+  3e:	4c 89 44 24 08       	mov    %r8,0x8(%rsp)
+  43:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  4a:	00 00 
+  4c:	48 89 44 24 28       	mov    %rax,0x28(%rsp)
+  51:	31 c0                	xor    %eax,%eax
+  53:	e8 00 00 00 00       	call   58 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x58>
+  58:	4d 85 e4             	test   %r12,%r12
+  5b:	75 1b                	jne    78 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x78>
+  5d:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 64 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x64>
+  64:	ba 67 00 00 00       	mov    $0x67,%edx
+  69:	48 89 ee             	mov    %rbp,%rsi
+  6c:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 73 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x73>
+  73:	e8 00 00 00 00       	call   78 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x78>
+  78:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+  7c:	4d 85 ed             	test   %r13,%r13
+  7f:	74 11                	je     92 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x92>
+  81:	49 8b 45 00          	mov    0x0(%r13),%rax
+  85:	48 89 43 08          	mov    %rax,0x8(%rbx)
+  89:	41 8a 45 08          	mov    0x8(%r13),%al
+  8d:	88 46 08             	mov    %al,0x8(%rsi)
+  90:	eb 09                	jmp    9b <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x9b>
+  92:	48 8b 3b             	mov    (%rbx),%rdi
+  95:	48 8b 07             	mov    (%rdi),%rax
+  98:	ff 50 18             	call   *0x18(%rax)
+  9b:	4c 8d 6c 24 18       	lea    0x18(%rsp),%r13
+  a0:	44 89 f1             	mov    %r14d,%ecx
+  a3:	4c 89 e2             	mov    %r12,%rdx
+  a6:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # ad <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0xad>
+  ad:	4c 89 ef             	mov    %r13,%rdi
+  b0:	e8 00 00 00 00       	call   b5 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0xb5>
+  b5:	be 04 00 00 00       	mov    $0x4,%esi
+  ba:	48 89 df             	mov    %rbx,%rdi
+  bd:	e8 00 00 00 00       	call   c2 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0xc2>
+  c2:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # c9 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0xc9>
+  c9:	0f b6 c8             	movzbl %al,%ecx
+  cc:	8a 43 10             	mov    0x10(%rbx),%al
+  cf:	3c 01                	cmp    $0x1,%al
+  d1:	74 14                	je     e7 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0xe7>
+  d3:	3c 02                	cmp    $0x2,%al
+  d5:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # dc <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0xdc>
+  dc:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # e3 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0xe3>
+  e3:	48 0f 45 d0          	cmovne %rax,%rdx
+  e7:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+  ed:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # f4 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0xf4>
+  f4:	4c 89 ef             	mov    %r13,%rdi
+  f7:	e8 00 00 00 00       	call   fc <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0xfc>
+  fc:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 103 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x103>
+ 103:	4c 89 ef             	mov    %r13,%rdi
+ 106:	e8 00 00 00 00       	call   10b <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x10b>
+ 10b:	48 89 df             	mov    %rbx,%rdi
+ 10e:	be 01 00 00 00       	mov    $0x1,%esi
+ 113:	e8 00 00 00 00       	call   118 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x118>
+ 118:	0f b7 53 0c          	movzwl 0xc(%rbx),%edx
+ 11c:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 122:	4c 89 ef             	mov    %r13,%rdi
+ 125:	0f b6 c8             	movzbl %al,%ecx
+ 128:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 12f <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x12f>
+ 12f:	e8 00 00 00 00       	call   134 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x134>
+ 134:	48 89 df             	mov    %rbx,%rdi
+ 137:	be 02 00 00 00       	mov    $0x2,%esi
+ 13c:	e8 00 00 00 00       	call   141 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x141>
+ 141:	0f b7 53 0e          	movzwl 0xe(%rbx),%edx
+ 145:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 14c <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x14c>
+ 14c:	4c 89 ef             	mov    %r13,%rdi
+ 14f:	0f b6 c8             	movzbl %al,%ecx
+ 152:	41 b8 01 00 00 00    	mov    $0x1,%r8d
+ 158:	e8 00 00 00 00       	call   15d <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x15d>
+ 15d:	4c 89 ef             	mov    %r13,%rdi
+ 160:	e8 00 00 00 00       	call   165 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x165>
+ 165:	48 8b 5c 24 08       	mov    0x8(%rsp),%rbx
+ 16a:	4c 89 fa             	mov    %r15,%rdx
+ 16d:	48 89 ee             	mov    %rbp,%rsi
+ 170:	0f b7 c0             	movzwl %ax,%eax
+ 173:	b9 78 00 00 00       	mov    $0x78,%ecx
+ 178:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 17f <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x17f>
+ 17f:	89 03                	mov    %eax,(%rbx)
+ 181:	31 c0                	xor    %eax,%eax
+ 183:	e8 00 00 00 00       	call   188 <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x188>
+ 188:	48 8b 44 24 28       	mov    0x28(%rsp),%rax
+ 18d:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 194:	00 00 
+ 196:	74 05                	je     19d <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x19d>
+ 198:	e8 00 00 00 00       	call   19d <DMXMonitorParams::Builder(TDMXMonitorParams const*, char*, unsigned int, unsigned int&)+0x19d>
+ 19d:	48 83 c4 38          	add    $0x38,%rsp
+ 1a1:	5b                   	pop    %rbx
+ 1a2:	5d                   	pop    %rbp
+ 1a3:	41 5c                	pop    %r12
+ 1a5:	41 5d                	pop    %r13
+ 1a7:	41 5e                	pop    %r14
+ 1a9:	41 5f                	pop    %r15
+ 1ab:	c3                   	ret    
+
+Disassembly of section .text._ZN16DMXMonitorParams4SaveEPcjRj:
+
+0000000000000000 <DMXMonitorParams::Save(char*, unsigned int, unsigned int&)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 57                	push   %r15
+   6:	31 c0                	xor    %eax,%eax
+   8:	41 89 d7             	mov    %edx,%r15d
+   b:	41 56                	push   %r14
+   d:	49 89 f6             	mov    %rsi,%r14
+  10:	41 55                	push   %r13
+  12:	4c 8d 2d 00 00 00 00 	lea    0x0(%rip),%r13        # 19 <DMXMonitorParams::Save(char*, unsigned int, unsigned int&)+0x19>
+  19:	41 54                	push   %r12
+  1b:	4c 8d 25 00 00 00 00 	lea    0x0(%rip),%r12        # 22 <DMXMonitorParams::Save(char*, unsigned int, unsigned int&)+0x22>
+  22:	4c 89 ea             	mov    %r13,%rdx
+  25:	55                   	push   %rbp
+  26:	4c 89 e6             	mov    %r12,%rsi
+  29:	48 89 fd             	mov    %rdi,%rbp
+  2c:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 33 <DMXMonitorParams::Save(char*, unsigned int, unsigned int&)+0x33>
+  33:	53                   	push   %rbx
+  34:	48 89 cb             	mov    %rcx,%rbx
+  37:	b9 7c 00 00 00       	mov    $0x7c,%ecx
+  3c:	41 51                	push   %r9
+  3e:	e8 00 00 00 00       	call   43 <DMXMonitorParams::Save(char*, unsigned int, unsigned int&)+0x43>
+  43:	48 83 7d 00 00       	cmpq   $0x0,0x0(%rbp)
+  48:	75 1a                	jne    64 <DMXMonitorParams::Save(char*, unsigned int, unsigned int&)+0x64>
+  4a:	c7 03 00 00 00 00    	movl   $0x0,(%rbx)
+  50:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 57 <DMXMonitorParams::Save(char*, unsigned int, unsigned int&)+0x57>
+  57:	4c 89 ea             	mov    %r13,%rdx
+  5a:	4c 89 e6             	mov    %r12,%rsi
+  5d:	b9 80 00 00 00       	mov    $0x80,%ecx
+  62:	eb 25                	jmp    89 <DMXMonitorParams::Save(char*, unsigned int, unsigned int&)+0x89>
+  64:	44 89 f9             	mov    %r15d,%ecx
+  67:	4c 89 f2             	mov    %r14,%rdx
+  6a:	31 f6                	xor    %esi,%esi
+  6c:	49 89 d8             	mov    %rbx,%r8
+  6f:	48 89 ef             	mov    %rbp,%rdi
+  72:	e8 00 00 00 00       	call   77 <DMXMonitorParams::Save(char*, unsigned int, unsigned int&)+0x77>
+  77:	b9 86 00 00 00       	mov    $0x86,%ecx
+  7c:	4c 89 ea             	mov    %r13,%rdx
+  7f:	4c 89 e6             	mov    %r12,%rsi
+  82:	4c 8d 0d 00 00 00 00 	lea    0x0(%rip),%r9        # 89 <DMXMonitorParams::Save(char*, unsigned int, unsigned int&)+0x89>
+  89:	41 58                	pop    %r8
+  8b:	4c 89 cf             	mov    %r9,%rdi
+  8e:	5b                   	pop    %rbx
+  8f:	31 c0                	xor    %eax,%eax
+  91:	5d                   	pop    %rbp
+  92:	41 5c                	pop    %r12
+  94:	41 5d                	pop    %r13
+  96:	41 5e                	pop    %r14
+  98:	41 5f                	pop    %r15
+  9a:	e9 00 00 00 00       	jmp    9f <.LC15+0x24>
+
+Disassembly of section .text._ZN16DMXMonitorParams3SetEP10DMXMonitor:
+
+0000000000000000 <DMXMonitorParams::Set(DMXMonitor*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	51                   	push   %rcx
+   7:	48 85 f6             	test   %rsi,%rsi
+   a:	75 1f                	jne    2b <DMXMonitorParams::Set(DMXMonitor*)+0x2b>
+   c:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 13 <DMXMonitorParams::Set(DMXMonitor*)+0x13>
+  13:	ba 8a 00 00 00       	mov    $0x8a,%edx
+  18:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1f <DMXMonitorParams::Set(DMXMonitor*)+0x1f>
+  1f:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 26 <DMXMonitorParams::Set(DMXMonitor*)+0x26>
+  26:	e8 00 00 00 00       	call   2b <DMXMonitorParams::Set(DMXMonitor*)+0x2b>
+  2b:	48 89 f5             	mov    %rsi,%rbp
+  2e:	be 01 00 00 00       	mov    $0x1,%esi
+  33:	48 89 fb             	mov    %rdi,%rbx
+  36:	e8 00 00 00 00       	call   3b <DMXMonitorParams::Set(DMXMonitor*)+0x3b>
+  3b:	84 c0                	test   %al,%al
+  3d:	74 0e                	je     4d <DMXMonitorParams::Set(DMXMonitor*)+0x4d>
+  3f:	48 8b 45 00          	mov    0x0(%rbp),%rax
+  43:	0f b7 73 0c          	movzwl 0xc(%rbx),%esi
+  47:	48 89 ef             	mov    %rbp,%rdi
+  4a:	ff 50 40             	call   *0x40(%rax)
+  4d:	be 02 00 00 00       	mov    $0x2,%esi
+  52:	48 89 df             	mov    %rbx,%rdi
+  55:	e8 00 00 00 00       	call   5a <DMXMonitorParams::Set(DMXMonitor*)+0x5a>
+  5a:	84 c0                	test   %al,%al
+  5c:	74 0c                	je     6a <DMXMonitorParams::Set(DMXMonitor*)+0x6a>
+  5e:	0f b7 73 0e          	movzwl 0xe(%rbx),%esi
+  62:	48 89 ef             	mov    %rbp,%rdi
+  65:	e8 00 00 00 00       	call   6a <DMXMonitorParams::Set(DMXMonitor*)+0x6a>
+  6a:	be 04 00 00 00       	mov    $0x4,%esi
+  6f:	48 89 df             	mov    %rbx,%rdi
+  72:	e8 00 00 00 00       	call   77 <DMXMonitorParams::Set(DMXMonitor*)+0x77>
+  77:	84 c0                	test   %al,%al
+  79:	74 0f                	je     8a <DMXMonitorParams::Set(DMXMonitor*)+0x8a>
+  7b:	0f b6 73 10          	movzbl 0x10(%rbx),%esi
+  7f:	48 89 ef             	mov    %rbp,%rdi
+  82:	5a                   	pop    %rdx
+  83:	5b                   	pop    %rbx
+  84:	5d                   	pop    %rbp
+  85:	e9 00 00 00 00       	jmp    8a <DMXMonitorParams::Set(DMXMonitor*)+0x8a>
+  8a:	58                   	pop    %rax
+  8b:	5b                   	pop    %rbx
+  8c:	5d                   	pop    %rbp
+  8d:	c3                   	ret    
+
+Disassembly of section .text._ZN16DMXMonitorParams16callbackFunctionEPKc:
+
+0000000000000000 <DMXMonitorParams::callbackFunction(char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	41 54                	push   %r12
+   6:	55                   	push   %rbp
+   7:	53                   	push   %rbx
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  13:	00 00 
+  15:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+  1a:	31 c0                	xor    %eax,%eax
+  1c:	48 85 f6             	test   %rsi,%rsi
+  1f:	75 1f                	jne    40 <DMXMonitorParams::callbackFunction(char const*)+0x40>
+  21:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 28 <DMXMonitorParams::callbackFunction(char const*)+0x28>
+  28:	ba 9c 00 00 00       	mov    $0x9c,%edx
+  2d:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 34 <DMXMonitorParams::callbackFunction(char const*)+0x34>
+  34:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 3b <DMXMonitorParams::callbackFunction(char const*)+0x3b>
+  3b:	e8 00 00 00 00       	call   40 <DMXMonitorParams::callbackFunction(char const*)+0x40>
+  40:	48 89 f5             	mov    %rsi,%rbp
+  43:	4c 8d 64 24 0a       	lea    0xa(%rsp),%r12
+  48:	48 89 fb             	mov    %rdi,%rbx
+  4b:	4c 89 e2             	mov    %r12,%rdx
+  4e:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 55 <DMXMonitorParams::callbackFunction(char const*)+0x55>
+  55:	48 89 ef             	mov    %rbp,%rdi
+  58:	e8 00 00 00 00       	call   5d <DMXMonitorParams::callbackFunction(char const*)+0x5d>
+  5d:	85 c0                	test   %eax,%eax
+  5f:	75 20                	jne    81 <DMXMonitorParams::callbackFunction(char const*)+0x81>
+  61:	66 8b 44 24 0a       	mov    0xa(%rsp),%ax
+  66:	8d 50 ff             	lea    -0x1(%rax),%edx
+  69:	66 81 fa ff 01       	cmp    $0x1ff,%dx
+  6e:	0f 87 ac 00 00 00    	ja     120 <DMXMonitorParams::callbackFunction(char const*)+0x120>
+  74:	83 4b 08 01          	orl    $0x1,0x8(%rbx)
+  78:	66 89 43 0c          	mov    %ax,0xc(%rbx)
+  7c:	e9 9f 00 00 00       	jmp    120 <DMXMonitorParams::callbackFunction(char const*)+0x120>
+  81:	4c 89 e2             	mov    %r12,%rdx
+  84:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 8b <DMXMonitorParams::callbackFunction(char const*)+0x8b>
+  8b:	48 89 ef             	mov    %rbp,%rdi
+  8e:	e8 00 00 00 00       	call   93 <DMXMonitorParams::callbackFunction(char const*)+0x93>
+  93:	85 c0                	test   %eax,%eax
+  95:	75 19                	jne    b0 <DMXMonitorParams::callbackFunction(char const*)+0xb0>
+  97:	66 8b 44 24 0a       	mov    0xa(%rsp),%ax
+  9c:	8d 50 ff             	lea    -0x1(%rax),%edx
+  9f:	66 81 fa ff 01       	cmp    $0x1ff,%dx
+  a4:	77 7a                	ja     120 <DMXMonitorParams::callbackFunction(char const*)+0x120>
+  a6:	83 4b 08 02          	orl    $0x2,0x8(%rbx)
+  aa:	66 89 43 0e          	mov    %ax,0xe(%rbx)
+  ae:	eb 70                	jmp    120 <DMXMonitorParams::callbackFunction(char const*)+0x120>
+  b0:	4c 8d 64 24 10       	lea    0x10(%rsp),%r12
+  b5:	48 8d 4c 24 0c       	lea    0xc(%rsp),%rcx
+  ba:	48 89 ef             	mov    %rbp,%rdi
+  bd:	c7 44 24 0c 03 00 00 	movl   $0x3,0xc(%rsp)
+  c4:	00 
+  c5:	4c 89 e2             	mov    %r12,%rdx
+  c8:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # cf <DMXMonitorParams::callbackFunction(char const*)+0xcf>
+  cf:	e8 00 00 00 00       	call   d4 <DMXMonitorParams::callbackFunction(char const*)+0xd4>
+  d4:	85 c0                	test   %eax,%eax
+  d6:	75 48                	jne    120 <DMXMonitorParams::callbackFunction(char const*)+0x120>
+  d8:	ba 03 00 00 00       	mov    $0x3,%edx
+  dd:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # e4 <DMXMonitorParams::callbackFunction(char const*)+0xe4>
+  e4:	4c 89 e7             	mov    %r12,%rdi
+  e7:	e8 00 00 00 00       	call   ec <DMXMonitorParams::callbackFunction(char const*)+0xec>
+  ec:	85 c0                	test   %eax,%eax
+  ee:	75 06                	jne    f6 <DMXMonitorParams::callbackFunction(char const*)+0xf6>
+  f0:	c6 43 10 01          	movb   $0x1,0x10(%rbx)
+  f4:	eb 1c                	jmp    112 <DMXMonitorParams::callbackFunction(char const*)+0x112>
+  f6:	ba 03 00 00 00       	mov    $0x3,%edx
+  fb:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 102 <DMXMonitorParams::callbackFunction(char const*)+0x102>
+ 102:	4c 89 e7             	mov    %r12,%rdi
+ 105:	e8 00 00 00 00       	call   10a <DMXMonitorParams::callbackFunction(char const*)+0x10a>
+ 10a:	85 c0                	test   %eax,%eax
+ 10c:	75 0a                	jne    118 <DMXMonitorParams::callbackFunction(char const*)+0x118>
+ 10e:	c6 43 10 02          	movb   $0x2,0x10(%rbx)
+ 112:	83 4b 08 04          	orl    $0x4,0x8(%rbx)
+ 116:	eb 08                	jmp    120 <DMXMonitorParams::callbackFunction(char const*)+0x120>
+ 118:	83 63 08 fb          	andl   $0xfffffffb,0x8(%rbx)
+ 11c:	c6 43 10 00          	movb   $0x0,0x10(%rbx)
+ 120:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+ 125:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 12c:	00 00 
+ 12e:	74 05                	je     135 <DMXMonitorParams::callbackFunction(char const*)+0x135>
+ 130:	e8 00 00 00 00       	call   135 <DMXMonitorParams::callbackFunction(char const*)+0x135>
+ 135:	48 83 c4 20          	add    $0x20,%rsp
+ 139:	5b                   	pop    %rbx
+ 13a:	5d                   	pop    %rbp
+ 13b:	41 5c                	pop    %r12
+ 13d:	c3                   	ret    
+
+Disassembly of section .text._ZN16DMXMonitorParams4DumpEv:
+
+0000000000000000 <DMXMonitorParams::Dump()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	83 7f 08 00          	cmpl   $0x0,0x8(%rdi)
+   8:	0f 84 c9 00 00 00    	je     d7 <DMXMonitorParams::Dump()+0xd7>
+   e:	53                   	push   %rbx
+   f:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 16 <DMXMonitorParams::Dump()+0x16>
+  16:	31 c0                	xor    %eax,%eax
+  18:	48 89 fb             	mov    %rdi,%rbx
+  1b:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 22 <DMXMonitorParams::Dump()+0x22>
+  22:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 29 <DMXMonitorParams::Dump()+0x29>
+  29:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 30 <DMXMonitorParams::Dump()+0x30>
+  30:	e8 00 00 00 00       	call   35 <DMXMonitorParams::Dump()+0x35>
+  35:	be 01 00 00 00       	mov    $0x1,%esi
+  3a:	48 89 df             	mov    %rbx,%rdi
+  3d:	e8 00 00 00 00       	call   42 <DMXMonitorParams::Dump()+0x42>
+  42:	84 c0                	test   %al,%al
+  44:	74 19                	je     5f <DMXMonitorParams::Dump()+0x5f>
+  46:	0f b7 53 0c          	movzwl 0xc(%rbx),%edx
+  4a:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 51 <DMXMonitorParams::Dump()+0x51>
+  51:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 58 <DMXMonitorParams::Dump()+0x58>
+  58:	31 c0                	xor    %eax,%eax
+  5a:	e8 00 00 00 00       	call   5f <DMXMonitorParams::Dump()+0x5f>
+  5f:	be 02 00 00 00       	mov    $0x2,%esi
+  64:	48 89 df             	mov    %rbx,%rdi
+  67:	e8 00 00 00 00       	call   6c <DMXMonitorParams::Dump()+0x6c>
+  6c:	84 c0                	test   %al,%al
+  6e:	74 19                	je     89 <DMXMonitorParams::Dump()+0x89>
+  70:	0f b7 53 0e          	movzwl 0xe(%rbx),%edx
+  74:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 7b <DMXMonitorParams::Dump()+0x7b>
+  7b:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 82 <DMXMonitorParams::Dump()+0x82>
+  82:	31 c0                	xor    %eax,%eax
+  84:	e8 00 00 00 00       	call   89 <DMXMonitorParams::Dump()+0x89>
+  89:	be 04 00 00 00       	mov    $0x4,%esi
+  8e:	48 89 df             	mov    %rbx,%rdi
+  91:	e8 00 00 00 00       	call   96 <DMXMonitorParams::Dump()+0x96>
+  96:	84 c0                	test   %al,%al
+  98:	74 3b                	je     d5 <DMXMonitorParams::Dump()+0xd5>
+  9a:	0f b6 53 10          	movzbl 0x10(%rbx),%edx
+  9e:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # a5 <DMXMonitorParams::Dump()+0xa5>
+  a5:	80 fa 01             	cmp    $0x1,%dl
+  a8:	74 15                	je     bf <DMXMonitorParams::Dump()+0xbf>
+  aa:	80 fa 02             	cmp    $0x2,%dl
+  ad:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # b4 <DMXMonitorParams::Dump()+0xb4>
+  b4:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # bb <DMXMonitorParams::Dump()+0xbb>
+  bb:	48 0f 45 c8          	cmovne %rax,%rcx
+  bf:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # c6 <DMXMonitorParams::Dump()+0xc6>
+  c6:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # cd <DMXMonitorParams::Dump()+0xcd>
+  cd:	31 c0                	xor    %eax,%eax
+  cf:	5b                   	pop    %rbx
+  d0:	e9 00 00 00 00       	jmp    d5 <DMXMonitorParams::Dump()+0xd5>
+  d5:	5b                   	pop    %rbx
+  d6:	c3                   	ret    
+  d7:	c3                   	ret    
+
+Disassembly of section .text._ZN16DMXMonitorParams22staticCallbackFunctionEPvPKc:
+
+0000000000000000 <DMXMonitorParams::staticCallbackFunction(void*, char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	52                   	push   %rdx
+   5:	48 85 ff             	test   %rdi,%rdi
+   8:	75 1c                	jne    26 <DMXMonitorParams::staticCallbackFunction(void*, char const*)+0x26>
+   a:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 11 <DMXMonitorParams::staticCallbackFunction(void*, char const*)+0x11>
+  11:	ba d9 00 00 00       	mov    $0xd9,%edx
+  16:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 1d <DMXMonitorParams::staticCallbackFunction(void*, char const*)+0x1d>
+  1d:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 24 <DMXMonitorParams::staticCallbackFunction(void*, char const*)+0x24>
+  24:	eb 1f                	jmp    45 <DMXMonitorParams::staticCallbackFunction(void*, char const*)+0x45>
+  26:	48 85 f6             	test   %rsi,%rsi
+  29:	75 1f                	jne    4a <DMXMonitorParams::staticCallbackFunction(void*, char const*)+0x4a>
+  2b:	48 8d 0d 00 00 00 00 	lea    0x0(%rip),%rcx        # 32 <DMXMonitorParams::staticCallbackFunction(void*, char const*)+0x32>
+  32:	ba da 00 00 00       	mov    $0xda,%edx
+  37:	48 8d 35 00 00 00 00 	lea    0x0(%rip),%rsi        # 3e <DMXMonitorParams::staticCallbackFunction(void*, char const*)+0x3e>
+  3e:	48 8d 3d 00 00 00 00 	lea    0x0(%rip),%rdi        # 45 <DMXMonitorParams::staticCallbackFunction(void*, char const*)+0x45>
+  45:	e8 00 00 00 00       	call   4a <DMXMonitorParams::staticCallbackFunction(void*, char const*)+0x4a>
+  4a:	58                   	pop    %rax
+  4b:	e9 00 00 00 00       	jmp    50 <.LC5+0x4>
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddIPKcEEbS2_T_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	41 52                	push   %r10
+   8:	49 89 f2             	mov    %rsi,%r10
+   b:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+   f:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 33                	jmp    4f <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int)+0x4f>
+  1c:	48 89 d0             	mov    %rdx,%rax
+  1f:	48 89 fb             	mov    %rdi,%rbx
+  22:	0f b7 d6             	movzwl %si,%edx
+  25:	48 03 37             	add    (%rdi),%rsi
+  28:	57                   	push   %rdi
+  29:	29 d5                	sub    %edx,%ebp
+  2b:	44 0f b6 c9          	movzbl %cl,%r9d
+  2f:	48 89 df             	mov    %rbx,%rdi
+  32:	41 50                	push   %r8
+  34:	4c 89 d1             	mov    %r10,%rcx
+  37:	49 89 c0             	mov    %rax,%r8
+  3a:	89 ea                	mov    %ebp,%edx
+  3c:	e8 00 00 00 00       	call   41 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int)+0x41>
+  41:	41 58                	pop    %r8
+  43:	41 59                	pop    %r9
+  45:	39 c5                	cmp    %eax,%ebp
+  47:	7c cf                	jl     18 <bool PropertiesBuilder::Add<char const*>(char const*, char const*, bool, unsigned int)+0x18>
+  49:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  4d:	b0 01                	mov    $0x1,%al
+  4f:	5a                   	pop    %rdx
+  50:	5b                   	pop    %rbx
+  51:	5d                   	pop    %rbp
+  52:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder3AddItEEbPKcT_bj:
+
+0000000000000000 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	53                   	push   %rbx
+   6:	41 52                	push   %r10
+   8:	49 89 f2             	mov    %rsi,%r10
+   b:	0f b7 6f 08          	movzwl 0x8(%rdi),%ebp
+   f:	0f b7 77 0a          	movzwl 0xa(%rdi),%esi
+  13:	66 39 ee             	cmp    %bp,%si
+  16:	72 04                	jb     1c <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x1c>
+  18:	31 c0                	xor    %eax,%eax
+  1a:	eb 33                	jmp    4f <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x4f>
+  1c:	89 d0                	mov    %edx,%eax
+  1e:	48 89 fb             	mov    %rdi,%rbx
+  21:	0f b7 d6             	movzwl %si,%edx
+  24:	48 03 37             	add    (%rdi),%rsi
+  27:	57                   	push   %rdi
+  28:	29 d5                	sub    %edx,%ebp
+  2a:	44 0f b6 c9          	movzbl %cl,%r9d
+  2e:	48 89 df             	mov    %rbx,%rdi
+  31:	41 50                	push   %r8
+  33:	4c 89 d1             	mov    %r10,%rcx
+  36:	44 0f b7 c0          	movzwl %ax,%r8d
+  3a:	89 ea                	mov    %ebp,%edx
+  3c:	e8 00 00 00 00       	call   41 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x41>
+  41:	41 58                	pop    %r8
+  43:	41 59                	pop    %r9
+  45:	39 c5                	cmp    %eax,%ebp
+  47:	7c cf                	jl     18 <bool PropertiesBuilder::Add<unsigned short>(char const*, unsigned short, bool, unsigned int)+0x18>
+  49:	66 01 43 0a          	add    %ax,0xa(%rbx)
+  4d:	b0 01                	mov    $0x1,%al
+  4f:	5a                   	pop    %rdx
+  50:	5b                   	pop    %rbx
+  51:	5d                   	pop    %rbp
+  52:	c3                   	ret    
+
+Disassembly of section .text._ZN17PropertiesBuilder8add_partItEEiPcjPKcT_bj:
+
+0000000000000000 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	49 89 fa             	mov    %rdi,%r10
+   7:	45 0f b7 c0          	movzwl %r8w,%r8d
+   b:	48 89 f7             	mov    %rsi,%rdi
+   e:	89 d6                	mov    %edx,%esi
+  10:	41 8a 42 0c          	mov    0xc(%r10),%al
+  14:	45 84 c9             	test   %r9b,%r9b
+  17:	75 06                	jne    1f <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x1f>
+  19:	84 c0                	test   %al,%al
+  1b:	75 0d                	jne    2a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x2a>
+  1d:	eb 14                	jmp    33 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x33>
+  1f:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 26 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x26>
+  26:	84 c0                	test   %al,%al
+  28:	74 10                	je     3a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x3a>
+  2a:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 31 <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x31>
+  31:	eb 07                	jmp    3a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x3a>
+  33:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 3a <int PropertiesBuilder::add_part<unsigned short>(char*, unsigned int, char const*, unsigned short, bool, unsigned int)+0x3a>
+  3a:	31 c0                	xor    %eax,%eax
+  3c:	e9 00 00 00 00       	jmp    41 <.LC20+0xc>
+
+dmxmonitor.o:     file format elf64-x86-64
+
+
+Disassembly of section .text._ZN8LightSetC2Ev:
+
+0000000000000000 <LightSet::LightSet()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 13 <LightSet::LightSet()+0x13>
+  13:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  17:	48 89 10             	mov    %rdx,(%rax)
+  1a:	90                   	nop
+  1b:	5d                   	pop    %rbp
+  1c:	c3                   	ret    
+
+Disassembly of section .text._ZN8LightSetD2Ev:
+
+0000000000000000 <LightSet::~LightSet()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 13 <LightSet::~LightSet()+0x13>
+  13:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  17:	48 89 10             	mov    %rdx,(%rax)
+  1a:	90                   	nop
+  1b:	5d                   	pop    %rbp
+  1c:	c3                   	ret    
+
+Disassembly of section .text._ZN8LightSetD0Ev:
+
+0000000000000000 <LightSet::~LightSet()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  14:	48 89 c7             	mov    %rax,%rdi
+  17:	e8 00 00 00 00       	call   1c <LightSet::~LightSet()+0x1c>
+  1c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  20:	48 89 c7             	mov    %rax,%rdi
+  23:	e8 00 00 00 00       	call   28 <LightSet::~LightSet()+0x28>
+  28:	c9                   	leave  
+  29:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitorD2Ev:
+
+0000000000000000 <DMXMonitor::~DMXMonitor()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 17 <DMXMonitor::~DMXMonitor()+0x17>
+  17:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  1b:	48 89 10             	mov    %rdx,(%rax)
+  1e:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  22:	48 89 c7             	mov    %rax,%rdi
+  25:	e8 00 00 00 00       	call   2a <DMXMonitor::~DMXMonitor()+0x2a>
+  2a:	90                   	nop
+  2b:	c9                   	leave  
+  2c:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitorD0Ev:
+
+0000000000000000 <DMXMonitor::~DMXMonitor()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  14:	48 89 c7             	mov    %rax,%rdi
+  17:	e8 00 00 00 00       	call   1c <DMXMonitor::~DMXMonitor()+0x1c>
+  1c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  20:	48 89 c7             	mov    %rax,%rdi
+  23:	e8 00 00 00 00       	call   28 <DMXMonitor::~DMXMonitor()+0x28>
+  28:	c9                   	leave  
+  29:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor5PrintEv:
+
+0000000000000000 <DMXMonitor::Print()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	b9 3c 00 00 00       	mov    $0x3c,%ecx
+  15:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 1c <DMXMonitor::Print()+0x1c>
+  1c:	48 89 c2             	mov    %rax,%rdx
+  1f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 26 <DMXMonitor::Print()+0x26>
+  26:	48 89 c6             	mov    %rax,%rsi
+  29:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 30 <DMXMonitor::Print()+0x30>
+  30:	48 89 c7             	mov    %rax,%rdi
+  33:	b8 00 00 00 00       	mov    $0x0,%eax
+  38:	e8 00 00 00 00       	call   3d <DMXMonitor::Print()+0x3d>
+  3d:	b9 3d 00 00 00       	mov    $0x3d,%ecx
+  42:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 49 <DMXMonitor::Print()+0x49>
+  49:	48 89 c2             	mov    %rax,%rdx
+  4c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 53 <DMXMonitor::Print()+0x53>
+  53:	48 89 c6             	mov    %rax,%rsi
+  56:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 5d <DMXMonitor::Print()+0x5d>
+  5d:	48 89 c7             	mov    %rax,%rdi
+  60:	b8 00 00 00 00       	mov    $0x0,%eax
+  65:	e8 00 00 00 00       	call   6a <DMXMonitor::Print()+0x6a>
+  6a:	90                   	nop
+  6b:	c9                   	leave  
+  6c:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor8BlackoutEb:
+
+0000000000000000 <DMXMonitor::Blackout(bool)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	88 45 f4             	mov    %al,-0xc(%rbp)
+  15:	b9 46 00 00 00       	mov    $0x46,%ecx
+  1a:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 21 <DMXMonitor::Blackout(bool)+0x21>
+  21:	48 89 c2             	mov    %rax,%rdx
+  24:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2b <DMXMonitor::Blackout(bool)+0x2b>
+  2b:	48 89 c6             	mov    %rax,%rsi
+  2e:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 35 <DMXMonitor::Blackout(bool)+0x35>
+  35:	48 89 c7             	mov    %rax,%rdi
+  38:	b8 00 00 00 00       	mov    $0x0,%eax
+  3d:	e8 00 00 00 00       	call   42 <DMXMonitor::Blackout(bool)+0x42>
+  42:	b9 47 00 00 00       	mov    $0x47,%ecx
+  47:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4e <DMXMonitor::Blackout(bool)+0x4e>
+  4e:	48 89 c2             	mov    %rax,%rdx
+  51:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 58 <DMXMonitor::Blackout(bool)+0x58>
+  58:	48 89 c6             	mov    %rax,%rsi
+  5b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 62 <DMXMonitor::Blackout(bool)+0x62>
+  62:	48 89 c7             	mov    %rax,%rdi
+  65:	b8 00 00 00 00       	mov    $0x0,%eax
+  6a:	e8 00 00 00 00       	call   6f <DMXMonitor::Blackout(bool)+0x6f>
+  6f:	90                   	nop
+  70:	c9                   	leave  
+  71:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor6FullOnEv:
+
+0000000000000000 <DMXMonitor::FullOn()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	b9 4b 00 00 00       	mov    $0x4b,%ecx
+  15:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 1c <DMXMonitor::FullOn()+0x1c>
+  1c:	48 89 c2             	mov    %rax,%rdx
+  1f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 26 <DMXMonitor::FullOn()+0x26>
+  26:	48 89 c6             	mov    %rax,%rsi
+  29:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 30 <DMXMonitor::FullOn()+0x30>
+  30:	48 89 c7             	mov    %rax,%rdi
+  33:	b8 00 00 00 00       	mov    $0x0,%eax
+  38:	e8 00 00 00 00       	call   3d <DMXMonitor::FullOn()+0x3d>
+  3d:	b9 4c 00 00 00       	mov    $0x4c,%ecx
+  42:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 49 <DMXMonitor::FullOn()+0x49>
+  49:	48 89 c2             	mov    %rax,%rdx
+  4c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 53 <DMXMonitor::FullOn()+0x53>
+  53:	48 89 c6             	mov    %rax,%rsi
+  56:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 5d <DMXMonitor::FullOn()+0x5d>
+  5d:	48 89 c7             	mov    %rax,%rdi
+  60:	b8 00 00 00 00       	mov    $0x0,%eax
+  65:	e8 00 00 00 00       	call   6a <DMXMonitor::FullOn()+0x6a>
+  6a:	90                   	nop
+  6b:	c9                   	leave  
+  6c:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitorC2Ev:
+
+0000000000000000 <DMXMonitor::DMXMonitor()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 20          	sub    $0x20,%rsp
+   c:	48 89 7d e8          	mov    %rdi,-0x18(%rbp)
+  10:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  14:	48 89 c7             	mov    %rax,%rdi
+  17:	e8 00 00 00 00       	call   1c <DMXMonitor::DMXMonitor()+0x1c>
+  1c:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 23 <DMXMonitor::DMXMonitor()+0x23>
+  23:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  27:	48 89 10             	mov    %rdx,(%rax)
+  2a:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  2e:	c7 40 08 00 00 00 00 	movl   $0x0,0x8(%rax)
+  35:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  39:	c7 40 0c 00 00 00 00 	movl   $0x0,0xc(%rax)
+  40:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  44:	48 c7 40 10 00 00 00 	movq   $0x0,0x10(%rax)
+  4b:	00 
+  4c:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  50:	66 c7 40 1c 01 00    	movw   $0x1,0x1c(%rax)
+  56:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  5a:	66 c7 40 1e 20 00    	movw   $0x20,0x1e(%rax)
+  60:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+  67:	eb 10                	jmp    79 <DMXMonitor::DMXMonitor()+0x79>
+  69:	48 8b 55 e8          	mov    -0x18(%rbp),%rdx
+  6d:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  70:	c6 44 02 18 00       	movb   $0x0,0x18(%rdx,%rax,1)
+  75:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+  79:	83 7d fc 03          	cmpl   $0x3,-0x4(%rbp)
+  7d:	76 ea                	jbe    69 <DMXMonitor::DMXMonitor()+0x69>
+  7f:	90                   	nop
+  80:	90                   	nop
+  81:	c9                   	leave  
+  82:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor15DisplayDateTimeEjPKc:
+
+0000000000000000 <DMXMonitor::DisplayDateTime(unsigned int, char const*)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	53                   	push   %rbx
+   9:	48 83 ec 78          	sub    $0x78,%rsp
+   d:	48 89 7d 98          	mov    %rdi,-0x68(%rbp)
+  11:	89 75 94             	mov    %esi,-0x6c(%rbp)
+  14:	48 89 55 88          	mov    %rdx,-0x78(%rbp)
+  18:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  1f:	00 00 
+  21:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+  25:	31 c0                	xor    %eax,%eax
+  27:	83 7d 94 03          	cmpl   $0x3,-0x6c(%rbp)
+  2b:	76 28                	jbe    55 <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0x55>
+  2d:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 34 <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0x34>
+  34:	48 89 c1             	mov    %rax,%rcx
+  37:	ba 2d 00 00 00       	mov    $0x2d,%edx
+  3c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 43 <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0x43>
+  43:	48 89 c6             	mov    %rax,%rsi
+  46:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4d <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0x4d>
+  4d:	48 89 c7             	mov    %rax,%rdi
+  50:	e8 00 00 00 00       	call   55 <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0x55>
+  55:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+  59:	be 00 00 00 00       	mov    $0x0,%esi
+  5e:	48 89 c7             	mov    %rax,%rdi
+  61:	e8 00 00 00 00       	call   66 <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0x66>
+  66:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+  6a:	48 89 c7             	mov    %rax,%rdi
+  6d:	e8 00 00 00 00       	call   72 <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0x72>
+  72:	48 8b 08             	mov    (%rax),%rcx
+  75:	48 8b 58 08          	mov    0x8(%rax),%rbx
+  79:	48 89 4d b0          	mov    %rcx,-0x50(%rbp)
+  7d:	48 89 5d b8          	mov    %rbx,-0x48(%rbp)
+  81:	48 8b 48 10          	mov    0x10(%rax),%rcx
+  85:	48 8b 58 18          	mov    0x18(%rax),%rbx
+  89:	48 89 4d c0          	mov    %rcx,-0x40(%rbp)
+  8d:	48 89 5d c8          	mov    %rbx,-0x38(%rbp)
+  91:	48 8b 48 20          	mov    0x20(%rax),%rcx
+  95:	48 8b 58 28          	mov    0x28(%rax),%rbx
+  99:	48 89 4d d0          	mov    %rcx,-0x30(%rbp)
+  9d:	48 89 5d d8          	mov    %rbx,-0x28(%rbp)
+  a1:	48 8b 40 30          	mov    0x30(%rax),%rax
+  a5:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+  a9:	8b 45 94             	mov    -0x6c(%rbp),%eax
+  ac:	8d 78 41             	lea    0x41(%rax),%edi
+  af:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  b3:	41 89 c2             	mov    %eax,%r10d
+  b6:	8b 75 b0             	mov    -0x50(%rbp),%esi
+  b9:	44 8b 4d b4          	mov    -0x4c(%rbp),%r9d
+  bd:	44 8b 45 b8          	mov    -0x48(%rbp),%r8d
+  c1:	8b 45 c4             	mov    -0x3c(%rbp),%eax
+  c4:	8d 88 6c 07 00 00    	lea    0x76c(%rax),%ecx
+  ca:	8b 45 c0             	mov    -0x40(%rbp),%eax
+  cd:	8d 50 01             	lea    0x1(%rax),%edx
+  d0:	8b 45 bc             	mov    -0x44(%rbp),%eax
+  d3:	57                   	push   %rdi
+  d4:	ff 75 88             	push   -0x78(%rbp)
+  d7:	41 52                	push   %r10
+  d9:	56                   	push   %rsi
+  da:	89 c6                	mov    %eax,%esi
+  dc:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # e3 <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0xe3>
+  e3:	48 89 c7             	mov    %rax,%rdi
+  e6:	b8 00 00 00 00       	mov    $0x0,%eax
+  eb:	e8 00 00 00 00       	call   f0 <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0xf0>
+  f0:	48 83 c4 20          	add    $0x20,%rsp
+  f4:	90                   	nop
+  f5:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+  f9:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 100:	00 00 
+ 102:	74 05                	je     109 <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0x109>
+ 104:	e8 00 00 00 00       	call   109 <DMXMonitor::DisplayDateTime(unsigned int, char const*)+0x109>
+ 109:	48 8b 5d f8          	mov    -0x8(%rbp),%rbx
+ 10d:	c9                   	leave  
+ 10e:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor17SetMaxDmxChannelsEt:
+
+0000000000000000 <DMXMonitor::SetMaxDmxChannels(unsigned short)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	89 f0                	mov    %esi,%eax
+   e:	66 89 45 f4          	mov    %ax,-0xc(%rbp)
+  12:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  16:	0f b7 55 f4          	movzwl -0xc(%rbp),%edx
+  1a:	66 89 50 1e          	mov    %dx,0x1e(%rax)
+  1e:	90                   	nop
+  1f:	5d                   	pop    %rbp
+  20:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor15GetDmxFootprintEv:
+
+0000000000000000 <DMXMonitor::GetDmxFootprint()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	0f b7 40 1e          	movzwl 0x1e(%rax),%eax
+  14:	5d                   	pop    %rbp
+  15:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor18SetDmxStartAddressEt:
+
+0000000000000000 <DMXMonitor::SetDmxStartAddress(unsigned short)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 f0                	mov    %esi,%eax
+  12:	66 89 45 f4          	mov    %ax,-0xc(%rbp)
+  16:	b9 41 00 00 00       	mov    $0x41,%ecx
+  1b:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 22 <DMXMonitor::SetDmxStartAddress(unsigned short)+0x22>
+  22:	48 89 c2             	mov    %rax,%rdx
+  25:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2c <DMXMonitor::SetDmxStartAddress(unsigned short)+0x2c>
+  2c:	48 89 c6             	mov    %rax,%rsi
+  2f:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 36 <DMXMonitor::SetDmxStartAddress(unsigned short)+0x36>
+  36:	48 89 c7             	mov    %rax,%rdi
+  39:	b8 00 00 00 00       	mov    $0x0,%eax
+  3e:	e8 00 00 00 00       	call   43 <DMXMonitor::SetDmxStartAddress(unsigned short)+0x43>
+  43:	0f b7 55 f4          	movzwl -0xc(%rbp),%edx
+  47:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  4b:	0f b7 40 1e          	movzwl 0x1e(%rax),%eax
+  4f:	0f b7 c8             	movzwl %ax,%ecx
+  52:	b8 00 02 00 00       	mov    $0x200,%eax
+  57:	29 c8                	sub    %ecx,%eax
+  59:	39 c2                	cmp    %eax,%edx
+  5b:	7e 34                	jle    91 <DMXMonitor::SetDmxStartAddress(unsigned short)+0x91>
+  5d:	b9 44 00 00 00       	mov    $0x44,%ecx
+  62:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 69 <DMXMonitor::SetDmxStartAddress(unsigned short)+0x69>
+  69:	48 89 c2             	mov    %rax,%rdx
+  6c:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 73 <DMXMonitor::SetDmxStartAddress(unsigned short)+0x73>
+  73:	48 89 c6             	mov    %rax,%rsi
+  76:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 7d <DMXMonitor::SetDmxStartAddress(unsigned short)+0x7d>
+  7d:	48 89 c7             	mov    %rax,%rdi
+  80:	b8 00 00 00 00       	mov    $0x0,%eax
+  85:	e8 00 00 00 00       	call   8a <DMXMonitor::SetDmxStartAddress(unsigned short)+0x8a>
+  8a:	b8 00 00 00 00       	mov    $0x0,%eax
+  8f:	eb 43                	jmp    d4 <DMXMonitor::SetDmxStartAddress(unsigned short)+0xd4>
+  91:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  95:	0f b7 55 f4          	movzwl -0xc(%rbp),%edx
+  99:	66 89 50 1c          	mov    %dx,0x1c(%rax)
+  9d:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  a1:	48 8b 40 10          	mov    0x10(%rax),%rax
+  a5:	48 85 c0             	test   %rax,%rax
+  a8:	74 25                	je     cf <DMXMonitor::SetDmxStartAddress(unsigned short)+0xcf>
+  aa:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  ae:	48 8b 40 10          	mov    0x10(%rax),%rax
+  b2:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  b6:	48 8b 52 10          	mov    0x10(%rdx),%rdx
+  ba:	48 8b 12             	mov    (%rdx),%rdx
+  bd:	48 83 c2 10          	add    $0x10,%rdx
+  c1:	48 8b 0a             	mov    (%rdx),%rcx
+  c4:	0f b7 55 f4          	movzwl -0xc(%rbp),%edx
+  c8:	89 d6                	mov    %edx,%esi
+  ca:	48 89 c7             	mov    %rax,%rdi
+  cd:	ff d1                	call   *%rcx
+  cf:	b8 01 00 00 00       	mov    $0x1,%eax
+  d4:	c9                   	leave  
+  d5:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor18GetDmxStartAddressEv:
+
+0000000000000000 <DMXMonitor::GetDmxStartAddress()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  10:	0f b7 40 1c          	movzwl 0x1c(%rax),%eax
+  14:	5d                   	pop    %rbp
+  15:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor3ClsEv:
+
+0000000000000000 <DMXMonitor::Cls()>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+   c:	90                   	nop
+   d:	5d                   	pop    %rbp
+   e:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor5StartEj:
+
+0000000000000000 <DMXMonitor::Start(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 75 f4             	mov    %esi,-0xc(%rbp)
+  13:	83 7d f4 03          	cmpl   $0x3,-0xc(%rbp)
+  17:	76 28                	jbe    41 <DMXMonitor::Start(unsigned int)+0x41>
+  19:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 20 <DMXMonitor::Start(unsigned int)+0x20>
+  20:	48 89 c1             	mov    %rax,%rcx
+  23:	ba 5b 00 00 00       	mov    $0x5b,%edx
+  28:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2f <DMXMonitor::Start(unsigned int)+0x2f>
+  2f:	48 89 c6             	mov    %rax,%rsi
+  32:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 39 <DMXMonitor::Start(unsigned int)+0x39>
+  39:	48 89 c7             	mov    %rax,%rdi
+  3c:	e8 00 00 00 00       	call   41 <DMXMonitor::Start(unsigned int)+0x41>
+  41:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  45:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  48:	0f b6 44 02 18       	movzbl 0x18(%rdx,%rax,1),%eax
+  4d:	84 c0                	test   %al,%al
+  4f:	75 26                	jne    77 <DMXMonitor::Start(unsigned int)+0x77>
+  51:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  55:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  58:	c6 44 02 18 01       	movb   $0x1,0x18(%rdx,%rax,1)
+  5d:	8b 4d f4             	mov    -0xc(%rbp),%ecx
+  60:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  64:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 6b <DMXMonitor::Start(unsigned int)+0x6b>
+  6b:	89 ce                	mov    %ecx,%esi
+  6d:	48 89 c7             	mov    %rax,%rdi
+  70:	e8 00 00 00 00       	call   75 <DMXMonitor::Start(unsigned int)+0x75>
+  75:	eb 01                	jmp    78 <DMXMonitor::Start(unsigned int)+0x78>
+  77:	90                   	nop
+  78:	c9                   	leave  
+  79:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor4StopEj:
+
+0000000000000000 <DMXMonitor::Stop(unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	48 83 ec 10          	sub    $0x10,%rsp
+   c:	48 89 7d f8          	mov    %rdi,-0x8(%rbp)
+  10:	89 75 f4             	mov    %esi,-0xc(%rbp)
+  13:	83 7d f4 03          	cmpl   $0x3,-0xc(%rbp)
+  17:	76 28                	jbe    41 <DMXMonitor::Stop(unsigned int)+0x41>
+  19:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 20 <DMXMonitor::Stop(unsigned int)+0x20>
+  20:	48 89 c1             	mov    %rax,%rcx
+  23:	ba 66 00 00 00       	mov    $0x66,%edx
+  28:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 2f <DMXMonitor::Stop(unsigned int)+0x2f>
+  2f:	48 89 c6             	mov    %rax,%rsi
+  32:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 39 <DMXMonitor::Stop(unsigned int)+0x39>
+  39:	48 89 c7             	mov    %rax,%rdi
+  3c:	e8 00 00 00 00       	call   41 <DMXMonitor::Stop(unsigned int)+0x41>
+  41:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  45:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  48:	0f b6 44 02 18       	movzbl 0x18(%rdx,%rax,1),%eax
+  4d:	83 f0 01             	xor    $0x1,%eax
+  50:	84 c0                	test   %al,%al
+  52:	75 26                	jne    7a <DMXMonitor::Stop(unsigned int)+0x7a>
+  54:	48 8b 55 f8          	mov    -0x8(%rbp),%rdx
+  58:	8b 45 f4             	mov    -0xc(%rbp),%eax
+  5b:	c6 44 02 18 00       	movb   $0x0,0x18(%rdx,%rax,1)
+  60:	8b 4d f4             	mov    -0xc(%rbp),%ecx
+  63:	48 8b 45 f8          	mov    -0x8(%rbp),%rax
+  67:	48 8d 15 00 00 00 00 	lea    0x0(%rip),%rdx        # 6e <DMXMonitor::Stop(unsigned int)+0x6e>
+  6e:	89 ce                	mov    %ecx,%esi
+  70:	48 89 c7             	mov    %rax,%rdi
+  73:	e8 00 00 00 00       	call   78 <DMXMonitor::Stop(unsigned int)+0x78>
+  78:	eb 01                	jmp    7b <DMXMonitor::Stop(unsigned int)+0x7b>
+  7a:	90                   	nop
+  7b:	c9                   	leave  
+  7c:	c3                   	ret    
+
+Disassembly of section .text._ZN10DMXMonitor7SetDataEjPKhj:
+
+0000000000000000 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	41 54                	push   %r12
+   a:	53                   	push   %rbx
+   b:	48 83 c4 80          	add    $0xffffffffffffff80,%rsp
+   f:	48 89 7d 88          	mov    %rdi,-0x78(%rbp)
+  13:	89 75 84             	mov    %esi,-0x7c(%rbp)
+  16:	48 89 95 78 ff ff ff 	mov    %rdx,-0x88(%rbp)
+  1d:	89 4d 80             	mov    %ecx,-0x80(%rbp)
+  20:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+  27:	00 00 
+  29:	48 89 45 e8          	mov    %rax,-0x18(%rbp)
+  2d:	31 c0                	xor    %eax,%eax
+  2f:	83 7d 84 03          	cmpl   $0x3,-0x7c(%rbp)
+  33:	76 28                	jbe    5d <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x5d>
+  35:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 3c <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x3c>
+  3c:	48 89 c1             	mov    %rax,%rcx
+  3f:	ba 71 00 00 00       	mov    $0x71,%edx
+  44:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 4b <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x4b>
+  4b:	48 89 c6             	mov    %rax,%rsi
+  4e:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 55 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x55>
+  55:	48 89 c7             	mov    %rax,%rdi
+  58:	e8 00 00 00 00       	call   5d <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x5d>
+  5d:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+  61:	be 00 00 00 00       	mov    $0x0,%esi
+  66:	48 89 c7             	mov    %rax,%rdi
+  69:	e8 00 00 00 00       	call   6e <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x6e>
+  6e:	48 8d 45 a0          	lea    -0x60(%rbp),%rax
+  72:	48 89 c7             	mov    %rax,%rdi
+  75:	e8 00 00 00 00       	call   7a <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x7a>
+  7a:	48 8b 08             	mov    (%rax),%rcx
+  7d:	48 8b 58 08          	mov    0x8(%rax),%rbx
+  81:	48 89 4d b0          	mov    %rcx,-0x50(%rbp)
+  85:	48 89 5d b8          	mov    %rbx,-0x48(%rbp)
+  89:	48 8b 48 10          	mov    0x10(%rax),%rcx
+  8d:	48 8b 58 18          	mov    0x18(%rax),%rbx
+  91:	48 89 4d c0          	mov    %rcx,-0x40(%rbp)
+  95:	48 89 5d c8          	mov    %rbx,-0x38(%rbp)
+  99:	48 8b 48 20          	mov    0x20(%rax),%rcx
+  9d:	48 8b 58 28          	mov    0x28(%rax),%rbx
+  a1:	48 89 4d d0          	mov    %rcx,-0x30(%rbp)
+  a5:	48 89 5d d8          	mov    %rbx,-0x28(%rbp)
+  a9:	48 8b 40 30          	mov    0x30(%rax),%rax
+  ad:	48 89 45 e0          	mov    %rax,-0x20(%rbp)
+  b1:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+  b5:	0f b7 40 1c          	movzwl 0x1c(%rax),%eax
+  b9:	44 0f b7 c8          	movzwl %ax,%r9d
+  bd:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+  c1:	0f b7 40 1e          	movzwl 0x1e(%rax),%eax
+  c5:	44 0f b7 c0          	movzwl %ax,%r8d
+  c9:	8b 7d 80             	mov    -0x80(%rbp),%edi
+  cc:	8b 45 84             	mov    -0x7c(%rbp),%eax
+  cf:	44 8d 50 41          	lea    0x41(%rax),%r10d
+  d3:	48 8b 45 a8          	mov    -0x58(%rbp),%rax
+  d7:	41 89 c4             	mov    %eax,%r12d
+  da:	8b 75 b0             	mov    -0x50(%rbp),%esi
+  dd:	8b 5d b4             	mov    -0x4c(%rbp),%ebx
+  e0:	44 8b 5d b8          	mov    -0x48(%rbp),%r11d
+  e4:	8b 45 c4             	mov    -0x3c(%rbp),%eax
+  e7:	8d 88 6c 07 00 00    	lea    0x76c(%rax),%ecx
+  ed:	8b 45 c0             	mov    -0x40(%rbp),%eax
+  f0:	8d 50 01             	lea    0x1(%rax),%edx
+  f3:	8b 45 bc             	mov    -0x44(%rbp),%eax
+  f6:	41 51                	push   %r9
+  f8:	41 50                	push   %r8
+  fa:	57                   	push   %rdi
+  fb:	41 52                	push   %r10
+  fd:	41 54                	push   %r12
+  ff:	56                   	push   %rsi
+ 100:	41 89 d9             	mov    %ebx,%r9d
+ 103:	45 89 d8             	mov    %r11d,%r8d
+ 106:	89 c6                	mov    %eax,%esi
+ 108:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 10f <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x10f>
+ 10f:	48 89 c7             	mov    %rax,%rdi
+ 112:	b8 00 00 00 00       	mov    $0x0,%eax
+ 117:	e8 00 00 00 00       	call   11c <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x11c>
+ 11c:	48 83 c4 30          	add    $0x30,%rsp
+ 120:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+ 124:	0f b7 40 1c          	movzwl 0x1c(%rax),%eax
+ 128:	0f b7 c0             	movzwl %ax,%eax
+ 12b:	83 e8 01             	sub    $0x1,%eax
+ 12e:	89 45 98             	mov    %eax,-0x68(%rbp)
+ 131:	c7 45 9c 00 00 00 00 	movl   $0x0,-0x64(%rbp)
+ 138:	e9 ba 00 00 00       	jmp    1f7 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x1f7>
+ 13d:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+ 141:	8b 40 08             	mov    0x8(%rax),%eax
+ 144:	83 f8 01             	cmp    $0x1,%eax
+ 147:	74 07                	je     150 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x150>
+ 149:	83 f8 02             	cmp    $0x2,%eax
+ 14c:	74 4c                	je     19a <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x19a>
+ 14e:	eb 75                	jmp    1c5 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x1c5>
+ 150:	8b 55 98             	mov    -0x68(%rbp),%edx
+ 153:	48 8b 85 78 ff ff ff 	mov    -0x88(%rbp),%rax
+ 15a:	48 01 d0             	add    %rdx,%rax
+ 15d:	0f b6 00             	movzbl (%rax),%eax
+ 160:	0f b6 c0             	movzbl %al,%eax
+ 163:	6b c0 64             	imul   $0x64,%eax,%eax
+ 166:	48 63 d0             	movslq %eax,%rdx
+ 169:	48 69 d2 81 80 80 80 	imul   $0xffffffff80808081,%rdx,%rdx
+ 170:	48 c1 ea 20          	shr    $0x20,%rdx
+ 174:	01 c2                	add    %eax,%edx
+ 176:	c1 fa 07             	sar    $0x7,%edx
+ 179:	c1 f8 1f             	sar    $0x1f,%eax
+ 17c:	89 c1                	mov    %eax,%ecx
+ 17e:	89 d0                	mov    %edx,%eax
+ 180:	29 c8                	sub    %ecx,%eax
+ 182:	89 c6                	mov    %eax,%esi
+ 184:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 18b <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x18b>
+ 18b:	48 89 c7             	mov    %rax,%rdi
+ 18e:	b8 00 00 00 00       	mov    $0x0,%eax
+ 193:	e8 00 00 00 00       	call   198 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x198>
+ 198:	eb 55                	jmp    1ef <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x1ef>
+ 19a:	8b 55 98             	mov    -0x68(%rbp),%edx
+ 19d:	48 8b 85 78 ff ff ff 	mov    -0x88(%rbp),%rax
+ 1a4:	48 01 d0             	add    %rdx,%rax
+ 1a7:	0f b6 00             	movzbl (%rax),%eax
+ 1aa:	0f b6 c0             	movzbl %al,%eax
+ 1ad:	89 c6                	mov    %eax,%esi
+ 1af:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 1b6 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x1b6>
+ 1b6:	48 89 c7             	mov    %rax,%rdi
+ 1b9:	b8 00 00 00 00       	mov    $0x0,%eax
+ 1be:	e8 00 00 00 00       	call   1c3 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x1c3>
+ 1c3:	eb 2a                	jmp    1ef <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x1ef>
+ 1c5:	8b 55 98             	mov    -0x68(%rbp),%edx
+ 1c8:	48 8b 85 78 ff ff ff 	mov    -0x88(%rbp),%rax
+ 1cf:	48 01 d0             	add    %rdx,%rax
+ 1d2:	0f b6 00             	movzbl (%rax),%eax
+ 1d5:	0f b6 c0             	movzbl %al,%eax
+ 1d8:	89 c6                	mov    %eax,%esi
+ 1da:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 1e1 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x1e1>
+ 1e1:	48 89 c7             	mov    %rax,%rdi
+ 1e4:	b8 00 00 00 00       	mov    $0x0,%eax
+ 1e9:	e8 00 00 00 00       	call   1ee <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x1ee>
+ 1ee:	90                   	nop
+ 1ef:	83 45 98 01          	addl   $0x1,-0x68(%rbp)
+ 1f3:	83 45 9c 01          	addl   $0x1,-0x64(%rbp)
+ 1f7:	8b 45 98             	mov    -0x68(%rbp),%eax
+ 1fa:	3b 45 80             	cmp    -0x80(%rbp),%eax
+ 1fd:	73 2e                	jae    22d <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x22d>
+ 1ff:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+ 203:	0f b7 40 1e          	movzwl 0x1e(%rax),%eax
+ 207:	0f b7 c0             	movzwl %ax,%eax
+ 20a:	39 45 9c             	cmp    %eax,-0x64(%rbp)
+ 20d:	0f 82 2a ff ff ff    	jb     13d <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x13d>
+ 213:	eb 18                	jmp    22d <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x22d>
+ 215:	48 8d 05 00 00 00 00 	lea    0x0(%rip),%rax        # 21c <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x21c>
+ 21c:	48 89 c7             	mov    %rax,%rdi
+ 21f:	b8 00 00 00 00       	mov    $0x0,%eax
+ 224:	e8 00 00 00 00       	call   229 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x229>
+ 229:	83 45 9c 01          	addl   $0x1,-0x64(%rbp)
+ 22d:	48 8b 45 88          	mov    -0x78(%rbp),%rax
+ 231:	0f b7 40 1e          	movzwl 0x1e(%rax),%eax
+ 235:	0f b7 c0             	movzwl %ax,%eax
+ 238:	39 45 9c             	cmp    %eax,-0x64(%rbp)
+ 23b:	72 d8                	jb     215 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x215>
+ 23d:	bf 0a 00 00 00       	mov    $0xa,%edi
+ 242:	e8 00 00 00 00       	call   247 <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x247>
+ 247:	90                   	nop
+ 248:	48 8b 45 e8          	mov    -0x18(%rbp),%rax
+ 24c:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+ 253:	00 00 
+ 255:	74 05                	je     25c <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x25c>
+ 257:	e8 00 00 00 00       	call   25c <DMXMonitor::SetData(unsigned int, unsigned char const*, unsigned int)+0x25c>
+ 25c:	48 8d 65 f0          	lea    -0x10(%rbp),%rsp
+ 260:	5b                   	pop    %rbx
+ 261:	41 5c                	pop    %r12
+ 263:	5d                   	pop    %rbp
+ 264:	c3                   	ret    
