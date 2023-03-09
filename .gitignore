@@ -30,8 +30,17 @@
 *.exe
 *.out
 *.app
-*.list
+
+# 
+*.lst
+*.bin
+*.map
 
 # macOS
 ._*
 .DS_Store
+
+
+linux_rpi_artnet_l6470/linux_rpi_artnet_l6470
+linux_rpi_artnet_l6470/spiflash.bin
+linux_rpi_artnet_l6470/main.map
