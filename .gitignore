@@ -33,6 +33,7 @@
 
 # 
 *.lst
+*.list
 *.bin
 *.map
 

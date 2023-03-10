@@ -2,7 +2,7 @@
  * @file tlc59711dmx.cpp
  *
  */
-/* Copyright (C) 2018-2021 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2018-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -105,8 +105,8 @@ void TLC59711Dmx::SetData(__attribute__((unused)) uint32_t nPortIndex, const uin
 	}
 }
 
-void TLC59711Dmx::SetLEDType(TTLC59711Type tTLC59711Type) {
-	m_LEDType = tTLC59711Type;
+void TLC59711Dmx::SetLEDType(tlc59711::Type type) {
+	m_LEDType = type;
 	UpdateMembers();
 }
 
@@ -127,7 +127,7 @@ void TLC59711Dmx::Initialize() {
 }
 
 void TLC59711Dmx::UpdateMembers() {
-	if (m_LEDType == TTLC59711_TYPE_RGB) {
+	if (m_LEDType == tlc59711::Type::RGB) {
 		m_nDmxFootprint = static_cast<uint16_t>(m_nLEDCount * 3);
 	} else {
 		m_nDmxFootprint = static_cast<uint16_t>(m_nLEDCount * 4);
@@ -177,7 +177,7 @@ bool TLC59711Dmx::GetSlotInfo(uint16_t nSlotOffset, SlotInfo& tSlotInfo) {
 		return false;
 	}
 
-	if (m_LEDType == TTLC59711_TYPE_RGB) {
+	if (m_LEDType == tlc59711::Type::RGB) {
 		nIndex = MOD(nSlotOffset, 3);
 	} else {
 		nIndex = MOD(nSlotOffset, 4);

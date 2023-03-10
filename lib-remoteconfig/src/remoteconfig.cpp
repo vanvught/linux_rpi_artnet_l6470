@@ -234,7 +234,7 @@ const struct RemoteConfig::Commands RemoteConfig::s_SET[] = {
 		{ &RemoteConfig::HandleDisplaySet, "display#",  8, true }
 };
 
-static constexpr char s_Node[static_cast<uint32_t>(remoteconfig::Node::LAST)][18] = { "Art-Net", "sACN E1.31", "OSC Server", "LTC", "OSC Client", "RDMNet LLRP Only", "Showfile", "MIDI", "DDP", "PixelPusher", "Node", "Bootloader TFTP" };
+static constexpr char s_Node[static_cast<uint32_t>(remoteconfig::Node::LAST)][18] = { "Art-Net", "sACN E1.31", "OSC Server", "LTC", "OSC Client", "RDMNet LLRP Only", "Showfile", "MIDI", "DDP", "PixelPusher", "Node", "Bootloader TFTP", "RDM Responder" };
 static constexpr char s_Output[static_cast<uint32_t>(remoteconfig::Output::LAST)][12] = { "DMX", "RDM", "Monitor", "Pixel", "TimeCode", "OSC", "Config", "Stepper", "Player", "Art-Net", "Serial", "RGB Panel" };
 
 RemoteConfig *RemoteConfig::s_pThis;
@@ -851,7 +851,7 @@ void RemoteConfig::HandleSet(void *pBuffer, uint32_t nBufferLength) {
 			DEBUG_PUTS("JSON");
 			int c;
 			assert(nBufferLength > 1);
-			if ((c = properties::convert_json_file(reinterpret_cast<char *>(pBuffer), static_cast<uint16_t>(nBufferLength - 1U))) <= 0) {
+			if ((c = properties::convert_json_file(reinterpret_cast<char *>(pBuffer), static_cast<uint16_t>(nBufferLength - 1U), false)) <= 0) {
 				DEBUG_EXIT
 				return;
 			}
@@ -989,9 +989,6 @@ void RemoteConfig::HandleSetDevicesTxt() {
 	DEBUG_ENTRY
 
 # if defined (OUTPUT_DMX_TLC59711)
-#  if defined (OUTPUT_DMX_PIXEL)
-	static_assert(sizeof(struct TTLC59711DmxParams) != sizeof(struct PixelDmxParams), "");
-#  endif
 	assert(StoreTLC59711::Get() != nullptr);
 	TLC59711DmxParams tlc59711params(StoreTLC59711::Get());
 
@@ -1262,7 +1259,7 @@ void RemoteConfig::TftpExit() {
 
 	const auto nCmdLength = s_SET[static_cast<uint32_t>(remoteconfig::udp::set::Command::TFTP)].nLength;
 
-	m_nBytesReceived = (nCmdLength + 1U);
+	m_nBytesReceived = nCmdLength + 1U;
 	s_pUdpBuffer[nCmdLength + 1] = '0';
 
 	HandleTftpSet();

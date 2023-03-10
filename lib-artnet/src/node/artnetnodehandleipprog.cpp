@@ -37,14 +37,14 @@
 
 #include "debug.h"
 
-static constexpr uint8_t COMMAND_NONE = 0;
+//static constexpr uint8_t COMMAND_NONE = 0;
 static constexpr uint8_t COMMAND_ENABLE_PROGRAMMING = (1U << 7);
 static constexpr uint8_t COMMAND_ENABLE_DHCP		= ((1U << 6) | COMMAND_ENABLE_PROGRAMMING);
 static constexpr uint8_t COMMAND_PROGRAM_GATEWAY	= ((1U << 4) | COMMAND_ENABLE_PROGRAMMING); ///< Not documented!
 static constexpr uint8_t COMMAND_SET_TO_DEFAULT		= ((1U << 3) | COMMAND_ENABLE_PROGRAMMING);
 static constexpr uint8_t COMMAND_PROGRAM_IPADDRESS	= ((1U << 2) | COMMAND_ENABLE_PROGRAMMING);
 static constexpr uint8_t COMMAND_PROGRAM_SUBNETMASK	= ((1U << 1) | COMMAND_ENABLE_PROGRAMMING);
-static constexpr uint8_t COMMAND_PROGRAM_PORT		= ((1U << 0) | COMMAND_ENABLE_PROGRAMMING);
+//static constexpr uint8_t COMMAND_PROGRAM_PORT		= ((1U << 0) | COMMAND_ENABLE_PROGRAMMING);
 
 union uip {
 	uint32_t u32;

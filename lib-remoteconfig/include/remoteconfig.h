@@ -74,6 +74,7 @@ enum class Node {
 	PP,
 	NODE,
 	BOOTLOADER_TFTP,
+	RDMRESPONDER,
 	LAST
 };
 enum class Output {
@@ -143,6 +144,8 @@ public:
 		return s_RemoteConfigListBin.nActiveOutputs;
 	}
 
+	void SetDisplayName(const char *pDisplayName);
+
 	const char *GetDisplayName() const {
 		return s_RemoteConfigListBin.aDisplayName;
 	}
@@ -171,12 +174,6 @@ public:
 	}
 	bool IsEnableUptime() const {
 		return m_bEnableUptime;
-	}
-
-	void SetDisplayName(const char *pDisplayName);
-
-	static const char *GetDislayName() {
-		return s_RemoteConfigListBin.aDisplayName;
 	}
 
 	void SetEnableFactory(bool bEnableFactory) {
@@ -274,7 +271,7 @@ private:
 	void HandleGetParamsTxt(uint32_t& nSize);
 #endif
 
-#if defined (OUTPUT_DMX_PIXEL) || (OUTPUT_DMX_TLC59711)
+#if defined (OUTPUT_DMX_PIXEL) || defined (OUTPUT_DMX_TLC59711)
 	void HandleGetDevicesTxt(uint32_t& nSize);
 #endif
 
@@ -375,7 +372,7 @@ private:
 	void HandleSetParamsTxt();
 #endif
 
-#if defined (OUTPUT_DMX_PIXEL) || (OUTPUT_DMX_TLC59711)
+#if defined (OUTPUT_DMX_PIXEL) || defined (OUTPUT_DMX_TLC59711)
 	void HandleSetDevicesTxt();
 #endif
 

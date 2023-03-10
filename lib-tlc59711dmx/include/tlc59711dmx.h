@@ -2,7 +2,7 @@
  * @file tlc59711dmx.h
  *
  */
-/* Copyright (C) 2018-2021 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2018-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,11 +33,13 @@
 #include "tlc59711.h"
 #include "tlc59711dmxstore.h"
 
-enum TTLC59711Type {
-	TTLC59711_TYPE_RGB,
-	TTLC59711_TYPE_RGBW,
-	TTLC59711_TYPE_UNDEFINED
+namespace tlc59711 {
+enum class Type {
+	RGB,
+	RGBW,
+	UNDEFINED
 };
+}  // namespace tlc59711
 
 class TLC59711Dmx final: public LightSet {
 public:
@@ -53,8 +55,8 @@ public:
 
 	void Print() override;
 
-	void SetLEDType(TTLC59711Type tTLC59711Type);
-	TTLC59711Type GetLEDType() {
+	void SetLEDType(tlc59711::Type type);
+	tlc59711::Type GetLEDType() {
 		return m_LEDType;
 	}
 
@@ -102,7 +104,7 @@ private:
 	bool m_bBlackout { false };
 	TLC59711 *m_pTLC59711 { nullptr };
 	uint32_t m_nSpiSpeedHz { 0 };
-	TTLC59711Type m_LEDType { TTLC59711_TYPE_RGB };
+	tlc59711::Type m_LEDType {tlc59711::Type::RGB };
 	uint8_t m_nLEDCount;
 
 	TLC59711DmxStore *m_pTLC59711DmxStore { nullptr };

@@ -77,7 +77,7 @@ const RemoteConfig::Txt RemoteConfig::s_TXT[] = {
 #if defined (OUTPUT_DMX_SEND)
 		{ &RemoteConfig::HandleGetParamsTxt,     &RemoteConfig::HandleSetParamsTxt,     "params.txt",   10, Store::DMXSEND },
 #endif
-#if defined (OUTPUT_DMX_PIXEL) || (OUTPUT_DMX_TLC59711)
+#if defined (OUTPUT_DMX_PIXEL) || defined(OUTPUT_DMX_TLC59711)
 		{ &RemoteConfig::HandleGetDevicesTxt,    &RemoteConfig::HandleSetDevicesTxt,    "devices.txt",  11, Store::WS28XXDMX },
 #endif
 #if defined (OUTPUT_DMX_MONITOR)
