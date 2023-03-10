@@ -200,13 +200,13 @@ int main(int argc, char **argv) {
 	RDMDeviceParams rdmDeviceParams(&storeRdmDevice);
 	RdmResponder.SetRDMDeviceStore(&storeRdmDevice);
 
-	StoreRDMSensors storeRdmSensors;
-	RDMSensorsParams rdmSensorsParams(&storeRdmSensors);
-
-	if(rdmDeviceParams.Load()) {
+	if (rdmDeviceParams.Load()) {
 		rdmDeviceParams.Dump();
 		rdmDeviceParams.Set(&RdmResponder);
 	}
+
+	StoreRDMSensors storeRdmSensors;
+	RDMSensorsParams rdmSensorsParams(&storeRdmSensors);
 
 	if (rdmSensorsParams.Load()) {
 		rdmSensorsParams.Dump();
