@@ -73,6 +73,10 @@ const RemoteConfig::Txt RemoteConfig::s_TXT[] = {
 #endif
 #if defined (RDM_RESPONDER)
 		{ &RemoteConfig::HandleGetRdmDeviceTxt,  &RemoteConfig::HandleSetRdmDeviceTxt,  "rdm_device.txt", 14, Store::RDMDEVICE },
+		{ &RemoteConfig::HandleGetRdmSensorsTxt, &RemoteConfig::HandleSetRdmSensorsTxt, "sensors.txt",    11, Store::RDMSENSORS },
+# if defined (ENABLE_RDM_SUBDEVICES)
+		{ &RemoteConfig::HandleGetRdmSubdevTxt,  &RemoteConfig::HandleSetRdmSubdevTxt,  "subdev.txt",     10, Store::RDMSUBDEVICES },
+# endif
 #endif
 #if defined (OUTPUT_DMX_SEND)
 		{ &RemoteConfig::HandleGetParamsTxt,     &RemoteConfig::HandleSetParamsTxt,     "params.txt",   10, Store::DMXSEND },

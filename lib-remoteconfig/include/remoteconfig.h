@@ -265,6 +265,10 @@ private:
 
 #if defined (RDM_RESPONDER)
 	void HandleGetRdmDeviceTxt(uint32_t& nSize);
+	void HandleGetRdmSensorsTxt(uint32_t& nSize);
+# if defined (ENABLE_RDM_SUBDEVICES)
+	void HandleGetRdmSubdevTxt(uint32_t& nSize);
+# endif
 #endif
 
 #if defined (OUTPUT_DMX_SEND)
@@ -366,6 +370,10 @@ private:
 
 #if defined (RDM_RESPONDER)
 	void HandleSetRdmDeviceTxt();
+	void HandleSetRdmSensorsTxt();
+# if defined (ENABLE_RDM_SUBDEVICES)
+	void HandleSetRdmSubdevTxt();
+# endif
 #endif
 
 #if defined (OUTPUT_DMX_SEND)

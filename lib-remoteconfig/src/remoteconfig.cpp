@@ -183,8 +183,10 @@
 # include "rdmsensorsparams.h"
 # include "storerdmsensors.h"
 /* "subdev.txt" */
-# include "rdmsubdevicesparams.h"
-# include "storerdmdevice.h"
+# if defined (ENABLE_RDM_SUBDEVICES)
+#  include "rdmsubdevicesparams.h"
+#  include "storerdmsubdevices.h"
+# endif
 #endif
 
 #include "debug.h"
@@ -624,6 +626,26 @@ void RemoteConfig::HandleGetRdmDeviceTxt(uint32_t& nSize) {
 
 	DEBUG_EXIT
 }
+
+void RemoteConfig::HandleGetRdmSensorsTxt(uint32_t& nSize) {
+	DEBUG_ENTRY
+
+	RDMSensorsParams rdmSensorsParams(StoreRDMSensors::Get());
+	rdmSensorsParams.Save(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE, nSize);
+
+	DEBUG_EXIT
+}
+
+# if defined (ENABLE_RDM_SUBDEVICES)
+void RemoteConfig::HandleGetRdmSubdevTxt(uint32_t& nSize) {
+	DEBUG_ENTRY
+
+	RDMSubDevicesParams rdmSubDevicesParams(StoreRDMSubDevices::Get());
+	rdmSubDevicesParams.Save(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE, nSize);
+
+	DEBUG_EXIT
+}
+# endif
 #endif
 
 #if defined (OUTPUT_DMX_SEND)
@@ -1220,6 +1242,36 @@ void RemoteConfig::HandleSetRdmDeviceTxt() {
 
 	DEBUG_EXIT
 }
+
+void RemoteConfig::HandleSetRdmSensorsTxt() {
+	DEBUG_ENTRY
+
+	assert(StoreRDMSensors::Get() != nullptr);
+	RDMSensorsParams rdmSensorsParams(StoreRDMSensors::Get());
+
+	rdmSensorsParams.Load(s_pUdpBuffer, m_nBytesReceived);
+#ifndef NDEBUG
+	rdmSensorsParams.Dump();
+#endif
+
+	DEBUG_EXIT
+}
+
+# if defined (ENABLE_RDM_SUBDEVICES)
+void RemoteConfig::HandleSetRdmSubdevTxt() {
+	DEBUG_ENTRY
+
+	assert(StoreRDMSubDevices::Get() != nullptr);
+	RDMSubDevicesParams rdmSubDevicesParams(StoreRDMSubDevices::Get());
+
+	rdmSubDevicesParams.Load(s_pUdpBuffer, m_nBytesReceived);
+#ifndef NDEBUG
+	rdmSubDevicesParams.Dump();
+#endif
+
+	DEBUG_EXIT
+}
+# endif
 #endif
 
 #if defined (OUTPUT_DMX_SERIAL)

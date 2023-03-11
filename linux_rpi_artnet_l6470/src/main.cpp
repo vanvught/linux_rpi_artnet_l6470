@@ -37,6 +37,10 @@
 #include "networkconst.h"
 #include "storenetwork.h"
 
+#if defined (ENABLE_HTTPD)
+# include "httpd/httpd.h"
+#endif
+
 #include "displayudf.h"
 #include "displayudfparams.h"
 #include "display7segment.h"
@@ -49,9 +53,11 @@
 #include "rdmdeviceresponder.h"
 #include "factorydefaults.h"
 #include "rdmpersonality.h"
-
 #include "rdmdeviceparams.h"
 #include "rdmsensorsparams.h"
+#if defined (ENABLE_RDM_SUBDEVICES)
+# include "rdmsubdevicesparams.h"
+#endif
 
 #include "artnetrdmresponder.h"
 
@@ -67,6 +73,9 @@
 #include "storedisplayudf.h"
 #include "storerdmdevice.h"
 #include "storerdmsensors.h"
+#if defined (ENABLE_RDM_SUBDEVICES)
+# include "storerdmsubdevices.h"
+#endif
 #include "storetlc59711.h"
 
 #include "sparkfundmx.h"
@@ -103,7 +112,7 @@ int main(int argc, char **argv) {
 
 	ConfigStore configStore;
 
-	fw.Print("Art-Net 4 Node Stepper L6470");
+	fw.Print("Art-Net 4 Stepper L6470");
 
 	display.TextStatus(NetworkConst::MSG_NETWORK_INIT, Display7SegmentMessage::INFO_NETWORK_INIT, CONSOLE_YELLOW);
 
@@ -114,6 +123,10 @@ int main(int argc, char **argv) {
 		return -1;
 	}
 	nw.Print();
+
+#if defined (ENABLE_HTTPD)
+	HttpDaemon httpDaemon;
+#endif
 
 	LightSet *pBoard;
 	uint32_t nMotorsConnected = 0;
@@ -194,15 +207,16 @@ int main(int argc, char **argv) {
 
 	RDMPersonality *pRDMPersonalities[1] = { new  RDMPersonality(aDescription, pBoard)};
 
-	ArtNetRdmResponder RdmResponder(pRDMPersonalities, 1);
+	ArtNetRdmResponder rdmResponder(pRDMPersonalities, 1);
+	rdmResponder.Init();
 
 	StoreRDMDevice storeRdmDevice;
 	RDMDeviceParams rdmDeviceParams(&storeRdmDevice);
-	RdmResponder.SetRDMDeviceStore(&storeRdmDevice);
+	rdmResponder.SetRDMDeviceStore(&storeRdmDevice);
 
 	if (rdmDeviceParams.Load()) {
 		rdmDeviceParams.Dump();
-		rdmDeviceParams.Set(&RdmResponder);
+		rdmDeviceParams.Set(&rdmResponder);
 	}
 
 	StoreRDMSensors storeRdmSensors;
@@ -213,10 +227,19 @@ int main(int argc, char **argv) {
 		rdmSensorsParams.Set();
 	}
 
-	RdmResponder.Init();
-	RdmResponder.Print();
+#if defined (ENABLE_RDM_SUBDEVICES)
+	StoreRDMSubDevices storeRdmSubDevices;
+	RDMSubDevicesParams rdmSubDevicesParams(&storeRdmSubDevices);
 
-	node.SetRdmHandler(&RdmResponder, true);
+	if (rdmSubDevicesParams.Load()) {
+		rdmSubDevicesParams.Dump();
+		rdmSubDevicesParams.Set();
+	}
+#endif
+
+	rdmResponder.Print();
+
+	node.SetRdmHandler(&rdmResponder, true);
 	node.Print();
 
 	pBoard->Print();
@@ -262,6 +285,9 @@ int main(int argc, char **argv) {
 		remoteConfig.Run();
 		configStore.Flash();
 		display.Run();
+#if defined (ENABLE_HTTPD)
+		httpDaemon.Run();
+#endif
 	}
 
 	return 0;
