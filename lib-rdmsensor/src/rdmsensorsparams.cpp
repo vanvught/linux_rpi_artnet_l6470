@@ -50,6 +50,7 @@
 # include "rdmsensorina219voltage.h"
 # include "rdmsensorsi7021humidity.h"
 # include "rdmsensorsi7021temperature.h"
+# include "rdmsensorthermistor.h"
 #endif
 
 #include "debug.h"
@@ -128,6 +129,17 @@ void RDMSensorsParams::Builder(const rdm::sensorsparams::Params *pParams, char *
 
 	PropertiesBuilder builder(RDMSensorsConst::PARAMS_FILE_NAME, pBuffer, nLength);
 
+	for (uint32_t i = 0; i < static_cast<uint32_t>(rdm::sensors::Types::UNDEFINED); i++) {
+		builder.AddHex8(RDMSensors::GetTypeString(static_cast<rdm::sensors::Types>(i)), 0xFF, false);		
+	}
+
+	for (uint32_t i = 0; i < m_Params.nCount; i++) {
+		const auto type = static_cast<rdm::sensors::Types>(m_Params.Entry[i].nType);
+		if (type < rdm::sensors::Types::UNDEFINED) {
+			builder.AddHex8(RDMSensors::GetTypeString(type), m_Params.Entry[i].nAddress, true);	
+		}
+	}
+
 	nSize = builder.GetSize();
 
 	DEBUG_PRINTF("nSize=%d", nSize);
@@ -153,7 +165,7 @@ void RDMSensorsParams::Dump() {
 	printf("%s::%s \'%s\':\n", __FILE__, __FUNCTION__, RDMSensorsConst::PARAMS_FILE_NAME);
 
 	for (uint32_t i = 0; i < m_Params.nCount; i++) {
-		printf(" %s 0x%.2x\n", RDMSensors::GetTypeString(static_cast<Types>(m_Params.Entry[i].nType)), m_Params.Entry[i].nAddress);
+		printf(" %s 0x%.2x\n", RDMSensors::GetTypeString(static_cast<rdm::sensors::Types>(m_Params.Entry[i].nType)), m_Params.Entry[i].nAddress);
 	}
 #endif
 }
@@ -175,37 +187,48 @@ bool RDMSensorsParams::Add(RDMSensor *pRDMSensor) {
 
 void RDMSensorsParams::Set() {
 #if defined (RDM_SENSORS_ENABLE)
+	DEBUG_ENTRY
+
 	for (uint32_t i = 0; i < m_Params.nCount; i++) {
 		auto nSensorNumber = RDMSensors::Get()->GetCount();
 		const auto nAddress = m_Params.Entry[i].nAddress;
 
 		switch (static_cast<rdm::sensors::Types>(m_Params.Entry[i].nType)) {
-			case rdm::sensors::Types::BH170:
-				Add(new RDMSensorBH170(nSensorNumber, nAddress));
-				break;
-			case rdm::sensors::Types::HTU21D:
-				if (Add(new RDMSensorHTU21DHumidity(nSensorNumber++, nAddress))){
-					Add(new RDMSensorHTU21DTemperature(nSensorNumber, nAddress));
-				}
-				break;
-			case rdm::sensors::Types::INA219:
-				if(Add(new RDMSensorINA219Current(nSensorNumber++, nAddress))) {
-					Add(new RDMSensorINA219Power(nSensorNumber++, nAddress));
-					Add(new RDMSensorINA219Voltage(nSensorNumber, nAddress));
-				}
-				break;
-			case rdm::sensors::Types::MCP9808:
-				Add(new RDMSensorMCP9808(nSensorNumber, nAddress));
-				break;
-			case rdm::sensors::Types::SI7021:
-				if(Add(new RDMSensorSI7021Humidity(nSensorNumber++, nAddress))) {
-					Add(new RDMSensorSI7021Temperature(nSensorNumber, nAddress));
-				}
-				break;
-			default:
-				break;
+		case rdm::sensors::Types::BH170:
+			Add(new RDMSensorBH170(nSensorNumber, nAddress));
+			break;
+		case rdm::sensors::Types::HTU21D:
+			if (Add(new RDMSensorHTU21DHumidity(nSensorNumber++, nAddress))) {
+				Add(new RDMSensorHTU21DTemperature(nSensorNumber, nAddress));
+			}
+			break;
+		case rdm::sensors::Types::INA219:
+			if (Add(new RDMSensorINA219Current(nSensorNumber++, nAddress))) {
+				Add(new RDMSensorINA219Power(nSensorNumber++, nAddress));
+				Add(new RDMSensorINA219Voltage(nSensorNumber, nAddress));
+			}
+			break;
+		case rdm::sensors::Types::MCP9808:
+			Add(new RDMSensorMCP9808(nSensorNumber, nAddress));
+			break;
+		case rdm::sensors::Types::SI7021:
+			if (Add(new RDMSensorSI7021Humidity(nSensorNumber++, nAddress))) {
+				Add(new RDMSensorSI7021Temperature(nSensorNumber, nAddress));
+			}
+			break;
+		case rdm::sensors::Types::MCP3424:
+			if (Add(new RDMSensorThermistor(nSensorNumber++, nAddress, 0))) {
+				Add(new RDMSensorThermistor(nSensorNumber++, nAddress, 1));
+				Add(new RDMSensorThermistor(nSensorNumber++, nAddress, 2));
+				Add(new RDMSensorThermistor(nSensorNumber, nAddress, 3));
+			}
+			break;
+		default:
+			break;
 		}
 	}
+
+	DEBUG_EXIT
 #endif
 }
 
@@ -217,12 +240,12 @@ void RDMSensorsParams::callbackFunction(const char *pLine) {
 
 	uint8_t nLength = sizeof(aSensorName) - 1;
 	uint8_t nI2cAddress = 0;
-	uint8_t nI2cChannel = 0;
+	uint8_t nReserved;
 
-	const auto nReturnCode = Sscan::I2c(pLine, aSensorName, nLength, nI2cAddress, nI2cChannel);
+	const auto nReturnCode = Sscan::I2c(pLine, aSensorName, nLength, nI2cAddress, nReserved);
 
 	if ((nReturnCode == Sscan::OK) && (aSensorName[0] != 0) && (nLength != 0)) {
-		DEBUG_PRINTF("{%.*s}:%d, address=0x%.2x, channel=%d", nLength, aSensorName, nLength, nI2cAddress, nI2cChannel);
+		DEBUG_PRINTF("{%.*s}:%d, address=0x%.2x", nLength, aSensorName, nLength, nI2cAddress);
 
 		rdm::sensors::Types sensorType;
 

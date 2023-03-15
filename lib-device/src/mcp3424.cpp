@@ -127,7 +127,7 @@ uint32_t MCP3424::GetRaw(const uint8_t nChannel) {
 	}
 
 	while (true) {
-		HAL_I2C::Write(m_nConfig);
+		HAL_I2C::Write(static_cast<char>(m_nConfig));
 		HAL_I2C::Read(buffer, nBytes);
 
 		if (nBytes == 4) {

@@ -1,3 +1,6 @@
+#sensors.txt
 #bh1750,0
 #htu21d,0
 #mcp9808,0
+mcp3424=68
+mcp3424=69

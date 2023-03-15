@@ -132,6 +132,7 @@ uint16_t json_get_directory(char *pOutBuffer, const uint16_t nOutBufferSize) {
 #endif
 #if defined (RDM_RESPONDER)
 			"\"rdm_device.txt\":\"RDM Device\","
+			"\"sensors.txt\":\"RDM Sensors\","
 #endif
 #if defined(DISPLAY_UDF)
 			"\"display.txt\":\"Display UDF\","

@@ -31,7 +31,7 @@
 namespace rdm {
 namespace sensors {
 enum class Types {
-	BH170, HTU21D, INA219, MCP9808, SI7021, UNDEFINED
+	BH170, HTU21D, INA219, MCP9808, SI7021, MCP3424, UNDEFINED
 };
 }  // namespace sensors
 }  // namespace rdmsensors

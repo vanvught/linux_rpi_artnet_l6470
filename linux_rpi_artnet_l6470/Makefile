@@ -7,7 +7,7 @@ DEFINES+=ENABLE_HTTPD ENABLE_CONTENT
 
 DEFINES+=DISPLAY_UDF 
 
-DEFINES+=NDEBUG
+#DEFINES+=NDEBUG
 
 LIBS=rdmresponder rdm rdmsensor rdmsubdevice   
 

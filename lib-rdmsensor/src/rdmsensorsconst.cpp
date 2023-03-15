@@ -30,4 +30,4 @@
 const char RDMSensorsConst::PARAMS_FILE_NAME[] = "sensors.txt";
 
 const char RDMSensorsConst::TYPE[static_cast<uint32_t>(rdm::sensors::Types::UNDEFINED)][8] = {
-		"bh1750", "htu21d", "ina219", "mcp9808", "si7021" };
+		"bh1750", "htu21d", "ina219", "mcp9808", "si7021", "mcp3424" };

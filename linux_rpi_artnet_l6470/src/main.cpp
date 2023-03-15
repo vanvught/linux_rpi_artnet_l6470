@@ -208,16 +208,6 @@ int main(int argc, char **argv) {
 	RDMPersonality *pRDMPersonalities[1] = { new  RDMPersonality(aDescription, pBoard)};
 
 	ArtNetRdmResponder rdmResponder(pRDMPersonalities, 1);
-	rdmResponder.Init();
-
-	StoreRDMDevice storeRdmDevice;
-	RDMDeviceParams rdmDeviceParams(&storeRdmDevice);
-	rdmResponder.SetRDMDeviceStore(&storeRdmDevice);
-
-	if (rdmDeviceParams.Load()) {
-		rdmDeviceParams.Dump();
-		rdmDeviceParams.Set(&rdmResponder);
-	}
 
 	StoreRDMSensors storeRdmSensors;
 	RDMSensorsParams rdmSensorsParams(&storeRdmSensors);
@@ -236,6 +226,17 @@ int main(int argc, char **argv) {
 		rdmSubDevicesParams.Set();
 	}
 #endif
+
+	rdmResponder.Init();
+
+	StoreRDMDevice storeRdmDevice;
+	RDMDeviceParams rdmDeviceParams(&storeRdmDevice);
+	rdmResponder.SetRDMDeviceStore(&storeRdmDevice);
+
+	if (rdmDeviceParams.Load()) {
+		rdmDeviceParams.Dump();
+		rdmDeviceParams.Set(&rdmResponder);
+	}
 
 	rdmResponder.Print();
 

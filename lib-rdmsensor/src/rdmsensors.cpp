@@ -121,6 +121,7 @@ bool RDMSensors::Add(RDMSensor *pRDMSensor) {
 	assert(pRDMSensor != nullptr);
 	m_pRDMSensor[m_nCount++] = pRDMSensor;
 
+	DEBUG_PRINTF("m_nCount=%u", m_nCount);
 	DEBUG_EXIT
 	return true;
 }
