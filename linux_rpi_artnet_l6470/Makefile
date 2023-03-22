@@ -12,8 +12,6 @@ CONFIG_DISPLAY_LIB=nextion
 
 #DEFINES+=NDEBUG
 
-#LIBS=rdmresponder rdm rdmsensor rdmsubdevice   
-
 SRCDIR=src lib
 
 include ../firmware-template-linux/Rules.mk
