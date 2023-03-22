@@ -89,6 +89,8 @@
 
 #include "displayhandler.h"
 
+#include "statemachine.h"
+
 int main(int argc, char **argv) {
 	if (getuid() != 0) {
 		fprintf(stderr, "Program is not started as \'root\' (sudo)\n");
@@ -256,8 +258,8 @@ int main(int argc, char **argv) {
 	DisplayUdfParams displayUdfParams(&storeDisplayUdf);
 
 	if(displayUdfParams.Load()) {
-		displayUdfParams.Set(&display);
 		displayUdfParams.Dump();
+		displayUdfParams.Set(&display);
 	}
 
 	display.Show(&node);
@@ -268,12 +270,14 @@ int main(int argc, char **argv) {
 	RemoteConfigParams remoteConfigParams(&storeRemoteConfig);
 
 	if(remoteConfigParams.Load()) {
-		remoteConfigParams.Set(&remoteConfig);
 		remoteConfigParams.Dump();
+		remoteConfigParams.Set(&remoteConfig);
 	}
 
 	while (configStore.Flash())
 		;
+
+	StateMachine stateMachine;
 
 	display.TextStatus(ArtNetMsgConst::START, Display7SegmentMessage::INFO_NODE_START, CONSOLE_YELLOW);
 
@@ -289,6 +293,7 @@ int main(int argc, char **argv) {
 #if defined (ENABLE_HTTPD)
 		httpDaemon.Run();
 #endif
+		stateMachine.Run();
 	}
 
 	return 0;
