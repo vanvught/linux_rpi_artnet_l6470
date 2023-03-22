@@ -45,10 +45,11 @@ endif
 DEFINES:=$(addprefix -D,$(DEFINES))
 DEFINES+=-DDISABLE_TFTP -DENABLE_HTTPD -DDISABLE_RTC
 DEFINES+=-DCONFIG_STORE_USE_FILE
+DEFINES+=$(addprefix -I,$(EXTRA_INCLUDES))
 
 # The variable for the firmware include directories
 INCDIRS=$(wildcard ./lib) $(wildcard ./include) $(wildcard ./*/include) ../firmware-template-linux/include
-INCDIRS:=$(addprefix -I,$(INCDIRS))
+INCDIRS:=$(addprefix -I,$(INCDIRS)) -I../lib-display/include
 
 # The variable for the libraries include directory
 LIBINCDIRS=$(addprefix -I../lib-,$(LIBS))
@@ -67,7 +68,7 @@ LDLIBS+=$(addprefix -l,$(LIBS))
 # The variables for the dependency check 
 LIBDEP=$(addprefix ../lib-,$(LIBS))
 
-COPS=$(DEFINES) $(INCDIRS) $(LIBINCDIRS) $(addprefix -I,$(EXTRA_INCLUDES))
+COPS=$(DEFINES) $(INCDIRS) $(LIBINCDIRS)
 COPS+=-g -Wall -Werror -Wextra -pedantic 
 COPS+=-Wunused #-Wsign-conversion #-Wconversion
 
