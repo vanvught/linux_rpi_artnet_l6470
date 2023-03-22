@@ -87,7 +87,7 @@
 #include "firmwareversion.h"
 #include "software_version.h"
 
-#include "displayhandler.h"
+//#include "displayhandler.h"
 
 #include "statemachine.h"
 
@@ -144,15 +144,14 @@ int main(int argc, char **argv) {
 
 	display.TextStatus(SparkFunDmxConst::MSG_INIT, Display7SegmentMessage::INFO_SPARKFUN, CONSOLE_YELLOW);
 
-	auto *pSparkFunDmx = new SparkFunDmx;
-	assert(pSparkFunDmx != nullptr);
+	SparkFunDmx sparkFunDmx;
 
-	pSparkFunDmx->ReadConfigFiles(&sparkFunStores);
-	pSparkFunDmx->SetModeStore(&storeMotors);
+	sparkFunDmx.ReadConfigFiles(&sparkFunStores);
+	sparkFunDmx.SetModeStore(&storeMotors);
 
-	nMotorsConnected = pSparkFunDmx->GetMotorsConnected();
+	nMotorsConnected = sparkFunDmx.GetMotorsConnected();
 
-	pBoard = pSparkFunDmx;
+	pBoard = &sparkFunDmx;
 
 	StoreTLC59711 storeTLC59711;
 	TLC59711DmxParams pwmledparms(&storeTLC59711);

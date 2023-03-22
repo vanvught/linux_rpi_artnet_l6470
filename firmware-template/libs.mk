@@ -178,6 +178,8 @@ endif
 
 ifneq ($(findstring CONFIG_DISPLAY_USE_CUSTOM,$(DEFINES)),CONFIG_DISPLAY_USE_CUSTOM)
 	LIBS+=display
+else
+	LIBS+=$(CONFIG_DISPLAY_LIB)
 endif
 
 ifneq ($(findstring properties,$(LIBS)),properties)
@@ -187,3 +189,4 @@ endif
 LIBS+=lightset device hal
 
 $(info $$LIBS [${LIBS}])
+$(info $$DEFINES [${DEFINES}])

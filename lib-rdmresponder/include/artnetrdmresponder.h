@@ -53,13 +53,16 @@ public:
 	}
 
 	uint32_t GetUidCount(const uint32_t nPortIndex) override {
+		DEBUG_PRINTF("nPortIndex=%u", nPortIndex);
 		return nPortIndex == 0 ? 1 : 0; // We are a Responder
 	}
 
 	void TodCopy(const uint32_t nPortIndex, unsigned char *tod) override {
-		assert(nPortIndex == 0);
+		DEBUG_PRINTF("nPortIndex=%u", nPortIndex);
 		if (nPortIndex == 0) {
 			memcpy(tod, RDMDeviceResponder::GetUID(), RDM_UID_SIZE);
+		} else {
+			memcpy(tod, UID_ALL, RDM_UID_SIZE);
 		}
 	}
 

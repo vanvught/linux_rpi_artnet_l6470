@@ -42,6 +42,7 @@ ifeq ($(detected_OS),Linux)
 endif
 
 $(info $$DEFINES [${DEFINES}])
+$(info $$INCLUDES [${INCLUDES}])
 $(info $$MAKE_FLAGS [${MAKE_FLAGS}])
  
 COPS=$(DEFINES) $(MAKE_FLAGS) $(INCLUDES)

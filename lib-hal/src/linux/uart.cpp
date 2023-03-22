@@ -104,6 +104,9 @@ static void s_configure_termios() {
 	if (s_nBaudrate == 115200) {
 		cfsetispeed(&options, B115200);
 		cfsetospeed(&options, B115200);
+	} else if (s_nBaudrate == 38400) {
+			cfsetispeed(&options, B38400);
+			cfsetospeed(&options, B38400);
 	} else {
 		cfsetispeed(&options, B9600);
 		cfsetospeed(&options, B9600);

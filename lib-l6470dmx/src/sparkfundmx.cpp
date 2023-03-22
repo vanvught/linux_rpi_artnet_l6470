@@ -23,6 +23,8 @@
  * THE SOFTWARE.
  */
 
+#undef NDEBUG
+
 #include <algorithm>
 #include <cstdint>
 #include <cstdio>

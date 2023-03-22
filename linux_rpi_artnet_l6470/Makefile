@@ -5,11 +5,14 @@ DEFINES+=OUTPUT_DMX_TLC59711 OUTPUT_DMX_STEPPER
 
 DEFINES+=ENABLE_HTTPD ENABLE_CONTENT
 
-DEFINES+=DISPLAY_UDF 
+DEFINES+=DISPLAY_UDF
+DEFINES+=CONFIG_DISPLAY_USE_CUSTOM 
+EXTRA_INCLUDES=../lib-nextion/include
+CONFIG_DISPLAY_LIB=nextion
 
 #DEFINES+=NDEBUG
 
-LIBS=rdmresponder rdm rdmsensor rdmsubdevice   
+#LIBS=rdmresponder rdm rdmsensor rdmsubdevice   
 
 SRCDIR=src lib
 

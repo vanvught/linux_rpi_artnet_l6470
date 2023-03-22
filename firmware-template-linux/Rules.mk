@@ -52,8 +52,8 @@ INCDIRS=$(wildcard ./lib) $(wildcard ./include) $(wildcard ./*/include) ../firmw
 INCDIRS:=$(addprefix -I,$(INCDIRS)) -I../lib-display/include
 
 # The variable for the libraries include directory
-LIBINCDIRS=$(addprefix -I../lib-,$(LIBS))
-LIBINCDIRS+=$(addprefix -I../lib-,$(DEFAULT_INCLUDES))
+LIBINCDIRS=$(addprefix -I../lib-,$(DEFAULT_INCLUDES))
+LIBINCDIRS+=$(addprefix -I../lib-,$(LIBS))
 LIBINCDIRS:=$(addsuffix /include, $(LIBINCDIRS))
 
 $(info $$LIBS [${LIBS}])
@@ -61,6 +61,7 @@ $(info $$LIBS [${LIBS}])
 # The variables for the ld -L flag
 LIB=$(addprefix -L../lib-,$(LIBS))
 LIB:=$(addsuffix /lib_linux, $(LIB))
+
 
 # The variable for the ld -l flag 
 LDLIBS+=$(addprefix -l,$(LIBS))
