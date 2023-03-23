@@ -105,6 +105,7 @@ void HwClock::RtcProbe() {
 	FUNC_PREFIX(i2c_write(registers, 1));
 	FUNC_PREFIX(i2c_read(registers, sizeof(registers) / sizeof(registers[0])));
 
+#if !defined (CONFIG_RTC_DISABLE_MCP7941X)
 	if (FUNC_PREFIX(i2c_write(nullptr, 0)) == 0) {
 		DEBUG_PUTS("MCP7941X");
 
@@ -135,7 +136,9 @@ void HwClock::RtcProbe() {
 		DEBUG_EXIT
 		return;
 	}
+#endif
 
+#if !defined (CONFIG_RTC_DISABLE_DS3231)
 	/**
 	 * DS3231
 	 */
@@ -171,7 +174,9 @@ void HwClock::RtcProbe() {
 		DEBUG_EXIT
 		return;
 	}
+#endif
 
+#if !defined (CONFIG_RTC_DISABLE_PCF8563)
 	/**
 	 * PCF8563
 	 */
@@ -226,6 +231,7 @@ void HwClock::RtcProbe() {
 		DEBUG_EXIT
 		return;
 	}
+#endif
 
 	DEBUG_EXIT
 }

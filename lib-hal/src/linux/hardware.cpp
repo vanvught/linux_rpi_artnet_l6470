@@ -42,6 +42,9 @@
 #include <sys/utsname.h>
 #include <cassert>
 
+#include "hal_i2c.h"
+#include "hal_spi.h"
+
 #include "hardware.h"
 
 #ifndef NDEBUG
@@ -85,13 +88,6 @@ static char* str_find_replace(char *str, const char *find, const char *replace) 
 }
 
 #if defined (__linux__)
-# if defined (RASPPI)
- extern "C" {
-  int bcm2835_init();
-  int bcm2835_i2c_begin();
-  int bcm2835_spi_begin();
- }
-# endif
 static constexpr char RASPBIAN_LED_INIT[] = "echo gpio | sudo tee /sys/class/leds/led0/trigger";
 static constexpr char RASPBIAN_LED_OFF[] = "echo 0 | sudo tee /sys/class/leds/led0/brightness";
 static constexpr char RASPBIAN_LED_ON[] = "echo 1 | sudo tee /sys/class/leds/led0/brightness";
@@ -183,24 +179,14 @@ Hardware::Hardware():
 		constexpr char cmd[] = "cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}'";
 		ExecCmd(cmd, aResult, sizeof(aResult));
 		m_nBoardId = static_cast<uint32_t>(strtol(aResult, NULL, 16));
-#if defined (RASPPI)
-		if (getuid() == 0) {
-			if (bcm2835_init() == 0) {
-				fprintf(stderr, "bcm2835_init() failed\n");
-			}
-			if (bcm2835_i2c_begin() == 0) {
-				fprintf(stderr, "bcm2835_i2c_begin() failed\n");
-			}
-			if (bcm2835_spi_begin() == 0) {
-				fprintf(stderr, "bcm2835_spi_begin() failed\n");
-			}
-		}
+	}
+
+	FUNC_PREFIX(i2c_begin());
+	FUNC_PREFIX(spi_begin());
 
 #ifndef NDEBUG
-		I2cDetect i2cdetect;
+	I2cDetect i2cdetect;
 #endif
-#endif
-	}
 }
 
 const char* Hardware::GetMachine(uint8_t &nLength) {

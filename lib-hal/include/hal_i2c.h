@@ -72,9 +72,10 @@ public:
 		return IsConnected_(nAddress, nBaudrate);
 	}
 
-	void Write(char pData) {
+	void Write(uint8_t pData) {
 		Setup();
-		FUNC_PREFIX(i2c_write(&pData, 1));
+		const char buffer[] = { static_cast<char>(pData) };
+		FUNC_PREFIX(i2c_write(buffer, 1));
 	}
 
 	void Write(const char *pData, uint32_t nLength) {

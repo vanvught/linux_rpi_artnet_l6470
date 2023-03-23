@@ -4,4 +4,10 @@ EXTRA_INCLUDES=
 
 EXTRA_SRCDIR=debug
 
+ifneq ($(MAKE_FLAGS),)
+	ifneq (,$(findstring LINUX_HAVE_I2C,$(MAKE_FLAGS)))
+		EXTRA_SRCDIR+=src/linux/i2c
+	endif
+endif
+
 include ../firmware-template-linux/lib/Rules.mk
