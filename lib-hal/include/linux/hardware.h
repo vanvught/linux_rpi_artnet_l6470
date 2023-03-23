@@ -131,15 +131,14 @@ private:
 	}
 
 private:
-	enum TBoardType {
-		BOARD_TYPE_LINUX,
-		BOARD_TYPE_CYGWIN,
-		BOARD_TYPE_RASPBIAN,
-		BOARD_TYPE_OSX,
-		BOARD_TYPE_UNKNOWN
+	enum class Board {
+		TYPE_LINUX,
+		TYPE_RASPBIAN,
+		TYPE_OSX,
+		TYPE_UNKNOWN
 	};
 
-	TBoardType m_tBoardType;
+	Board m_boardType;
 
 	struct utsname m_TOsInfo;
 

@@ -2,7 +2,7 @@
  * @file hardware.cpp
  *
  */
-/* Copyright (C) 2020-2022 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2020-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,11 @@
 #include <time.h>
 #include <sys/time.h>
 #include <unistd.h>
-#if !defined (__CYGWIN__)
- #include <sys/reboot.h>
-#endif
+#include <sys/reboot.h>
 #if defined (__APPLE__)
- #include <sys/sysctl.h>
+# include <sys/sysctl.h>
 #else
- #include <sys/sysinfo.h>
+# include <sys/sysinfo.h>
 #endif
 #include <sys/utsname.h>
 #include <cassert>
@@ -100,14 +98,12 @@ static constexpr char UNKNOWN[] = "Unknown";
 Hardware *Hardware::s_pThis = 0;
 
 Hardware::Hardware():
-#if defined (__CYGWIN__)
-	m_tBoardType(BOARD_TYPE_CYGWIN)
-#elif defined (__linux__)
-	m_tBoardType(BOARD_TYPE_LINUX)
+#if defined (__linux__)
+	m_boardType(Board::TYPE_LINUX)
 #elif defined (__APPLE__)
-	m_tBoardType(BOARD_TYPE_OSX)
+	m_boardType(Board::TYPE_OSX)
 #else
-	m_tBoardType(BOARD_TYPE_UNKNOWN)
+	m_boardType(Board::TYPE_UNKNOWN)
 #endif
 {
 	s_pThis = this;
@@ -126,7 +122,7 @@ Hardware::Hardware():
 	FILE *fp = popen(cmd, "r");
 
 	if (fgets(buf, sizeof(buf)-1, fp) != 0) {
-		m_tBoardType = BOARD_TYPE_RASPBIAN;
+		m_boardType = Board::TYPE_RASPBIAN;
 		if (system(RASPBIAN_LED_INIT) == 0) {
 			// Just make the compile happy
 		}
@@ -137,12 +133,12 @@ Hardware::Hardware():
 	}
 #endif
 
-	if (m_tBoardType != BOARD_TYPE_UNKNOWN) {
+	if (m_boardType != Board::TYPE_UNKNOWN) {
 		uname(&m_TOsInfo);
 	}
 
 #ifndef NDEBUG
-	printf("m_tBoardType=%d\n", static_cast<int>(m_tBoardType));
+	printf("m_tBoardType=%d\n", static_cast<int>(m_boardType));
 #endif
 
 
@@ -174,7 +170,7 @@ Hardware::Hardware():
 		ExecCmd(cmd, m_aSocName, sizeof(m_aSocName));
 	}
 
-	if (m_tBoardType == BOARD_TYPE_RASPBIAN) {
+	if (m_boardType == Board::TYPE_RASPBIAN) {
 		char aResult[16];
 		constexpr char cmd[] = "cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}'";
 		ExecCmd(cmd, aResult, sizeof(aResult));
@@ -210,10 +206,10 @@ const char* Hardware::GetSocName(uint8_t& nLength) {
 }
 
 uint32_t Hardware::GetReleaseId() {
-	const size_t len = strlen(m_TOsInfo.release);
+	const auto nLength = strlen(m_TOsInfo.release);
 	uint32_t rev = 0;
 
-	for (size_t i = 0; i < len ; i++) {
+	for (size_t i = 0; i < nLength ; i++) {
 		if (isdigit(m_TOsInfo.release[i])) {
 			rev *= 10;
 			rev += static_cast<uint32_t>(m_TOsInfo.release[i] - '0');
@@ -280,7 +276,7 @@ void Hardware::GetTime(struct tm *pTime) {
 }
 
 bool Hardware::Reboot() {
-#if defined (__CYGWIN__) || defined (__APPLE__)
+#if defined (__APPLE__)
 	return false;
 #else
 	if(geteuid() == 0) {
@@ -312,7 +308,7 @@ bool Hardware::Reboot() {
 //}
 
 bool Hardware::PowerOff() {
-#if defined (__CYGWIN__) || defined (__APPLE__)
+#if defined (__APPLE__)
 	return false;
 #else
 	if(geteuid() == 0) {
@@ -333,41 +329,30 @@ bool Hardware::PowerOff() {
 
 float Hardware::GetCoreTemperature() {
 #if defined (__linux__)
-	if (m_tBoardType == BOARD_TYPE_RASPBIAN) {
+	if (m_boardType == Board::TYPE_RASPBIAN) {
 		const char cmd[] = "/opt/vc/bin/vcgencmd measure_temp| egrep \"[0-9.]{4,}\" -o";
-		char buf[8];
+		char aResult[8];
 
-		FILE *fp = popen(cmd, "r");
+		ExecCmd(cmd, aResult, sizeof(aResult));
 
-		if (fgets(buf, sizeof(buf) - 1, fp) == NULL) {
-			pclose(fp);
-			return -1;
-		}
-
-		return atof(buf);
-
+		return atof(aResult);
 	} else {
 		const char cmd[] = "sensors | grep 'Core 0' | awk '{print $3}' | cut -c2-3";
-		char buf[8];
+		char aResult[6];
 
-		FILE *fp = popen(cmd, "r");
+		ExecCmd(cmd, aResult, sizeof(aResult));
 
-		if (fgets(buf, sizeof(buf) - 1, fp) == NULL) {
-			pclose(fp);
-			return -1;
-		}
-
-		return atof(buf);
+		return atof(aResult);
 	}
 #endif
-	return -1;
+	return -1.0f;
 }
 
 float Hardware::GetCoreTemperatureMax() {
 #if defined (__linux__)
-	return 85; //TODO GetCoreTemperatureMax
+	return 85.0f; //TODO GetCoreTemperatureMax
 #else
-	return -1;
+	return -1.0f;
 #endif
 }
 
@@ -375,16 +360,16 @@ float Hardware::GetCoreTemperatureMax() {
  static hardware::LedStatus s_ledStatus;
 #endif
 
-void Hardware::SetLed(__attribute__((unused)) hardware::LedStatus tLedStatus) {
+void Hardware::SetLed(__attribute__((unused)) hardware::LedStatus ledStatus) {
 #if defined (__linux__)
-	if (m_tBoardType == BOARD_TYPE_RASPBIAN) {
-		if (s_ledStatus == tLedStatus) {
+	if (m_boardType == Board::TYPE_RASPBIAN) {
+		if (s_ledStatus == ledStatus) {
 			return;
 		}
-		s_ledStatus = tLedStatus;
+		s_ledStatus = ledStatus;
 		char *p = 0;
 
-		switch (tLedStatus) {
+		switch (ledStatus) {
 		case hardware::LedStatus::OFF:
 			p = const_cast<char*>(RASPBIAN_LED_OFF);
 			break;
