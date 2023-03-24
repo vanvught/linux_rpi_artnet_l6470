@@ -1,5 +1,11 @@
 #!/bin/bash
 
+rm -rf ../lib-device/build_linux/
+rm -rf ../lib-device/lib_linux/
+
+rm -rf ../lib-rdmsensor/build_linux/
+rm -rf ../lib-rdmsensor/lib_linux/
+
 rm -rf build_linux
 
 make -j 2

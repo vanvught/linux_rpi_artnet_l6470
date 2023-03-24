@@ -54,7 +54,14 @@ INCDIRS:=$(addprefix -I,$(INCDIRS)) -I../lib-display/include
 # The variable for the libraries include directory
 LIBINCDIRS=$(addprefix -I../lib-,$(DEFAULT_INCLUDES))
 LIBINCDIRS+=$(addprefix -I../lib-,$(LIBS))
+ifeq ($(findstring CONFIG_DISPLAY_USE_CUSTOM,$(DEFINES)),CONFIG_DISPLAY_USE_CUSTOM)
+	ifneq ($(CONFIG_DISPLAY_LIB),)
+		LIBINCDIRS+=$(addprefix -I../lib-,$(CONFIG_DISPLAY_LIB))
+	endif
+endif
 LIBINCDIRS:=$(addsuffix /include, $(LIBINCDIRS))
+
+DEFINES+=$(INCDIRS) $(LIBINCDIRS)
 
 $(info $$LIBS [${LIBS}])
 
@@ -62,16 +69,16 @@ $(info $$LIBS [${LIBS}])
 LIB=$(addprefix -L../lib-,$(LIBS))
 LIB:=$(addsuffix /lib_linux, $(LIB))
 
-
 # The variable for the ld -l flag 
 LDLIBS+=$(addprefix -l,$(LIBS))
 
 # The variables for the dependency check 
 LIBDEP=$(addprefix ../lib-,$(LIBS))
 
-COPS=$(DEFINES) $(INCDIRS) $(LIBINCDIRS)
+COPS=$(DEFINES)
 COPS+=-g -Wall -Werror -Wextra -pedantic 
 COPS+=-Wunused #-Wsign-conversion #-Wconversion
+COPS+=-fstack-protector-all
 
 CCPOPS=-fno-rtti -fno-exceptions -fno-unwind-tables -Wnon-virtual-dtor
 

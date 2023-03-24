@@ -17,6 +17,11 @@ DEFINES+=-DDISABLE_TFTP -DENABLE_HTTPD -DDISABLE_RTC
 
 INCLUDES:=-I./include -I../lib-hal/include -I../lib-display/include -I../lib-debug/include
 INCLUDES+=$(addprefix -I,$(EXTRA_INCLUDES))
+ifeq ($(findstring CONFIG_DISPLAY_USE_CUSTOM,$(DEFINES)),CONFIG_DISPLAY_USE_CUSTOM)
+	ifneq ($(CONFIG_DISPLAY_LIB),)
+		INCLUDES+=-I../lib-$(CONFIG_DISPLAY_LIB)/include
+	endif
+endif
 
 detected_OS := $(shell uname 2>/dev/null || echo Unknown)
 detected_OS := $(patsubst CYGWIN%,Cygwin,$(detected_OS))
@@ -48,6 +53,7 @@ $(info $$MAKE_FLAGS [${MAKE_FLAGS}])
 COPS=$(DEFINES) $(MAKE_FLAGS) $(INCLUDES)
 COPS+=-g -Wall -Werror -Wextra -Wpedantic 
 COPS+=-Wunused #-Wsign-conversion -Wconversion
+COPS+=-fstack-protector-all
 
 ifeq ($(shell $(CC) -v 2>&1 | grep -c "clang version"), 1)
 else

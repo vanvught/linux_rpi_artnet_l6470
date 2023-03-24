@@ -87,8 +87,6 @@
 #include "firmwareversion.h"
 #include "software_version.h"
 
-//#include "displayhandler.h"
-
 #include "statemachine.h"
 
 int main(int argc, char **argv) {
@@ -256,7 +254,7 @@ int main(int argc, char **argv) {
 	StoreDisplayUdf storeDisplayUdf;
 	DisplayUdfParams displayUdfParams(&storeDisplayUdf);
 
-	if(displayUdfParams.Load()) {
+	if (displayUdfParams.Load()) {
 		displayUdfParams.Dump();
 		displayUdfParams.Set(&display);
 	}
