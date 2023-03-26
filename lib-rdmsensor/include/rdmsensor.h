@@ -116,15 +116,16 @@ public:
 
 	void Print();
 
-public:
 	const struct rdm::sensor::Defintion* GetDefintion() {
 		return &m_tRDMSensorDefintion;
 	}
+
 	const struct rdm::sensor::Values* GetValues();
+
 	void SetValues();
+
 	void Record();
 
-public:
 	virtual bool Initialize()=0;
 	virtual int16_t GetValue()=0;
 

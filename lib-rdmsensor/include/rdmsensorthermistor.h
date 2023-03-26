@@ -36,7 +36,7 @@
 
 #include "debug.h"
 
-class RDMSensorThermistor: public RDMSensor, MCP3424  {
+class RDMSensorThermistor final: public RDMSensor, MCP3424  {
 public:
 	RDMSensorThermistor(uint8_t nSensor, uint8_t nAddress = 0, uint8_t nChannel = 0) : RDMSensor(nSensor), MCP3424(nAddress), m_nChannel(nChannel) {
 		SetType(E120_SENS_TEMPERATURE);
@@ -53,26 +53,72 @@ public:
 		return MCP3424::IsConnected();
 	}
 
-	int16_t GetValue() override {
+	bool Calibrate(float f) {
+		const auto iCalibrate = static_cast<int32_t>(f * 10);
+		uint32_t nResistor;
+		const auto iMeasure = static_cast<int32_t>(GetValue(nResistor) * 10);
+
+		DEBUG_PRINTF("iCalibrate=%d, iMeasure=%d", iCalibrate, iMeasure);
+
+		if (iCalibrate == iMeasure) {
+			return true;
+		}
+
+		int32_t Offset = 10;
+
+		if (iCalibrate > iMeasure) {
+			Offset = -10;
+		}
+
+		for (int32_t i = 1; i < 128; i++) {
+			m_nCalibration = i * Offset;
+			const auto iMeasure = static_cast<int32_t>(GetValue(nResistor) * 10);
+			DEBUG_PRINTF("iCalibrate=%d, iMeasure=%d, m_nOffset=%d, nResistor=%u", iCalibrate, iMeasure, m_nCalibration, nResistor);
+			if (iCalibrate == iMeasure) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	void ResetCalibration() {
+		m_nCalibration = 0;
+	}
+
+	int32_t GetCalibration() const {
+		return m_nCalibration;
+	}
+
+	float GetValue(uint32_t& nResistor) {
 		const auto v = MCP3424::GetVoltage(m_nChannel);
 		const auto r = resistor(v);
 		const auto t = sensor::thermistor::temperature(r);
 		DEBUG_PRINTF("v=%1.3f, r=%u, t=%3.1f", v,r,t);
-		return static_cast<int16_t>(t);
+		nResistor = r;
+		return t;
+	}
+
+	int16_t GetValue() override {
+		uint32_t nResistor;
+		return static_cast<int16_t>(GetValue(nResistor));
 	}
 
 private:
 	uint8_t m_nChannel { 0 };
+	int32_t m_nCalibration { 0 };
+
 	/*
 	 * The R values are based on:
 	 * https://www.abelectronics.co.uk/p/69/adc-pi-raspberry-pi-analogue-to-digital-converter
 	 */
-	static constexpr uint32_t R_GND = 6800;		// 6K8
-	static constexpr uint32_t R_HIGH = 10000;	// 10K
+	static constexpr int32_t R_GND = 6800;		// 6K8
+	static constexpr int32_t R_HIGH = 10000;	// 10K
 
 	uint32_t resistor(const double vin) {
 		const double d = (5 * R_GND) / vin;
-		return static_cast<uint32_t>(d) - R_GND - R_HIGH;
+		const auto r = static_cast<int32_t>(d) - R_GND - R_HIGH + m_nCalibration;
+		return static_cast<uint32_t>(r);
 	}
 };
 

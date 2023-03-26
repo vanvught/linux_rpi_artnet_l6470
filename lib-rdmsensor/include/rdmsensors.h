@@ -67,6 +67,10 @@ public:
 	void SetValues(uint8_t nSensor);
 	void SetRecord(uint8_t nSensor);
 
+	RDMSensor *GetSensor(uint8_t nSensor) {
+		return m_pRDMSensor[nSensor];
+	}
+
 	static const char *GetTypeString(rdm::sensors::Types type);
 	static rdm::sensors::Types GetTypeString(const char *pValue);
 
