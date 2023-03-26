@@ -25,6 +25,11 @@ ifneq ($(MAKE_FLAGS),)
 	endif
 	
 	RDM=
+	
+	ifeq ($(findstring DISPLAY_UDF,$(MAKE_FLAGS)), DISPLAY_UDF)
+		EXTRA_SRCDIR+=src/displayudf
+		EXTRA_INCLUDES+=../lib-displayudf/include
+	endif
 
 	ifeq ($(findstring NODE_ARTNET,$(MAKE_FLAGS)), NODE_ARTNET)
 		EXTRA_SRCDIR+=src/artnet
