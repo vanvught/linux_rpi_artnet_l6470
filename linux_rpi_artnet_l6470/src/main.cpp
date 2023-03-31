@@ -35,7 +35,6 @@
 #include "hardware.h"
 #include "network.h"
 #include "networkconst.h"
-#include "storenetwork.h"
 
 #if defined (ENABLE_HTTPD)
 # include "httpd/httpd.h"
@@ -47,7 +46,6 @@
 
 #include "artnet4node.h"
 #include "artnetparams.h"
-#include "storeartnet.h"
 #include "artnetmsgconst.h"
 
 #include "rdmdeviceresponder.h"
@@ -66,11 +64,14 @@
 
 #include "lightsetchain.h"
 
-#include "configstore.h"
 #include "remoteconfig.h"
 #include "remoteconfigparams.h"
+
+#include "configstore.h"
+#include "storeartnet.h"
 #include "storeremoteconfig.h"
 #include "storedisplayudf.h"
+#include "storenetwork.h"
 #include "storerdmdevice.h"
 #include "storerdmsensors.h"
 #if defined (ENABLE_RDM_SUBDEVICES)
@@ -213,7 +214,7 @@ int main(int argc, char **argv) {
 
 	if (rdmSensorsParams.Load()) {
 		rdmSensorsParams.Dump();
-		rdmSensorsParams.Set();
+		rdmSensorsParams.Set(&storeRdmSensors);
 	}
 
 #if defined (ENABLE_RDM_SUBDEVICES)

@@ -81,8 +81,6 @@ public:
 	MDNS();
 	~MDNS();
 
-	void Start();
-
 	bool AddServiceRecord(const char* pName, const char *pServName, uint16_t nPort, mdns::Protocols nProtocol = mdns::Protocols::UDP, const char* pTextContent = nullptr);
 	/**
 	 * New API

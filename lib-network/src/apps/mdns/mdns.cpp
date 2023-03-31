@@ -107,7 +107,7 @@ static constexpr mdns::Service s_Services[] {
 		{mdns::DOMAIN_PP			, sizeof(mdns::DOMAIN_PP)			, 5078 }
 };
 
-int32_t MDNS::s_nHandle = -1;
+int32_t MDNS::s_nHandle;
 uint32_t MDNS::s_nRemoteIp;
 uint16_t MDNS::s_nRemotePort;
 uint16_t MDNS::s_nBytesReceived;
@@ -124,7 +124,16 @@ static constexpr const char *get_protocol_name(mdns::Protocols nProtocol) {
 }
 
 MDNS::MDNS() {
+	s_nHandle = Network::Get()->Begin(mdns::UDP_PORT);
+	assert(s_nHandle != -1);
 
+	Network::Get()->JoinGroup(s_nHandle, mdns::MULTICAST_ADDRESS);
+
+	SetName(Network::Get()->GetHostName());
+	CreateAnswerLocalIpAddress();
+
+	Network::Get()->SendTo(s_nHandle, s_AnswerLocalIp.aBuffer, static_cast<uint16_t>(s_AnswerLocalIp.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
+	Network::Get()->SetDomainName(&MDNS_TLD[1]);
 }
 
 MDNS::~MDNS() {
@@ -148,24 +157,6 @@ MDNS::~MDNS() {
 
 	Network::Get()->End(mdns::UDP_PORT);
 	s_nHandle = -1;
-}
-
-void MDNS::Start() {
-	assert(s_nHandle == -1);
-
-	s_nHandle = Network::Get()->Begin(mdns::UDP_PORT);
-	assert(s_nHandle != -1);
-
-	Network::Get()->JoinGroup(s_nHandle, mdns::MULTICAST_ADDRESS);
-
-	if (s_pName == nullptr) {
-		SetName(Network::Get()->GetHostName());
-	}
-
-	CreateAnswerLocalIpAddress();
-
-	Network::Get()->SendTo(s_nHandle, s_AnswerLocalIp.aBuffer, static_cast<uint16_t>(s_AnswerLocalIp.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
-	Network::Get()->SetDomainName(&MDNS_TLD[1]);
 }
 
 void MDNS::SetName(const char *pName) {

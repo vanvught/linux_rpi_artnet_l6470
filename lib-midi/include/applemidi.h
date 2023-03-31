@@ -83,8 +83,6 @@ public:
 
 	void Start() {
 		DEBUG_ENTRY
-
-		MDNS::Start();
 		MDNS::AddServiceRecord(nullptr, MDNS_SERVICE_MIDI, m_nPort);
 
 		m_nHandleControl = Network::Get()->Begin(m_nPort);
