@@ -28,6 +28,8 @@
 
 #include <cstdint>
 
+#include "network.h"
+
 #include "../config/apps_config.h"
 
 namespace mdns {
@@ -44,7 +46,11 @@ struct Flags {
 	uint32_t rcode;
 };
 
-enum class Protocol : uint8_t {
+enum class Services {
+	CONFIG, TFTP, HTTP, RDMNET_LLRP, NTP, MIDI, OSC, DDP, PP, LAST_NOT_USED
+};
+
+enum class Protocols : uint8_t {
 	UDP, TCP
 };
 
@@ -53,7 +59,7 @@ struct ServiceRecord {
 	char *pServName;
 	char *pTextContent;
 	uint16_t nPort;
-	Protocol nProtocol;
+	Protocols nProtocol;
 };
 
 struct RecordData {
@@ -61,6 +67,7 @@ struct RecordData {
 	uint8_t aBuffer[512];
 };
 
+static constexpr auto MULTICAST_ADDRESS = network::convert_to_uint(224, 0, 0, 251);
 static constexpr uint16_t UDP_PORT = 5353;
 #if !defined (MDNS_SERVICE_RECORDS_MAX)
 static constexpr auto SERVICE_RECORDS_MAX = 8;
@@ -75,17 +82,19 @@ public:
 	~MDNS();
 
 	void Start();
-	void Stop();
 
-	void Run();
+	bool AddServiceRecord(const char* pName, const char *pServName, uint16_t nPort, mdns::Protocols nProtocol = mdns::Protocols::UDP, const char* pTextContent = nullptr);
+	/**
+	 * New API
+	 */
+	bool AddServiceRecord(const char *pName, const mdns::Services service, const char *pTextContent = nullptr, const uint16_t nPort = 0);
 
 	void Print();
-
-	void SetName(const char *pName);
-
-	bool AddServiceRecord(const char* pName, const char *pServName, uint16_t nPort, mdns::Protocol nProtocol = mdns::Protocol::UDP, const char* pTextContent = nullptr);
+//	void SendAnnouncement();
+	void Run();
 
 private:
+	void SetName(const char *pName);
 	void Parse();
 	void HandleRequest(uint16_t nQuestions);
 
@@ -108,7 +117,6 @@ private:
 #endif
 
 private:
-	static uint32_t s_nMulticastIp;
 	static int32_t s_nHandle;
 	static uint32_t s_nRemoteIp;
 	static uint16_t s_nRemotePort;

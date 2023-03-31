@@ -26,6 +26,7 @@
 #include <cstdint>
 #include <cstring>
 #include <cstdio>
+#include <algorithm>
 #include <cassert>
 
 #include "dhcp_internal.h"
@@ -125,7 +126,7 @@ __attribute__((hot)) void udp_handle(struct t_udp *pUdp) {
 
 	auto *p_queue_entry = &s_data[nPortIndex];
 	const auto nDataLength = static_cast<uint16_t>(__builtin_bswap16(pUdp->udp.len) - UDP_HEADER_SIZE);
-	const auto i = MIN(UDP_DATA_SIZE, nDataLength);
+	const auto i = std::min(static_cast<uint16_t>(UDP_DATA_SIZE), nDataLength);
 
 	net_memcpy(p_queue_entry->data, pUdp->udp.data, i);
 
@@ -189,7 +190,7 @@ uint16_t udp_recv1(int nIndex, uint8_t *pData, uint16_t nSize, uint32_t *pFromIp
 	}
 
 	auto *p_data = &s_data[nIndex];
-	const auto i = MIN(nSize, p_data->size);
+	const auto i = std::min(nSize, p_data->size);
 
 	net_memcpy(pData, p_data->data, i);
 
@@ -225,7 +226,6 @@ uint16_t udp_recv2(int nIndex, const uint8_t **pData, uint32_t *FromIp, uint16_t
 int udp_send(int nIndex, const uint8_t *pData, uint16_t nSize, uint32_t RemoteIp, uint16_t RemotePort) {
 	assert(nIndex >= 0);
 	assert(nIndex < UDP_MAX_PORTS_ALLOWED);
-
 	_pcast32 dst;
 
 	if (__builtin_expect ((s_ports_allowed[nIndex] == 0), 0)) {
@@ -260,7 +260,8 @@ int udp_send(int nIndex, const uint8_t *pData, uint16_t nSize, uint32_t RemoteIp
 					dst.u32 = RemoteIp;
 					memcpy(s_send_packet.ip4.dst, dst.u8, IPv4_ADDR_LEN);
 				} else {
-					console_error("ARP lookup failed -> default gateway\n");
+					console_error("ARP lookup failed -> default gateway :");
+					printf(IPSTR " [%d]\n", IP2STR(RemoteIp), s_ports_allowed[nIndex]);
 					return -3;
 				}
 			} else {
@@ -288,7 +289,7 @@ int udp_send(int nIndex, const uint8_t *pData, uint16_t nSize, uint32_t RemoteIp
 	s_send_packet.udp.destination_port = __builtin_bswap16(RemotePort);
 	s_send_packet.udp.len = __builtin_bswap16((nSize + UDP_HEADER_SIZE));
 
-	net_memcpy(s_send_packet.udp.data, pData, MIN(UDP_DATA_SIZE, nSize));
+	net_memcpy(s_send_packet.udp.data, pData, std::min(static_cast<uint16_t>(UDP_DATA_SIZE), nSize));
 
 	emac_eth_send(reinterpret_cast<void *>(&s_send_packet), nSize + UDP_PACKET_HEADERS_SIZE);
 

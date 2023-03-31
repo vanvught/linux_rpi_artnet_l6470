@@ -2,7 +2,7 @@
  * @file network.h
  *
  */
-/* Copyright (C) 2017-2022 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2017-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -35,6 +35,7 @@
 #define MACSTR "%.2x:%.2x:%.2x:%.2x:%.2x:%.2x"
 
 namespace network {
+static constexpr auto STORE = 96;				///< Configuration store in bytes
 static constexpr auto IP_SIZE = 4U;
 static constexpr auto MAC_SIZE = 6U;
 static constexpr auto HOSTNAME_SIZE = 64U;		///< Including a terminating null byte.

@@ -80,6 +80,13 @@ void __attribute__((cold)) net_init(const uint8_t *const pMacAddress, struct ip_
 
 	s_isDhcp = *bUseDhcp;
 
+	if (!arp_do_probe()) {
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(g_mac_address));
+		arp_send_announcement();
+	} else {
+		console_error("IP Conflict!\n");
+	}
+
 	DEBUG_EXIT
 }
 
@@ -96,6 +103,13 @@ void net_set_ip(uint32_t ip) {
 
 	arp_init();
 	ip_set_ip();
+
+	if (!arp_do_probe()) {
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(g_mac_address));
+		arp_send_announcement();
+	} else {
+		console_error("IP Conflict!\n");
+	}
 }
 
 void net_set_gw(uint32_t gw) {
@@ -126,6 +140,14 @@ bool net_set_dhcp(struct ip_info *p_ip_info, const char *const pHostname, bool *
 	}
 
 	s_isDhcp = isDhcp;
+
+	if (!arp_do_probe()) {
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(g_mac_address));
+		arp_send_announcement();
+	} else {
+		console_error("IP Conflict!\n");
+	}
+
 	return isDhcp;
 }
 
@@ -149,6 +171,10 @@ bool net_set_zeroconf(struct ip_info *p_ip_info) {
 		}
 
 		s_isDhcp = false;
+
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(g_mac_address));
+		arp_send_announcement();
+
 		return true;
 	}
 

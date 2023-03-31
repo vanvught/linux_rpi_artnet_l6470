@@ -304,7 +304,7 @@ private:
 
 	QueuedConfig m_QueuedConfig;
 
-    bool isQueuedMaskSet(uint32_t nMask) {
+    bool isQueuedMaskSet(const uint32_t nMask) {
     	return (m_QueuedConfig.nMask & nMask) == nMask;
     }
 

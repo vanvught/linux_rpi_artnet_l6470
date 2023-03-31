@@ -83,7 +83,7 @@ bool RDMSubDevicesParams::Load() {
 	if (m_pRDMSubDevicesParamsStore != nullptr) {
 		m_pRDMSubDevicesParamsStore->Copy(&m_Params);
 		// Sanity check
-		if (m_Params.nCount >= rdm::subdevices::max) {
+		if (m_Params.nCount >= rdm::subdevices::MAX) {
 			memset(&m_Params, 0, sizeof(struct rdm::subdevicesparams::Params));
 		}
 	} else {
@@ -253,7 +253,7 @@ void RDMSubDevicesParams::callbackFunction(const char *pLine) {
 			}
 		}
 
-		if (m_Params.nCount == rdm::subdevices::max) {
+		if (m_Params.nCount == rdm::subdevices::MAX) {
 			return;
 		}
 

@@ -277,7 +277,7 @@ int32_t Network::End(uint16_t nPort) {
 	for (i = 0; i < max::PORTS_ALLOWED; i++) {
 		if (s_ports_allowed[i] == nPort) {
 			s_ports_allowed[i] = 0;
-			printf("close");
+			puts("close");
 
 			if (close(snHandles[i]) == -1) {
 				perror("unbind");

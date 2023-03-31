@@ -103,7 +103,6 @@ public:
 	void Stop() {
 		DEBUG_ENTRY
 
-		MDNS::Stop();
 		Network::Get()->End(static_cast<uint16_t>(m_nPort + 1U));
 		Network::Get()->End(m_nPort);
 

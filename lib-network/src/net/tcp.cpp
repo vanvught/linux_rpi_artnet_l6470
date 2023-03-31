@@ -829,7 +829,7 @@ __attribute__((hot)) void tcp_handle(struct t_tcp *pTcp) {
 			return;
 		}
 
-		// third check security and precedence. Nothing todo here
+		// third check security and precedence. No code needed here
 
 		/* fourth, check the SYN bit, *//* Page 71 */
 		if (pTcp->tcp.control & Control::SYN) {
@@ -941,7 +941,7 @@ __attribute__((hot)) void tcp_handle(struct t_tcp *pTcp) {
 			break;
 		}
 
-		// sixth, check the URG bit. Nothing todo here
+		// sixth, check the URG bit. No code needed here
 
 		// seventh, process the segment text
 		switch (pTCB->state) {
@@ -1125,7 +1125,7 @@ void tcp_write(const int32_t nHandleListen, const uint8_t *pBuffer, uint16_t nLe
 	assert(pBuffer != nullptr);
 	assert(nHandleConnection < MAX_TCBS_ALLOWED);
 
-	nLength = MIN(nLength, TCP_DATA_SIZE);
+	nLength = std::min(nLength, static_cast<uint16_t>(TCP_DATA_SIZE));
 
 	auto *pTCB = &s_Port[nHandleListen].TCB[nHandleConnection];
 

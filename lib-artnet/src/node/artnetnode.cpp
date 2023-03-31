@@ -421,15 +421,16 @@ void ArtNetNode::Run() {
 	GetType();
 
 	switch (m_ArtNetPacket.OpCode) {
-	case OP_POLL:
-		HandlePoll();
-		break;
 #if (LIGHTSET_PORTS > 0)		
 	case OP_DMX:
-		HandleDmx();
+		if (m_pLightSet != nullptr) {
+			HandleDmx();
+		}
 		break;
 	case OP_SYNC:
-		HandleSync();
+		if (m_pLightSet != nullptr) {
+			HandleSync();
+		}
 		break;
 #endif		
 	case OP_ADDRESS:
@@ -437,7 +438,9 @@ void ArtNetNode::Run() {
 		break;
 #if defined (ARTNET_HAVE_TIMECODE)		
 	case OP_TIMECODE:
-		HandleTimeCode();
+		if (m_pArtNetTimeCode != nullptr) {
+			HandleTimeCode();
+		}
 		break;
 #endif		
 	case OP_TIMESYNC:
@@ -472,7 +475,10 @@ void ArtNetNode::Run() {
 	case OP_TRIGGER:
 		HandleTrigger();
 		break;
-#endif		
+#endif
+	case OP_POLL:
+		HandlePoll();
+		break;
 	default:
 		// ArtNet but OpCode is not implemented
 		// Just skip ... no error

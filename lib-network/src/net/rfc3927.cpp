@@ -42,12 +42,13 @@
 
 static const uint32_t s_ip_begin = 0x0100FEA9;	// 169.254.0.1
 static const uint32_t s_ip_end = 0xFFFEFEA9;	// 169.254.254.255
-static uint8_t s_mac_address_arp_reply[6] __attribute__ ((aligned (4)));
 
 extern struct ip_info g_ip_info;
 extern uint8_t g_mac_address[ETH_ADDR_LEN];
 
 bool rfc3927() {
+	DEBUG_ENTRY
+
 	const auto mask = g_mac_address[3] + (g_mac_address[4] << 8);
 	auto ip = s_ip_begin | static_cast<uint32_t>(mask << 16);
 
@@ -59,11 +60,13 @@ bool rfc3927() {
 	do  {
 		DEBUG_PRINTF(IPSTR, IP2STR(ip));
 
-		if (0 == arp_cache_lookup(ip, s_mac_address_arp_reply)) {
-			g_ip_info.ip.addr = ip;
+		g_ip_info.ip.addr = ip;
+
+		if (!arp_do_probe()) {
 			g_ip_info.gw.addr = ip;
 			g_ip_info.netmask.addr = 0x0000FFFF;
 
+			DEBUG_EXIT
 			return true;
 		}
 
@@ -80,5 +83,6 @@ bool rfc3927() {
 	g_ip_info.gw.addr = 0;
 	g_ip_info.netmask.addr = 0;
 
+	DEBUG_EXIT
 	return false;
 }

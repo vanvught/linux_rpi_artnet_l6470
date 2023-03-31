@@ -36,7 +36,6 @@
 
 #include "debug.h"
 
-#define MDNS_MULTICAST_ADDRESS	"224.0.0.251"
 #define MDNS_TLD                ".local"
 #define DNS_SD_SERVICE          "_services._dns-sd._udp.local"
 #define MDNS_RESPONSE_TTL     	(4500)    ///< (in seconds)
@@ -74,29 +73,58 @@ struct TmDNSHeader {
 	uint16_t additionalCount;
 } __attribute__((__packed__));
 
-using namespace mdns;
+namespace mdns {
 
-uint32_t MDNS::s_nMulticastIp;
+static constexpr char DOMAIN_LOCAL[]		= { 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_REVERSE[]		= { 7 , 'i','n','-','a','d','d','r', 4 , 'a','r','p','a', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_CONFIG[]		= { 7 , '_','c','o','n','f','i','g', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_TFTP[]			= { 5 , '_','t','f','t','p', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_HTTP[]			= { 5 , '_','h','t','t','p', 4 , '_', 't', 'c', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_RDMNET_LLRP[]	= { 12, '_','r','d','m','n','e','t','-','l','l','r','p', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_NTP[]			= { 4 , '_','n','t','p', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_MIDI[]			= { 11, '_','a','p','p','l','e','-','m','i','d','i', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_OSC[]			= { 4 , '_','o','s','c', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_DDP[]			= { 4 , '_','d','d','p', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_PP[]			= { 3 , '_','p','p', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+
+struct Service {
+	const char *pDomain;
+	const uint16_t nLength;
+	const uint16_t nPortDefault;
+};
+
+}  // namespace mdns
+
+static constexpr mdns::Service s_Services[] {
+		{mdns::DOMAIN_CONFIG		, sizeof(mdns::DOMAIN_CONFIG)		, 0x2905 },
+		{mdns::DOMAIN_TFTP			, sizeof(mdns::DOMAIN_TFTP)			, 69 },
+		{mdns::DOMAIN_HTTP			, sizeof(mdns::DOMAIN_HTTP)			, 80 },
+		{mdns::DOMAIN_RDMNET_LLRP	, sizeof(mdns::DOMAIN_RDMNET_LLRP)	, 5569 },
+		{mdns::DOMAIN_NTP			, sizeof(mdns::DOMAIN_NTP)			, 123 },
+		{mdns::DOMAIN_MIDI			, sizeof(mdns::DOMAIN_MIDI)			, 5004 },
+		{mdns::DOMAIN_OSC			, sizeof(mdns::DOMAIN_OSC)			, 0 },
+		{mdns::DOMAIN_DDP			, sizeof(mdns::DOMAIN_DDP)			, 4048 },
+		{mdns::DOMAIN_PP			, sizeof(mdns::DOMAIN_PP)			, 5078 }
+};
+
 int32_t MDNS::s_nHandle = -1;
 uint32_t MDNS::s_nRemoteIp;
 uint16_t MDNS::s_nRemotePort;
 uint16_t MDNS::s_nBytesReceived;
 uint32_t MDNS::s_nLastAnnounceMillis;
 uint32_t MDNS::s_nDNSServiceRecords;
-ServiceRecord MDNS::s_ServiceRecords[SERVICE_RECORDS_MAX];
-RecordData MDNS::s_AnswerLocalIp;
-RecordData MDNS::s_ServiceRecordsData;
+mdns::ServiceRecord MDNS::s_ServiceRecords[mdns::SERVICE_RECORDS_MAX];
+mdns::RecordData MDNS::s_AnswerLocalIp;
+mdns::RecordData MDNS::s_ServiceRecordsData;
 char *MDNS::s_pName;
 uint8_t *MDNS::s_pBuffer;
 
-static constexpr const char *get_protocol_name(Protocol nProtocol) {
-	return nProtocol == Protocol::TCP ? "_tcp" MDNS_TLD : "_udp" MDNS_TLD;
+static constexpr const char *get_protocol_name(mdns::Protocols nProtocol) {
+	return nProtocol == mdns::Protocols::TCP ? "_tcp" MDNS_TLD : "_udp" MDNS_TLD;
 }
 
 MDNS::MDNS() {
-	struct in_addr group_ip;
-	static_cast<void>(inet_aton(MDNS_MULTICAST_ADDRESS, &group_ip));
-	s_nMulticastIp = group_ip.s_addr;
+
 }
 
 MDNS::~MDNS() {
@@ -104,7 +132,7 @@ MDNS::~MDNS() {
 		delete[] s_pName;
 	}
 
-	for (uint32_t i = 0; i < SERVICE_RECORDS_MAX; i++) {
+	for (uint32_t i = 0; i < mdns::SERVICE_RECORDS_MAX; i++) {
 		if (s_ServiceRecords[i].pName != nullptr) {
 			delete[] s_ServiceRecords[i].pName;
 		}
@@ -117,15 +145,18 @@ MDNS::~MDNS() {
 			delete[] s_ServiceRecords[i].pTextContent;
 		}
 	}
+
+	Network::Get()->End(mdns::UDP_PORT);
+	s_nHandle = -1;
 }
 
 void MDNS::Start() {
 	assert(s_nHandle == -1);
 
-	s_nHandle = Network::Get()->Begin(UDP_PORT);
+	s_nHandle = Network::Get()->Begin(mdns::UDP_PORT);
 	assert(s_nHandle != -1);
 
-	Network::Get()->JoinGroup(s_nHandle, s_nMulticastIp);
+	Network::Get()->JoinGroup(s_nHandle, mdns::MULTICAST_ADDRESS);
 
 	if (s_pName == nullptr) {
 		SetName(Network::Get()->GetHostName());
@@ -133,13 +164,8 @@ void MDNS::Start() {
 
 	CreateAnswerLocalIpAddress();
 
-	Network::Get()->SendTo(s_nHandle, s_AnswerLocalIp.aBuffer, static_cast<uint16_t>(s_AnswerLocalIp.nSize), s_nMulticastIp, UDP_PORT);
+	Network::Get()->SendTo(s_nHandle, s_AnswerLocalIp.aBuffer, static_cast<uint16_t>(s_AnswerLocalIp.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
 	Network::Get()->SetDomainName(&MDNS_TLD[1]);
-}
-
-void MDNS::Stop() {
-	Network::Get()->End(mdns::UDP_PORT);
-	s_nHandle = -1;
 }
 
 void MDNS::SetName(const char *pName) {
@@ -245,13 +271,43 @@ uint32_t MDNS::DecodeDNSNameNotation(const char *pDNSNameNotation, char *pString
 	return 1 + nSize;
 }
 
-bool MDNS::AddServiceRecord(const char *pName, const char *pServName, uint16_t nPort, mdns::Protocol nProtocol, const char *pTextContent) {
+bool MDNS::AddServiceRecord(const char *pName, const mdns::Services service, const char *pTextContent, const uint16_t nPort) {
+	DEBUG_ENTRY
+	assert(service < mdns::Services::LAST_NOT_USED);
+
+	const auto nIndex = static_cast<uint32_t>(service);
+	const uint16_t nNewPort = nPort != 0 ? nPort : s_Services[nIndex].nPortDefault;
+
+	char pServName[16];
+
+	const uint32_t nSize = s_Services[nIndex].pDomain[0];
+	assert(nSize < 14);
+	pServName[0] = '.';
+	memcpy(&pServName[1], &s_Services[nIndex].pDomain[1], nSize);
+	pServName[nSize + 1] = '\0';
+
+	debug_dump(pServName, static_cast<uint16_t>(nSize + 2U));
+
+	auto nProtocol = mdns::Protocols::UDP;
+
+	const auto cProtocol = s_Services[nIndex].pDomain[nSize + 3];
+	DEBUG_PRINTF("cProtocol=%c", cProtocol);
+
+	if (cProtocol == 't') {
+		nProtocol = mdns::Protocols::TCP;
+	}
+
+	DEBUG_EXIT
+	return AddServiceRecord(pName, const_cast<const char *>(pServName), nNewPort, nProtocol, pTextContent);
+}
+
+bool MDNS::AddServiceRecord(const char *pName, const char *pServName, uint16_t nPort, mdns::Protocols nProtocol, const char *pTextContent) {
 	assert(pServName != nullptr);
 	assert(nPort != 0);
 
 	uint32_t i;
 
-	for (i = 0; i < SERVICE_RECORDS_MAX; i++) {
+	for (i = 0; i < mdns::SERVICE_RECORDS_MAX; i++) {
 		if (s_ServiceRecords[i].pName == nullptr) {
 			s_ServiceRecords[i].nPort = nPort;
 			s_ServiceRecords[i].nProtocol = nProtocol;
@@ -290,13 +346,13 @@ bool MDNS::AddServiceRecord(const char *pName, const char *pServName, uint16_t n
 		}
 	}
 
-	if (i == SERVICE_RECORDS_MAX) {
+	if (i == mdns::SERVICE_RECORDS_MAX) {
 		assert(0);
 		return false;
 	}
 
 	DEBUG_PRINTF("[%d].nPort = %d", i, s_ServiceRecords[i].nPort);
-	DEBUG_PRINTF("[%d].nProtocol = [%s]", i, s_ServiceRecords[i].nProtocol == Protocol::TCP ? "TCP" : "UDP");
+	DEBUG_PRINTF("[%d].nProtocol = [%s]", i, s_ServiceRecords[i].nProtocol == mdns::Protocols::TCP ? "TCP" : "UDP");
 	DEBUG_PRINTF("[%d].pName = [%s]", i, s_ServiceRecords[i].pName);
 	DEBUG_PRINTF("[%d].pServName = [%s]", i, s_ServiceRecords[i].pServName);
 	DEBUG_PRINTF("[%d].pTextContent = [%s]", i, s_ServiceRecords[i].pTextContent != nullptr ? s_ServiceRecords[i].pTextContent : "><");
@@ -305,7 +361,7 @@ bool MDNS::AddServiceRecord(const char *pName, const char *pServName, uint16_t n
 
 	DEBUG_PRINTF("%d:%d %p -> %d " IPSTR, i, s_nHandle, reinterpret_cast<void *>(&s_ServiceRecordsData.aBuffer), s_ServiceRecordsData.nSize, IP2STR(s_nMulticastIp));
 
-	Network::Get()->SendTo(s_nHandle, &s_ServiceRecordsData.aBuffer, static_cast<uint16_t>(s_ServiceRecordsData.nSize), s_nMulticastIp, UDP_PORT);
+	Network::Get()->SendTo(s_nHandle, &s_ServiceRecordsData.aBuffer, static_cast<uint16_t>(s_ServiceRecordsData.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
 	return true;
 }
 
@@ -504,16 +560,16 @@ void MDNS::HandleRequest(uint16_t nQuestions) {
 			DEBUG_PRINTF("%s:%s", s_pName, DnsName);
 
 			if ((strcmp(s_pName, DnsName) == 0) && (nType == DNSRecordTypeA)) {
-				Network::Get()->SendTo(s_nHandle, s_AnswerLocalIp.aBuffer, static_cast<uint16_t>(s_AnswerLocalIp.nSize), s_nMulticastIp, UDP_PORT);
+				Network::Get()->SendTo(s_nHandle, s_AnswerLocalIp.aBuffer, static_cast<uint16_t>(s_AnswerLocalIp.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
 			}
 
 			const auto isDnsDs = (strcmp(DNS_SD_SERVICE, DnsName) == 0);
 
-			for (uint32_t i = 0; i < SERVICE_RECORDS_MAX; i++) {
+			for (uint32_t i = 0; i < mdns::SERVICE_RECORDS_MAX; i++) {
 				if (s_ServiceRecords[i].pName != nullptr) {
 					if ((isDnsDs || (strcmp(s_ServiceRecords[i].pServName, DnsName) == 0)) && (nType == DNSRecordTypePTR) ) {
 						CreateMDNSMessage(i);
-						Network::Get()->SendTo(s_nHandle, &s_ServiceRecordsData.aBuffer, static_cast<uint16_t>(s_ServiceRecordsData.nSize), s_nMulticastIp, UDP_PORT);
+						Network::Get()->SendTo(s_nHandle, &s_ServiceRecordsData.aBuffer, static_cast<uint16_t>(s_ServiceRecordsData.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
 					}
 				}
 			}
@@ -550,7 +606,7 @@ void MDNS::Run() {
 
 	s_nBytesReceived = Network::Get()->RecvFrom(s_nHandle, const_cast<const void **>(reinterpret_cast<void **>(&s_pBuffer)), &s_nRemoteIp, &s_nRemotePort);
 
-	if ((s_nRemotePort == UDP_PORT) && (s_nBytesReceived > sizeof(struct TmDNSHeader))) {
+	if ((s_nRemotePort == mdns::UDP_PORT) && (s_nBytesReceived > sizeof(struct TmDNSHeader))) {
 		Parse();
 	}
 
@@ -577,7 +633,7 @@ void MDNS::Print() {
 		return;
 	}
 	printf(" Name : %s\n", s_pName);
-	for (uint32_t i = 0; i < SERVICE_RECORDS_MAX; i++) {
+	for (uint32_t i = 0; i < mdns::SERVICE_RECORDS_MAX; i++) {
 		if (s_ServiceRecords[i].pName != nullptr) {
 			printf(" %s %d %s\n", s_ServiceRecords[i].pServName, s_ServiceRecords[i].nPort, s_ServiceRecords[i].pTextContent == nullptr ? "" : s_ServiceRecords[i].pTextContent);
 		}
@@ -586,7 +642,7 @@ void MDNS::Print() {
 
 #ifndef NDEBUG
 void MDNS::Dump(const struct TmDNSHeader *pmDNSHeader, uint16_t nFlags) {
-	Flags tmDNSFlags;
+	mdns::Flags tmDNSFlags;
 
 	tmDNSFlags.rcode = nFlags & 0xf;
 	tmDNSFlags.cd = (nFlags >> 4) & 1;
