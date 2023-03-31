@@ -53,27 +53,27 @@ static constexpr auto TLC59711_TYPES_MAX_NAME_LENGTH = 10U;
 static constexpr char sLedTypes[static_cast<uint32_t>(tlc59711::Type::UNDEFINED)][TLC59711_TYPES_MAX_NAME_LENGTH] = { "TLC59711\0", "TLC59711W" };
 
 TLC59711DmxParams::TLC59711DmxParams(TLC59711DmxParamsStore *pTLC59711ParamsStore): m_pLC59711ParamsStore(pTLC59711ParamsStore) {
-	m_tTLC59711Params.nSetList = 0;
-	m_tTLC59711Params.nLedType = static_cast<uint8_t>(tlc59711::Type::RGB);
-	m_tTLC59711Params.nLedCount = 4;
-	m_tTLC59711Params.nDmxStartAddress = lightset::dmx::START_ADDRESS_DEFAULT;
-	m_tTLC59711Params.nSpiSpeedHz = 0;
+	m_Params.nSetList = 0;
+	m_Params.nType = static_cast<uint8_t>(tlc59711::Type::RGB);
+	m_Params.nCount = 4;
+	m_Params.nDmxStartAddress = lightset::dmx::START_ADDRESS_DEFAULT;
+	m_Params.nSpiSpeedHz = 0;
 }
 
 bool TLC59711DmxParams::Load() {
-	m_tTLC59711Params.nSetList = 0;
+	m_Params.nSetList = 0;
 
 #if !defined(DISABLE_FS)
 	ReadConfigFile configfile(TLC59711DmxParams::staticCallbackFunction, this);
 
 	if (configfile.Read(DevicesParamsConst::FILE_NAME)) {
 		if (m_pLC59711ParamsStore != nullptr) {
-			m_pLC59711ParamsStore->Update(&m_tTLC59711Params);
+			m_pLC59711ParamsStore->Update(&m_Params);
 		}
 	} else
 #endif
 	if (m_pLC59711ParamsStore != nullptr) {
-		m_pLC59711ParamsStore->Copy(&m_tTLC59711Params);
+		m_pLC59711ParamsStore->Copy(&m_Params);
 	} else {
 		return false;
 	}
@@ -90,13 +90,13 @@ void TLC59711DmxParams::Load(const char *pBuffer, uint32_t nLength) {
 		return;
 	}
 
-	m_tTLC59711Params.nSetList = 0;
+	m_Params.nSetList = 0;
 
 	ReadConfigFile config(TLC59711DmxParams::staticCallbackFunction, this);
 
 	config.Read(pBuffer, nLength);
 
-	m_pLC59711ParamsStore->Update(&m_tTLC59711Params);
+	m_pLC59711ParamsStore->Update(&m_Params);
 }
 
 void TLC59711DmxParams::callbackFunction(const char* pLine) {
@@ -109,13 +109,13 @@ void TLC59711DmxParams::callbackFunction(const char* pLine) {
 	if (Sscan::Char(pLine, DevicesParamsConst::TYPE, buffer, nLength) == Sscan::OK) {
 		buffer[nLength] = '\0';
 		if (strcasecmp(buffer, sLedTypes[static_cast<uint8_t>(tlc59711::Type::RGB)]) == 0) {
-			m_tTLC59711Params.nLedType = static_cast<uint8_t>(tlc59711::Type::RGB);
-			m_tTLC59711Params.nSetList |= tlc59711dmxparams::Mask::TYPE;
+			m_Params.nType = static_cast<uint8_t>(tlc59711::Type::RGB);
+			m_Params.nSetList |= tlc59711dmxparams::Mask::TYPE;
 		} else if (strcasecmp(buffer, sLedTypes[static_cast<uint8_t>(tlc59711::Type::RGBW)]) == 0) {
-			m_tTLC59711Params.nLedType = static_cast<uint8_t>(tlc59711::Type::RGBW);
-			m_tTLC59711Params.nSetList |= tlc59711dmxparams::Mask::TYPE;
+			m_Params.nType = static_cast<uint8_t>(tlc59711::Type::RGBW);
+			m_Params.nSetList |= tlc59711dmxparams::Mask::TYPE;
 		} else {
-			m_tTLC59711Params.nSetList &= ~tlc59711dmxparams::Mask::TYPE;
+			m_Params.nSetList &= ~tlc59711dmxparams::Mask::TYPE;
 		}
 		return;
 	}
@@ -124,11 +124,11 @@ void TLC59711DmxParams::callbackFunction(const char* pLine) {
 
 	if (Sscan::Uint8(pLine, DevicesParamsConst::COUNT, value8) == Sscan::OK) {
 		if ((value8 != 0) && (value8 <= 170)) {
-			m_tTLC59711Params.nLedCount = value8;
-			m_tTLC59711Params.nSetList |= tlc59711dmxparams::Mask::COUNT;
+			m_Params.nCount = value8;
+			m_Params.nSetList |= tlc59711dmxparams::Mask::COUNT;
 		} else {
-			m_tTLC59711Params.nLedCount = 4;
-			m_tTLC59711Params.nSetList &= ~tlc59711dmxparams::Mask::COUNT;
+			m_Params.nCount = 4;
+			m_Params.nSetList &= ~tlc59711dmxparams::Mask::COUNT;
 		}
 		return;
 	}
@@ -137,11 +137,11 @@ void TLC59711DmxParams::callbackFunction(const char* pLine) {
 
 	if (Sscan::Uint16(pLine, LightSetParamsConst::DMX_START_ADDRESS, nValue16) == Sscan::OK) {
 		if ((nValue16 != 0) && nValue16 <= (lightset::dmx::UNIVERSE_SIZE) && (nValue16 != lightset::dmx::START_ADDRESS_DEFAULT)) {
-			m_tTLC59711Params.nDmxStartAddress = nValue16;
-			m_tTLC59711Params.nSetList |= tlc59711dmxparams::Mask::DMX_START_ADDRESS;
+			m_Params.nDmxStartAddress = nValue16;
+			m_Params.nSetList |= tlc59711dmxparams::Mask::DMX_START_ADDRESS;
 		} else {
-			m_tTLC59711Params.nDmxStartAddress = lightset::dmx::START_ADDRESS_DEFAULT;
-			m_tTLC59711Params.nSetList &= ~tlc59711dmxparams::Mask::DMX_START_ADDRESS;
+			m_Params.nDmxStartAddress = lightset::dmx::START_ADDRESS_DEFAULT;
+			m_Params.nSetList &= ~tlc59711dmxparams::Mask::DMX_START_ADDRESS;
 		}
 		return;
 	}
@@ -149,12 +149,12 @@ void TLC59711DmxParams::callbackFunction(const char* pLine) {
 	uint32_t value32;
 
 	if (Sscan::Uint32(pLine, DevicesParamsConst::SPI_SPEED_HZ, value32) == Sscan::OK) {
-		m_tTLC59711Params.nSpiSpeedHz = value32;
+		m_Params.nSpiSpeedHz = value32;
 
 		if (value32 != 0) {
-			m_tTLC59711Params.nSetList |= tlc59711dmxparams::Mask::SPI_SPEED;
+			m_Params.nSetList |= tlc59711dmxparams::Mask::SPI_SPEED;
 		} else {
-			m_tTLC59711Params.nSetList &= ~tlc59711dmxparams::Mask::SPI_SPEED;
+			m_Params.nSetList &= ~tlc59711dmxparams::Mask::SPI_SPEED;
 		}
 		return;
 	}
@@ -173,17 +173,17 @@ void TLC59711DmxParams::Builder(const struct tlc59711dmxparams::Params *pParams,
 	assert(pBuffer != nullptr);
 
 	if (pParams != nullptr) {
-		memcpy(&m_tTLC59711Params, pParams, sizeof(struct tlc59711dmxparams::Params));
+		memcpy(&m_Params, pParams, sizeof(struct tlc59711dmxparams::Params));
 	} else {
-		m_pLC59711ParamsStore->Copy(&m_tTLC59711Params);
+		m_pLC59711ParamsStore->Copy(&m_Params);
 	}
 
 	PropertiesBuilder builder(DevicesParamsConst::FILE_NAME, pBuffer, nLength);
 
-	builder.Add(DevicesParamsConst::TYPE, GetType(static_cast<tlc59711::Type>(m_tTLC59711Params.nLedType)), isMaskSet(tlc59711dmxparams::Mask::TYPE));
-	builder.Add(DevicesParamsConst::COUNT, m_tTLC59711Params.nLedCount, isMaskSet(tlc59711dmxparams::Mask::COUNT));
-	builder.Add(LightSetParamsConst::DMX_START_ADDRESS, m_tTLC59711Params.nDmxStartAddress, isMaskSet(tlc59711dmxparams::Mask::DMX_START_ADDRESS));
-	builder.Add(DevicesParamsConst::SPI_SPEED_HZ, m_tTLC59711Params.nSpiSpeedHz, isMaskSet(tlc59711dmxparams::Mask::SPI_SPEED));
+	builder.Add(DevicesParamsConst::TYPE, GetType(static_cast<tlc59711::Type>(m_Params.nType)), isMaskSet(tlc59711dmxparams::Mask::TYPE));
+	builder.Add(DevicesParamsConst::COUNT, m_Params.nCount, isMaskSet(tlc59711dmxparams::Mask::COUNT));
+	builder.Add(LightSetParamsConst::DMX_START_ADDRESS, m_Params.nDmxStartAddress, isMaskSet(tlc59711dmxparams::Mask::DMX_START_ADDRESS));
+	builder.Add(DevicesParamsConst::SPI_SPEED_HZ, m_Params.nSpiSpeedHz, isMaskSet(tlc59711dmxparams::Mask::SPI_SPEED));
 
 	nSize = builder.GetSize();
 
@@ -207,26 +207,26 @@ void TLC59711DmxParams::Set(TLC59711Dmx *pTLC59711Dmx) {
 	assert(pTLC59711Dmx != nullptr);
 
 	if (isMaskSet(tlc59711dmxparams::Mask::TYPE)) {
-		pTLC59711Dmx->SetLEDType(static_cast<tlc59711::Type>(m_tTLC59711Params.nLedType));
+		pTLC59711Dmx->SetType(static_cast<tlc59711::Type>(m_Params.nType));
 	}
 
 	if (isMaskSet(tlc59711dmxparams::Mask::COUNT)) {
-		pTLC59711Dmx->SetLEDCount(m_tTLC59711Params.nLedCount);
+		pTLC59711Dmx->SetCount(m_Params.nCount);
 	}
 
 	if (isMaskSet(tlc59711dmxparams::Mask::DMX_START_ADDRESS)) {
-		pTLC59711Dmx->SetDmxStartAddress(m_tTLC59711Params.nDmxStartAddress);
+		pTLC59711Dmx->SetDmxStartAddress(m_Params.nDmxStartAddress);
 	}
 
 	if (isMaskSet(tlc59711dmxparams::Mask::SPI_SPEED)) {
-		pTLC59711Dmx->SetSpiSpeedHz(m_tTLC59711Params.nSpiSpeedHz);
+		pTLC59711Dmx->SetSpiSpeedHz(m_Params.nSpiSpeedHz);
 	}
 }
 
 void TLC59711Dmx::Print() {
 	printf("PWM parameters\n");
-	printf(" Type  : %s [%d]\n", TLC59711DmxParams::GetType(m_LEDType), static_cast<uint32_t>(m_LEDType)); //TODO Move TLC59711DmxParams to TLC59711
-	printf(" Count : %d %s\n", m_nLEDCount, m_LEDType == tlc59711::Type::RGB ? "RGB" : "RGBW");
+	printf(" Type  : %s [%d]\n", TLC59711DmxParams::GetType(m_type), static_cast<uint32_t>(m_type)); //TODO Move TLC59711DmxParams to TLC59711
+	printf(" Count : %d %s\n", m_nCount, m_type == tlc59711::Type::RGB ? "RGB" : "RGBW");
 	printf(" Clock : %d Hz %s {Default: %d Hz, Maximum %d Hz}\n", m_nSpiSpeedHz, (m_nSpiSpeedHz == 0 ? "Default" : ""), TLC59711SpiSpeed::DEFAULT, TLC59711SpiSpeed::MAX);
 	printf(" DMX   : StartAddress=%d, FootPrint=%d\n", m_nDmxStartAddress, m_nDmxFootprint);
 }
@@ -236,19 +236,19 @@ void TLC59711DmxParams::Dump() {
 	printf("%s::%s \'%s\':\n", __FILE__, __FUNCTION__, DevicesParamsConst::FILE_NAME);
 
 	if(isMaskSet(tlc59711dmxparams::Mask::TYPE)) {
-		printf(" %s=%s [%d]\n", DevicesParamsConst::TYPE, sLedTypes[m_tTLC59711Params.nLedType], static_cast<int>(m_tTLC59711Params.nLedType));
+		printf(" %s=%s [%d]\n", DevicesParamsConst::TYPE, sLedTypes[m_Params.nType], static_cast<int>(m_Params.nType));
 	}
 
 	if(isMaskSet(tlc59711dmxparams::Mask::COUNT)) {
-		printf(" %s=%d\n", DevicesParamsConst::COUNT, m_tTLC59711Params.nLedCount);
+		printf(" %s=%d\n", DevicesParamsConst::COUNT, m_Params.nCount);
 	}
 
 	if(isMaskSet(tlc59711dmxparams::Mask::DMX_START_ADDRESS)) {
-		printf(" %s=%d\n", LightSetParamsConst::DMX_START_ADDRESS, m_tTLC59711Params.nDmxStartAddress);
+		printf(" %s=%d\n", LightSetParamsConst::DMX_START_ADDRESS, m_Params.nDmxStartAddress);
 	}
 
 	if(isMaskSet(tlc59711dmxparams::Mask::SPI_SPEED)) {
-		printf(" %s=%d Hz\n", DevicesParamsConst::SPI_SPEED_HZ, m_tTLC59711Params.nSpiSpeedHz);
+		printf(" %s=%d Hz\n", DevicesParamsConst::SPI_SPEED_HZ, m_Params.nSpiSpeedHz);
 	}
 #endif
 }

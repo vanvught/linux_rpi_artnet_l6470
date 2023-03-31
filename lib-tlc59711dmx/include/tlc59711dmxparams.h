@@ -33,8 +33,8 @@
 namespace tlc59711dmxparams {
 struct Params {
     uint32_t nSetList;
-	uint8_t nLedType;
-	uint8_t nLedCount;
+	uint8_t nType;
+	uint8_t nCount;
 	uint16_t nDmxStartAddress;
     uint32_t nSpiSpeedHz;
 } __attribute__((packed));
@@ -73,11 +73,11 @@ public:
 	void Dump();
 
 	tlc59711::Type GetLedType() {
-		return static_cast<tlc59711::Type>(m_tTLC59711Params.nLedType);
+		return static_cast<tlc59711::Type>(m_Params.nType);
 	}
 
 	uint16_t GetLedCount() {
-		return m_tTLC59711Params.nLedCount;
+		return m_Params.nCount;
 	}
 
 	bool IsSetLedType() {
@@ -95,12 +95,12 @@ public:
 private:
     void callbackFunction(const char *pLine);
     bool isMaskSet(uint32_t nMask) {
-    	return (m_tTLC59711Params.nSetList & nMask) == nMask;
+    	return (m_Params.nSetList & nMask) == nMask;
     }
 
 private:
 	TLC59711DmxParamsStore *m_pLC59711ParamsStore;
-	tlc59711dmxparams::Params m_tTLC59711Params;
+	tlc59711dmxparams::Params m_Params;
 };
 
 #endif /* TLC59711DMXPARAMS_H_ */

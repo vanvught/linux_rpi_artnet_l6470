@@ -80,8 +80,7 @@ constexpr int16_t safe_range_min(const T& a)
 class RDMSensor {
 public:
 	RDMSensor(uint8_t nSensor);
-	virtual ~RDMSensor() {
-	}
+	virtual ~RDMSensor() {}
 
 public:
 	void SetType(uint8_t nType) {
@@ -115,6 +114,10 @@ public:
 	void SetDescription(const char *pDescription);
 
 	void Print();
+
+	uint8_t GetSensor() const {
+		return m_nSensor;
+	}
 
 	const struct rdm::sensor::Defintion* GetDefintion() {
 		return &m_tRDMSensorDefintion;

@@ -1,4 +1,4 @@
-DEFINES =RASPPI
+#DEFINES=NDEBUG
 
 EXTRA_INCLUDES = ../lib-tlc59711/include ../lib-tlc59711/include ../lib-lightset/include ../lib-properties/include
 

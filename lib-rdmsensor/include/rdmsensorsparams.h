@@ -29,21 +29,24 @@
 #include <cstdint>
 
 #include "rdmsensors.h"
+#include "rdmsensorstore.h"
 
 namespace rdm {
 namespace sensorsparams {
 struct Params {
-	uint32_t nCount;
+	uint32_t nDevices;
 	struct {
 		uint8_t nType;
 		uint8_t nAddress;
 		uint8_t nReserved;
-	} __attribute__((packed)) Entry[rdm::sensors::max];
+	} __attribute__((packed)) Entry[rdm::sensors::devices::MAX];
+	int16_t nCalibrate[rdm::sensors::MAX];
 } __attribute__((packed));
+
+static_assert(sizeof(struct Params) <= rdm::sensors::STORE, "struct Params is too large");
+
 }  // namespace sensorsparams
 }  // namespace rdm
-
-static_assert(sizeof(struct rdm::sensorsparams::Params) <= rdm::sensors::store, "struct rdm::sensorsparams::Params is too large");
 
 class RDMSensorsParamsStore {
 public:
@@ -65,7 +68,7 @@ public:
 
 	void Dump();
 
-	void Set();
+	void Set(RDMSensorStore *pRDMSensorStore = nullptr);
 
     static void staticCallbackFunction(void *p, const char *s);
 

@@ -98,7 +98,7 @@ int main(int argc, char **argv) {
 					for (uint8_t nChannel = 0; nChannel < 4; nChannel++) {
 						const auto adcValue = adc1.GetRaw(nChannel);
 						const auto vRef = adc1.GetVoltage(nChannel);
-						const auto v = voltage(vRef, R_ADDED[nChannel]);
+						const auto v = voltage(vRef);
 						const auto r = resistor(vRef) - R_HIGH;
 						const auto t = sensor::thermistor::temperature(r);
 						printf("%u:%u 0x%04x %1.3fV %1.1fV %uR -> %3.1fC\n", 1 + nChannel, nChannel, adcValue, vRef, v, r, t);
@@ -109,7 +109,7 @@ int main(int argc, char **argv) {
 					for (uint8_t nChannel = 0; nChannel < 4; nChannel++) {
 						const auto adcValue = adc2.GetRaw(nChannel);
 						const auto vRef = adc2.GetVoltage(nChannel);
-						const auto v = voltage(vRef);
+						const auto v = voltage(vRef, R_ADDED[nChannel]);
 						const auto r = resistor(vRef);
 						const auto t = sensor::thermistor::temperature(r);
 						printf("%u:%u 0x%04x %1.3fV %1.1fV %uR -> %3.1fC\n", 5 + nChannel, nChannel, adcValue, vRef, v, r, t);

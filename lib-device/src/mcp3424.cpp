@@ -60,11 +60,13 @@ MCP3424::MCP3424(uint8_t nAddress) : HAL_I2C(nAddress == 0  ? adc::mcp3424::I2C_
 	DEBUG_ENTRY
 	DEBUG_PRINTF("nAddress=%x", nAddress);
 
-	SetGain(adc::mcp3424::Gain::PGA_X1);
-	SetResolution(adc::mcp3424::Resolution::SAMPLE_12BITS);
-	SetConversion(adc::mcp3424::Conversion::CONTINUOUS);
-
 	m_IsConnected = HAL_I2C::IsConnected();
+
+	if (m_IsConnected) {
+		SetGain(adc::mcp3424::Gain::PGA_X1);
+		SetResolution(adc::mcp3424::Resolution::SAMPLE_12BITS);
+		SetConversion(adc::mcp3424::Conversion::CONTINUOUS);
+	}
 
 	DEBUG_PRINTF("m_IsConnected=%u", m_IsConnected);
 	DEBUG_EXIT
@@ -118,16 +120,17 @@ uint32_t MCP3424::GetRaw(const uint8_t nChannel) {
 	m_nConfig &= static_cast<uint8_t>(~((0x03) << 5));
 	m_nConfig |= adc::mcp3424::CHANNEL(nChannel);
 
-	char buffer[4];
-	int32_t nTimeout = 8000;
 	uint32_t nBytes = 3;
 
 	if ((m_nConfig & RESOLUTION(adc::mcp3424::Resolution::SAMPLE_18BITS)) == RESOLUTION(adc::mcp3424::Resolution::SAMPLE_18BITS)) {
 		nBytes = 4;
 	}
 
+	char buffer[4] = { 0, 0, 0, 0 };
+	int32_t nTimeout = 8000;
+
 	while (true) {
-		HAL_I2C::Write(static_cast<char>(m_nConfig));
+		HAL_I2C::Write(m_nConfig);
 		HAL_I2C::Read(buffer, nBytes);
 
 		if (nBytes == 4) {
@@ -164,6 +167,7 @@ uint32_t MCP3424::GetRaw(const uint8_t nChannel) {
 			break;
 	}
 
+	assert(0);
 	__builtin_unreachable();
 	return static_cast<uint32_t>(~0);
 }

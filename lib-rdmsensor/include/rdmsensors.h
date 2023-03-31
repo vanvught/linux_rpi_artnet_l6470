@@ -46,8 +46,11 @@
 
 namespace rdm {
 namespace sensors {
-static constexpr uint32_t max = 16;
-static constexpr uint32_t store = 64;	// bytes
+static constexpr auto MAX = 16;
+static constexpr auto STORE = 64;	///< Configuration store in bytes
+namespace devices {
+static constexpr auto MAX = 8;
+}  // namespace devices
 }  // namespace sensors
 }  // namespace rdm
 

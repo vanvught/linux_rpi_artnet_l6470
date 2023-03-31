@@ -35,9 +35,7 @@
 
 namespace tlc59711 {
 enum class Type {
-	RGB,
-	RGBW,
-	UNDEFINED
+	RGB, RGBW, UNDEFINED
 };
 }  // namespace tlc59711
 
@@ -50,19 +48,21 @@ public:
 	void Stop(uint32_t nPortIndex = 0) override;
 
 	void SetData(uint32_t nPortIndex, const uint8_t *pDmxData, uint32_t nLength) override;
-
+#if defined (CONFIG_TLC59711DMX_ENABLE_PCT)
+	void SetMaxPct(uint32_t nIndexLed, uint32_t nPct);
+#endif
 	void Blackout(bool bBlackout) override;
 
 	void Print() override;
 
-	void SetLEDType(tlc59711::Type type);
-	tlc59711::Type GetLEDType() {
-		return m_LEDType;
+	void SetType(tlc59711::Type type);
+	tlc59711::Type GetType() {
+		return m_type;
 	}
 
-	void SetLEDCount(uint8_t nLEDCount);
-	uint8_t GetLEDCount() const {
-		return m_nLEDCount;
+	void SetCount(uint32_t nCount);
+	uint16_t GetCount() const {
+		return m_nCount;
 	}
 
 	void SetSpiSpeedHz(uint32_t nSpiSpeedHz);
@@ -87,25 +87,22 @@ public: // RDM
 
 	bool GetSlotInfo(uint16_t nSlotOffset, lightset::SlotInfo &tSlotInfo) override;
 
-public:
-	uint8_t GetBoardInstances() const {
-		return m_nBoardInstances;
-	}
-
 private:
 	void Initialize();
 	void UpdateMembers();
 
 private:
+	uint16_t m_nDmxFootprint { TLC59711Channels::OUT };
+	uint16_t m_nCount { TLC59711Channels::RGB };
+	uint32_t m_nSpiSpeedHz { 0 };
 	uint16_t m_nDmxStartAddress { 1 };
-	uint16_t m_nDmxFootprint;
-	uint8_t m_nBoardInstances { 1 };
 	bool m_bIsStarted { false };
 	bool m_bBlackout { false };
 	TLC59711 *m_pTLC59711 { nullptr };
-	uint32_t m_nSpiSpeedHz { 0 };
-	tlc59711::Type m_LEDType {tlc59711::Type::RGB };
-	uint8_t m_nLEDCount;
+#if defined (CONFIG_TLC59711DMX_ENABLE_PCT)
+	uint16_t *m_ArrayMaxValue { nullptr };
+#endif
+	tlc59711::Type m_type { tlc59711::Type::RGB };
 
 	TLC59711DmxStore *m_pTLC59711DmxStore { nullptr };
 };
