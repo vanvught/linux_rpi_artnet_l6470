@@ -29,6 +29,12 @@
 #include <cstdint>
 
 #include "net_packets.h"
+#include "net_platform.h"
+#include "net_debug.h"
+
+#include "dhcp_internal.h"
+#include "tftp_internal.h"
+#include "ntp_internal.h"
 
 #ifndef ALIGNED
 # define ALIGNED __attribute__ ((aligned (4)))
@@ -81,7 +87,9 @@ void icmp_handle(struct t_icmp *);
 void icmp_shutdown();
 
 void tcp_init();
+void tcp_set_ip();
 void tcp_run();
 void tcp_handle(struct t_tcp *);
+void tcp_shutdown();
 
 #endif /* NET_PRIVATE_H_ */

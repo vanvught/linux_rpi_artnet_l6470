@@ -31,29 +31,30 @@
 #include "net_packets.h"
 #include "net_debug.h"
 
-#include "debug.h"
-
 #include "../../config/net_config.h"
 
-struct ip_info g_ip_info  __attribute__ ((aligned (4)));
-uint8_t g_mac_address[ETH_ADDR_LEN] __attribute__ ((aligned (4)));
+namespace net {
+namespace globals {
+struct IpInfo ipInfo  ALIGNED;
+uint32_t nBroadcastIp;
+uint32_t nBroadcastMask;
+uint32_t nOnNetworkMask;
+uint8_t macAddress[ETH_ADDR_LEN]  ALIGNED;
+}  // namespace globals
+}  // namespace net
 
 static uint8_t *s_p;
 static bool s_isDhcp = false;
 
-void __attribute__((cold)) net_init(const uint8_t *const pMacAddress, struct ip_info *p_ip_info, const char *pHostname, bool *bUseDhcp, bool *isZeroconfUsed) {
+void __attribute__((cold)) net_init(const uint8_t *const pMacAddress, struct IpInfo *pIpInfo, const char *pHostname, bool *bUseDhcp, bool *isZeroconfUsed) {
 	DEBUG_ENTRY
 
-	for (auto i = 0; i < ETH_ADDR_LEN; i++) {
-		g_mac_address[i] = pMacAddress[i];
-	}
+	memcpy(net::globals::macAddress, pMacAddress, ETH_ADDR_LEN);
 
-	const auto *src = reinterpret_cast<const uint8_t *>(p_ip_info);
-	auto *dst = reinterpret_cast<uint8_t *>(&g_ip_info);
+	const auto *pSrc = reinterpret_cast<const uint8_t *>(pIpInfo);
+	auto *pDst = reinterpret_cast<uint8_t *>(&net::globals::ipInfo);
 
-	for (uint32_t i = 0; i < sizeof(struct ip_info); i++) {
-		*dst++ = *src++;
-	}
+	memcpy(pDst, pSrc, sizeof(struct IpInfo));
 
 	ip_init();
 
@@ -67,21 +68,22 @@ void __attribute__((cold)) net_init(const uint8_t *const pMacAddress, struct ip_
 		}
 	}
 
+	net::globals::nBroadcastIp = net::globals::ipInfo.ip.addr | ~net::globals::ipInfo.netmask.addr;
+	net::globals::nBroadcastMask = ~(net::globals::ipInfo.netmask.addr);
+	net::globals::nOnNetworkMask = net::globals::ipInfo.ip.addr & net::globals::ipInfo.netmask.addr;
+
 	arp_init();
 	ip_set_ip();
-	tcp_init();
 
-	src = reinterpret_cast<const uint8_t *>(&g_ip_info);
-	dst = reinterpret_cast<uint8_t *>(p_ip_info);
+	pSrc = reinterpret_cast<const uint8_t *>(&net::globals::ipInfo);
+	pDst = reinterpret_cast<uint8_t *>(pIpInfo);
 
-	for (uint32_t i = 0; i < sizeof(struct ip_info); i++) {
-		*dst++ = *src++;
-	}
+	memcpy(pDst, pSrc, sizeof(struct IpInfo));
 
 	s_isDhcp = *bUseDhcp;
 
 	if (!arp_do_probe()) {
-		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(g_mac_address));
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(macAddress));
 		arp_send_announcement();
 	} else {
 		console_error("IP Conflict!\n");
@@ -98,27 +100,39 @@ void __attribute__((cold)) net_shutdown() {
 	}
 }
 
-void net_set_ip(uint32_t ip) {
-	g_ip_info.ip.addr = ip;
+void net_set_ip(uint32_t nIp) {
+	net::globals::ipInfo.ip.addr = nIp;
+
+	net::globals::nBroadcastIp = net::globals::ipInfo.ip.addr | ~net::globals::ipInfo.netmask.addr;
+	net::globals::nBroadcastMask = ~(net::globals::ipInfo.netmask.addr);
+	net::globals::nOnNetworkMask = net::globals::ipInfo.ip.addr & net::globals::ipInfo.netmask.addr;
 
 	arp_init();
 	ip_set_ip();
 
 	if (!arp_do_probe()) {
-		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(g_mac_address));
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(macAddress));
 		arp_send_announcement();
 	} else {
 		console_error("IP Conflict!\n");
 	}
 }
 
-void net_set_gw(uint32_t gw) {
-	g_ip_info.gw.addr = gw;
+void net_set_netmask(uint32_t nNetmask) {
+	net::globals::ipInfo.netmask.addr = nNetmask;
+
+	net::globals::nBroadcastIp = net::globals::ipInfo.ip.addr | ~net::globals::ipInfo.netmask.addr;
+	net::globals::nBroadcastMask = ~(net::globals::ipInfo.netmask.addr);
+	net::globals::nOnNetworkMask = net::globals::ipInfo.ip.addr & net::globals::ipInfo.netmask.addr;
+}
+
+void net_set_gw(uint32_t nGw) {
+	net::globals::ipInfo.gw.addr = nGw;
 
 	ip_set_ip();
 }
 
-bool net_set_dhcp(struct ip_info *p_ip_info, const char *const pHostname, bool *isZeroconfUsed) {
+bool net_set_dhcp(struct IpInfo *p_ip_info, const char *const pHostname, bool *isZeroconfUsed) {
 	bool isDhcp = false;
 	*isZeroconfUsed = false;
 
@@ -132,17 +146,15 @@ bool net_set_dhcp(struct ip_info *p_ip_info, const char *const pHostname, bool *
 	arp_init();
 	ip_set_ip();
 
-	const auto *pSrc = reinterpret_cast<const uint8_t *>(&g_ip_info);
+	const auto *pSrc = reinterpret_cast<const uint8_t *>(&net::globals::ipInfo);
 	auto *pDst = reinterpret_cast<uint8_t *>(p_ip_info);
 
-	for (uint32_t i = 0; i < sizeof(struct ip_info); i++) {
-		*pDst++ = *pSrc++;
-	}
+	memcpy(pDst, pSrc, sizeof(struct IpInfo));
 
 	s_isDhcp = isDhcp;
 
 	if (!arp_do_probe()) {
-		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(g_mac_address));
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(macAddress));
 		arp_send_announcement();
 	} else {
 		console_error("IP Conflict!\n");
@@ -156,23 +168,21 @@ void net_dhcp_release() {
 	s_isDhcp = false;
 }
 
-bool net_set_zeroconf(struct ip_info *p_ip_info) {
+bool net_set_zeroconf(struct IpInfo *p_ip_info) {
 	const auto b = rfc3927();
 
 	if (b) {
 		arp_init();
 		ip_set_ip();
 
-		const auto *pSrc = reinterpret_cast<const uint8_t *>(&g_ip_info);
+		const auto *pSrc = reinterpret_cast<const uint8_t *>(&net::globals::ipInfo);
 		auto *pDst = reinterpret_cast<uint8_t *>(p_ip_info);
 
-		for (uint32_t i = 0; i < sizeof(struct ip_info); i++) {
-			*pDst++ = *pSrc++;
-		}
+		memcpy(pDst, pSrc, sizeof(struct IpInfo));
 
 		s_isDhcp = false;
 
-		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(g_mac_address));
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(macAddress));
 		arp_send_announcement();
 
 		return true;

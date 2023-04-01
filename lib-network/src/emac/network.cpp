@@ -2,7 +2,7 @@
  * network.cpp
  *
  */
-/* Copyright (C) 2018-2022 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2018-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -75,7 +75,7 @@ void Network::Init(NetworkParamsStore *pNetworkParamsStore) {
 	
 	network::display_emac_start();
 
-	struct ip_info ipInfo;
+	IpInfo ipInfo;
 
 	ipInfo.ip.addr = params.GetIpAddress();
 	ipInfo.netmask.addr = params.GetNetMask();
@@ -199,6 +199,8 @@ void Network::Init(NetworkParamsStore *pNetworkParamsStore) {
 	m_nGatewayIp = ipInfo.gw.addr;
 
 	network::display_ip();
+	network::display_netmask();
+	network::display_gateway();
 
 	DEBUG_EXIT
 }
@@ -215,18 +217,18 @@ void Network::SetIp(uint32_t nIp) {
 
 	if (nIp == 0) {
 		SetDefaultIp();
-		net_set_ip(m_nLocalIp);
-		// We do not store
 	} else {
-		net_set_ip(nIp);
-
 		m_nLocalIp = nIp;
 		m_nGatewayIp = m_nLocalIp;
+	}
 
-		if (m_pNetworkStore != nullptr) {
-			m_pNetworkStore->SaveIp(nIp);
-			m_pNetworkStore->SaveDhcp(false);
-		}
+	net_set_ip(m_nLocalIp);
+	net_set_gw(m_nGatewayIp);
+
+	if (m_pNetworkStore != nullptr) {
+		m_pNetworkStore->SaveIp(m_nLocalIp);
+		m_pNetworkStore->SaveGatewayIp(m_nGatewayIp);
+		m_pNetworkStore->SaveDhcp(false);
 	}
 
 	network::display_ip();
@@ -244,9 +246,10 @@ void Network::SetNetmask(uint32_t nNetmask) {
 	}
 
 	m_nNetmask = nNetmask;
+	net_set_netmask(m_nNetmask);
 
 	if (m_pNetworkStore != nullptr) {
-		m_pNetworkStore->SaveNetMask(nNetmask);
+		m_pNetworkStore->SaveNetMask(m_nNetmask);
 	}
 
 	network::display_ip();
@@ -298,7 +301,7 @@ bool Network::SetZeroconf() {
 		Hardware::Get()->WatchdogStop();
 	}
 
-	struct ip_info tIpInfo;
+	struct IpInfo tIpInfo;
 
 	m_IsZeroconfUsed = net_set_zeroconf(&tIpInfo);
 
@@ -336,7 +339,7 @@ bool Network::EnableDhcp() {
 
 	network::display_dhcp_status(network::dhcp::ClientStatus::RENEW);
 
-	struct ip_info tIpInfo;
+	struct IpInfo tIpInfo;
 
 	m_IsDhcpUsed = net_set_dhcp(&tIpInfo, m_aHostName, &m_IsZeroconfUsed);
 

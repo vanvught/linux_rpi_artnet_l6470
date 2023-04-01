@@ -31,15 +31,17 @@
 
 #include "net.h"
 #include "net_private.h"
-#include "net_packets.h"
-#include "net_debug.h"
 
 #include "hardware.h"
 
 #include "../../config/net_config.h"
 
-extern struct ip_info g_ip_info;
-extern uint8_t g_mac_address[ETH_ADDR_LEN];
+namespace net {
+namespace globals {
+extern struct IpInfo ipInfo;
+extern uint8_t macAddress[ETH_ADDR_LEN];
+}  // namespace globals
+}  // namespace net
 
 typedef union pcast32 {
 	uint32_t u32;
@@ -292,7 +294,7 @@ int dhcp_client(const char *pHostname) {
 	auto bHaveIp = false;
 	int32_t retries = 20;
 
-	_message_init(g_mac_address);
+	_message_init(net::globals::macAddress);
 
 	auto nHandle = udp_begin(DHCP_PORT_CLIENT);
 
@@ -305,9 +307,9 @@ int dhcp_client(const char *pHostname) {
 	while (!bHaveIp && (retries-- > 0)) {
 		DEBUG_PRINTF("retries=%d", retries);
 
-		_send_discover(static_cast<uint8_t>(nHandle), g_mac_address);
+		_send_discover(static_cast<uint8_t>(nHandle), net::globals::macAddress);
 
-		if ((type =_parse_response(static_cast<uint8_t>(nHandle), g_mac_address)) < 0) {
+		if ((type =_parse_response(static_cast<uint8_t>(nHandle), net::globals::macAddress)) < 0) {
 			continue;
 		}
 
@@ -319,9 +321,9 @@ int dhcp_client(const char *pHostname) {
 
 		DEBUG_PRINTF(IPSTR, s_dhcp_server_ip[0],s_dhcp_server_ip[1],s_dhcp_server_ip[2],s_dhcp_server_ip[3]);
 
-		_send_request(static_cast<uint8_t>(nHandle), g_mac_address, pHostname);
+		_send_request(static_cast<uint8_t>(nHandle), net::globals::macAddress, pHostname);
 
-		if ((type =_parse_response(static_cast<uint8_t>(nHandle), g_mac_address)) < 0) {
+		if ((type =_parse_response(static_cast<uint8_t>(nHandle), net::globals::macAddress)) < 0) {
 			continue;
 		}
 
@@ -339,13 +341,13 @@ int dhcp_client(const char *pHostname) {
 		_pcast32 ip;
 
 		memcpy(ip.u8, s_dhcp_allocated_ip, IPv4_ADDR_LEN);
-		g_ip_info.ip.addr = ip.u32;
+		net::globals::ipInfo.ip.addr = ip.u32;
 
 		memcpy(ip.u8, s_dhcp_allocated_gw, IPv4_ADDR_LEN);
-		g_ip_info.gw.addr = ip.u32;
+		net::globals::ipInfo.gw.addr = ip.u32;
 
 		memcpy(ip.u8, s_dhcp_allocated_netmask, IPv4_ADDR_LEN);
-		g_ip_info.netmask.addr = ip.u32;
+		net::globals::ipInfo.netmask.addr = ip.u32;
 	}
 
 	DEBUG_EXIT

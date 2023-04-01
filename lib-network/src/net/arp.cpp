@@ -29,8 +29,6 @@
 
 #include "net.h"
 #include "net_private.h"
-#include "net_packets.h"
-#include "net_debug.h"
 
 #include "../../config/net_config.h"
 
@@ -48,10 +46,14 @@ static struct t_arp s_arp_request ALIGNED ;
 static struct t_arp s_arp_reply ALIGNED;
 static net::arp::RequestType s_requestType ALIGNED;
 static bool s_isProbeReplyReceived ALIGNED;
-static uint32_t broadcast_ip ALIGNED;
 
-extern struct ip_info g_ip_info;
-extern uint8_t g_mac_address[ETH_ADDR_LEN];
+namespace net {
+namespace globals {
+extern struct IpInfo ipInfo;
+extern uint32_t nBroadcastIp;
+extern uint8_t macAddress[ETH_ADDR_LEN];
+}  // namespace globals
+}  // namespace net
 
 typedef union pcast32 {
 	uint32_t u32;
@@ -59,15 +61,14 @@ typedef union pcast32 {
 } _pcast32;
 
 void __attribute__((cold)) arp_init() {
-	broadcast_ip = g_ip_info.ip.addr | ~g_ip_info.netmask.addr;
 	arp_cache_init();
 
 	s_requestType = net::arp::RequestType::REQUEST;
-	const auto nLocalIp = g_ip_info.ip.addr;
+	const auto nLocalIp = net::globals::ipInfo.ip.addr;
 
 	// ARP Request template
 	// Ethernet header
-	memcpy(s_arp_request.ether.src, g_mac_address, ETH_ADDR_LEN);
+	memcpy(s_arp_request.ether.src, net::globals::macAddress, ETH_ADDR_LEN);
 	memset(s_arp_request.ether.dst, 0xFF , ETH_ADDR_LEN);
 	s_arp_request.ether.type = __builtin_bswap16(ETHER_TYPE_ARP);
 
@@ -78,13 +79,13 @@ void __attribute__((cold)) arp_init() {
 	s_arp_request.arp.protocol_size = ARP_PROTOCOL_SIZE;
 	s_arp_request.arp.opcode = __builtin_bswap16(ARP_OPCODE_RQST);
 
-	memcpy(s_arp_request.arp.sender_mac, g_mac_address, ETH_ADDR_LEN);
+	memcpy(s_arp_request.arp.sender_mac, net::globals::macAddress, ETH_ADDR_LEN);
 	s_arp_request.arp.sender_ip = nLocalIp;
 	memset(s_arp_request.arp.target_mac, 0x00, ETH_ADDR_LEN);
 
 	// ARP Reply Template
 	// Ethernet header
-	memcpy(s_arp_reply.ether.src, g_mac_address, ETH_ADDR_LEN);
+	memcpy(s_arp_reply.ether.src, net::globals::macAddress, ETH_ADDR_LEN);
 	s_arp_reply.ether.type = __builtin_bswap16(ETHER_TYPE_ARP);
 
 	// ARP Header
@@ -94,7 +95,7 @@ void __attribute__((cold)) arp_init() {
 	s_arp_reply.arp.protocol_size = ARP_PROTOCOL_SIZE;
 	s_arp_reply.arp.opcode = __builtin_bswap16(ARP_OPCODE_REPLY);
 
-	memcpy(s_arp_reply.arp.sender_mac, g_mac_address, ETH_ADDR_LEN);
+	memcpy(s_arp_reply.arp.sender_mac, net::globals::macAddress, ETH_ADDR_LEN);
 	s_arp_reply.arp.sender_ip = nLocalIp;
 }
 
@@ -148,9 +149,9 @@ void arp_send_probe() {
 
 	s_arp_request.arp.sender_ip = 0;
 
-	arp_send_request(g_ip_info.ip.addr);
+	arp_send_request(net::globals::ipInfo.ip.addr);
 
-	s_arp_request.arp.sender_ip = g_ip_info.ip.addr;
+	s_arp_request.arp.sender_ip = net::globals::ipInfo.ip.addr;
 
 	DEBUG_EXIT
 }
@@ -166,7 +167,7 @@ void arp_send_announcement() {
 
 	s_requestType = net::arp::RequestType::ANNNOUNCEMENT;
 
-	arp_send_request(g_ip_info.ip.addr);
+	arp_send_request(net::globals::ipInfo.ip.addr);
 
 	DEBUG_EXIT
 }
@@ -182,7 +183,7 @@ void arp_handle_request(struct t_arp *p_arp) {
 
 	DEBUG_PRINTF("Sender " IPSTR " Target " IPSTR, IP2STR(p_arp->arp.sender_ip), IP2STR(target.u32));
 
-	if (!((target.u32 == g_ip_info.ip.addr) || (target.u32 == broadcast_ip))) {
+	if (!((target.u32 == net::globals::ipInfo.ip.addr) || (target.u32 == net::globals::nBroadcastIp))) {
 		DEBUG_PUTS("No for me.");
 		DEBUG_EXIT
 		return;
