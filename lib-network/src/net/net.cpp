@@ -186,12 +186,12 @@ __attribute__((hot)) void net_handle() {
 	const auto nLength = emac_eth_recv(&s_p);
 
 	if (__builtin_expect((nLength > 0), 0)) {
-		const auto *const eth = reinterpret_cast<struct ether_header *>( s_p);
+		const auto *const eth = reinterpret_cast<struct ether_header *>(s_p);
 
 		if (eth->type == __builtin_bswap16(ETHER_TYPE_IPv4)) {
-			ip_handle(reinterpret_cast<struct t_ip4 *>( s_p));
+			ip_handle(reinterpret_cast<struct t_ip4 *>(s_p));
 		} else if (eth->type == __builtin_bswap16(ETHER_TYPE_ARP)) {
-			arp_handle(reinterpret_cast<struct t_arp *>( s_p));
+			arp_handle(reinterpret_cast<struct t_arp *>(s_p));
 		} else {
 			DEBUG_PRINTF("type %04x is not implemented", __builtin_bswap16(eth->type));
 		}

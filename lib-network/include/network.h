@@ -59,7 +59,7 @@ static constexpr uint32_t convert_to_uint(const uint8_t a, const uint8_t b, cons
 		   static_cast<uint32_t>(d) << 24;
 }
 
-inline static bool is_netmask_valid(uint32_t nNetMask) {
+inline bool is_netmask_valid(uint32_t nNetMask) {
 	if (nNetMask == 0) {
 		return false;
 	}
@@ -70,7 +70,7 @@ inline static bool is_netmask_valid(uint32_t nNetMask) {
 /**
  * The private address ranges are defined in RFC1918.
  */
-inline static bool is_private_ip(const uint32_t nIp) {
+inline bool is_private_ip(const uint32_t nIp) {
 	const uint8_t n = (nIp >> 8) & 0xFF;
 
 	switch (nIp & 0xFF) {
@@ -88,7 +88,7 @@ inline static bool is_private_ip(const uint32_t nIp) {
 	return false;
 }
 
-inline static bool is_multicast_ip(const uint32_t nIp) {
+inline bool is_multicast_ip(const uint32_t nIp) {
 	if ((nIp & 0xE0) != 0xE0) {
 		return false;
 	}
@@ -104,7 +104,7 @@ inline static bool is_multicast_ip(const uint32_t nIp) {
 	return true;
 }
 
-inline static uint32_t cidr_to_netmask(uint8_t nCIDR) {
+inline uint32_t cidr_to_netmask(const uint8_t nCIDR) {
 	if (nCIDR != 0) {
 		const auto nNetmask = __builtin_bswap32(static_cast<uint32_t>(~0x0) << (32 - nCIDR));
 		return nNetmask;

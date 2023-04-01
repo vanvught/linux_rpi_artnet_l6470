@@ -292,6 +292,12 @@ void Network::SetHostName(const char *pHostName) {
 bool Network::SetZeroconf() {
 	DEBUG_ENTRY
 
+	const bool bWatchdog = Hardware::Get()->IsWatchdog();
+
+	if (bWatchdog) {
+		Hardware::Get()->WatchdogStop();
+	}
+
 	struct ip_info tIpInfo;
 
 	m_IsZeroconfUsed = net_set_zeroconf(&tIpInfo);
@@ -311,14 +317,16 @@ bool Network::SetZeroconf() {
 	network::display_ip();
 	network::display_netmask();
 
+	if (bWatchdog) {
+		Hardware::Get()->WatchdogInit();
+	}
+
 	DEBUG_EXIT
 	return m_IsZeroconfUsed;
 }
 
 bool Network::EnableDhcp() {
 	DEBUG_ENTRY
-
-	struct ip_info tIpInfo;
 
 	const bool bWatchdog = Hardware::Get()->IsWatchdog();
 
@@ -328,19 +336,17 @@ bool Network::EnableDhcp() {
 
 	network::display_dhcp_status(network::dhcp::ClientStatus::RENEW);
 
+	struct ip_info tIpInfo;
+
 	m_IsDhcpUsed = net_set_dhcp(&tIpInfo, m_aHostName, &m_IsZeroconfUsed);
 
-		if (m_IsZeroconfUsed) {
-			network::display_dhcp_status(network::dhcp::ClientStatus::FAILED);
-		} else {
-			network::display_dhcp_status(network::dhcp::ClientStatus::GOT_IP);
-		}
+	if (m_IsZeroconfUsed) {
+		network::display_dhcp_status(network::dhcp::ClientStatus::FAILED);
+	} else {
+		network::display_dhcp_status(network::dhcp::ClientStatus::GOT_IP);
+	}
 
 	DEBUG_PRINTF("m_IsDhcpUsed=%d, m_IsZeroconfUsed=%d", m_IsDhcpUsed, m_IsZeroconfUsed);
-
-	if (bWatchdog) {
-		Hardware::Get()->WatchdogInit();
-	}
 
 	m_nLocalIp = tIpInfo.ip.addr;
 	m_nNetmask = tIpInfo.netmask.addr;
@@ -353,6 +359,10 @@ bool Network::EnableDhcp() {
 	network::display_ip();
 	network::display_netmask();
 	network::display_gateway();
+
+	if (bWatchdog) {
+		Hardware::Get()->WatchdogInit();
+	}
 
 	DEBUG_EXIT
 	return m_IsDhcpUsed;
