@@ -44,6 +44,10 @@ void __attribute__((weak)) phy_customized_led() {}
 void __attribute__((weak)) phy_customized_timing() {}
 }  // namespace net
 
+namespace network {
+void __attribute__((weak)) mdns_announcement() {}
+}  // namespace network
+
 #define TO_HEX(i)	static_cast<char>(((i) < 10) ? '0' + (i) : 'A' + ((i) - 10))
 
 int emac_start(uint8_t paddr[]);
@@ -94,9 +98,9 @@ void Network::Init(NetworkParamsStore *pNetworkParamsStore) {
 	const auto *p = params.GetHostName();
 
 	if (*p == '\0') {
-		unsigned k = 0;
+		uint32_t k = 0;
 
-		for (unsigned i = 0; (HOST_NAME_PREFIX[i] != 0) && (i < network::HOSTNAME_SIZE - 7); i++) {
+		for (uint32_t i = 0; (HOST_NAME_PREFIX[i] != 0) && (i < network::HOSTNAME_SIZE - 7); i++) {
 			m_aHostName[k++] = HOST_NAME_PREFIX[i];
 		}
 
@@ -231,6 +235,7 @@ void Network::SetIp(uint32_t nIp) {
 		m_pNetworkStore->SaveDhcp(false);
 	}
 
+	network::mdns_announcement();
 	network::display_ip();
 	network::display_netmask();
 
@@ -266,10 +271,11 @@ void Network::SetGatewayIp(uint32_t nGatewayIp) {
 		return;
 	}
 
-	net_set_gw(nGatewayIp);
+	m_nGatewayIp = nGatewayIp;
+	net_set_gw(m_nGatewayIp);
 
 	if (m_pNetworkStore != nullptr) {
-		m_pNetworkStore->SaveGatewayIp(nGatewayIp);
+		m_pNetworkStore->SaveGatewayIp(m_nGatewayIp);
 	}
 
 	network::display_gateway();
@@ -287,6 +293,7 @@ void Network::SetHostName(const char *pHostName) {
 		m_pNetworkStore->SaveHostName(m_aHostName, static_cast<uint16_t>(strlen(m_aHostName)));
 	}
 
+	network::mdns_announcement();
 	network::display_hostname();
 
 	DEBUG_EXIT
@@ -295,20 +302,20 @@ void Network::SetHostName(const char *pHostName) {
 bool Network::SetZeroconf() {
 	DEBUG_ENTRY
 
-	const bool bWatchdog = Hardware::Get()->IsWatchdog();
+	const auto bWatchdog = Hardware::Get()->IsWatchdog();
 
 	if (bWatchdog) {
 		Hardware::Get()->WatchdogStop();
 	}
 
-	struct IpInfo tIpInfo;
+	IpInfo ipInfo;
 
-	m_IsZeroconfUsed = net_set_zeroconf(&tIpInfo);
+	m_IsZeroconfUsed = net_set_zeroconf(&ipInfo);
 
 	if (m_IsZeroconfUsed) {
-		m_nLocalIp = tIpInfo.ip.addr;
-		m_nNetmask = tIpInfo.netmask.addr;
-		m_nGatewayIp = tIpInfo.gw.addr;
+		m_nLocalIp = ipInfo.ip.addr;
+		m_nNetmask = ipInfo.netmask.addr;
+		m_nGatewayIp = ipInfo.gw.addr;
 
 		m_IsDhcpUsed = false;
 
@@ -331,7 +338,7 @@ bool Network::SetZeroconf() {
 bool Network::EnableDhcp() {
 	DEBUG_ENTRY
 
-	const bool bWatchdog = Hardware::Get()->IsWatchdog();
+	const auto bWatchdog = Hardware::Get()->IsWatchdog();
 
 	if (bWatchdog) {
 		Hardware::Get()->WatchdogStop();
@@ -339,9 +346,9 @@ bool Network::EnableDhcp() {
 
 	network::display_dhcp_status(network::dhcp::ClientStatus::RENEW);
 
-	struct IpInfo tIpInfo;
+	IpInfo ipInfo;
 
-	m_IsDhcpUsed = net_set_dhcp(&tIpInfo, m_aHostName, &m_IsZeroconfUsed);
+	m_IsDhcpUsed = net_set_dhcp(&ipInfo, m_aHostName, &m_IsZeroconfUsed);
 
 	if (m_IsZeroconfUsed) {
 		network::display_dhcp_status(network::dhcp::ClientStatus::FAILED);
@@ -351,9 +358,9 @@ bool Network::EnableDhcp() {
 
 	DEBUG_PRINTF("m_IsDhcpUsed=%d, m_IsZeroconfUsed=%d", m_IsDhcpUsed, m_IsZeroconfUsed);
 
-	m_nLocalIp = tIpInfo.ip.addr;
-	m_nNetmask = tIpInfo.netmask.addr;
-	m_nGatewayIp = tIpInfo.gw.addr;
+	m_nLocalIp = ipInfo.ip.addr;
+	m_nNetmask = ipInfo.netmask.addr;
+	m_nGatewayIp = ipInfo.gw.addr;
 
 	if (m_pNetworkStore != nullptr) {
 		m_pNetworkStore->SaveDhcp(m_IsDhcpUsed);

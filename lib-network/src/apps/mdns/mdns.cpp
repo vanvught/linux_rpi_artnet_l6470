@@ -123,17 +123,30 @@ static constexpr const char *get_protocol_name(mdns::Protocols nProtocol) {
 	return nProtocol == mdns::Protocols::TCP ? "_tcp" MDNS_TLD : "_udp" MDNS_TLD;
 }
 
+namespace network {
+void mdns_announcement() {
+	DEBUG_ENTRY
+
+	assert(MDNS::Get() != nullptr);
+	MDNS::Get()->SendAnnouncement();
+
+	DEBUG_ENTRY
+}
+}  // namespace network
+
+MDNS *MDNS::s_pThis;
+
 MDNS::MDNS() {
+	assert(s_pThis == nullptr);
+	s_pThis = this;
+
 	s_nHandle = Network::Get()->Begin(mdns::UDP_PORT);
 	assert(s_nHandle != -1);
 
 	Network::Get()->JoinGroup(s_nHandle, mdns::MULTICAST_ADDRESS);
-
-	SetName(Network::Get()->GetHostName());
-	CreateAnswerLocalIpAddress();
-
-	Network::Get()->SendTo(s_nHandle, s_AnswerLocalIp.aBuffer, static_cast<uint16_t>(s_AnswerLocalIp.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
 	Network::Get()->SetDomainName(&MDNS_TLD[1]);
+
+	SendAnnouncement();
 }
 
 MDNS::~MDNS() {
@@ -174,6 +187,17 @@ void MDNS::SetName(const char *pName) {
 	strcat(s_pName, MDNS_TLD);
 
 	DEBUG_PUTS(s_pName);
+}
+
+void MDNS::SendAnnouncement() {
+	DEBUG_ENTRY
+
+	SetName(Network::Get()->GetHostName());
+	CreateAnswerLocalIpAddress();
+
+	Network::Get()->SendTo(s_nHandle, s_AnswerLocalIp.aBuffer, static_cast<uint16_t>(s_AnswerLocalIp.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
+
+	DEBUG_EXIT
 }
 
 void MDNS::CreateMDNSMessage(uint32_t nIndex) {

@@ -81,15 +81,23 @@ public:
 	MDNS();
 	~MDNS();
 
-	bool AddServiceRecord(const char* pName, const char *pServName, uint16_t nPort, mdns::Protocols nProtocol = mdns::Protocols::UDP, const char* pTextContent = nullptr);
 	/**
 	 * New API
 	 */
 	bool AddServiceRecord(const char *pName, const mdns::Services service, const char *pTextContent = nullptr, const uint16_t nPort = 0);
 
+	/**
+	 * Legacy API
+	 */
+	bool AddServiceRecord(const char* pName, const char *pServName, uint16_t nPort, mdns::Protocols nProtocol = mdns::Protocols::UDP, const char* pTextContent = nullptr);
+
 	void Print();
-//	void SendAnnouncement();
+	void SendAnnouncement();
 	void Run();
+
+	static MDNS *Get() {
+		return s_pThis;
+	}
 
 private:
 	void SetName(const char *pName);
@@ -128,6 +136,8 @@ private:
 
 	static char *s_pName;
 	static uint8_t *s_pBuffer;
+
+	static MDNS *s_pThis;
 };
 
 #endif /* MDNS_H_ */
