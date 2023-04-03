@@ -56,10 +56,10 @@ enum class Protocols : uint8_t {
 
 struct ServiceRecord {
 	char *pName;
-	char *pServName;
 	char *pTextContent;
+	uint16_t nTextContentLength;
 	uint16_t nPort;
-	Protocols nProtocol;
+	Services services;
 };
 
 struct RecordData {
@@ -86,11 +86,6 @@ public:
 	 */
 	bool AddServiceRecord(const char *pName, const mdns::Services service, const char *pTextContent = nullptr, const uint16_t nPort = 0);
 
-	/**
-	 * Legacy API
-	 */
-	bool AddServiceRecord(const char* pName, const char *pServName, uint16_t nPort, mdns::Protocols nProtocol = mdns::Protocols::UDP, const char* pTextContent = nullptr);
-
 	void Print();
 	void SendAnnouncement();
 	void Run();
@@ -104,19 +99,16 @@ private:
 	void Parse();
 	void HandleRequest(uint16_t nQuestions);
 
-	uint32_t DecodeDNSNameNotation(const char *pDNSNameNotation, char *pString);
+	void ServiceDomainPrint(mdns::ServiceRecord const &serviceRecord);
 
-	uint32_t WriteDnsName(const char *pSource, char *pDestination, bool bNullTerminated = true);
-	const char *FindFirstDotFromRight(const char *pString) const;
-
-	void CreateAnswerLocalIpAddress();
-
+	uint32_t CreateAnswerLocalIpAddress(uint8_t *pDestination);
 	uint32_t CreateAnswerServiceSrv(uint32_t nIndex, uint8_t *pDestination);
 	uint32_t CreateAnswerServiceTxt(uint32_t nIndex, uint8_t *pDestination);
 	uint32_t CreateAnswerServicePtr(uint32_t nIndex, uint8_t *pDestination);
 	uint32_t CreateAnswerServiceDnsSd(uint32_t nIndex, uint8_t *pDestination);
 
-	void CreateMDNSMessage(uint32_t nIndex);
+	void SendAnswerLocalIpAddress();
+	void SendMessage(uint32_t nIndex);
 
 #ifndef NDEBUG
 	void Dump(const struct TmDNSHeader *pmDNSHeader, uint16_t nFlags);
@@ -131,11 +123,9 @@ private:
 	static uint32_t s_nDNSServiceRecords;
 
 	static mdns::ServiceRecord s_ServiceRecords[mdns::SERVICE_RECORDS_MAX];
-	static mdns::RecordData s_AnswerLocalIp;
-	static mdns::RecordData s_ServiceRecordsData;
+	static mdns::RecordData s_RecordsData;
 
-	static char *s_pName;
-	static uint8_t *s_pBuffer;
+	static uint8_t *s_pReceiveBuffer;
 
 	static MDNS *s_pThis;
 };

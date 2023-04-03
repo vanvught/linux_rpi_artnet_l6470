@@ -25,8 +25,8 @@
 
 #include <cstdint>
 #include <cstring>
-#include <netinet/in.h>
-#include <arpa/inet.h>
+#include <cstdio>
+#include <algorithm>
 #include <cassert>
 
 #include "mdns.h"
@@ -37,8 +37,7 @@
 #include "debug.h"
 
 #define MDNS_TLD                ".local"
-#define DNS_SD_SERVICE          "_services._dns-sd._udp.local"
-#define MDNS_RESPONSE_TTL     	(4500)    ///< (in seconds)
+#define MDNS_RESPONSE_TTL     	(3600)    ///< (in seconds)
 #define ANNOUNCE_TIMEOUT 		((MDNS_RESPONSE_TTL / 2) + (MDNS_RESPONSE_TTL / 4))
 
 enum TDNSClasses {
@@ -74,37 +73,44 @@ struct TmDNSHeader {
 } __attribute__((__packed__));
 
 namespace mdns {
+static constexpr size_t MAX_DOMAIN_NAME = 256;
+static constexpr size_t LABEL_MAXLEN = 63;
+static constexpr size_t TXT_MAXLEN = 256;
 
 static constexpr char DOMAIN_LOCAL[]		= { 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr uint8_t DOMAIN_DNSSD[]		= { 9 , '_','s','e','r','v','i','c','e','s', 7 ,'_','d','n','s','-','s','d', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
 static constexpr char DOMAIN_REVERSE[]		= { 7 , 'i','n','-','a','d','d','r', 4 , 'a','r','p','a', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
-static constexpr char DOMAIN_CONFIG[]		= { 7 , '_','c','o','n','f','i','g', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
-static constexpr char DOMAIN_TFTP[]			= { 5 , '_','t','f','t','p', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
-static constexpr char DOMAIN_HTTP[]			= { 5 , '_','h','t','t','p', 4 , '_', 't', 'c', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
-static constexpr char DOMAIN_RDMNET_LLRP[]	= { 12, '_','r','d','m','n','e','t','-','l','l','r','p', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
-static constexpr char DOMAIN_NTP[]			= { 4 , '_','n','t','p', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
-static constexpr char DOMAIN_MIDI[]			= { 11, '_','a','p','p','l','e','-','m','i','d','i', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
-static constexpr char DOMAIN_OSC[]			= { 4 , '_','o','s','c', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
-static constexpr char DOMAIN_DDP[]			= { 4 , '_','d','d','p', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
-static constexpr char DOMAIN_PP[]			= { 3 , '_','p','p', 4 , '_', 'u', 'd', 'p', 5 , 'l', 'o', 'c', 'a', 'l' , 0};
+static constexpr char DOMAIN_UDP[]			= { 4 , '_', 'u', 'd', 'p',};
+static constexpr char DOMAIN_TCP[]			= { 4 , '_', 't', 'c', 'p' };
+static constexpr char DOMAIN_CONFIG[]		= { 7 , '_','c','o','n','f','i','g'};
+static constexpr char DOMAIN_TFTP[]			= { 5 , '_','t','f','t','p'};
+static constexpr char DOMAIN_HTTP[]			= { 5 , '_','h','t','t','p'};
+static constexpr char DOMAIN_RDMNET_LLRP[]	= { 12, '_','r','d','m','n','e','t','-','l','l','r','p'};
+static constexpr char DOMAIN_NTP[]			= { 4 , '_','n','t','p'};
+static constexpr char DOMAIN_MIDI[]			= { 11, '_','a','p','p','l','e','-','m','i','d','i'};
+static constexpr char DOMAIN_OSC[]			= { 4 , '_','o','s','c'};
+static constexpr char DOMAIN_DDP[]			= { 4 , '_','d','d','p'};
+static constexpr char DOMAIN_PP[]			= { 3 , '_','p','p'};
 
 struct Service {
 	const char *pDomain;
 	const uint16_t nLength;
+	const Protocols protocol;
 	const uint16_t nPortDefault;
 };
 
 }  // namespace mdns
 
 static constexpr mdns::Service s_Services[] {
-		{mdns::DOMAIN_CONFIG		, sizeof(mdns::DOMAIN_CONFIG)		, 0x2905 },
-		{mdns::DOMAIN_TFTP			, sizeof(mdns::DOMAIN_TFTP)			, 69 },
-		{mdns::DOMAIN_HTTP			, sizeof(mdns::DOMAIN_HTTP)			, 80 },
-		{mdns::DOMAIN_RDMNET_LLRP	, sizeof(mdns::DOMAIN_RDMNET_LLRP)	, 5569 },
-		{mdns::DOMAIN_NTP			, sizeof(mdns::DOMAIN_NTP)			, 123 },
-		{mdns::DOMAIN_MIDI			, sizeof(mdns::DOMAIN_MIDI)			, 5004 },
-		{mdns::DOMAIN_OSC			, sizeof(mdns::DOMAIN_OSC)			, 0 },
-		{mdns::DOMAIN_DDP			, sizeof(mdns::DOMAIN_DDP)			, 4048 },
-		{mdns::DOMAIN_PP			, sizeof(mdns::DOMAIN_PP)			, 5078 }
+		{mdns::DOMAIN_CONFIG		, sizeof(mdns::DOMAIN_CONFIG)		,mdns::Protocols::UDP, 0x2905 },
+		{mdns::DOMAIN_TFTP			, sizeof(mdns::DOMAIN_TFTP)			,mdns::Protocols::UDP, 69 },
+		{mdns::DOMAIN_HTTP			, sizeof(mdns::DOMAIN_HTTP)			,mdns::Protocols::TCP, 80 },
+		{mdns::DOMAIN_RDMNET_LLRP	, sizeof(mdns::DOMAIN_RDMNET_LLRP)	,mdns::Protocols::UDP, 5569 },
+		{mdns::DOMAIN_NTP			, sizeof(mdns::DOMAIN_NTP)			,mdns::Protocols::UDP, 123 },
+		{mdns::DOMAIN_MIDI			, sizeof(mdns::DOMAIN_MIDI)			,mdns::Protocols::UDP, 5004 },
+		{mdns::DOMAIN_OSC			, sizeof(mdns::DOMAIN_OSC)			,mdns::Protocols::UDP, 0 },
+		{mdns::DOMAIN_DDP			, sizeof(mdns::DOMAIN_DDP)			,mdns::Protocols::UDP, 4048 },
+		{mdns::DOMAIN_PP			, sizeof(mdns::DOMAIN_PP)			,mdns::Protocols::UDP, 5078 }
 };
 
 int32_t MDNS::s_nHandle;
@@ -114,13 +120,118 @@ uint16_t MDNS::s_nBytesReceived;
 uint32_t MDNS::s_nLastAnnounceMillis;
 uint32_t MDNS::s_nDNSServiceRecords;
 mdns::ServiceRecord MDNS::s_ServiceRecords[mdns::SERVICE_RECORDS_MAX];
-mdns::RecordData MDNS::s_AnswerLocalIp;
-mdns::RecordData MDNS::s_ServiceRecordsData;
-char *MDNS::s_pName;
-uint8_t *MDNS::s_pBuffer;
+mdns::RecordData MDNS::s_RecordsData;
+uint8_t *MDNS::s_pReceiveBuffer;
 
 static constexpr const char *get_protocol_name(mdns::Protocols nProtocol) {
 	return nProtocol == mdns::Protocols::TCP ? "_tcp" MDNS_TLD : "_udp" MDNS_TLD;
+}
+
+using namespace mdns;
+
+static uint32_t add_label(uint8_t *pDestination, const char *pLabel, const size_t nLabelLength) {
+	*pDestination = static_cast<char>(nLabelLength);
+	pDestination++;
+
+	memcpy(pDestination, pLabel, nLabelLength);
+
+	return 1U + nLabelLength;
+}
+
+static uint32_t add_protocol(uint8_t *pDestination, const mdns::Protocols protocol) {
+	if (protocol == mdns::Protocols::UDP) {
+		memcpy(pDestination, DOMAIN_UDP, sizeof(DOMAIN_UDP));
+		return sizeof(DOMAIN_UDP);
+	}
+
+	memcpy(pDestination, DOMAIN_TCP, sizeof(DOMAIN_TCP));
+	return sizeof(DOMAIN_TCP);
+}
+
+static uint32_t add_dot_local(uint8_t *pDestination) {
+	memcpy(pDestination, DOMAIN_LOCAL, sizeof(DOMAIN_LOCAL));
+	return sizeof(DOMAIN_LOCAL);
+}
+
+static uint32_t add_dnssd(uint8_t *pDestination) {
+	memcpy(pDestination, DOMAIN_DNSSD, sizeof(DOMAIN_DNSSD));
+	return sizeof(DOMAIN_DNSSD);
+}
+
+static uint32_t create_service_domain(uint8_t *pDestination, ServiceRecord const &serviceRecord, const bool bIncludeName) {
+	uint32_t nLength = 0;
+
+	if (bIncludeName) {
+		if (serviceRecord.pName != nullptr) {
+			nLength = add_label(pDestination, serviceRecord.pName, strlen(serviceRecord.pName));
+		} else {
+			nLength = add_label(pDestination, Network::Get()->GetHostName(), strlen(Network::Get()->GetHostName()));
+		}
+	}
+
+	const auto nIndex = static_cast<uint32_t>(serviceRecord.services);
+
+	memcpy(&pDestination[nLength], s_Services[nIndex].pDomain, s_Services[nIndex].nLength);
+	nLength += s_Services[nIndex].nLength;
+	
+	nLength += add_protocol(&pDestination[nLength], s_Services[nIndex].protocol); 
+	nLength += add_dot_local(&pDestination[nLength]);
+
+	return nLength;
+}
+
+static uint32_t create_host_domain(uint8_t *pDestination) {
+	auto *pDst = pDestination;
+
+	pDst += add_label(pDst, Network::Get()->GetHostName(), strlen(Network::Get()->GetHostName()));
+	pDst += add_dot_local(pDst);
+
+	return static_cast<uint32_t>(pDst - pDestination);
+}
+
+bool domain_compare(const uint8_t *pDomainA, const uint32_t nLengthA, const uint8_t *pDomainB, const uint32_t nLengthB) {
+	if (nLengthA != nLengthB) {
+		return false;
+	}
+
+	auto const *pNameA = pDomainA;
+	auto const *pNameB = pDomainB;
+
+	while(*pNameA && *pNameB && (pNameA < &pDomainA[nLengthA])) {
+		if (*pNameA != *pNameB) {
+			return false;
+		}
+
+		auto nLength = static_cast<size_t>(*pNameA);
+		pNameA++;
+		pNameB++;
+
+		if (strncasecmp(reinterpret_cast<const char *>(pNameA), reinterpret_cast<const char *>(pNameB), nLength) != 0) {
+			return false;
+		}
+
+		pNameA += nLength;
+		pNameB += nLength;
+	}
+
+	return true;
+}
+
+static void domain_print(const uint8_t *pDomain, const uint32_t nLength) {
+	auto const *pName = pDomain;
+
+	while (*pName && (pName < &pDomain[nLength])) {
+		auto nLength = static_cast<size_t>(*pName);
+		pName++;
+		printf("%.*s.", static_cast<int>(nLength), pName);
+		pName += nLength;
+	}
+}
+
+void MDNS::ServiceDomainPrint(ServiceRecord const &serviceRecord) {
+	auto *domain = s_RecordsData.aBuffer;
+	const auto nLength = create_service_domain(domain, serviceRecord, false);
+	domain_print(const_cast<const uint8_t *>(domain), nLength);
 }
 
 namespace network {
@@ -140,6 +251,10 @@ MDNS::MDNS() {
 	assert(s_pThis == nullptr);
 	s_pThis = this;
 
+	for (auto i = 0; i < SERVICE_RECORDS_MAX; i++) {
+		s_ServiceRecords[i].services = Services::LAST_NOT_USED;
+	}
+
 	s_nHandle = Network::Get()->Begin(mdns::UDP_PORT);
 	assert(s_nHandle != -1);
 
@@ -150,17 +265,9 @@ MDNS::MDNS() {
 }
 
 MDNS::~MDNS() {
-	if (s_pName != nullptr) {
-		delete[] s_pName;
-	}
-
 	for (uint32_t i = 0; i < mdns::SERVICE_RECORDS_MAX; i++) {
 		if (s_ServiceRecords[i].pName != nullptr) {
 			delete[] s_ServiceRecords[i].pName;
-		}
-
-		if (s_ServiceRecords[i].pServName != nullptr) {
-			delete[] s_ServiceRecords[i].pServName;
 		}
 
 		if (s_ServiceRecords[i].pTextContent != nullptr) {
@@ -172,38 +279,19 @@ MDNS::~MDNS() {
 	s_nHandle = -1;
 }
 
-void MDNS::SetName(const char *pName) {
-	assert(pName != nullptr);
-	assert(strlen(pName) != 0);
-
-	if (s_pName != nullptr) {
-		delete[] s_pName;
-	}
-
-	s_pName = new char[strlen(pName) + sizeof(MDNS_TLD)];
-	assert(s_pName != nullptr);
-
-	strcpy(s_pName, pName);
-	strcat(s_pName, MDNS_TLD);
-
-	DEBUG_PUTS(s_pName);
-}
-
 void MDNS::SendAnnouncement() {
 	DEBUG_ENTRY
 
-	SetName(Network::Get()->GetHostName());
-	CreateAnswerLocalIpAddress();
-
-	Network::Get()->SendTo(s_nHandle, s_AnswerLocalIp.aBuffer, static_cast<uint16_t>(s_AnswerLocalIp.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
+	SendAnswerLocalIpAddress();
 
 	DEBUG_EXIT
 }
 
-void MDNS::CreateMDNSMessage(uint32_t nIndex) {
+void MDNS::SendMessage(uint32_t nIndex) {
 	DEBUG_ENTRY
+	DEBUG_PRINTF("nIndex=%u", nIndex);
 
-	auto *pHeader = reinterpret_cast<struct TmDNSHeader*>(&s_ServiceRecordsData.aBuffer);
+	auto *pHeader = reinterpret_cast<struct TmDNSHeader*>(&s_RecordsData.aBuffer);
 
 	pHeader->nFlags = __builtin_bswap16(0x8400);
 	pHeader->queryCount = 0;
@@ -211,150 +299,58 @@ void MDNS::CreateMDNSMessage(uint32_t nIndex) {
 	pHeader->authorityCount = __builtin_bswap16(1);
 	pHeader->additionalCount = __builtin_bswap16(0);
 
-	auto *pData = reinterpret_cast<uint8_t*>(&s_ServiceRecordsData.aBuffer) + sizeof(struct TmDNSHeader);
+	auto *pDst = reinterpret_cast<uint8_t*>(&s_RecordsData.aBuffer) + sizeof(struct TmDNSHeader);
 
-	pData += CreateAnswerServiceSrv(nIndex, pData);
-	pData += CreateAnswerServiceTxt(nIndex, pData);
-	pData += CreateAnswerServiceDnsSd(nIndex, pData);
-	pData += CreateAnswerServicePtr(nIndex, pData);
+	pDst += CreateAnswerServiceSrv(nIndex, pDst);
+	pDst += CreateAnswerServiceTxt(nIndex, pDst);
+	pDst += CreateAnswerServiceDnsSd(nIndex, pDst);
+	pDst += CreateAnswerServicePtr(nIndex, pDst);
+	pDst += CreateAnswerLocalIpAddress(pDst);
 
-	memcpy(pData, &s_AnswerLocalIp.aBuffer[sizeof (struct TmDNSHeader)], s_AnswerLocalIp.nSize - sizeof (struct TmDNSHeader));
-	pData += (s_AnswerLocalIp.nSize - sizeof (struct TmDNSHeader));
+	const auto nSize = static_cast<uint16_t>(pDst - reinterpret_cast<uint8_t*>(pHeader));
 
-	s_ServiceRecordsData.nSize = static_cast<uint32_t>(pData - reinterpret_cast<uint8_t*>(pHeader));
-
-//	DEBUG_dump(&s_ServiceRecordsData.aBuffer, static_cast<uint16_t>(s_ServiceRecordsData.nSize));
+	Network::Get()->SendTo(s_nHandle, &s_RecordsData.aBuffer, nSize, mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
 
 	DEBUG_EXIT
 }
 
-uint32_t MDNS::DecodeDNSNameNotation(const char *pDNSNameNotation, char *pString) {
+bool MDNS::AddServiceRecord(const char *pName, const mdns::Services services, const char *pTextContent, const uint16_t nPort) {
 	DEBUG_ENTRY
-
-	const auto *pSrc = pDNSNameNotation;
-	auto *pDst = pString;
-
-	uint32_t nLenght = 0;
-	uint32_t nSize = 0;
-	auto isCompressed = false;
-
-	while (*pSrc != 0) {
-		nLenght = static_cast<uint8_t>(*pSrc++);
-//		DEBUG_PRINTF("nLenght=%.2x", (int) nLenght);
-
-		if (nLenght > 63) {
-			if (!isCompressed) {
-				nSize += 1;
-			}
-
-			isCompressed = true;
-			const auto nCompressedOffset = ((nLenght & static_cast<uint32_t>(~(0xC0))) << 8) | ((*pSrc & 0xFF));
-			nLenght =  s_pBuffer[nCompressedOffset];
-
-//			DEBUG_PRINTF("--> nCompressedOffset=%.4x", (int) nCompressedOffset);
-
-			pSrc = reinterpret_cast<char*>(&s_pBuffer[nCompressedOffset + 1]);
-
-			for (uint32_t i = 0; i < nLenght; i++) {
-				*pDst = *pSrc;
-				pDst++;
-				pSrc++;
-			}
-
-		} else if (nLenght > 0) {
-
-			for (uint32_t i = 0; i < nLenght; i++) {
-				*pDst = *pSrc;
-				pDst++;
-				pSrc++;
-			}
-
-			if (!isCompressed) {
-				nSize += (nLenght + 1);
-			}
-		}
-
-		if (*pSrc != 0) {
-			*pDst++ = '.';
-		}
-	}
-
-	*pDst = '\0';
-
-	DEBUG_PRINTF("pString=[%s]:%u", pString, 1 + nSize);
-	DEBUG_EXIT
-	return 1 + nSize;
-}
-
-bool MDNS::AddServiceRecord(const char *pName, const mdns::Services service, const char *pTextContent, const uint16_t nPort) {
-	DEBUG_ENTRY
-	assert(service < mdns::Services::LAST_NOT_USED);
-
-	const auto nIndex = static_cast<uint32_t>(service);
-	const uint16_t nNewPort = nPort != 0 ? nPort : s_Services[nIndex].nPortDefault;
-
-	char pServName[16];
-
-	const uint32_t nSize = s_Services[nIndex].pDomain[0];
-	assert(nSize < 14);
-	pServName[0] = '.';
-	memcpy(&pServName[1], &s_Services[nIndex].pDomain[1], nSize);
-	pServName[nSize + 1] = '\0';
-
-	debug_dump(pServName, static_cast<uint16_t>(nSize + 2U));
-
-	auto nProtocol = mdns::Protocols::UDP;
-
-	const auto cProtocol = s_Services[nIndex].pDomain[nSize + 3];
-	DEBUG_PRINTF("cProtocol=%c", cProtocol);
-
-	if (cProtocol == 't') {
-		nProtocol = mdns::Protocols::TCP;
-	}
-
-	DEBUG_EXIT
-	return AddServiceRecord(pName, const_cast<const char *>(pServName), nNewPort, nProtocol, pTextContent);
-}
-
-bool MDNS::AddServiceRecord(const char *pName, const char *pServName, uint16_t nPort, mdns::Protocols nProtocol, const char *pTextContent) {
-	assert(pServName != nullptr);
-	assert(nPort != 0);
-
+	assert(services < mdns::Services::LAST_NOT_USED);
 	uint32_t i;
 
 	for (i = 0; i < mdns::SERVICE_RECORDS_MAX; i++) {
-		if (s_ServiceRecords[i].pName == nullptr) {
-			s_ServiceRecords[i].nPort = nPort;
-			s_ServiceRecords[i].nProtocol = nProtocol;
+		if (s_ServiceRecords[i].services == Services::LAST_NOT_USED) {
+			if (pName != nullptr) {
+				const auto nLength = std::min(LABEL_MAXLEN, strlen(pName));
+				if (nLength == 0) {
+					assert(0);
+					return false;
+				}
 
-			if (pName == nullptr) {
-				s_ServiceRecords[i].pName = new char[1 + strlen(Network::Get()->GetHostName()) + strlen(pServName)];
+				s_ServiceRecords[i].pName = new char[1 +  nLength];
+
 				assert(s_ServiceRecords[i].pName != nullptr);
-
-				strcpy(s_ServiceRecords[i].pName, Network::Get()->GetHostName());
-			} else {
-				s_ServiceRecords[i].pName = new char[1 + strlen(pName) + strlen(pServName)];
-				assert(s_ServiceRecords[i].pName != nullptr);
-
-				strcpy(s_ServiceRecords[i].pName, pName);
+				memcpy(s_ServiceRecords[i].pName, pName, nLength);
+				s_ServiceRecords[i].pName[nLength] = '\0';
 			}
 
-			strcat(s_ServiceRecords[i].pName, pServName);
+			s_ServiceRecords[i].services = services;
 
-			const char *p = FindFirstDotFromRight(pServName);
-
-			s_ServiceRecords[i].pServName = new char[1 + strlen(p) + 12];
-			assert(s_ServiceRecords[i].pServName != nullptr);
-
-			strcpy(s_ServiceRecords[i].pServName, p);
-			strcat(s_ServiceRecords[i].pServName, ".");
-			strcat(s_ServiceRecords[i].pServName, get_protocol_name(nProtocol));
+			if (nPort == 0) {
+				s_ServiceRecords[i].nPort = __builtin_bswap16(s_Services[static_cast<uint32_t>(services)].nPortDefault);
+			} else {
+				s_ServiceRecords[i].nPort = __builtin_bswap16(nPort);
+			}
 
 			if (pTextContent != nullptr) {
-				s_ServiceRecords[i].pTextContent = new char[1 + strlen(pTextContent)];
-				assert(s_ServiceRecords[i].pTextContent != nullptr);
+				const auto nLength = std::min(TXT_MAXLEN, strlen(pTextContent));
+				s_ServiceRecords[i].pTextContent = new char[nLength];
 
-				strcpy(s_ServiceRecords[i].pTextContent, pTextContent);
+				assert(s_ServiceRecords[i].pTextContent != nullptr);
+				memcpy(s_ServiceRecords[i].pTextContent, pTextContent, nLength);
+
+				s_ServiceRecords[i].nTextContentLength = static_cast<uint16_t>(nLength);
 			}
 
 			break;
@@ -366,63 +362,14 @@ bool MDNS::AddServiceRecord(const char *pName, const char *pServName, uint16_t n
 		return false;
 	}
 
-	DEBUG_PRINTF("[%d].nPort = %d", i, s_ServiceRecords[i].nPort);
-	DEBUG_PRINTF("[%d].nProtocol = [%s]", i, s_ServiceRecords[i].nProtocol == mdns::Protocols::TCP ? "TCP" : "UDP");
-	DEBUG_PRINTF("[%d].pName = [%s]", i, s_ServiceRecords[i].pName);
-	DEBUG_PRINTF("[%d].pServName = [%s]", i, s_ServiceRecords[i].pServName);
-	DEBUG_PRINTF("[%d].pTextContent = [%s]", i, s_ServiceRecords[i].pTextContent != nullptr ? s_ServiceRecords[i].pTextContent : "><");
-
-	CreateMDNSMessage(i);
-
-	DEBUG_PRINTF("%d:%d %p -> %d " IPSTR, i, s_nHandle, reinterpret_cast<void *>(&s_ServiceRecordsData.aBuffer), s_ServiceRecordsData.nSize, IP2STR(s_nMulticastIp));
-
-	Network::Get()->SendTo(s_nHandle, &s_ServiceRecordsData.aBuffer, static_cast<uint16_t>(s_ServiceRecordsData.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
+	SendMessage(i);
 	return true;
 }
 
-
-const char *MDNS::FindFirstDotFromRight(const char *pString) const {
-	const char *p = pString + strlen(pString);
-	while (p > pString && *p-- != '.')
-		;
-	return &p[1];
-}
-
-uint32_t MDNS::WriteDnsName(const char *pSource, char *pDestination, bool bNullTerminated) {
-	DEBUG_PUTS(pSource);
-
-	const auto *pSrc = pSource;
-	auto *pDst = pDestination;
-
-	while (1 == 1) {
-		auto *pLength = pDst++;
-		const auto *pSrcStart = pSrc;
-
-		while ((*pSrc != 0) && (*pSrc != '.')) {
-			*pDst = *pSrc;
-			pDst++;
-			pSrc++;
-		}
-
-		*pLength = static_cast<char>(pSrc - pSrcStart);
-
-		if (*pSrc == 0) {
-			if (bNullTerminated) {
-				*pDst++ = 0;
-			}
-			break;
-		}
-
-		pSrc++;
-	}
-
-	return static_cast<uint32_t>(pDst - pDestination);
-}
-
-void MDNS::CreateAnswerLocalIpAddress() {
+void MDNS::SendAnswerLocalIpAddress() {
 	DEBUG_ENTRY
 
-	auto *pHeader = reinterpret_cast<struct TmDNSHeader*>(&s_AnswerLocalIp.aBuffer);
+	auto *pHeader = reinterpret_cast<struct TmDNSHeader*>(&s_RecordsData.aBuffer);
 
 	pHeader->nFlags = __builtin_bswap16(0x8400);
 	pHeader->queryCount = 0;
@@ -430,22 +377,13 @@ void MDNS::CreateAnswerLocalIpAddress() {
 	pHeader->authorityCount = 0;
 	pHeader->additionalCount = 0;
 
-	uint8_t *pData = reinterpret_cast<uint8_t*>(&s_AnswerLocalIp.aBuffer) + sizeof(struct TmDNSHeader);
+	uint8_t *pDst = reinterpret_cast<uint8_t *>(&s_RecordsData.aBuffer) + sizeof(struct TmDNSHeader);
 
-	pData += WriteDnsName(s_pName, reinterpret_cast<char*>(pData));
+	pDst += CreateAnswerLocalIpAddress(pDst);
 
-	*reinterpret_cast<uint16_t*>(pData) = __builtin_bswap16(DNSRecordTypeA);
-	pData += 2;
-	*reinterpret_cast<uint16_t*>(pData) = __builtin_bswap16(DNSCacheFlushTrue | DNSClassInternet);
-	pData += 2;
-	*reinterpret_cast<uint32_t*>(pData) = __builtin_bswap32(MDNS_RESPONSE_TTL);
-	pData += 4;
-	*reinterpret_cast<uint16_t*>(pData) = __builtin_bswap16(4);	// Data length
-	pData += 2;
-	*reinterpret_cast<uint32_t*>(pData) = Network::Get()->GetIp();
-	pData += 4;
+	const auto nSize = static_cast<uint16_t>(pDst - reinterpret_cast<uint8_t*>(pHeader));
 
-	s_AnswerLocalIp.nSize = static_cast<uint32_t>(pData - reinterpret_cast<uint8_t*>(pHeader));
+	Network::Get()->SendTo(s_nHandle, s_RecordsData.aBuffer, nSize, mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
 
 	DEBUG_EXIT
 }
@@ -455,8 +393,7 @@ uint32_t MDNS::CreateAnswerServiceSrv(uint32_t nIndex, uint8_t *pDestination) {
 
 	auto *pDst = pDestination;
 
-	pDst += WriteDnsName(s_ServiceRecords[nIndex].pName, reinterpret_cast<char*>(pDst), false);
-	pDst += WriteDnsName(get_protocol_name(s_ServiceRecords[nIndex].nProtocol), reinterpret_cast<char*>(pDst));
+	pDst += create_service_domain(pDst, s_ServiceRecords[nIndex], true);
 
 	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(DNSRecordTypeSRV);
 	pDst += 2;
@@ -464,13 +401,16 @@ uint32_t MDNS::CreateAnswerServiceSrv(uint32_t nIndex, uint8_t *pDestination) {
 	pDst += 2;
 	*reinterpret_cast<uint32_t*>(pDst) = __builtin_bswap32(MDNS_RESPONSE_TTL);
 	pDst += 4;
-	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(static_cast<uint16_t>(8 + strlen(s_pName)));
+	auto *lengtPointer = pDst;
 	pDst += 2;
 	*reinterpret_cast<uint32_t*>(pDst) = 0; // Priority and Weight
 	pDst += 4;
-	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(s_ServiceRecords[nIndex].nPort);
+	*reinterpret_cast<uint16_t*>(pDst) = s_ServiceRecords[nIndex].nPort;
 	pDst += 2;
-	pDst += WriteDnsName(s_pName, reinterpret_cast<char*>(pDst));
+	auto *pBegin = pDst;
+	pDst += create_host_domain(pDst);
+
+	*reinterpret_cast<uint16_t*>(lengtPointer) = __builtin_bswap16(static_cast<uint16_t>(6U + pDst - pBegin));
 
 	DEBUG_EXIT
 	return static_cast<uint32_t>(pDst - pDestination);
@@ -481,8 +421,7 @@ uint32_t MDNS::CreateAnswerServiceTxt(uint32_t nIndex, uint8_t *pDestination) {
 
 	auto *pDst = pDestination;
 
-	pDst += WriteDnsName(s_ServiceRecords[nIndex].pName, reinterpret_cast<char*>(pDst), false);
-	pDst += WriteDnsName(get_protocol_name(s_ServiceRecords[nIndex].nProtocol), reinterpret_cast<char*>(pDst));
+	pDst += create_service_domain(pDst, s_ServiceRecords[nIndex], true);
 
 	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(DNSRecordTypeTXT);
 	pDst += 2;
@@ -497,8 +436,8 @@ uint32_t MDNS::CreateAnswerServiceTxt(uint32_t nIndex, uint8_t *pDestination) {
 		*pDst = 0;														// Text length
 		pDst++;
 	} else {
-		const uint32_t nSize = strlen(s_ServiceRecords[nIndex].pTextContent);
-		*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(static_cast<uint16_t>(1 + nSize));	// Data length
+		const auto nSize = s_ServiceRecords[nIndex].nTextContentLength;
+		*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(static_cast<uint16_t>(1U + nSize));	// Data length
 		pDst += 2;
 		*pDst = static_cast<uint8_t>(nSize);														// Text length
 		pDst++;
@@ -515,20 +454,40 @@ uint32_t MDNS::CreateAnswerServicePtr(uint32_t nIndex, uint8_t *pDestination) {
 
 	auto *pDst = pDestination;
 
-	pDst += WriteDnsName(s_ServiceRecords[nIndex].pServName, reinterpret_cast<char*>(pDst));
-
+	pDst += create_service_domain(pDst, s_ServiceRecords[nIndex], false);
 	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(DNSRecordTypePTR);
 	pDst += 2;
 	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(DNSClassInternet);
 	pDst += 2;
 	*reinterpret_cast<uint32_t*>(pDst) = __builtin_bswap32(MDNS_RESPONSE_TTL);
 	pDst += 4;
-	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(static_cast<uint16_t>(13 + strlen(s_ServiceRecords[nIndex].pName)));
+	auto *lengtPointer = pDst;
 	pDst += 2;
-	pDst += WriteDnsName(s_ServiceRecords[nIndex].pName, reinterpret_cast<char*>(pDst), false);
-	pDst += WriteDnsName(get_protocol_name(s_ServiceRecords[nIndex].nProtocol), reinterpret_cast<char*>(pDst));
+	auto *pBegin = pDst;
+	pDst += create_service_domain(pDst, s_ServiceRecords[nIndex], true);
+
+	*reinterpret_cast<uint16_t*>(lengtPointer) = __builtin_bswap16(static_cast<uint16_t>(pDst - pBegin));
 
 	DEBUG_EXIT
+	return static_cast<uint32_t>(pDst - pDestination);
+}
+
+uint32_t MDNS::CreateAnswerLocalIpAddress(uint8_t *pDestination) {
+	auto *pDst = pDestination;
+
+	pDst += create_host_domain(pDst);
+
+	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(DNSRecordTypeA);
+	pDst += 2;
+	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(DNSCacheFlushTrue | DNSClassInternet);
+	pDst += 2;
+	*reinterpret_cast<uint32_t*>(pDst) = __builtin_bswap32(MDNS_RESPONSE_TTL);
+	pDst += 4;
+	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(4);	// Data length
+	pDst += 2;
+	*reinterpret_cast<uint32_t*>(pDst) = Network::Get()->GetIp();
+	pDst += 4;
+
 	return static_cast<uint32_t>(pDst - pDestination);
 }
 
@@ -537,7 +496,7 @@ uint32_t MDNS::CreateAnswerServiceDnsSd(uint32_t nIndex, uint8_t *pDestination) 
 
 	auto *pDst = pDestination;
 
-	pDst += WriteDnsName(DNS_SD_SERVICE, reinterpret_cast<char*>(pDst));
+	pDst += add_dnssd(pDst);
 
 	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(DNSRecordTypePTR);
 	pDst += 2;
@@ -545,46 +504,146 @@ uint32_t MDNS::CreateAnswerServiceDnsSd(uint32_t nIndex, uint8_t *pDestination) 
 	pDst += 2;
 	*reinterpret_cast<uint32_t*>(pDst) = __builtin_bswap32(MDNS_RESPONSE_TTL);
 	pDst += 4;
-	*reinterpret_cast<uint16_t*>(pDst) = __builtin_bswap16(static_cast<uint16_t>(2 + strlen(s_ServiceRecords[nIndex].pServName)));
+	auto *lengtPointer = pDst;
 	pDst += 2;
-	pDst += WriteDnsName(s_ServiceRecords[nIndex].pServName, reinterpret_cast<char*>(pDst));
+	auto *pBegin = pDst;
+	pDst += create_service_domain(pDst, s_ServiceRecords[nIndex], false);
+
+	*reinterpret_cast<uint16_t*>(lengtPointer) = __builtin_bswap16(static_cast<uint16_t>(pDst - pBegin));
 
 	DEBUG_EXIT
 	return static_cast<uint32_t>(pDst - pDestination);
 }
 
+/*
+ * https://opensource.apple.com/source/mDNSResponder/mDNSResponder-26.2/mDNSCore/mDNS.c.auto.html
+ * mDNSlocal const mDNSu8 *getDomainName(const DNSMessage *const msg, const mDNSu8 *ptr, const mDNSu8 *const end, domainname *const name)
+ *
+ * Routine to fetch an FQDN from the DNS message, following compression pointers if necessary.
+ */
+const uint8_t *get_domain_name(const uint8_t *const msg, const uint8_t *ptr, const uint8_t *const end, uint8_t *const name) {
+	const uint8_t *nextbyte = nullptr;					// Record where we got to before we started following pointers
+	uint8_t *np = name;									// Name pointer
+	const uint8_t *const limit = np + MAX_DOMAIN_NAME;	// Limit so we don't overrun buffer
+
+	if (ptr < reinterpret_cast<const uint8_t*>(msg) || ptr >= end) {
+		DEBUG_PUTS("getDomainName: Illegal ptr not within packet boundaries");
+		return nullptr;
+	}
+
+	*np = 0;// Tentatively place the root label here (may be overwritten if we have more labels)
+
+	while (1)						// Read sequence of labels
+	{
+		const auto len = *ptr++;	// Read length of this label
+		if (len == 0)
+			break;		// If length is zero, that means this name is complete
+		switch (len & 0xC0) {
+		int i;
+		uint16_t offset;
+
+	case 0x00:
+		if (ptr + len >= end)// Remember: expect at least one more byte for the root label
+				{
+			DEBUG_PUTS("getDomainName: Malformed domain name (overruns packet end)");
+			return nullptr;
+		}
+		if (np + 1 + len >= limit)// Remember: expect at least one more byte for the root label
+				{
+			DEBUG_PUTS("getDomainName: Malformed domain name (more than 255 characters)");
+			return nullptr;
+		}
+		*np++ = len;
+		for (i = 0; i < len; i++)
+			*np++ = *ptr++;
+		*np = 0;// Tentatively place the root label here (may be overwritten if we have more labels)
+		break;
+
+	case 0x40:
+		DEBUG_PRINTF("getDomainName: Extended EDNS0 label types 0x40 not supported in name %.*s", static_cast<int>(len), name);
+		return nullptr;
+
+	case 0x80:
+		DEBUG_PRINTF("getDomainName: Illegal label length 0x80 in domain name %.*s", static_cast<int>(len), name);
+		return nullptr;
+
+	case 0xC0:
+		offset = static_cast<uint16_t>(((static_cast<uint16_t>(len & 0x3F)) << 8) | *ptr++);
+		if (!nextbyte)
+			nextbyte = ptr;	// Record where we got to before we started following pointers
+		ptr = reinterpret_cast<const uint8_t *>(msg) + offset;
+		if (ptr < reinterpret_cast<const uint8_t *>(msg) || ptr >= end) {
+			DEBUG_PUTS("getDomainName: Illegal compression pointer not within packet boundaries");
+			return nullptr;
+		}
+		if (*ptr & 0xC0) {
+			DEBUG_PUTS("getDomainName: Compression pointer must point to real label");
+			return nullptr;
+		}
+		break;
+		}
+	}
+
+	if (nextbyte)
+		return (nextbyte);
+	else
+		return (ptr);
+}
+
 void MDNS::HandleRequest(uint16_t nQuestions) {
 	DEBUG_ENTRY
 
-	char DnsName[255];
+	uint8_t domain[mdns::MAX_DOMAIN_NAME];
+	uint32_t nDomainLength;
+
+	uint8_t domainHost[mdns::MAX_DOMAIN_NAME];
+	const auto nDomainHostLength = create_host_domain(domainHost);
 
 	uint32_t nOffset = sizeof(struct TmDNSHeader);
 
+	DEBUG_PRINTF("nQuestions=%u", nQuestions);
+
 	for (uint32_t i = 0; i < nQuestions; i++) {
-		nOffset += DecodeDNSNameNotation(reinterpret_cast<const char*>(&s_pBuffer[nOffset]), DnsName);
+		auto *pResult = get_domain_name(s_pReceiveBuffer, &s_pReceiveBuffer[nOffset], &s_pReceiveBuffer[s_nBytesReceived], domain);
+		nDomainLength = 0;
 
-		const auto nType = __builtin_bswap16(*reinterpret_cast<uint16_t*>(&s_pBuffer[nOffset]));
+		if (pResult != nullptr) {
+			nDomainLength = static_cast<uint32_t>(pResult - &s_pReceiveBuffer[nOffset]);
+			DEBUG_PRINTF("nDomainLength=%u", nDomainLength);
+		}
+
+		nOffset += nDomainLength;
+
+		const auto nType = __builtin_bswap16(*reinterpret_cast<uint16_t*>(&s_pReceiveBuffer[nOffset]));
 		nOffset += 2;
 
-		const auto nClass = __builtin_bswap16(*reinterpret_cast<uint16_t*>(&s_pBuffer[nOffset])) & 0x7F;
+		const auto nClass = __builtin_bswap16(*reinterpret_cast<uint16_t*>(&s_pReceiveBuffer[nOffset])) & 0x7F;
 		nOffset += 2;
 
-		DEBUG_PRINTF("%s ==> Type : %d, Class: %d", DnsName, nType, nClass);
+		domain_print(domain, nDomainLength);puts("");
+		DEBUG_PRINTF(" ==> Type : %d, Class: %d", nType, nClass);
 
 		if (nClass == DNSClassInternet) {
-			DEBUG_PRINTF("%s:%s", s_pName, DnsName);
+			const auto isEqual = domain_compare(domainHost, nDomainHostLength, domain, nDomainLength);
 
-			if ((strcmp(s_pName, DnsName) == 0) && (nType == DNSRecordTypeA)) {
-				Network::Get()->SendTo(s_nHandle, s_AnswerLocalIp.aBuffer, static_cast<uint16_t>(s_AnswerLocalIp.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
+			if (isEqual && (nType == DNSRecordTypeA)) {
+				DEBUG_PUTS("");
+				SendAnswerLocalIpAddress();
 			}
 
-			const auto isDnsDs = (strcmp(DNS_SD_SERVICE, DnsName) == 0);
+			const auto isDnsDs = domain_compare(DOMAIN_DNSSD, sizeof(DOMAIN_DNSSD), domain, nDomainLength);
+			DEBUG_PRINTF("isDnsDs=%u", isDnsDs);
 
 			for (uint32_t i = 0; i < mdns::SERVICE_RECORDS_MAX; i++) {
-				if (s_ServiceRecords[i].pName != nullptr) {
-					if ((isDnsDs || (strcmp(s_ServiceRecords[i].pServName, DnsName) == 0)) && (nType == DNSRecordTypePTR) ) {
-						CreateMDNSMessage(i);
-						Network::Get()->SendTo(s_nHandle, &s_ServiceRecordsData.aBuffer, static_cast<uint16_t>(s_ServiceRecordsData.nSize), mdns::MULTICAST_ADDRESS, mdns::UDP_PORT);
+				if (s_ServiceRecords[i].services < Services::LAST_NOT_USED) {
+					uint8_t domainService[mdns::MAX_DOMAIN_NAME];
+					const auto nLengthDomainService = create_service_domain(domainService, s_ServiceRecords[i], false);
+					const auto isEqual = domain_compare(domainService, nLengthDomainService, domain, nDomainLength);
+
+					DEBUG_PRINTF("%d:%d",isEqual, nType == DNSRecordTypePTR);
+
+					if ((isDnsDs || (isEqual && (nType == DNSRecordTypePTR))) ) {
+						SendMessage(i);
 					}
 				}
 			}
@@ -596,22 +655,14 @@ void MDNS::HandleRequest(uint16_t nQuestions) {
 }
 
 void MDNS::Parse() {
-	DEBUG_ENTRY
-
-	auto *pmDNSHeader = reinterpret_cast<struct TmDNSHeader*>(s_pBuffer);
+	auto *pmDNSHeader = reinterpret_cast<struct TmDNSHeader*>(s_pReceiveBuffer);
 	const auto nFlags = __builtin_bswap16(pmDNSHeader->nFlags);
-
-#ifndef NDEBUG
-//	Dump(pmDNSHeader, nFlags);
-#endif
 
 	if ((((nFlags >> 15) & 1) == 0) && (((nFlags >> 14) & 0xf) == DNSOpQuery)) {
 		if (pmDNSHeader->queryCount != 0) {
 			HandleRequest(__builtin_bswap16(pmDNSHeader->queryCount));
 		}
 	}
-
-	DEBUG_EXIT
 }
 
 void MDNS::Run() {
@@ -619,7 +670,7 @@ void MDNS::Run() {
 	 uint32_t nNow = Hardware::Get()->Millis();
 #endif
 
-	s_nBytesReceived = Network::Get()->RecvFrom(s_nHandle, const_cast<const void **>(reinterpret_cast<void **>(&s_pBuffer)), &s_nRemoteIp, &s_nRemotePort);
+	s_nBytesReceived = Network::Get()->RecvFrom(s_nHandle, const_cast<const void **>(reinterpret_cast<void **>(&s_pReceiveBuffer)), &s_nRemoteIp, &s_nRemotePort);
 
 	if ((s_nRemotePort == mdns::UDP_PORT) && (s_nBytesReceived > sizeof(struct TmDNSHeader))) {
 		Parse();
@@ -639,18 +690,20 @@ void MDNS::Run() {
 #endif
 }
 
-#include <cstdio>
-
 void MDNS::Print() {
 	printf("mDNS\n");
 	if (s_nHandle == -1) {
 		printf(" Not running\n");
 		return;
 	}
-	printf(" Name : %s\n", s_pName);
+
+	const auto nLength = create_host_domain(s_RecordsData.aBuffer);
+	domain_print(s_RecordsData.aBuffer, nLength);puts("");
+
 	for (uint32_t i = 0; i < mdns::SERVICE_RECORDS_MAX; i++) {
-		if (s_ServiceRecords[i].pName != nullptr) {
-			printf(" %s %d %s\n", s_ServiceRecords[i].pServName, s_ServiceRecords[i].nPort, s_ServiceRecords[i].pTextContent == nullptr ? "" : s_ServiceRecords[i].pTextContent);
+		if (s_ServiceRecords[i].services < Services::LAST_NOT_USED) {
+			ServiceDomainPrint(s_ServiceRecords[i]);
+			printf(" %d %s\n", __builtin_bswap16(s_ServiceRecords[i].nPort), s_ServiceRecords[i].pTextContent == nullptr ? "" : s_ServiceRecords[i].pTextContent);
 		}
 	}
 }
