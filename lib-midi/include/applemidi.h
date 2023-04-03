@@ -37,7 +37,6 @@
 
 #include "midi.h"
 #include "mdns.h"
-#include "mdnsservices.h"
 
 #include "hardware.h"
 #include "network.h"
