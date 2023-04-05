@@ -31,7 +31,7 @@ LIBS+=debug
 LDLIBS=
 
 ifdef LINUX
-	ifneq (, $(shell which /opt/vc/bin/vcgencmd))
+	ifneq (, $(shell which vcgencmd))
 		BCM2835 = ./../lib-bcm2835_raspbian
 		ifneq "$(wildcard $(BCM2835) )" ""
 			LIBS+=bcm2835_raspbian
@@ -41,6 +41,8 @@ ifdef LINUX
 		DEFINES+=RASPPI
 	endif
 endif
+
+$(info $$LDLIBS [${LDLIBS}])
 
 DEFINES:=$(addprefix -D,$(DEFINES))
 DEFINES+=-DDISABLE_TFTP -DENABLE_HTTPD -DDISABLE_RTC
@@ -71,6 +73,7 @@ LIB:=$(addsuffix /lib_linux, $(LIB))
 
 # The variable for the ld -l flag 
 LDLIBS+=$(addprefix -l,$(LIBS))
+$(info $$LDLIBS [${LDLIBS}])
 
 # The variables for the dependency check 
 LIBDEP=$(addprefix ../lib-,$(LIBS))

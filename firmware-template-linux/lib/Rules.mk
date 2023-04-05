@@ -32,7 +32,7 @@ ifeq ($(detected_OS),Darwin)
 endif
 
 ifeq ($(detected_OS),Linux) 
-	ifneq (, $(shell which /opt/vc/bin/vcgencmd))
+	ifneq (, $(shell which vcgencmd))
 	
 		BCM2835 = ./../lib-bcm2835_raspbian
 	

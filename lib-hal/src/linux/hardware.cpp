@@ -116,7 +116,7 @@ Hardware::Hardware():
 	m_aSocName[0] = '\0';
 
 #if defined (__linux__)
-	constexpr char cmd[] = "which /opt/vc/bin/vcgencmd";
+	constexpr char cmd[] = "which vcgencmd";
 	char buf[16];
 
 	FILE *fp = popen(cmd, "r");
@@ -330,7 +330,7 @@ bool Hardware::PowerOff() {
 float Hardware::GetCoreTemperature() {
 #if defined (__linux__)
 	if (m_boardType == Board::TYPE_RASPBIAN) {
-		const char cmd[] = "/opt/vc/bin/vcgencmd measure_temp| egrep \"[0-9.]{4,}\" -o";
+		const char cmd[] = "vcgencmd measure_temp| egrep \"[0-9.]{4,}\" -o";
 		char aResult[8];
 
 		ExecCmd(cmd, aResult, sizeof(aResult));
