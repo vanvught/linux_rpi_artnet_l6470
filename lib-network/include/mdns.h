@@ -44,7 +44,6 @@ public:
 	~MDNS();
 
 	bool AddServiceRecord(const char *pName, const mdns::Services service, const char *pTextContent = nullptr, const uint16_t nPort = 0);
-
 	void Print();
 	void SendAnnouncement();
 	void Run();
@@ -55,7 +54,7 @@ public:
 
 private:
 	void Parse();
-	void HandleRequest(uint16_t nQuestions);
+	void HandleRequest(const uint16_t nQuestions);
 
 	uint32_t CreateAnswerLocalIpAddress(uint8_t *pDestination);
 	uint32_t CreateAnswerServiceSrv(uint32_t nIndex, uint8_t *pDestination);

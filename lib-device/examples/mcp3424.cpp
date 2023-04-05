@@ -95,7 +95,7 @@ int main(int argc, char **argv) {
 				printf("\033c%s", asctime (tm));
 
 				if (adc1.IsConnected()) {
-					for (uint8_t nChannel = 0; nChannel < 4; nChannel++) {
+					for (uint32_t nChannel = 0; nChannel < 4; nChannel++) {
 						const auto adcValue = adc1.GetRaw(nChannel);
 						const auto vRef = adc1.GetVoltage(nChannel);
 						const auto v = voltage(vRef);
@@ -106,7 +106,7 @@ int main(int argc, char **argv) {
 				}
 
 				if (adc2.IsConnected()) {
-					for (uint8_t nChannel = 0; nChannel < 4; nChannel++) {
+					for (uint32_t nChannel = 0; nChannel < 4; nChannel++) {
 						const auto adcValue = adc2.GetRaw(nChannel);
 						const auto vRef = adc2.GetVoltage(nChannel);
 						const auto v = voltage(vRef, R_ADDED[nChannel]);

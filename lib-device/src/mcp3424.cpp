@@ -50,7 +50,7 @@ static constexpr uint8_t CONVERSION(const Conversion conversion) {
 	return (static_cast<uint8_t>(conversion) & 0x01) << 4;
 }
 
-static constexpr uint8_t CHANNEL(const uint8_t nChannel) {
+static constexpr uint8_t CHANNEL(const uint32_t nChannel) {
 	return (nChannel & 0x03) << 5;
 }
 }  // namespace mcp3424
@@ -116,7 +116,7 @@ adc::mcp3424::Conversion MCP3424::GetConversion() const {
 	return static_cast<adc::mcp3424::Conversion>((m_nConfig >> 4) & 0x01);
 }
 
-uint32_t MCP3424::GetRaw(const uint8_t nChannel) {
+uint32_t MCP3424::GetRaw(const uint32_t nChannel) {
 	m_nConfig &= static_cast<uint8_t>(~((0x03) << 5));
 	m_nConfig |= adc::mcp3424::CHANNEL(nChannel);
 
@@ -172,7 +172,7 @@ uint32_t MCP3424::GetRaw(const uint8_t nChannel) {
 	return static_cast<uint32_t>(~0);
 }
 
-double MCP3424::GetVoltage(const uint8_t nChannel) {
+double MCP3424::GetVoltage(const uint32_t nChannel) {
 	const auto Vout = static_cast<double>(GetRaw(nChannel)) * 2 * m_lsb;
 	return Vout;
 }

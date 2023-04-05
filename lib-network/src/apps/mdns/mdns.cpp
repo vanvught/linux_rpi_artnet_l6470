@@ -36,7 +36,6 @@
 
 #include "debug.h"
 
-#define MDNS_TLD                ".local"
 #define MDNS_RESPONSE_TTL     	(3600)    ///< (in seconds)
 #define ANNOUNCE_TIMEOUT 		((MDNS_RESPONSE_TTL / 2) + (MDNS_RESPONSE_TTL / 4))
 
@@ -146,7 +145,6 @@ struct ServiceRecord {
 };
 
 static ServiceRecord s_ServiceRecords[mdns::SERVICE_RECORDS_MAX];
-
 static uint8_t s_RecordsData[512];
 
 }  // namespace mdns
@@ -330,7 +328,7 @@ MDNS::MDNS() {
 	assert(s_nHandle != -1);
 
 	Network::Get()->JoinGroup(s_nHandle, mdns::MULTICAST_ADDRESS);
-	Network::Get()->SetDomainName(&MDNS_TLD[1]);
+	Network::Get()->SetDomainName(&DOMAIN_LOCAL[1]);
 
 	SendAnnouncement();
 }
@@ -667,7 +665,7 @@ const uint8_t *get_domain_name(const uint8_t *const msg, const uint8_t *ptr, con
 		return (ptr);
 }
 
-void MDNS::HandleRequest(uint16_t nQuestions) {
+void MDNS::HandleRequest(const uint16_t nQuestions) {
 	DEBUG_ENTRY
 
 	uint8_t domain[mdns::DOMAIN_MAXLEN];
@@ -710,9 +708,8 @@ void MDNS::HandleRequest(uint16_t nQuestions) {
 
 			for (uint32_t i = 0; i < mdns::SERVICE_RECORDS_MAX; i++) {
 				if (s_ServiceRecords[i].services < Services::LAST_NOT_USED) {
-					uint8_t domainService[mdns::DOMAIN_MAXLEN];
-					const auto nLengthDomainService = create_service_domain(domainService, s_ServiceRecords[i], false);
-					const auto isEqual = domain_compare(domainService, nLengthDomainService, domain, nDomainLength);
+					const auto nLengthDomainService = create_service_domain(s_RecordsData, s_ServiceRecords[i], false);
+					const auto isEqual = domain_compare(s_RecordsData, nLengthDomainService, domain, nDomainLength);
 
 					DEBUG_PRINTF("%d:%d",isEqual, nType == DNSRecordTypePTR);
 
@@ -729,7 +726,7 @@ void MDNS::HandleRequest(uint16_t nQuestions) {
 }
 
 void MDNS::Parse() {
-	auto *pHeader = reinterpret_cast<Header*>(s_pReceiveBuffer);
+	const auto *const pHeader = reinterpret_cast<Header *>(s_pReceiveBuffer);
 	const auto nFlags = __builtin_bswap16(pHeader->nFlags);
 
 	if ((((nFlags >> 15) & 1) == 0) && (((nFlags >> 14) & 0xf) == DNSOpQuery)) {
@@ -746,7 +743,11 @@ void MDNS::Run() {
 
 	s_nBytesReceived = Network::Get()->RecvFrom(s_nHandle, const_cast<const void **>(reinterpret_cast<void **>(&s_pReceiveBuffer)), &s_nRemoteIp, &s_nRemotePort);
 
-	if ((s_nRemotePort == mdns::UDP_PORT) && (s_nBytesReceived > sizeof(struct Header))) {
+	if (__builtin_expect((s_nBytesReceived < sizeof(struct Header)), 1)) {
+		return;
+	}
+
+	if (__builtin_expect((s_nRemotePort == mdns::UDP_PORT), 1)) {
 		Parse();
 	}
 

@@ -199,7 +199,7 @@ bool OscServer::IsDmxDataChanged(const uint8_t* pData, uint16_t nStartChannel, u
 
 	assert(nEnd <= lightset::dmx::UNIVERSE_SIZE);
 
-	for (uint16_t i = nStartChannel; i < nEnd; i++) {
+	for (uint32_t i = nStartChannel; i < nEnd; i++) {
 		if (*dst != *src) {
 			*dst = *src;
 			isChanged = true;
