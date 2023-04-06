@@ -37,6 +37,7 @@
 									<listOptionValue builtIn="false" value="LWIP_ARP=1"/>
 									<listOptionValue builtIn="false" value="LWIP_MDNS_RESPONDER=1"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="CONFIG_MDNS_DOMAIN_REVERSE"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.360499622" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -58,6 +59,7 @@
 									<listOptionValue builtIn="false" value="LWIP_ARP=1"/>
 									<listOptionValue builtIn="false" value="LWIP_MDNS_RESPONDER=1"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="CONFIG_MDNS_DOMAIN_REVERSE"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.907901067" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -132,6 +134,7 @@
 									<listOptionValue builtIn="false" value="LWIP_ARP=1"/>
 									<listOptionValue builtIn="false" value="LWIP_MDNS_RESPONDER=1"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="CONFIG_MDNS_DOMAIN_REVERSE"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.108239718" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -151,6 +154,7 @@
 									<listOptionValue builtIn="false" value="LWIP_ARP=1"/>
 									<listOptionValue builtIn="false" value="LWIP_MDNS_RESPONDER=1"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="CONFIG_MDNS_DOMAIN_REVERSE"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.276408863" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -215,6 +219,7 @@
 									<listOptionValue builtIn="false" value="BARE_METAL"/>
 									<listOptionValue builtIn="false" value="H3"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="CONFIG_MDNS_DOMAIN_REVERSE"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.661869933" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -230,6 +235,7 @@
 									<listOptionValue builtIn="false" value="BARE_METAL"/>
 									<listOptionValue builtIn="false" value="H3"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="CONFIG_MDNS_DOMAIN_REVERSE"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.457302940" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>

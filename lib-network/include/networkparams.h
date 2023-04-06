@@ -34,7 +34,6 @@ namespace networkparams {
 namespace defaults {
 static constexpr auto IS_DHCP_USED = true;
 static constexpr auto DHCP_RETRY_TIME = 0;
-static constexpr auto NTP_UTC_OFFSET = 1.0f;
 }  // namespace defaults
 
 struct Params {

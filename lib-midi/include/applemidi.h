@@ -72,7 +72,7 @@ struct SessionStatus {
 static constexpr auto EXCHANGE_PACKET_MIN_LENGTH = sizeof(struct applemidi::ExchangePacket) - applemidi::SESSION_NAME_LENGTH_MAX - 1;
 }  // namespace applemidi
 
-class AppleMidi: public MDNS {
+class AppleMidi {
 public:
 	AppleMidi();
 
@@ -82,7 +82,8 @@ public:
 
 	void Start() {
 		DEBUG_ENTRY
-		MDNS::AddServiceRecord(nullptr, mdns::Services::MIDI, nullptr, m_nPort);
+		assert(MDNS::Get() != nullptr);
+		MDNS::Get()->AddServiceRecord(nullptr, mdns::Services::MIDI, nullptr, m_nPort);
 
 		m_nHandleControl = Network::Get()->Begin(m_nPort);
 		assert(m_nHandleControl != -1);
@@ -125,7 +126,6 @@ public:
 	}
 
 	void Print() {
-		MDNS::Print();
 		const auto nSSRC = __builtin_bswap32(m_nSSRC);
 		printf("AppleMIDI\n");
 		printf(" SSRC    : %x (%u)\n", nSSRC, nSSRC);

@@ -54,7 +54,7 @@ public:
 
 private:
 	void Parse();
-	void HandleRequest(const uint16_t nQuestions);
+	void HandleRequest(const uint32_t nQuestions);
 
 	uint32_t CreateAnswerLocalIpAddress(uint8_t *pDestination);
 	uint32_t CreateAnswerServiceSrv(uint32_t nIndex, uint8_t *pDestination);
@@ -63,7 +63,8 @@ private:
 	uint32_t CreateAnswerServiceDnsSd(uint32_t nIndex, uint8_t *pDestination);
 
 	void SendAnswerLocalIpAddress();
-	void SendMessage(uint32_t nIndex);
+	void SendMessage(const uint32_t nIndex);
+	void SendTo(const uint16_t nLength);
 
 private:
 	static int32_t s_nHandle;
