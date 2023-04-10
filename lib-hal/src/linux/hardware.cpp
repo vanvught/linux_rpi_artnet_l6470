@@ -250,10 +250,6 @@ uint32_t Hardware::GetUpTime() {
 #endif
 }
 
-void Hardware::SetSysTime(__attribute__((unused)) time_t nTime) {
-	DEBUG_PRINTF("%s", asctime(localtime(&nTime)));
-}
-
 bool Hardware::SetTime(__attribute__((unused)) const struct tm *pTime) {
 	DEBUG_PRINTF("%s", asctime(pTime));
 	return true;

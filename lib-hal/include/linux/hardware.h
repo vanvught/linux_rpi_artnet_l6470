@@ -76,8 +76,6 @@ public:
 		return time(nullptr);
 	}
 
-	void SetSysTime(time_t nTime);
-
 	bool SetTime(const struct tm *pTime);
 	void GetTime(struct tm *pTime);
 

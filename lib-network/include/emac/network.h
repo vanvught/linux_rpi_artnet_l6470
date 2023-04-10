@@ -45,10 +45,9 @@
 
 class Network {
 public:
-	Network();
+	Network(NetworkParamsStore *pNetworkParamsStore);
 	~Network() {}
 
-	void Init(NetworkParamsStore *pNetworkParamsStore = nullptr);
 
 	void Print();
 
@@ -233,10 +232,6 @@ public:
 
 	float GetNtpUtcOffset() const {
 		return m_fNtpUtcOffset;
-	}
-
-	void SetNetworkStore(NetworkStore *pNetworkStore) {
-		m_pNetworkStore = pNetworkStore;
 	}
 
 	bool IsValidIp(uint32_t nIp) {

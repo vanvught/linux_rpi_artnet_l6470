@@ -66,7 +66,7 @@ Transmit Timestamp    T3   time reply sent by server
 Destination Timestamp T4   time reply received by client
 */
 
-NtpClient *NtpClient::s_pThis = nullptr;
+NtpClient *NtpClient::s_pThis;
 
 NtpClient::NtpClient(uint32_t nServerIp): m_nServerIp(nServerIp) {
 	DEBUG_ENTRY

@@ -63,7 +63,6 @@ bool NetworkParams::Load() {
 	ReadConfigFile configfile(NetworkParams::staticCallbackFunction, this);
 
 	if (configfile.Read(NetworkParamsConst::FILE_NAME)) {
-		// There is a configuration file
 		if (m_pNetworkParamsStore != nullptr) {
 			m_pNetworkParamsStore->Update(&m_Params);
 		}

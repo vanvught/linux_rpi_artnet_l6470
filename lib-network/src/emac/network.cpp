@@ -54,22 +54,14 @@ int emac_start(uint8_t paddr[]);
 
 Network *Network::s_pThis;
 
-Network::Network() {
+Network::Network(NetworkParamsStore *pNetworkParamsStore) {
 	DEBUG_ENTRY
 	assert(s_pThis == nullptr);
 	s_pThis = this;
 
-	m_aNetMacaddr[0] = '\0';
-	m_aHostName[0] = '\0';
 	m_aDomainName[0] = '\0';
 
 	strcpy(m_aIfName, "eth0");
-
-	DEBUG_EXIT
-}
-
-void Network::Init(NetworkParamsStore *pNetworkParamsStore) {
-	DEBUG_ENTRY
 
 	network::display_emac_start();
 

@@ -36,10 +36,8 @@
 
 class Network {
 public:
-	Network();
+	Network(int argc, char **argv);
 	~Network();
-
-	int Init(const char *s);
 
 	void Print();
 

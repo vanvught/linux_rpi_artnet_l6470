@@ -94,16 +94,6 @@ enum class Protocols {
 	UDP, TCP
 };
 
-struct Header {
-	uint16_t xid;
-	uint8_t nFlag1;
-	uint8_t nFlag2;
-	uint16_t nQueryCount;
-	uint16_t nAnswerCount;
-	uint16_t nAuthorityCount;
-	uint16_t nAdditionalCount;
-} __attribute__((__packed__));
-
 struct Service {
 	const char *pDomain;
 	const uint16_t nLength;
@@ -111,7 +101,7 @@ struct Service {
 	const uint16_t nPortDefault;
 };
 
-static constexpr Service s_Services[] {
+static Service s_Services[] {
 		{DOMAIN_CONFIG		, sizeof(DOMAIN_CONFIG)		, Protocols::UDP, 0x2905 },
 		{DOMAIN_TFTP		, sizeof(DOMAIN_TFTP)		, Protocols::UDP, 69 },
 		{DOMAIN_HTTP		, sizeof(DOMAIN_HTTP)		, Protocols::TCP, 80 },
@@ -183,6 +173,7 @@ static uint32_t add_dnssd(uint8_t *pDestination) {
 }
 
 static uint32_t create_service_domain(uint8_t *pDestination, ServiceRecord const& serviceRecord, const bool bIncludeName) {
+	DEBUG_ENTRY
 	uint32_t nLength = 0;
 
 	if (bIncludeName) {
@@ -201,6 +192,7 @@ static uint32_t create_service_domain(uint8_t *pDestination, ServiceRecord const
 	nLength += add_protocol(&pDestination[nLength], s_Services[nIndex].protocols); 
 	nLength += add_dot_local(&pDestination[nLength]);
 
+	DEBUG_EXIT
 	return nLength;
 }
 
@@ -434,7 +426,7 @@ void MDNS::SendMessage(const uint32_t nIndex) {
 	DEBUG_EXIT
 }
 
-uint32_t MDNS::CreateAnswerServiceSrv(uint32_t nIndex, uint8_t *pDestination) {
+uint32_t MDNS::CreateAnswerServiceSrv(const uint32_t nIndex, uint8_t *pDestination) {
 	DEBUG_ENTRY
 
 	auto *pDst = pDestination;
@@ -462,7 +454,7 @@ uint32_t MDNS::CreateAnswerServiceSrv(uint32_t nIndex, uint8_t *pDestination) {
 	return static_cast<uint32_t>(pDst - pDestination);
 }
 
-uint32_t MDNS::CreateAnswerServiceTxt(uint32_t nIndex, uint8_t *pDestination) {
+uint32_t MDNS::CreateAnswerServiceTxt(const uint32_t nIndex, uint8_t *pDestination) {
 	DEBUG_ENTRY
 
 	auto *pDst = pDestination;
@@ -487,7 +479,7 @@ uint32_t MDNS::CreateAnswerServiceTxt(uint32_t nIndex, uint8_t *pDestination) {
 		pDst += 2;
 		*pDst = static_cast<uint8_t>(nSize);														// Text length
 		pDst++;
-		strcpy(reinterpret_cast<char*>(pDst), s_ServiceRecords[nIndex].pTextContent);
+		memcpy(reinterpret_cast<char*>(pDst), s_ServiceRecords[nIndex].pTextContent, s_ServiceRecords[nIndex].nTextContentLength);
 		pDst += nSize;
 	}
 
@@ -495,7 +487,7 @@ uint32_t MDNS::CreateAnswerServiceTxt(uint32_t nIndex, uint8_t *pDestination) {
 	return static_cast<uint32_t>(pDst - pDestination);
 }
 
-uint32_t MDNS::CreateAnswerServicePtr(uint32_t nIndex, uint8_t *pDestination) {
+uint32_t MDNS::CreateAnswerServicePtr(const uint32_t nIndex, uint8_t *pDestination) {
 	DEBUG_ENTRY
 
 	auto *pDst = pDestination;
@@ -538,7 +530,7 @@ uint32_t MDNS::CreateAnswerLocalIpAddress(uint8_t *pDestination) {
 	return static_cast<uint32_t>(pDst - pDestination);
 }
 
-uint32_t MDNS::CreateAnswerServiceDnsSd(uint32_t nIndex, uint8_t *pDestination) {
+uint32_t MDNS::CreateAnswerServiceDnsSd(const uint32_t nIndex, uint8_t *pDestination) {
 	DEBUG_ENTRY
 
 	auto *pDst = pDestination;
@@ -664,7 +656,7 @@ void MDNS::HandleRequest(const uint32_t nQuestions) {
 		nOffset += 2;
 
 #ifndef NDEBUG
-		domain_print(domain, nDomainLength)
+		domain_print(domain, nDomainLength);
 		printf(" ==> Type : %d, Class: %d\n", nType, nClass);
 #endif
 
@@ -698,6 +690,8 @@ void MDNS::HandleRequest(const uint32_t nQuestions) {
 }
 
 void MDNS::Print() {
+	DEBUG_ENTRY
+
 	printf("mDNS\n");
 	if (s_nHandle == -1) {
 		printf(" Not running\n");
@@ -713,21 +707,6 @@ void MDNS::Print() {
 			printf(" %d %.*s\n", __builtin_bswap16(s_ServiceRecords[i].nPort), s_ServiceRecords[i].nTextContentLength, s_ServiceRecords[i].pTextContent == nullptr ? "" : s_ServiceRecords[i].pTextContent);
 		}
 	}
-}
 
-void MDNS::Run() {
-	s_nBytesReceived = Network::Get()->RecvFrom(s_nHandle, const_cast<const void **>(reinterpret_cast<void **>(&s_pReceiveBuffer)), &s_nRemoteIp, &s_nRemotePort);
-
-	if (__builtin_expect((s_nBytesReceived < sizeof(struct Header)), 1)) {
-		return;
-	}
-
-	const auto *const pHeader = reinterpret_cast<Header *>(s_pReceiveBuffer);
-	const auto nFlag1 = pHeader->nFlag1;
-
-	if ((nFlag1 >> 3) & 0xF) {
-		return;
-	}
-
-	HandleRequest(__builtin_bswap16(pHeader->nQueryCount));
+	DEBUG_EXIT
 }

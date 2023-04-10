@@ -66,14 +66,7 @@ HttpDaemon::HttpDaemon() : m_pContentType(contentType[static_cast<uint32_t>(cont
 	DEBUG_EXIT
 }
 
-void HttpDaemon::Run() {
-	uint32_t nConnectionHandle;
-	m_nBytesReceived = Network::Get()->TcpRead(m_nHandle, const_cast<const uint8_t **>(reinterpret_cast<uint8_t **>(&m_RequestHeaderResponse)), nConnectionHandle);
-
-	if (__builtin_expect((m_nBytesReceived <= 0), 1)) {
-		return;
-	}
-
+void HttpDaemon::HandleRequest(const uint32_t nConnectionHandle) {
 	const char *pStatusMsg = "OK";
 
 	DEBUG_PRINTF("%u: m_Status=%u, m_RequestMethod=%u", nConnectionHandle, static_cast<uint32_t>(m_Status), static_cast<uint32_t>(m_RequestMethod));

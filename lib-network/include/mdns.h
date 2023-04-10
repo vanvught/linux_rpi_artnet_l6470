@@ -36,6 +36,16 @@ namespace mdns {
 enum class Services {
 	CONFIG, TFTP, HTTP, RDMNET_LLRP, NTP, MIDI, OSC, DDP, PP, LAST_NOT_USED
 };
+
+struct Header {
+	uint16_t xid;
+	uint8_t nFlag1;
+	uint8_t nFlag2;
+	uint16_t nQueryCount;
+	uint16_t nAnswerCount;
+	uint16_t nAuthorityCount;
+	uint16_t nAdditionalCount;
+} __attribute__((__packed__));
 }  // namespace mdns
 
 class MDNS {
@@ -46,7 +56,23 @@ public:
 	bool AddServiceRecord(const char *pName, const mdns::Services service, const char *pTextContent = nullptr, const uint16_t nPort = 0);
 	void Print();
 	void SendAnnouncement();
-	void Run();
+
+	void Run() {
+		s_nBytesReceived = Network::Get()->RecvFrom(s_nHandle, const_cast<const void **>(reinterpret_cast<void **>(&s_pReceiveBuffer)), &s_nRemoteIp, &s_nRemotePort);
+
+		if (__builtin_expect((s_nBytesReceived < sizeof(struct mdns::Header)), 1)) {
+			return;
+		}
+
+		const auto *const pHeader = reinterpret_cast<mdns::Header *>(s_pReceiveBuffer);
+		const auto nFlag1 = pHeader->nFlag1;
+
+		if ((nFlag1 >> 3) & 0xF) {
+			return;
+		}
+
+		HandleRequest(__builtin_bswap16(pHeader->nQueryCount));
+	}
 
 	static MDNS *Get() {
 		return s_pThis;
@@ -57,10 +83,10 @@ private:
 	void HandleRequest(const uint32_t nQuestions);
 
 	uint32_t CreateAnswerLocalIpAddress(uint8_t *pDestination);
-	uint32_t CreateAnswerServiceSrv(uint32_t nIndex, uint8_t *pDestination);
-	uint32_t CreateAnswerServiceTxt(uint32_t nIndex, uint8_t *pDestination);
-	uint32_t CreateAnswerServicePtr(uint32_t nIndex, uint8_t *pDestination);
-	uint32_t CreateAnswerServiceDnsSd(uint32_t nIndex, uint8_t *pDestination);
+	uint32_t CreateAnswerServiceSrv(const uint32_t nIndex, uint8_t *pDestination);
+	uint32_t CreateAnswerServiceTxt(const uint32_t nIndex, uint8_t *pDestination);
+	uint32_t CreateAnswerServicePtr(const uint32_t nIndex, uint8_t *pDestination);
+	uint32_t CreateAnswerServiceDnsSd(const uint32_t nIndex, uint8_t *pDestination);
 
 	void SendAnswerLocalIpAddress();
 	void SendMessage(const uint32_t nIndex);
