@@ -46,9 +46,6 @@
 E131Bridge *E131Bridge::s_pThis = nullptr;
 
 E131Bridge::E131Bridge() {
-	assert(Hardware::Get() != nullptr);
-	assert(Network::Get() != nullptr);
-
 	assert(s_pThis == nullptr);
 	s_pThis = this;
 
@@ -61,15 +58,17 @@ E131Bridge::E131Bridge() {
 	memset(&m_State, 0, sizeof(e131bridge::State));
 	m_State.nPriority = e131::priority::LOWEST;
 
+#if defined (E131_HAVE_DMXIN)
 	char aSourceName[e131::SOURCE_NAME_LENGTH];
 	uint8_t nLength;
 	snprintf(aSourceName, e131::SOURCE_NAME_LENGTH, "%.48s %s", Network::Get()->GetHostName(), Hardware::Get()->GetBoardName(nLength));
 	SetSourceName(aSourceName);
 
+	Hardware::Get()->GetUuid(m_Cid);
+#endif
+
 	m_nHandle = Network::Get()->Begin(e131::UDP_PORT);
 	assert(m_nHandle != -1);
-
-	Hardware::Get()->GetUuid(m_Cid);
 }
 
 E131Bridge::~E131Bridge() {

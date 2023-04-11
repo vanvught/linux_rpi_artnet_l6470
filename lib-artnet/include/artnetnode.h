@@ -395,7 +395,9 @@ private:
 	void HandleTodRequest();
 	void HandleRdm();
 	void HandleIpProg();
+#if defined (ARTNET_HAVE_DMXIN)
 	void HandleDmxIn();
+#endif
 	void HandleRdmIn();
 	void HandleTrigger();
 
@@ -427,8 +429,9 @@ private:
 
 	TArtNetPacket m_ArtNetPacket;
 	TArtPollReply m_PollReply;
+#if defined (ARTNET_HAVE_DMXIN)
 	TArtDmx m_ArtDmx;
-	TArtRdm m_ArtRdm;
+#endif
 #if defined ( ARTNET_ENABLE_SENDDIAG )
 	TArtDiagData m_DiagData;
 #endif

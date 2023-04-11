@@ -94,20 +94,6 @@ ArtNetNode::ArtNetNode() {
 	m_ArtDmx.ProtVerHi = 0;
 	m_ArtDmx.ProtVerLo = artnet::PROTOCOL_REVISION;
 #endif
-#if defined (RDM_CONTROLLER) || defined (RDM_RESPONDER)
-	memcpy(m_ArtRdm.Id, artnet::NODE_ID, sizeof(m_PollReply.Id));
-	m_ArtRdm.OpCode = OP_RDM;
-	m_ArtRdm.ProtVerHi = 0;
-	m_ArtRdm.ProtVerLo = artnet::PROTOCOL_REVISION;
-	m_ArtRdm.RdmVer = 0x01; // Devices that support RDM STANDARD V1.0 set field to 0x01.
-	m_ArtRdm.Spare1 = 0;
-	m_ArtRdm.Spare2 = 0;
-	m_ArtRdm.Spare3 = 0;
-	m_ArtRdm.Spare4 = 0;
-	m_ArtRdm.Spare5 = 0;
-	m_ArtRdm.Spare6 = 0;
-	m_ArtRdm.Spare7 = 0;
-#endif
 }
 
 ArtNetNode::~ArtNetNode() {

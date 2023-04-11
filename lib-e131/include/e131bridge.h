@@ -197,6 +197,7 @@ public:
 		m_pE131Sync = pE131Sync;
 	}
 
+#if defined (E131_HAVE_DMXIN)
 	const uint8_t *GetCid() const {
 		return m_Cid;
 	}
@@ -218,6 +219,7 @@ public:
 	const char *GetSourceName() const {
 		return m_SourceName;
 	}
+#endif
 
 	void SetPriority(uint8_t nPriority, uint32_t nPortIndex = 0) {
 		assert(nPortIndex < e131bridge::MAX_PORTS);
@@ -273,12 +275,12 @@ private:
 
 	void LeaveUniverse(uint32_t nPortIndex, uint16_t nUniverse);
 
-	// Input
+#if defined (E131_HAVE_DMXIN)
 	void HandleDmxIn();
 	void FillDataPacket();
 	void FillDiscoveryPacket();
 	void SendDiscoveryPacket();
-
+#endif
 private:
 	int32_t m_nHandle { -1 };
 
@@ -289,12 +291,13 @@ private:
 	uint32_t m_nCurrentPacketMillis { 0 };
 	uint32_t m_nPreviousPacketMillis { 0 };
 
-	// Input
+#if defined (E131_HAVE_DMXIN)
 	TE131DataPacket *m_pE131DataPacket { nullptr };
 	TE131DiscoveryPacket *m_pE131DiscoveryPacket { nullptr };
 	uint32_t m_DiscoveryIpAddress { 0 };
 	uint8_t m_Cid[e131::CID_LENGTH];
 	char m_SourceName[e131::SOURCE_NAME_LENGTH];
+#endif
 
 	// Synchronization handler
 	E131Sync *m_pE131Sync { nullptr };
