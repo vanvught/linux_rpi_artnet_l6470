@@ -83,6 +83,7 @@ private:
 	void HandleRequest(const uint32_t nQuestions);
 
 	uint32_t CreateAnswerLocalIpAddress(uint8_t *pDestination);
+	uint32_t CreateAnswerReverseDomain(uint8_t *pDestination);
 	uint32_t CreateAnswerServiceSrv(const uint32_t nIndex, uint8_t *pDestination);
 	uint32_t CreateAnswerServiceTxt(const uint32_t nIndex, uint8_t *pDestination);
 	uint32_t CreateAnswerServicePtr(const uint32_t nIndex, uint8_t *pDestination);

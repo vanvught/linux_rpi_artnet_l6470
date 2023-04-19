@@ -284,9 +284,12 @@ private:
 private:
 	int32_t m_nHandle { -1 };
 
+	uint8_t *m_pReceiveBuffer;
+	uint32_t m_nIpAddressFrom;
 	LightSet *m_pLightSet { nullptr };
 
-	bool m_bEnableDataIndicator { true };
+	// Synchronization handler
+	E131Sync *m_pE131Sync { nullptr };
 
 	uint32_t m_nCurrentPacketMillis { 0 };
 	uint32_t m_nPreviousPacketMillis { 0 };
@@ -299,14 +302,11 @@ private:
 	char m_SourceName[e131::SOURCE_NAME_LENGTH];
 #endif
 
-	// Synchronization handler
-	E131Sync *m_pE131Sync { nullptr };
-
-	struct TE131 m_E131;
-
 	e131bridge::State m_State;
 	e131bridge::OutputPort m_OutputPort[e131bridge::MAX_PORTS];
 	e131bridge::InputPort m_InputPort[e131bridge::MAX_PORTS];
+
+	bool m_bEnableDataIndicator { true };
 
 	static E131Bridge *s_pThis;
 };

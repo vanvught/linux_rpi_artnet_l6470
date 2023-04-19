@@ -94,6 +94,15 @@ ArtNetNode::ArtNetNode() {
 	m_ArtDmx.ProtVerHi = 0;
 	m_ArtDmx.ProtVerLo = artnet::PROTOCOL_REVISION;
 #endif
+
+#if defined (ARTNET_HAVE_TIMECODE)
+	memcpy(m_ArtTimeCode.Id, artnet::NODE_ID, sizeof(m_PollReply.Id));
+	m_ArtTimeCode.OpCode = OP_TIMECODE;
+	m_ArtTimeCode.ProtVerHi = 0;
+	m_ArtTimeCode.ProtVerLo = artnet::PROTOCOL_REVISION;
+	m_ArtTimeCode.Filler1 = 0;
+	m_ArtTimeCode.Filler2 = 0;
+#endif
 }
 
 ArtNetNode::~ArtNetNode() {

@@ -101,28 +101,15 @@ int main(int argc, char **argv) {
 		return -2;
 	}
 
-	if (argc < 2) {
-		printf("Usage: %s ip_address|interface_name\n", argv[0]);
-		return -3;
-	}
-
 	Hardware hw;
-	Network nw;
 	DisplayUdf display;
+	ConfigStore configStore;
+	StoreNetwork storeNetwork;
+	Network nw(argc, argv);
 	FirmwareVersion fw(SOFTWARE_VERSION, __DATE__, __TIME__);
 
-	ConfigStore configStore;
-
+	hw.Print();
 	fw.Print("Art-Net 4 Stepper L6470");
-
-	display.TextStatus(NetworkConst::MSG_NETWORK_INIT, Display7SegmentMessage::INFO_NETWORK_INIT, CONSOLE_YELLOW);
-
-	StoreNetwork storeNetwork;
-	nw.SetNetworkStore(&storeNetwork);
-	if (nw.Init(argv[1]) < 0) {
-		fprintf(stderr, "Not able to start the network\n");
-		return -1;
-	}
 	nw.Print();
 
 #if defined (ENABLE_HTTPD)

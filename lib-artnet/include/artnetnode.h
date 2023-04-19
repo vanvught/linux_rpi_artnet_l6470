@@ -432,6 +432,9 @@ private:
 #if defined (ARTNET_HAVE_DMXIN)
 	TArtDmx m_ArtDmx;
 #endif
+#if defined (ARTNET_HAVE_TIMECODE)
+	TArtTimeCode m_ArtTimeCode;
+#endif
 #if defined ( ARTNET_ENABLE_SENDDIAG )
 	TArtDiagData m_DiagData;
 #endif

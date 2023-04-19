@@ -23,6 +23,10 @@
  * THE SOFTWARE.
  */
 
+#if __GNUC__ > 8
+# pragma GCC target ("general-regs-only")
+#endif
+
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
@@ -47,7 +51,7 @@
 #include "debug.h"
 
 #if (GPIO_DMX_DATA_DIRECTION != RPI_V2_GPIO_P1_12)
- #error
+# error
 #endif
 
 #ifndef ALIGNED
@@ -740,11 +744,9 @@ uint32_t Dmx::GetUpdatesPerSecond(__attribute__((unused))uint32_t nPortIndex) {
 }
 
 void Dmx::ClearData(__attribute__((unused))uint32_t nPortIndex) {
-	auto i = sizeof(s_DmxData) / sizeof(uint32_t);
-	auto *p = reinterpret_cast<uint32_t *>(s_DmxData);
-
-	while (i-- != 0) {
-		*p++ = 0;
+	for (uint32_t i = 0; i < buffer::INDEX_ENTRIES; i++) {
+		memset(s_DmxData[i].Data, 0, dmx::buffer::SIZE);
+		memset(&s_DmxData[i].Statistics, 0, sizeof(struct Statistics));
 	}
 }
 
