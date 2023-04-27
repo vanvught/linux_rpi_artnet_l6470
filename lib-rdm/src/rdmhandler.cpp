@@ -1294,7 +1294,7 @@ void RDMHandler::GetSlotInfo(uint16_t nSubDevice) {
 
 	uint32_t j = 0;
 
-	for (uint32_t i = 0; i < std::min(static_cast<uint32_t>(nDmxFootPrint), 46U); i++) {
+	for (uint32_t i = 0; i < std::min(static_cast<uint32_t>(nDmxFootPrint), static_cast<uint32_t>(46)); i++) {
 		if (RDMDeviceResponder::Get()->GetSlotInfo(nSubDevice, static_cast<uint16_t>(i), slotInfo)) {
 			pRdmDataOut->param_data[j++] = static_cast<uint8_t>(i >> 8);
 			pRdmDataOut->param_data[j++] = static_cast<uint8_t>(i);

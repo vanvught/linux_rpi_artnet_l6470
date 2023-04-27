@@ -284,13 +284,6 @@ private:
 private:
 	int32_t m_nHandle { -1 };
 
-	uint8_t *m_pReceiveBuffer;
-	uint32_t m_nIpAddressFrom;
-	LightSet *m_pLightSet { nullptr };
-
-	// Synchronization handler
-	E131Sync *m_pE131Sync { nullptr };
-
 	uint32_t m_nCurrentPacketMillis { 0 };
 	uint32_t m_nPreviousPacketMillis { 0 };
 
@@ -307,6 +300,13 @@ private:
 	e131bridge::InputPort m_InputPort[e131bridge::MAX_PORTS];
 
 	bool m_bEnableDataIndicator { true };
+
+	uint8_t *m_pReceiveBuffer;
+	uint32_t m_nIpAddressFrom;
+	LightSet *m_pLightSet { nullptr };
+
+	// Synchronization handler
+	E131Sync *m_pE131Sync { nullptr };
 
 	static E131Bridge *s_pThis;
 };

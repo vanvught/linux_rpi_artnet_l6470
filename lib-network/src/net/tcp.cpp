@@ -523,7 +523,7 @@ static void scan_options(struct t_tcp *pTcp, struct tcb *pTcb, const int32_t nDa
 				const auto *p = &pOptions->Data;
 				auto nMSS = (p[0] << 8) + p[1];
 				// RFC 1122 section 4.2.2.6
-				nMSS = std::min((nMSS + 20), static_cast<int32_t>(TCP_TX_MSS)) - TCP_HEADER_SIZE; // - IP_OPTION_SIZE;
+				nMSS = std::min(static_cast<int32_t>(nMSS + 20), static_cast<int32_t>(TCP_TX_MSS)) - TCP_HEADER_SIZE; // - IP_OPTION_SIZE;
 				pTcb->SendMSS = static_cast<uint16_t>(nMSS);
 			}
 			pOptions = reinterpret_cast<struct Options *>(reinterpret_cast<uint8_t *>(pOptions) + pOptions->nLength);

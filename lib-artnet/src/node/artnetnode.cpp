@@ -325,30 +325,30 @@ void ArtNetNode::SetNetworkDataLossCondition() {
 	}
 }
 
-void ArtNetNode::GetType() {
-	const auto *const pPacket = reinterpret_cast<char*>(&(m_ArtNetPacket.ArtPacket));
+void ArtNetNode::GetType(const uint32_t nBytesReceived, enum TOpCodes& OpCode) {
+	const auto *const pPacket = reinterpret_cast<char *>(m_pReceiveBuffer);
 
-	if (m_ArtNetPacket.nLength < ARTNET_MIN_HEADER_SIZE) {
-		m_ArtNetPacket.OpCode = OP_NOT_DEFINED;
+	if (nBytesReceived < ARTNET_MIN_HEADER_SIZE) {
+		OpCode = OP_NOT_DEFINED;
 		return;
 	}
 
 	if ((pPacket[10] != 0) || (pPacket[11] != artnet::PROTOCOL_REVISION)) {
-		m_ArtNetPacket.OpCode = OP_NOT_DEFINED;
+		OpCode = OP_NOT_DEFINED;
 		return;
 	}
 
 	if (memcmp(pPacket, artnet::NODE_ID, 8) == 0) {
-		m_ArtNetPacket.OpCode = static_cast<TOpCodes>((static_cast<uint16_t>(pPacket[9] << 8)) + pPacket[8]);
+		OpCode = static_cast<TOpCodes>((static_cast<uint16_t>(pPacket[9] << 8)) + pPacket[8]);
 	} else {
-		m_ArtNetPacket.OpCode = OP_NOT_DEFINED;
+		OpCode = OP_NOT_DEFINED;
 	}
 }
 
 void ArtNetNode::Run() {
 	uint16_t nForeignPort;
 
-	const auto nBytesReceived = Network::Get()->RecvFrom(m_nHandle, &(m_ArtNetPacket.ArtPacket), sizeof(m_ArtNetPacket.ArtPacket), &m_ArtNetPacket.IPAddressFrom, &nForeignPort);
+	const auto nBytesReceived = Network::Get()->RecvFrom(m_nHandle, const_cast<const void**>(reinterpret_cast<void **>(&m_pReceiveBuffer)), &m_nIpAddressFrom, &nForeignPort);
 
 	m_nCurrentPacketMillis = Hardware::Get()->Millis();
 
@@ -404,7 +404,6 @@ void ArtNetNode::Run() {
 		return;
 	}
 
-	m_ArtNetPacket.nLength = nBytesReceived;
 	m_nPreviousPacketMillis = m_nCurrentPacketMillis;
 
 	if (m_State.IsSynchronousMode) {
@@ -413,9 +412,10 @@ void ArtNetNode::Run() {
 		}
 	}
 
-	GetType();
+	enum TOpCodes OpCode;
+	GetType(nBytesReceived, OpCode);
 
-	switch (m_ArtNetPacket.OpCode) {
+	switch (OpCode) {
 #if (LIGHTSET_PORTS > 0)		
 	case OP_DMX:
 		if (m_pLightSet != nullptr) {

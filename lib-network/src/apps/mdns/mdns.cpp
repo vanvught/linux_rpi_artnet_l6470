@@ -283,9 +283,9 @@ static void create_reverse_domain(Domain &domain) {
 		const auto t = d / 10U;
 
 		if (t != 0) {
-			nLength = std::max(2U, nLength);
+			nLength = std::max(static_cast<uint32_t>(2), nLength);
 		} else {
-			nLength = std::max(1U, nLength);
+			nLength = std::max(static_cast<uint32_t>(1), nLength);
 		}
 
 		buffer[1] = '0' + static_cast<char>(t);

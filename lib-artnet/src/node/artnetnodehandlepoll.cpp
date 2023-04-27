@@ -174,7 +174,7 @@ void ArtNetNode::SendPollRelply(bool bResponse) {
 }
 
 void ArtNetNode::HandlePoll() {
-	const auto *const pArtPoll = &(m_ArtNetPacket.ArtPacket.ArtPoll);
+	const auto *const pArtPoll = reinterpret_cast<TArtPoll *>(m_pReceiveBuffer);
 
 	if (pArtPoll->TalkToMe & artnet::TalkToMe::SEND_ARTP_ON_CHANGE) {
 		m_State.SendArtPollReplyOnChange = true;
@@ -187,8 +187,8 @@ void ArtNetNode::HandlePoll() {
 		m_State.SendArtDiagData = true;
 
 		if (m_State.IPAddressArtPoll == 0) {
-			m_State.IPAddressArtPoll = m_ArtNetPacket.IPAddressFrom;
-		} else if (!m_State.IsMultipleControllersReqDiag && (m_State.IPAddressArtPoll != m_ArtNetPacket.IPAddressFrom)) {
+			m_State.IPAddressArtPoll = m_nIpAddressFrom;
+		} else if (!m_State.IsMultipleControllersReqDiag && (m_State.IPAddressArtPoll != m_nIpAddressFrom)) {
 			// If there are multiple controllers requesting diagnostics, diagnostics shall be broadcast.
 			m_State.IPAddressDiagSend = m_Node.IPAddressBroadcast;
 			m_State.IsMultipleControllersReqDiag = true;
@@ -203,7 +203,7 @@ void ArtNetNode::HandlePoll() {
 
 		// If there are multiple controllers requesting diagnostics, diagnostics shall be broadcast. (Ignore ArtPoll->TalkToMe->3).
 		if (!m_State.IsMultipleControllersReqDiag && (pArtPoll->TalkToMe & artnet::TalkToMe::SEND_DIAG_UNICAST)) {
-			m_State.IPAddressDiagSend = m_ArtNetPacket.IPAddressFrom;
+			m_State.IPAddressDiagSend = m_nIpAddressFrom;
 		} else {
 			m_State.IPAddressDiagSend = m_Node.IPAddressBroadcast;
 		}

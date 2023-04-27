@@ -50,7 +50,8 @@ typedef union pcast32 {
 
 // https://tools.ietf.org/html/rfc1541
 
-struct t_dhcp_message {
+namespace dhcp {
+struct Message {
 	uint8_t op;
 	uint8_t htype;
 	uint8_t hlen;
@@ -67,6 +68,7 @@ struct t_dhcp_message {
 	uint8_t file[128];
 	uint8_t options[DHCP_OPT_SIZE];
 }PACKED;
+}  // namespace dhcp
 
 enum OPTIONS {
 	OPTIONS_PAD_OPTION = 0,
@@ -85,17 +87,17 @@ enum OPTIONS {
 	OPTIONS_END_OPTION = 255
 };
 
-static struct t_dhcp_message s_dhcp_message ALIGNED;
+static dhcp::Message s_dhcp_message ALIGNED;
 
 static uint8_t s_dhcp_server_ip[IPv4_ADDR_LEN] ALIGNED = { 0, };
 static uint8_t s_dhcp_allocated_ip[IPv4_ADDR_LEN] ALIGNED = { 0, };
 static uint8_t s_dhcp_allocated_gw[IPv4_ADDR_LEN] ALIGNED = { 0, };
 static uint8_t s_dhcp_allocated_netmask[IPv4_ADDR_LEN] ALIGNED = { 0, };
 
-static void _message_init(const uint8_t *pMacAddress) {
+static void message_init(const uint8_t *pMacAddress) {
 	auto *p = reinterpret_cast<uint8_t *>(&s_dhcp_message);
 
-	for (uint32_t i = 0; i < sizeof(struct t_dhcp_message); i++) {
+	for (uint32_t i = 0; i < sizeof(dhcp::Message); i++) {
 		*p++ = 0;
 	}
 
@@ -113,7 +115,7 @@ static void _message_init(const uint8_t *pMacAddress) {
 	s_dhcp_message.options[5] = 0x01;
 }
 
-static void _send_discover(int nHandle, const uint8_t *pMacAddress) {
+static void send_discover(int nHandle, const uint8_t *pMacAddress) {
 	DEBUG_ENTRY
 
 	uint32_t k = 6;
@@ -140,7 +142,7 @@ static void _send_discover(int nHandle, const uint8_t *pMacAddress) {
 	s_dhcp_message.options[k++] = OPTIONS_DHCP_T2_VALUE;
 	s_dhcp_message.options[k++] = OPTIONS_END_OPTION;
 
-	udp_send(nHandle, reinterpret_cast<uint8_t *>(&s_dhcp_message), static_cast<uint16_t>(k + sizeof(struct t_dhcp_message) - DHCP_OPT_SIZE), IP_BROADCAST, DHCP_PORT_SERVER);
+	udp_send(nHandle, reinterpret_cast<uint8_t *>(&s_dhcp_message), static_cast<uint16_t>(k + sizeof(dhcp::Message) - DHCP_OPT_SIZE), IP_BROADCAST, DHCP_PORT_SERVER);
 
 	DEBUG_EXIT
 }
@@ -194,13 +196,13 @@ static void _send_request(int idx, const uint8_t *pMacAddress, const char *pHost
 	s_dhcp_message.options[k++] = OPTIONS_DHCP_T2_VALUE;
 	s_dhcp_message.options[k++] = OPTIONS_END_OPTION;
 
-	udp_send(idx, reinterpret_cast<uint8_t *>(&s_dhcp_message), static_cast<uint16_t>(k + sizeof(struct t_dhcp_message) - DHCP_OPT_SIZE), IP_BROADCAST, DHCP_PORT_SERVER);
+	udp_send(idx, reinterpret_cast<uint8_t *>(&s_dhcp_message), static_cast<uint16_t>(k + sizeof(dhcp::Message) - DHCP_OPT_SIZE), IP_BROADCAST, DHCP_PORT_SERVER);
 
 	DEBUG_EXIT
 }
 
-static int _parse_response(int nHandle, const uint8_t *pMacAddress) {
-	t_dhcp_message response;
+static int parse_response(int nHandle, const uint8_t *pMacAddress) {
+	uint8_t *pResponse;
 	const auto nMillis = Hardware::Get()->Millis();
 	uint32_t nSize = 0;
 
@@ -210,10 +212,13 @@ static int _parse_response(int nHandle, const uint8_t *pMacAddress) {
 		uint32_t nFromIp;
 		uint16_t nFromPort;
 
-		nSize = udp_recv1(nHandle, reinterpret_cast<uint8_t *>(&response), sizeof(struct t_dhcp_message), &nFromIp, &nFromPort);
+		nSize = udp_recv2(nHandle, const_cast<const uint8_t **>(&pResponse), &nFromIp, &nFromPort);
 
 		if ((nSize > 0) && (nFromPort == DHCP_PORT_SERVER)) {
-			if (memcmp(response.chaddr, pMacAddress, ETH_ADDR_LEN) == 0) {
+
+			const auto *const pDhcpMessage = reinterpret_cast<dhcp::Message *>(pResponse);
+
+			if (memcmp(pDhcpMessage->chaddr, pMacAddress, ETH_ADDR_LEN) == 0) {
 				break;
 			}
 		}
@@ -225,9 +230,9 @@ static int _parse_response(int nHandle, const uint8_t *pMacAddress) {
 	uint8_t opt_len = 0;
 
 	if (nSize > 0) {
-		auto *p = reinterpret_cast<uint8_t *>(&response);
-		p = p + sizeof(struct t_dhcp_message) - DHCP_OPT_SIZE + 4;
-		auto *e = reinterpret_cast<uint8_t *>(&response) + nSize;
+		auto *p = pResponse;
+		p = p + sizeof(dhcp::Message) - DHCP_OPT_SIZE + 4;
+		auto *e = pResponse + nSize;
 
 		while (p < e) {
 			switch (*p) {
@@ -276,10 +281,11 @@ static int _parse_response(int nHandle, const uint8_t *pMacAddress) {
 		}
 
 		if (type == DCHP_TYPE_OFFER) {
-            s_dhcp_allocated_ip[0] = response.yiaddr[0];
-            s_dhcp_allocated_ip[1] = response.yiaddr[1];
-            s_dhcp_allocated_ip[2] = response.yiaddr[2];
-            s_dhcp_allocated_ip[3] = response.yiaddr[3];
+			const auto *const pDhcpMessage = reinterpret_cast<dhcp::Message *>(pResponse);
+            s_dhcp_allocated_ip[0] = pDhcpMessage->yiaddr[0];
+            s_dhcp_allocated_ip[1] = pDhcpMessage->yiaddr[1];
+            s_dhcp_allocated_ip[2] = pDhcpMessage->yiaddr[2];
+            s_dhcp_allocated_ip[3] = pDhcpMessage->yiaddr[3];
 		}
 
 		return type;
@@ -294,7 +300,7 @@ int dhcp_client(const char *pHostname) {
 	auto bHaveIp = false;
 	int32_t retries = 20;
 
-	_message_init(net::globals::macAddress);
+	message_init(net::globals::macAddress);
 
 	auto nHandle = udp_begin(DHCP_PORT_CLIENT);
 
@@ -307,9 +313,9 @@ int dhcp_client(const char *pHostname) {
 	while (!bHaveIp && (retries-- > 0)) {
 		DEBUG_PRINTF("retries=%d", retries);
 
-		_send_discover(static_cast<uint8_t>(nHandle), net::globals::macAddress);
+		send_discover(static_cast<uint8_t>(nHandle), net::globals::macAddress);
 
-		if ((type =_parse_response(static_cast<uint8_t>(nHandle), net::globals::macAddress)) < 0) {
+		if ((type =parse_response(static_cast<uint8_t>(nHandle), net::globals::macAddress)) < 0) {
 			continue;
 		}
 
@@ -323,7 +329,7 @@ int dhcp_client(const char *pHostname) {
 
 		_send_request(static_cast<uint8_t>(nHandle), net::globals::macAddress, pHostname);
 
-		if ((type =_parse_response(static_cast<uint8_t>(nHandle), net::globals::macAddress)) < 0) {
+		if ((type =parse_response(static_cast<uint8_t>(nHandle), net::globals::macAddress)) < 0) {
 			continue;
 		}
 
@@ -377,7 +383,7 @@ void dhcp_client_release() {
 
 	s_dhcp_message.options[k++] = OPTIONS_END_OPTION;
 
-	udp_send(static_cast<uint8_t>(nHandle), reinterpret_cast<uint8_t *>(&s_dhcp_message), static_cast<uint16_t>(k + sizeof(struct t_dhcp_message) - DHCP_OPT_SIZE), IP_BROADCAST, DHCP_PORT_SERVER);
+	udp_send(static_cast<uint8_t>(nHandle), reinterpret_cast<uint8_t *>(&s_dhcp_message), static_cast<uint16_t>(k + sizeof(dhcp::Message) - DHCP_OPT_SIZE), IP_BROADCAST, DHCP_PORT_SERVER);
 	udp_end(DHCP_PORT_CLIENT);
 
 	DEBUG_EXIT

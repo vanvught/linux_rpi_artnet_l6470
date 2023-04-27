@@ -6,6 +6,12 @@ ifneq ($(MAKE_FLAGS),)
 	ifeq ($(findstring ARTNET_HAVE_DMXIN,$(MAKE_FLAGS)), ARTNET_HAVE_DMXIN)
 		EXTRA_SRCDIR+=src/node/dmxin
 	endif
+	ifeq ($(findstring RDM_CONTROLLER,$(MAKE_FLAGS)), RDM_CONTROLLER)
+		EXTRA_SRCDIR+=src/node/rdm
+	endif
+	ifeq ($(findstring RDM_RESPONDER,$(MAKE_FLAGS)), RDM_RESPONDER)
+		EXTRA_SRCDIR+=src/node/rdm
+	endif
 	ifeq ($(findstring ARTNET_HAVE_TIMECODE,$(MAKE_FLAGS)), ARTNET_HAVE_TIMECODE)
 		EXTRA_SRCDIR+=src/node/timecode
 	endif

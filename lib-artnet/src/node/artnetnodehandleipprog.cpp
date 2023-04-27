@@ -60,9 +60,9 @@ void ArtNetNode::HandleIpProg() {
 	}
 #endif
 
-	const auto *const pArtIpProg = &(m_ArtNetPacket.ArtPacket.ArtIpProg);
+	const auto *const pArtIpProg = reinterpret_cast<TArtIpProg *>(m_pReceiveBuffer);
 	const auto nCommand = pArtIpProg->Command;
-	auto *pArtIpProgReply = &(m_ArtNetPacket.ArtPacket.ArtIpProgReply);
+	auto *pArtIpProgReply = reinterpret_cast<TArtIpProgReply *>(m_pReceiveBuffer);
 	const auto isDhcp = Network::Get()->IsDhcpUsed();
 
 	pArtIpProgReply->OpCode = OP_IPPROGREPLY;
@@ -115,7 +115,7 @@ void ArtNetNode::HandleIpProg() {
 	pArtIpProgReply->Spare7 = 0;
 	pArtIpProgReply->Spare8 = 0;
 
-	Network::Get()->SendTo(m_nHandle, &(m_ArtNetPacket.ArtPacket.ArtIpProgReply), sizeof(struct TArtIpProgReply), m_ArtNetPacket.IPAddressFrom, artnet::UDP_PORT);
+	Network::Get()->SendTo(m_nHandle, m_pReceiveBuffer, sizeof(struct TArtIpProgReply), m_nIpAddressFrom, artnet::UDP_PORT);
 
 	if (isChanged) {
 		// Update Node network details

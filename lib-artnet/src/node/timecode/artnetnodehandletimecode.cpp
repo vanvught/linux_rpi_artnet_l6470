@@ -38,7 +38,7 @@
 #include "debug.h"
 
 void ArtNetNode::HandleTimeCode() {
-	const auto *const pArtTimeCode = &(m_ArtNetPacket.ArtPacket.ArtTimeCode);
+	const auto *const pArtTimeCode = reinterpret_cast<TArtTimeCode *>(m_pReceiveBuffer);
 
 	m_pArtNetTimeCode->Handler(reinterpret_cast<const struct TArtNetTimeCode*>(&pArtTimeCode->Frames));
 }

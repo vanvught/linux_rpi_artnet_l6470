@@ -38,6 +38,7 @@
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_DMXIN"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TIMECODE"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TRIGGER"/>
+									<listOptionValue builtIn="false" value="ARTNET_ENABLE_SENDDIAG"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.272354303" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -58,6 +59,7 @@
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_DMXIN"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TIMECODE"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TRIGGER"/>
+									<listOptionValue builtIn="false" value="ARTNET_ENABLE_SENDDIAG"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2086813026" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -88,11 +90,12 @@
 						<entry excluding="linux|platform|src" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="node|controller|linux" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/controller"/>
-						<entry excluding="timecode|dmxin|failsafe" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node"/>
+						<entry excluding="rdm|timecode|dmxin|failsafe" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/dmxin"/>
 						<entry excluding="rom|spi" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/failsafe"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/failsafe/rom"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/failsafe/spi"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/rdm"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/timecode"/>
 					</sourceEntries>
 				</configuration>
@@ -134,6 +137,7 @@
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_DMXIN"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TIMECODE"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TRIGGER"/>
+									<listOptionValue builtIn="false" value="ARTNET_ENABLE_SENDDIAG"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1814233140" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -152,6 +156,7 @@
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_DMXIN"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TIMECODE"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TRIGGER"/>
+									<listOptionValue builtIn="false" value="ARTNET_ENABLE_SENDDIAG"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.138434766" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -180,11 +185,12 @@
 						<entry excluding="linux|src|platform" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="node|controller|linux" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/controller"/>
-						<entry excluding="timecode|dmxin|failsafe" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node"/>
+						<entry excluding="rdm|timecode|dmxin|failsafe" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/dmxin"/>
 						<entry excluding="rom|spi" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/failsafe"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/failsafe/rom"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/failsafe/spi"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/rdm"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/timecode"/>
 					</sourceEntries>
 				</configuration>
@@ -229,6 +235,7 @@
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_DMXIN"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TIMECODE"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TRIGGER"/>
+									<listOptionValue builtIn="false" value="ARTNET_ENABLE_SENDDIAG"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1117533543" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -250,6 +257,7 @@
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_DMXIN"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TIMECODE"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TRIGGER"/>
+									<listOptionValue builtIn="false" value="ARTNET_ENABLE_SENDDIAG"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.168898796" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -279,12 +287,13 @@
 						<entry excluding="src|src/controller|src/node|src/node/failsafe|src/node/failsafe/file|src/node/failsafe/spi" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry excluding="controller|node|node/failsafe|node/failsafe/file|node/failsafe/spi" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src/controller"/>
-						<entry excluding="timecode|dmxin|failsafe|failsafe/file|failsafe/spi" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src/node"/>
+						<entry excluding="rdm|timecode|dmxin|failsafe|failsafe/file|failsafe/spi" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src/node"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/dmxin"/>
 						<entry excluding="rom|file|spi" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src/node/failsafe"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src/node/failsafe/file"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/failsafe/rom"/>
 						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="src/node/failsafe/spi"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/rdm"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="src/node/timecode"/>
 					</sourceEntries>
 				</configuration>

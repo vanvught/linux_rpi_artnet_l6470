@@ -517,7 +517,7 @@ uint32_t RemoteConfig::HandleGet(void *pBuffer, uint32_t nBufferLength) {
 		if (pBuffer == nullptr) {
 			Network::Get()->SendTo(m_nHandle, "ERROR#?get\n", 11, m_nIPAddressFrom, remoteconfig::udp::PORT);
 		} else {
-			memcpy(pBuffer, "ERROR#?get\n", std::min(11U, nBufferLength));
+			memcpy(pBuffer, "ERROR#?get\n", std::min(static_cast<uint32_t>(11), nBufferLength));
 		}
 		DEBUG_EXIT
 		return 12;
