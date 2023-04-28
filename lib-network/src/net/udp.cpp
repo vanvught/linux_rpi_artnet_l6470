@@ -35,6 +35,7 @@
 
 #include "../../config/net_config.h"
 
+#undef  SECTION_NETWORK
 #define SECTION_NETWORK
 
 struct data_entry {
