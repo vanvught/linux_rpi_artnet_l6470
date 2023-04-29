@@ -83,7 +83,7 @@ void __attribute__((cold)) net_init(const uint8_t *const pMacAddress, struct IpI
 	s_isDhcp = *bUseDhcp;
 
 	if (!arp_do_probe()) {
-		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(macAddress));
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(net::globals::ipInfo.ip.addr), MAC2STR(net::globals::macAddress));
 		arp_send_announcement();
 	} else {
 		console_error("IP Conflict!\n");
@@ -111,7 +111,7 @@ void net_set_ip(uint32_t nIp) {
 	ip_set_ip();
 
 	if (!arp_do_probe()) {
-		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(macAddress));
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(net::globals::ipInfo.ip.addr), MAC2STR(net::globals::macAddress));
 		arp_send_announcement();
 	} else {
 		console_error("IP Conflict!\n");
@@ -154,7 +154,7 @@ bool net_set_dhcp(struct IpInfo *p_ip_info, const char *const pHostname, bool *i
 	s_isDhcp = isDhcp;
 
 	if (!arp_do_probe()) {
-		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(macAddress));
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(net::globals::ipInfo.ip.addr), MAC2STR(net::globals::macAddress));
 		arp_send_announcement();
 	} else {
 		console_error("IP Conflict!\n");
@@ -182,7 +182,7 @@ bool net_set_zeroconf(struct IpInfo *p_ip_info) {
 
 		s_isDhcp = false;
 
-		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nLocalIp), MAC2STR(macAddress));
+		DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(net::globals::ipInfo.ip.addr), MAC2STR(net::globals::macAddress));
 		arp_send_announcement();
 
 		return true;

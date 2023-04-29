@@ -65,7 +65,7 @@ extern uint8_t macAddress[ETH_ADDR_LEN];
 }  // namespace globals
 }  // namespace net
 
-static void _send_report(uint32_t group_address);
+static void _send_report(uint32_t nGroupAddress);
 
 void igmp_set_ip() {
 	_pcast32 src;
@@ -156,11 +156,11 @@ void __attribute__((cold)) igmp_shutdown() {
 	DEBUG_EXIT
 }
 
-static void _send_report(uint32_t group_address) {
+static void _send_report(uint32_t nGroupAddress) {
 	DEBUG_ENTRY
 	_pcast32 multicast_ip;
 
-	multicast_ip.u32 = group_address;
+	multicast_ip.u32 = nGroupAddress;
 
 	s_multicast_mac[3] = multicast_ip.u8[1] & 0x7F;
 	s_multicast_mac[4] = multicast_ip.u8[2];
@@ -192,11 +192,11 @@ static void _send_report(uint32_t group_address) {
 	DEBUG_EXIT
 }
 
-static void _send_leave(uint32_t group_address) {
+static void _send_leave(uint32_t nGroupAddress) {
 	DEBUG_ENTRY
 	_pcast32 multicast_ip;
 
-	multicast_ip.u32 = group_address;
+	multicast_ip.u32 = nGroupAddress;
 
 	DEBUG_PRINTF(IPSTR " " MACSTR, IP2STR(nGroupAddress), MAC2STR(s_multicast_mac));
 
