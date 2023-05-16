@@ -96,43 +96,31 @@ void __attribute__((cold)) udp_shutdown() {
 __attribute__((hot)) void udp_handle(struct t_udp *pUdp) {
 	const auto nDestinationPort = __builtin_bswap16(pUdp->udp.destination_port);
 
-	if ((nDestinationPort != DHCP_PORT_CLIENT)
-			&& (nDestinationPort != TFTP_PORT_SERVER)
-			&& (nDestinationPort != NTP_PORT_SERVER)
-			&& (nDestinationPort < 1024)) { // There is no support for other UDP defined services
-		DEBUG_PRINTF("Not supported -> " IPSTR ":%d", pUdp->ip4.src[0],pUdp->ip4.src[1],pUdp->ip4.src[2],pUdp->ip4.src[3], nDestinationPort);
-		return;
-	}
-
-	uint32_t nPortIndex;
-
-	for (nPortIndex = 0; nPortIndex < UDP_MAX_PORTS_ALLOWED; nPortIndex++) {
+	for (uint32_t nPortIndex = 0; nPortIndex < UDP_MAX_PORTS_ALLOWED; nPortIndex++) {
 		if (s_ports_allowed[nPortIndex] == nDestinationPort) {
-			break;
+			if (__builtin_expect ((s_data[nPortIndex].size != 0), 0)) {
+				DEBUG_PRINTF(IPSTR ":%d[%x]", pUdp->ip4.src[0],pUdp->ip4.src[1],pUdp->ip4.src[2],pUdp->ip4.src[3], nDestinationPort, nDestinationPort);
+			}
+
+			auto *p_queue_entry = &s_data[nPortIndex];
+			const auto nDataLength = static_cast<uint16_t>(__builtin_bswap16(pUdp->udp.len) - UDP_HEADER_SIZE);
+			const auto i = std::min(static_cast<uint16_t>(UDP_DATA_SIZE), nDataLength);
+
+			net_memcpy(p_queue_entry->data, pUdp->udp.data, i);
+
+			_pcast32 src;
+
+			memcpy(src.u8, pUdp->ip4.src, IPv4_ADDR_LEN);
+			p_queue_entry->from_ip = src.u32;
+			p_queue_entry->from_port = __builtin_bswap16(pUdp->udp.source_port);
+			p_queue_entry->size = static_cast<uint16_t>(i);
+
+			return;
+
 		}
 	}
 
-	if (__builtin_expect ((nPortIndex == UDP_MAX_PORTS_ALLOWED), 0)) {
-		DEBUG_PRINTF(IPSTR ":%d[%x]", pUdp->ip4.src[0],pUdp->ip4.src[1],pUdp->ip4.src[2],pUdp->ip4.src[3], nDestinationPort, nDestinationPort);
-		return;
-	}
-
-	if (s_data[nPortIndex].size != 0) {
-		DEBUG_PRINTF(IPSTR ":%d[%x]", pUdp->ip4.src[0],pUdp->ip4.src[1],pUdp->ip4.src[2],pUdp->ip4.src[3], nDestinationPort, nDestinationPort);
-	}
-
-	auto *p_queue_entry = &s_data[nPortIndex];
-	const auto nDataLength = static_cast<uint16_t>(__builtin_bswap16(pUdp->udp.len) - UDP_HEADER_SIZE);
-	const auto i = std::min(static_cast<uint16_t>(UDP_DATA_SIZE), nDataLength);
-
-	net_memcpy(p_queue_entry->data, pUdp->udp.data, i);
-
-	_pcast32 src;
-
-	memcpy(src.u8, pUdp->ip4.src, IPv4_ADDR_LEN);
-	p_queue_entry->from_ip = src.u32;
-	p_queue_entry->from_port = __builtin_bswap16(pUdp->udp.source_port);
-	p_queue_entry->size = static_cast<uint16_t>(i);
+	DEBUG_PRINTF(IPSTR ":%d[%x]", pUdp->ip4.src[0],pUdp->ip4.src[1],pUdp->ip4.src[2],pUdp->ip4.src[3], nDestinationPort, nDestinationPort);
 }
 
 // -->
@@ -140,27 +128,21 @@ __attribute__((hot)) void udp_handle(struct t_udp *pUdp) {
 int udp_begin(uint16_t nLocalPort) {
 	DEBUG_PRINTF("nLocalPort=%u", nLocalPort);
 
-	int i;
-
-	for (i = 0; i < UDP_MAX_PORTS_ALLOWED; i++) {
+	for (int i = 0; i < UDP_MAX_PORTS_ALLOWED; i++) {
 		if (s_ports_allowed[i] == nLocalPort) {
 			return i;
 		}
 
 		if (s_ports_allowed[i] == 0) {
-			break;
+			s_ports_allowed[i] = nLocalPort;
+
+			DEBUG_PRINTF("i=%d, local_port=%d[%x]", i, nLocalPort, nLocalPort);
+			return i;
 		}
 	}
 
-	if (i == UDP_MAX_PORTS_ALLOWED) {
-		console_error("udp_begin");
-		return -1;
-	}
-
-	s_ports_allowed[i] = nLocalPort;
-
-	DEBUG_PRINTF("i=%d, local_port=%d[%x]", i, nLocalPort, nLocalPort);
-	return i;
+	console_error("udp_begin");
+	return -1;
 }
 
 int udp_end(uint16_t nLocalPort) {
