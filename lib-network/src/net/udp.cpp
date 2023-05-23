@@ -50,7 +50,7 @@ typedef union pcast32 {
 	uint8_t u8[4];
 } _pcast32;
 
-static uint16_t s_ports_allowed[UDP_MAX_PORTS_ALLOWED] SECTION_NETWORK ALIGNED;
+static uint16_t s_Port[UDP_MAX_PORTS_ALLOWED] SECTION_NETWORK ALIGNED;
 static struct data_entry s_data[UDP_MAX_PORTS_ALLOWED] SECTION_NETWORK ALIGNED;
 static struct t_udp s_send_packet SECTION_NETWORK ALIGNED;
 static uint16_t s_id SECTION_NETWORK ALIGNED;
@@ -97,7 +97,7 @@ __attribute__((hot)) void udp_handle(struct t_udp *pUdp) {
 	const auto nDestinationPort = __builtin_bswap16(pUdp->udp.destination_port);
 
 	for (uint32_t nPortIndex = 0; nPortIndex < UDP_MAX_PORTS_ALLOWED; nPortIndex++) {
-		if (s_ports_allowed[nPortIndex] == nDestinationPort) {
+		if (s_Port[nPortIndex] == nDestinationPort) {
 			if (__builtin_expect ((s_data[nPortIndex].size != 0), 0)) {
 				DEBUG_PRINTF(IPSTR ":%d[%x]", pUdp->ip4.src[0],pUdp->ip4.src[1],pUdp->ip4.src[2],pUdp->ip4.src[3], nDestinationPort, nDestinationPort);
 			}
@@ -129,19 +129,21 @@ int udp_begin(uint16_t nLocalPort) {
 	DEBUG_PRINTF("nLocalPort=%u", nLocalPort);
 
 	for (int i = 0; i < UDP_MAX_PORTS_ALLOWED; i++) {
-		if (s_ports_allowed[i] == nLocalPort) {
+		if (s_Port[i] == nLocalPort) {
 			return i;
 		}
 
-		if (s_ports_allowed[i] == 0) {
-			s_ports_allowed[i] = nLocalPort;
+		if (s_Port[i] == 0) {
+			s_Port[i] = nLocalPort;
 
 			DEBUG_PRINTF("i=%d, local_port=%d[%x]", i, nLocalPort, nLocalPort);
 			return i;
 		}
 	}
 
-	console_error("udp_begin");
+#ifndef NDEBUG
+	console_error("udp_begin\n");
+#endif
 	return -1;
 }
 
@@ -149,8 +151,8 @@ int udp_end(uint16_t nLocalPort) {
 	DEBUG_PRINTF("nLocalPort=%u[%x]", nLocalPort, nLocalPort);
 
 	for (auto i = 0; i < UDP_MAX_PORTS_ALLOWED; i++) {
-		if (s_ports_allowed[i] == nLocalPort) {
-			s_ports_allowed[i] = 0;
+		if (s_Port[i] == nLocalPort) {
+			s_Port[i] = 0;
 			s_data[i].size = 0;
 			return 0;
 		}
@@ -181,7 +183,7 @@ uint16_t udp_recv1(int nIndex, uint8_t *pData, uint16_t nSize, uint32_t *pFromIp
 	return i;
 }
 
-uint16_t udp_recv2(int nIndex, const uint8_t **pData, uint32_t *FromIp, uint16_t *FromPort) {
+uint16_t udp_recv2(int nIndex, const uint8_t **pData, uint32_t *pFromIp, uint16_t *pFromPort) {
 	assert(nIndex >= 0);
 	assert(nIndex < UDP_MAX_PORTS_ALLOWED);
 
@@ -192,14 +194,14 @@ uint16_t udp_recv2(int nIndex, const uint8_t **pData, uint32_t *FromIp, uint16_t
 	auto *p_data = &s_data[nIndex];
 
 	*pData = p_data->data;
-	*FromIp = p_data->from_ip;
-	*FromPort = p_data->from_port;
+	*pFromIp = p_data->from_ip;
+	*pFromPort = p_data->from_port;
 
-	const auto size = p_data->size;
+	const auto nSize = p_data->size;
 
 	p_data->size = 0;
 
-	return size;
+	return nSize;
 }
 
 int udp_send(int nIndex, const uint8_t *pData, uint16_t nSize, uint32_t RemoteIp, uint16_t RemotePort) {
@@ -207,7 +209,7 @@ int udp_send(int nIndex, const uint8_t *pData, uint16_t nSize, uint32_t RemoteIp
 	assert(nIndex < UDP_MAX_PORTS_ALLOWED);
 	_pcast32 dst;
 
-	if (__builtin_expect ((s_ports_allowed[nIndex] == 0), 0)) {
+	if (__builtin_expect ((s_Port[nIndex] == 0), 0)) {
 		DEBUG_PUTS("ports_allowed[idx] == 0");
 		return -1;
 	}
@@ -240,7 +242,7 @@ int udp_send(int nIndex, const uint8_t *pData, uint16_t nSize, uint32_t RemoteIp
 					memcpy(s_send_packet.ip4.dst, dst.u8, IPv4_ADDR_LEN);
 				} else {
 					console_error("ARP lookup failed -> default gateway :");
-					printf(IPSTR " [%d]\n", IP2STR(RemoteIp), s_ports_allowed[nIndex]);
+					printf(IPSTR " [%d]\n", IP2STR(RemoteIp), s_Port[nIndex]);
 					return -3;
 				}
 			} else {
@@ -264,7 +266,7 @@ int udp_send(int nIndex, const uint8_t *pData, uint16_t nSize, uint32_t RemoteIp
 	s_send_packet.ip4.chksum = net_chksum(reinterpret_cast<void *>(&s_send_packet.ip4), sizeof(s_send_packet.ip4));
 #endif
 	//UDP
-	s_send_packet.udp.source_port = __builtin_bswap16( s_ports_allowed[nIndex]);
+	s_send_packet.udp.source_port = __builtin_bswap16( s_Port[nIndex]);
 	s_send_packet.udp.destination_port = __builtin_bswap16(RemotePort);
 	s_send_packet.udp.len = __builtin_bswap16((nSize + UDP_HEADER_SIZE));
 
