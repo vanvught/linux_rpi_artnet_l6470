@@ -2,6 +2,7 @@
 
 #include "httpd/httpd.h"
 
+#include "static.js.h"
 #include "styles.css.h"
 #include "index.js.h"
 #include "index.html.h"
@@ -14,7 +15,8 @@ struct FilesContent {
 };
 
 static constexpr struct FilesContent HttpContent[] = {
-	{ "styles.css", styles_css, 322, static_cast<http::contentTypes>(1) },
-	{ "index.js", index_js, 1248, static_cast<http::contentTypes>(2) },
-	{ "index.html", index_html, 346, static_cast<http::contentTypes>(0) },
+	{ "static.js", static_js, 1072, static_cast<http::contentTypes>(2) },
+	{ "styles.css", styles_css, 411, static_cast<http::contentTypes>(1) },
+	{ "index.js", index_js, 1075, static_cast<http::contentTypes>(2) },
+	{ "index.html", index_html, 611, static_cast<http::contentTypes>(0) },
 };

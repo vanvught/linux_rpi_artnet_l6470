@@ -23,8 +23,6 @@
  * THE SOFTWARE.
  */
 
-#undef NDEBUG
-
 #include <cstdint>
 #include <cstring>
 #include <cassert>
@@ -77,19 +75,33 @@ int get_file_content(const char *fileName, char *pDst, http::contentTypes& conte
 		return -2;
 	}
 
-	int nResult = fread(pDst, 1, http::BUFSIZE, pFile);
+	auto doRemoveWhiteSpaces = true;
+	auto *p = pDst;
+	int c;
 
-	if (nResult <= 0) {
-		ferror(pFile);
-		fclose(pFile);
-		DEBUG_EXIT
-		return -3;
+	while ((c = fgetc(pFile)) != EOF) {
+		if (doRemoveWhiteSpaces) {
+			if (c < ' ') {
+				continue;
+			} else {
+				doRemoveWhiteSpaces = false;
+			}
+		} else {
+			if (c == '\n') {
+				doRemoveWhiteSpaces = true;
+			}
+		}
+		*p++ = c;
+		if ((p - pDst) == http::BUFSIZE) {
+			DEBUG_PUTS("File too long");
+			break;
+		}
 	}
 
 	fclose(pFile);
 
-	DEBUG_PRINTF("%s -> %d", fileName, nResult);
-	return nResult;
+	DEBUG_PRINTF("%s -> %d", fileName, static_cast<int>(p - pDst));
+	return static_cast<int>(p - pDst);
 }
 #else
 int get_file_content(const char *pFileName, char *pDst, http::contentTypes& contentType) {
