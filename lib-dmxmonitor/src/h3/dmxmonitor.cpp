@@ -2,7 +2,7 @@
  * @file dmxmonitor.cpp
  *
  */
-/* Copyright (C) 2016-2021 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2016-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -51,11 +51,11 @@ bool DMXMonitor::SetDmxStartAddress(uint16_t nDmxStartAddress) {
 	return true;
 }
 
-uint16_t DMXMonitor::GetDmxStartAddress(void) {
+uint16_t DMXMonitor::GetDmxStartAddress() {
 	return dmx::START_ADDRESS_DEFAULT;
 }
 
-uint16_t DMXMonitor::GetDmxFootprint(void) {
+uint16_t DMXMonitor::GetDmxFootprint() {
 	return dmx::UNIVERSE_SIZE;
 }
 
@@ -124,7 +124,7 @@ void DMXMonitor::Stop(__attribute__((unused)) uint32_t nPortIndex) {
 	}
 }
 
-void DMXMonitor::Cls(void) {
+void DMXMonitor::Cls() {
 	uint32_t i;
 
 	for (i = TOP_ROW; i < (TOP_ROW + HEX_ROWS + 2); i++) {
@@ -146,7 +146,7 @@ void DMXMonitor::SetData(__attribute__((unused)) uint32_t nPortIndex, const uint
 	Update();
 }
 
-void DMXMonitor::Update(void) {
+void DMXMonitor::Update() {
 	uint32_t row = TOP_ROW;
 	uint32_t i, j;
 	uint8_t *p = m_Data;

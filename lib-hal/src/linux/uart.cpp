@@ -74,7 +74,7 @@ static void s_configure_termios() {
 		s_nUart = 0;
 	}
 
-	glob(DEV[s_nUart], 0, NULL, &globbuf);
+	glob(DEV[s_nUart], 0, nullptr, &globbuf);
 
 	if (fd > 0) {
 		close(fd);
