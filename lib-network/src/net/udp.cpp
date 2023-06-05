@@ -241,8 +241,10 @@ int udp_send(int nIndex, const uint8_t *pData, uint16_t nSize, uint32_t RemoteIp
 					dst.u32 = RemoteIp;
 					memcpy(s_send_packet.ip4.dst, dst.u8, IPv4_ADDR_LEN);
 				} else {
+#ifndef NDEBUG
 					console_error("ARP lookup failed -> default gateway :");
 					printf(IPSTR " [%d]\n", IP2STR(RemoteIp), s_Port[nIndex]);
+#endif
 					return -3;
 				}
 			} else {
@@ -250,8 +252,10 @@ int udp_send(int nIndex, const uint8_t *pData, uint16_t nSize, uint32_t RemoteIp
 					dst.u32 = RemoteIp;
 					memcpy(s_send_packet.ip4.dst, dst.u8, IPv4_ADDR_LEN);
 				} else {
+#ifndef NDEBUG
 					console_error("ARP lookup failed: ");
 					printf(IPSTR "\n", IP2STR(RemoteIp));
+#endif
 					return -2;
 				}
 			}
