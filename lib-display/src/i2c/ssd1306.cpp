@@ -299,9 +299,6 @@ bool Ssd1306::Start() {
 	Ssd1306::Cls();
 
 	SendCommand(cmd::DISPLAY_ON);
-
-	m_bIsFlippedVertically = true;
-
 	return true;
 }
 
@@ -441,16 +438,12 @@ void Ssd1306::SetSleep(bool bSleep) {
 }
 
 void Ssd1306::SetContrast(uint8_t nContrast) {
-	m_nContrast = nContrast;
-
 	SendCommand(cmd::SET_CONTRAST);
 	SendCommand(nContrast);
 }
 
 
 void Ssd1306::SetFlipVertically(bool doFlipVertically)  {
-	m_bIsFlippedVertically = doFlipVertically;
-
 	if (doFlipVertically) {
 		SendCommand(cmd::COMSCAN_INC);
 		SendCommand(cmd::SEGREMAP);

@@ -77,6 +77,7 @@ const uint8_t *ArtNetRdmController::Handler(uint32_t nPortIndex, const uint8_t *
 	RDMMessage::Print(pRdmCommand);
 #endif
 
+	s_rdmMessage.slot16.port_id = static_cast<uint8_t>(1 + nPortIndex);
 	Rdm::SendRaw(nPortIndex, pRdmCommand, pRdmMessageNoSc->message_length + 2U);
 
 	const auto *pResponse = Rdm::ReceiveTimeOut(nPortIndex, 60000);

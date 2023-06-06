@@ -49,14 +49,6 @@ public:
 		return m_nRows;
 	}
 
-	uint8_t GetContrast() const {
-		return m_nContrast;
-	}
-
-	bool GetFlipVertically() const {
-		return m_bIsFlippedVertically;
-	}
-
 	virtual bool Start()= 0;
 
 	virtual void Cls()= 0;
@@ -79,8 +71,6 @@ public:
 protected:
 	uint32_t m_nCols;
 	uint32_t m_nRows;
-	uint8_t m_nContrast { 0x7F };
-	bool m_bIsFlippedVertically { false };
 };
 
 #endif /* DISPLAYSET_H_ */
