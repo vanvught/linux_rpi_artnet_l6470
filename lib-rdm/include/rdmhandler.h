@@ -38,26 +38,20 @@ public:
 	void HandleData(const uint8_t *pRdmDataIn, uint8_t *pRdmDataOut);
 
 private:
+	void CreateRespondMessage(uint8_t nResponseType, uint16_t nReason = 0);
+	void RespondMessageAck();
+	void RespondMessageNack(uint16_t nReason);
+	void HandleString(const char *pString, uint32_t nLength);
 	void Handlers(bool bIsBroadcast, uint8_t nCommandClass, uint16_t nParamId, uint8_t nParamDataLength, uint16_t nSubDevice);
-
-	struct PidDefinition {
-		const uint16_t nPid;
-		void (RDMHandler::*pGetHandler)(uint16_t nSubDevice);
-		void (RDMHandler::*pSetHandler)(bool IsBroadcast, uint16_t nSubDevice);
-		const uint8_t nGetArgumentSize;
-		const bool bIncludeInSupportedParams;
-		const bool bRDM;
-		const bool bRDMNet;
-	} ;
-
-	static const PidDefinition PID_DEFINITIONS[];
-	static const PidDefinition PID_DEFINITIONS_SUB_DEVICES[];
 
 	// Get
 #if defined (ENABLE_RDM_QUEUED_MSG)
 	void GetQueuedMessage(uint16_t nSubDevice);
 #endif
 	void GetSupportedParameters(uint16_t nSubDevice);
+#if defined (ENABLE_RDM_MANUFACTURER_PIDS)
+	void GetParameterDescription(uint16_t nSubDevice);
+#endif
 	void GetDeviceInfo(uint16_t nSubDevice);
 	void GetProductDetailIdList(uint16_t nSubDevice);
 	void GetDeviceModelDescription(uint16_t nSubDevice);
@@ -138,12 +132,6 @@ private:
 	bool CheckInterfaceID(const struct TRdmMessageNoSc *pRdmDataIn);
 
 private:
-	void CreateRespondMessage(uint8_t nResponseType, uint16_t nReason = 0);
-	void RespondMessageAck();
-	void RespondMessageNack(uint16_t nReason);
-	void HandleString(const char *pString, uint32_t nLength);
-
-private:
 	bool m_bIsRDM;
 	bool m_IsMuted { false };
 	uint8_t *m_pRdmDataIn { nullptr };
@@ -151,6 +139,19 @@ private:
 #if defined (ENABLE_RDM_QUEUED_MSG)
 	RDMQueuedMessage m_RDMQueuedMessage;
 #endif
+
+	struct PidDefinition {
+		const uint16_t nPid;
+		void (RDMHandler::*pGetHandler)(uint16_t nSubDevice);
+		void (RDMHandler::*pSetHandler)(bool IsBroadcast, uint16_t nSubDevice);
+		const uint8_t nGetArgumentSize;
+		const bool bIncludeInSupportedParams;
+		const bool bRDM;
+		const bool bRDMNet;
+	} ;
+
+	static const PidDefinition PID_DEFINITIONS[];
+	static const PidDefinition PID_DEFINITIONS_SUB_DEVICES[];
 };
 
 #endif /* RDMHANDLER_H_ */

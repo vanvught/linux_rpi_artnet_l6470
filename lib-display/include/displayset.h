@@ -30,10 +30,10 @@
 
 namespace display {
 namespace cursor {
-static constexpr auto OFF = 0;
-static constexpr auto ON = (1 << 0);
-static constexpr auto BLINK_OFF = 0;
-static constexpr auto BLINK_ON = (1 << 1);
+static constexpr uint32_t OFF = 0;
+static constexpr uint32_t ON = (1U << 0);
+static constexpr uint32_t BLINK_OFF = 0;
+static constexpr uint32_t BLINK_ON = (1U << 1);
 }  // namespace cursor_mode
 }  // namespace display
 

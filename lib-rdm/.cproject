@@ -39,6 +39,7 @@
 									<listOptionValue builtIn="false" value="ENABLE_RDM_SELF_TEST"/>
 									<listOptionValue builtIn="false" value="ENABLE_RDM_PRESET_PLAYBACK"/>
 									<listOptionValue builtIn="false" value="RDM_CONTROLLER"/>
+									<listOptionValue builtIn="false" value="ENABLE_RDM_MANUFACTURER_PIDS"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1072672162" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -60,6 +61,7 @@
 									<listOptionValue builtIn="false" value="__linux__"/>
 									<listOptionValue builtIn="false" value="ENABLE_RDM_PRESET_PLAYBACK"/>
 									<listOptionValue builtIn="false" value="RDM_CONTROLLER"/>
+									<listOptionValue builtIn="false" value="ENABLE_RDM_MANUFACTURER_PIDS"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1132379556" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -136,6 +138,7 @@
 									<listOptionValue builtIn="false" value="BARE_METAL"/>
 									<listOptionValue builtIn="false" value="ENABLE_RDM_PRESET_PLAYBACK"/>
 									<listOptionValue builtIn="false" value="RDM_CONTROLLER"/>
+									<listOptionValue builtIn="false" value="ENABLE_RDM_MANUFACTURER_PIDS"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1974211486" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -159,6 +162,7 @@
 									<listOptionValue builtIn="false" value="ENABLE_RDM_SELF_TEST"/>
 									<listOptionValue builtIn="false" value="ENABLE_RDM_PRESET_PLAYBACK"/>
 									<listOptionValue builtIn="false" value="RDM_CONTROLLER"/>
+									<listOptionValue builtIn="false" value="ENABLE_RDM_MANUFACTURER_PIDS"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.247434554" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -224,6 +228,7 @@
 									<listOptionValue builtIn="false" value="H3"/>
 									<listOptionValue builtIn="false" value="ENABLE_RDM_PRESET_PLAYBACK"/>
 									<listOptionValue builtIn="false" value="RDM_CONTROLLER"/>
+									<listOptionValue builtIn="false" value="ENABLE_RDM_MANUFACTURER_PIDS"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1605177827" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -246,6 +251,7 @@
 									<listOptionValue builtIn="false" value="ENABLE_RDM_SELF_TEST"/>
 									<listOptionValue builtIn="false" value="ENABLE_RDM_PRESET_PLAYBACK"/>
 									<listOptionValue builtIn="false" value="RDM_CONTROLLER"/>
+									<listOptionValue builtIn="false" value="ENABLE_RDM_MANUFACTURER_PIDS"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1528083445" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
