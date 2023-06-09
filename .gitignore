@@ -42,8 +42,5 @@
 .DS_Store
 
 
-linux_rpi_artnet_l6470/linux_rpi_artnet_l6470
-linux_rpi_artnet_l6470/spiflash.bin
-linux_rpi_artnet_l6470/main.map
 lib-network/src/linux/networktcp.txt
 lib-device/examples/mcp3424

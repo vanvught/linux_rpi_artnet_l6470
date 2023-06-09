@@ -36,6 +36,8 @@
 #include "network.h"
 #include "networkconst.h"
 
+#include "mdns.h"
+
 #if defined (ENABLE_HTTPD)
 # include "httpd/httpd.h"
 #endif
@@ -90,6 +92,8 @@
 
 #include "statemachine.h"
 
+static constexpr uint32_t DMXPORT_OFFSET = 0;
+
 int main(int argc, char **argv) {
 	if (getuid() != 0) {
 		fprintf(stderr, "Program is not started as \'root\' (sudo)\n");
@@ -111,6 +115,13 @@ int main(int argc, char **argv) {
 	hw.Print();
 	fw.Print("Art-Net 4 Stepper L6470");
 	nw.Print();
+
+	MDNS mDns;
+	mDns.AddServiceRecord(nullptr, mdns::Services::CONFIG, "node=Art-Net 4 Stepper");
+#if defined (ENABLE_HTTPD)
+	mDns.AddServiceRecord(nullptr, mdns::Services::HTTP);
+#endif
+	mDns.Print();
 
 #if defined (ENABLE_HTTPD)
 	HttpDaemon httpDaemon;
@@ -176,7 +187,7 @@ int main(int argc, char **argv) {
 
 	ArtNet4Node node;
 
-	StoreArtNet storeArtNet;
+	StoreArtNet storeArtNet(DMXPORT_OFFSET);
 	node.SetArtNetStore(&storeArtNet);
 
 	ArtNetParams artnetparams(&storeArtNet);
@@ -185,7 +196,7 @@ int main(int argc, char **argv) {
 
 	if (artnetparams.Load()) {
 		artnetparams.Dump();
-		artnetparams.Set();
+		artnetparams.Set(DMXPORT_OFFSET);
 	}
 
 	node.SetOutput(pBoard);
