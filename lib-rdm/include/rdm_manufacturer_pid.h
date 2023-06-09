@@ -5,6 +5,8 @@
 #ifndef RDM_MANUFACTURER_PID_H_
 #define RDM_MANUFACTURER_PID_H_
 
+#include <cstddef>
+
 #if  ! defined (PACKED)
 #define PACKED __attribute__((packed))
 #endif
@@ -44,8 +46,14 @@ struct Description {
     static constexpr char const* value = T::description;
 };
 
-const ParameterDescription *getParameterDescriptions(uint32_t& nCount);
-void copyParameterDescription(const uint32_t nIndex, uint8_t *pParamData);
+size_t get_table_size();
+
+struct ManufacturerParamData {
+	uint8_t nPdl;
+	uint8_t *pParamData;
+};
+
+bool handle_manufactureer_pid_get(const uint16_t nPid, const ManufacturerParamData *pIn, ManufacturerParamData *pOut, uint16_t& nReason);
 
 }  // namespace rdm
 

@@ -23,10 +23,6 @@
  * THE SOFTWARE.
  */
 
-#if defined (ENABLE_RDM_MANUFACTURER_PIDS)
-#error ENABLE_RDM_MANUFACTURER_PIDS not supported
-#endif
-
 #include <algorithm>
 #include <cstdint>
 #include <cstring>
@@ -142,14 +138,16 @@ const RDMHandler::PidDefinition RDMHandler::PID_DEFINITIONS_SUB_DEVICES[] {
 #endif
 };
 
+#if defined (ENABLE_RDM_MANUFACTURER_PIDS)
+const RDMHandler::PidDefinition RDMHandler::PID_DEFINITION_MANUFACTURER_GENERAL { 0, &RDMHandler::GetManufacturerPid, nullptr, 0, false, true, false };
+#endif
+
 RDMHandler::RDMHandler(bool bIsRdm): m_bIsRDM(bIsRdm) {
 	DEBUG_ENTRY
 
 #if defined (ENABLE_RDM_MANUFACTURER_PIDS)
-	uint32_t nCount;
-	const auto *pDefinitions = rdm::getParameterDescriptions(nCount);
-	for (uint32_t nIndex = 0; nIndex < nCount; nIndex++) {
-		printf("0x%.4x [%.*s]\n", __builtin_bswap16(pDefinitions[nIndex].pid), pDefinitions[nIndex].pdl-0x14, pDefinitions[nIndex].description);
+	for (uint32_t i = 0; i < GetParameterDescriptionCount(); i++) {
+		printf("0x%.4x [%.*s]\n", __builtin_bswap16(PARAMETER_DESCRIPTIONS[i].pid), PARAMETER_DESCRIPTIONS[i].pdl-0x14, PARAMETER_DESCRIPTIONS[i].description);
 	}
 #endif
 
@@ -402,6 +400,19 @@ void RDMHandler::Handlers(bool bIsBroadcast, uint8_t nCommandClass, uint16_t nPa
 		}
 	}
 
+#if defined (ENABLE_RDM_MANUFACTURER_PIDS)
+	if (!pid_handler) {
+		for (uint32_t i = 0; i < GetParameterDescriptionCount(); i++) {
+			if (PARAMETER_DESCRIPTIONS[i].pid == __builtin_bswap16(nParamId)) {
+				pid_handler = &PID_DEFINITION_MANUFACTURER_GENERAL;
+				bRDM = true;
+				bRDMNet = false;
+				break;
+			}
+		}
+	}
+#endif
+
 	if (!pid_handler) {
 		RespondMessageNack(E120_NR_UNKNOWN_PID);
 		DEBUG1_EXIT
@@ -495,14 +506,13 @@ void RDMHandler::GetSupportedParameters(uint16_t nSubDevice) {
 	}
 
 #if defined (ENABLE_RDM_MANUFACTURER_PIDS)
-	uint32_t nSupportedParamsManufacturer;
-	const auto *PID_DEFINITIONS_MANUFACTURER = rdm::getParameterDescriptions(nSupportedParamsManufacturer);
+	const auto nSupportedParamsManufacturer = GetParameterDescriptionCount();
 
 	nSupportedParams = static_cast<uint8_t>(nSupportedParams + nSupportedParamsManufacturer);
 
 	for (uint32_t i = 0; i < nSupportedParamsManufacturer; i++) {
-		pRdmDataOut->param_data[j + j] = static_cast<uint8_t>(PID_DEFINITIONS_MANUFACTURER[i].pid);
-		pRdmDataOut->param_data[j + j + 1] = static_cast<uint8_t>(PID_DEFINITIONS_MANUFACTURER[i].pid >> 8);
+		pRdmDataOut->param_data[j + j] = static_cast<uint8_t>(PARAMETER_DESCRIPTIONS[i].pid);
+		pRdmDataOut->param_data[j + j + 1] = static_cast<uint8_t>(PARAMETER_DESCRIPTIONS[i].pid >> 8);
 		j++;
 	}
 #endif
@@ -522,15 +532,14 @@ void RDMHandler::GetParameterDescription(__attribute__((unused)) uint16_t nSubDe
 		return;
 	}
 
-	uint32_t nSupportedParamsManufacturer;
-	const auto *PID_DEFINITIONS_MANUFACTURER = rdm::getParameterDescriptions(nSupportedParamsManufacturer);
+	const auto nSupportedParamsManufacturer = GetParameterDescriptionCount();
 
 	for (uint32_t i = 0; i < nSupportedParamsManufacturer; i++) {
-		if (PID_DEFINITIONS_MANUFACTURER[i].pid == __builtin_bswap16(nPid)) {
+		if (PARAMETER_DESCRIPTIONS[i].pid == __builtin_bswap16(nPid)) {
 			auto *pRdmDataOut = reinterpret_cast<struct TRdmMessage *>(m_pRdmDataOut);
 
-			pRdmDataOut->param_data_length = PID_DEFINITIONS_MANUFACTURER[i].pdl;
-			rdm::copyParameterDescription(i, pRdmDataOut->param_data);
+			pRdmDataOut->param_data_length = PARAMETER_DESCRIPTIONS[i].pdl;
+			CopyParameterDescription(i, pRdmDataOut->param_data);
 
 			RespondMessageAck();
 			return;
@@ -540,11 +549,29 @@ void RDMHandler::GetParameterDescription(__attribute__((unused)) uint16_t nSubDe
 	RespondMessageNack(E120_NR_DATA_OUT_OF_RANGE);
 
 }
+
+void RDMHandler::GetManufacturerPid(__attribute__((unused))  uint16_t nSubDevice) {
+	const auto *pRdmDataIn = reinterpret_cast<struct TRdmMessageNoSc *>(m_pRdmDataIn);
+	auto *pRdmDataOut = reinterpret_cast<struct TRdmMessage *>(m_pRdmDataOut);
+
+	const auto nPid = static_cast<uint16_t>(pRdmDataIn->param_id[0] + (pRdmDataIn->param_id[1] << 8));
+	const rdm::ManufacturerParamData pIn = { pRdmDataIn->param_data_length, const_cast<uint8_t *>(pRdmDataIn->param_data) };
+	rdm::ManufacturerParamData pOut = { 0, pRdmDataOut->param_data };
+	uint16_t nReason;
+
+	if (rdm::handle_manufactureer_pid_get(nPid, &pIn, &pOut, nReason)) {
+		pRdmDataOut->param_data_length = pOut.nPdl;
+		RespondMessageAck();
+		return;
+	}
+
+	RespondMessageNack(nReason);
+}
 #endif
 #endif
 
 void RDMHandler::GetDeviceInfo(uint16_t nSubDevice) {
-	const struct TRDMDeviceInfo *pRdmDeviceInfoRequested = RDMDeviceResponder::Get()->GetDeviceInfo(nSubDevice);
+	const auto *pRdmDeviceInfoRequested = RDMDeviceResponder::Get()->GetDeviceInfo(nSubDevice);
 
 	auto *pRdmDataOut = reinterpret_cast<struct TRdmMessage *>(m_pRdmDataOut);
 	auto *pDeviceInfoOut = reinterpret_cast<struct TRDMDeviceInfo*>(pRdmDataOut->param_data);

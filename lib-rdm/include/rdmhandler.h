@@ -28,8 +28,18 @@
 
 #include <cstdint>
 
+#if defined (NODE_RDMNET_LLRP_ONLY)
+# if defined (ENABLE_RDM_MANUFACTURER_PIDS)
+#  undef ENABLE_RDM_MANUFACTURER_PIDS
+# endif
+#endif
+
 #include "rdmmessage.h"
 #include "rdmqueuedmessage.h"
+
+#if defined (ENABLE_RDM_MANUFACTURER_PIDS)
+# include "rdm_manufacturer_pid.h"
+#endif
 
 class RDMHandler {
 public:
@@ -51,6 +61,7 @@ private:
 	void GetSupportedParameters(uint16_t nSubDevice);
 #if defined (ENABLE_RDM_MANUFACTURER_PIDS)
 	void GetParameterDescription(uint16_t nSubDevice);
+	void GetManufacturerPid(uint16_t nSubDevice);
 #endif
 	void GetDeviceInfo(uint16_t nSubDevice);
 	void GetProductDetailIdList(uint16_t nSubDevice);
@@ -152,6 +163,17 @@ private:
 
 	static const PidDefinition PID_DEFINITIONS[];
 	static const PidDefinition PID_DEFINITIONS_SUB_DEVICES[];
+#if defined (ENABLE_RDM_MANUFACTURER_PIDS)
+	static const PidDefinition PID_DEFINITION_MANUFACTURER_GENERAL;
+	static const rdm::ParameterDescription PARAMETER_DESCRIPTIONS[];
+
+	uint32_t GetParameterDescriptionCount() const;
+	void CopyParameterDescription(const uint32_t nIndex, uint8_t *pParamData) {
+		const auto nSize = sizeof(struct rdm::ParameterDescription) - sizeof(const char *) - sizeof(const uint8_t);
+		memcpy(pParamData, &PARAMETER_DESCRIPTIONS[nIndex], nSize);
+		memcpy(&pParamData[nSize], PARAMETER_DESCRIPTIONS[nIndex].description, PARAMETER_DESCRIPTIONS[nIndex].pdl - nSize);
+	}
+#endif
 };
 
 #endif /* RDMHANDLER_H_ */

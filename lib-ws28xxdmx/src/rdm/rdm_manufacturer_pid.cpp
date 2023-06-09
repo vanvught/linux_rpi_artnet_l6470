@@ -2,15 +2,24 @@
  * rdm_manufacturer_pid.cpp
  */
 
+#undef NDEBUG
+
 #include <cstdint>
 #include <cstddef>
 #include <cstring>
 #include <cassert>
 
 #include "rdm_manufacturer_pid.h"
+#include "rdmhandler.h"
 #include "rdm_e120.h"
 
 #include "pixeltype.h"
+
+#include "debug.h"
+
+#if !defined(OUTPUT_DMX_PIXEL)
+# error
+# endif
 
 namespace rdm {
 using E120_MANUFACTURER_PIXEL_TYPE = ManufacturerPid<0x8500>;
@@ -38,10 +47,11 @@ constexpr char PixelType::description[];
 constexpr char PixelCount::description[];
 constexpr char PixelGroupingCount::description[];
 constexpr char PixelMap::description[];
+}  // namespace rdm
 
-static const constexpr ParameterDescription PARAMETER_DESCRIPTIONS[] = {
-		  { E120_MANUFACTURER_PIXEL_TYPE::code,
-			DEVICE_DESCRIPTION_MAX_LENGTH,
+const rdm::ParameterDescription RDMHandler::PARAMETER_DESCRIPTIONS[] = {
+		  { rdm::E120_MANUFACTURER_PIXEL_TYPE::code,
+		    rdm::DEVICE_DESCRIPTION_MAX_LENGTH,
 			E120_DS_ASCII,
 			E120_CC_GET,
 			0,
@@ -50,10 +60,10 @@ static const constexpr ParameterDescription PARAMETER_DESCRIPTIONS[] = {
 			0,
 			0,
 			0,
-			Description<PixelType, sizeof(PixelType::description)>::value,
-			pdlParameterDescription(sizeof(PixelType::description))
+			rdm::Description<rdm::PixelType, sizeof(rdm::PixelType::description)>::value,
+			rdm::pdlParameterDescription(sizeof(rdm::PixelType::description))
 		  },
-		  { E120_MANUFACTURER_PIXEL_COUNT::code,
+		  { rdm::E120_MANUFACTURER_PIXEL_COUNT::code,
 			2,
 			E120_DS_UNSIGNED_DWORD,
 			E120_CC_GET,
@@ -63,10 +73,10 @@ static const constexpr ParameterDescription PARAMETER_DESCRIPTIONS[] = {
 			0,
 			__builtin_bswap32(pixel::defaults::COUNT),
 			__builtin_bswap32(pixel::max::ledcount::RGB),
-			Description<PixelCount, sizeof(PixelCount::description)>::value,
-			pdlParameterDescription(sizeof(PixelCount::description))
+			rdm::Description<rdm::PixelCount, sizeof(rdm::PixelCount::description)>::value,
+			rdm::pdlParameterDescription(sizeof(rdm::PixelCount::description))
 		  },
-		  { E120_MANUFACTURER_PIXEL_GROUPING_COUNT::code,
+		  { rdm::E120_MANUFACTURER_PIXEL_GROUPING_COUNT::code,
 			2,
 			E120_DS_UNSIGNED_DWORD,
 			E120_CC_GET,
@@ -76,11 +86,11 @@ static const constexpr ParameterDescription PARAMETER_DESCRIPTIONS[] = {
 			0,
 			__builtin_bswap32(pixel::defaults::COUNT),
 			__builtin_bswap32(pixel::max::ledcount::RGB),
-			Description<PixelGroupingCount, sizeof(PixelGroupingCount::description)>::value,
-			pdlParameterDescription(sizeof(PixelGroupingCount::description))
+			rdm::Description<rdm::PixelGroupingCount, sizeof(rdm::PixelGroupingCount::description)>::value,
+			rdm::pdlParameterDescription(sizeof(rdm::PixelGroupingCount::description))
 		  },
-		  { E120_MANUFACTURER_PIXEL_MAP::code,
-			DEVICE_DESCRIPTION_MAX_LENGTH,
+		  { rdm::E120_MANUFACTURER_PIXEL_MAP::code,
+			rdm::DEVICE_DESCRIPTION_MAX_LENGTH,
 			E120_DS_ASCII,
 			E120_CC_GET,
 			0,
@@ -89,25 +99,55 @@ static const constexpr ParameterDescription PARAMETER_DESCRIPTIONS[] = {
 			0,
 			0,
 			0,
-			Description<PixelMap, sizeof(PixelMap::description)>::value,
-			pdlParameterDescription(sizeof(PixelMap::description))
+			rdm::Description<rdm::PixelMap, sizeof(rdm::PixelMap::description)>::value,
+			rdm::pdlParameterDescription(sizeof(rdm::PixelMap::description))
 		  }
   };
 
-static constexpr uint32_t TABLE_SIZE = sizeof(PARAMETER_DESCRIPTIONS) / sizeof(PARAMETER_DESCRIPTIONS[0]);
-
-const ParameterDescription *getParameterDescriptions(uint32_t& nCount) {
-	nCount = TABLE_SIZE;
-	return PARAMETER_DESCRIPTIONS;
+uint32_t RDMHandler::GetParameterDescriptionCount() const {
+	return sizeof(RDMHandler::PARAMETER_DESCRIPTIONS) / sizeof(RDMHandler::PARAMETER_DESCRIPTIONS[0]);
 }
 
-void copyParameterDescription(const uint32_t nIndex, uint8_t *pParamData) {
-	assert(nIndex < TABLE_SIZE);
+#include "ws28xxdmx.h"
 
-	const auto nSize = sizeof(struct ParameterDescription) - sizeof(const char *) - sizeof(const uint8_t);
+namespace rdm {
+bool handle_manufactureer_pid_get(const uint16_t nPid, __attribute__((unused)) const ManufacturerParamData *pIn, ManufacturerParamData *pOut, uint16_t& nReason) {
+	switch (nPid) {
+	case rdm::E120_MANUFACTURER_PIXEL_TYPE::code: {
+		const auto *pString = ::PixelType::GetType(WS28xxDmx::Get()->GetType());
+		pOut->nPdl = static_cast<uint8_t>(strlen(pString));
+		memcpy(pOut->pParamData, pString, pOut->nPdl);
+		return true;
+	}
+	case rdm::E120_MANUFACTURER_PIXEL_COUNT::code: {
+		const auto nCount = WS28xxDmx::Get()->GetCount();
+		pOut->nPdl = 4;
+		pOut->pParamData[0] = static_cast<uint8_t>(nCount >> 24);
+		pOut->pParamData[1] = static_cast<uint8_t>(nCount >> 16);
+		pOut->pParamData[2] = static_cast<uint8_t>(nCount >> 8);
+		pOut->pParamData[3] = static_cast<uint8_t>(nCount);
+		return true;
+	}
+	case rdm::E120_MANUFACTURER_PIXEL_GROUPING_COUNT::code: {
+		const auto nGroupingCount = WS28xxDmx::Get()->GetGroupingCount();
+		pOut->nPdl = 4;
+		pOut->pParamData[0] = static_cast<uint8_t>(nGroupingCount >> 24);
+		pOut->pParamData[1] = static_cast<uint8_t>(nGroupingCount >> 16);
+		pOut->pParamData[2] = static_cast<uint8_t>(nGroupingCount >> 8);
+		pOut->pParamData[3] = static_cast<uint8_t>(nGroupingCount);
+		return true;
+	}
+	case rdm::E120_MANUFACTURER_PIXEL_MAP::code: {
+		const auto *pString = ::PixelType::GetMap(WS28xxDmx::Get()->GetMap());
+		pOut->nPdl = static_cast<uint8_t>(strlen(pString));
+		memcpy(pOut->pParamData, pString, pOut->nPdl);
+		return true;
+	}
+	default:
+		break;
+	}
 
-	memcpy(pParamData, &PARAMETER_DESCRIPTIONS[nIndex], nSize);
-	memcpy(&pParamData[nSize], PARAMETER_DESCRIPTIONS[nIndex].description, PARAMETER_DESCRIPTIONS[nIndex].pdl - nSize);
+	nReason = E120_NR_UNKNOWN_PID;
+	return false;
 }
-
 }  // namespace rdm
