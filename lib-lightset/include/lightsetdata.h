@@ -35,7 +35,7 @@
 
 #if defined (GD32)
 # include "gd32.h"
-# if !defined (GD32F4XX)
+# if !defined (GD32F450)
 #  define SECTION_LIGHTSET
 # else
 #  define SECTION_LIGHTSET __attribute__ ((section (".lightset")))

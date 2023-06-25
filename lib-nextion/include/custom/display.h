@@ -62,6 +62,10 @@ public:
 		Nextion::TextLine(nLine, buffer, display::nextion::COLUMNS);
 	}
 
+	void ClearEndOfLine() {
+		m_bClearEndOfLine = true;
+	}
+
 	int Printf(const uint32_t nLine, const char *format, ...) {
 		char buffer[display::nextion::COLUMNS + 1];
 
@@ -152,6 +156,7 @@ public:
 
 private:
 	bool m_bSleep;
+	bool m_bClearEndOfLine { false };
 	uint8_t m_nContrast;
 	static Display *s_pThis;
 };

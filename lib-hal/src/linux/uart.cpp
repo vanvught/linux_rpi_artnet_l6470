@@ -8,7 +8,7 @@
  * @file uart.cpp
  *
  */
-/* Copyright (C) 2022 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2022-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -193,10 +193,8 @@ uint32_t uart_get_rx_fifo_level(__attribute__((unused)) const uint32_t uart_base
 	int32_t ret = 0;
     const auto i = ioctl(fd, FIONREAD, &ret);
 
-    if (i <= 0) {
-    	if (i == -1) {
-    		perror("ioctl");
-    	}
+    if (i == -1) {
+    	perror("ioctl");
     	return 0;
     }
 

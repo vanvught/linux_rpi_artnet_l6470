@@ -114,7 +114,7 @@ uint32_t arp_cache_lookup(uint32_t nIp, uint8_t *pMacAddress) {
 		}
 	}
 
-	if (net::link_register_read() == net::Link::STATE_DOWN) {
+	if (net::link_status_read() == net::Link::STATE_DOWN) {
 		DEBUG_EXIT
 		return 0;
 	}

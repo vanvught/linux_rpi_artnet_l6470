@@ -2,7 +2,7 @@
  * @file artnetrdmcontroller.cpp
  *
  */
-/* Copyright (C) 2017-2022 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2017-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -77,7 +77,6 @@ const uint8_t *ArtNetRdmController::Handler(uint32_t nPortIndex, const uint8_t *
 	RDMMessage::Print(pRdmCommand);
 #endif
 
-	s_rdmMessage.slot16.port_id = static_cast<uint8_t>(1 + nPortIndex);
 	Rdm::SendRaw(nPortIndex, pRdmCommand, pRdmMessageNoSc->message_length + 2U);
 
 	const auto *pResponse = Rdm::ReceiveTimeOut(nPortIndex, 60000);

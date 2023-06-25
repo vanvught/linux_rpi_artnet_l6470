@@ -32,6 +32,7 @@
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_HD44780"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_SSD1311"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_FIX_FLIP_VERTICALLY"/>
+									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_RUN"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.258966306" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -47,6 +48,7 @@
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_HD44780"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_SSD1311"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_FIX_FLIP_VERTICALLY"/>
+									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_RUN"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1157907807" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -112,6 +114,7 @@
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_HD44780"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_SSD1311"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_FIX_FLIP_VERTICALLY"/>
+									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_RUN"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.772314880" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -128,6 +131,7 @@
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_HD44780"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_SSD1311"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_FIX_FLIP_VERTICALLY"/>
+									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_RUN"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.220843750" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -196,6 +200,7 @@
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_HD44780"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_SSD1311"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_FIX_FLIP_VERTICALLY"/>
+									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_RUN"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1888524606" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -213,6 +218,7 @@
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_SSD1311"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_HD44780"/>
 									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_FIX_FLIP_VERTICALLY"/>
+									<listOptionValue builtIn="false" value="CONFIG_DISPLAY_ENABLE_RUN"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.334666458" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
