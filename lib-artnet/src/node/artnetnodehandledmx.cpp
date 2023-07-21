@@ -83,7 +83,7 @@ void ArtNetNode::HandleDmx() {
 
 	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
 
-		if (m_OutputPort[nPortIndex].genericPort.bIsEnabled && (m_OutputPort[nPortIndex].protocol == artnet::PortProtocol::ARTNET) && (pArtDmx->PortAddress == m_OutputPort[nPortIndex].genericPort.nPortAddress)) {
+		if (m_OutputPort[nPortIndex].genericPort.isEnabled && (m_OutputPort[nPortIndex].genericPort.protocol == artnet::PortProtocol::ARTNET) && (pArtDmx->PortAddress == m_OutputPort[nPortIndex].genericPort.nPortAddress)) {
 
 			const auto ipA = m_OutputPort[nPortIndex].sourceA.nIp;
 			const auto ipB = m_OutputPort[nPortIndex].sourceB.nIp;
@@ -170,7 +170,9 @@ void ArtNetNode::HandleDmx() {
 				return;
 			}
 
-			if (!m_State.IsSynchronousMode) {
+			if (m_State.IsSynchronousMode) {
+				lightset::Data::Set(m_pLightSet, nPortIndex);
+			} else {
 #if defined ( ARTNET_ENABLE_SENDDIAG )
 				SendDiag("Send data", artnet::DP_LOW);
 #endif

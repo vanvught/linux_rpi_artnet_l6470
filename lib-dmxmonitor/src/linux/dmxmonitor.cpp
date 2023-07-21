@@ -109,7 +109,18 @@ void DMXMonitor::Stop(uint32_t nPortIndex) {
 	DisplayDateTime(nPortIndex, "Stop");
 }
 
-void DMXMonitor::SetData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength) {
+void DMXMonitor::SetData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength, const bool doUpdate) {
+	assert(nPortIndex < output::text::MAX_PORTS);
+
+	if (doUpdate) {
+		Update(nPortIndex, pData, nLength);
+	} else {
+		memcpy(m_Data[nPortIndex].data, pData, nLength);
+		m_Data[nPortIndex].nLength = nLength;
+	}
+}
+
+void DMXMonitor::Update(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength) {
 	assert(nPortIndex < output::text::MAX_PORTS);
 
 	struct timeval tv;
@@ -144,4 +155,11 @@ void DMXMonitor::SetData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLe
 	}
 
 	printf("\n");
+}
+
+void DMXMonitor::Sync(uint32_t nPortIndex) {
+	Update(nPortIndex, m_Data[nPortIndex].data, m_Data[nPortIndex].nLength);
+}
+
+void DMXMonitor::Sync(__attribute__((unused)) const bool doForce) {
 }

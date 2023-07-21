@@ -33,6 +33,16 @@
 #include <cstring>
 #include <cassert>
 
+#if !defined(ARTNET_VERSION)
+# error ARTNET_VERSION is not defined
+#endif
+
+#if (ARTNET_VERSION >= 4) && defined (ARTNET_HAVE_DMXIN)
+# if !defined (E131_HAVE_DMXIN)
+#  define E131_HAVE_DMXIN
+# endif
+#endif
+
 #include "artnet.h"
 #include "artnettimecode.h"
 #include "artnetrdm.h"
@@ -40,7 +50,10 @@
 #include "artnetdisplay.h"
 #include "artnetdmx.h"
 #include "artnettrigger.h"
-#include "artnet4handler.h"
+
+#if (ARTNET_VERSION >= 4)
+# include "e131bridge.h"
+#endif
 
 #include "lightset.h"
 #include "hardware.h"
@@ -123,16 +136,17 @@ struct Node {
 	uint32_t IPAddressBroadcast;
 	uint32_t IPAddressTimeCode;
 	uint8_t MACAddressLocal[artnet::MAC_SIZE];
-	uint8_t NetSwitch[artnetnode::PAGES];			///< Bits 14-8 of the 15 bit Port-Address are encoded into the bottom 7 bits of this field.
-	uint8_t SubSwitch[artnetnode::PAGES];			///< Bits 7-4 of the 15 bit Port-Address are encoded into the bottom 4 bits of this field.
+	uint8_t NetSwitch[artnetnode::PAGES];		///< Bits 14-8 of the 15 bit Port-Address are encoded into the bottom 7 bits of this field.
+	uint8_t SubSwitch[artnetnode::PAGES];		///< Bits 7-4 of the 15 bit Port-Address are encoded into the bottom 4 bits of this field.
 	char ShortName[artnet::SHORT_NAME_LENGTH];
 	char LongName[artnet::LONG_NAME_LENGTH];
-	uint8_t TalkToMe;								///< Behavior of Node
+	uint8_t TalkToMe;							///< Behavior of Node
 	uint8_t Status1;
 	uint8_t Status2;
 	uint8_t Status3;
-	uint8_t DefaultUidResponder[6];					///< RDMnet & LLRP UID
-	bool bMapUniverse0;
+	uint8_t DefaultUidResponder[6];				///< RDMnet & LLRP UID
+	bool bMapUniverse0;							///< Art-Net 4
+	uint8_t AcnPriority;						///< Art-Net 4
 };
 
 struct Source {
@@ -141,17 +155,17 @@ struct Source {
 };
 
 struct GenericPort {
-	uint16_t nPortAddress;		///< One of the 32,768 possible addresses to which a DMX frame can be directed. The Port-Address is a 15 bit number composed of Net+Sub-Net+Universe.
-	uint8_t nDefaultAddress;	///< the address set by the hardware
+	uint16_t nPortAddress;			///< One of the 32,768 possible addresses to which a DMX frame can be directed. The Port-Address is a 15 bit number composed of Net+Sub-Net+Universe.
+	uint8_t nDefaultAddress;		///< the address set by the hardware
 	uint8_t nPollReplyIndex;
-	bool bIsEnabled;
+	artnet::PortProtocol protocol;	///< Art-Net 4
+	bool isEnabled;
 };
 
 struct OutputPort {
 	GenericPort genericPort;
 	Source sourceA;
 	Source sourceB;
-	artnet::PortProtocol protocol;	///< Art-Net 4
 	bool IsDataPending;				///< ArtDMX received and waiting for ArtSync
 	bool IsTransmitting;
 	uint8_t GoodOutput;
@@ -165,15 +179,25 @@ struct InputPort {
 	uint8_t nSequenceNumber;
 };
 
-inline static FailSafe convert_failsafe(const lightset::FailSafe failsafe) {
+inline static artnetnode::FailSafe convert_failsafe(const lightset::FailSafe failsafe) {
 	const auto fs = static_cast<FailSafe>(static_cast<uint32_t>(failsafe) + static_cast<uint32_t>(FailSafe::LAST));
+	DEBUG_PRINTF("failsafe=%u, fs=%u", static_cast<uint32_t>(failsafe), static_cast<uint32_t>(fs));
+	return fs;
+}
+
+inline static lightset::FailSafe convert_failsafe(const artnetnode::FailSafe failsafe) {
+	const auto fs = static_cast<lightset::FailSafe>(static_cast<uint32_t>(failsafe) - static_cast<uint32_t>(FailSafe::LAST));
 	DEBUG_PRINTF("failsafe=%u, fs=%u", static_cast<uint32_t>(failsafe), static_cast<uint32_t>(fs));
 	return fs;
 }
 
 }  // namespace artnetnode
 
+#if (ARTNET_VERSION >= 4)
+class ArtNetNode: E131Bridge {
+#else
 class ArtNetNode {
+#endif
 public:
 	ArtNetNode();
 	~ArtNetNode();
@@ -214,8 +238,36 @@ public:
 		return artnetnode::FailSafe::OFF;
 	}
 
+	void SetOutputStyle(const uint32_t nPortIndex, const artnet::OutputStyle outputStyle) {
+		assert(nPortIndex < artnetnode::MAX_PORTS);
+
+		if (outputStyle == artnet::OutputStyle::CONTINOUS) {
+			m_OutputPort[nPortIndex].GoodOutputB |= artnet::GoodOutputB::STYLE_CONSTANT;
+		} else {
+			m_OutputPort[nPortIndex].GoodOutputB &= static_cast<uint8_t>(~artnet::GoodOutputB::STYLE_CONSTANT);
+		}
+
+		if (m_State.status == artnetnode::Status::ON) {
+			if (m_pArtNetStore != nullptr) {
+				m_pArtNetStore->SaveOutputStyle(nPortIndex, outputStyle);
+			}
+
+			artnet::display_outputstyle(nPortIndex, outputStyle);
+		}
+	}
+
+	artnet::OutputStyle GetOutputStyle(const uint32_t nPortIndex) const {
+		assert(nPortIndex < artnetnode::MAX_PORTS);
+
+		const auto isStyleConstant = (m_OutputPort[nPortIndex].GoodOutputB & artnet::GoodOutputB::STYLE_CONSTANT) == artnet::GoodOutputB::STYLE_CONSTANT;
+		return isStyleConstant ? artnet::OutputStyle::CONTINOUS : artnet::OutputStyle::DELTA;
+	}
+
 	void SetOutput(LightSet *pLightSet) {
 		m_pLightSet = pLightSet;
+#if (ARTNET_VERSION >= 4)
+		E131Bridge::SetOutput(pLightSet);
+#endif
 	}
 
 	LightSet *GetOutput() const {
@@ -268,10 +320,10 @@ public:
 
 	bool GetOutputPort(const uint16_t nUniverse, uint32_t& nPortIndex) {
 		for (nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
-			if (!m_OutputPort[nPortIndex].genericPort.bIsEnabled) {
+			if (!m_OutputPort[nPortIndex].genericPort.isEnabled) {
 				continue;
 			}
-			if ((m_OutputPort[nPortIndex].protocol == artnet::PortProtocol::ARTNET) && (nUniverse == m_OutputPort[nPortIndex].genericPort.nPortAddress)) {
+			if ((m_OutputPort[nPortIndex].genericPort.protocol == artnet::PortProtocol::ARTNET) && (nUniverse == m_OutputPort[nPortIndex].genericPort.nPortAddress)) {
 				return true;
 			}
 		}
@@ -296,6 +348,9 @@ public:
 
 	void SetDisableMergeTimeout(bool bDisable) {
 		m_State.bDisableMergeTimeout = bDisable;
+#if (ARTNET_VERSION >= 4)
+		E131Bridge::SetDisableMergeTimeout(bDisable);
+#endif
 	}
 
 	bool GetDisableMergeTimeout() const {
@@ -357,36 +412,56 @@ public:
 		}
 	}
 
-	/**
-	 * Art-Net 4
-	 */
-
-	void SetArtNet4Handler(ArtNet4Handler *pArtNet4Handler) {
-		if (artnet::VERSION >= 4) {
-			m_pArtNet4Handler = pArtNet4Handler;
-		}
-	}
-
-	void SetPortProtocol(uint32_t nPortIndex, artnet::PortProtocol tPortProtocol);
-
-	artnet::PortProtocol GetPortProtocol(uint32_t nPortIndex) const {
-		assert(nPortIndex < (artnetnode::MAX_PORTS));
-		return m_OutputPort[nPortIndex].protocol;
-	}
-
-	void SetMapUniverse0(bool bMapUniverse0 = false) {
-		m_Node.bMapUniverse0 = bMapUniverse0;
-	}
-
-	bool IsMapUniverse0() {
-		return m_Node.bMapUniverse0;
-	}
-
 	void Print();
 
 	static ArtNetNode* Get() {
 		return s_pThis;
 	}
+
+#if (ARTNET_VERSION >= 4)
+	void SetPortProtocol4(const uint32_t nPortIndex, const artnet::PortProtocol portProtocol);
+	artnet::PortProtocol GetPortProtocol4(const uint32_t nPortIndex) const;
+
+	void SetPort4(const uint32_t nPortIndex, const lightset::PortDir portDir);
+	void SetPriority4(const uint32_t nPriority);
+
+	void SetMapUniverse0(const bool bMapUniverse0 = false) {
+		m_Node.bMapUniverse0 = bMapUniverse0;
+	}
+
+	bool IsMapUniverse0() const {
+		return m_Node.bMapUniverse0;
+	}
+
+	void SetLedBlinkMode4(hardware::ledblink::Mode mode);
+
+	void HandleAddress4(const uint8_t nCommand, const uint32_t nPortIndex);
+
+	uint8_t GetStatus4(const uint32_t nPortIndex);
+
+	/**
+	 * sACN E1.131
+	 */
+
+	void SetPriority4(uint32_t nPortIndex, uint8_t nPriority) {
+		E131Bridge::SetPriority(nPortIndex, nPriority);
+	}
+	uint8_t GetPriority4(uint32_t nPortIndex) const {
+		return E131Bridge::GetPriority(nPortIndex);
+	}
+
+	bool GetUniverse4(uint32_t nPortIndex, uint16_t &nUniverse, lightset::PortDir portDir) const {
+		return E131Bridge::GetUniverse(nPortIndex, nUniverse, portDir);
+	}
+
+	uint32_t GetActiveOutputPorts4() const {
+		return E131Bridge::GetActiveOutputPorts();
+	}
+
+	uint32_t GetActiveInputPorts4() const {
+		return E131Bridge::GetActiveInputPorts();
+	}
+#endif
 
 private:
 	void FillPollReply();
@@ -470,7 +545,6 @@ private:
 	ArtNetTimeCode *m_pArtNetTimeCode { nullptr };
 	ArtNetRdm *m_pArtNetRdm { nullptr };
 	ArtNetTrigger *m_pArtNetTrigger { nullptr };
-	ArtNet4Handler *m_pArtNet4Handler { nullptr };
 	ArtNetStore *m_pArtNetStore { nullptr };
 
 	static ArtNetNode *s_pThis;

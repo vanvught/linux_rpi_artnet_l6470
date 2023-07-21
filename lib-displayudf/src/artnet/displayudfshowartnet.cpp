@@ -78,11 +78,12 @@ void DisplayUdf::ShowUniverse(ArtNetNode *pArtNetNode) {
 			if (pArtNetNode->GetPortAddress(nPortIndex, nUniverse, lightset::PortDir::OUTPUT)) {
 				ClearEndOfLine();
 				Printf(m_aLabels[nLabelIndex],
-						"%c: %d %s %s %s",
+						"%c %d %s %s %c %s",
 						'A' + nArtNetPortIndex,
 						nUniverse,
 						lightset::get_merge_mode(pArtNetNode->GetMergeMode(nPortIndex), true),
-						artnet::get_protocol_mode(pArtNetNode->GetPortProtocol(nPortIndex), true),
+						artnet::get_protocol_mode(pArtNetNode->GetPortProtocol4(nPortIndex), true),
+						pArtNetNode->GetOutputStyle(nPortIndex) == artnet::OutputStyle::CONTINOUS ? 'C' : 'D',
 						pArtNetNode->GetRdm(nPortIndex) ? "RDM" : "");
 			}
 		}

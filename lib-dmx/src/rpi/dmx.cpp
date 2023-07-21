@@ -490,6 +490,31 @@ void Dmx::UartDisableFifo() {	// DMX Input
 	isb();
 }
 
+void Dmx::StartOutput(__attribute__((unused)) uint32_t nPortIndex) {
+
+}
+
+void Dmx::SetOutput(__attribute__((unused)) const bool doForce) {
+	if (sv_DmxTransmitState != IDLE) {
+		return;
+	}
+
+	UartEnableFifo();
+	__enable_fiq();
+
+	irq_timer_set(IRQ_TIMER_1, irq_timer1_dmx_sender);
+
+	const uint32_t clo = BCM2835_ST->CLO;
+
+	if (clo - sv_DmxTransmitBreakMicros > s_nDmxTransmitPeriod) {
+		BCM2835_ST->C1 = clo + 4;
+	} else {
+		BCM2835_ST->C1 = s_nDmxTransmitPeriod + sv_DmxTransmitBreakMicros + 4;
+	}
+
+	isb();
+}
+
 void Dmx::StartData() {
 	switch (s_nPortDirection) {
 	case PortDirection::OUTP: {

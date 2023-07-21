@@ -2,7 +2,7 @@
  * @file dmx.h
  *
  */
-/* Copyright (C) 2015-2021 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2015-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,8 +23,8 @@
  * THE SOFTWARE.
  */
 
-#ifndef H3_DMX_H_
-#define H3_DMX_H_
+#ifndef H3_SINGLE_DMX_H_
+#define H3_SINGLE_DMX_H_
 
 #include <cstdint>
 
@@ -67,13 +67,21 @@ public:
 
 	// DMX Send
 	
+	void SetSendData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
 	void SetPortSendDataWithoutSC(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
+
+	void StartOutput(uint32_t nPortIndex);
+	void SetOutput(const bool doForce);
+
+	void SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const dmx::OutputStyle outputStyle) {}
+	dmx::OutputStyle GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const {
+		return dmx::OutputStyle::CONTINOUS;
+	}
 
 	void Blackout();
 	void FullOn();
 
 	void ClearData(uint32_t nPortIndex);
-	void SetSendData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
 
 	void SetDmxBreakTime(uint32_t nBreakTime);
 	uint32_t GetDmxBreakTime() const {
@@ -125,4 +133,4 @@ private:
 	static Dmx *s_pThis;
 };
 
-#endif /* H3_DMX_H_ */
+#endif /* H3_SINGLE_DMX_H_ */

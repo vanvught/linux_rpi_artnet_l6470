@@ -96,7 +96,7 @@ bool ConfigStore::Init() {
 
 	s_nStartAddress = StoreDevice::GetSize() - (nSectors * nEraseSize);
 
-	DEBUG_PRINTF("s_nStartAddress=%p", s_nStartAddress);
+	DEBUG_PRINTF("s_nStartAddress=%p", reinterpret_cast<void *>(s_nStartAddress));
 
 	storedevice::result result;
 	StoreDevice::Read(s_nStartAddress, FlashStore::SIZE, reinterpret_cast<uint8_t *>(&s_SpiFlashData), result);
@@ -267,6 +267,7 @@ bool ConfigStore::Flash() {
 			s_State = State::ERASED_WAITING;
 		}
 		assert(result == storedevice::result::OK);
+		DEBUG_PRINTF("s_State=%u", static_cast<uint32_t>(s_State));
 		return true;
 	}
 		break;

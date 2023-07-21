@@ -23,8 +23,8 @@
  * THE SOFTWARE.
  */
 
-#ifndef H3_DMX_H_
-#define H3_DMX_H_
+#ifndef H3_MULTI_DMX_H_
+#define H3_MULTI_DMX_H_
 
 #include <cstdint>
 
@@ -68,6 +68,14 @@ public:
 	// DMX Send
 
 	void SetPortSendDataWithoutSC(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
+
+	void StartOutput(uint32_t nPortIndex);
+	void SetOutput(const bool doForce);
+
+	void SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const dmx::OutputStyle outputStyle) {}
+	dmx::OutputStyle GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const {
+		return dmx::OutputStyle::CONTINOUS;
+	}
 
 	void Blackout();
 	void FullOn();
@@ -118,4 +126,4 @@ private:
 	static Dmx *s_pThis;
 };
 
-#endif /* H3_DMX_H_ */
+#endif /* H3_MULTI_DMX_H_ */

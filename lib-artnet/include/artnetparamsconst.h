@@ -43,6 +43,8 @@ struct ArtNetParamsConst {
 
 	static const char RDM_ENABLE_PORT[artnet::PORTS][18];
 
+	static const char OUTPUT_STYLE[artnet::PORTS][16];
+
 	/**
 	 * Art-Net 4
 	 */
@@ -50,6 +52,9 @@ struct ArtNetParamsConst {
 	static const char PROTOCOL_PORT[artnet::PORTS][16];
 
 	static const char MAP_UNIVERSE0[];
+
+	static const char SACN_PRIORITY[];
+
 };
 
 #endif /* ARTNETPARAMSCONST_H_ */

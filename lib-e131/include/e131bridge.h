@@ -38,9 +38,12 @@
 #include "lightset.h"
 #include "lightsetdata.h"
 
+#include "debug.h"
+
 namespace e131bridge {
 #if !defined(LIGHTSET_PORTS)
-# define LIGHTSET_PORTS	0
+# error
+//# define LIGHTSET_PORTS	0
 #endif
 
 #if (LIGHTSET_PORTS == 0)
@@ -221,7 +224,8 @@ public:
 	}
 #endif
 
-	void SetPriority(uint8_t nPriority, uint32_t nPortIndex = 0) {
+	void SetPriority(uint32_t nPortIndex, uint8_t nPriority) {
+		DEBUG_PRINTF("%u: nPortIndex=%u", e131bridge::MAX_PORTS, nPortIndex);
 		assert(nPortIndex < e131bridge::MAX_PORTS);
 		if ((nPriority >= e131::priority::LOWEST) && (nPriority <= e131::priority::HIGHEST)) {
 			m_InputPort[nPortIndex].nPriority = nPriority;

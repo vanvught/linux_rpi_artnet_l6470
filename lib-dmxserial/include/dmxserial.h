@@ -2,7 +2,7 @@
  * @file dmxserial.h
  *
  */
-/* Copyright (C) 2020-2021 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2020-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -65,7 +65,14 @@ public:
 	void Start(uint32_t nPortIndex) override;
 	void Stop(uint32_t nPortIndex) override;
 
-	void SetData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength) override;
+	void SetData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength, const bool doUpdate = true) override;
+	void Sync(const uint32_t nPortIndex) override;
+	void Sync(const bool doForce = false) override;
+
+	void SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const lightset::OutputStyle outputStyle) override {}
+	lightset::OutputStyle GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const override {
+		return lightset::OutputStyle::DELTA;
+	}
 
 	void Run();
 
@@ -93,6 +100,7 @@ public:
 
 private:
 	void ScanDirectory();
+	void Update(const uint8_t *pData, const uint32_t nLength);
 	void HandleUdp();
 
 private:
@@ -103,6 +111,11 @@ private:
 	DmxSerialChannelData *m_pDmxSerialChannelData[DmxSerialFile::MAX_NUMBER];
 	uint16_t m_nDmxLastSlot { lightset::dmx::UNIVERSE_SIZE };
 	uint8_t m_DmxData[lightset::dmx::UNIVERSE_SIZE];
+	struct SyncData {
+		uint8_t data[lightset::dmx::UNIVERSE_SIZE];
+		uint32_t nLength;
+	};
+	SyncData m_SyncData;
 	bool m_bEnableTFTP { false };
 	DmxSerialTFTP *m_pDmxSerialTFTP { nullptr };
 

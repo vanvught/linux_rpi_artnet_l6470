@@ -38,6 +38,10 @@
 #include "artnetconst.h"
 #include "artnet.h"
 
+#if (ARTNET_VERSION >= 4)
+# include "e131bridge.h"
+#endif
+
 #include "network.h"
 
 void ArtNetNode::Print() {
@@ -59,8 +63,8 @@ void ArtNetNode::Print() {
 				const auto mergeMode = ((m_OutputPort[nPortIndex].GoodOutput & artnet::GoodOutput::MERGE_MODE_LTP) == artnet::GoodOutput::MERGE_MODE_LTP) ? lightset::MergeMode::LTP : lightset::MergeMode::HTP;
 				printf("  Port %-2d %-4u %s %s", nPortIndex, nUniverse, lightset::get_merge_mode(mergeMode, true), GetRdm(0) ? "RDM" : "");
 
-				if (artnet::VERSION == 4) {
-					printf(" %s\n", artnet::get_protocol_mode(m_OutputPort[nPortIndex].protocol, true));
+				if (artnet::VERSION >= 4) {
+					printf(" %s\n", artnet::get_protocol_mode(m_OutputPort[nPortIndex].genericPort.protocol, true));
 				} else {
 					printf("\n");
 				}
@@ -76,9 +80,25 @@ void ArtNetNode::Print() {
 			uint16_t nUniverse;
 			if (GetPortAddress(nPortIndex, nUniverse, lightset::PortDir::INPUT)) {
 				const auto nDestinationIp = (m_InputPort[nPortIndex].nDestinationIp == 0 ? Network::Get()->GetBroadcastIp() : m_InputPort[nPortIndex].nDestinationIp);
-				printf("  Port %-2d %-4u -> " IPSTR "\n", nPortIndex, nUniverse, IP2STR(nDestinationIp));
+				printf("  Port %-2d %-4u -> " IPSTR, nPortIndex, nUniverse, IP2STR(nDestinationIp));
+
+				if (artnet::VERSION >= 4) {
+					printf(" %s\n", artnet::get_protocol_mode(m_InputPort[nPortIndex].genericPort.protocol, true));
+				} else {
+					printf("\n");
+				}
 			}
 		}
+	}
+#endif
+
+#if (ARTNET_VERSION >= 4)
+	if (ArtNetNode::GetActiveOutputPorts() != 0) {
+		if (IsMapUniverse0()) {
+			printf("  Universes are mappped +1\n");
+		}
+
+		E131Bridge::Print();
 	}
 #endif
 }

@@ -2,7 +2,7 @@
  * @file dmx.cpp
  *
  */
-/* Copyright (C) 2018-2022 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2018-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -302,7 +302,7 @@ static void fiq_dmx_in_handler(void) {
 
 			if ((sv_nRdmChecksum == 0) && (p->sub_start_code == E120_SC_SUB_MESSAGE)) {
 				sv_nRdmDataBufferIndexHead = (sv_nRdmDataBufferIndexHead + 1) & RDM_DATA_BUFFER_INDEX_MASK;
-				sv_RdmDataReceiveEnd = h3_hs_timer_lo_us();;
+				sv_RdmDataReceiveEnd = h3_hs_timer_lo_us();
 				dmb();
 			}
 
@@ -315,7 +315,7 @@ static void fiq_dmx_in_handler(void) {
 			if (sv_nDmxDataIndex == 24) {
 				sv_nRdmDataBufferIndexHead = (sv_nRdmDataBufferIndexHead + 1) & RDM_DATA_BUFFER_INDEX_MASK;
 				sv_DmxReceiveState = IDLE;
-				sv_RdmDataReceiveEnd = h3_hs_timer_lo_us();;
+				sv_RdmDataReceiveEnd = h3_hs_timer_lo_us();
 				dmb();
 			}
 			break;
@@ -478,6 +478,35 @@ void Dmx::UartEnableFifo() {	// DMX Output
 void Dmx::UartDisableFifo() {	// DMX Input
 	EXT_UART->O08.FCR = 0;
 	EXT_UART->O04.IER = UART_IER_ERBFI;
+	isb();
+}
+
+void Dmx::StartOutput(__attribute__((unused)) uint32_t nPortIndex) {
+	// TODO FIXME Dmx::StartOutput
+}
+
+void Dmx::SetOutput(__attribute__((unused)) const bool doForce) {
+	if (sv_DmxTransmitState != IDLE) {
+		return;
+	}
+
+	UartEnableFifo();
+	__enable_fiq();
+
+	irq_timer_set(IRQ_TIMER_0, irq_timer0_dmx_sender);
+
+	const auto clo = h3_hs_timer_lo_us();
+
+	if (clo - sv_DmxTransmitBreakMicros > m_nDmxTransmitPeriod) {
+		H3_TIMER->TMR0_CTRL |= TIMER_CTRL_SINGLE_MODE;
+		H3_TIMER->TMR0_INTV = 4 * 12;
+		H3_TIMER->TMR0_CTRL |= (TIMER_CTRL_EN_START | TIMER_CTRL_RELOAD); // 0x3;
+	} else {
+		H3_TIMER->TMR0_CTRL |= TIMER_CTRL_SINGLE_MODE;
+		H3_TIMER->TMR0_INTV = (m_nDmxTransmitPeriod + 4) * 12;
+		H3_TIMER->TMR0_CTRL |= (TIMER_CTRL_EN_START | TIMER_CTRL_RELOAD); // 0x3;
+	}
+
 	isb();
 }
 

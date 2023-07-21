@@ -43,19 +43,25 @@ void ArtNetNode::SetRmd(const uint32_t nPortIndex, const bool bEnable) {
 
 	const auto isEnabled = !((m_OutputPort[nPortIndex].GoodOutputB & artnet::GoodOutputB::RDM_DISABLED) == artnet::GoodOutputB::RDM_DISABLED);
 
+	if (isEnabled == bEnable) {
+		DEBUG_EXIT
+		return;
+	}
+
 	if (!bEnable) {
 		m_OutputPort[nPortIndex].GoodOutputB |= artnet::GoodOutputB::RDM_DISABLED;
 	} else {
 		m_OutputPort[nPortIndex].GoodOutputB &= static_cast<uint8_t>(~artnet::GoodOutputB::RDM_DISABLED);
 	}
 
-	if ((isEnabled != bEnable) && (m_State.status == artnetnode::Status::ON)) {
+	if (m_State.status == artnetnode::Status::ON) {
 		if (m_pArtNetStore != nullptr) {
 			m_pArtNetStore->SaveRdmEnabled(nPortIndex, bEnable);
 		}
 
 		artnet::display_rdm_enabled(nPortIndex, bEnable);
 	}
+
 
 	DEBUG_EXIT
 }
@@ -69,15 +75,16 @@ void ArtNetNode::SetRmd(const uint32_t nPortIndex, const bool bEnable) {
 void ArtNetNode::HandleTodControl() {
 	DEBUG_ENTRY
 
-	const auto *const pArtTodControl =  reinterpret_cast<TArtTodControl *>(m_pReceiveBuffer);;
+	const auto *const pArtTodControl =  reinterpret_cast<TArtTodControl *>(m_pReceiveBuffer);
 	const auto portAddress = static_cast<uint16_t>((pArtTodControl->Net << 8)) | static_cast<uint16_t>((pArtTodControl->Address));
 
 	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
-		if ((m_OutputPort[nPortIndex].GoodOutputB & artnet::GoodOutputB::RDM_ENABLED) != artnet::GoodOutputB::RDM_ENABLED) {
+		if ((m_OutputPort[nPortIndex].GoodOutputB & artnet::GoodOutputB::RDM_DISABLED) == artnet::GoodOutputB::RDM_DISABLED) {
+			DEBUG_EXIT
 			continue;
 		}
 
-		if ((portAddress == m_OutputPort[nPortIndex].genericPort.nPortAddress) && m_OutputPort[nPortIndex].genericPort.bIsEnabled) {
+		if ((portAddress == m_OutputPort[nPortIndex].genericPort.nPortAddress) && m_OutputPort[nPortIndex].genericPort.isEnabled) {
 			if (m_OutputPort[nPortIndex].IsTransmitting && (!m_IsRdmResponder)) {
 				m_pLightSet->Stop(nPortIndex);
 			}
@@ -105,18 +112,18 @@ void ArtNetNode::HandleTodControl() {
 void ArtNetNode::HandleTodRequest() {
 	DEBUG_ENTRY
 
-	const auto *const pArtTodRequest = reinterpret_cast<TArtTodRequest *>(m_pReceiveBuffer);;
+	const auto *const pArtTodRequest = reinterpret_cast<TArtTodRequest *>(m_pReceiveBuffer);
 	const auto nAddCount = pArtTodRequest->AddCount & 0x1f;
 
 	for (auto nCount = 0; nCount < nAddCount; nCount++) {
 		const auto portAddress = static_cast<uint16_t>((pArtTodRequest->Net << 8)) | static_cast<uint16_t>((pArtTodRequest->Address[nCount]));
 
 		for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
-			if ((m_OutputPort[nPortIndex].GoodOutputB & artnet::GoodOutputB::RDM_ENABLED) != artnet::GoodOutputB::RDM_ENABLED) {
+			if ((m_OutputPort[nPortIndex].GoodOutputB & artnet::GoodOutputB::RDM_DISABLED) == artnet::GoodOutputB::RDM_DISABLED) {
 				continue;
 			}
 
-			if ((portAddress == m_OutputPort[nPortIndex].genericPort.nPortAddress) && m_OutputPort[nPortIndex].genericPort.bIsEnabled) {
+			if ((portAddress == m_OutputPort[nPortIndex].genericPort.nPortAddress) && m_OutputPort[nPortIndex].genericPort.isEnabled) {
 				SendTod(nPortIndex);
 			}
 		}
@@ -128,7 +135,7 @@ void ArtNetNode::HandleTodRequest() {
 void ArtNetNode::HandleTodData() {
 	DEBUG_ENTRY
 
-	const auto *const pArtTodData = reinterpret_cast<TArtTodData *>(m_pReceiveBuffer);;
+	const auto *const pArtTodData = reinterpret_cast<TArtTodData *>(m_pReceiveBuffer);
 
 	if (pArtTodData->RdmVer != 0x01) {
 		DEBUG_EXIT
@@ -138,7 +145,7 @@ void ArtNetNode::HandleTodData() {
 	const auto portAddress = static_cast<uint16_t>((pArtTodData->Net << 8)) | static_cast<uint16_t>((pArtTodData->Address));
 
 	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
-		if (!m_InputPort[nPortIndex].genericPort.bIsEnabled) {
+		if (!m_InputPort[nPortIndex].genericPort.isEnabled) {
 			continue;
 		}
 
@@ -165,6 +172,7 @@ void ArtNetNode::HandleTodData() {
  */
 void ArtNetNode::SendTod(uint32_t nPortIndex) {
 	DEBUG_ENTRY
+	DEBUG_PRINTF("nPortIndex=%u", nPortIndex);
 	assert(nPortIndex < artnetnode::MAX_PORTS);
 
 	auto *pTodData = &m_ArtTodPacket.ArtTodData;
@@ -194,7 +202,9 @@ void ArtNetNode::SendTod(uint32_t nPortIndex) {
 	pTodData->BlockCount = 0;
 	pTodData->UidCount = nDiscovered;
 
+	DEBUG_PUTS("");
 	m_pArtNetRdm->TodCopy(nPortIndex, reinterpret_cast<uint8_t*>(pTodData->Tod));
+	DEBUG_PUTS("");
 
 	const auto nLength = sizeof(struct TArtTodData) - (sizeof(pTodData->Tod)) + (nDiscovered * 6U);
 
@@ -251,8 +261,6 @@ void ArtNetNode::SetRdmHandler(ArtNetRdm *pArtNetTRdm, bool IsResponder) {
 }
 
 void ArtNetNode::HandleRdm() {
-	DEBUG_ENTRY
-
 	auto *const pArtRdm = reinterpret_cast<TArtRdm *>(m_pReceiveBuffer);
 
 	if (pArtRdm->RdmVer != 0x01) {
@@ -264,17 +272,18 @@ void ArtNetNode::HandleRdm() {
 
 	// Output ports
 	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
-		if ((m_OutputPort[nPortIndex].GoodOutputB & artnet::GoodOutputB::RDM_ENABLED) != artnet::GoodOutputB::RDM_ENABLED) {
+		if ((m_OutputPort[nPortIndex].GoodOutputB & artnet::GoodOutputB::RDM_DISABLED) == artnet::GoodOutputB::RDM_DISABLED) {
 			continue;
 		}
 
-		if ((portAddress == m_OutputPort[nPortIndex].genericPort.nPortAddress) && m_OutputPort[nPortIndex].genericPort.bIsEnabled) {
+		if ((portAddress == m_OutputPort[nPortIndex].genericPort.nPortAddress) && m_OutputPort[nPortIndex].genericPort.isEnabled) {
 #if defined	(RDM_CONTROLLER)
-			if ((m_OutputPort[nPortIndex].protocol == artnet::PortProtocol::SACN) && (m_pArtNet4Handler != nullptr)) {
+# if (ARTNET_VERSION >= 4)
+			if ((m_OutputPort[nPortIndex].genericPort.protocol == artnet::PortProtocol::SACN)) {
 				constexpr auto nMask = artnet::GoodOutput::OUTPUT_IS_MERGING | artnet::GoodOutput::DATA_IS_BEING_TRANSMITTED | artnet::GoodOutput::OUTPUT_IS_SACN;
-				m_OutputPort[nPortIndex].IsTransmitting = (m_pArtNet4Handler->GetStatus(nPortIndex) & nMask) != 0;
+				m_OutputPort[nPortIndex].IsTransmitting = (GetStatus4(nPortIndex) & nMask) != 0;
 			}
-
+# endif
 			if (m_OutputPort[nPortIndex].IsTransmitting) {
 				m_pLightSet->Stop(nPortIndex); // Stop DMX if was running
 			}
@@ -305,7 +314,7 @@ void ArtNetNode::HandleRdm() {
 #if defined	(RDM_CONTROLLER)
 	// Input ports
 	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
-		if (!m_InputPort[nPortIndex].genericPort.bIsEnabled) {
+		if (!m_InputPort[nPortIndex].genericPort.isEnabled) {
 			continue;
 		}
 
@@ -315,6 +324,4 @@ void ArtNetNode::HandleRdm() {
 		}
 	}
 #endif
-
-	DEBUG_EXIT
 }

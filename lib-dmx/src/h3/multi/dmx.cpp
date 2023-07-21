@@ -378,7 +378,7 @@ static void fiq_in_handler(const uint32_t nUart, const H3_UART_TypeDef *pUart, c
 			if ((s_aRdmData[nUart][s_nRdmDataWriteIndex[nUart]].nChecksum == 0) && (p->sub_start_code == E120_SC_SUB_MESSAGE)) {
 				s_nRdmDataWriteIndex[nUart] = (s_nRdmDataWriteIndex[nUart] + 1) & RDM_DATA_BUFFER_INDEX_MASK;
 				s_pRdmDataCurrent[nUart] = &s_aRdmData[nUart][s_nRdmDataWriteIndex[nUart]];
-				sv_RdmDataReceiveEnd = h3_hs_timer_lo_us();;
+				sv_RdmDataReceiveEnd = h3_hs_timer_lo_us();
 				dmb();
 			}
 
@@ -411,7 +411,7 @@ static void fiq_in_handler(const uint32_t nUart, const H3_UART_TypeDef *pUart, c
 			s_tReceiveState[nUart] = TxRxState::IDLE;
 			s_nRdmDataWriteIndex[nUart] = (s_nRdmDataWriteIndex[nUart] + 1) & RDM_DATA_BUFFER_INDEX_MASK;
 			s_pRdmDataCurrent[nUart] = &s_aRdmData[nUart][s_nRdmDataWriteIndex[nUart]];
-			sv_RdmDataReceiveEnd = h3_hs_timer_lo_us();;
+			sv_RdmDataReceiveEnd = h3_hs_timer_lo_us();
 			dmb();
 			h3_gpio_clr(10);
 		}
@@ -757,6 +757,14 @@ void Dmx::ClearData(uint32_t nUart) {
 
 		p->nLength = 513; // Including START Code
 	}
+}
+
+void Dmx::StartOutput(__attribute__((unused)) uint32_t nPortIndex) {
+	// TODO FIXME Dmx::StartOutput
+}
+
+void Dmx::SetOutput(__attribute__((unused)) const bool doForce) {
+	// TODO FIXME Dmx::SetOutput
 }
 
 void Dmx::StartData(uint32_t nUart, __attribute__((unused)) uint32_t nPortIndex) {

@@ -46,7 +46,7 @@
 #include "displayudfparams.h"
 #include "display7segment.h"
 
-#include "artnet4node.h"
+#include "artnetnode.h"
 #include "artnetparams.h"
 #include "artnetmsgconst.h"
 
@@ -185,23 +185,23 @@ int main(int argc, char **argv) {
 
 	display.TextStatus(ArtNetMsgConst::PARAMS, Display7SegmentMessage::INFO_NODE_PARMAMS, CONSOLE_YELLOW);
 
-	ArtNet4Node node;
+	ArtNetNode node;
 
 	StoreArtNet storeArtNet(DMXPORT_OFFSET);
 	node.SetArtNetStore(&storeArtNet);
 
-	ArtNetParams artnetparams(&storeArtNet);
+	ArtNetParams artnetParams(&storeArtNet);
 
 	node.SetLongName(aDescription);
 
-	if (artnetparams.Load()) {
-		artnetparams.Dump();
-		artnetparams.Set(DMXPORT_OFFSET);
+	if (artnetParams.Load()) {
+		artnetParams.Dump();
+		artnetParams.Set(DMXPORT_OFFSET);
 	}
 
+	node.SetRmd(0, true);
 	node.SetOutput(pBoard);
-	bool isSet;
-	node.SetUniverseSwitch(0, lightset::PortDir::OUTPUT, artnetparams.GetUniverse(0, isSet));
+	node.SetUniverseSwitch(0, lightset::PortDir::OUTPUT, artnetParams.GetUniversePort(0));
 
 	RDMPersonality *pRDMPersonalities[1] = { new  RDMPersonality(aDescription, pBoard)};
 

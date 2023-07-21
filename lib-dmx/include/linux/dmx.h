@@ -69,6 +69,14 @@ public:
 
 	void SetPortSendDataWithoutSC(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
 
+	void StartOutput(uint32_t nPortIndex);
+	void SetOutput(const bool doForce);
+
+	void SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const dmx::OutputStyle outputStyle) {}
+	dmx::OutputStyle GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const {
+		return dmx::OutputStyle::DELTA;
+	}
+
 	void Blackout();
 	void FullOn();
 

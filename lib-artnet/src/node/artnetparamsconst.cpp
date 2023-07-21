@@ -49,6 +49,12 @@ const char ArtNetParamsConst::RDM_ENABLE_PORT[artnet::PORTS][18] = {
 		"rdm_enable_port_c",
 		"rdm_enable_port_d" };
 
+const char ArtNetParamsConst::OUTPUT_STYLE[artnet::PORTS][16] = {
+		"output_style_a",
+		"output_style_b",
+		"output_style_c",
+		"output_style_d" };
+
 /**
  * Art-Net 4
  */
@@ -60,3 +66,5 @@ const char ArtNetParamsConst::PROTOCOL_PORT[artnet::PORTS][16] = {
 		"protocol_port_d" };
 
 const char ArtNetParamsConst::MAP_UNIVERSE0[] = "map_universe0";
+
+const char ArtNetParamsConst::SACN_PRIORITY[] = "sacn_priority";

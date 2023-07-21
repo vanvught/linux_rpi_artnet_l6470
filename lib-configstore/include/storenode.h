@@ -152,6 +152,38 @@ public:
 		DEBUG_EXIT
 	}
 
+	void SaveOutputStyle(uint32_t nPortIndex, const artnet::OutputStyle outputStyle) override {
+		DEBUG_ENTRY
+		DEBUG_PRINTF("s_nPortIndexOffset=%u, nPortIndex=%u, outputStyle=%u", s_nPortIndexOffset, nPortIndex, static_cast<uint32_t>(outputStyle));
+
+		if (nPortIndex >= s_nPortIndexOffset) {
+			nPortIndex -= s_nPortIndexOffset;
+		} else {
+			DEBUG_EXIT
+			return;
+		}
+
+		DEBUG_PRINTF("nPortIndex=%u", nPortIndex);
+
+		if (nPortIndex >= artnet::PORTS) {
+			DEBUG_EXIT
+			return;
+		}
+
+		uint8_t nOutputStyle;
+		ConfigStore::Get()->Copy(configstore::Store::NODE, &nOutputStyle, sizeof(uint8_t), __builtin_offsetof(struct nodeparams::Params, nOutputStyle), false);
+
+		if (outputStyle == artnet::OutputStyle::CONTINOUS) {
+			nOutputStyle |= static_cast<uint8_t>(1U << nPortIndex);
+		} else {
+			nOutputStyle &= static_cast<uint8_t>(~(1U << nPortIndex));
+		}
+
+		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct nodeparams::Params, nOutputStyle), &nOutputStyle, sizeof(uint8_t));
+
+		DEBUG_EXIT
+	}
+
 	void SaveRdmEnabled(uint32_t nPortIndex, bool isEnabled) override {
 		DEBUG_ENTRY
 		DEBUG_PRINTF("nPortIndex=%u, isEnabled=%d", nPortIndex, isEnabled);
@@ -181,29 +213,6 @@ public:
 		}
 
 		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct nodeparams::Params, nRdm), &nRdm, sizeof(uint16_t));
-
-		DEBUG_EXIT
-	}
-
-	void SaveUniverse(uint32_t nPortIndex, uint16_t nUniverse) override {
-		DEBUG_ENTRY
-		DEBUG_PRINTF("nPortIndex=%u, nUniverse=%u", nPortIndex, nUniverse);
-
-		if (nPortIndex >= s_nPortIndexOffset) {
-			nPortIndex -= s_nPortIndexOffset;
-		} else {
-			DEBUG_EXIT
-			return;
-		}
-
-		DEBUG_PRINTF("nPortIndex=%u", nPortIndex);
-
-		if (nPortIndex >= nodeparams::MAX_PORTS) {
-			DEBUG_EXIT
-			return;
-		}
-
-		ConfigStore::Get()->Update(configstore::Store::NODE, (sizeof(uint16_t) * nPortIndex) + __builtin_offsetof(struct nodeparams::Params, nUniverse), &nUniverse, sizeof(uint16_t), nodeparams::Mask::UNIVERSE_A << nPortIndex);
 
 		DEBUG_EXIT
 	}
@@ -289,6 +298,30 @@ public:
 
 	static StoreNode *Get() {
 		return s_pThis;
+	}
+
+private:
+	void SaveUniverse(uint32_t nPortIndex, uint16_t nUniverse) {
+		DEBUG_ENTRY
+		DEBUG_PRINTF("nPortIndex=%u, nUniverse=%u", nPortIndex, nUniverse);
+
+		if (nPortIndex >= s_nPortIndexOffset) {
+			nPortIndex -= s_nPortIndexOffset;
+		} else {
+			DEBUG_EXIT
+			return;
+		}
+
+		DEBUG_PRINTF("nPortIndex=%u", nPortIndex);
+
+		if (nPortIndex >= nodeparams::MAX_PORTS) {
+			DEBUG_EXIT
+			return;
+		}
+
+		ConfigStore::Get()->Update(configstore::Store::NODE, (sizeof(uint16_t) * nPortIndex) + __builtin_offsetof(struct nodeparams::Params, nUniverse), &nUniverse, sizeof(uint16_t), nodeparams::Mask::UNIVERSE_A << nPortIndex);
+
+		DEBUG_EXIT
 	}
 
 private:

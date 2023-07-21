@@ -138,12 +138,22 @@ void DMXMonitor::Cls() {
 	}
 }
 
-void DMXMonitor::SetData(__attribute__((unused)) uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength) {
+void DMXMonitor::SetData(__attribute__((unused)) uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength, const bool doUpdate) {
 	m_nSlots = nLength;
 
 	memcpy(m_Data, pData, nLength);
 
+	if (doUpdate) {
+		Update();
+	}
+}
+
+void DMXMonitor::Sync(__attribute__((unused)) uint32_t const nPortIndex) {
 	Update();
+}
+
+void DMXMonitor::Sync(__attribute__((unused)) const bool doForce) {
+
 }
 
 void DMXMonitor::Update() {

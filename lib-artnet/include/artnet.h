@@ -43,6 +43,10 @@ enum class PortProtocol {
 	SACN	///< Output DMX512 data from the sACN protocol and RDM data from the Art-Net protocol.
 };
 
+enum class OutputStyle {
+	DELTA, CONTINOUS
+};
+
 /**
  * Table 4 – Style Codes
  * The Style code defines the general functionality of a Controller.
@@ -269,9 +273,9 @@ inline static uint16_t make_port_address(const uint32_t nNetSwitch, const uint32
 }
 
 #if !defined(ARTNET_VERSION)
- static constexpr uint8_t VERSION = 4;
+ static constexpr uint32_t VERSION = 4;
 #else
- static constexpr uint8_t VERSION = ARTNET_VERSION;
+ static constexpr uint32_t VERSION = ARTNET_VERSION;
 #endif
 static constexpr uint8_t PROTOCOL_REVISION = 14;
 static constexpr uint32_t PORTS = 4;

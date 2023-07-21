@@ -77,7 +77,7 @@ Dmx::Dmx() {
 		s_nHandePortRdm[i] = Network::Get()->Begin(UDP_PORT_RDM_START + i);
 		assert(s_nHandePortRdm[i] != -1);
 
-		m_tDmxPortDirection[i] = PortDirection::DISABLED;
+		SetPortDirection(i, PortDirection::INP, false);
 	}
 
 	DEBUG_EXIT
@@ -249,4 +249,16 @@ const uint8_t *Dmx::RdmReceiveTimeOut(uint32_t nPortIndex, uint16_t nTimeOut) {
 	} while (( micros() - nMicros) < (static_cast<uint32_t>(nTimeOut) + 50000U));
 
 	return p;
+}
+
+void Dmx::StartOutput(__attribute__((unused)) uint32_t nPortIndex) {
+	DEBUG_ENTRY
+
+	DEBUG_EXIT
+}
+
+void Dmx::SetOutput(__attribute__((unused)) const bool doForce) {
+	DEBUG_ENTRY
+
+	DEBUG_EXIT
 }
