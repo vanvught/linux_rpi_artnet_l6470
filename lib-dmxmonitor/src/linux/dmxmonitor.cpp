@@ -36,6 +36,10 @@
 using namespace dmxmonitor;
 
 DMXMonitor::DMXMonitor() {
+	for (uint32_t nPortIndex = 0; nPortIndex < dmxmonitor::output::text::MAX_PORTS; nPortIndex++) {
+		memset(&m_Data[nPortIndex], 0, sizeof(struct Data));
+	}
+
 	for (uint32_t i = 0; i < sizeof(m_bIsStarted); i++) {
 		m_bIsStarted[i] = false;
 	}

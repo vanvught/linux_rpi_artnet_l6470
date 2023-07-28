@@ -53,7 +53,6 @@ void ArtNetNode::Print() {
 	printf(" TimeCode IP: " IPSTR "\n", IP2STR(m_Node.IPAddressTimeCode));
 #endif
 
-
 	if (m_State.nEnabledOutputPorts != 0) {
 		printf(" Output\n");
 
@@ -62,12 +61,11 @@ void ArtNetNode::Print() {
 			if (GetPortAddress(nPortIndex, nUniverse, lightset::PortDir::OUTPUT)) {
 				const auto mergeMode = ((m_OutputPort[nPortIndex].GoodOutput & artnet::GoodOutput::MERGE_MODE_LTP) == artnet::GoodOutput::MERGE_MODE_LTP) ? lightset::MergeMode::LTP : lightset::MergeMode::HTP;
 				printf("  Port %-2d %-4u %s %s", nPortIndex, nUniverse, lightset::get_merge_mode(mergeMode, true), GetRdm(0) ? "RDM" : "");
-
-				if (artnet::VERSION >= 4) {
-					printf(" %s\n", artnet::get_protocol_mode(m_OutputPort[nPortIndex].genericPort.protocol, true));
-				} else {
-					printf("\n");
-				}
+#if (ARTNET_VERSION >= 4)
+				printf(" %s\n", artnet::get_protocol_mode(m_Node.Port[nPortIndex].protocol, true));
+#else
+				printf("\n");
+#endif
 			}
 		}
 	}
@@ -77,16 +75,19 @@ void ArtNetNode::Print() {
 		printf(" Input\n");
 
 		for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
+
 			uint16_t nUniverse;
 			if (GetPortAddress(nPortIndex, nUniverse, lightset::PortDir::INPUT)) {
-				const auto nDestinationIp = (m_InputPort[nPortIndex].nDestinationIp == 0 ? Network::Get()->GetBroadcastIp() : m_InputPort[nPortIndex].nDestinationIp);
-				printf("  Port %-2d %-4u -> " IPSTR, nPortIndex, nUniverse, IP2STR(nDestinationIp));
-
-				if (artnet::VERSION >= 4) {
-					printf(" %s\n", artnet::get_protocol_mode(m_InputPort[nPortIndex].genericPort.protocol, true));
-				} else {
-					printf("\n");
+				printf("  Port %-2d %-4u", nPortIndex, nUniverse);
+				if (m_Node.Port[nPortIndex].protocol == artnet::PortProtocol::ARTNET) {
+					const auto nDestinationIp = (m_InputPort[nPortIndex].nDestinationIp == 0 ? Network::Get()->GetBroadcastIp() : m_InputPort[nPortIndex].nDestinationIp);
+					printf(" -> " IPSTR, IP2STR(nDestinationIp));
 				}
+#if (ARTNET_VERSION >= 4)
+				printf(" %s\n", artnet::get_protocol_mode(m_Node.Port[nPortIndex].protocol, true));
+#else
+				printf("\n");
+#endif
 			}
 		}
 	}
@@ -97,8 +98,8 @@ void ArtNetNode::Print() {
 		if (IsMapUniverse0()) {
 			printf("  Universes are mappped +1\n");
 		}
-
-		E131Bridge::Print();
 	}
+
+	E131Bridge::Print();
 #endif
 }

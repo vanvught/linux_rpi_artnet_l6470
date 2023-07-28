@@ -296,10 +296,11 @@ void E131Params::Set(uint32_t nPortIndexOffset) {
 			p->SetMergeMode(nOffset, static_cast<lightset::MergeMode>(m_Params.nMergeModePort[nPortIndex]));
 		}
 
+#if defined (E131_HAVE_DMXIN)
 		if (isMaskSet(Mask::PRIORITY_A << nPortIndex)) {
 			p->SetPriority(nPortIndex, m_Params.nPriority[nPortIndex]);
 		}
-
+#endif
 	}
 
 	p->SetFailSafe(static_cast<lightset::FailSafe>(m_Params.nFailSafe));

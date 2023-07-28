@@ -42,8 +42,7 @@
 
 namespace e131bridge {
 #if !defined(LIGHTSET_PORTS)
-# error
-//# define LIGHTSET_PORTS	0
+# error LIGHTSET_PORTS is not defined
 #endif
 
 #if (LIGHTSET_PORTS == 0)
@@ -89,7 +88,6 @@ struct OutputPort {
 	Source sourceA;
 	Source sourceB;
 	lightset::MergeMode mergeMode;
-	bool IsDataPending;
 	bool IsMerging;
 	bool IsTransmitting;
 };
@@ -189,7 +187,7 @@ public:
 		return m_bEnableDataIndicator;
 	}
 
-	void SetDisableSynchronize(bool bDisableSynchronize = false) {
+	void SetDisableSynchronize(bool bDisableSynchronize) {
 		m_State.bDisableSynchronize = bDisableSynchronize;
 	}
 	bool GetDisableSynchronize() const {
@@ -200,39 +198,28 @@ public:
 		m_pE131Sync = pE131Sync;
 	}
 
-#if defined (E131_HAVE_DMXIN)
 	const uint8_t *GetCid() const {
 		return m_Cid;
 	}
 
 	void SetSourceName(const char *pSourceName) {
 		assert(pSourceName != nullptr);
-		//TODO https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88780
-#if (__GNUC__ > 8)
-# pragma GCC diagnostic push
-# pragma GCC diagnostic ignored "-Wstringop-truncation"
-#endif
 		strncpy(m_SourceName, pSourceName, e131::SOURCE_NAME_LENGTH - 1);
 		m_SourceName[e131::SOURCE_NAME_LENGTH - 1] = '\0';
-#if (__GNUC__ > 8)
-# pragma GCC diagnostic pop
-#endif
 	}
 
 	const char *GetSourceName() const {
 		return m_SourceName;
 	}
-#endif
 
 	void SetPriority(uint32_t nPortIndex, uint8_t nPriority) {
-		DEBUG_PRINTF("%u: nPortIndex=%u", e131bridge::MAX_PORTS, nPortIndex);
 		assert(nPortIndex < e131bridge::MAX_PORTS);
 		if ((nPriority >= e131::priority::LOWEST) && (nPriority <= e131::priority::HIGHEST)) {
 			m_InputPort[nPortIndex].nPriority = nPriority;
 		}
 	}
 
-	uint8_t GetPriority(uint32_t nPortIndex = 0) const {
+	uint8_t GetPriority(uint32_t nPortIndex) const {
 		assert(nPortIndex < e131bridge::MAX_PORTS);
 		return m_InputPort[nPortIndex].nPriority;
 	}
@@ -279,25 +266,22 @@ private:
 
 	void LeaveUniverse(uint32_t nPortIndex, uint16_t nUniverse);
 
-#if defined (E131_HAVE_DMXIN)
 	void HandleDmxIn();
 	void FillDataPacket();
 	void FillDiscoveryPacket();
 	void SendDiscoveryPacket();
-#endif
+
 private:
 	int32_t m_nHandle { -1 };
 
 	uint32_t m_nCurrentPacketMillis { 0 };
 	uint32_t m_nPreviousPacketMillis { 0 };
 
-#if defined (E131_HAVE_DMXIN)
 	TE131DataPacket *m_pE131DataPacket { nullptr };
 	TE131DiscoveryPacket *m_pE131DiscoveryPacket { nullptr };
 	uint32_t m_DiscoveryIpAddress { 0 };
 	uint8_t m_Cid[e131::CID_LENGTH];
 	char m_SourceName[e131::SOURCE_NAME_LENGTH];
-#endif
 
 	e131bridge::State m_State;
 	e131bridge::OutputPort m_OutputPort[e131bridge::MAX_PORTS];

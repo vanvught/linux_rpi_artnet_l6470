@@ -78,7 +78,7 @@ public:
 		DEBUG_EXIT
 	}
 
-	void SetOutputStyle(const uint32_t nPortIndex, const lightset::OutputStyle outputStyle) {
+	void SetOutputStyle(const uint32_t nPortIndex, const lightset::OutputStyle outputStyle) override {
 		DEBUG_ENTRY
 
 		assert(nPortIndex < 32);

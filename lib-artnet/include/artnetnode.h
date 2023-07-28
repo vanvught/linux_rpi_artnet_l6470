@@ -114,22 +114,26 @@ enum class Status : uint8_t {
 
 struct State {
 	uint32_t ArtPollReplyCount;			///< ArtPollReply : NodeReport : decimal counter that increments every time the Node sends an ArtPollResponse.
-	uint32_t IPAddressDiagSend;			///< ArtPoll : Destination IPAddress for the ArtDiag
-	uint32_t IPAddressArtPoll;			///< ArtPoll : IPAddress for the ArtPoll package
+	uint32_t DiagSendIPAddress;			///< ArtPoll : Destination IPAddress for the ArtDiag
+	uint32_t IPAddressArtPoll;
+	uint32_t IPAddressArtDmx;
 	uint32_t nArtSyncMillis;			///< Latest ArtSync received time
 	ReportCode reportCode;
 	Status status;
-	bool SendArtPollReplyOnChange;		///< ArtPoll : TalkToMe Bit 1 : 1 = Send ArtPollReply whenever Node conditions change.
-	bool SendArtDiagData;				///< ArtPoll : TalkToMe Bit 2 : 1 = Send me diagnostics messages.
+	bool SendArtPollReplyOnChange;		///< ArtPoll : Flags Bit 1 : 1 = Send ArtPollReply whenever Node conditions change.
+	bool SendArtDiagData;				///< ArtPoll : Flags Bit 2 : 1 = Send me diagnostics messages.
 	bool IsMultipleControllersReqDiag;	///< ArtPoll : Multiple controllers requesting diagnostics
 	bool IsSynchronousMode;				///< ArtSync received
 	bool IsMergeMode;
 	bool IsChanged;
 	bool bDisableMergeTimeout;
+	bool bUseTargetPortAddress;
 	uint8_t nReceivingDmx;
 	uint8_t nEnabledOutputPorts;
 	uint8_t nEnabledInputPorts;
-	uint8_t Priority;					///< ArtPoll : Field 6 : The lowest priority of diagnostics message that should be sent.
+	uint8_t DiagPriority;				///< ArtPoll : Field 6 : The lowest priority of diagnostics message that should be sent.
+	uint16_t TargetPortAddressTop;		///< ArtPoll
+	uint16_t TargetPortAddressBottom;	///< ArtPoll
 };
 
 struct Node {
@@ -140,13 +144,17 @@ struct Node {
 	uint8_t SubSwitch[artnetnode::PAGES];		///< Bits 7-4 of the 15 bit Port-Address are encoded into the bottom 4 bits of this field.
 	char ShortName[artnet::SHORT_NAME_LENGTH];
 	char LongName[artnet::LONG_NAME_LENGTH];
-	uint8_t TalkToMe;							///< Behavior of Node
 	uint8_t Status1;
 	uint8_t Status2;
 	uint8_t Status3;
-	uint8_t DefaultUidResponder[6];				///< RDMnet & LLRP UID
-	bool bMapUniverse0;							///< Art-Net 4
-	uint8_t AcnPriority;						///< Art-Net 4
+	uint8_t DefaultUidResponder[6];							///< RDMnet & LLRP UID
+	bool IsRdmResponder;
+	bool bMapUniverse0;										///< Art-Net 4
+	uint8_t AcnPriority;									///< Art-Net 4
+	struct {
+		lightset::PortDir direction;
+		artnet::PortProtocol protocol;						///< Art-Net 4
+	} Port[artnetnode::MAX_PORTS];
 };
 
 struct Source {
@@ -158,25 +166,23 @@ struct GenericPort {
 	uint16_t nPortAddress;			///< One of the 32,768 possible addresses to which a DMX frame can be directed. The Port-Address is a 15 bit number composed of Net+Sub-Net+Universe.
 	uint8_t nDefaultAddress;		///< the address set by the hardware
 	uint8_t nPollReplyIndex;
-	artnet::PortProtocol protocol;	///< Art-Net 4
-	bool isEnabled;
 };
 
 struct OutputPort {
 	GenericPort genericPort;
 	Source sourceA;
 	Source sourceB;
-	bool IsDataPending;				///< ArtDMX received and waiting for ArtSync
-	bool IsTransmitting;
 	uint8_t GoodOutput;
 	uint8_t GoodOutputB;
+	bool IsTransmitting;
+	bool IsDataPending;
 };
 
 struct InputPort {
 	GenericPort genericPort;
 	uint32_t nDestinationIp;
-	uint8_t GoodInput;
 	uint8_t nSequenceNumber;
+	uint8_t GoodInput;
 };
 
 inline static artnetnode::FailSafe convert_failsafe(const lightset::FailSafe failsafe) {
@@ -320,10 +326,10 @@ public:
 
 	bool GetOutputPort(const uint16_t nUniverse, uint32_t& nPortIndex) {
 		for (nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
-			if (!m_OutputPort[nPortIndex].genericPort.isEnabled) {
+			if (m_Node.Port[nPortIndex].direction != lightset::PortDir::OUTPUT) {
 				continue;
 			}
-			if ((m_OutputPort[nPortIndex].genericPort.protocol == artnet::PortProtocol::ARTNET) && (nUniverse == m_OutputPort[nPortIndex].genericPort.nPortAddress)) {
+			if ((m_Node.Port[nPortIndex].protocol == artnet::PortProtocol::ARTNET) && (nUniverse == m_OutputPort[nPortIndex].genericPort.nPortAddress)) {
 				return true;
 			}
 		}
@@ -419,30 +425,40 @@ public:
 	}
 
 #if (ARTNET_VERSION >= 4)
-	void SetPortProtocol4(const uint32_t nPortIndex, const artnet::PortProtocol portProtocol);
-	artnet::PortProtocol GetPortProtocol4(const uint32_t nPortIndex) const;
+private:
+	void SetUniverse4(const uint32_t nPortIndex, const lightset::PortDir portDir);
+	void SetLedBlinkMode4(hardware::ledblink::Mode mode);
+	void HandleAddress4(const uint8_t nCommand, const uint32_t nPortIndex);
+	uint8_t GetGoodOutput4(const uint32_t nPortIndex);
 
-	void SetPort4(const uint32_t nPortIndex, const lightset::PortDir portDir);
-	void SetPriority4(const uint32_t nPriority);
-
+public:
+	/**
+	 * Art-Net 4
+	 */
 	void SetMapUniverse0(const bool bMapUniverse0 = false) {
 		m_Node.bMapUniverse0 = bMapUniverse0;
 	}
-
 	bool IsMapUniverse0() const {
 		return m_Node.bMapUniverse0;
 	}
 
-	void SetLedBlinkMode4(hardware::ledblink::Mode mode);
+	void SetPriority4(const uint32_t nPriority) {
+		m_Node.AcnPriority = static_cast<uint8_t>(nPriority);
 
-	void HandleAddress4(const uint8_t nCommand, const uint32_t nPortIndex);
+		for (uint32_t nPortIndex = 0; nPortIndex < e131bridge::MAX_PORTS; nPortIndex++) {
+			E131Bridge::SetPriority(nPortIndex, static_cast<uint8_t>(nPriority));
+		}
+	}
 
-	uint8_t GetStatus4(const uint32_t nPortIndex);
+	void SetPortProtocol4(const uint32_t nPortIndex, const artnet::PortProtocol portProtocol);
+	artnet::PortProtocol GetPortProtocol4(const uint32_t nPortIndex) const {
+		assert(nPortIndex < artnetnode::MAX_PORTS);
+		return m_Node.Port[nPortIndex].protocol;
+	}
 
 	/**
 	 * sACN E1.131
 	 */
-
 	void SetPriority4(uint32_t nPortIndex, uint8_t nPriority) {
 		E131Bridge::SetPriority(nPortIndex, nPriority);
 	}
@@ -508,6 +524,8 @@ private:
 
 private:
 	int32_t m_nHandle { -1 };
+	uint8_t *m_pReceiveBuffer { nullptr };
+	uint32_t m_nIpAddressFrom;
 
 	artnetnode::Node m_Node;
 	artnetnode::State m_State;
@@ -520,9 +538,9 @@ private:
 #endif
 #if defined (RDM_CONTROLLER) || defined (RDM_RESPONDER)
 	union UArtTodPacket {
-		struct TArtTodData ArtTodData;				///< ArtTodData packet
-		struct TArtTodRequest ArtTodRequest;		///< ArtTodRequest packet
-		struct TArtRdm ArtRdm;						///< ArtRdm packet
+		struct TArtTodData ArtTodData;
+		struct TArtTodRequest ArtTodRequest;
+		struct TArtRdm ArtRdm;
 	};
 	UArtTodPacket m_ArtTodPacket;
 #endif
@@ -533,13 +551,9 @@ private:
 	TArtDiagData m_DiagData;
 #endif
 
-	bool m_IsRdmResponder { false };
-
 	uint32_t m_nCurrentPacketMillis { 0 };
 	uint32_t m_nPreviousPacketMillis { 0 };
 
-	uint8_t *m_pReceiveBuffer { nullptr };
-	uint32_t m_nIpAddressFrom;
 	LightSet *m_pLightSet { nullptr };
 
 	ArtNetTimeCode *m_pArtNetTimeCode { nullptr };

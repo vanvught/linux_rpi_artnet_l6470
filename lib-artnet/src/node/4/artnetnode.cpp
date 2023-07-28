@@ -1,5 +1,29 @@
-/*
- * artnetnode.cpp
+/**
+ * @file artnetnode.cpp
+ *
+ */
+/**
+ * Art-Net Designed by and Copyright Artistic Licence Holdings Ltd.
+ */
+/* Copyright (C) 2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
  */
 
 #include <cstdint>
@@ -21,8 +45,7 @@ void ArtNetNode::SetPortProtocol4(const uint32_t nPortIndex, const artnet::PortP
 		return;
 	}
 
-	m_OutputPort[nPortIndex].genericPort.protocol = portProtocol;
-	m_InputPort[nPortIndex].genericPort.protocol = portProtocol;
+	m_Node.Port[nPortIndex].protocol = portProtocol;
 
 	if (portProtocol == artnet::PortProtocol::SACN) {
 		m_OutputPort[nPortIndex].GoodOutput |= artnet::GoodOutput::OUTPUT_IS_SACN;
@@ -41,63 +64,50 @@ void ArtNetNode::SetPortProtocol4(const uint32_t nPortIndex, const artnet::PortP
 	DEBUG_EXIT
 }
 
-artnet::PortProtocol ArtNetNode::GetPortProtocol4(const uint32_t nPortIndex) const {
-	DEBUG_ENTRY
-	assert(nPortIndex < artnetnode::MAX_PORTS);
-
-	if (m_OutputPort[nPortIndex].genericPort.isEnabled) {
-		DEBUG_EXIT
-		return m_OutputPort[nPortIndex].genericPort.protocol;
-	}
-
-	if (m_InputPort[nPortIndex].genericPort.isEnabled) {
-		DEBUG_EXIT
-		return m_InputPort[nPortIndex].genericPort.protocol;
-	}
-
-	DEBUG_EXIT
-	return artnet::PortProtocol::ARTNET;
-}
-
-void ArtNetNode::SetPort4(const uint32_t nPortIndex, const lightset::PortDir porDirection) {
+void ArtNetNode::SetUniverse4(const uint32_t nPortIndex, const lightset::PortDir porDirection) {
 	DEBUG_ENTRY
 
 	uint16_t nUniverse;
 	const bool isActive = ArtNetNode::GetPortAddress(nPortIndex, nUniverse, porDirection);
-	const auto portProtocol = ArtNetNode::GetPortProtocol4(nPortIndex);
+	const auto portProtocol = m_Node.Port[nPortIndex].protocol;
 
 	DEBUG_PRINTF("Port %u, Active %c, Universe %d, Protocol %s [%s]", nPortIndex, isActive ? 'Y' : 'N', nUniverse, artnet::get_protocol_mode(portProtocol), porDirection == lightset::PortDir::OUTPUT ? "Output" : "Input");
 
-	if ((isActive) && (portProtocol == artnet::PortProtocol::SACN)) {
-		if (porDirection == lightset::PortDir::INPUT) {
-			DEBUG_PUTS("Input is not supported");
-			return;
-		}
+	if (portProtocol == artnet::PortProtocol::SACN) {
 
 		if (IsMapUniverse0()) {
 			nUniverse++;
 		}
 
 		if (nUniverse == 0) {
+			DEBUG_EXIT
 			return;
 		}
 
-		E131Bridge::SetUniverse(nPortIndex, porDirection, nUniverse);
+		if (!isActive) {
+			E131Bridge::SetUniverse(nPortIndex, lightset::PortDir::DISABLE, nUniverse);
+			DEBUG_EXIT
+			return;
+		}
+
+		if (isActive) {
+			E131Bridge::SetUniverse(nPortIndex, porDirection, nUniverse);
+			DEBUG_EXIT
+			return;
+		}
 	}
 
 	DEBUG_EXIT
 }
 
-void ArtNetNode::SetPriority4(const uint32_t nPriority) {
-	m_Node.AcnPriority = static_cast<uint8_t>(nPriority);
-
-	for (uint32_t nPortIndex = 0; nPortIndex < e131bridge::MAX_PORTS; nPortIndex++) {
-		E131Bridge::SetPriority(nPortIndex, static_cast<uint8_t>(nPriority));
-	}
-
-}
+static hardware::ledblink::Mode s_mode;
 
 void ArtNetNode::SetLedBlinkMode4(hardware::ledblink::Mode mode) {
+	if (s_mode != mode) {
+		s_mode = mode;
+		DEBUG_PRINTF("mode=%u", static_cast<uint32_t>(mode));
+	}
+
 	E131Bridge::SetEnableDataIndicator(mode == hardware::ledblink::Mode::NORMAL);
 
 	for (uint32_t nPortIndex = 0; nPortIndex < e131bridge::MAX_PORTS; nPortIndex++) {
@@ -105,83 +115,17 @@ void ArtNetNode::SetLedBlinkMode4(hardware::ledblink::Mode mode) {
 			return;
 		}
 	}
+
 	Hardware::Get()->SetMode(mode);
 }
 
-void ArtNetNode::HandleAddress4(const uint8_t nCommand, const uint32_t nPortIndex) {
-	DEBUG_ENTRY
-	DEBUG_PRINTF("artnetnode::PAGES=%u, nPortIndex=%u", artnetnode::PAGES, nPortIndex);
-
-	for (uint32_t i = 0; i < artnetnode::MAX_PORTS; i++) {
-		uint16_t nUniverse;
-		const bool isActive = GetPortAddress(i, nUniverse, lightset::PortDir::OUTPUT);
-
-		if (isActive) {
-			if (IsMapUniverse0()) {
-				nUniverse++;
-			}
-
-			if (nUniverse == 0) {
-				continue;
-			}
-
-			if (GetPortProtocol4(i) == artnet::PortProtocol::SACN) {
-				E131Bridge::SetUniverse(i, lightset::PortDir::OUTPUT, nUniverse);
-			} else {
-				E131Bridge::SetUniverse(i, lightset::PortDir::DISABLE, nUniverse);
-			}
-		}
-	}
-
-	switch (nCommand) {
-
-	case artnet::PortCommand::LED_NORMAL:
-		E131Bridge::SetEnableDataIndicator(true);
-		break;
-	case artnet::PortCommand::LED_MUTE:
-		E131Bridge::SetEnableDataIndicator(false);
-		break;
-	case artnet::PortCommand::LED_LOCATE:
-		E131Bridge::SetEnableDataIndicator(false);
-		break;
-
-	case artnet::PortCommand::MERGE_LTP_O:
-	case artnet::PortCommand::MERGE_LTP_1:
-	case artnet::PortCommand::MERGE_LTP_2:
-	case artnet::PortCommand::MERGE_LTP_3:
-		E131Bridge::SetMergeMode(nPortIndex, lightset::MergeMode::LTP);
-		break;
-
-	case artnet::PortCommand::MERGE_HTP_0:
-	case artnet::PortCommand::MERGE_HTP_1:
-	case artnet::PortCommand::MERGE_HTP_2:
-	case artnet::PortCommand::MERGE_HTP_3:
-		E131Bridge::SetMergeMode(nPortIndex, lightset::MergeMode::HTP);
-		break;
-
-	case artnet::PortCommand::CLR_0:
-	case artnet::PortCommand::CLR_1:
-	case artnet::PortCommand::CLR_2:
-	case artnet::PortCommand::CLR_3:
-		if (GetPortProtocol4(nPortIndex) == artnet::PortProtocol::SACN) {
-			E131Bridge::Clear(nPortIndex);
-		}
-		break;
-
-	default:
-		break;
-	}
-
-	DEBUG_EXIT
-}
-
-uint8_t ArtNetNode::GetStatus4(const uint32_t nPortIndex) {
+uint8_t ArtNetNode::GetGoodOutput4(const uint32_t nPortIndex) {
 	assert(nPortIndex < e131bridge::MAX_PORTS);
 
 	uint16_t nUniverse;
 	const auto isActive = E131Bridge::GetUniverse(nPortIndex, nUniverse, lightset::PortDir::OUTPUT);
 
-	DEBUG_PRINTF("Port %u, Active %c, Universe %d", nPortIndex, isActive ? 'Y' : 'N', nUniverse);
+	DEBUG_PRINTF("Port %u, Active %c, Universe %d, %s", nPortIndex, isActive ? 'Y' : 'N', nUniverse, lightset::get_merge_mode(E131Bridge::GetMergeMode(nPortIndex), true));
 
 	if (isActive) {
 		uint8_t nStatus = artnet::GoodOutput::OUTPUT_IS_SACN;
