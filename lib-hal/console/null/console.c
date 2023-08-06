@@ -1,8 +1,8 @@
 /**
- * @file board_gd32f207rg.h
+ * @file console.c
  *
  */
-/* Copyright (C) 2021-2023 by Arjan van Vught mailto:info@gd32-dmx.org
+/* Copyright (C) 2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,28 +23,22 @@
  * THE SOFTWARE.
  */
 
-#ifndef GD32_BOARD_GD32F207RG_H_
-#define GD32_BOARD_GD32F207RG_H_
+#include <stdint.h>
 
-#include "gd32_board.h"
-
-namespace max {
-static constexpr auto OUT = 2U;
-static constexpr auto IN = 2U;
+void console_init(void) {
 }
 
-#define DMX_MAX_PORTS  2
+void console_putc(__attribute__((unused)) int i) {
+}
 
-#define DMX_USE_USART2
-#define DMX_USE_USART5
+void console_puts(__attribute__((unused)) const char *p) {
+}
 
-static constexpr auto USART2_PORT = 0;
-static constexpr auto USART5_PORT = 1;
+void console_write(__attribute__((unused)) const char *p, __attribute__((unused)) unsigned int i) {
+}
 
-static constexpr auto DIR_PORT_0_GPIO_PORT = GPIOB;
-static constexpr auto DIR_PORT_0_GPIO_PIN = GPIO_PIN_10;	// GPIO_EXT_12
+void console_status(__attribute__((unused))  uint32_t i, __attribute__((unused)) const char *p) {
+}
 
-static constexpr auto DIR_PORT_1_GPIO_PORT = GPIOA;
-static constexpr auto DIR_PORT_1_GPIO_PIN = GPIO_PIN_11;	// GPIO_EXT_22
-
-#endif /* IGD32_BOARD_GD32F207RG_H_ */
+void console_error(__attribute__((unused)) const char *p) {
+}

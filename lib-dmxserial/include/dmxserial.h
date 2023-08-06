@@ -69,11 +69,6 @@ public:
 	void Sync(const uint32_t nPortIndex) override;
 	void Sync(const bool doForce = false) override;
 
-	void SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const lightset::OutputStyle outputStyle) override {}
-	lightset::OutputStyle GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const override {
-		return lightset::OutputStyle::DELTA;
-	}
-
 	void Run();
 
 	void Print() override;

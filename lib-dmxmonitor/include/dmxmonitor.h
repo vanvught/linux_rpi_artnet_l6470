@@ -78,6 +78,7 @@ public:
 		DEBUG_EXIT
 	}
 
+#if defined (OUTPUT_HAVE_STYLESWITCH)
 	void SetOutputStyle(const uint32_t nPortIndex, const lightset::OutputStyle outputStyle) override {
 		DEBUG_ENTRY
 
@@ -98,6 +99,7 @@ public:
 #endif
 		DEBUG_EXIT
 	}
+#endif
 
 	bool SetDmxStartAddress(uint16_t nDmxStartAddress) override;
 	uint16_t GetDmxStartAddress() override;

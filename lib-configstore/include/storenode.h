@@ -2,7 +2,7 @@
  * @file storenode.h
  *
  */
-/* Copyright (C) 2022 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2022-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -55,8 +55,6 @@ public:
 
 		DEBUG_EXIT
 	}
-
-	// Art-Net Handler -> ArtNetStore
 
 	void SaveFailSafe(uint8_t nFailSafe) override {
 		DEBUG_ENTRY
@@ -173,7 +171,7 @@ public:
 		uint8_t nOutputStyle;
 		ConfigStore::Get()->Copy(configstore::Store::NODE, &nOutputStyle, sizeof(uint8_t), __builtin_offsetof(struct nodeparams::Params, nOutputStyle), false);
 
-		if (outputStyle == artnet::OutputStyle::CONTINOUS) {
+		if (outputStyle == artnet::OutputStyle::CONSTANT) {
 			nOutputStyle |= static_cast<uint8_t>(1U << nPortIndex);
 		} else {
 			nOutputStyle &= static_cast<uint8_t>(~(1U << nPortIndex));
@@ -236,8 +234,10 @@ public:
 		}
 
 		uint16_t nPortAddress;
-		ArtNetNode::Get()->GetPortAddress(nPortIndex, nPortAddress);
-		SaveUniverse(nPortIndex, nPortAddress);
+
+		if (ArtNetNode::Get()->GetPortAddress(nPortIndex, nPortAddress)) {
+			SaveUniverse(nPortIndex, nPortAddress);
+		}
 
 		DEBUG_EXIT
 	}
@@ -253,8 +253,10 @@ public:
 
 		if (artnetnode::PAGE_SIZE == 1) {
 			uint16_t nPortAddress;
-			ArtNetNode::Get()->GetPortAddress(nPage, nPortAddress);
-			SaveUniverse(nPage, nPortAddress);
+
+			if (ArtNetNode::Get()->GetPortAddress(nPage, nPortAddress)) {
+				SaveUniverse(nPage, nPortAddress);
+			}
 		}
 
 		if (artnetnode::PAGE_SIZE == 4) {
@@ -280,16 +282,20 @@ public:
 
 		if (artnetnode::PAGE_SIZE == 1) {
 			uint16_t nPortAddress;
-			ArtNetNode::Get()->GetPortAddress(nPage, nPortAddress);
-			SaveUniverse(nPage, nPortAddress);
+
+			if (ArtNetNode::Get()->GetPortAddress(nPage, nPortAddress)) {
+				SaveUniverse(nPage, nPortAddress);
+			}
 		}
 
 		if (artnetnode::PAGE_SIZE == 4) {
 			const auto nPortIndexStart = nPage * 4;
 			for (uint32_t nPortIndex = nPortIndexStart; nPortIndex < (nPortIndexStart + 4); nPortIndex++) {
 				uint16_t nPortAddress;
-				ArtNetNode::Get()->GetPortAddress(nPortIndex, nPortAddress);
-				SaveUniverse(nPortIndex, nPortAddress);
+
+				if (ArtNetNode::Get()->GetPortAddress(nPortIndex, nPortAddress)) {
+					SaveUniverse(nPortIndex, nPortAddress);
+				}
 			}
 		}
 

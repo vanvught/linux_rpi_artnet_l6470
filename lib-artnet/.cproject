@@ -43,6 +43,7 @@
 									<listOptionValue builtIn="false" value="ARTNET_OUTPUT_STYLE_SWITCH"/>
 									<listOptionValue builtIn="false" value="ENABLE_CONTENT"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="OUTPUT_HAVE_STYLESWITCH"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.272354303" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -68,6 +69,7 @@
 									<listOptionValue builtIn="false" value="ARTNET_OUTPUT_STYLE_SWITCH"/>
 									<listOptionValue builtIn="false" value="ENABLE_CONTENT"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="OUTPUT_HAVE_STYLESWITCH"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2086813026" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -152,6 +154,7 @@
 									<listOptionValue builtIn="false" value="ARTNET_OUTPUT_STYLE_SWITCH"/>
 									<listOptionValue builtIn="false" value="ENABLE_CONTENT"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="OUTPUT_HAVE_STYLESWITCH"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1814233140" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -175,6 +178,7 @@
 									<listOptionValue builtIn="false" value="ARTNET_OUTPUT_STYLE_SWITCH"/>
 									<listOptionValue builtIn="false" value="ENABLE_CONTENT"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="OUTPUT_HAVE_STYLESWITCH"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.138434766" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -257,9 +261,9 @@
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TIMECODE"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TRIGGER"/>
 									<listOptionValue builtIn="false" value="ARTNET_ENABLE_SENDDIAG"/>
-									<listOptionValue builtIn="false" value="ARTNET_OUTPUT_STYLE_SWITCH"/>
 									<listOptionValue builtIn="false" value="ENABLE_CONTENT"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="OUTPUT_HAVE_STYLESWITCH"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1117533543" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -283,9 +287,9 @@
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TIMECODE"/>
 									<listOptionValue builtIn="false" value="ARTNET_HAVE_TRIGGER"/>
 									<listOptionValue builtIn="false" value="ARTNET_ENABLE_SENDDIAG"/>
-									<listOptionValue builtIn="false" value="ARTNET_OUTPUT_STYLE_SWITCH"/>
 									<listOptionValue builtIn="false" value="ENABLE_CONTENT"/>
 									<listOptionValue builtIn="false" value="ENABLE_HTTPD"/>
+									<listOptionValue builtIn="false" value="OUTPUT_HAVE_STYLESWITCH"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.168898796" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>

@@ -64,37 +64,12 @@ ArtNetNode::ArtNetNode() {
 	DEBUG_PRINTF("PAGE_SIZE=%u, PAGES=%u, MAX_PORTS=%u", artnetnode::PAGE_SIZE, artnetnode::PAGES, artnetnode::MAX_PORTS);
 
 	memset(&m_Node, 0, sizeof(struct Node));
-	m_Node.IPAddressBroadcast = Network::Get()->GetBroadcastIp();
-	m_Node.IPAddressTimeCode = m_Node.IPAddressBroadcast;
+	m_Node.IPAddressTimeCode = Network::Get()->GetBroadcastIp();
 	Network::Get()->MacAddressCopyTo(m_Node.MACAddressLocal);
+
 	for (auto& port : m_Node.Port) {
 		port.direction = lightset::PortDir::DISABLE;
 	}
-
-	/*
-	 * Status 1
-	 */
-	m_Node.Status1 = artnet::Status1::INDICATOR_NORMAL_MODE | artnet::Status1::PAP_NETWORK;
-	/*
-	 * Status 2
-	 */
-	m_Node.Status2 = artnet::Status2::PORT_ADDRESS_15BIT | (artnet::VERSION > 3 ? artnet::Status2::SACN_ABLE_TO_SWITCH : artnet::Status2::SACN_NO_SWITCH);
-#if defined (ENABLE_HTTPD) && defined (ENABLE_CONTENT)
-	m_Node.Status2 |= artnet::Status2::WEB_BROWSER_SUPPORT;
-#endif
-#if defined (ARTNET_OUTPUT_STYLE_SWITCH)
-	m_Node.Status2 |= artnet::Status2::OUTPUT_STYLE_SWITCH;
-#endif
-#if defined (RDM_CONTROLLER) || defined (RDM_RESPONDER)
-	m_Node.Status2 |= artnet::Status2::RDM_SWITCH;
-#endif
-	/*
-	 * Status 3
-	 */
-	m_Node.Status3 = artnet::Status3::NETWORKLOSS_LAST_STATE | artnet::Status3::FAILSAFE_CONTROL;
-#if defined (ARTNET_HAVE_DMXIN)
-	m_Node.Status3 |= artnet::Status3::OUTPUT_SWITCH;
-#endif
 
 #if (ARTNET_VERSION >= 4)
 	m_Node.AcnPriority = e131::priority::DEFAULT;
@@ -108,11 +83,43 @@ ArtNetNode::ArtNetNode() {
 		memset(&m_OutputPort[nPortIndex], 0 , sizeof(struct OutputPort));
 		m_OutputPort[nPortIndex].GoodOutputB = artnet::GoodOutputB::RDM_DISABLED;
 		memset(&m_InputPort[nPortIndex], 0 , sizeof(struct InputPort));
-		m_InputPort[nPortIndex].nDestinationIp = m_Node.IPAddressBroadcast;
+		m_InputPort[nPortIndex].nDestinationIp = Network::Get()->GetBroadcastIp();
 	}
 
-	SetShortName(nullptr);	// Default
-	SetLongName(nullptr);	// Default
+	/*
+	 * Status 1
+	 */
+	m_Node.Status1 = artnet::Status1::INDICATOR_NORMAL_MODE | artnet::Status1::PAP_NETWORK;
+	/*
+	 * Status 2
+	 */
+	m_Node.Status2 = artnet::Status2::PORT_ADDRESS_15BIT | (artnet::VERSION > 3 ? artnet::Status2::SACN_ABLE_TO_SWITCH : artnet::Status2::SACN_NO_SWITCH);
+#if defined (ENABLE_HTTPD) && defined (ENABLE_CONTENT)
+	m_Node.Status2 |= artnet::Status2::WEB_BROWSER_SUPPORT;
+#endif
+#if defined (OUTPUT_HAVE_STYLESWITCH)
+	m_Node.Status2 |= artnet::Status2::OUTPUT_STYLE_SWITCH;
+#endif
+#if defined (RDM_CONTROLLER) || defined (RDM_RESPONDER)
+	m_Node.Status2 |= artnet::Status2::RDM_SWITCH;
+#endif
+	/*
+	 * Status 3
+	 */
+	m_Node.Status3 = artnet::Status3::NETWORKLOSS_LAST_STATE | artnet::Status3::FAILSAFE_CONTROL;
+#if defined (ARTNET_HAVE_DMXIN)
+	m_Node.Status3 |= artnet::Status3::OUTPUT_SWITCH;
+#endif
+
+	if (artnetnode::PAGE_SIZE == 1) {
+		for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
+			SetShortName(nPortIndex, nullptr);	// Set default port label
+		}
+	} else {
+		SetShortName(nullptr);	// Set default short name
+	}
+
+	SetLongName(nullptr);	// Set default long name
 
 #if defined (ARTNET_HAVE_DMXIN)
 	memcpy(m_ArtDmx.Id, artnet::NODE_ID, sizeof(m_PollReply.Id));
@@ -157,8 +164,6 @@ void ArtNetNode::Start() {
 	m_nHandle = Network::Get()->Begin(artnet::UDP_PORT);
 	assert(m_nHandle != -1);
 
-	m_State.status = Status::ON;
-
 #if defined (ARTNET_HAVE_DMXIN)
 	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
 		if (m_Node.Port[nPortIndex].direction == lightset::PortDir::INPUT) {
@@ -167,41 +172,28 @@ void ArtNetNode::Start() {
 	}
 #endif
 
+#if defined (OUTPUT_HAVE_STYLESWITCH)
+	/*
+	 * Make sure that the supported LightSet OutputSyle is correctly set
+	 */
 	if (m_pLightSet != nullptr) {
 		for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
 			if (m_Node.Port[nPortIndex].direction == lightset::PortDir::OUTPUT) {
-				const auto lightsetOutputStyle = GetOutputStyle(nPortIndex) == artnet::OutputStyle::CONTINOUS  ? lightset::OutputStyle::CONTINOUS : lightset::OutputStyle::DELTA;
-				m_pLightSet->SetOutputStyle(nPortIndex, lightsetOutputStyle);
-				const auto artnetOutputStyle = m_pLightSet->GetOutputStyle(nPortIndex) == lightset::OutputStyle::CONTINOUS ? artnet::OutputStyle::CONTINOUS : artnet::OutputStyle::DELTA;
-				SetOutputStyle(nPortIndex, artnetOutputStyle);
+				SetOutputStyle(nPortIndex, GetOutputStyle(nPortIndex));
 			}
 		}
 	}
+#endif
 
 #if defined (RDM_CONTROLLER) || defined (RDM_RESPONDER)
 	if (m_pArtNetRdm != nullptr) {
 		for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
-			/* An Output Gateway will send the ArtTodData packet in the following circumstances:
-			 * - Upon power on or decice reset. 
-			 * - In response to an ArtTodRequest if the Port-Address matches.
-			 * - In response to an ArtTodControl if the Port-Address matches.
-			 * - When their ToD changes due to the addition or deletion of a UID.
-			 * - At the end of full RDM discovery.
-			 */
 			const auto isRdmDisabled = ((m_OutputPort[nPortIndex].GoodOutputB & artnet::GoodOutputB::RDM_DISABLED) == artnet::GoodOutputB::RDM_DISABLED);
+
 			if (!isRdmDisabled && (m_Node.Port[nPortIndex].direction == lightset::PortDir::OUTPUT)) {
 				SendTod(nPortIndex);
 			}
 
-			/* A controller should periodically broadcast an ArtTodRequest
-			 * to the network in order to ensure its TODs are up to date. 
-			 * 
-			 * When to send:
-			 * - Upon power on or device reset.
-			 * - At regular intervals [10 minutes]. In theory not needed
-			 *   since Output Gateways will broadcast an ArtTodData if their
-			 *   ToD changes, however it is safe programming.
-			 */
 			if (m_Node.Port[nPortIndex].direction == lightset::PortDir::INPUT) {
 				SendTodRequest(nPortIndex);
 			}
@@ -213,10 +205,9 @@ void ArtNetNode::Start() {
 		E131Bridge::Start();
 #endif
 
+	m_State.status = Status::ON;
 	Hardware::Get()->SetMode(hardware::ledblink::Mode::NORMAL);
 	hal::panel_led_on(hal::panelled::ARTNET);
-
-	SendPollRelply(false);	// send a reply on startup
 }
 
 void ArtNetNode::Stop() {
@@ -257,6 +248,11 @@ void ArtNetNode::GetShortNameDefault(char *pShortName) {
 	snprintf(pShortName, artnet::SHORT_NAME_LENGTH - 1, IPSTR, IP2STR(Network::Get()->GetIp()));
 }
 
+void ArtNetNode::GetShortNameDefault(const uint32_t nPortIndex, char *pShortName) {
+	assert(nPortIndex < artnetnode::MAX_PORTS);
+	snprintf(pShortName, artnet::SHORT_NAME_LENGTH - 1, "Port %u", 1U + nPortIndex);
+}
+
 void ArtNetNode::SetShortName(const char *pShortName) {
 	DEBUG_ENTRY
 
@@ -279,6 +275,31 @@ void ArtNetNode::SetShortName(const char *pShortName) {
 	}
 
 	DEBUG_PUTS(m_Node.ShortName);
+	DEBUG_EXIT
+}
+
+void ArtNetNode::SetShortName(const uint32_t nPortIndex, const char *pShortName) {
+	DEBUG_ENTRY
+	DEBUG_PRINTF("nPortIndex=%u, pShortName=%s", nPortIndex, pShortName);
+	assert(nPortIndex < artnetnode::MAX_PORTS);
+
+	if (pShortName == nullptr) {
+		GetShortNameDefault(nPortIndex, m_Node.Port[nPortIndex].ShortName);
+	} else {
+		strncpy(m_Node.Port[nPortIndex].ShortName, pShortName, artnet::SHORT_NAME_LENGTH - 1);
+	}
+
+	m_Node.Port[nPortIndex].ShortName[artnet::SHORT_NAME_LENGTH - 1] = '\0';
+
+	if (m_State.status == Status::ON) {
+		if (m_pArtNetStore != nullptr) {
+//			m_pArtNetStore->SaveShortName(m_Node.ShortName);
+		}
+
+//		artnet::display_shortname(m_Node.ShortName);
+	}
+
+	DEBUG_PUTS(m_Node.Port[nPortIndex].ShortName);
 	DEBUG_EXIT
 }
 
@@ -362,24 +383,22 @@ void ArtNetNode::SetNetworkDataLossCondition() {
 	}
 }
 
-void ArtNetNode::GetType(const uint32_t nBytesReceived, enum TOpCodes& OpCode) {
+enum TOpCodes ArtNetNode::GetOpCode(const uint32_t nBytesReceived) {
 	const auto *const pPacket = reinterpret_cast<char *>(m_pReceiveBuffer);
 
 	if (nBytesReceived < ARTNET_MIN_HEADER_SIZE) {
-		OpCode = OP_NOT_DEFINED;
-		return;
+		return OP_NOT_DEFINED;
 	}
 
 	if ((pPacket[10] != 0) || (pPacket[11] != artnet::PROTOCOL_REVISION)) {
-		OpCode = OP_NOT_DEFINED;
-		return;
+		return OP_NOT_DEFINED;
 	}
 
 	if (memcmp(pPacket, artnet::NODE_ID, 8) == 0) {
-		OpCode = static_cast<TOpCodes>((static_cast<uint16_t>(pPacket[9] << 8)) + pPacket[8]);
-	} else {
-		OpCode = OP_NOT_DEFINED;
+		return static_cast<TOpCodes>((static_cast<uint16_t>(pPacket[9] << 8)) + pPacket[8]);
 	}
+
+	return OP_NOT_DEFINED;
 }
 
 void ArtNetNode::Run() {
@@ -390,22 +409,14 @@ void ArtNetNode::Run() {
 	m_nCurrentPacketMillis = Hardware::Get()->Millis();
 
 	if (__builtin_expect((nBytesReceived == 0), 1)) {
-		if ((m_nCurrentPacketMillis - m_nPreviousPacketMillis) >= artnet::NETWORK_DATA_LOSS_TIMEOUT * 1000) {
+		const auto nDeltaMillis = m_nCurrentPacketMillis - m_nPreviousPacketMillis;
+
+		if (nDeltaMillis >= artnet::NETWORK_DATA_LOSS_TIMEOUT * 1000) {
 			SetNetworkDataLossCondition();
 			hal::panel_led_off(hal::panelled::ARTNET);
 		}
 
-		if (m_State.SendArtPollReplyOnChange) {
-			auto doSend = m_State.IsChanged;
-#if (ARTNET_VERSION >= 4)
-			doSend |= E131Bridge::IsStatusChanged();
-#endif
-			if (doSend) {
-				SendPollRelply(false);
-			}
-		}
-
-		if ((m_nCurrentPacketMillis - m_nPreviousPacketMillis) >= (1U * 1000U)) {
+		if (nDeltaMillis >= (1U * 1000U)) {
 			m_State.nReceivingDmx &= static_cast<uint8_t>(~(1U << static_cast<uint8_t>(lightset::PortDir::OUTPUT)));
 		}
 
@@ -450,10 +461,7 @@ void ArtNetNode::Run() {
 		}
 	}
 
-	enum TOpCodes OpCode;
-	GetType(nBytesReceived, OpCode);
-
-	switch (OpCode) {
+	switch (GetOpCode(nBytesReceived)) {
 #if (LIGHTSET_PORTS > 0)		
 	case OP_DMX:
 		if (m_pLightSet != nullptr) {
@@ -521,6 +529,11 @@ void ArtNetNode::Run() {
 #if defined (ARTNET_HAVE_TRIGGER)		
 	case OP_TRIGGER:
 		HandleTrigger();
+		break;
+#endif
+#if defined (ARTNET_HAVE_DMXIN)
+	case OP_INPUT:
+		HandleInput();
 		break;
 #endif
 	case OP_POLL:

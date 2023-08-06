@@ -51,12 +51,6 @@ public:
 	void Sync(const uint32_t nPortIndex) override;
 	void Sync(const bool doForce = false) override;
 
-	void SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const lightset::OutputStyle outputStyle) override {};
-	lightset::OutputStyle GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const override {
-		return lightset::OutputStyle::DELTA;
-	}
-
-
 #if defined (CONFIG_TLC59711DMX_ENABLE_PCT)
 	void SetMaxPct(uint32_t nIndexLed, uint32_t nPct);
 #endif

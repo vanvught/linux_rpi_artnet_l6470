@@ -84,13 +84,17 @@ void LightSetChain::Sync(const bool doForce) {
 	}
 }
 
+#if defined (OUTPUT_HAVE_STYLESWITCH)
 void LightSetChain::SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const lightset::OutputStyle outputStyle) {
+	DEBUG_ENTRY
 
+	DEBUG_EXIT
 }
 
 lightset::OutputStyle LightSetChain::GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const {
 	return lightset::OutputStyle::DELTA;
 }
+#endif
 
 void LightSetChain::Print() {
 	for (uint32_t i = 0; i < m_nSize; i++) {

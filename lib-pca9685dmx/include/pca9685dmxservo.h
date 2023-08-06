@@ -54,11 +54,6 @@ public:
 	void Sync(const uint32_t nPortIndex) override;
 	void Sync(const bool doForce = false) override;
 
-	void SetOutputStyle(const uint32_t nPortIndex, const lightset::OutputStyle outputStyle) override {};
-	lightset::OutputStyle GetOutputStyle(const uint32_t nPortIndex) const override {
-		return lightset::OutputStyle::DELTA;
-	}
-
 public:
 	void SetI2cAddress(uint8_t nI2cAddress);
 	void SetBoardInstances(uint8_t nBoardInstances);

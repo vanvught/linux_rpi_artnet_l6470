@@ -1,11 +1,11 @@
 /**
- * @file artnetnodegetportaddress.cpp
+ * @file handlerdmin.cpp
  *
  */
 /**
  * Art-Net Designed by and Copyright Artistic Licence Holdings Ltd.
  */
-/* Copyright (C) 2022 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,40 +27,41 @@
  */
 
 #include <cstdint>
+#include <cstring>
 #include <cassert>
 
 #include "artnetnode.h"
+#include "artnet.h"
+#include "artnetrdm.h"
 
-#include "lightset.h"
+#include "network.h"
+#include "hardware.h"
 
-bool ArtNetNode::GetPortAddress(uint32_t nPortIndex, uint16_t& nAddress) const {
-	assert(nPortIndex < artnetnode::MAX_PORTS);
+#include "panel_led.h"
 
-	if (m_Node.Port[nPortIndex].direction == lightset::PortDir::INPUT) {
-		nAddress = m_InputPort[nPortIndex].genericPort.nPortAddress;
-		return true;
+#include "debug.h"
+
+void ArtNetNode::HandleRdmIn() {
+	auto *const pArtRdm = &m_ArtTodPacket.ArtRdm;
+
+	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
+		if ((m_Node.Port[nPortIndex].direction != lightset::PortDir::INPUT)) {
+			continue;
+		}
+
+		const auto nPage = nPortIndex / artnetnode::PAGE_SIZE;
+
+		if (m_pArtNetRdm->RdmReceive(nPortIndex, pArtRdm->RdmPacket)) {
+			memcpy(pArtRdm->Id, artnet::NODE_ID, sizeof(pArtRdm->Id));
+			pArtRdm->OpCode = OP_RDM;
+			pArtRdm->ProtVerHi = 0;
+			pArtRdm->ProtVerLo = artnet::PROTOCOL_REVISION;
+			pArtRdm->RdmVer = 0x01;
+			pArtRdm->Net = m_Node.NetSwitch[nPage];
+			pArtRdm->Command = 0;
+			pArtRdm->Address = m_Node.Port[nPortIndex].DefaultAddress;
+
+			Network::Get()->SendTo(m_nHandle, pArtRdm, sizeof(struct TArtRdm), m_InputPort[nPortIndex].nDestinationIp, artnet::UDP_PORT);
+		}
 	}
-
-	if (m_Node.Port[nPortIndex].direction == lightset::PortDir::OUTPUT) {
-		nAddress = m_OutputPort[nPortIndex].genericPort.nPortAddress;
-		return true;
-	}
-
-	return false;
-}
-
-bool ArtNetNode::GetPortAddress(uint32_t nPortIndex, uint16_t& nAddress, lightset::PortDir dir) const {
-	assert(nPortIndex < artnetnode::MAX_PORTS);
-
-	if (dir == lightset::PortDir::INPUT) {
-		nAddress = m_InputPort[nPortIndex].genericPort.nPortAddress;
-		return m_Node.Port[nPortIndex].direction == lightset::PortDir::INPUT;
-	}
-
-	if (dir == lightset::PortDir::OUTPUT) {
-		nAddress = m_OutputPort[nPortIndex].genericPort.nPortAddress;
-		return m_Node.Port[nPortIndex].direction == lightset::PortDir::OUTPUT;
-	}
-
-	return false;
 }

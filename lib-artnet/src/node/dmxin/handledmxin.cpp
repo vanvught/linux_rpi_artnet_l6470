@@ -1,5 +1,5 @@
 /**
- * @file artnetnodehandledmxin.cpp
+ * @file handledmxin.cpp
  *
  */
 /**
@@ -45,8 +45,9 @@ static uint32_t s_ReceivingMask = 0;
 
 void ArtNetNode::HandleDmxIn() {
 	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
-		if ((m_Node.Port[nPortIndex].protocol == artnet::PortProtocol::ARTNET)
-				&& (m_Node.Port[nPortIndex].direction == lightset::PortDir::INPUT)) {
+		if  ((m_Node.Port[nPortIndex].direction == lightset::PortDir::INPUT)
+		 &&  (m_Node.Port[nPortIndex].protocol == artnet::PortProtocol::ARTNET)
+		 && ((m_InputPort[nPortIndex].GoodInput & artnet::GoodInput::DISABLED) != artnet::GoodInput::DISABLED)) {
 
 			uint32_t nLength;
 			uint32_t nUpdatesPerSecond;
@@ -55,7 +56,7 @@ void ArtNetNode::HandleDmxIn() {
 			if (pDmxData != nullptr) {
 				m_ArtDmx.Sequence = static_cast<uint8_t>(1U + m_InputPort[nPortIndex].nSequenceNumber++);
 				m_ArtDmx.Physical = static_cast<uint8_t>(nPortIndex);
-				m_ArtDmx.PortAddress = m_InputPort[nPortIndex].genericPort.nPortAddress;
+				m_ArtDmx.PortAddress = m_Node.Port[nPortIndex].PortAddress;
 
 				memcpy(m_ArtDmx.Data, pDmxData, nLength);
 

@@ -52,7 +52,7 @@ enum class FailSafe {
 };
 
 enum class OutputStyle {
-	DELTA, CONTINOUS
+	DELTA, CONSTANT
 };
 
 struct SlotInfo {
@@ -173,7 +173,7 @@ inline static OutputStyle get_output_style(const char *pOutputStyle) {
 		 && ((pOutputStyle[2] | 0x20) == 'n')
 		 && ((pOutputStyle[3] | 0x20) == 's')
 		 && ((pOutputStyle[4] | 0x20) == 't')) {
-			return OutputStyle::CONTINOUS;
+			return OutputStyle::CONSTANT;
 		}
 	}
 	return OutputStyle::DELTA;
@@ -207,8 +207,10 @@ public:
 	 * @param [IN] doForce This parameter is used with Art-Net ArtSync only.
 	 */
 	virtual void Sync(const bool doForce = false)= 0;
+#if defined (OUTPUT_HAVE_STYLESWITCH)
 	virtual void SetOutputStyle(const uint32_t nPortIndex, const lightset::OutputStyle outputStyle)=0;
 	virtual lightset::OutputStyle GetOutputStyle(const uint32_t nPortIndex) const=0;
+#endif
 	// Optional
 	virtual void Blackout(__attribute__((unused)) bool bBlackout) {}
 	virtual void FullOn() {}
