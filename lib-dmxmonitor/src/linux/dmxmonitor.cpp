@@ -124,6 +124,11 @@ void DMXMonitor::SetData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLe
 	}
 }
 
+#if 0
+void DMXMonitor::Update(__attribute__((unused)) uint32_t nPortIndex, __attribute__((unused)) const uint8_t *pData, __attribute__((unused)) uint32_t nLength) {
+
+}
+#else
 void DMXMonitor::Update(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength) {
 	assert(nPortIndex < output::text::MAX_PORTS);
 
@@ -160,6 +165,7 @@ void DMXMonitor::Update(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLen
 
 	printf("\n");
 }
+#endif
 
 void DMXMonitor::Sync(uint32_t nPortIndex) {
 	Update(nPortIndex, m_Data[nPortIndex].data, m_Data[nPortIndex].nLength);

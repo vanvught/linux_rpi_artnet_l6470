@@ -32,6 +32,9 @@
 
 #include "artnetnode.h"
 #include "artnet.h"
+#if (ARTNET_VERSION >= 4) && defined (E131_HAVE_DMXIN)
+# include "e131bridge.h"
+#endif
 
 #include "debug.h"
 
@@ -45,32 +48,24 @@
 void ArtNetNode::HandleInput() {
 	DEBUG_ENTRY
 
-	const auto *const pArtInput = reinterpret_cast<TArtInput *>(m_pReceiveBuffer);
-	const auto nPage = static_cast<uint32_t>(pArtInput->BindIndex > 0 ? pArtInput->BindIndex - 1 : 0);
-	const auto nPortIndexMax = std::min(std::min(artnet::PORTS, artnetnode::PAGE_SIZE), static_cast<uint32_t>(pArtInput->NumPortsLo));
+	const auto *const pArtInput = reinterpret_cast<artnet::ArtInput *>(m_pReceiveBuffer);
+	const auto nPortIndex = static_cast<uint32_t>(pArtInput->BindIndex > 0 ? pArtInput->BindIndex - 1 : 0);
 
-	DEBUG_PRINTF("nPage=%u, nPortIndexMax=%u", nPage, nPortIndexMax);
-
-	for (uint32_t NumPorts = 0; NumPorts < nPortIndexMax ; NumPorts++) {
-		uint32_t nPortIndex;
-
-		const auto isPortIndexInput __attribute__((unused)) = GetPortIndexInput(nPage, NumPorts, nPortIndex);
-		DEBUG_PRINTF("isPortIndexInput=%c, nPortIndex=%u", isPortIndexInput ? 'Y' : 'N', nPortIndex);
-		assert(isPortIndexInput);
-
-		uint8_t nAddress;
-
-		if (GetUniverseSwitch(nPortIndex, nAddress, lightset::PortDir::INPUT)) {
-			if (pArtInput->Input[NumPorts] & 0x01) {
-				m_InputPort[nPortIndex].GoodInput |= static_cast<uint8_t>(artnet::GoodInput::DISABLED);
+	if (pArtInput->NumPortsLo == 1) {
+		if (m_Node.Port[nPortIndex].direction == lightset::PortDir::INPUT) {
+			if (pArtInput->Input[0] & 0x01) {
+				m_InputPort[nPortIndex].GoodInput |= static_cast<uint8_t>(artnet::GoodInput::DISABLED);		
 			} else {
 				m_InputPort[nPortIndex].GoodInput &= static_cast<uint8_t>(~static_cast<uint8_t>(artnet::GoodInput::DISABLED));
 			}
+#if (ARTNET_VERSION >= 4) && defined (E131_HAVE_DMXIN)
+			E131Bridge::SetInputDisabled(nPortIndex, pArtInput->Input[0] & 0x01);
+#endif	
 		}
 	}
 
 	if (m_State.SendArtPollReplyOnChange) {
-		SendPollRelply();
+		SendPollRelply(0, m_nIpAddressFrom);
 	}
 
 	DEBUG_EXIT

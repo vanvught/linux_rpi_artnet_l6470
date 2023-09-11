@@ -134,7 +134,7 @@ void Dmx::SetDmxPeriodTime(__attribute__((unused)) uint32_t nPeriod) {
 void Dmx::SetDmxSlots(__attribute__((unused)) uint16_t nSlots) {
 }
 
-void Dmx::SetPortSendDataWithoutSC(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength) {
+void Dmx::SetSendDataWithoutSC(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength) {
 	assert(nPortIndex < MAX_PORTS);
 	assert(pData != 0);
 	assert(nLength != 0);
@@ -188,7 +188,7 @@ const uint8_t* Dmx::GetDmxCurrentData(__attribute__((unused)) uint32_t nPortInde
 	return const_cast<const uint8_t *>(dmxDataRx.Data);
 }
 
-uint32_t Dmx::GetUpdatesPerSecond(__attribute__((unused)) uint32_t nPortIndex) {
+uint32_t Dmx::GetDmxUpdatesPerSecond(__attribute__((unused)) uint32_t nPortIndex) {
 	return 0;
 }
 

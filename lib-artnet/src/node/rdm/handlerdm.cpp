@@ -75,7 +75,7 @@ void ArtNetNode::SetRmd(const uint32_t nPortIndex, const bool bEnable) {
 void ArtNetNode::HandleTodControl() {
 	DEBUG_ENTRY
 
-	const auto *const pArtTodControl =  reinterpret_cast<TArtTodControl *>(m_pReceiveBuffer);
+	const auto *const pArtTodControl =  reinterpret_cast<artnet::ArtTodControl *>(m_pReceiveBuffer);
 	const auto portAddress = static_cast<uint16_t>((pArtTodControl->Net << 8)) | static_cast<uint16_t>((pArtTodControl->Address));
 
 	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
@@ -114,7 +114,7 @@ void ArtNetNode::HandleTodControl() {
 void ArtNetNode::HandleTodRequest() {
 	DEBUG_ENTRY
 
-	const auto *const pArtTodRequest = reinterpret_cast<TArtTodRequest *>(m_pReceiveBuffer);
+	const auto *const pArtTodRequest = reinterpret_cast<artnet::ArtTodRequest *>(m_pReceiveBuffer);
 	const auto nAddCount = pArtTodRequest->AddCount & 0x1f;
 
 	for (auto nCount = 0; nCount < nAddCount; nCount++) {
@@ -138,7 +138,7 @@ void ArtNetNode::HandleTodRequest() {
 void ArtNetNode::HandleTodData() {
 	DEBUG_ENTRY
 
-	const auto *const pArtTodData = reinterpret_cast<TArtTodData *>(m_pReceiveBuffer);
+	const auto *const pArtTodData = reinterpret_cast<artnet::ArtTodData *>(m_pReceiveBuffer);
 
 	if (pArtTodData->RdmVer != 0x01) {
 		DEBUG_EXIT
@@ -174,10 +174,10 @@ void ArtNetNode::SendTod(uint32_t nPortIndex) {
 	assert(nPortIndex < artnetnode::MAX_PORTS);
 
 	auto *pTodData = &m_ArtTodPacket.ArtTodData;
-	const auto nPage = nPortIndex / artnetnode::PAGE_SIZE;
+	const auto nPage = nPortIndex;
 
 	memcpy(pTodData->Id, artnet::NODE_ID, sizeof(pTodData->Id));
-	pTodData->OpCode = OP_TODDATA;
+	pTodData->OpCode = static_cast<uint16_t>(artnet::OpCodes::OP_TODDATA);
 	pTodData->ProtVerHi = 0;
 	pTodData->ProtVerLo = artnet::PROTOCOL_REVISION;
 	pTodData->RdmVer = 0x01; // Devices that support RDM STANDARD V1.0 set field to 0x01.
@@ -197,7 +197,7 @@ void ArtNetNode::SendTod(uint32_t nPortIndex) {
 	pTodData->Spare5 = 0;
 	pTodData->Spare6 = 0;
 	pTodData->BindIndex = static_cast<uint8_t>(nPage + 1U); ///< ArtPollReplyData->BindIndex == ArtTodData- >BindIndex
-	pTodData->Net = m_Node.NetSwitch[nPage];
+	pTodData->Net = m_Node.Port[nPage].NetSwitch;
 	pTodData->CommandResponse = 0; 							///< The packet contains the entire TOD or is the first packet in a sequence of packets that contains the entire TOD.
 	pTodData->Address = m_Node.Port[nPortIndex].DefaultAddress;
 	pTodData->UidTotalHi = 0;
@@ -207,7 +207,7 @@ void ArtNetNode::SendTod(uint32_t nPortIndex) {
 
 	m_pArtNetRdm->TodCopy(nPortIndex, reinterpret_cast<uint8_t*>(pTodData->Tod));
 
-	const auto nLength = sizeof(struct TArtTodData) - (sizeof(pTodData->Tod)) + (nDiscovered * 6U);
+	const auto nLength = sizeof(struct artnet::ArtTodData) - (sizeof(pTodData->Tod)) + (nDiscovered * 6U);
 
 	Network::Get()->SendTo(m_nHandle, pTodData, static_cast<uint16_t>(nLength), Network::Get()->GetBroadcastIp(), artnet::UDP_PORT);
 
@@ -221,10 +221,10 @@ void ArtNetNode::SendTodRequest(uint32_t nPortIndex) {
 	m_pArtNetRdm->TodReset(nPortIndex);
 
 	auto *pTodRequest = &m_ArtTodPacket.ArtTodRequest;
-	const auto nPage = nPortIndex / artnetnode::PAGE_SIZE;
+	const auto nPage = nPortIndex;
 
 	memcpy(pTodRequest->Id, artnet::NODE_ID, sizeof(pTodRequest->Id));
-	pTodRequest->OpCode = OP_TODREQUEST;
+	pTodRequest->OpCode = static_cast<uint16_t>(artnet::OpCodes::OP_TODREQUEST);
 	pTodRequest->ProtVerHi = 0;
 	pTodRequest->ProtVerLo = artnet::PROTOCOL_REVISION;
 	pTodRequest->Spare1 = 0;
@@ -234,12 +234,12 @@ void ArtNetNode::SendTodRequest(uint32_t nPortIndex) {
 	pTodRequest->Spare5 = 0;
 	pTodRequest->Spare6 = 0;
 	pTodRequest->Spare7 = 0;
-	pTodRequest->Net = m_Node.NetSwitch[nPage];
+	pTodRequest->Net = m_Node.Port[nPage].NetSwitch;
 	pTodRequest->Command = 0;
 	pTodRequest->AddCount = 1;
 	pTodRequest->Address[0] = m_Node.Port[nPortIndex].DefaultAddress;
 
-	const auto nLength = sizeof(struct TArtTodRequest) - (sizeof(pTodRequest->Address)) + pTodRequest->AddCount;
+	const auto nLength = sizeof(struct artnet::ArtTodRequest) - (sizeof(pTodRequest->Address)) + pTodRequest->AddCount;
 
 	Network::Get()->SendTo(m_nHandle, pTodRequest, static_cast<uint16_t>(nLength), Network::Get()->GetBroadcastIp(), artnet::UDP_PORT);
 
@@ -253,16 +253,16 @@ void ArtNetNode::SetRdmHandler(ArtNetRdm *pArtNetTRdm, bool IsResponder) {
 
 	if (m_pArtNetRdm != nullptr) {
 		m_Node.IsRdmResponder = IsResponder;
-		m_Node.Status1 |= artnet::Status1::RDM_CAPABLE;
+		m_ArtPollReply.Status1 |= artnet::Status1::RDM_CAPABLE;
 	} else {
-		m_Node.Status1 &= static_cast<uint8_t>(~artnet::Status1::RDM_CAPABLE);
+		m_ArtPollReply.Status1 &= static_cast<uint8_t>(~artnet::Status1::RDM_CAPABLE);
 	}
 
 	DEBUG_EXIT
 }
 
 void ArtNetNode::HandleRdm() {
-	auto *const pArtRdm = reinterpret_cast<TArtRdm *>(m_pReceiveBuffer);
+	auto *const pArtRdm = reinterpret_cast<artnet::ArtRdm *>(m_pReceiveBuffer);
 
 	if (pArtRdm->RdmVer != 0x01) {
 		DEBUG_EXIT
@@ -297,7 +297,7 @@ void ArtNetNode::HandleRdm() {
 				const auto nMessageLength = static_cast<uint16_t>(pRdmResponse[2] + 1);
 				memcpy(pArtRdm->RdmPacket, &pRdmResponse[1], nMessageLength);
 
-				const auto nLength = sizeof(struct TArtRdm) - sizeof(pArtRdm->RdmPacket) + nMessageLength;
+				const auto nLength = sizeof(struct artnet::ArtRdm) - sizeof(pArtRdm->RdmPacket) + nMessageLength;
 
 				Network::Get()->SendTo(m_nHandle, m_pReceiveBuffer, static_cast<uint16_t>(nLength), m_nIpAddressFrom, artnet::UDP_PORT);
 			} else {

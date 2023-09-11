@@ -1,11 +1,8 @@
 /**
- * @file artnetdmx.h
+ * @file dmx_config.h
  *
  */
-/**
- * Art-Net Designed by and Copyright Artistic Licence Holdings Ltd.
- */
-/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,15 +23,28 @@
  * THE SOFTWARE.
  */
 
-#ifndef ARTNETDMX_H_
-#define ARTNETDMX_H_
+#ifndef H3_SINGLE_DMX_CONFIG_H_
+#define H3_SINGLE_DMX_CONFIG_H_
 
-#include <cstdint>
+#include "h3_board.h"
 
-namespace artnet {
-void dmx_start(const uint32_t nPortIndex);
-void dmx_stop(const uint32_t nPortIndex);
-const uint8_t *dmx_handler(const uint32_t nPortIndex, uint32_t& nLength, uint32_t &nUpdatesPerSecond);
-}  // namespace artnet
+namespace dmx {
+namespace config {
+namespace max {
+static constexpr auto OUT = 1U;
+static constexpr auto IN = 1U;
+}  // namespace max
+}  // namespace config
+}  // namespace dmx
 
-#endif /* ARTNETDMX_H_ */
+namespace dmx {
+namespace buffer {
+static constexpr auto SIZE = 516;
+static constexpr auto INDEX_ENTRIES = (1U << 1);
+static constexpr auto INDEX_MASK = (INDEX_ENTRIES - 1);
+}  // namespace buffer
+}  // namespace dmx
+
+
+
+#endif /* H3_SINGLE_DMX_CONFIG_H_ */

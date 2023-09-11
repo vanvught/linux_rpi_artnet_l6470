@@ -41,22 +41,12 @@
 #include "network.h"
 
 void ArtNetParams::Dump() {
-#ifndef NDEBUG
+#ifdef F
 	printf("%s::%s \'%s\':\n", __FILE__, __FUNCTION__, ArtNetParamsConst::FILE_NAME);
 
 	if (isMaskSet(artnetparams::Mask::FAILSAFE)) {
 		printf(" %s=%d [%s]\n", LightSetParamsConst::FAILSAFE, m_Params.nFailSafe, lightset::get_failsafe(static_cast<lightset::FailSafe>(m_Params.nFailSafe)));
 	}
-
-#if (ARTNET_PAGE_SIZE == 4)
-	if (isMaskSet(artnetparams::Mask::SUBNET)) {
-		printf(" %s=%d\n", ArtNetParamsConst::SUBNET, m_Params.nSubnet);
-	}
-
-	if (isMaskSet(artnetparams::Mask::NET)) {
-		printf(" %s=%d\n", ArtNetParamsConst::NET, m_Params.nNet);
-	}
-#endif
 
 	if (isMaskSet(artnetparams::Mask::SHORT_NAME)) {
 		printf(" %s=%s\n", ArtNetParamsConst::NODE_SHORT_NAME, m_Params.aShortName);
@@ -72,18 +62,12 @@ void ArtNetParams::Dump() {
 
 	for (uint32_t i = 0; i < artnet::PORTS; i++) {
 		if (isMaskSet(artnetparams::Mask::UNIVERSE_A << i)) {
-#if (ARTNET_PAGE_SIZE == 4)
-			printf(" %s=%d\n", LightSetParamsConst::UNIVERSE_PORT[i], m_Params.nUniversePort[i]);
-#else
 			printf(" %s=%d\n", LightSetParamsConst::UNIVERSE_PORT[i], m_Params.nUniverse[i]);
-#endif
 		}
 	}
 
 	for (uint32_t i = 0; i < artnet::PORTS; i++) {
-		if (isMaskSet(artnetparams::Mask::MERGE_MODE_A << i)) {
-			printf(" %s=%s\n", LightSetParamsConst::MERGE_MODE_PORT[i], lightset::get_merge_mode(m_Params.nMergeModePort[i]));
-		}
+		printf(" %s=%s\n", LightSetParamsConst::MERGE_MODE_PORT[i], lightset::get_merge_mode(mergemode_get(i)));
 	}
 
 	for (uint32_t i = 0; i < artnet::PORTS; i++) {

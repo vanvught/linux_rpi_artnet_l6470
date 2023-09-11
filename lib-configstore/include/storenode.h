@@ -64,10 +64,10 @@ public:
 		DEBUG_EXIT
 	}
 
-	void SaveShortName(const char *pShortName) override {
+	void SaveShortName(uint32_t nPortIndex, const char *pShortName) override {
 		DEBUG_ENTRY
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct nodeparams::Params, aShortName), pShortName, artnet::SHORT_NAME_LENGTH, nodeparams::Mask::SHORT_NAME);
+		ConfigStore::Get()->Update(configstore::Store::NODE, nPortIndex * 0 + __builtin_offsetof(struct nodeparams::Params, aShortName), pShortName, artnet::SHORT_NAME_LENGTH, nodeparams::Mask::SHORT_NAME);
 
 		DEBUG_EXIT
 	}
@@ -150,7 +150,7 @@ public:
 		DEBUG_EXIT
 	}
 
-	void SaveOutputStyle(uint32_t nPortIndex, const artnet::OutputStyle outputStyle) override {
+	void SaveOutputStyle(uint32_t nPortIndex, const lightset::OutputStyle outputStyle) override {
 		DEBUG_ENTRY
 		DEBUG_PRINTF("s_nPortIndexOffset=%u, nPortIndex=%u, outputStyle=%u", s_nPortIndexOffset, nPortIndex, static_cast<uint32_t>(outputStyle));
 
@@ -171,7 +171,7 @@ public:
 		uint8_t nOutputStyle;
 		ConfigStore::Get()->Copy(configstore::Store::NODE, &nOutputStyle, sizeof(uint8_t), __builtin_offsetof(struct nodeparams::Params, nOutputStyle), false);
 
-		if (outputStyle == artnet::OutputStyle::CONSTANT) {
+		if (outputStyle == lightset::OutputStyle::CONSTANT) {
 			nOutputStyle |= static_cast<uint8_t>(1U << nPortIndex);
 		} else {
 			nOutputStyle &= static_cast<uint8_t>(~(1U << nPortIndex));
@@ -217,21 +217,6 @@ public:
 
 	void SaveUniverseSwitch(uint32_t nPortIndex, __attribute__((unused)) uint8_t nAddress) override {
 		DEBUG_ENTRY
-		DEBUG_PRINTF("nPortIndex=%u, nAddress=%u", nPortIndex, static_cast<uint32_t>(nAddress));
-
-		if (nPortIndex >= s_nPortIndexOffset) {
-			nPortIndex -= s_nPortIndexOffset;
-		} else {
-			DEBUG_EXIT
-			return;
-		}
-
-		DEBUG_PRINTF("nPortIndex=%u", nPortIndex);
-
-		if (nPortIndex >= nodeparams::MAX_PORTS) {
-			DEBUG_EXIT
-			return;
-		}
 
 		uint16_t nPortAddress;
 
@@ -242,61 +227,27 @@ public:
 		DEBUG_EXIT
 	}
 
-	void SaveNetSwitch(uint32_t nPage, __attribute__((unused)) uint8_t nAddress) override {
+	void SaveNetSwitch(uint32_t nPortIndex, __attribute__((unused)) uint8_t nAddress) override {
 		DEBUG_ENTRY
-		DEBUG_PRINTF("nPage=%u, nAddress=%u", nPage, static_cast<uint32_t>(nAddress));
+		DEBUG_PRINTF("nPortIndex=%u, nAddress=%u", nPortIndex, static_cast<uint32_t>(nAddress));
 
-		if (nPage >= artnetnode::PAGES) {
-			DEBUG_EXIT
-			return;
-		}
+		uint16_t nPortAddress;
 
-		if (artnetnode::PAGE_SIZE == 1) {
-			uint16_t nPortAddress;
-
-			if (ArtNetNode::Get()->GetPortAddress(nPage, nPortAddress)) {
-				SaveUniverse(nPage, nPortAddress);
-			}
-		}
-
-		if (artnetnode::PAGE_SIZE == 4) {
-			const auto nPortIndexStart = nPage * 4;
-			for (uint32_t nPortIndex = nPortIndexStart; nPortIndex < (nPortIndexStart + 4); nPortIndex++) {
-				uint16_t nPortAddress;
-				ArtNetNode::Get()->GetPortAddress(nPortIndex, nPortAddress);
-				SaveUniverse(nPortIndex, nPortAddress);
-			}
+		if (ArtNetNode::Get()->GetPortAddress(nPortIndex, nPortAddress)) {
+			SaveUniverse(nPortIndex, nPortAddress);
 		}
 
 		DEBUG_EXIT
 	}
 
-	void SaveSubnetSwitch(uint32_t nPage, __attribute__((unused)) uint8_t nAddress) override {
+	void SaveSubnetSwitch(uint32_t nPortIndex, __attribute__((unused)) uint8_t nAddress) override {
 		DEBUG_ENTRY
-		DEBUG_PRINTF("nPage=%u, nAddress=%u", nPage, static_cast<uint32_t>(nAddress));
+		DEBUG_PRINTF("nPortIndex=%u, nAddress=%u", nPortIndex, static_cast<uint32_t>(nAddress));
 
-		if (nPage >= artnetnode::PAGES) {
-			DEBUG_EXIT
-			return;
-		}
+		uint16_t nPortAddress;
 
-		if (artnetnode::PAGE_SIZE == 1) {
-			uint16_t nPortAddress;
-
-			if (ArtNetNode::Get()->GetPortAddress(nPage, nPortAddress)) {
-				SaveUniverse(nPage, nPortAddress);
-			}
-		}
-
-		if (artnetnode::PAGE_SIZE == 4) {
-			const auto nPortIndexStart = nPage * 4;
-			for (uint32_t nPortIndex = nPortIndexStart; nPortIndex < (nPortIndexStart + 4); nPortIndex++) {
-				uint16_t nPortAddress;
-
-				if (ArtNetNode::Get()->GetPortAddress(nPortIndex, nPortAddress)) {
-					SaveUniverse(nPortIndex, nPortAddress);
-				}
-			}
+		if (ArtNetNode::Get()->GetPortAddress(nPortIndex, nPortAddress)) {
+			SaveUniverse(nPortIndex, nPortAddress);
 		}
 
 		DEBUG_EXIT

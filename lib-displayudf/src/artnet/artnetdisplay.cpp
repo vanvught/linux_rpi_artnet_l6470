@@ -30,10 +30,6 @@
 #include "lightset.h"
 
 namespace artnet {
-void display_shortname(__attribute__((unused)) const char *pShortName) {
-	DisplayUdf::Get()->ShowNodeName(ArtNetNode::Get());
-}
-
 void display_longname(__attribute__((unused)) const char *pLongName) {
 }
 
@@ -53,7 +49,7 @@ void display_merge_mode(__attribute__((unused))  uint32_t nPortIndex, __attribut
 	DisplayUdf::Get()->ShowUniverse(ArtNetNode::Get());
 }
 
-void display_outputstyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const artnet::OutputStyle outputStyle) {
+void display_outputstyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const lightset::OutputStyle outputStyle) {
 	DisplayUdf::Get()->ShowUniverse(ArtNetNode::Get());
 }
 

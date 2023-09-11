@@ -1,8 +1,8 @@
 /**
- * @file lightsetdebug.h
+ * @file panel_led.cpp
  *
  */
-/* Copyright (C) 2017-2020 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,33 +23,11 @@
  * THE SOFTWARE.
  */
 
-#ifndef LIGHTSETDEBUG_H_
-#define LIGHTSETDEBUG_H_
+#include <cstdint>
 
-#include <stdint.h>
-
-#include "lightset.h"
-
-class LightSetDebug: public LightSet {
-public:
-	LightSetDebug();
-
-	void Start(uint32_t nPort) override;
-	void Stop(uint32_t nPort) override;
-
-	void SetData(uint32_t nPort, const uint8_t *pData, uint32_t nLength) override;
-
-public: // RDM
-	bool SetDmxStartAddress(uint16_t nDmxStartAddress) override;
-	uint16_t GetDmxStartAddress() override;
-
-	uint16_t GetDmxFootprint() override;
-
-	bool GetSlotInfo(uint16_t nSlotOffset, lightset::SlotInfo &tSlotInfo) override;
-
-private:
-	bool m_bIsStarted{false};
-	uint16_t m_nDmxStartAddress{1};
-};
-
-#endif /* LIGHTSETDEBUG_H_ */
+namespace hal {
+namespace panelled {
+uint32_t g_nData;
+uint32_t g_nDataPrevious;
+}  // namespace panelled
+}  // namespace hal

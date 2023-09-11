@@ -201,7 +201,7 @@ int main(int argc, char **argv) {
 
 	node.SetRmd(0, true);
 	node.SetOutput(pBoard);
-	node.SetUniverseSwitch(0, lightset::PortDir::OUTPUT, artnetParams.GetUniversePort(0));
+	node.SetUniverse(0, lightset::PortDir::OUTPUT, artnetParams.GetUniverse(0));
 
 	RDMPersonality *pRDMPersonalities[1] = { new  RDMPersonality(aDescription, pBoard)};
 
@@ -244,11 +244,10 @@ int main(int argc, char **argv) {
 	pBoard->Print();
 
 	display.SetTitle("Art-Net 4 L6470");
-	display.Set(2, displayudf::Labels::NODE_NAME);
-	display.Set(3, displayudf::Labels::IP);
-	display.Set(4, displayudf::Labels::VERSION);
-	display.Set(5, displayudf::Labels::UNIVERSE_PORT_A);
-	display.Set(6, displayudf::Labels::DMX_START_ADDRESS);
+	display.Set(2, displayudf::Labels::IP);
+	display.Set(3, displayudf::Labels::VERSION);
+	display.Set(4, displayudf::Labels::UNIVERSE_PORT_A);
+	display.Set(5, displayudf::Labels::DMX_START_ADDRESS);
 
 	StoreDisplayUdf storeDisplayUdf;
 	DisplayUdfParams displayUdfParams(&storeDisplayUdf);

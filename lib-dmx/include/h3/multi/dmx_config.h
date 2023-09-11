@@ -1,8 +1,8 @@
 /**
- * @file e131dmx.h
+ * @file dmx_config.h
  *
  */
-/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,15 +23,38 @@
  * THE SOFTWARE.
  */
 
-#ifndef E131DMX_H_
-#define E131DMX_H_
+#ifndef H3_MULTI_DMX_CONFIG_H_
+#define H3_MULTI_DMX_CONFIG_H_
 
-#include <cstdint>
+#include "h3_board.h"
 
-namespace e131 {
-void dmx_start(const uint32_t nPortIndex);
-void dmx_stop(const uint32_t nPortIndex);
-const uint8_t* dmx_handler(const uint32_t nPortIndex, uint32_t& nLength, uint32_t &nUpdatesPerSecond);
-}  // namespace e131bridge
+namespace dmx {
+namespace config {
+namespace max {
+static constexpr auto OUT = 4U;
+static constexpr auto IN = 4U;
+}  // namespace max
+}  // namespace config
+}  // namespace dmx
 
-#endif /* E131DMX_H_ */
+namespace dmx {
+namespace buffer {
+static constexpr auto SIZE = 516;
+static constexpr auto INDEX_ENTRIES = (1U << 1);
+static constexpr auto INDEX_MASK = (INDEX_ENTRIES - 1);
+}  // namespace buffer
+}  // namespace dmx
+
+#if defined(ORANGE_PI_ONE)
+# define DMX_MAX_UARTS	4
+# define GPIO_DMX_DATA_DIRECTION_OUT_A 	GPIO_EXT_32	///< UART1
+# define GPIO_DMX_DATA_DIRECTION_OUT_B 	GPIO_EXT_22	///< UART2
+# define GPIO_DMX_DATA_DIRECTION_OUT_C 	GPIO_EXT_12	///< UART3
+# define GPIO_DMX_DATA_DIRECTION_OUT_D 	GPIO_EXT_31	///< UART0
+#else
+# define DMX_MAX_UARTS	2
+# define GPIO_DMX_DATA_DIRECTION_OUT_B	GPIO_EXT_22	///< UART2
+# define GPIO_DMX_DATA_DIRECTION_OUT_C	GPIO_EXT_12	///< UART1
+#endif
+
+#endif /* H3_MULTI_DMX_CONFIG_H_ */

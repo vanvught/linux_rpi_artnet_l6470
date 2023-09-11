@@ -29,7 +29,7 @@
 #include <cstdint>
 
 #include "dmxconst.h"
-#include "../dmx_config.h"
+#include "dmx_config.h"
 
 struct TotalStatistics {
 	uint32_t nDmxPackets;
@@ -53,10 +53,12 @@ public:
 	Dmx();
 
 	void SetPortDirection(uint32_t nPortIndex, dmx::PortDirection portDirection, bool bEnableData = false);
-	dmx::PortDirection GetPortDirection();
+	dmx::PortDirection GetPortDirection(uint32_t nPortIndex);
+
+	void ClearData(uint32_t nPortIndex);
 
 	// RDM Send
-	
+
 	void RdmSendRaw(uint32_t nPortIndex, const uint8_t *pRdmData, uint32_t nLength);
 
 	// RDM Receive
@@ -66,22 +68,18 @@ public:
 	uint32_t RdmGetDateReceivedEnd();
 
 	// DMX Send
-	
-	void SetSendData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
-	void SetPortSendDataWithoutSC(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
 
-	void StartOutput(uint32_t nPortIndex);
+	void SetSendData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
+	void SetSendDataWithoutSC(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
+
+	void StartOutput(const uint32_t nPortIndex);
 	void SetOutput(const bool doForce);
 
-	void SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const dmx::OutputStyle outputStyle) {}
-	dmx::OutputStyle GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const {
-		return dmx::OutputStyle::CONTINOUS;
-	}
+	void SetOutputStyle(const uint32_t nPortIndex, const dmx::OutputStyle outputStyle);
+	dmx::OutputStyle GetOutputStyle(const uint32_t nPortIndex) const;
 
 	void Blackout();
 	void FullOn();
-
-	void ClearData(uint32_t nPortIndex);
 
 	void SetDmxBreakTime(uint32_t nBreakTime);
 	uint32_t GetDmxBreakTime() const {
@@ -102,26 +100,24 @@ public:
 	uint16_t GetDmxSlots() const {
 		return m_nDmxTransmitSlots;
 	}
-	
-	// DMX Receive
-	
-	const uint8_t* GetDmxAvailable(uint32_t nPortIndex);
-	uint32_t GetUpdatesPerSecond(uint32_t nPortIndex);
 
-	const uint8_t* GetDmxCurrentData(uint32_t nPortIndex);
-	const uint8_t* GetDmxChanged(uint32_t nPortIndex);
+	// DMX Receive
+
+	const uint8_t *GetDmxAvailable(const uint32_t nPortIndex);
+	const uint8_t *GetDmxChanged(const uint32_t nPortIndex);
+	const uint8_t *GetDmxCurrentData(const uint32_t nPortIndex);
+
+	uint32_t GetDmxUpdatesPerSecond(const uint32_t nPortIndex);
+	uint32_t GetDmxReceivedCount(uint32_t nPortIndex);
 
 	static Dmx* Get() {
 		return s_pThis;
 	}
 
 private:
-	void StartData();
-	void StopData();
-	void SetSendDataLength(uint32_t nLength);
-	void UartInit();
-	void UartEnableFifo();
-	void UartDisableFifo();
+	void StartData(const uint32_t nPortIndex);
+	void StopData(const uint32_t nPortIndex);
+	void StartDmxOutput(const uint32_t nPortIndex);
 
 private:
 	uint32_t m_nDmxTransmitBreakTime { dmx::transmit::BREAK_TIME_MIN };

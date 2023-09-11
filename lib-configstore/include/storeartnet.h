@@ -39,7 +39,7 @@ public:
 	void Update(const struct artnetparams::Params* pArtNetParams) override {
 		DEBUG_ENTRY
 
-		ConfigStore::Get()->Update(configstore::Store::ARTNET, pArtNetParams, sizeof(struct artnetparams::Params));
+		ConfigStore::Get()->Update(configstore::Store::NODE, pArtNetParams, sizeof(struct artnetparams::Params));
 
 		DEBUG_EXIT
 	}
@@ -47,15 +47,7 @@ public:
 	void Copy(struct artnetparams::Params* pArtNetParams) override {
 		DEBUG_ENTRY
 
-		ConfigStore::Get()->Copy(configstore::Store::ARTNET, pArtNetParams, sizeof(struct artnetparams::Params));
-
-		DEBUG_EXIT
-	}
-
-	void SaveShortName(const char* pShortName) override {
-		DEBUG_ENTRY
-
-		ConfigStore::Get()->Update(configstore::Store::ARTNET, __builtin_offsetof(struct artnetparams::Params, aShortName), pShortName, artnet::SHORT_NAME_LENGTH, artnetparams::Mask::SHORT_NAME);
+		ConfigStore::Get()->Copy(configstore::Store::NODE, pArtNetParams, sizeof(struct artnetparams::Params));
 
 		DEBUG_EXIT
 	}
@@ -63,7 +55,7 @@ public:
 	void SaveLongName(const char* pLongName) override {
 		DEBUG_ENTRY
 
-		ConfigStore::Get()->Update(configstore::Store::ARTNET, __builtin_offsetof(struct artnetparams::Params, aLongName), pLongName, artnet::LONG_NAME_LENGTH, artnetparams::Mask::LONG_NAME);
+		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct artnetparams::Params, aLongName), pLongName, artnet::LONG_NAME_LENGTH, artnetparams::Mask::LONG_NAME);
 
 		DEBUG_EXIT
 	}
@@ -71,18 +63,39 @@ public:
 	void SaveFailSafe(const uint8_t nFailSafe) override {
 		DEBUG_ENTRY
 
-		ConfigStore::Get()->Update(configstore::Store::ARTNET, __builtin_offsetof(struct artnetparams::Params, nFailSafe), &nFailSafe, sizeof(uint8_t), artnetparams::Mask::FAILSAFE);
+		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct artnetparams::Params, nFailSafe), &nFailSafe, sizeof(uint8_t), artnetparams::Mask::FAILSAFE);
 
 		DEBUG_EXIT
 	}
 
-	void SaveUniverseSwitch(uint32_t nPortIndex, const uint8_t nAddress) override;
-	void SaveNetSwitch(uint32_t nPage, const uint8_t nAddress) override;
-	void SaveSubnetSwitch(uint32_t nPage, const uint8_t nAddress) override;
+	void SaveUniverseSwitch(const uint32_t nPortIndex, __attribute__((unused)) const uint8_t nAddress) override {
+		DEBUG_ENTRY
 
+		SaveUniverse(nPortIndex);
+
+		DEBUG_EXIT
+	}
+
+	void SaveNetSwitch(const uint32_t nPortIndex, __attribute__((unused)) const uint8_t nAddress) override {
+		DEBUG_ENTRY
+
+		SaveUniverse(nPortIndex);
+
+		DEBUG_EXIT
+	}
+
+	void SaveSubnetSwitch(const uint32_t nPortIndex, __attribute__((unused)) const uint8_t nAddress) override {
+		DEBUG_ENTRY
+
+		SaveUniverse(nPortIndex);
+
+		DEBUG_EXIT
+	}
+
+	void SaveShortName(uint32_t nPortIndex, const char *pShortName) override;
 	void SaveMergeMode(uint32_t nPortIndex, const lightset::MergeMode tMerge) override;
 	void SavePortProtocol(uint32_t nPortIndex, const artnet::PortProtocol tPortProtocol) override;
-	void SaveOutputStyle(uint32_t nPortIndex, const artnet::OutputStyle outputStyle) override;
+	void SaveOutputStyle(uint32_t nPortIndex, const lightset::OutputStyle outputStyle) override;
 	void SaveRdmEnabled(uint32_t nPortIndex, bool isEnabled) override;
 
 	static StoreArtNet *Get() {

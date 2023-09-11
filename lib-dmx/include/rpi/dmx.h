@@ -53,7 +53,7 @@ public:
 	Dmx();
 
 	void SetPortDirection(uint32_t nPortIndex, dmx::PortDirection portDirection, bool bEnableData = false);
-	dmx::PortDirection GetPortDirection();
+	dmx::PortDirection GetPortDirection(uint32_t nPortIndex);
 
 	// RDM Send
 	
@@ -68,7 +68,7 @@ public:
 	// DMX Send
 	
 	void SetSendData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
-	void SetPortSendDataWithoutSC(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
+	void SetSendDataWithoutSC(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
 
 	void StartOutput(uint32_t nPortIndex);
 	void SetOutput(const bool doForce);
