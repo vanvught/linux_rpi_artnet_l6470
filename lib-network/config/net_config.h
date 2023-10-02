@@ -29,7 +29,9 @@
 #if defined (BARE_METAL)
 # define TCP_MAX_PORTS_ALLOWED			1
 # if defined (H3)
-#  define HOST_NAME_PREFIX				"allwinner_"
+#  if !defined(HOST_NAME_PREFIX)
+#   define HOST_NAME_PREFIX				"allwinner_"
+#  endif
 #  define UDP_MAX_PORTS_ALLOWED			16
 #  define IGMP_MAX_JOINS_ALLOWED		(4 + (8 * 4)) /* 8 outputs x 4 Universes */
 # elif defined (GD32)
@@ -37,7 +39,9 @@
  * Supports checking IPv4 header checksum and TCP, UDP, or ICMP checksum encapsulated in IPv4 or IPv6 datagram.
  */
 #  define CHECKSUM_BY_HARDWARE
-#  define HOST_NAME_PREFIX				"gigadevice_"
+#  if !defined(HOST_NAME_PREFIX)
+#   define HOST_NAME_PREFIX				"gigadevice_"
+#  endif
 #  if !defined (UDP_MAX_PORTS_ALLOWED)
 #   define UDP_MAX_PORTS_ALLOWED		8
 #  endif

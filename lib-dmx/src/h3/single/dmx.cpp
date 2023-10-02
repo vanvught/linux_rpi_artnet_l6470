@@ -831,6 +831,8 @@ void Dmx::ClearData(__attribute__((unused)) uint32_t nPortIndex) {
 void Dmx::StartDmxOutput(__attribute__((unused)) const uint32_t nPortIndex) {
 //	h3_gpio_set(GPIO_ANALYZER_CH6);
 
+	DEBUG_PUTS("");
+
 	assert(nPortIndex == 0);
 
 	uart_enable_fifo();

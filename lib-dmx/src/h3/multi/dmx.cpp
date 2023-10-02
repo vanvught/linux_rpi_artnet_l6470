@@ -759,41 +759,16 @@ void Dmx::ClearData(uint32_t nUart) {
 	}
 }
 
-void Dmx::StartDmxOutput(const uint32_t nUart, __attribute__((unused)) const uint32_t nPortIndex) {
-	UartEnableFifoTx(nUart);
+void Dmx::StartDmxOutput(__attribute__((unused)) const uint32_t nUart, __attribute__((unused)) const uint32_t nPortIndex) {
+	// Nothing to do here
 }
 
 void Dmx::StartOutput(__attribute__((unused)) const uint32_t nPortIndex) {
 	// Nothing to do here
 }
 
-static bool s_doForce;
-
-void Dmx::SetOutput(const bool doForce) {
-	if (doForce) {
-		s_doForce = true;
-		for (uint32_t nPortIndex = 0; nPortIndex < config::max::OUT; nPortIndex++) {
-			const auto nUart = _port_to_uart(nPortIndex);
-
-			if (s_UartState[nUart] == UartState::TX) {
-				StopData(nUart, nPortIndex);
-			}
-			s_UartState[nUart] = UartState::TX;
-		}
-		return;
-	}
-
-	for (uint32_t nPortIndex = 0; nPortIndex < config::max::OUT; nPortIndex++) {
-		const auto nUart = _port_to_uart(nPortIndex);
-
-		if (s_UartState[nUart] == UartState::TX) {
-			if (s_doForce) {
-				StartDmxOutput(nUart, nPortIndex);
-			}
-		}
-	}
-
-	s_doForce = false;
+void Dmx::SetOutput(__attribute__((unused)) const bool doForce) {
+	// Nothing to do here
 }
 
 void Dmx::StartData(uint32_t nUart, __attribute__((unused)) uint32_t nPortIndex) {
@@ -801,9 +776,9 @@ void Dmx::StartData(uint32_t nUart, __attribute__((unused)) uint32_t nPortIndex)
 
 	switch (m_dmxPortDirection[nUart]) {
 	case PortDirection::OUTP:
+		UartEnableFifoTx(nUart);
 		s_UartState[nUart] = UartState::TX;
 		dmb();
-		StartDmxOutput(nUart, nPortIndex);
 		break;
 	case PortDirection::INP: {
 		auto *p = _get_uart(nUart);
@@ -934,11 +909,11 @@ void Dmx::SetDmxSlots(uint16_t nSlots) {
 	DEBUG_EXIT
 }
 
-void SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const dmx::OutputStyle outputStyle) {
+void Dmx::SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused))  const dmx::OutputStyle outputStyle) {
 
 }
 
-dmx::OutputStyle GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) {
+dmx::OutputStyle Dmx::GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const {
 	return dmx::OutputStyle::CONTINOUS;
 }
 
@@ -958,8 +933,6 @@ void Dmx::SetSendDataWithoutSC(const uint32_t nPortIndex, const uint8_t *pData, 
 
 	__builtin_prefetch(pData);
 	memcpy(&pDst[1], pData,  nLength);
-
-//	DEBUG_PRINTF("nLength=%u, m_nDmxTransmissionLength[%u]=%u", nLength, nUart, m_nDmxTransmissionLength[nUart]);
 
 	if (nLength != m_nDmxTransmissionLength[nUart]) {
 		m_nDmxTransmissionLength[nUart] = nLength;

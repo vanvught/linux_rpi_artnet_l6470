@@ -1,8 +1,8 @@
 /**
- * @file artnetparamsconst.cpp
+ * @file board_gd32f207vc_2.h
  *
  */
-/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2023 by Arjan van Vught mailto:info@gd32-dmx.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,37 +23,28 @@
  * THE SOFTWARE.
  */
 
-#include "artnetparamsconst.h"
-#include "artnet.h"
+#ifndef GD32_BOARD_GD32F207VC_2_H
+#define GD32_BOARD_GD32F207VC_2_H
 
-const char ArtNetParamsConst::FILE_NAME[] = "artnet.txt";
+#include "gd32_board.h"
 
-const char ArtNetParamsConst::ENABLE_RDM[] = "enable_rdm";
+namespace max {
+static constexpr auto OUT = 2U;
+static constexpr auto IN = 2U;
+}  // namespace max
 
-const char ArtNetParamsConst::DESTINATION_IP_PORT[artnet::PORTS][24] = {
-		"destination_ip_port_a",
-		"destination_ip_port_b",
-		"destination_ip_port_c",
-		"destination_ip_port_d"
-};
+#define DMX_MAX_PORTS  2
 
+#define DMX_USE_USART0
+#define DMX_USE_USART1
 
-const char ArtNetParamsConst::RDM_ENABLE_PORT[artnet::PORTS][18] = {
-		"rdm_enable_port_a",
-		"rdm_enable_port_b",
-		"rdm_enable_port_c",
-		"rdm_enable_port_d"
-};
+static constexpr auto USART0_PORT = 0;
+static constexpr auto USART1_PORT = 1;
 
-/**
- * Art-Net 4
- */
+static constexpr auto DIR_PORT_0_GPIO_PORT = GPIOE;
+static constexpr auto DIR_PORT_0_GPIO_PIN  = GPIO_PIN_9;
 
-const char ArtNetParamsConst::PROTOCOL_PORT[artnet::PORTS][16] = {
-		"protocol_port_a",
-		"protocol_port_b",
-		"protocol_port_c",
-		"protocol_port_d"
-};
+static constexpr auto DIR_PORT_1_GPIO_PORT = GPIOE;
+static constexpr auto DIR_PORT_1_GPIO_PIN  = GPIO_PIN_10;
 
-const char ArtNetParamsConst::MAP_UNIVERSE0[] = "map_universe0";
+#endif /* GD32_BOARD_GD32F207VC_2_H */

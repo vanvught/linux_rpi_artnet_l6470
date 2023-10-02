@@ -143,6 +143,8 @@ ArtNetNode::~ArtNetNode() {
 }
 
 void ArtNetNode::Start() {
+	DEBUG_ENTRY
+
 #if (LIGHTSET_PORTS > 0)
 	assert(m_pLightSet != nullptr);
 #endif	
@@ -192,6 +194,8 @@ void ArtNetNode::Start() {
 			Dmx::Get()->SetPortDirection(nPortIndex, dmx::PortDirection::INP, true);
 		}
 	}
+
+	SetLocalMerging();
 #endif
 
 #if defined (OUTPUT_HAVE_STYLESWITCH)
@@ -229,7 +233,8 @@ void ArtNetNode::Start() {
 
 	m_State.status = artnetnode::Status::ON;
 	Hardware::Get()->SetMode(hardware::ledblink::Mode::NORMAL);
-	hal::panel_led_on(hal::panelled::ARTNET);
+
+	DEBUG_EXIT
 }
 
 void ArtNetNode::Stop() {
@@ -266,18 +271,13 @@ void ArtNetNode::Stop() {
 	DEBUG_EXIT
 }
 
-void ArtNetNode::GetShortNameDefault(const uint32_t nPortIndex, char *pShortName) {
-	assert(nPortIndex < artnetnode::MAX_PORTS);
-	snprintf(pShortName, artnet::SHORT_NAME_LENGTH - 1, "Port %u", 1U + nPortIndex);
-}
-
 void ArtNetNode::SetShortName(const uint32_t nPortIndex, const char *pShortName) {
 	DEBUG_ENTRY
 	DEBUG_PRINTF("nPortIndex=%u, pShortName=%s", nPortIndex, pShortName == nullptr ? "nullptr" : pShortName);
 	assert(nPortIndex < artnetnode::MAX_PORTS);
 
 	if (pShortName == nullptr) {
-		GetShortNameDefault(nPortIndex, m_Node.Port[nPortIndex].ShortName);
+		lightset::node::get_short_name_default(nPortIndex, m_Node.Port[nPortIndex].ShortName);
 	} else {
 		strncpy(m_Node.Port[nPortIndex].ShortName, pShortName, artnet::SHORT_NAME_LENGTH - 1);
 	}
@@ -295,10 +295,24 @@ void ArtNetNode::SetShortName(const uint32_t nPortIndex, const char *pShortName)
 }
 
 void ArtNetNode::GetLongNameDefault(char *pLongName) {
+#if !defined (ARTNET_LONG_NAME)
 	uint8_t nBoardNameLength;
 	const auto *const pBoardName = Hardware::Get()->GetBoardName(nBoardNameLength);
 	const auto *const pWebsiteUrl = Hardware::Get()->GetWebsiteUrl();
 	snprintf(pLongName, artnet::LONG_NAME_LENGTH - 1, "%s %s %d %s", pBoardName, artnet::NODE_ID, artnet::VERSION, pWebsiteUrl);
+#else
+	uint32_t i;
+
+	for (i = 0; i < (sizeof(ARTNET_LONG_NAME) - 1) && i < (artnet::LONG_NAME_LENGTH - 1) ; i++ ) {
+		if (ARTNET_LONG_NAME[i] == '_') {
+			pLongName[i] = ' ';
+		} else {
+			pLongName[i] = ARTNET_LONG_NAME[i];
+		}
+	}
+
+	pLongName[i] = '\0';
+#endif
 }
 
 void ArtNetNode::SetLongName(const char *pLongName) {
@@ -330,8 +344,13 @@ void ArtNetNode::SetNetworkDataLossCondition() {
 
 	uint32_t nIpCount = 0;
 
-	for (uint32_t i = 0; i < artnetnode::MAX_PORTS; i++) {
-		nIpCount += (m_OutputPort[i].SourceA.nIp + m_OutputPort[i].SourceB.nIp);
+	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
+#if defined (ARTNET_HAVE_DMXIN)
+		if (m_Node.Port[nPortIndex].bLocalMerge) {
+			continue;
+		}
+#endif
+		nIpCount += (m_OutputPort[nPortIndex].SourceA.nIp + m_OutputPort[nPortIndex].SourceB.nIp);
 		if (nIpCount != 0) {
 			break;
 		}
@@ -370,6 +389,10 @@ void ArtNetNode::SetNetworkDataLossCondition() {
 		m_OutputPort[i].SourceB.nIp = 0;
 		lightset::Data::ClearLength(i);
 	}
+
+#if defined (ARTNET_HAVE_DMXIN)
+	SetLocalMerging();
+#endif
 }
 
 static artnet::OpCodes get_op_code(const uint32_t nBytesReceived, const uint8_t *pBuffer) {
@@ -388,13 +411,7 @@ static artnet::OpCodes get_op_code(const uint32_t nBytesReceived, const uint8_t 
 	return artnet::OpCodes::OP_NOT_DEFINED;
 }
 
-void ArtNetNode::Run() {
-	uint16_t nForeignPort;
-
-	const auto nBytesReceived = Network::Get()->RecvFrom(m_nHandle, const_cast<const void**>(reinterpret_cast<void **>(&m_pReceiveBuffer)), &m_nIpAddressFrom, &nForeignPort);
-
-	m_nCurrentPacketMillis = Hardware::Get()->Millis();
-
+void ArtNetNode::Process(const uint16_t nBytesReceived) {
 	if (__builtin_expect((nBytesReceived == 0), 1)) {
 		const auto nDeltaMillis = m_nCurrentPacketMillis - m_nPreviousPacketMillis;
 
@@ -434,15 +451,12 @@ void ArtNetNode::Run() {
 #endif
 		}
 #endif
-#if (ARTNET_VERSION >= 4)
-		E131Bridge::Run();
-#endif
 
 		for (auto& entry : m_State.ArtPollReplyQueue) {
 			if (entry.ArtPollMillis != 0) {
 				if ((m_nCurrentPacketMillis - entry.ArtPollMillis) > m_State.ArtPollReplyDelayMillis) {
 					entry.ArtPollMillis = 0;
-					SendPollRelply(0, entry.ArtPollReplyIpAddress);
+					SendPollRelply(0, entry.ArtPollReplyIpAddress, &entry);
 				}
 			}
 		}
@@ -572,15 +586,11 @@ void ArtNetNode::Run() {
 
 	hal::panel_led_on(hal::panelled::ARTNET);
 
-#if (ARTNET_VERSION >= 4)
-	E131Bridge::Run();
-#endif
-
 	for (auto& entry : m_State.ArtPollReplyQueue) {
 		if (entry.ArtPollMillis != 0) {
 			if ((m_nCurrentPacketMillis - entry.ArtPollMillis) > m_State.ArtPollReplyDelayMillis) {
 				entry.ArtPollMillis = 0;
-				SendPollRelply(0, entry.ArtPollReplyIpAddress);
+				SendPollRelply(0, entry.ArtPollReplyIpAddress, &entry);
 			}
 		}
 	}

@@ -1,8 +1,8 @@
 /**
- * @file artnetparamsconst.cpp
+ * net.c
  *
  */
-/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2022 by Arjan van Vught mailto:info@gd32-dmx.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,37 +23,27 @@
  * THE SOFTWARE.
  */
 
-#include "artnetparamsconst.h"
-#include "artnet.h"
+#include <stdint.h>
 
-const char ArtNetParamsConst::FILE_NAME[] = "artnet.txt";
+#include "gd32.h"
 
-const char ArtNetParamsConst::ENABLE_RDM[] = "enable_rdm";
+extern enet_descriptors_struct  *dma_current_rxdesc;
 
-const char ArtNetParamsConst::DESTINATION_IP_PORT[artnet::PORTS][24] = {
-		"destination_ip_port_a",
-		"destination_ip_port_b",
-		"destination_ip_port_c",
-		"destination_ip_port_d"
-};
+int emac_eth_recv(uint8_t **packet) {
+	const uint32_t size = enet_rxframe_size_get();
 
+	if (size > 0) {
+		*packet = (uint8_t *) (enet_desc_information_get(dma_current_rxdesc, RXDESC_BUFFER_1_ADDR));
+		return size;
+	}
 
-const char ArtNetParamsConst::RDM_ENABLE_PORT[artnet::PORTS][18] = {
-		"rdm_enable_port_a",
-		"rdm_enable_port_b",
-		"rdm_enable_port_c",
-		"rdm_enable_port_d"
-};
+	return -1;
+}
 
-/**
- * Art-Net 4
- */
+void emac_free_pkt(void) {
+	ENET_NOCOPY_FRAME_RECEIVE();
+}
 
-const char ArtNetParamsConst::PROTOCOL_PORT[artnet::PORTS][16] = {
-		"protocol_port_a",
-		"protocol_port_b",
-		"protocol_port_c",
-		"protocol_port_d"
-};
-
-const char ArtNetParamsConst::MAP_UNIVERSE0[] = "map_universe0";
+void emac_eth_send(void *packet, int len) {
+	enet_frame_transmit((uint8_t *) packet, len);
+}

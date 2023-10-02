@@ -184,6 +184,12 @@ const uint8_t *Dmx::GetDmxAvailable(__attribute__((unused)) uint32_t nPortIndex)
 	return const_cast<const uint8_t *>(dmxDataRx.Data);
 }
 
+const uint8_t *Dmx::GetDmxChanged(uint32_t nPortIndex) {
+	const auto *p = GetDmxAvailable(nPortIndex);
+	// This function is not implemented
+	return p;
+}
+
 const uint8_t* Dmx::GetDmxCurrentData(__attribute__((unused)) uint32_t nPortIndex) {
 	return const_cast<const uint8_t *>(dmxDataRx.Data);
 }
@@ -246,7 +252,7 @@ const uint8_t *Dmx::RdmReceiveTimeOut(uint32_t nPortIndex, uint16_t nTimeOut) {
 		if ((p = const_cast<uint8_t*>(RdmReceive(nPortIndex))) != nullptr) {
 			return reinterpret_cast<const uint8_t*>(p);
 		}
-	} while (( micros() - nMicros) < (static_cast<uint32_t>(nTimeOut) + 50000U));
+	} while (( micros() - nMicros) < (static_cast<uint32_t>(nTimeOut) + 100000U));
 
 	return p;
 }
