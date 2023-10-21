@@ -1,8 +1,8 @@
 /**
- * net_phy_string.cpp
+ * @file mcp23x08.h
  *
  */
-/* Copyright (C) 2023 by Arjan van Vught mailto:info@gd32-dmx.org
+/* Copyright (C) 2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,35 +23,23 @@
  * THE SOFTWARE.
  */
 
+#ifndef MCP23X08_H_
+#define MCP23X08_H_
+
 #include <cstdint>
-#include <cassert>
 
-#include "emac/phy.h"
+namespace mcp23x08 {
+static constexpr uint8_t REG_IODIR   = 0x00;
+static constexpr uint8_t REG_IPOL    = 0x01;
+static constexpr uint8_t REG_GPINTEN = 0x02;
+static constexpr uint8_t REG_DEFVAL  = 0x03;
+static constexpr uint8_t REG_INTCON  = 0x04;
+static constexpr uint8_t REG_IOCON   = 0x05;
+static constexpr uint8_t REG_GPPU    = 0x06;
+static constexpr uint8_t REG_INTF	 = 0x07;
+static constexpr uint8_t REG_INTCAP  = 0x08;
+static constexpr uint8_t REG_GPIO    = 0x09;
+static constexpr uint8_t REG_OLAT    = 0x0A;
+}   // namespace mcp23x08
 
-#if !defined (ARRAY_SIZE)
-# define ARRAY_SIZE(x) (sizeof(x) / sizeof((x)[0]))
-#endif
-
-namespace net {
-static constexpr char SPEED[3][10] = { "10baseT", "100baseTX", "1000baseT" };
-
-const char *phy_string_get_link(const Link link) {
-	return link == Link::STATE_UP ? "up" : "down";
-}
-
-const char *phy_string_get_duplex(const Duplex duplex) {
-	return duplex == Duplex::DUPLEX_HALF ? "half" : "full";
-}
-
-const char *phy_string_get_speed(const Speed speed) {
-	const auto nIndex = static_cast<uint32_t>(speed);
-
-	assert(nIndex < ARRAY_SIZE(SPEED));
-	return SPEED[nIndex];
-}
-
-const char *phy_string_get_autonegotiation(const bool autonegotiation) {
-	return autonegotiation ? "on" : "off";
-}
-
-}
+#endif /* MCP23X08_H_ */
