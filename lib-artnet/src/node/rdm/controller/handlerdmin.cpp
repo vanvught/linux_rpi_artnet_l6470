@@ -32,7 +32,7 @@
 
 #include "artnetnode.h"
 #include "artnet.h"
-#include "artnetrdm.h"
+#include "artnetrdmcontroller.h"
 
 #include "network.h"
 #include "hardware.h"
@@ -51,7 +51,7 @@ void ArtNetNode::HandleRdmIn() {
 
 		const auto nPage = nPortIndex;
 
-		if (m_pArtNetRdm->RdmReceive(nPortIndex, pArtRdm->RdmPacket)) {
+		if (m_pArtNetRdmController->RdmReceive(nPortIndex, pArtRdm->RdmPacket)) {
 			memcpy(pArtRdm->Id, artnet::NODE_ID, sizeof(pArtRdm->Id));
 			pArtRdm->OpCode = static_cast<uint16_t>(artnet::OpCodes::OP_RDM);
 			pArtRdm->ProtVerHi = 0;

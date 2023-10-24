@@ -27,7 +27,7 @@
 #define LINUX_HAL_GPIO_H_
 
 #if defined (RASPPI)
-
+#define GPIO_PULL_UP	BCM2835_GPIO_PUD_UP
 #else
 
 #if !defined(LOW)

@@ -34,6 +34,10 @@ ifneq ($(MAKE_FLAGS),)
 		EXTRA_INCLUDES+=../lib-oscserver/include
 	endif
 	
+	ifeq ($(findstring RDM_CONTROLLER,$(MAKE_FLAGS)), RDM_CONTROLLER)
+		EXTRA_INCLUDES+=../lib-rdm/include ../lib-dmx/include
+	endif
+	
 	ifeq ($(findstring RDM_RESPONDER,$(MAKE_FLAGS)), RDM_RESPONDER)
 		EXTRA_INCLUDES+=../lib-rdmresponder/include ../lib-rdm/include
 		EXTRA_INCLUDES+=../lib-rdmsensor/include ../lib-rdmsubdevice/include

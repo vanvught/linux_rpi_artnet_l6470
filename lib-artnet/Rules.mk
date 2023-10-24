@@ -7,12 +7,19 @@ ifneq ($(MAKE_FLAGS),)
 		EXTRA_SRCDIR+=src/node/dmxin
 		EXTRA_INCLUDES+=../lib-dmx/include
 	endif
+	
 	ifeq ($(findstring RDM_CONTROLLER,$(MAKE_FLAGS)), RDM_CONTROLLER)
 		EXTRA_SRCDIR+=src/node/rdm
+		EXTRA_SRCDIR+=src/node/rdm/controller
+		EXTRA_INCLUDES+=../lib-rdm/include
 	endif
+	
 	ifeq ($(findstring RDM_RESPONDER,$(MAKE_FLAGS)), RDM_RESPONDER)
 		EXTRA_SRCDIR+=src/node/rdm
+		EXTRA_SRCDIR+=src/node/rdm/responder
+		EXTRA_INCLUDES+=../lib-rdm/include
 	endif
+	
 	ifeq ($(findstring ARTNET_HAVE_TIMECODE,$(MAKE_FLAGS)), ARTNET_HAVE_TIMECODE)
 		EXTRA_SRCDIR+=src/node/timecode
 	endif
@@ -41,6 +48,7 @@ else
 	EXTRA_INCLUDES+=src/node/failsafe
 	EXTRA_INCLUDES+=../lib-e131/include
 	EXTRA_INCLUDES+=../lib-dmx/include
+	EXTRA_INCLUDES+=../lib-rdm/include
 	DEFINES+=ARTNET_HAVE_TIMECODE
 	DEFINES+=ARTNET_HAVE_FAILSAFE_RECORD
 	DEFINES+=ARTNET_HAVE_DMXIN E131_HAVE_DMXIN

@@ -199,7 +199,7 @@ int main(int argc, char **argv) {
 		artnetParams.Set(DMXPORT_OFFSET);
 	}
 
-	node.SetRdm(0, true);
+	node.SetRdm(static_cast<uint32_t>(0), true);
 	node.SetOutput(pBoard);
 	node.SetUniverse(0, lightset::PortDir::OUTPUT, artnetParams.GetUniverse(0));
 
@@ -238,7 +238,7 @@ int main(int argc, char **argv) {
 
 	rdmResponder.Print();
 
-	node.SetRdmHandler(&rdmResponder, true);
+	node.SetRdmResponder(&rdmResponder);
 	node.Print();
 
 	pBoard->Print();

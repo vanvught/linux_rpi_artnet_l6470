@@ -56,7 +56,7 @@ ifeq ($(findstring ARTNET_CONTROLLER,$(DEFINES)),ARTNET_CONTROLLER)
 endif
 
 ifeq ($(findstring RDM_CONTROLLER,$(DEFINES)),RDM_CONTROLLER)
-	LIBS+=rdmdiscovery rdm
+	LIBS+=rdm
 	DMX=1
 endif
 
@@ -66,9 +66,6 @@ ifeq ($(findstring RDM_RESPONDER,$(DEFINES)),RDM_RESPONDER)
 		ifneq ($(findstring dmxreceiver,$(LIBS)),dmxreceiver)
 			LIBS+=dmxreceiver
 		endif
-	endif
-	ifneq ($(findstring rdmresponder,$(LIBS)),rdmresponder)
-		LIBS+=rdmresponder
 	endif
 	ifneq ($(findstring rdmsensor,$(LIBS)),rdmsensor)
 		LIBS+=rdmsensor
