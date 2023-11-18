@@ -27,10 +27,7 @@
 #include <cstdio>
 #include <cstring>
 #include <stdlib.h>
-#include <unistd.h>
 #include <cassert>
-
-#include "bcm2835.h"
 
 #include "hardware.h"
 #include "network.h"
@@ -95,16 +92,6 @@
 static constexpr uint32_t DMXPORT_OFFSET = 0;
 
 int main(int argc, char **argv) {
-	if (getuid() != 0) {
-		fprintf(stderr, "Program is not started as \'root\' (sudo)\n");
-		return -1;
-	}
-
-	if (bcm2835_init() == 0) {
-		fprintf(stderr, "Function bcm2835_init() failed\n");
-		return -2;
-	}
-
 	Hardware hw;
 	DisplayUdf display;
 	ConfigStore configStore;

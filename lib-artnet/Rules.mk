@@ -42,8 +42,7 @@ ifneq ($(MAKE_FLAGS),)
 		EXTRA_INCLUDES+=../lib-e131/include
 	endif
 else
-	EXTRA_SRCDIR+=src/node src/node/failsafe src/node/dmxin src/node/rdm src/node/timecode
-	EXTRA_SRCDIR+=src/controller
+	EXTRA_SRCDIR+=src/node src/node/failsafe src/node/dmxin src/node/rdm src/node/rdm/controller src/node/timecode
 	EXTRA_SRCDIR+=src/node/4
 	EXTRA_INCLUDES+=src/node/failsafe
 	EXTRA_INCLUDES+=../lib-e131/include

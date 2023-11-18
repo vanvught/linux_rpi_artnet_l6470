@@ -25,6 +25,7 @@
 
 #include <cstdint>
 #include <cstring>
+#include <cstdio>
 #include <cassert>
 
 #include "rdmdiscovery.h"
@@ -86,6 +87,34 @@ RDMDiscovery::RDMDiscovery(const uint8_t *pUid) {
 #endif
 }
 
+uint32_t RDMDiscovery::CopyWorkingQueue(char *pOutBuffer, const uint32_t nOutBufferSize) {
+	const auto nSize = static_cast<int32_t>(nOutBufferSize);
+	int32_t nIndex = 0;
+	int32_t nLength = 0;
+	uint8_t pLowerBound[RDM_UID_SIZE];
+	uint8_t pUpperBound[RDM_UID_SIZE];
+
+	while (nIndex <= m_Discovery.stack.nTop) {
+		memcpy(pLowerBound, rdmdiscovery::convert_uid(m_Discovery.stack.items[nIndex].nLowerBound), RDM_UID_SIZE);
+		memcpy(pUpperBound, rdmdiscovery::convert_uid(m_Discovery.stack.items[nIndex].nUpperBound), RDM_UID_SIZE);
+
+		nLength += snprintf(&pOutBuffer[nLength], static_cast<size_t>(nSize - nLength),
+				"\"%.2x%.2x:%.2x%.2x%.2x%.2x-%.2x%.2x:%.2x%.2x%.2x%.2x\",",
+				pLowerBound[0], pLowerBound[1], pLowerBound[2], pLowerBound[3], pLowerBound[4], pLowerBound[5],
+				pUpperBound[0], pUpperBound[1], pUpperBound[2], pUpperBound[3], pUpperBound[4], pUpperBound[5]);
+
+		nIndex++;
+	}
+
+	if (nLength == 0) {
+		return 0;
+	}
+
+	pOutBuffer[nLength - 1] = '\0';
+
+	return static_cast<uint32_t>(nLength - 1);
+}
+
 bool RDMDiscovery::Full(const uint32_t nPortIndex, RDMTod *pRDMTod) {
 	DEBUG_ENTRY
 	pRDMTod->Reset();
@@ -126,6 +155,7 @@ bool RDMDiscovery::Start(const uint32_t nPortIndex, RDMTod *pRDMTod, const bool 
 	m_Discovery.stack.nTop = -1;
 	m_Discovery.stack.push(0x000000000000, 0xfffffffffffe);
 //	m_Discovery.stack.push(0x5000c0a802c0, 0x5000c0a802c0);
+	m_Discovery.nCounter = rdmdiscovery::DISCOVERY_COUNTER;
 
 	m_Discovery.bCommandRunning = false;
 

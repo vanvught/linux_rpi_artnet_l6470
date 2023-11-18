@@ -48,6 +48,7 @@
 									<listOptionValue builtIn="false" value="OUTPUT_DMX_SEND"/>
 									<listOptionValue builtIn="false" value="ARTNET_VERSION=4"/>
 									<listOptionValue builtIn="false" value="RDM_RESPONDER"/>
+									<listOptionValue builtIn="false" value="CONFIG_PANELLED_RDM_PORT"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.272354303" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -78,6 +79,7 @@
 									<listOptionValue builtIn="false" value="OUTPUT_DMX_SEND"/>
 									<listOptionValue builtIn="false" value="ARTNET_VERSION=4"/>
 									<listOptionValue builtIn="false" value="RDM_RESPONDER"/>
+									<listOptionValue builtIn="false" value="CONFIG_PANELLED_RDM_PORT"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.2086813026" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -171,6 +173,7 @@
 									<listOptionValue builtIn="false" value="OUTPUT_DMX_SEND"/>
 									<listOptionValue builtIn="false" value="ARTNET_VERSION=4"/>
 									<listOptionValue builtIn="false" value="RDM_RESPONDER"/>
+									<listOptionValue builtIn="false" value="CONFIG_PANELLED_RDM_PORT"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1814233140" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -200,6 +203,7 @@
 									<listOptionValue builtIn="false" value="OUTPUT_DMX_SEND"/>
 									<listOptionValue builtIn="false" value="ARTNET_VERSION=4"/>
 									<listOptionValue builtIn="false" value="RDM_RESPONDER"/>
+									<listOptionValue builtIn="false" value="CONFIG_PANELLED_RDM_PORT"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.138434766" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
@@ -294,6 +298,7 @@
 									<listOptionValue builtIn="false" value="OUTPUT_DMX_SEND"/>
 									<listOptionValue builtIn="false" value="ARTNET_VERSION=4"/>
 									<listOptionValue builtIn="false" value="RDM_RESPONDER"/>
+									<listOptionValue builtIn="false" value="CONFIG_PANELLED_RDM_PORT"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.1117533543" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>
@@ -325,6 +330,7 @@
 									<listOptionValue builtIn="false" value="OUTPUT_DMX_SEND"/>
 									<listOptionValue builtIn="false" value="ARTNET_VERSION=4"/>
 									<listOptionValue builtIn="false" value="RDM_RESPONDER"/>
+									<listOptionValue builtIn="false" value="CONFIG_PANELLED_RDM_PORT"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.168898796" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>

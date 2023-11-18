@@ -30,8 +30,8 @@
 #define ARTNETNODE_H_
 
 #include <cstdint>
-#include <cstring>
 #include <cstdarg>
+#include <cstring>
 #include <cstdio>
 #include <cassert>
 
@@ -64,6 +64,8 @@
 #include "lightset.h"
 #include "hardware.h"
 #include "network.h"
+
+#include "panel_led.h"
 
 #include "debug.h"
 
@@ -140,7 +142,6 @@ struct State {
 
 struct Node {
 	uint32_t IPAddressTimeCode;
-	bool IsRdmResponder;
 	bool bMapUniverse0;										///< Art-Net 4
 	struct {
 		char ShortName[artnet::SHORT_NAME_LENGTH];
@@ -179,15 +180,19 @@ struct InputPort {
 };
 
 inline artnetnode::FailSafe convert_failsafe(const lightset::FailSafe failsafe) {
-	const auto fs = static_cast<FailSafe>(static_cast<uint32_t>(failsafe) + static_cast<uint32_t>(FailSafe::LAST));
-	DEBUG_PRINTF("failsafe=%u, fs=%u", static_cast<uint32_t>(failsafe), static_cast<uint32_t>(fs));
-	return fs;
+	if (failsafe > lightset::FailSafe::PLAYBACK) {
+		return artnetnode::FailSafe::LAST;
+	}
+
+	return static_cast<artnetnode::FailSafe>(static_cast<uint32_t>(failsafe) + static_cast<uint32_t>(artnetnode::FailSafe::LAST));
 }
 
 inline lightset::FailSafe convert_failsafe(const artnetnode::FailSafe failsafe) {
-	const auto fs = static_cast<lightset::FailSafe>(static_cast<uint32_t>(failsafe) - static_cast<uint32_t>(FailSafe::LAST));
-	DEBUG_PRINTF("failsafe=%u, fs=%u", static_cast<uint32_t>(failsafe), static_cast<uint32_t>(fs));
-	return fs;
+	if (failsafe > artnetnode::FailSafe::RECORD) {
+		return lightset::FailSafe::HOLD;
+	}
+
+	return  static_cast<lightset::FailSafe>(static_cast<uint32_t>(failsafe) - static_cast<uint32_t>(artnetnode::FailSafe::LAST));
 }
 }  // namespace artnetnode
 
@@ -213,19 +218,17 @@ public:
 #if (ARTNET_VERSION >= 4)
 		E131Bridge::Run();
 #endif
-#if defined (LIGHTSET_HAVE_RUN)
-		m_pLightSet->Run();
-#endif
 #if defined (RDM_CONTROLLER)
-		if (m_State.rdm.IsEnabled) {
+		if (__builtin_expect((m_State.rdm.IsEnabled), 0)) {
+			assert(m_pArtNetRdmController != nullptr);
 			m_pArtNetRdmController->Run();
 
-			if (!m_State.rdm.IsDiscoveryRunning && ((m_nCurrentPacketMillis - m_State.rdm.nDiscoveryMillis) > (1000 * 60 * 1))) {
+			if (__builtin_expect((!m_State.rdm.IsDiscoveryRunning && ((m_nCurrentPacketMillis - m_State.rdm.nDiscoveryMillis) > (1000 * 60 * 15))), 0)) {
 				DEBUG_PUTS("RDM Discovery -> START");
 				m_State.rdm.IsDiscoveryRunning = true;
 			}
 
-			if (m_State.rdm.IsDiscoveryRunning) {
+			if (__builtin_expect((m_State.rdm.IsDiscoveryRunning), 0)) {
 				m_State.rdm.IsDiscoveryRunning = RdmDiscoveryRun();
 
 				if (!m_State.rdm.IsDiscoveryRunning) {
@@ -233,9 +236,37 @@ public:
 					m_State.rdm.nDiscoveryPortIndex = 0;
 					m_State.rdm.nDiscoveryMillis = m_nCurrentPacketMillis;
 				}
+			} else {
+				uint32_t nPortIndex;
+				bool bIsIncremental;
+				if (m_pArtNetRdmController->IsFinished(nPortIndex, bIsIncremental)) {
+					SendTod(nPortIndex);
+
+					DEBUG_PRINTF("TOD sent -> %u", nPortIndex);
+
+					if (m_OutputPort[nPortIndex].IsTransmitting) {
+						DEBUG_PUTS("m_pLightSet->Stop/Start");
+						m_pLightSet->Stop(nPortIndex);
+						m_pLightSet->Start(nPortIndex);
+					}
+				}
 			}
 		}
 #endif
+		if ((m_nCurrentPacketMillis - m_nPreviousLedpanelMillis) > 200) {
+			m_nPreviousLedpanelMillis = m_nCurrentPacketMillis;
+			for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
+				hal::panel_led_off(hal::panelled::PORT_A_TX << nPortIndex);
+#if defined (ARTNET_HAVE_DMXIN)
+				hal::panel_led_off(hal::panelled::PORT_A_RX << nPortIndex);
+#endif
+#if defined(CONFIG_PANELLED_RDM_PORT)
+				hal::panel_led_off(hal::panelled::PORT_A_RDM << nPortIndex);
+#elif defined(CONFIG_PANELLED_RDM_NO_PORT)
+				hal::panel_led_off(hal::panelled::RDM << nPortIndex);
+#endif
+			}
+		}
 	}
 
 	uint8_t GetVersion() const {
@@ -403,6 +434,11 @@ public:
 		return lightset::MergeMode::HTP;
 	}
 
+	void SetRdm(const bool doEnable);
+	bool GetRdm() const {
+		return m_State.rdm.IsEnabled;
+	}
+
 	void SetRdm(const uint32_t nPortIndex, const bool bEnable);
 	bool GetRdm(const uint32_t nPortIndex) const {
 		assert(nPortIndex < artnetnode::MAX_PORTS);
@@ -410,11 +446,37 @@ public:
 	}
 
 #if defined (RDM_CONTROLLER)
-	void SetRdmController(ArtNetRdmController *pArtNetRdmController);
+	void SetRdmController(ArtNetRdmController *pArtNetRdmController, const bool doEnable = true);
+
+	uint32_t RdmCopyWorkingQueue(char *pOutBuffer, const uint32_t nOutBufferSize) {
+		if (m_pArtNetRdmController != nullptr) {
+			return m_pArtNetRdmController->CopyWorkingQueue(pOutBuffer, nOutBufferSize);
+		}
+
+		return 0;
+	}
+
+	uint32_t RdmCopyTod(const uint32_t nPortIndex, char *pOutBuffer, const uint32_t nOutBufferSize) {
+		if (m_pArtNetRdmController != nullptr) {
+			return m_pArtNetRdmController->CopyTod(nPortIndex, pOutBuffer, nOutBufferSize);
+		}
+
+		return 0;
+	}
+
+	bool RdmIsRunning(uint32_t nPortIndex, bool& bIsIncremental) {
+		uint32_t nRdmnPortIndex;
+		if (m_pArtNetRdmController->IsRunning(nRdmnPortIndex, bIsIncremental)) {
+			return (nRdmnPortIndex == nPortIndex);
+		}
+
+		return false;
+	}
+
 #endif
 
 #if defined (RDM_RESPONDER)
-	void SetRdmResponder(ArtNetRdmResponder *pArtNetRdmResponder);
+	void SetRdmResponder(ArtNetRdmResponder *pArtNetRdmResponder, const bool doEnable = true);
 #endif
 
 	void SetDisableMergeTimeout(bool bDisable) {
@@ -435,8 +497,6 @@ public:
 	}
 
 	void SetTimeCodeIp(uint32_t nDestinationIp);
-
-	void SetRdm(const bool bEnableRmd, const bool IsResponder = false);
 
 	void SetArtNetStore(ArtNetStore *pArtNetStore) {
 		m_pArtNetStore = pArtNetStore;
@@ -545,10 +605,11 @@ private:
 	void SetNetSwitch(const uint32_t nPortIndex, const uint8_t nNetSwitch);
 	void SetSubnetSwitch(const uint32_t nPortIndex, const uint8_t nSubnetSwitch);
 
+#undef UNUSED
 #if defined (ARTNET_ENABLE_SENDDIAG)
 # define UNUSED
 #else
-# define UNUSED	__attribute__((unused))
+# define UNUSED  __attribute__((unused))
 #endif
 
 	void SendDiag(UNUSED const artnet::PriorityCodes priorityCode, UNUSED const char *format, ...) {
@@ -580,10 +641,6 @@ private:
 #endif
 	}
 
-#if defined (ARTNET_ENABLE_SENDDIAG)
-# undef UNUSED
-#endif
-
 	void HandlePoll();
 	void HandleDmx();
 	void HandleSync();
@@ -594,6 +651,7 @@ private:
 	void HandleTodData();
 	void HandleTodRequest();
 	void HandleRdm();
+	void HandleRdmSub();
 	void HandleIpProg();
 	void HandleDmxIn();
 	void HandleInput();
@@ -621,7 +679,7 @@ private:
 
 #if defined (RDM_CONTROLLER)
 	bool RdmDiscoveryRun() {
-		if (GetRdm(m_State.rdm.nDiscoveryPortIndex)) {
+		if ((GetPortDirection(m_State.rdm.nDiscoveryPortIndex) == lightset::PortDir::OUTPUT) && (GetRdm(m_State.rdm.nDiscoveryPortIndex))) {
 			uint32_t nPortIndex;
 			bool bIsIncremental;
 
@@ -630,7 +688,11 @@ private:
 
 				SendTod(nPortIndex);
 
-				if (m_OutputPort[nPortIndex].IsTransmitting && (!m_Node.IsRdmResponder)) {
+				DEBUG_PUTS("TOD sent");
+
+				if (m_OutputPort[nPortIndex].IsTransmitting) {
+					DEBUG_PUTS("m_pLightSet->Stop/Start");
+					m_pLightSet->Stop(nPortIndex);
 					m_pLightSet->Start(nPortIndex);
 				}
 
@@ -657,6 +719,7 @@ private:
 	uint32_t m_nIpAddressFrom;
 	uint32_t m_nCurrentPacketMillis { 0 };
 	uint32_t m_nPreviousPacketMillis { 0 };
+	uint32_t m_nPreviousLedpanelMillis { 0 };
 
 	LightSet *m_pLightSet { nullptr };
 
@@ -680,12 +743,12 @@ private:
 		artnet::ArtRdm ArtRdm;
 	};
 	UArtTodPacket m_ArtTodPacket;
+#endif
 #if defined (RDM_CONTROLLER)
 	ArtNetRdmController *m_pArtNetRdmController;
 #endif
 #if defined (RDM_RESPONDER)
 	ArtNetRdmResponder *m_pArtNetRdmResponder;
-#endif
 #endif
 #if defined (ARTNET_HAVE_TIMECODE)
 	artnet::ArtTimeCode m_ArtTimeCode;
@@ -697,4 +760,7 @@ private:
 	static ArtNetNode *s_pThis;
 };
 
+#if defined (UNUSED)
+# undef UNUSED
+#endif
 #endif /* ARTNETNODE_H_ */

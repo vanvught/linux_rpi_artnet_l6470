@@ -81,11 +81,41 @@ public:
 	}
 
 	bool IsRunning(uint32_t& nPortIndex, bool& bIsIncremental) {
-		return RDMDiscovery::isRunning(nPortIndex, bIsIncremental);
+		return RDMDiscovery::IsRunning(nPortIndex, bIsIncremental);
 	}
 
 	bool IsFinished(uint32_t& nPortIndex, bool& bIsIncremental) {
-		return RDMDiscovery::isFinished(nPortIndex, bIsIncremental);
+		return RDMDiscovery::IsFinished(nPortIndex, bIsIncremental);
+	}
+
+	uint32_t CopyWorkingQueue(char *pOutBuffer, const uint32_t nOutBufferSize) {
+		return RDMDiscovery::CopyWorkingQueue(pOutBuffer, nOutBufferSize);
+	}
+
+	uint32_t CopyTod(const uint32_t nPortIndex, char *pOutBuffer, const uint32_t nOutBufferSize) {
+		assert(nPortIndex < artnetnode::MAX_PORTS);
+
+		const auto nSize = static_cast<int32_t>(nOutBufferSize);
+		int32_t nLength = 0;
+
+		for (uint32_t nCount = 0; nCount < m_pRDMTod[nPortIndex].GetUidCount(); nCount++) {
+			uint8_t uid[RDM_UID_SIZE];
+
+			m_pRDMTod[nPortIndex].CopyUidEntry(nCount, uid);
+
+			nLength += snprintf(&pOutBuffer[nLength], static_cast<size_t>(nSize - nLength),
+					"\"%.2x%.2x:%.2x%.2x%.2x%.2x\",",
+					uid[0], uid[1], uid[2], uid[3], uid[4], uid[5]);
+		}
+
+		if (nLength == 0) {
+			return 0;
+		}
+
+		pOutBuffer[nLength - 1] = '\0';
+
+		return static_cast<uint32_t>(nLength - 1);
+
 	}
 
 	// Gateway

@@ -34,13 +34,13 @@
 #include "debug.h"
 
 namespace rdmdiscovery {
-//#ifndef NDEBUG
- static constexpr uint32_t RECEIVE_TIME_OUT = 500000;
- static constexpr uint32_t LATE_RESPONSE_TIME_OUT = 500000;
-//#else
-// static constexpr uint32_t RECEIVE_TIME_OUT = 2800;
-// static constexpr uint32_t LATE_RESPONSE_TIME_OUT = 1000;
-//#endif
+#ifndef NDEBUG
+ static constexpr uint32_t RECEIVE_TIME_OUT = 28000;
+ static constexpr uint32_t LATE_RESPONSE_TIME_OUT = 40000;
+#else
+ static constexpr uint32_t RECEIVE_TIME_OUT = 2800;
+ static constexpr uint32_t LATE_RESPONSE_TIME_OUT = 1000;
+#endif
 static constexpr uint32_t UNMUTE_COUNTER = 3;
 static constexpr uint32_t MUTE_COUNTER = 10;
 static constexpr uint32_t DISCOVERY_STACK_SIZE = rdmtod::TOD_TABLE_SIZE;
@@ -71,13 +71,13 @@ public:
 
 	bool Stop();
 
-	bool isRunning(uint32_t& nPortIndex, bool& bIsIncremental) const {
+	bool IsRunning(uint32_t& nPortIndex, bool& bIsIncremental) const {
 		nPortIndex = m_nPortIndex;
 		bIsIncremental = m_doIncremental;
 		return (m_State != rdmdiscovery::State::IDLE);
 	}
 
-	bool isFinished(uint32_t& nPortIndex, bool& bIsIncremental) {
+	bool IsFinished(uint32_t& nPortIndex, bool& bIsIncremental) {
 		nPortIndex = m_nPortIndex;
 		bIsIncremental = m_doIncremental;
 
@@ -88,6 +88,8 @@ public:
 
 		return false;
 	}
+
+	uint32_t CopyWorkingQueue(char *pOutBuffer, const uint32_t nOutBufferSize);
 
 	void Run() {
 		if (__builtin_expect((m_State == rdmdiscovery::State::IDLE), 1)) {
