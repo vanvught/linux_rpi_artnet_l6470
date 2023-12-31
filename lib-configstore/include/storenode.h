@@ -26,8 +26,8 @@
 #ifndef STORENODE_H_
 #define STORENODE_H_
 
-#include <stdint.h>
-#include <cassert>
+#include <cstdint>
+#include <cstddef>
 
 #include "nodeparams.h"
 #include "nodestore.h"
@@ -36,30 +36,14 @@
 
 #include "debug.h"
 
-class StoreNode final: public NodeParamsStore, public NodeStore {
+class StoreNode final: public NodeStore {
 public:
 	StoreNode(uint32_t nPortIndexOffset = 0);
-
-	void Update(const struct nodeparams::Params* pArtNetParams) override {
-		DEBUG_ENTRY
-
-		ConfigStore::Get()->Update(configstore::Store::NODE, pArtNetParams, sizeof(struct nodeparams::Params));
-
-		DEBUG_EXIT
-	}
-
-	void Copy(struct nodeparams::Params* pArtNetParams) override {
-		DEBUG_ENTRY
-
-		ConfigStore::Get()->Copy(configstore::Store::NODE, pArtNetParams, sizeof(struct nodeparams::Params));
-
-		DEBUG_EXIT
-	}
 
 	void SaveFailSafe(uint8_t nFailSafe) override {
 		DEBUG_ENTRY
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct nodeparams::Params, nFailSafe), &nFailSafe, sizeof(uint8_t), nodeparams::Mask::FAILSAFE);
+		ConfigStore::Get()->Update(configstore::Store::NODE, offsetof(struct nodeparams::Params, nFailSafe), &nFailSafe, sizeof(uint8_t), nodeparams::Mask::FAILSAFE);
 
 		DEBUG_EXIT
 	}
@@ -67,7 +51,7 @@ public:
 	void SaveShortName(uint32_t nPortIndex, const char *pShortName) override {
 		DEBUG_ENTRY
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, nPortIndex * 0 + __builtin_offsetof(struct nodeparams::Params, aLabel), pShortName, artnet::SHORT_NAME_LENGTH, nodeparams::Mask::SHORT_NAME);
+		ConfigStore::Get()->Update(configstore::Store::NODE, nPortIndex * 0 + offsetof(struct nodeparams::Params, aLabel), pShortName, artnet::SHORT_NAME_LENGTH, nodeparams::Mask::SHORT_NAME);
 
 		DEBUG_EXIT
 	}
@@ -75,7 +59,7 @@ public:
 	void SaveLongName(const char *pLongName) override {
 		DEBUG_ENTRY
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct nodeparams::Params, aLongName), pLongName, artnet::LONG_NAME_LENGTH, nodeparams::Mask::LONG_NAME);
+		ConfigStore::Get()->Update(configstore::Store::NODE, offsetof(struct nodeparams::Params, aLongName), pLongName, artnet::LONG_NAME_LENGTH, nodeparams::Mask::LONG_NAME);
 
 		DEBUG_EXIT
 	}
@@ -99,7 +83,7 @@ public:
 		}
 
 		uint16_t nMergeMode;
-		ConfigStore::Get()->Copy(configstore::Store::NODE, &nMergeMode, sizeof(uint16_t), __builtin_offsetof(struct nodeparams::Params, nMergeMode));
+		ConfigStore::Get()->Copy(configstore::Store::NODE, &nMergeMode, sizeof(uint16_t), offsetof(struct nodeparams::Params, nMergeMode));
 
 		nMergeMode &= nodeparams::clear_mask(nPortIndex);
 
@@ -110,7 +94,7 @@ public:
 			nMergeMode |= nodeparams::shift_left(static_cast<uint32_t>(lightset::MergeMode::HTP), nPortIndex);
 		}
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct nodeparams::Params, nMergeMode), &nMergeMode, sizeof(uint16_t));
+		ConfigStore::Get()->Update(configstore::Store::NODE, offsetof(struct nodeparams::Params, nMergeMode), &nMergeMode, sizeof(uint16_t));
 
 		DEBUG_EXIT
 	}
@@ -134,7 +118,7 @@ public:
 		}
 
 		uint16_t nProtocol;
-		ConfigStore::Get()->Copy(configstore::Store::NODE, &nProtocol, sizeof(uint16_t), __builtin_offsetof(struct nodeparams::Params, nProtocol));
+		ConfigStore::Get()->Copy(configstore::Store::NODE, &nProtocol, sizeof(uint16_t), offsetof(struct nodeparams::Params, nProtocol));
 
 		nProtocol &= nodeparams::clear_mask(nPortIndex);
 
@@ -145,7 +129,7 @@ public:
 			nProtocol |= nodeparams::shift_left(static_cast<uint32_t>(node::PortProtocol::ARTNET), nPortIndex);
 		}
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct nodeparams::Params, nProtocol), &nProtocol, sizeof(uint16_t));
+		ConfigStore::Get()->Update(configstore::Store::NODE, offsetof(struct nodeparams::Params, nProtocol), &nProtocol, sizeof(uint16_t));
 
 		DEBUG_EXIT
 	}
@@ -169,7 +153,7 @@ public:
 		}
 
 		uint8_t nOutputStyle;
-		ConfigStore::Get()->Copy(configstore::Store::NODE, &nOutputStyle, sizeof(uint8_t), __builtin_offsetof(struct nodeparams::Params, nOutputStyle));
+		ConfigStore::Get()->Copy(configstore::Store::NODE, &nOutputStyle, sizeof(uint8_t), offsetof(struct nodeparams::Params, nOutputStyle));
 
 		if (outputStyle == lightset::OutputStyle::CONSTANT) {
 			nOutputStyle |= static_cast<uint8_t>(1U << nPortIndex);
@@ -177,7 +161,7 @@ public:
 			nOutputStyle &= static_cast<uint8_t>(~(1U << nPortIndex));
 		}
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct nodeparams::Params, nOutputStyle), &nOutputStyle, sizeof(uint8_t));
+		ConfigStore::Get()->Update(configstore::Store::NODE, offsetof(struct nodeparams::Params, nOutputStyle), &nOutputStyle, sizeof(uint8_t));
 
 		DEBUG_EXIT
 	}
@@ -201,7 +185,7 @@ public:
 		}
 
 		uint16_t nRdm;
-		ConfigStore::Get()->Copy(configstore::Store::NODE, &nRdm, sizeof(uint16_t), __builtin_offsetof(struct nodeparams::Params, nRdm));
+		ConfigStore::Get()->Copy(configstore::Store::NODE, &nRdm, sizeof(uint16_t), offsetof(struct nodeparams::Params, nRdm));
 
 		nRdm &= nodeparams::clear_mask(nPortIndex);
 
@@ -210,7 +194,7 @@ public:
 			nRdm |= static_cast<uint16_t>(1U << (nPortIndex + 8));
 		}
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct nodeparams::Params, nRdm), &nRdm, sizeof(uint16_t));
+		ConfigStore::Get()->Update(configstore::Store::NODE, offsetof(struct nodeparams::Params, nRdm), &nRdm, sizeof(uint16_t));
 
 		DEBUG_EXIT
 	}
@@ -276,7 +260,7 @@ private:
 			return;
 		}
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, (sizeof(uint16_t) * nPortIndex) + __builtin_offsetof(struct nodeparams::Params, nUniverse), &nUniverse, sizeof(uint16_t), nodeparams::Mask::UNIVERSE_A << nPortIndex);
+		ConfigStore::Get()->Update(configstore::Store::NODE, (sizeof(uint16_t) * nPortIndex) + offsetof(struct nodeparams::Params, nUniverse), &nUniverse, sizeof(uint16_t), nodeparams::Mask::UNIVERSE_A << nPortIndex);
 
 		DEBUG_EXIT
 	}

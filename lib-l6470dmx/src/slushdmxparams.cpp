@@ -3,7 +3,7 @@
  * @file slushdmxparams.h
  *
  */
-/* Copyright (C) 2019-2021 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,10 +38,10 @@
 
 #include "slushdmxparams.h"
 #include "slushdmxparamsconst.h"
+#include "slushdmx.h"
+#include "storeslushdmx.h"
 
 #include "l6470dmxconst.h"
-
-#include "slushdmx.h"
 
 #include "lightset.h"
 
@@ -53,46 +53,34 @@
 
 using namespace lightset;
 
-SlushDmxParams::SlushDmxParams(SlushDmxParamsStore *pSlushDmxParamsStore): m_pSlushDmxParamsStore(pSlushDmxParamsStore) {
+SlushDmxParams::SlushDmxParams() {
 	assert(sizeof(m_aFileName) > strlen(L6470DmxConst::FILE_NAME_MOTOR));
 	strncpy(m_aFileName, L6470DmxConst::FILE_NAME_MOTOR, sizeof(m_aFileName));
 }
 
-bool SlushDmxParams::Load() {
-	m_tSlushDmxParams.nSetList = 0;
+void SlushDmxParams::Load() {
+	m_Params.nSetList = 0;
 
 	ReadConfigFile configfile(SlushDmxParams::staticCallbackFunction, this);
 
 	if (configfile.Read(SlushDmxParamsConst::FILE_NAME)) {
-		// There is a configuration file
-		if (m_pSlushDmxParamsStore != nullptr) {
-			m_pSlushDmxParamsStore->Update(&m_tSlushDmxParams);
-		}
-	} else if (m_pSlushDmxParamsStore != nullptr) {
-		m_pSlushDmxParamsStore->Copy(&m_tSlushDmxParams);
+		StoreSlushDmx::Update(&m_Params);
 	} else {
-		return false;
+		StoreSlushDmx::Copy(&m_Params);
 	}
-
-	return true;
 }
 
 void SlushDmxParams::Load(const char *pBuffer, uint32_t nLength) {
 	assert(pBuffer != nullptr);
 	assert(nLength != 0);
-	assert(m_pSlushDmxParamsStore != nullptr);
 
-	if (m_pSlushDmxParamsStore == nullptr) {
-		return;
-	}
-
-	m_tSlushDmxParams.nSetList = 0;
+	m_Params.nSetList = 0;
 
 	ReadConfigFile config(SlushDmxParams::staticCallbackFunction, this);
 
 	config.Read(pBuffer, nLength);
 
-	m_pSlushDmxParamsStore->Update(&m_tSlushDmxParams);
+	StoreSlushDmx::Update(&m_Params);
 }
 
 void SlushDmxParams::callbackFunction(const char *pLine) {
@@ -101,40 +89,40 @@ void SlushDmxParams::callbackFunction(const char *pLine) {
 
 	if (Sscan::Uint8(pLine, SlushDmxParamsConst::USE_SPI, value) == Sscan::OK) {
 		if (value != 0) {
-			m_tSlushDmxParams.nUseSpiBusy = 1;
-			m_tSlushDmxParams.nSetList |= SlushDmxParamsMask::USE_SPI_BUSY;
+			m_Params.nUseSpiBusy = 1;
+			m_Params.nSetList |= slushdmxparams::Mask::USE_SPI_BUSY;
 			return;
 		}
 	}
 
 	if (Sscan::Uint16(pLine, SlushDmxParamsConst::DMX_START_ADDRESS_PORT_A, value16) == Sscan::OK) {
 		if (value16 <= dmx::UNIVERSE_SIZE) {
-			m_tSlushDmxParams.nDmxStartAddressPortA = value16;
-			m_tSlushDmxParams.nSetList |= SlushDmxParamsMask::START_ADDRESS_PORT_A;
+			m_Params.nDmxStartAddressPortA = value16;
+			m_Params.nSetList |= slushdmxparams::Mask::START_ADDRESS_PORT_A;
 		}
 		return;
 	}
 
 	if (Sscan::Uint16(pLine, SlushDmxParamsConst::DMX_START_ADDRESS_PORT_B, value16) == Sscan::OK) {
 		if (value16 <= dmx::UNIVERSE_SIZE) {
-			m_tSlushDmxParams.nDmxStartAddressPortB = value16;
-			m_tSlushDmxParams.nSetList |= SlushDmxParamsMask::START_ADDRESS_PORT_B;
+			m_Params.nDmxStartAddressPortB = value16;
+			m_Params.nSetList |= slushdmxparams::Mask::START_ADDRESS_PORT_B;
 		}
 		return;
 	}
 
 	if (Sscan::Uint16(pLine, SlushDmxParamsConst::DMX_FOOTPRINT_PORT_A, value16) == Sscan::OK) {
 		if ((value16 > 0) && (value16 <= IO_PINS_IOPORT)) {
-			m_tSlushDmxParams.nDmxFootprintPortA = value16;
-			m_tSlushDmxParams.nSetList |= SlushDmxParamsMask::FOOTPRINT_PORT_A;
+			m_Params.nDmxFootprintPortA = value16;
+			m_Params.nSetList |= slushdmxparams::Mask::FOOTPRINT_PORT_A;
 		}
 		return;
 	}
 
 	if (Sscan::Uint16(pLine, SlushDmxParamsConst::DMX_FOOTPRINT_PORT_B, value16) == Sscan::OK) {
 		if ((value16 > 0) && (value16 <= IO_PINS_IOPORT)) {
-			m_tSlushDmxParams.nDmxFootprintPortB = value16;
-			m_tSlushDmxParams.nSetList |= SlushDmxParamsMask::FOOTPRINT_PORT_B;
+			m_Params.nDmxFootprintPortB = value16;
+			m_Params.nSetList |= slushdmxparams::Mask::FOOTPRINT_PORT_B;
 		}
 		return;
 	}
@@ -143,82 +131,51 @@ void SlushDmxParams::callbackFunction(const char *pLine) {
 void SlushDmxParams::Set(SlushDmx *pSlushDmx) {
 	assert(pSlushDmx != nullptr);
 
-	if (isMaskSet(SlushDmxParamsMask::USE_SPI_BUSY)) {
-		pSlushDmx->SetUseSpiBusy(m_tSlushDmxParams.nUseSpiBusy == 1);
+	if (isMaskSet(slushdmxparams::Mask::USE_SPI_BUSY)) {
+		pSlushDmx->SetUseSpiBusy(m_Params.nUseSpiBusy == 1);
 	}
 
-	if (isMaskSet(SlushDmxParamsMask::START_ADDRESS_PORT_A)) {
-		pSlushDmx->SetDmxStartAddressPortA(m_tSlushDmxParams.nDmxStartAddressPortA);
+	if (isMaskSet(slushdmxparams::Mask::START_ADDRESS_PORT_A)) {
+		pSlushDmx->SetDmxStartAddressPortA(m_Params.nDmxStartAddressPortA);
 	}
 
-	if (isMaskSet(SlushDmxParamsMask::FOOTPRINT_PORT_A)) {
-		pSlushDmx->SetDmxFootprintPortA(m_tSlushDmxParams.nDmxFootprintPortA);
+	if (isMaskSet(slushdmxparams::Mask::FOOTPRINT_PORT_A)) {
+		pSlushDmx->SetDmxFootprintPortA(m_Params.nDmxFootprintPortA);
 	}
 
-	if (isMaskSet(SlushDmxParamsMask::START_ADDRESS_PORT_B)) {
-		pSlushDmx->SetDmxStartAddressPortB(m_tSlushDmxParams.nDmxStartAddressPortB);
+	if (isMaskSet(slushdmxparams::Mask::START_ADDRESS_PORT_B)) {
+		pSlushDmx->SetDmxStartAddressPortB(m_Params.nDmxStartAddressPortB);
 	}
 
-	if (isMaskSet(SlushDmxParamsMask::FOOTPRINT_PORT_B)) {
-		pSlushDmx->SetDmxFootprintPortB(m_tSlushDmxParams.nDmxFootprintPortB);
+	if (isMaskSet(slushdmxparams::Mask::FOOTPRINT_PORT_B)) {
+		pSlushDmx->SetDmxFootprintPortB(m_Params.nDmxFootprintPortB);
 	}
 }
 
-void SlushDmxParams::Builder(const struct TSlushDmxParams *ptSlushDmxParams, char *pBuffer, uint32_t nLength, uint32_t& nSize) {
+void SlushDmxParams::Builder(const struct slushdmxparams::Params *ptSlushDmxParams, char *pBuffer, uint32_t nLength, uint32_t& nSize) {
 	assert(pBuffer != nullptr);
 
 	if (ptSlushDmxParams != nullptr) {
-		memcpy(&m_tSlushDmxParams, ptSlushDmxParams, sizeof(struct TSlushDmxParams));
+		memcpy(&m_Params, ptSlushDmxParams, sizeof(struct slushdmxparams::Params));
 	} else {
-		m_pSlushDmxParamsStore->Copy(&m_tSlushDmxParams);
+		StoreSlushDmx::Copy(&m_Params);
 	}
 
 	PropertiesBuilder builder(SlushDmxParamsConst::FILE_NAME, pBuffer, nLength);
 
-	builder.Add(SlushDmxParamsConst::USE_SPI, m_tSlushDmxParams.nUseSpiBusy, isMaskSet(SlushDmxParamsMask::USE_SPI_BUSY));
+	builder.Add(SlushDmxParamsConst::USE_SPI, m_Params.nUseSpiBusy, isMaskSet(slushdmxparams::Mask::USE_SPI_BUSY));
 
-	builder.Add(SlushDmxParamsConst::DMX_START_ADDRESS_PORT_A, m_tSlushDmxParams.nDmxStartAddressPortA, isMaskSet(SlushDmxParamsMask::START_ADDRESS_PORT_A));
-	builder.Add(SlushDmxParamsConst::DMX_FOOTPRINT_PORT_A, m_tSlushDmxParams.nDmxFootprintPortA, isMaskSet(SlushDmxParamsMask::FOOTPRINT_PORT_A));
+	builder.Add(SlushDmxParamsConst::DMX_START_ADDRESS_PORT_A, m_Params.nDmxStartAddressPortA, isMaskSet(slushdmxparams::Mask::START_ADDRESS_PORT_A));
+	builder.Add(SlushDmxParamsConst::DMX_FOOTPRINT_PORT_A, m_Params.nDmxFootprintPortA, isMaskSet(slushdmxparams::Mask::FOOTPRINT_PORT_A));
 
-	builder.Add(SlushDmxParamsConst::DMX_START_ADDRESS_PORT_B, m_tSlushDmxParams.nDmxStartAddressPortB, isMaskSet(SlushDmxParamsMask::START_ADDRESS_PORT_B));
-	builder.Add(SlushDmxParamsConst::DMX_FOOTPRINT_PORT_B, m_tSlushDmxParams.nDmxFootprintPortB, isMaskSet(SlushDmxParamsMask::FOOTPRINT_PORT_B));
+	builder.Add(SlushDmxParamsConst::DMX_START_ADDRESS_PORT_B, m_Params.nDmxStartAddressPortB, isMaskSet(slushdmxparams::Mask::START_ADDRESS_PORT_B));
+	builder.Add(SlushDmxParamsConst::DMX_FOOTPRINT_PORT_B, m_Params.nDmxFootprintPortB, isMaskSet(slushdmxparams::Mask::FOOTPRINT_PORT_B));
 
 	nSize = builder.GetSize();
 }
 
 void SlushDmxParams::Save(char *pBuffer, uint32_t nLength, uint32_t& nSize) {
-	if (m_pSlushDmxParamsStore == nullptr) {
-		nSize = 0;
-		return;
-	}
-
 	Builder(nullptr, pBuffer, nLength, nSize);
-}
-
-void SlushDmxParams::Dump() {
-#ifndef NDEBUG
-	printf("%s::%s \'%s\':\n", __FILE__, __FUNCTION__, SlushDmxParamsConst::FILE_NAME);
-
-	if (isMaskSet(SlushDmxParamsMask::USE_SPI_BUSY)) {
-		printf(" %s=%d [%s]\n", SlushDmxParamsConst::USE_SPI, m_tSlushDmxParams.nUseSpiBusy, m_tSlushDmxParams.nUseSpiBusy == 0 ? "No" : "Yes");
-	}
-
-	if (isMaskSet(SlushDmxParamsMask::START_ADDRESS_PORT_A)) {
-		printf(" %s=%d\n", SlushDmxParamsConst::DMX_START_ADDRESS_PORT_A, m_tSlushDmxParams.nDmxStartAddressPortA);
-	}
-
-	if (isMaskSet(SlushDmxParamsMask::FOOTPRINT_PORT_A)) {
-		printf(" %s=%d\n", SlushDmxParamsConst::DMX_FOOTPRINT_PORT_A, m_tSlushDmxParams.nDmxFootprintPortA);
-	}
-
-	if (isMaskSet(SlushDmxParamsMask::START_ADDRESS_PORT_B)) {
-		printf(" %s=%d\n", SlushDmxParamsConst::DMX_START_ADDRESS_PORT_B, m_tSlushDmxParams.nDmxStartAddressPortB);
-	}
-
-	if (isMaskSet(SlushDmxParamsMask::FOOTPRINT_PORT_B)) {
-		printf(" %s=%d\n", SlushDmxParamsConst::DMX_FOOTPRINT_PORT_B, m_tSlushDmxParams.nDmxFootprintPortB);
-	}
-#endif
 }
 
 void SlushDmxParams::staticCallbackFunction(void *p, const char *s) {
@@ -226,6 +183,15 @@ void SlushDmxParams::staticCallbackFunction(void *p, const char *s) {
 	assert(s != nullptr);
 
 	(static_cast<SlushDmxParams*>(p))->callbackFunction(s);
+}
+
+void SlushDmxParams::Dump() {
+	printf("%s::%s \'%s\':\n", __FILE__, __FUNCTION__, SlushDmxParamsConst::FILE_NAME);
+	printf(" %s=%d [%s]\n", SlushDmxParamsConst::USE_SPI, m_Params.nUseSpiBusy, m_Params.nUseSpiBusy == 0 ? "No" : "Yes");
+	printf(" %s=%d\n", SlushDmxParamsConst::DMX_START_ADDRESS_PORT_A, m_Params.nDmxStartAddressPortA);
+	printf(" %s=%d\n", SlushDmxParamsConst::DMX_FOOTPRINT_PORT_A, m_Params.nDmxFootprintPortA);
+	printf(" %s=%d\n", SlushDmxParamsConst::DMX_START_ADDRESS_PORT_B, m_Params.nDmxStartAddressPortB);
+	printf(" %s=%d\n", SlushDmxParamsConst::DMX_FOOTPRINT_PORT_B, m_Params.nDmxFootprintPortB);
 }
 
 #endif /* #if !defined(ORANGE_PI) */

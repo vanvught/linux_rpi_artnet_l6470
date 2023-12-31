@@ -26,36 +26,23 @@
 #ifndef STOREARTNET_H_
 #define STOREARTNET_H_
 
+#include <cstdint>
+#include <cstddef>
+
 #include "artnetparams.h"
 #include "artnetstore.h"
 #include "configstore.h"
 
 #include "debug.h"
 
-class StoreArtNet final: public ArtNetParamsStore, public ArtNetStore {
+class StoreArtNet final: public ArtNetStore {
 public:
 	StoreArtNet(uint32_t nPortIndexOffset);
-
-	void Update(const struct artnetparams::Params* pArtNetParams) override {
-		DEBUG_ENTRY
-
-		ConfigStore::Get()->Update(configstore::Store::NODE, pArtNetParams, sizeof(struct artnetparams::Params));
-
-		DEBUG_EXIT
-	}
-
-	void Copy(struct artnetparams::Params* pArtNetParams) override {
-		DEBUG_ENTRY
-
-		ConfigStore::Get()->Copy(configstore::Store::NODE, pArtNetParams, sizeof(struct artnetparams::Params));
-
-		DEBUG_EXIT
-	}
 
 	void SaveLongName(const char* pLongName) override {
 		DEBUG_ENTRY
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct artnetparams::Params, aLongName), pLongName, artnet::LONG_NAME_LENGTH, artnetparams::Mask::LONG_NAME);
+		ConfigStore::Get()->Update(configstore::Store::NODE, offsetof(struct artnetparams::Params, aLongName), pLongName, artnet::LONG_NAME_LENGTH, artnetparams::Mask::LONG_NAME);
 
 		DEBUG_EXIT
 	}
@@ -63,7 +50,7 @@ public:
 	void SaveFailSafe(const uint8_t nFailSafe) override {
 		DEBUG_ENTRY
 
-		ConfigStore::Get()->Update(configstore::Store::NODE, __builtin_offsetof(struct artnetparams::Params, nFailSafe), &nFailSafe, sizeof(uint8_t), artnetparams::Mask::FAILSAFE);
+		ConfigStore::Get()->Update(configstore::Store::NODE, offsetof(struct artnetparams::Params, nFailSafe), &nFailSafe, sizeof(uint8_t), artnetparams::Mask::FAILSAFE);
 
 		DEBUG_EXIT
 	}

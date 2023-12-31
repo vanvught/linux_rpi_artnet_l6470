@@ -44,6 +44,7 @@
 #include "motorparams.h"
 #include "modeparams.h"
 
+#include "hal_api.h"
 #include "hal_spi.h"
 #include "hal_gpio.h"
 

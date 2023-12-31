@@ -122,12 +122,15 @@ bool SparkFunDmxParams::Load(uint32_t nMotorIndex) {
 
 	ReadConfigFile configfile(SparkFunDmxParams::staticCallbackFunction, this);
 
+#if !defined(DISABLE_FS)
 	if (configfile.Read(m_aFileName)) {
-		// There is a configuration file
+		DEBUG_PUTS("There is a configuration file");
 		if (m_pSparkFunDmxParamsStore != nullptr) {
 			m_pSparkFunDmxParamsStore->Update(nMotorIndex, &m_tSparkFunDmxParams);
 		}
-	} else if (m_pSparkFunDmxParamsStore != nullptr) {
+	} else
+#endif
+	if (m_pSparkFunDmxParamsStore != nullptr) {
 		m_pSparkFunDmxParamsStore->Copy(nMotorIndex, &m_tSparkFunDmxParams);
 	} else {
 		DEBUG_EXIT

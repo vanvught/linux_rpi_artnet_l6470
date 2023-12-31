@@ -2,7 +2,7 @@
  * @file slushdmxparams.h
  *
  */
-/* Copyright (C) 2019-2020 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,8 @@
 
 #include "slushdmx.h"
 
-struct TSlushDmxParams {
+namespace slushdmxparams {
+struct Params {
 	uint32_t nSetList;
 	uint8_t nUseSpiBusy;
 	uint16_t nDmxStartAddressPortA;
@@ -39,52 +40,38 @@ struct TSlushDmxParams {
 	uint8_t nDmxFootprintPortB;
 } __attribute__((packed));
 
-struct SlushDmxParamsMask {
-	static constexpr auto USE_SPI_BUSY = (1U << 0);
-	static constexpr auto START_ADDRESS_PORT_A = (1U << 1);
-	static constexpr auto FOOTPRINT_PORT_A = (1U << 2);
-	static constexpr auto START_ADDRESS_PORT_B = (1U << 3);
-	static constexpr auto FOOTPRINT_PORT_B = (1U << 4);
+struct Mask {
+	static constexpr uint32_t USE_SPI_BUSY = (1U << 0);
+	static constexpr uint32_t START_ADDRESS_PORT_A = (1U << 1);
+	static constexpr uint32_t FOOTPRINT_PORT_A = (1U << 2);
+	static constexpr uint32_t START_ADDRESS_PORT_B = (1U << 3);
+	static constexpr uint32_t FOOTPRINT_PORT_B = (1U << 4);
 };
-
-class SlushDmxParamsStore {
-public:
-	virtual ~SlushDmxParamsStore() {
-	}
-
-	virtual void Update(const struct TSlushDmxParams *ptSlushDmxParams)=0;
-	virtual void Copy(struct TSlushDmxParams *ptSlushDmxParams)=0;
-
-	virtual void Update(uint32_t nMotorIndex, const struct TSlushDmxParams *ptSlushDmxParams)=0;
-	virtual void Copy(uint32_t nMotorIndex, struct TSlushDmxParams *ptSlushDmxParams)=0;
-};
+}  // namespace slushdmxparams
 
 class SlushDmxParams {
 public:
-	SlushDmxParams(SlushDmxParamsStore *pSlushDmxParamsStore);
+	SlushDmxParams();
 
-	bool Load();
+	void Load();
 	void Load(const char *pBuffer, uint32_t nLength);
 
 	void Set(SlushDmx *pSlushDmx);
 
-	void Builder(const struct TSlushDmxParams *ptSlushDmxParams, char *pBuffer, uint32_t nLength, uint32_t& nSize);
+	void Builder(const struct slushdmxparams::Params *ptSlushDmxParams, char *pBuffer, uint32_t nLength, uint32_t& nSize);
 	void Save(char *pBuffer, uint32_t nLength, uint32_t& nSize);
 
-	void Dump();
-
-public:
     static void staticCallbackFunction(void *p, const char *s);
 
 private:
+	void Dump();
     void callbackFunction(const char *pLine);
     bool isMaskSet(uint32_t nMask) const {
-    	return (m_tSlushDmxParams.nSetList & nMask) == nMask;
+    	return (m_Params.nSetList & nMask) == nMask;
     }
 
 private:
-	SlushDmxParamsStore *m_pSlushDmxParamsStore;
-    struct TSlushDmxParams m_tSlushDmxParams;
+    slushdmxparams::Params m_Params;
     char m_aFileName[16];
 };
 

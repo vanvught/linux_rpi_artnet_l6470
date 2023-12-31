@@ -68,15 +68,8 @@
 
 #include "configstore.h"
 #include "storeartnet.h"
-#include "storeremoteconfig.h"
-#include "storedisplayudf.h"
-#include "storenetwork.h"
-#include "storerdmdevice.h"
-#include "storerdmsensors.h"
-#if defined (ENABLE_RDM_SUBDEVICES)
-# include "storerdmsubdevices.h"
-#endif
-#include "storetlc59711.h"
+
+
 
 #include "sparkfundmx.h"
 #include "sparkfundmxconst.h"
@@ -95,20 +88,13 @@ int main(int argc, char **argv) {
 	Hardware hw;
 	DisplayUdf display;
 	ConfigStore configStore;
-	StoreNetwork storeNetwork;
 	Network nw(argc, argv);
+	MDNS mDns;
 	FirmwareVersion fw(SOFTWARE_VERSION, __DATE__, __TIME__);
 
 	hw.Print();
 	fw.Print("Art-Net 4 Stepper L6470");
 	nw.Print();
-
-	MDNS mDns;
-	mDns.AddServiceRecord(nullptr, mdns::Services::CONFIG, "node=Art-Net 4 Stepper");
-#if defined (ENABLE_HTTPD)
-	mDns.AddServiceRecord(nullptr, mdns::Services::HTTP);
-#endif
-	mDns.Print();
 
 #if defined (ENABLE_HTTPD)
 	HttpDaemon httpDaemon;
@@ -136,31 +122,26 @@ int main(int argc, char **argv) {
 	nMotorsConnected = sparkFunDmx.GetMotorsConnected();
 
 	pBoard = &sparkFunDmx;
-
-	StoreTLC59711 storeTLC59711;
-	TLC59711DmxParams pwmledparms(&storeTLC59711);
-
 	bool isLedTypeSet = false;
 
-	if (pwmledparms.Load()) {
-		if ((isLedTypeSet = pwmledparms.IsSetLedType()) == true) {
-			auto *pTLC59711Dmx = new TLC59711Dmx;
-			assert(pTLC59711Dmx != nullptr);
-			pTLC59711Dmx->SetTLC59711DmxStore(&storeTLC59711);
-			pwmledparms.Dump();
-			pwmledparms.Set(pTLC59711Dmx);
+	TLC59711DmxParams pwmledparms;
+	pwmledparms.Load();
 
-			display.Printf(7, "%s:%d", pwmledparms.GetType(pwmledparms.GetLedType()), pwmledparms.GetLedCount());
+	if ((isLedTypeSet = pwmledparms.IsSetLedType()) == true) {
+		auto *pTLC59711Dmx = new TLC59711Dmx;
+		assert(pTLC59711Dmx != nullptr);
+		pwmledparms.Set(pTLC59711Dmx);
 
-			auto *pChain = new LightSetChain;
-			assert(pChain != nullptr);
+		display.Printf(7, "%s:%d", pwmledparms.GetType(pwmledparms.GetLedType()), pwmledparms.GetLedCount());
 
-			pChain->Add(pBoard, 0);
-			pChain->Add(pTLC59711Dmx, 1);
-			pChain->Dump();
+		auto *pChain = new LightSetChain;
+		assert(pChain != nullptr);
 
-			pBoard = pChain;
-		}
+		pChain->Add(pBoard, 0);
+		pChain->Add(pTLC59711Dmx, 1);
+		pChain->Dump();
+
+		pBoard = pChain;
 	}
 
 	char aDescription[64];
@@ -177,12 +158,11 @@ int main(int argc, char **argv) {
 	StoreArtNet storeArtNet(DMXPORT_OFFSET);
 	node.SetArtNetStore(&storeArtNet);
 
-	ArtNetParams artnetParams(&storeArtNet);
+	ArtNetParams artnetParams;
 
 	node.SetLongName(aDescription);
 
 	if (artnetParams.Load()) {
-		artnetParams.Dump();
 		artnetParams.Set(DMXPORT_OFFSET);
 	}
 
@@ -194,34 +174,21 @@ int main(int argc, char **argv) {
 
 	ArtNetRdmResponder rdmResponder(pRDMPersonalities, 1);
 
-	StoreRDMSensors storeRdmSensors;
-	RDMSensorsParams rdmSensorsParams(&storeRdmSensors);
-
-	if (rdmSensorsParams.Load()) {
-		rdmSensorsParams.Dump();
-		rdmSensorsParams.Set(&storeRdmSensors);
-	}
+	RDMSensorsParams rdmSensorsParams;
+	rdmSensorsParams.Load();
+	rdmSensorsParams.Set();
 
 #if defined (ENABLE_RDM_SUBDEVICES)
-	StoreRDMSubDevices storeRdmSubDevices;
-	RDMSubDevicesParams rdmSubDevicesParams(&storeRdmSubDevices);
-
-	if (rdmSubDevicesParams.Load()) {
-		rdmSubDevicesParams.Dump();
-		rdmSubDevicesParams.Set();
-	}
+	RDMSubDevicesParams rdmSubDevicesParams;
+	rdmSubDevicesParams.Load();
+	rdmSubDevicesParams.Set();
 #endif
 
 	rdmResponder.Init();
 
-	StoreRDMDevice storeRdmDevice;
-	RDMDeviceParams rdmDeviceParams(&storeRdmDevice);
-	rdmResponder.SetRDMDeviceStore(&storeRdmDevice);
-
-	if (rdmDeviceParams.Load()) {
-		rdmDeviceParams.Dump();
-		rdmDeviceParams.Set(&rdmResponder);
-	}
+	RDMDeviceParams rdmDeviceParams;
+	rdmDeviceParams.Load();
+	rdmDeviceParams.Set(&rdmResponder);
 
 	rdmResponder.Print();
 
@@ -236,28 +203,22 @@ int main(int argc, char **argv) {
 	display.Set(4, displayudf::Labels::UNIVERSE_PORT_A);
 	display.Set(5, displayudf::Labels::DMX_START_ADDRESS);
 
-	StoreDisplayUdf storeDisplayUdf;
-	DisplayUdfParams displayUdfParams(&storeDisplayUdf);
-
-	if (displayUdfParams.Load()) {
-		displayUdfParams.Dump();
-		displayUdfParams.Set(&display);
-	}
+	DisplayUdfParams displayUdfParams;
+	displayUdfParams.Load();
+	displayUdfParams.Set(&display);
 
 	display.Show(&node);
 
 	RemoteConfig remoteConfig(remoteconfig::Node::ARTNET, remoteconfig::Output::STEPPER, node.GetActiveOutputPorts());
 
-	StoreRemoteConfig storeRemoteConfig;
-	RemoteConfigParams remoteConfigParams(&storeRemoteConfig);
-
-	if(remoteConfigParams.Load()) {
-		remoteConfigParams.Dump();
-		remoteConfigParams.Set(&remoteConfig);
-	}
+	RemoteConfigParams remoteConfigParams;
+	remoteConfigParams.Load();
+	remoteConfigParams.Set(&remoteConfig);
 
 	while (configStore.Flash())
 		;
+
+	mDns.Print();
 
 	StateMachine stateMachine;
 

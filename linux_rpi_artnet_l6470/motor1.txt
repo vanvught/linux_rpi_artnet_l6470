@@ -1,4 +1,4 @@
-sparkfun_position=1
+#sparkfun_position=1
 #
 l6470_kval_hold=50
 l6470_kval_run=50
