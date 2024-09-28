@@ -2,7 +2,7 @@
  * @file hardware.cpp
  *
  */
-/* Copyright (C) 2020-2021 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2020-2024 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,14 +25,14 @@
 
 #include <cstdint>
 #include <cstddef>
-#include <string.h>
+#include <cstdio>
 #include <time.h>
+#include <uuid/uuid.h>
 #include <cassert>
 
 #include "hardware.h"
 
 #include "h3_watchdog.h"
-#include "h3_sid.h"
 #include "h3_gpio.h"
 #include "h3_board.h"
 
@@ -47,6 +47,10 @@
 #endif
 
 #include "logic_analyzer.h"
+
+namespace net {
+void net_shutdown();
+}  // namespace net
 
 namespace soc {
 #if defined (ORANGE_PI)
@@ -75,7 +79,11 @@ namespace sysname {
 	static constexpr auto NAME_LENGTH = sizeof(NAME) - 1;
 }
 
-Hardware *Hardware::s_pThis = nullptr;
+namespace hal {
+void uuid_init(uuid_t);
+}  // namespace hardware
+
+Hardware *Hardware::s_pThis;
 
 void hardware_init();
 
@@ -84,6 +92,7 @@ Hardware::Hardware() {
 	s_pThis = this;
 
 	hardware_init();
+	hal::uuid_init(m_uuid);
 
 #if defined (DEBUG_I2C)
 	I2cDetect i2cdetect;
@@ -125,16 +134,18 @@ const char *Hardware::GetSocName(uint8_t &nLength) {
 	return soc::NAME;
 }
 
-#include <cstdio>
-
 bool Hardware::Reboot() {
-	printf("Rebooting ...\n");
+	puts("Rebooting ...");
 	
 	h3_watchdog_disable();
 
+#if !defined(DISABLE_RTC)
+	m_HwClock.SysToHc();
+#endif
+
 	RebootHandler();
 
-	h3_watchdog_enable();
+	net::net_shutdown();
 
 	clean_data_cache();
 	invalidate_data_cache();
@@ -148,26 +159,12 @@ bool Hardware::Reboot() {
 
 	SetMode(hardware::ledblink::Mode::REBOOT);
 
+	h3_watchdog_enable();
+
 	for (;;) {
 		Run();
 	}
 
 	__builtin_unreachable();
 	return true;
-}
-
-typedef union pcast32 {
-	uuid_t uuid;
-	uint8_t u8[16];
-} _pcast32;
-
-void Hardware::GetUuid(uuid_t out) {
-	_pcast32 cast;
-
-	h3_sid_get_rootkey(&cast.u8[0]);
-
-	cast.uuid[6] = static_cast<char>(0x40 | (cast.uuid[6] & 0xf));
-	cast.uuid[8] = static_cast<char>(0x80 | (cast.uuid[8] & 0x3f));
-
-	memcpy(out, cast.uuid, sizeof(uuid_t));
 }

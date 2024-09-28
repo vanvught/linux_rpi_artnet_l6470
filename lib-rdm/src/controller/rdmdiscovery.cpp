@@ -62,11 +62,11 @@ static const uint8_t *convert_uid(uint64_t nUid) {
 }
 
 #ifndef NDEBUG
-static void print_uid(__attribute__((unused)) const uint8_t *pUid) {
+static void print_uid([[maybe_unused]] const uint8_t *pUid) {
 	printf("%.2x%.2x:%.2x%.2x%.2x%.2x", pUid[0], pUid[1], pUid[2], pUid[3], pUid[4], pUid[5]);
 }
 
-static void print_uid(__attribute__((unused)) uint64_t nUid) {
+static void print_uid([[maybe_unused]] uint64_t nUid) {
 	print_uid(convert_uid(nUid));
 }
 #endif
@@ -83,7 +83,7 @@ RDMDiscovery::RDMDiscovery(const uint8_t *pUid) {
 #ifndef NDEBUG
 	printf("Uid : ");
 	rdmdiscovery::print_uid(m_Uid);
-	printf("\n");
+	puts("");
 #endif
 }
 
@@ -227,7 +227,7 @@ bool RDMDiscovery::IsValidDiscoveryResponse(uint8_t *pUid) {
 	return bIsValid;
 }
 
-void RDMDiscovery::SavedState(__attribute__((unused)) const uint32_t nLine) {
+void RDMDiscovery::SavedState([[maybe_unused]] const uint32_t nLine) {
 	assert(m_SavedState != m_State);
 #ifndef NDEBUG
 	printf("State %s->%s at line %u\n", rdmdiscovery::StateName[static_cast<uint32_t>(m_State)], rdmdiscovery::StateName[static_cast<uint32_t>(m_SavedState)], nLine);
@@ -235,7 +235,7 @@ void RDMDiscovery::SavedState(__attribute__((unused)) const uint32_t nLine) {
 	m_State = m_SavedState;
 }
 
-void RDMDiscovery::NewState(const rdmdiscovery::State state, const bool doStateLateResponse, __attribute__((unused)) const uint32_t nLine) {
+void RDMDiscovery::NewState(const rdmdiscovery::State state, const bool doStateLateResponse, [[maybe_unused]] const uint32_t nLine) {
 	assert(m_State != state);
 
 	if (doStateLateResponse && (m_State != rdmdiscovery::State::LATE_RESPONSE)) {
@@ -256,7 +256,7 @@ void RDMDiscovery::NewState(const rdmdiscovery::State state, const bool doStateL
 
 void RDMDiscovery::Process() {
 	switch (m_State) {
-	case rdmdiscovery::State::LATE_RESPONSE:  //TODO LATE_RESPONSE
+	case rdmdiscovery::State::LATE_RESPONSE:  ///< LATE_RESPONSE
 		m_Message.Receive(m_nPortIndex);
 
 		if ((Hardware::Get()->Micros() - m_LateResponse.nMicros) > rdmdiscovery::LATE_RESPONSE_TIME_OUT) {
@@ -265,7 +265,7 @@ void RDMDiscovery::Process() {
 
 		return;
 		break;
-	case rdmdiscovery::State::UNMUTE:  //TODO UNMUTE
+	case rdmdiscovery::State::UNMUTE:  ///< UNMUTE
 		if (m_UnMute.nCounter == 0) {
 			m_UnMute.nCounter = rdmdiscovery::UNMUTE_COUNTER;
 			m_UnMute.bCommandRunning = false;
@@ -302,7 +302,7 @@ void RDMDiscovery::Process() {
 
 		return;
 		break;
-	case rdmdiscovery::State::MUTE:  //TODO MUTE
+	case rdmdiscovery::State::MUTE:  ///< MUTE
 		if (m_Mute.nTodEntries == 0) {
 			m_Mute.bCommandRunning = false;
 			NEW_STATE(rdmdiscovery::State::DISCOVERY, false);
@@ -358,7 +358,7 @@ void RDMDiscovery::Process() {
 
 		return;
 		break;
-	case rdmdiscovery::State::DISCOVERY:		//TODO DISCOVERY
+	case rdmdiscovery::State::DISCOVERY:		///< DISCOVERY
 		if (m_Discovery.bCommandRunning) {
 			m_pResponse = const_cast<uint8_t *>(m_Message.Receive(m_nPortIndex));
 
@@ -414,7 +414,7 @@ void RDMDiscovery::Process() {
 
 		return;
 		break;
-	case rdmdiscovery::State::DISCOVERY_SINGLE_DEVICE:		//TODO DISCOVERY_SINGLE_DEVICE
+	case rdmdiscovery::State::DISCOVERY_SINGLE_DEVICE:		///< DISCOVERY_SINGLE_DEVICE
 		if (m_DiscoverySingleDevice.nCounter == 0) {
 			m_DiscoverySingleDevice.nCounter = rdmdiscovery::QUIKFIND_DISCOVERY_COUNTER;
 			m_DiscoverySingleDevice.bCommandRunning = false;
@@ -446,7 +446,7 @@ void RDMDiscovery::Process() {
 #ifndef NDEBUG
 				printf("AddUid : ");
 				rdmdiscovery::print_uid(m_Discovery.uid);
-				printf("\n");
+				puts("");
 #endif
 
 				m_DiscoverySingleDevice.nCounter = rdmdiscovery::QUIKFIND_DISCOVERY_COUNTER;
@@ -466,7 +466,7 @@ void RDMDiscovery::Process() {
 
 		return;
 		break;
-	case rdmdiscovery::State::DUB:	//TODO DUB
+	case rdmdiscovery::State::DUB:	///< DUB
 		if (m_pResponse == nullptr) {
 #ifndef NDEBUG
 			puts("No responses");
@@ -490,7 +490,7 @@ void RDMDiscovery::Process() {
 
 		NEW_STATE(rdmdiscovery::State::DISCOVERY, true);
 		break;
-	case rdmdiscovery::State::QUICKFIND:	//TODO QUICKFIND
+	case rdmdiscovery::State::QUICKFIND:	///< QUICKFIND
 		if (m_QuikFind.nCounter == 0) {
 			m_QuikFind.bCommandRunning = false;
 			NEW_STATE(rdmdiscovery::State::QUICKFIND_DISCOVERY, false);
@@ -501,7 +501,7 @@ void RDMDiscovery::Process() {
 #ifndef NDEBUG
 			printf("QuickFind : ");
 			rdmdiscovery::print_uid(m_QuikFind.uid);
-			printf("\n");
+			puts("");
 #endif
 
 			m_Message.SetCc(E120_DISCOVERY_COMMAND);
@@ -532,7 +532,7 @@ void RDMDiscovery::Process() {
 #ifndef NDEBUG
 				printf("AddUid : ");
 				rdmdiscovery::print_uid(m_QuikFind.uid);
-				printf("\n");
+				puts("");
 #endif
 			}
 
@@ -550,7 +550,7 @@ void RDMDiscovery::Process() {
 
 		return;
 		break;
-	case rdmdiscovery::State::QUICKFIND_DISCOVERY:	//TODO QUICKFIND_DISCOVERY
+	case rdmdiscovery::State::QUICKFIND_DISCOVERY:	///< QUICKFIND_DISCOVERY
 		if (m_QuikFindDiscovery.nCounter == 0) {
 			m_QuikFindDiscovery.nCounter = rdmdiscovery::QUIKFIND_DISCOVERY_COUNTER;
 			m_QuikFindDiscovery.bCommandRunning = false;
@@ -594,7 +594,7 @@ void RDMDiscovery::Process() {
 
 		return;
 		break;
-	case rdmdiscovery::State::FINISHED: //TODO FINISHED
+	case rdmdiscovery::State::FINISHED: ///< FINISHED
 		m_bIsFinished = true;
 		NEW_STATE(rdmdiscovery::State::IDLE, false);
 #ifndef NDEBUG

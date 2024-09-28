@@ -2,7 +2,7 @@
  * @file e131params.cpp
  *
  */
-/* Copyright (C) 2016-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2016-2024 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,6 +47,12 @@
 #include "lightsetparamsconst.h"
 
 #include "debug.h"
+
+namespace e131bridge {
+namespace configstore {
+extern uint32_t DMXPORT_OFFSET;
+}  // namespace configstore
+}  // namespace e131bridge
 
 static uint32_t s_nPortsMax;
 
@@ -300,14 +306,14 @@ void E131Params::Builder(const struct Params *pParams, char *pBuffer, uint32_t n
 	DEBUG_EXIT
 }
 
-void E131Params::Set(uint32_t nPortIndexOffset) {
+void E131Params::Set() {
 	DEBUG_ENTRY
 
-	if (nPortIndexOffset <= e131bridge::MAX_PORTS) {
-		s_nPortsMax = std::min(e131params::MAX_PORTS, e131bridge::MAX_PORTS - nPortIndexOffset);
+	if (e131bridge::configstore::DMXPORT_OFFSET <= e131bridge::MAX_PORTS) {
+		s_nPortsMax = std::min(e131params::MAX_PORTS, e131bridge::MAX_PORTS - e131bridge::configstore::DMXPORT_OFFSET);
 	}
 
-	DEBUG_PRINTF("e131bridge::MAX_PORTS=%u, nPortIndexOffset=%u, s_nPortsMax=%u", e131bridge::MAX_PORTS, nPortIndexOffset, s_nPortsMax);
+	DEBUG_PRINTF("e131bridge::MAX_PORTS=%u, e131bridge::configstore::DMXPORT_OFFSET=%u, s_nPortsMax=%u", e131bridge::MAX_PORTS, e131bridge::configstore::DMXPORT_OFFSET, s_nPortsMax);
 
 	if (m_Params.nSetList == 0) {
 		return;
@@ -317,7 +323,7 @@ void E131Params::Set(uint32_t nPortIndexOffset) {
 	assert(p != nullptr);
 
 	for (uint32_t nPortIndex = 0; nPortIndex < s_nPortsMax; nPortIndex++) {
-		const auto nOffset = nPortIndex + nPortIndexOffset;
+		const auto nOffset = nPortIndex + e131bridge::configstore::DMXPORT_OFFSET;
 
 		if (nOffset >= e131bridge::MAX_PORTS) {
 			DEBUG_EXIT
@@ -381,7 +387,7 @@ void E131Params::Dump() {
 
 	for (uint32_t i = 0; i < e131params::MAX_PORTS; i++) {
 		const auto nOutputStyle = static_cast<uint32_t>(isOutputStyleSet(1U << i));
-		printf(" %s=%u [%s]\n", LightSetParamsConst::OUTPUT_STYLE[i], nOutputStyle, lightset::get_output_style(static_cast<lightset::OutputStyle>(nOutputStyle)));
+		printf(" %s=%u [%s]\n", LightSetParamsConst::OUTPUT_STYLE[i], static_cast<unsigned int>(nOutputStyle), lightset::get_output_style(static_cast<lightset::OutputStyle>(nOutputStyle)));
 	}
 
 	if (isMaskSet(e131params::Mask::DISABLE_MERGE_TIMEOUT)) {

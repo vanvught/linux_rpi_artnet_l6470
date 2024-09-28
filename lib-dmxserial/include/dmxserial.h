@@ -2,7 +2,7 @@
  * @file dmxserial.h
  *
  */
-/* Copyright (C) 2020-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2020-2024 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -65,9 +65,9 @@ public:
 	void Start(const uint32_t nPortIndex) override;
 	void Stop(const uint32_t nPortIndex) override;
 
-	void SetData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength, const bool doUpdate = true) override;
+	void SetData(const uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength, const bool doUpdate = true) override;
 	void Sync(const uint32_t nPortIndex) override;
-	void Sync(const bool doForce = false) override;
+	void Sync() override;
 
 	void Run();
 

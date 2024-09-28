@@ -2,7 +2,7 @@
  * @file remoteconfigjson.cpp
  *
  */
-/* Copyright (C) 2021-2023 by Arjan van Vught mailto:info@gd32-dmx.org
+/* Copyright (C) 2021-2024 by Arjan van Vught mailto:info@gd32-dmx.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -61,7 +61,7 @@ uint32_t json_get_version(char *pOutBuffer, const uint32_t nOutBufferSize) {
 
 uint32_t json_get_uptime(char *pOutBuffer, const uint32_t nOutBufferSize) {
 	const auto nUptime = Hardware::Get()->GetUpTime();
-	const auto nLength = static_cast<uint32_t>(snprintf(pOutBuffer, nOutBufferSize, "{\"uptime\":%u}\n", nUptime));
+	const auto nLength = static_cast<uint32_t>(snprintf(pOutBuffer, nOutBufferSize, "{\"uptime\":%u}\n", static_cast<unsigned int>(nUptime)));
 	return nLength;
 }
 
@@ -141,6 +141,7 @@ uint32_t json_get_directory(char *pOutBuffer, const uint32_t nOutBufferSize) {
 			"\"display.txt\":\"Display UDF\","
 #endif
 			"\"network.txt\":\"Network\","
+			"\"env.txt\":\"Environment\","
 			"\"rconfig.txt\":\"Remote configuration\""
 			"}}"
 			));

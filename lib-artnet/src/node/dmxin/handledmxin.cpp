@@ -5,7 +5,7 @@
 /**
  * Art-Net Designed by and Copyright Artistic Licence Holdings Ltd.
  */
-/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2019-2024 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
+#if !defined(__clang__)
+# pragma GCC push_options
+# pragma GCC optimize ("O2")
+# pragma GCC optimize ("no-tree-loop-distribute-patterns")
+#endif
 
 #include <cstdint>
 #include <cstring>
@@ -47,8 +53,8 @@ static uint32_t s_ReceivingMask = 0;
 void ArtNetNode::HandleDmxIn() {
 	for (uint32_t nPortIndex = 0; nPortIndex < artnetnode::MAX_PORTS; nPortIndex++) {
 		if  ((m_Node.Port[nPortIndex].direction == lightset::PortDir::INPUT)
-				&&  (m_Node.Port[nPortIndex].protocol == artnet::PortProtocol::ARTNET)
-				&& ((m_InputPort[nPortIndex].GoodInput & artnet::GoodInput::DISABLED) != artnet::GoodInput::DISABLED)) {
+		 &&  (m_Node.Port[nPortIndex].protocol == artnet::PortProtocol::ARTNET)
+		 && ((m_InputPort[nPortIndex].GoodInput & artnet::GoodInput::DISABLED) != artnet::GoodInput::DISABLED)) {
 
 			const auto *const pDmxData = reinterpret_cast<const struct Data *>(Dmx::Get()->GetDmxChanged(nPortIndex));
 
@@ -150,7 +156,6 @@ void ArtNetNode::HandleDmxIn() {
 					}
 				}
 			}
-
 		}
 	}
 }

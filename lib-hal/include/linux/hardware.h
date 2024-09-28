@@ -2,7 +2,7 @@
  * @file hardware.h
  *
  */
-/* Copyright (C) 2020-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2020-2024 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,8 +26,15 @@
 #ifndef LINUX_HARDWARE_H_
 #define LINUX_HARDWARE_H_
 
-#include <time.h>
+#if defined(__linux__) || defined (__APPLE__)
+#else
+# error
+#endif
+
 #include <cstdint>
+#include <cstring>
+#include <cstdio>
+#include <time.h>
 #include <uuid/uuid.h>
 #include <sys/utsname.h>
 
@@ -47,16 +54,19 @@ class Hardware {
 public:
 	Hardware();
 
+	uint32_t GetReleaseId();
+
+	void GetUuid(uuid_t out) {
+		memcpy(out, m_uuid, sizeof(uuid_t));
+	}
+
 	void Print();
 
-	void GetUuid(uuid_t out);
 	const char *GetMachine(uint8_t &nLength);
 	const char *GetSysName(uint8_t &nLength);
 	const char *GetBoardName(uint8_t &nLength);
 	const char *GetCpuName(uint8_t &nLength);
 	const char *GetSocName(uint8_t &nLength);
-
-	uint32_t GetReleaseId();
 
 	uint32_t GetBoardId() {
 		return m_nBoardId;
@@ -76,12 +86,7 @@ public:
 
 	uint32_t GetUpTime();
 
-	time_t GetTime() {
-		return time(nullptr);
-	}
-
 	bool SetTime(const struct tm *pTime);
-	void GetTime(struct tm *pTime);
 
 	bool SetAlarm(const struct tm *pTime);
 	void GetAlarm(struct tm *pTime);
@@ -113,14 +118,78 @@ public:
 		return m_Mode;
 	}
 
-	void Run() {} // Not needed
+	struct Timer {
+	    uint32_t nExpireTime;
+	    uint32_t nIntervalMillis;
+	    int32_t nId;
+	    hal::TimerCallback callback;
+	};
+
+	int32_t SoftwareTimerAdd(const uint32_t nIntervalMillis, const hal::TimerCallback callback) {
+	    if (m_nTimersCount >= hal::SOFTWARE_TIMERS_MAX) {
+#ifdef NDEBUG
+            fprintf(stderr, "SoftwareTimerAdd\n");
+#endif
+	        return -1;
+	    }
+
+	    const auto nCurrentTime = Hardware::Millis();
+
+	    Timer newTimer = {
+	        .nExpireTime = nCurrentTime + nIntervalMillis,
+	        .nIntervalMillis = nIntervalMillis,
+			.nId = m_nNextId++,
+	        .callback = callback,
+	    };
+
+	    m_Timers[m_nTimersCount++] = newTimer;
+
+	    return newTimer.nId;
+	}
+
+    bool SoftwareTimerDelete(int32_t& nId) {
+        for (uint32_t i = 0; i < m_nTimersCount; ++i) {
+            if (m_Timers[i].nId == nId) {
+                for (uint32_t j = i; j < m_nTimersCount - 1; ++j) {
+                    m_Timers[j] = m_Timers[j + 1];
+                }
+                --m_nTimersCount;
+                nId = -1;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    bool SoftwareTimerChange(const int32_t nId, const uint32_t nIntervalMillis) {
+        for (uint32_t i = 0; i < m_nTimersCount; ++i) {
+            if (m_Timers[i].nId == nId) {
+            	m_Timers[i].nExpireTime = Hardware::Millis() + nIntervalMillis;
+            	m_Timers[i].nIntervalMillis = nIntervalMillis;
+            	return true;
+            }
+        }
+
+        return false;
+    }
+
+	void Run() {
+	    const auto nCurrentTime = Hardware::Get()->Millis();
+
+	    for (uint32_t i = 0; i < m_nTimersCount; i++) {
+	        if (m_Timers[i].nExpireTime <= nCurrentTime) {
+	        	m_Timers[i].callback();
+	            m_Timers[i].nExpireTime = nCurrentTime + m_Timers[i].nIntervalMillis;
+	        }
+	    }
+	}
 
 	 static Hardware *Get() {
 		return s_pThis;
 	}
 
 private:
-	bool ExecCmd(const char* pCmd, char *Result, int nResultSize);
 	void SetFrequency(uint32_t nFreqHz) {
 		if (nFreqHz == 0) {
 			SetLed(hardware::LedStatus::OFF);
@@ -139,6 +208,7 @@ private:
 #if !defined(DISABLE_RTC)
 	HwClock m_HwClock;
 #endif
+	uuid_t m_uuid;
 
 	enum class Board {
 		TYPE_LINUX,
@@ -159,6 +229,10 @@ private:
 
 	hardware::ledblink::Mode m_Mode { hardware::ledblink::Mode::UNKNOWN };
 	bool m_doLock { false };
+
+	Timer m_Timers[hal::SOFTWARE_TIMERS_MAX];
+	uint32_t m_nTimersCount { 0 };
+	int32_t m_nNextId { 0 };
 
 	static Hardware *s_pThis;
 };

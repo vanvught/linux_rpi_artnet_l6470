@@ -2,7 +2,7 @@
  * @file main.cpp
  *
  */
-/* Copyright (C) 2017-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2017-2024 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -26,22 +26,18 @@
 #include <cstdint>
 #include <cstdio>
 #include <cstring>
-#include <stdlib.h>
+#include <cstdlib>
 #include <cassert>
+#include <signal.h>
 
 #include "hardware.h"
 #include "network.h"
 #include "networkconst.h"
 
-#include "mdns.h"
-
-#if defined (ENABLE_HTTPD)
-# include "httpd/httpd.h"
-#endif
+#include "net/apps/mdns.h"
 
 #include "displayudf.h"
 #include "displayudfparams.h"
-#include "display7segment.h"
 
 #include "artnetnode.h"
 #include "artnetparams.h"
@@ -52,7 +48,7 @@
 #include "rdmpersonality.h"
 #include "rdmdeviceparams.h"
 #include "rdmsensorsparams.h"
-#if defined (ENABLE_RDM_SUBDEVICES)
+#if defined (CONFIG_RDM_ENABLE_SUBDEVICES)
 # include "rdmsubdevicesparams.h"
 #endif
 
@@ -61,30 +57,42 @@
 #include "tlc59711dmxparams.h"
 #include "tlc59711dmx.h"
 
+#if defined (NODE_SHOWFILE)
+# include "showfile.h"
+# include "showfileparams.h"
+#endif
+
 #include "lightsetchain.h"
 
 #include "remoteconfig.h"
 #include "remoteconfigparams.h"
 
 #include "configstore.h"
-#include "storeartnet.h"
-
-
 
 #include "sparkfundmx.h"
 #include "sparkfundmxconst.h"
-#define BOARD_NAME "Sparkfun"
-#include "storesparkfundmx.h"
-#include "storemotors.h"
 
 #include "firmwareversion.h"
 #include "software_version.h"
 
 #include "statemachine.h"
 
-static constexpr uint32_t DMXPORT_OFFSET = 0;
+static bool keepRunning = true;
+
+void intHandler(int) {
+    keepRunning = false;
+}
+
+namespace artnetnode {
+namespace configstore {
+uint32_t DMXPORT_OFFSET = 0;
+}  // namespace configstore
+}  // namespace artnetnode
 
 int main(int argc, char **argv) {
+    struct sigaction act;
+    act.sa_handler = intHandler;
+    sigaction(SIGINT, &act, nullptr);
 	Hardware hw;
 	DisplayUdf display;
 	ConfigStore configStore;
@@ -96,28 +104,13 @@ int main(int argc, char **argv) {
 	fw.Print("Art-Net 4 Stepper L6470");
 	nw.Print();
 
-#if defined (ENABLE_HTTPD)
-	HttpDaemon httpDaemon;
-#endif
-
 	LightSet *pBoard;
 	uint32_t nMotorsConnected = 0;
 
-	StoreSparkFunDmx storeSparkFunDmx;
-	StoreMotors storeMotors;
-
-	struct TSparkFunStores sparkFunStores;
-	sparkFunStores.pSparkFunDmxParamsStore = &storeSparkFunDmx;
-	sparkFunStores.pModeParamsStore = &storeMotors;
-	sparkFunStores.pMotorParamsStore = &storeMotors;
-	sparkFunStores.pL6470ParamsStore = &storeMotors;
-
-	display.TextStatus(SparkFunDmxConst::MSG_INIT, Display7SegmentMessage::INFO_SPARKFUN, CONSOLE_YELLOW);
+	display.TextStatus(SparkFunDmxConst::MSG_INIT, CONSOLE_YELLOW);
 
 	SparkFunDmx sparkFunDmx;
-
-	sparkFunDmx.ReadConfigFiles(&sparkFunStores);
-	sparkFunDmx.SetModeStore(&storeMotors);
+	sparkFunDmx.ReadConfigFiles();
 
 	nMotorsConnected = sparkFunDmx.GetMotorsConnected();
 
@@ -146,25 +139,18 @@ int main(int argc, char **argv) {
 
 	char aDescription[64];
 	if (isLedTypeSet) {
-		snprintf(aDescription, sizeof(aDescription) - 1, "%s [%d] with %s [%d]", BOARD_NAME, nMotorsConnected, pwmledparms.GetType(pwmledparms.GetLedType()), pwmledparms.GetLedCount());
+		snprintf(aDescription, sizeof(aDescription) - 1, "Sparkfun [%d] with %s [%d]", nMotorsConnected, pwmledparms.GetType(pwmledparms.GetLedType()), pwmledparms.GetLedCount());
 	} else {
-		snprintf(aDescription, sizeof(aDescription) - 1, "%s [%d]", BOARD_NAME, nMotorsConnected);
+		snprintf(aDescription, sizeof(aDescription) - 1, "Sparkfun [%d]", nMotorsConnected);
 	}
-
-	display.TextStatus(ArtNetMsgConst::PARAMS, Display7SegmentMessage::INFO_NODE_PARMAMS, CONSOLE_YELLOW);
 
 	ArtNetNode node;
 
-	StoreArtNet storeArtNet(DMXPORT_OFFSET);
-	node.SetArtNetStore(&storeArtNet);
-
-	ArtNetParams artnetParams;
-
 	node.SetLongName(aDescription);
 
-	if (artnetParams.Load()) {
-		artnetParams.Set(DMXPORT_OFFSET);
-	}
+	ArtNetParams artnetParams;
+	artnetParams.Load();
+	artnetParams.Set();
 
 	node.SetRdm(static_cast<uint32_t>(0), true);
 	node.SetOutput(pBoard);
@@ -178,7 +164,7 @@ int main(int argc, char **argv) {
 	rdmSensorsParams.Load();
 	rdmSensorsParams.Set();
 
-#if defined (ENABLE_RDM_SUBDEVICES)
+#if defined (CONFIG_RDM_ENABLE_SUBDEVICES)
 	RDMSubDevicesParams rdmSubDevicesParams;
 	rdmSubDevicesParams.Load();
 	rdmSubDevicesParams.Set();
@@ -197,6 +183,20 @@ int main(int argc, char **argv) {
 
 	pBoard->Print();
 
+#if defined (NODE_SHOWFILE)
+	ShowFile showFile;
+
+	ShowFileParams showFileParams;
+	showFileParams.Load();
+	showFileParams.Set();
+
+	if (showFile.IsAutoStart()) {
+		showFile.Play();
+	}
+
+	showFile.Print();
+#endif
+
 	display.SetTitle("Art-Net 4 L6470");
 	display.Set(2, displayudf::Labels::IP);
 	display.Set(3, displayudf::Labels::VERSION);
@@ -207,7 +207,7 @@ int main(int argc, char **argv) {
 	displayUdfParams.Load();
 	displayUdfParams.Set(&display);
 
-	display.Show(&node);
+	display.Show();
 
 	RemoteConfig remoteConfig(remoteconfig::Node::ARTNET, remoteconfig::Output::STEPPER, node.GetActiveOutputPorts());
 
@@ -222,20 +222,17 @@ int main(int argc, char **argv) {
 
 	StateMachine stateMachine;
 
-	display.TextStatus(ArtNetMsgConst::START, Display7SegmentMessage::INFO_NODE_START, CONSOLE_YELLOW);
+	display.TextStatus(ArtNetMsgConst::START, CONSOLE_YELLOW);
 
 	node.Start();
 
-	display.TextStatus(ArtNetMsgConst::STARTED, Display7SegmentMessage::INFO_NODE_STARTED, CONSOLE_GREEN);
+	display.TextStatus(ArtNetMsgConst::STARTED, CONSOLE_GREEN);
 
-	for (;;) {
+	while (keepRunning) {
 		node.Run();
 		remoteConfig.Run();
 		configStore.Flash();
 		display.Run();
-#if defined (ENABLE_HTTPD)
-		httpDaemon.Run();
-#endif
 		stateMachine.Run();
 	}
 

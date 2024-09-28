@@ -2,7 +2,7 @@
  * @file tlc59711dmx.cpp
  *
  */
-/* Copyright (C) 2018-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2018-2024 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,12 +23,7 @@
  * THE SOFTWARE.
  */
 
-#undef NDEBUG
-
 #include <cstdint>
-#ifndef NDEBUG	// FIXME Remove debug information
-# include <cstdio>
-#endif
 #include <cassert>
 
 #include "tlc59711dmx.h"
@@ -69,7 +64,7 @@ TLC59711Dmx::~TLC59711Dmx() {
 	DEBUG_EXIT
 }
 
-void TLC59711Dmx::Start(__attribute__((unused)) uint32_t nPortIndex) {
+void TLC59711Dmx::Start([[maybe_unused]] uint32_t nPortIndex) {
 	if (m_bIsStarted) {
 		return;
 	}
@@ -81,7 +76,7 @@ void TLC59711Dmx::Start(__attribute__((unused)) uint32_t nPortIndex) {
 	}
 }
 
-void TLC59711Dmx::Stop(__attribute__((unused)) uint32_t nPortIndex) {
+void TLC59711Dmx::Stop([[maybe_unused]] uint32_t nPortIndex) {
 	if (!m_bIsStarted) {
 		return;
 	}
@@ -131,7 +126,7 @@ void TLC59711Dmx::SetMaxPct(uint32_t nIndexLed, uint32_t nPct) {
 		}
 	}
 
-# ifndef NDEBUG	// FIXME Remove debug information
+# if 0
 	for (uint32_t nIndexLed = 0; nIndexLed < m_nCount; nIndexLed++) {
 		if (m_type == tlc59711::Type::RGB) {
 			const auto nIndexArray = nIndexLed * 3U;
@@ -151,7 +146,7 @@ void TLC59711Dmx::SetMaxPct(uint32_t nIndexLed, uint32_t nPct) {
 }
 #endif
 
-void TLC59711Dmx::SetData(__attribute__((unused)) uint32_t nPortIndex, const uint8_t *pDmxData, uint32_t nLength, const bool doUpdate) {
+void TLC59711Dmx::SetData([[maybe_unused]] uint32_t nPortIndex, const uint8_t *pDmxData, uint32_t nLength, const bool doUpdate) {
 	assert(pDmxData != nullptr);
 	assert(nLength <= lightset::dmx::UNIVERSE_SIZE);
 
@@ -189,12 +184,12 @@ void TLC59711Dmx::SetData(__attribute__((unused)) uint32_t nPortIndex, const uin
 	}
 }
 
-void TLC59711Dmx::Sync(__attribute__((unused)) uint32_t const nPortIndex) {
+void TLC59711Dmx::Sync([[maybe_unused]] uint32_t const nPortIndex) {
 	// No actions here
 }
 
-void TLC59711Dmx::Sync(const bool doForce) {
-	if ((!doForce) && (!m_bBlackout)) {
+void TLC59711Dmx::Sync() {
+	if (!m_bBlackout) {
 		m_pTLC59711->Update();
 	}
 }

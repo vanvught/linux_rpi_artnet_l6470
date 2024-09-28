@@ -64,7 +64,7 @@ void LightSetChain::Stop(const uint32_t nPortIndex) {
 	}
 }
 
-void LightSetChain::SetData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength, const bool doUpdate) {
+void LightSetChain::SetData(const uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength, const bool doUpdate) {
 	assert(pData != nullptr);
 
 	for (uint32_t i = 0; i < m_nSize; i++) {
@@ -78,20 +78,20 @@ void LightSetChain::Sync(const uint32_t nPortIndex) {
 	}
 }
 
-void LightSetChain::Sync(const bool doForce) {
+void LightSetChain::Sync() {
 	for (uint32_t i = 0; i < m_nSize; i++) {
-		m_pTable[i].pLightSet->Sync(doForce);
+		m_pTable[i].pLightSet->Sync();
 	}
 }
 
 #if defined (OUTPUT_HAVE_STYLESWITCH)
-void LightSetChain::SetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex, __attribute__((unused)) const lightset::OutputStyle outputStyle) {
+void LightSetChain::SetOutputStyle([[maybe_unused]] const uint32_t nPortIndex, [[maybe_unused]] const lightset::OutputStyle outputStyle) {
 	DEBUG_ENTRY
 
 	DEBUG_EXIT
 }
 
-lightset::OutputStyle LightSetChain::GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const {
+lightset::OutputStyle LightSetChain::GetOutputStyle([[maybe_unused]] const uint32_t nPortIndex) const {
 	return lightset::OutputStyle::DELTA;
 }
 #endif
@@ -262,7 +262,7 @@ bool LightSetChain::Exist(LightSet *pLightSet , int nType, bool DoIgnoreType) {
 	return false;
 }
 
-void LightSetChain::Dump(__attribute__((unused)) uint8_t nEntries) {
+void LightSetChain::Dump([[maybe_unused]] uint8_t nEntries) {
 #ifndef NDEBUG
 	if (nEntries > LIGHTSET_CHAIN_MAX_ENTRIES) {
 		nEntries = LIGHTSET_CHAIN_MAX_ENTRIES;
@@ -275,7 +275,7 @@ void LightSetChain::Dump(__attribute__((unused)) uint8_t nEntries) {
 		printf("%d\t%p\t%d\n", i, reinterpret_cast<void *>(m_pTable[i].pLightSet), m_pTable[i].nType);
 	}
 
-	printf("\n");
+	puts("");
 #endif
 }
 

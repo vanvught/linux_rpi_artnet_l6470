@@ -104,7 +104,7 @@ void DmxSerialChannelData::Dump() {
 			for (uint32_t j = 0; j <  m_nChannelDataLength[i]; j++) {
 				printf("%d ", m_pChannelData[i][j]);
 			}
-			printf("\n");
+			puts("");
 		}
 	}
 #endif
@@ -153,7 +153,7 @@ DmxSerialParseCode DmxSerialChannelData::ParseSerialData(const char *pLine) {
 		k = k * 10 + *p - '0';
 
 		if (k > 255) {
-			DEBUG1_EXIT
+			DEBUG_EXIT
 			return DmxSerialParseCode::FAILED;
 		}
 
@@ -162,7 +162,7 @@ DmxSerialParseCode DmxSerialChannelData::ParseSerialData(const char *pLine) {
 		if (*p == ',' || (isdigit(*p) == 0)) {
 
 			if (nLength > 512) {
-				DEBUG1_EXIT
+				DEBUG_EXIT
 				return DmxSerialParseCode::FAILED;
 			}
 

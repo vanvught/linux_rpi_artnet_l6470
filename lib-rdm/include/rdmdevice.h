@@ -2,7 +2,7 @@
  * @file rdmdevice.h
  *
  */
-/* Copyright (C) 2017-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2017-2024 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,21 +42,6 @@ struct TRDMDeviceInfoData {
 	uint8_t length;
 };
 
-///< http://rdm.openlighting.org/pid/display?manufacturer=0&pid=96
-struct TRDMDeviceInfo {
-	uint8_t protocol_major;			///< The response for this field shall always be same regardless of whether this message is directed to the Root Device or a Sub-Device.
-	uint8_t protocol_minor;			///< The response for this field shall always be same regardless of whether this message is directed to the Root Device or a Sub-Device.
-	uint8_t device_model[2];		///< This field identifies the Device Model ID of the Root Device or the Sub-Device. The Manufacturer shall not use the same ID to represent more than one unique model type.
-	uint8_t product_category[2];	///< Devices shall report a Product Category based on the products primary function.
-	uint8_t software_version[4];	///< This field indicates the Software Version ID for the device. The Software Version ID is a 32-bit value determined by the Manufacturer.
-	uint8_t dmx_footprint[2];		///< If the DEVICE_INFO message is directed to a Sub-Device, then the response for this field contains the DMX512 Footprint for that Sub-Device. If the message is sent to the Root Device, it is the Footprint for the Root Device itself. If the Device or Sub-Device does not utilize Null Start Code packets for any control or functionality then it shall report a Footprint of 0x0000.
-	uint8_t current_personality;	///<
-	uint8_t personality_count;		///<
-	uint8_t dmx_start_address[2];	///< If the Device or Sub-Device that this message is directed to has a DMX512 Footprint of 0, then this field shall be set to 0xFFFF.
-	uint8_t sub_device_count[2];	///< The response for this field shall always be same regardless of whether this message is directed to the Root Device or a Sub-Device.
-	uint8_t sensor_count;			///< This field indicates the number of available sensors in a Root Device or Sub-Device. When this parameter is directed to a Sub-Device, the reply shall be identical for any Sub-Device owned by a specific Root Device.
-};
-
 class RDMDevice {
 public:
 	RDMDevice();
@@ -85,10 +70,33 @@ public:
 	}
 
 	const uint8_t *GetUID() const {
+#if defined (NO_EMAC) || !defined(CONFIG_RDMDEVICE_UUID_IP)
+#else
+		const auto nIp = Network::Get()->GetIp();
+# if !defined(CONFIG_RDMDEVICE_REVERSE_UID)
+		m_aUID[5] = static_cast<uint8_t>(nIp >> 24);
+		m_aUID[4] = (nIp >> 16) & 0xFF;
+		m_aUID[3] = (nIp >> 8) & 0xFF;
+		m_aUID[2] = nIp & 0xFF;
+# else
+		m_aUID[2] = static_cast<uint8_t>(nIp >> 24);
+		m_aUID[3] = (nIp >> 16) & 0xFF;
+		m_aUID[4] = (nIp >> 8) & 0xFF;
+		m_aUID[5] = nIp & 0xFF;
+# endif
+#endif
 		return m_aUID;
 	}
 
 	const uint8_t *GetSN() const {
+#if defined (NO_EMAC) || !defined(CONFIG_RDMDEVICE_UUID_IP)
+#else
+		GetUID();
+		m_aSN[0] = m_aUID[5];
+		m_aSN[1] = m_aUID[4];
+		m_aSN[2] = m_aUID[3];
+		m_aSN[3] = m_aUID[2];
+#endif
 		return m_aSN;
 	}
 
@@ -135,6 +143,10 @@ public:
 		return m_nProductDetail;
 	}
 
+	static RDMDevice *Get() {
+		return s_pThis;
+	}
+
 private:
 	uint16_t CalculateChecksum() {
 		uint16_t nChecksum = m_nFactoryRootLabelLength;
@@ -161,6 +173,8 @@ private:
 	uint8_t m_nFactoryRootLabelLength { 0 };
 
 	bool m_IsInit { false };
+
+	static RDMDevice *s_pThis;
 };
 
 #endif /* RDMDEVICE_H_ */

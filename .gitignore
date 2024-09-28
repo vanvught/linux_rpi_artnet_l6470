@@ -42,5 +42,10 @@
 .DS_Store
 
 
-lib-network/src/linux/networktcp.txt
 lib-device/examples/mcp3424
+lib-showfile/Doxygen
+lib-network/include/net
+lib-network/src/net
+lib-network/src/emac/gd32
+lib-network/src/linux/networktcp.txt
+lib-network/src/net/apps/ntp/gd32

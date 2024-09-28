@@ -2,7 +2,7 @@
  * @file ntpclient.cpp
  *
  */
-/* Copyright (C) 2021-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2021-2024 by Arjan van Vught mailto:info@gd32-dmx.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,20 +23,20 @@
  * THE SOFTWARE.
  */
 
-#include "ntpclient.h"
+#include "net/protocol/ntp.h"
 #include "display.h"
 
 namespace ntpclient {
-void display_status(const ntpclient::Status status) {
+void display_status(const ::ntp::Status status) {
 	switch (status) {
-	case ntpclient::Status::STOPPED:
-		Display::Get()->TextStatus("No NTP Client", Display7SegmentMessage::INFO_NTP);
+	case ::ntp::Status::STOPPED:
+		Display::Get()->TextStatus("No NTP Client");
 		break;
-	case ntpclient::Status::IDLE:
-		Display::Get()->TextStatus("NTP Client", Display7SegmentMessage::INFO_NTP);
+	case ::ntp::Status::IDLE:
+		Display::Get()->TextStatus("NTP Client");
 		break;
-	case ntpclient::Status::FAILED:
-		Display::Get()->TextStatus("Error: NTP", Display7SegmentMessage::ERROR_NTP);
+	case ::ntp::Status::FAILED:
+		Display::Get()->TextStatus("Error: NTP");
 		break;
 	default:
 		break;

@@ -2,7 +2,7 @@
  * @file dmxmonitor.h
  *
  */
-/* Copyright (C) 2016-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2016-2024 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -63,11 +63,18 @@ public:
 	void Start(const uint32_t nPortIndex) override;
 	void Stop(const uint32_t nPortIndex) override;
 
-	void SetData(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength, const bool doUpdate = true) override;
-	void Sync(const uint32_t nPortIndex) override;
-	void Sync(const bool doForce = false) override;
+	void SetData(const uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength, const bool doUpdate = true) override;
+	void Sync([[maybe_unused]] const uint32_t nPortIndex) override {
+#if defined (__linux__) || defined(__APPLE__)
+		Update(nPortIndex, m_Data[nPortIndex].data, m_Data[nPortIndex].nLength);
+#else
+		Update();
+#endif
+	}
 
-	void Blackout(__attribute__((unused)) bool bBlackout) override {
+	void Sync() override {}
+
+	void Blackout([[maybe_unused]] bool bBlackout) override {
 		DEBUG_ENTRY
 		DEBUG_EXIT
 	}
@@ -87,10 +94,9 @@ public:
 		DEBUG_EXIT
 	}
 
-	lightset::OutputStyle GetOutputStyle(__attribute__((unused)) const uint32_t nPortIndex) const override {
+	lightset::OutputStyle GetOutputStyle([[maybe_unused]] const uint32_t nPortIndex) const override {
 		DEBUG_ENTRY
-
-#if defined (__linux__) || defined (__CYGWIN__) || defined(__APPLE__)
+#if defined (__linux__) || defined(__APPLE__)
 		assert(nPortIndex < 32);
 		return static_cast<lightset::OutputStyle>(m_nOutPutStyle >> nPortIndex);
 #else
@@ -101,41 +107,56 @@ public:
 #endif
 
 	bool SetDmxStartAddress(uint16_t nDmxStartAddress) override;
-	uint16_t GetDmxStartAddress() override;
+	uint16_t GetDmxStartAddress() override {
+		return m_nDmxStartAddress;
+	}
 
-	uint16_t GetDmxFootprint() override;
+	uint16_t GetDmxFootprint() override {
+#if defined (__linux__) || defined(__APPLE__)
+		return m_nMaxChannels;
+#else
+		return lightset::dmx::UNIVERSE_SIZE;
+#endif
+	}
 
 	void SetFormat(const dmxmonitor::Format format) {
-		m_tFormat = format;
+		m_Format = format;
 	}
 
 	dmxmonitor::Format GetFormat() const {
-		return m_tFormat;
+		return m_Format;
 	}
 
+#if defined (__linux__) || defined(__APPLE__)
+	void Cls() {}
+#else
 	void Cls();
+#endif
 
-#if defined (__linux__) || defined (__CYGWIN__) || defined(__APPLE__)
-	void SetMaxDmxChannels(uint16_t nMaxChannels);
+#if defined (__linux__) || defined(__APPLE__)
+	void SetMaxDmxChannels(uint16_t nMaxChannels) {
+		m_nMaxChannels = nMaxChannels;
+	}
 
 private:
-	void DisplayDateTime(uint32_t nPortIndex, const char *pString);
+	void DisplayDateTime(const uint32_t nPortIndex, const char *pString);
+	void Update(const uint32_t nPortIndex, const uint8_t *pData, const uint32_t nLength);
+#else
+private:
+	void Update();
 #endif
 
 private:
-	void Update();
-	void Update(uint32_t nPortIndex, const uint8_t *pData, uint32_t nLength);
-
-private:
-	dmxmonitor::Format m_tFormat = dmxmonitor::Format::HEX;
-	uint32_t m_nSlots { 0 };
+	dmxmonitor::Format m_Format { dmxmonitor::Format::HEX };
+	uint16_t m_nDmxStartAddress { lightset::dmx::START_ADDRESS_DEFAULT };
+#if defined (OUTPUT_HAVE_STYLESWITCH)
 	uint32_t m_nOutPutStyle;
-#if defined (__linux__) || defined (__CYGWIN__) || defined(__APPLE__)
+#endif
+#if defined (__linux__) || defined(__APPLE__)
 	enum {
 		DMX_DEFAULT_MAX_CHANNELS = 32,
 	};
 	bool m_bIsStarted[dmxmonitor::output::text::MAX_PORTS];
-	uint16_t m_nDmxStartAddress { lightset::dmx::START_ADDRESS_DEFAULT };
 	uint16_t m_nMaxChannels { DMX_DEFAULT_MAX_CHANNELS };
 	struct Data {
 		uint8_t data[516];
@@ -143,6 +164,7 @@ private:
 	};
 	struct Data m_Data[dmxmonitor::output::text::MAX_PORTS];
 #else
+	uint16_t m_nSlots { 0 };
 	bool m_bIsStarted { false };
 	uint8_t m_Data[512];
 #endif

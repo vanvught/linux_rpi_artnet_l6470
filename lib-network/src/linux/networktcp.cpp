@@ -1,8 +1,9 @@
+#if !defined (CONFIG_NETWORK_USE_MINIMUM)
 /**
  * @file networktcp.cpp
  *
  */
-/* Copyright (C) 2021-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2021-2024 by Arjan van Vught mailto:info@orangepi-dmx.nl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +34,7 @@
 #include <cassert>
 
 #include "network.h"
+#include "../../config/net_config.h"
 
 #include "debug.h"
 
@@ -40,10 +42,9 @@
 
 #define MAX_PORTS_ALLOWED		2
 #define MAX_SEGMENT_LENGTH		1400
-#define MAX_TCBS_ALLOWED		6
 
 static uint16_t s_ports_allowed[MAX_PORTS_ALLOWED];
-static struct pollfd poll_set[MAX_PORTS_ALLOWED][MAX_TCBS_ALLOWED];
+static struct pollfd poll_set[MAX_PORTS_ALLOWED][TCP_MAX_TCBS_ALLOWED];
 static int server_sockfd[MAX_PORTS_ALLOWED];
 static uint8_t s_ReadBuffer[MAX_SEGMENT_LENGTH];
 
@@ -115,13 +116,13 @@ int32_t Network::TcpEnd(const int32_t nHandle) {
 uint16_t Network::TcpRead(const int32_t nHandle, const uint8_t **ppBuffer, uint32_t &HandleConnectionIndex) {
 	assert(nHandle < MAX_PORTS_ALLOWED);
 
-	const int poll_result = poll(poll_set[nHandle], MAX_TCBS_ALLOWED, 0);
+	const int poll_result = poll(poll_set[nHandle], TCP_MAX_TCBS_ALLOWED, 0);
 
 	if (poll_result <= 0) {
 		return poll_result;
 	}
 
-	for (int fd_index = 0; fd_index < MAX_TCBS_ALLOWED; fd_index++) {
+	for (int fd_index = 0; fd_index < TCP_MAX_TCBS_ALLOWED; fd_index++) {
 		if (poll_set[nHandle][fd_index].revents & POLLIN) {
 			int current_fd = poll_set[nHandle][fd_index].fd;
 
@@ -188,7 +189,7 @@ uint16_t Network::TcpRead(const int32_t nHandle, const uint8_t **ppBuffer, uint3
 	return 0;
 }
 
-void Network::TcpWrite(const int32_t nHandle, const uint8_t *pBuffer, uint16_t nLength, const uint32_t HandleConnectionIndex) {
+void Network::TcpWrite(const int32_t nHandle, const uint8_t *pBuffer, uint32_t nLength, const uint32_t HandleConnectionIndex) {
 	assert(nHandle < MAX_PORTS_ALLOWED);
 
 	DEBUG_PRINTF("Write client on fd %d [%u]", poll_set[nHandle][HandleConnectionIndex].fd, HandleConnectionIndex);
@@ -199,3 +200,4 @@ void Network::TcpWrite(const int32_t nHandle, const uint8_t *pBuffer, uint16_t n
 		perror("write");
 	}
 }
+#endif

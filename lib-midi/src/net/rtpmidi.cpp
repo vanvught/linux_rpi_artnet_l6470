@@ -2,7 +2,7 @@
  * @file rtpmidi.cpp
  *
  */
-/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@gd32-dmx.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -49,7 +49,7 @@
 
 RtpMidi *RtpMidi::s_pThis = nullptr;
 
-int32_t RtpMidi::DecodeTime(__attribute__((unused)) uint32_t nCommandLength, uint32_t nOffset) {
+int32_t RtpMidi::DecodeTime([[maybe_unused]] uint32_t nCommandLength, uint32_t nOffset) {
 	DEBUG_ENTRY
 
 	int32_t nSize = 0;

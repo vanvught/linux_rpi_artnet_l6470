@@ -2,7 +2,10 @@ $(info $$DEFINES [${DEFINES}])
 
 ifeq ($(findstring NO_EMAC,$(DEFINES)),NO_EMAC)
 else
-	LIBS+=remoteconfig
+	ifeq ($(findstring CONFIG_NETWORK_USE_MINIMUM,$(DEFINES)),CONFIG_NETWORK_USE_MINIMUM)
+	else
+		LIBS+=remoteconfig
+	endif
 endif
 
 ifeq ($(findstring NODE_NODE,$(DEFINES)),NODE_NODE)
@@ -24,6 +27,12 @@ ifeq ($(findstring NODE_E131,$(DEFINES)),NODE_E131)
 	endif
 endif
 
+ifeq ($(findstring E131_CONTROLLER,$(DEFINES)),E131_CONTROLLER)
+	ifneq ($(findstring e131,$(LIBS)),e131)
+		LIBS+=e131
+	endif
+endif
+
 ifeq ($(findstring NODE_SHOWFILE,$(DEFINES)),NODE_SHOWFILE)
 	LIBS+=showfile osc
 endif
@@ -33,11 +42,11 @@ ifeq ($(findstring NODE_LTC_SMPTE,$(DEFINES)),NODE_LTC_SMPTE)
 endif
 
 ifeq ($(findstring NODE_OSC_CLIENT,$(DEFINES)),NODE_OSC_CLIENT)
-	LIBS+=oscclient osc
+	LIBS+=osc
 endif
 
 ifeq ($(findstring NODE_OSC_SERVER,$(DEFINES)),NODE_OSC_SERVER)
-	LIBS+=oscserver osc
+	LIBS+=osc
 endif
 
 ifeq ($(findstring NODE_DDP_DISPLAY,$(DEFINES)),NODE_DDP_DISPLAY)
@@ -55,39 +64,28 @@ ifeq ($(findstring ARTNET_CONTROLLER,$(DEFINES)),ARTNET_CONTROLLER)
 endif
 
 ifeq ($(findstring RDM_CONTROLLER,$(DEFINES)),RDM_CONTROLLER)
-	LIBS+=rdm
+	RDM=1
 	DMX=1
 endif
 
 ifeq ($(findstring RDM_RESPONDER,$(DEFINES)),RDM_RESPONDER)
-	LIBS+=rdm
-	ifneq ($(findstring NODE_ARTNET,$(DEFINES)),NODE_ARTNET)
-		ifneq ($(findstring dmxreceiver,$(LIBS)),dmxreceiver)
-			LIBS+=dmxreceiver
-		endif
-	endif
+	RDM=1
 	ifneq ($(findstring rdmsensor,$(LIBS)),rdmsensor)
 		LIBS+=rdmsensor
 	endif
 	DMX=1
 endif
 
-ifeq ($(findstring ENABLE_RDM_SUBDEVICES,$(DEFINES)),ENABLE_RDM_SUBDEVICES)
+ifeq ($(findstring CONFIG_RDM_ENABLE_SUBDEVICES,$(DEFINES)),CONFIG_RDM_ENABLE_SUBDEVICES)
 	LIBS+=rdmsubdevice
 endif
 
 ifeq ($(findstring NODE_DMX,$(DEFINES)),NODE_DMX)
-	LIBS+=dmxreceiver
 	DMX=1
 endif
 
 ifeq ($(findstring NODE_RDMNET_LLRP_ONLY,$(DEFINES)),NODE_RDMNET_LLRP_ONLY)
-	ifneq ($(findstring RDM_CONTROLLER,$(DEFINES)),RDM_CONTROLLER)
-		LIBS+=rdm
-	endif
-	ifneq ($(findstring rdmnet,$(LIBS)),rdmnet)
-		LIBS+=rdmnet
-	endif
+	RDM=1
 	ifneq ($(findstring e131,$(LIBS)),e131)
 		LIBS+=e131
 	endif
@@ -99,17 +97,16 @@ ifeq ($(findstring NODE_RDMNET_LLRP_ONLY,$(DEFINES)),NODE_RDMNET_LLRP_ONLY)
 	endif
 endif
 
-ifeq ($(findstring e131,$(LIBS)),e131)
-	LIBS+=uuid
-endif
-
 ifeq ($(findstring OUTPUT_DMX_MONITOR,$(DEFINES)),OUTPUT_DMX_MONITOR)
 	LIBS+=dmxmonitor	
 endif
 
 ifeq ($(findstring OUTPUT_DMX_SEND,$(DEFINES)),OUTPUT_DMX_SEND)
-	LIBS+=dmxsend
 	DMX=1
+endif
+
+ifdef RDM
+	LIBS+=rdm
 endif
 
 ifdef DMX

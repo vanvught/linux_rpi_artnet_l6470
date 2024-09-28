@@ -1,4 +1,4 @@
-EXTRA_INCLUDES+=../lib-properties/include ../lib-network/include ../lib-hal/include
+EXTRA_INCLUDES+=../lib-properties/include ../lib-network/include
 
 ifneq ($(MAKE_FLAGS),)
 	ifeq ($(findstring NO_EMAC,$(MAKE_FLAGS)),NO_EMAC)

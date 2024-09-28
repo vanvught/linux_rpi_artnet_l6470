@@ -2,7 +2,7 @@
  * @file networkparams.cpp
  *
  */
-/* Copyright (C) 2017-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2017-2024 by Arjan van Vught mailto:info@gd32-dmx.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -143,8 +143,13 @@ void NetworkParams::callbackFunction(const char *pLine) {
 	}
 
 	if (Sscan::IpAddress(pLine, NetworkParamsConst::DEFAULT_GATEWAY, nValue32) == Sscan::OK) {
-		m_Params.nGatewayIp = nValue32;
-		m_Params.nSetList |= networkparams::Mask::DEFAULT_GATEWAY;
+		if (nValue32 != 0) {
+			m_Params.nSetList |= networkparams::Mask::DEFAULT_GATEWAY;
+			m_Params.nGatewayIp = nValue32;
+		} else {
+			m_Params.nSetList &= ~networkparams::Mask::DEFAULT_GATEWAY;
+		}
+
 		return;
 	}
 
@@ -156,8 +161,6 @@ void NetworkParams::callbackFunction(const char *pLine) {
 		return;
 	}
 
-
-#if !defined(DISABLE_RTC)
 	if (Sscan::IpAddress(pLine, NetworkParamsConst::NTP_SERVER, nValue32) == Sscan::OK) {
 		if (nValue32 != 0) {
 			m_Params.nSetList |= networkparams::Mask::NTP_SERVER;
@@ -167,21 +170,6 @@ void NetworkParams::callbackFunction(const char *pLine) {
 		m_Params.nNtpServerIp = nValue32;
 		return;
 	}
-
-	float fValue;
-
-	if (Sscan::Float(pLine, NetworkParamsConst::NTP_UTC_OFFSET, fValue) == Sscan::OK) {
-		// https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
-		if ((static_cast<int32_t>(fValue) >= -12) && (static_cast<int32_t>(fValue) <= 14) && (static_cast<int32_t>(fValue) != 0)) {
-			m_Params.fNtpUtcOffset = fValue;
-			m_Params.nSetList |= networkparams::Mask::NTP_UTC_OFFSET;
-		} else {
-			m_Params.fNtpUtcOffset = 0;
-			m_Params.nSetList &= ~networkparams::Mask::NTP_UTC_OFFSET;
-		}
-		return;
-	}
-#endif
 
 #if defined (ESP8266)
 	if (Sscan::IpAddress(pLine,  NetworkParamsConst::NAME_SERVER, nValue32) == Sscan::OK) {
@@ -256,11 +244,8 @@ void NetworkParams::Builder(const struct networkparams::Params *ptNetworkParams,
 #endif
 	builder.Add(NetworkParamsConst::HOSTNAME, m_Params.aHostName, isMaskSet(networkparams::Mask::HOSTNAME));
 
-#if !defined(DISABLE_RTC)
 	builder.AddComment("NTP Server");
 	builder.AddIpAddress(NetworkParamsConst::NTP_SERVER, m_Params.nNtpServerIp, isMaskSet(networkparams::Mask::NTP_SERVER));
-	builder.Add(NetworkParamsConst::NTP_UTC_OFFSET, m_Params.fNtpUtcOffset, isMaskSet(networkparams::Mask::NTP_UTC_OFFSET));
-#endif
 
 	nSize = builder.GetSize();
 
@@ -271,18 +256,15 @@ void NetworkParams::Builder(const struct networkparams::Params *ptNetworkParams,
 void NetworkParams::Dump() {
 	printf("%s::%s \'%s\':\n", __FILE__, __FUNCTION__, NetworkParamsConst::FILE_NAME);
 
-	debug_print_bits(m_Params.nSetList);
-
 	printf(" %s=%d [%s]\n", NetworkParamsConst::USE_DHCP, static_cast<int>(m_Params.bIsDhcpUsed), m_Params.bIsDhcpUsed != 0 ? "Yes" : "No");
 	printf(" %s=" IPSTR "\n", NetworkParamsConst::IP_ADDRESS, IP2STR(m_Params.nLocalIp));
 	printf(" %s=" IPSTR "\n", NetworkParamsConst::NET_MASK, IP2STR(m_Params.nNetmask));
+	printf(" %s=" IPSTR "\n", NetworkParamsConst::DEFAULT_GATEWAY, IP2STR(m_Params.nGatewayIp));
 
 #if defined (ESP8266)
-	printf(" %s=" IPSTR "\n", NetworkParamsConst::DEFAULT_GATEWAY, IP2STR(m_Params.nGatewayIp));
 	printf(" %s=" IPSTR "\n",  NetworkParamsConst::NAME_SERVER, IP2STR(m_Params.nNameServerIp));
 #endif
 
 	printf(" %s=%s\n", NetworkParamsConst::HOSTNAME, m_Params.aHostName);
 	printf(" %s=" IPSTR "\n", NetworkParamsConst::NTP_SERVER, IP2STR(m_Params.nNtpServerIp));
-	printf(" %s=%1.1f\n", NetworkParamsConst::NTP_UTC_OFFSET, m_Params.fNtpUtcOffset);
 }

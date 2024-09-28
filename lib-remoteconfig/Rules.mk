@@ -1,11 +1,15 @@
 $(info $$MAKE_FLAGS [${MAKE_FLAGS}])
 
-EXTRA_INCLUDES=../lib-network/include ../lib-properties/include ../lib-display/include ../lib-lightset/include ../lib-configstore/include
+EXTRA_INCLUDES=../lib-network/include ../lib-properties/include ../lib-display/include ../lib-lightset/include
 EXTRA_INCLUDES+=../lib-flashcode/include ../lib-flashcodeinstall/include
 
 ifneq ($(MAKE_FLAGS),)
 	ifneq (,$(findstring ENABLE_HTTPD,$(MAKE_FLAGS)))
 		EXTRA_SRCDIR+=src/httpd
+	endif
+	
+	ifneq (,$(findstring ENABLE_SHELL,$(MAKE_FLAGS)))
+		EXTRA_SRCDIR+=src/shell src/uart
 	endif
 	
 	ifeq ($(findstring NODE_ARTNET,$(MAKE_FLAGS)), NODE_ARTNET)
@@ -25,13 +29,24 @@ ifneq ($(MAKE_FLAGS),)
 	ifeq ($(findstring NODE_LTC_SMPTE,$(MAKE_FLAGS)), NODE_LTC_SMPTE)
 		EXTRA_INCLUDES+=../lib-ltc/include ../lib-tcnet/include ../lib-gps/include ../lib-midi/include 
 		EXTRA_INCLUDES+=../lib-rgbpanel/include ../lib-ws28xx/include
-		EXTRA_INCLUDES+=../lib-device/include
 	endif
 	ifeq ($(findstring NODE_OSC_CLIENT,$(MAKE_FLAGS)), NODE_OSC_CLIENT)
-		EXTRA_INCLUDES+=../lib-oscclient/include
+		EXTRA_INCLUDES+=../lib-osc/include
 	endif
 	ifeq ($(findstring NODE_OSC_SERVER,$(MAKE_FLAGS)), NODE_OSC_SERVER)
-		EXTRA_INCLUDES+=../lib-oscserver/include
+		EXTRA_INCLUDES+=../lib-osc/include
+	endif
+	ifeq ($(findstring NODE_SHOWFILE,$(MAKE_FLAGS)), NODE_SHOWFILE)
+		EXTRA_INCLUDES+=../lib-showfile/include
+		ifeq ($(findstring CONFIG_SHOWFILE_ENABLE_OSC,$(MAKE_FLAGS)), CONFIG_SHOWFILE_ENABLE_OSC)
+			EXTRA_INCLUDES+=../lib-osc/include
+		endif
+		ifeq ($(findstring CONFIG_SHOWFILE_PROTOCOL_E131,$(MAKE_FLAGS)), CONFIG_SHOWFILE_PROTOCOL_E131)
+			EXTRA_INCLUDES+=../lib-e131/include
+		endif
+		ifeq ($(findstring CONFIG_SHOWFILE_PROTOCOL_ARTNET,$(MAKE_FLAGS)), CONFIG_SHOWFILE_PROTOCOL_ARTNET)
+			EXTRA_INCLUDES+=../lib-artnet/include
+		endif
 	endif
 	
 	ifeq ($(findstring RDM_CONTROLLER,$(MAKE_FLAGS)), RDM_CONTROLLER)
@@ -76,6 +91,7 @@ ifneq ($(MAKE_FLAGS),)
 	endif
 else
 	EXTRA_SRCDIR+=src/httpd
+	DEFINES+=ENABLE_CONTENT
 
 	EXTRA_INCLUDES+=../lib-artnet/include ../lib-e131/include
 	EXTRA_INCLUDES+=../lib-rdmdiscovery/include
@@ -95,6 +111,9 @@ else
 	EXTRA_INCLUDES+=../lib-rdmsensor/include ../lib-rdmsubdevice/include
 	EXTRA_INCLUDES+=../lib-showfile/include
 	EXTRA_INCLUDES+=../lib-dmxmonitor/include 
-	EXTRA_INCLUDES+=../lib-device/include
-	EXTRA_INCLUDES+=../lib-oscclient/include ../lib-oscserver/include
+	EXTRA_INCLUDES+=../lib-osc/include 
+	
+	DEFINES+=ARTNET_VERSION=4
+	DEFINES+=RDM_CONTROLLER ENABLE_NET_PHYSTATUS CONFIG_USB_HOST_MSC ENABLE_PHY_SWITCH
+	DEFINES+=NODE_SHOWFILE CONFIG_SHOWFILE_FORMAT_OLA CONFIG_SHOWFILE_PROTOCOL_E131
 endif

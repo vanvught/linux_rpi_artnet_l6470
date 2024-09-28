@@ -2,7 +2,7 @@
  * @file remoteconfig.cpp
  *
  */
-/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2019-2024 by Arjan van Vught mailto:info@gd32-dmx.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,7 +41,7 @@
 #include "hardware.h"
 #include "network.h"
 #if !defined (CONFIG_REMOTECONFIG_MINIMUM)
-# include "mdns.h"
+# include "net/apps/mdns.h"
 #endif
 #include "display.h"
 
@@ -54,6 +54,8 @@
 
 /* rconfig.txt */
 #include "remoteconfigparams.h"
+/* env.txt */
+#include "envparams.h"
 /* network.txt */
 #include "networkparams.h"
 
@@ -70,7 +72,6 @@
 /* artnet.txt */
 # include "artnetnode.h"
 # include "artnetparams.h"
-# include "storeartnet.h"
 #endif
 
 #if defined (NODE_E131)
@@ -110,7 +111,6 @@
 /* node.txt */
 # include "node.h"
 # include "nodeparams.h"
-# include "storenode.h"
 #endif
 
 /**
@@ -139,12 +139,10 @@
 #if defined(OUTPUT_DMX_STEPPER)
 /* sparkfun.txt */
 # include "sparkfundmxparams.h"
-# include "storesparkfundmx.h"
 /* motor%.txt */
 # include "modeparams.h"
 # include "motorparams.h"
 # include "l6470params.h"
-# include "storemotors.h"
 #endif
 
 #if defined (OUTPUT_DMX_SERIAL)
@@ -172,7 +170,7 @@
 /* sensors.txt */
 # include "rdmsensorsparams.h"
 /* "subdev.txt" */
-# if defined (ENABLE_RDM_SUBDEVICES)
+# if defined (CONFIG_RDM_ENABLE_SUBDEVICES)
 #  include "rdmsubdevicesparams.h"
 # endif
 #endif
@@ -186,10 +184,10 @@ namespace get {
 enum class Command {
 	REBOOT,
 	LIST,
-	UPTIME,
 	VERSION,
 	DISPLAY,
 #if !defined (CONFIG_REMOTECONFIG_MINIMUM)
+	UPTIME,
 # if (defined (NODE_ARTNET) || defined (NODE_NODE)) && (defined (RDM_CONTROLLER) || defined (RDM_RESPONDER))
 	RDM,
 # endif
@@ -213,13 +211,13 @@ enum class Command {
 }  // namespace udp
 }  // namespace remoteconfig
 
-const struct RemoteConfig::Commands RemoteConfig::s_GET[] = {
+constexpr struct RemoteConfig::Commands RemoteConfig::s_GET[] = {
 		{ &RemoteConfig::HandleReboot,      "reboot##",  8, false },
 		{ &RemoteConfig::HandleList,        "list#",     5, false },
-		{ &RemoteConfig::HandleUptime,      "uptime#",   7, false },
 		{ &RemoteConfig::HandleVersion,     "version#",  8, false },
 		{ &RemoteConfig::HandleDisplayGet,  "display#",  8, false },
 #if !defined (CONFIG_REMOTECONFIG_MINIMUM)
+		{ &RemoteConfig::HandleUptime,      "uptime#",   7, false },
 # if (defined (NODE_ARTNET) || defined (NODE_NODE)) && (defined (RDM_CONTROLLER) || defined (RDM_RESPONDER))
 		{ &RemoteConfig::HandleRdmGet,  	"rdm#",  	 4, false },
 # endif
@@ -229,7 +227,7 @@ const struct RemoteConfig::Commands RemoteConfig::s_GET[] = {
 		{ &RemoteConfig::HandleFactory,     "factory##", 9, false }
 };
 
-const struct RemoteConfig::Commands RemoteConfig::s_SET[] = {
+constexpr struct RemoteConfig::Commands RemoteConfig::s_SET[] = {
 #if !defined (CONFIG_REMOTECONFIG_MINIMUM)
 # if (defined (NODE_ARTNET) || defined (NODE_NODE)) && (defined (RDM_CONTROLLER) || defined (RDM_RESPONDER))
 		{ &RemoteConfig::HandleRdmSet,  	"rdm#",     4, true },
@@ -246,7 +244,7 @@ RemoteConfig *RemoteConfig::s_pThis;
 RemoteConfig::ListBin RemoteConfig::s_RemoteConfigListBin;
 char *RemoteConfig::s_pUdpBuffer;
 
-RemoteConfig::RemoteConfig(remoteconfig::Node node, remoteconfig::Output output, uint32_t nActiveOutputs):
+RemoteConfig::RemoteConfig(const remoteconfig::Node node, const remoteconfig::Output output, const uint32_t nActiveOutputs):
 	m_tNode(node),
 	m_tOutput(output),
 	m_nActiveOutputs(nActiveOutputs)
@@ -275,6 +273,11 @@ RemoteConfig::RemoteConfig(remoteconfig::Node node, remoteconfig::Output output,
 # if defined(ENABLE_TFTP_SERVER)
 	MDNS::Get()->ServiceRecordAdd(nullptr, mdns::Services::TFTP);
 # endif
+
+# if defined (ENABLE_HTTPD)
+	m_pHttpDaemon = new HttpDaemon;
+	assert(m_pHttpDaemon != nullptr);
+# endif
 #endif
 
 	DEBUG_EXIT
@@ -284,6 +287,12 @@ RemoteConfig::~RemoteConfig() {
 	DEBUG_ENTRY
 
 #if !defined (CONFIG_REMOTECONFIG_MINIMUM)
+# if defined (ENABLE_HTTPD)
+	if (m_pHttpDaemon != nullptr) {
+		delete m_pHttpDaemon;
+	}
+# endif
+
 	MDNS::Get()->ServiceRecordDelete(mdns::Services::CONFIG);
 #endif
 
@@ -404,6 +413,7 @@ void RemoteConfig::HandleRequest() {
 	}
 }
 
+#if !defined (CONFIG_REMOTECONFIG_MINIMUM)
 void RemoteConfig::HandleUptime() {
 	DEBUG_ENTRY
 
@@ -413,29 +423,20 @@ void RemoteConfig::HandleUptime() {
 	}
 
 	const auto nUptime = Hardware::Get()->GetUpTime();
-	const auto nCmdLength = s_GET[static_cast<uint32_t>(remoteconfig::udp::get::Command::UPTIME)].nLength;
+	const auto nLength = snprintf(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE - 1, "uptime: %us\n", static_cast<unsigned int>(nUptime));
 
-	if (m_nBytesReceived == nCmdLength) {
-		const auto nLength = snprintf(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE - 1, "uptime: %us\n", nUptime);
-		Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint16_t>(nLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
-		DEBUG_EXIT
-		return;
-	}
+	Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint32_t>(nLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
 
 	DEBUG_EXIT
 }
+#endif
 
 void RemoteConfig::HandleVersion() {
 	DEBUG_ENTRY
-	const auto nCmdLength = s_GET[static_cast<uint32_t>(remoteconfig::udp::get::Command::VERSION)].nLength;
 
-	if (m_nBytesReceived == nCmdLength) {
-		const auto *p = FirmwareVersion::Get()->GetPrint();
-		const auto nLength = snprintf(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE - 1, "version:%s", p);
-		Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint16_t>(nLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
-		DEBUG_EXIT
-		return;
-	}
+	const auto *p = FirmwareVersion::Get()->GetPrint();
+	const auto nLength = snprintf(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE - 1, "version:%s", p);
+	Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint32_t>(nLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
 
 	DEBUG_EXIT
 }
@@ -443,33 +444,27 @@ void RemoteConfig::HandleVersion() {
 void RemoteConfig::HandleList() {
 	DEBUG_ENTRY
 
-	const auto nCmdLength = s_GET[static_cast<uint32_t>(remoteconfig::udp::get::Command::LIST)].nLength;
-
-	if (m_nBytesReceived != nCmdLength) {
-		DEBUG_EXIT
-		return;
-	}
-
+	constexpr auto nCmdLength = s_GET[static_cast<uint32_t>(remoteconfig::udp::get::Command::LIST)].nLength;
 	auto *pListResponse = &s_pUdpBuffer[nCmdLength + 2U];
 	const auto nListResponseBufferLength = remoteconfig::udp::BUFFER_SIZE - (nCmdLength + 2U);
 	int32_t nListLength;
 
 	if (s_RemoteConfigListBin.aDisplayName[0] != '\0') {
-		nListLength = snprintf(pListResponse, nListResponseBufferLength - 1, "" IPSTR ",%s,%s,%d,%s\n",
+		nListLength = snprintf(pListResponse, nListResponseBufferLength - 1, "" IPSTR ",%s,%s,%u,%s\n",
 				IP2STR(Network::Get()->GetIp()),
 				s_Node[static_cast<uint32_t>(m_tNode)],
 				s_Output[static_cast<uint32_t>(m_tOutput)],
-				m_nActiveOutputs,
+				static_cast<unsigned int>(m_nActiveOutputs),
 				s_RemoteConfigListBin.aDisplayName);
 	} else {
-		nListLength = snprintf(pListResponse, nListResponseBufferLength - 1, "" IPSTR ",%s,%s,%d\n",
+		nListLength = snprintf(pListResponse, nListResponseBufferLength - 1, "" IPSTR ",%s,%s,%u\n",
 				IP2STR(Network::Get()->GetIp()),
 				s_Node[static_cast<uint32_t>(m_tNode)],
 				s_Output[static_cast<uint32_t>(m_tOutput)],
-				m_nActiveOutputs);
+				static_cast<unsigned int>(m_nActiveOutputs));
 	}
 
-	Network::Get()->SendTo(m_nHandle, pListResponse, static_cast<uint16_t>(nListLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
+	Network::Get()->SendTo(m_nHandle, pListResponse, static_cast<uint32_t>(nListLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
 
 	DEBUG_EXIT
 }
@@ -477,14 +472,14 @@ void RemoteConfig::HandleList() {
 void RemoteConfig::HandleDisplaySet() {
 	DEBUG_ENTRY
 
-	const auto nCmdLength = s_SET[static_cast<uint32_t>(remoteconfig::udp::set::Command::DISPLAY)].nLength;
+	constexpr auto nCmdLength = s_SET[static_cast<uint32_t>(remoteconfig::udp::set::Command::DISPLAY)].nLength;
 
-	if (m_nBytesReceived != (nCmdLength + 1)) {
+	if (m_nBytesReceived != (nCmdLength + 1U)) {
 		DEBUG_EXIT
 		return;
 	}
 
-	Display::Get()->SetSleep(s_pUdpBuffer[nCmdLength + 1] == '0');
+	Display::Get()->SetSleep(s_pUdpBuffer[nCmdLength + 1U] == '0');
 
 	DEBUG_PRINTF("%c", s_pUdpBuffer[nCmdLength + 1]);
 	DEBUG_EXIT
@@ -493,13 +488,10 @@ void RemoteConfig::HandleDisplaySet() {
 void RemoteConfig::HandleDisplayGet() {
 	DEBUG_ENTRY
 
-	const auto nCmdLength = s_GET[static_cast<uint32_t>(remoteconfig::udp::get::Command::DISPLAY)].nLength;
 	const bool isOn = !(Display::Get()->isSleep());
+	const auto nLength = snprintf(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE - 1, "display:%s\n", isOn ? "On" : "Off");
 
-	if (m_nBytesReceived == nCmdLength) {
-		const auto nLength = snprintf(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE - 1, "display:%s\n", isOn ? "On" : "Off");
-		Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint16_t>(nLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
-	}
+	Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint32_t>(nLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
 
 	DEBUG_EXIT
 }
@@ -511,27 +503,24 @@ void RemoteConfig::HandleRdmSet() {
 
 	const auto nCmdLength = s_SET[static_cast<uint32_t>(remoteconfig::udp::set::Command::RDM)].nLength;
 
-	if (m_nBytesReceived != (nCmdLength + 1)) {
+	if (m_nBytesReceived != (nCmdLength + 1U)) {
 		DEBUG_EXIT
 		return;
 	}
 
-	ArtNetNode::Get()->SetRdm(s_pUdpBuffer[nCmdLength + 1] != '0');
+	ArtNetNode::Get()->SetRdm(s_pUdpBuffer[nCmdLength + 1U] != '0');
 
-	DEBUG_PRINTF("%c", s_pUdpBuffer[nCmdLength + 1]);
+	DEBUG_PRINTF("%c", s_pUdpBuffer[nCmdLength + 1U]);
 	DEBUG_EXIT
 }
 
 void RemoteConfig::HandleRdmGet() {
 	DEBUG_ENTRY
 
-	const auto nCmdLength = s_GET[static_cast<uint32_t>(remoteconfig::udp::get::Command::RDM)].nLength;
 	const bool isOn = ArtNetNode::Get()->GetRdm();
+	const auto nLength = snprintf(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE - 1, "rdm:%s\n", isOn ? "On" : "Off");
 
-	if (m_nBytesReceived == nCmdLength) {
-		const auto nLength = snprintf(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE - 1, "rdm:%s\n", isOn ? "On" : "Off");
-		Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint16_t>(nLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
-	}
+	Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint32_t>(nLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
 
 	DEBUG_EXIT
 }
@@ -547,7 +536,7 @@ uint32_t RemoteConfig::HandleGet(void *pBuffer, uint32_t nBufferLength) {
 	uint32_t nSize;
 	int32_t nIndex;
 
-	const auto nCmdLength = s_GET[static_cast<uint32_t>(remoteconfig::udp::get::Command::GET)].nLength;
+	constexpr auto nCmdLength = s_GET[static_cast<uint32_t>(remoteconfig::udp::get::Command::GET)].nLength;
 
 	if (pBuffer == nullptr) {
 		nSize = remoteconfig::udp::BUFFER_SIZE - nCmdLength;
@@ -573,7 +562,7 @@ uint32_t RemoteConfig::HandleGet(void *pBuffer, uint32_t nBufferLength) {
 	(this->*(handler->GetHandler))(nSize);
 
 	if (pBuffer == nullptr) {
-		Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint16_t>(nSize), m_nIPAddressFrom, remoteconfig::udp::PORT);
+		Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, nSize, m_nIPAddressFrom, remoteconfig::udp::PORT);
 	} else {
 		memcpy(pBuffer, s_pUdpBuffer, std::min(nSize, nBufferLength));
 	}
@@ -587,6 +576,15 @@ void RemoteConfig::HandleGetRconfigTxt(uint32_t& nSize) {
 
 	RemoteConfigParams remoteConfigParams;
 	remoteConfigParams.Save(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE, nSize);
+
+	DEBUG_EXIT
+}
+
+void RemoteConfig::HandleGetEnvTxt(uint32_t& nSize) {
+	DEBUG_ENTRY
+
+	EnvParams envParams;
+	envParams.Builder(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE, nSize);
 
 	DEBUG_EXIT
 }
@@ -663,7 +661,7 @@ void RemoteConfig::HandleGetRdmSensorsTxt(uint32_t& nSize) {
 	DEBUG_EXIT
 }
 
-# if defined (ENABLE_RDM_SUBDEVICES)
+# if defined (CONFIG_RDM_ENABLE_SUBDEVICES)
 void RemoteConfig::HandleGetRdmSubdevTxt(uint32_t& nSize) {
 	DEBUG_ENTRY
 
@@ -790,7 +788,7 @@ void RemoteConfig::HandleGetDisplayTxt(uint32_t& nSize) {
 void RemoteConfig::HandleGetSparkFunTxt(uint32_t& nSize) {
 	DEBUG_ENTRY
 
-	SparkFunDmxParams sparkFunParams(StoreSparkFunDmx::Get());
+	SparkFunDmxParams sparkFunParams;
 	sparkFunParams.Save(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE, nSize);
 
 	DEBUG_EXIT
@@ -802,28 +800,28 @@ void RemoteConfig::HandleGetMotorTxt(uint32_t nMotorIndex, uint32_t& nSize) {
 
 	uint32_t nSizeSparkFun = 0;
 
-	SparkFunDmxParams sparkFunParams(StoreSparkFunDmx::Get());
+	SparkFunDmxParams sparkFunParams;
 	sparkFunParams.Save(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE, nSizeSparkFun, nMotorIndex);
 
 	DEBUG_PRINTF("nSizeSparkFun=%d", nSizeSparkFun);
 
 	uint32_t nSizeMode = 0;
 
-	ModeParams modeParams(StoreMotors::Get());
+	ModeParams modeParams;
 	modeParams.Save(nMotorIndex, s_pUdpBuffer + nSizeSparkFun, remoteconfig::udp::BUFFER_SIZE - nSizeSparkFun, nSizeMode);
 
 	DEBUG_PRINTF("nSizeMode=%d", nSizeMode);
 
 	uint32_t nSizeMotor = 0;
 
-	MotorParams motorParams(StoreMotors::Get());
+	MotorParams motorParams;
 	motorParams.Save(nMotorIndex, s_pUdpBuffer + nSizeSparkFun + nSizeMode, remoteconfig::udp::BUFFER_SIZE - nSizeSparkFun - nSizeMode, nSizeMotor);
 
 	DEBUG_PRINTF("nSizeMotor=%d", nSizeMotor);
 
 	uint32_t nSizeL6470 = 0;
 
-	L6470Params l6470Params(StoreMotors::Get());
+	L6470Params l6470Params;
 	l6470Params.Save(nMotorIndex, s_pUdpBuffer + nSizeSparkFun + nSizeMode + nSizeMotor, remoteconfig::udp::BUFFER_SIZE - nSizeSparkFun - nSizeMode - nSizeMotor, nSizeL6470);
 
 	DEBUG_PRINTF("nSizeL6470=%d", nSizeL6470);
@@ -934,12 +932,21 @@ void RemoteConfig::HandleSet(void *pBuffer, uint32_t nBufferLength) {
 	DEBUG_EXIT
 }
 
-void RemoteConfig::HandleSetRconfig() {
+void RemoteConfig::HandleSetRconfigTxt() {
 	DEBUG_ENTRY
 
 	RemoteConfigParams remoteConfigParams;
 	remoteConfigParams.Load(s_pUdpBuffer, m_nBytesReceived);
 	remoteConfigParams.Set(this);
+
+	DEBUG_EXIT
+}
+
+void RemoteConfig::HandleSetEnvTxt() {
+	DEBUG_ENTRY
+
+	EnvParams params;
+	params.LoadAndSet(s_pUdpBuffer, m_nBytesReceived);
 
 	DEBUG_EXIT
 }
@@ -1105,8 +1112,7 @@ void RemoteConfig::HandleSetDisplayTxt() {
 void RemoteConfig::HandleSetSparkFunTxt() {
 	DEBUG_ENTRY
 
-	assert(StoreSparkFunDmx::Get() != nullptr);
-	SparkFunDmxParams sparkFunDmxParams(StoreSparkFunDmx::Get());
+	SparkFunDmxParams sparkFunDmxParams;
 	sparkFunDmxParams.Load(s_pUdpBuffer, m_nBytesReceived);
 
 	DEBUG_EXIT
@@ -1116,18 +1122,16 @@ void RemoteConfig::HandleSetMotorTxt(uint32_t nMotorIndex) {
 	DEBUG_ENTRY
 	DEBUG_PRINTF("nMotorIndex=%d", nMotorIndex);
 
-	assert(StoreSparkFunDmx::Get() != nullptr);
-	SparkFunDmxParams sparkFunDmxParams(StoreSparkFunDmx::Get());
+	SparkFunDmxParams sparkFunDmxParams;
 	sparkFunDmxParams.Load(nMotorIndex, s_pUdpBuffer, m_nBytesReceived);
 
-	assert(StoreMotors::Get() != nullptr);
-	ModeParams modeParams(StoreMotors::Get());
+	ModeParams modeParams;
 	modeParams.Load(nMotorIndex, s_pUdpBuffer, m_nBytesReceived);
 
-	MotorParams motorParams(StoreMotors::Get());
+	MotorParams motorParams;
 	motorParams.Load(nMotorIndex, s_pUdpBuffer, m_nBytesReceived);
 
-	L6470Params l6470Params(StoreMotors::Get());
+	L6470Params l6470Params;
 	l6470Params.Load(nMotorIndex, s_pUdpBuffer, m_nBytesReceived);
 
 	DEBUG_EXIT
@@ -1175,7 +1179,7 @@ void RemoteConfig::HandleSetRdmSensorsTxt() {
 	DEBUG_EXIT
 }
 
-# if defined (ENABLE_RDM_SUBDEVICES)
+# if defined (CONFIG_RDM_ENABLE_SUBDEVICES)
 void RemoteConfig::HandleSetRdmSubdevTxt() {
 	DEBUG_ENTRY
 
@@ -1236,14 +1240,14 @@ void RemoteConfig::TftpExit() {
 void RemoteConfig::HandleTftpSet() {
 	DEBUG_ENTRY
 
-	const auto nCmdLength = s_SET[static_cast<uint32_t>(remoteconfig::udp::set::Command::TFTP)].nLength;
+	constexpr auto nCmdLength = s_SET[static_cast<uint32_t>(remoteconfig::udp::set::Command::TFTP)].nLength;
 
-	if (m_nBytesReceived != (nCmdLength + 1)) {
+	if (m_nBytesReceived != (nCmdLength + 1U)) {
 		DEBUG_EXIT
 		return;
 	}
 
-	m_bEnableTFTP = (s_pUdpBuffer[nCmdLength + 1] != '0');
+	m_bEnableTFTP = (s_pUdpBuffer[nCmdLength + 1U] != '0');
 
 	if (m_bEnableTFTP) {
 		Display::Get()->SetSleep(false);
@@ -1259,14 +1263,8 @@ void RemoteConfig::HandleTftpGet() {
 
 	PlatformHandleTftpGet();
 
-	const auto nCmdLength = s_GET[static_cast<uint32_t>(remoteconfig::udp::get::Command::TFTP)].nLength;
-
-	if (m_nBytesReceived == nCmdLength) {
-		const auto nLength = snprintf(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE - 1, "tftp:%s\n", m_bEnableTFTP ? "On" : "Off");
-		Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint16_t>(nLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
-		DEBUG_EXIT
-		return;
-	}
+	const auto nLength = snprintf(s_pUdpBuffer, remoteconfig::udp::BUFFER_SIZE - 1, "tftp:%s\n", m_bEnableTFTP ? "On" : "Off");
+	Network::Get()->SendTo(m_nHandle, s_pUdpBuffer, static_cast<uint32_t>(nLength), m_nIPAddressFrom, remoteconfig::udp::PORT);
 
 	DEBUG_EXIT
 }

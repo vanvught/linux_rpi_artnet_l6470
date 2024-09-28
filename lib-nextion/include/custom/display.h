@@ -34,8 +34,6 @@
 
 #include "nextion.h"
 
-#include "display7segment.h"
-
 class Display: Nextion {
 public:
 	Display() {
@@ -101,10 +99,7 @@ public:
 		Write(display::nextion::ROWS, pText);
 	}
 
-	void Status(__attribute__((unused)) Display7SegmentMessage message) {}
-
-	void TextStatus(const char *pText, Display7SegmentMessage message, uint32_t nConsoleColor = UINT32_MAX) {
-		Status(message);
+	void TextStatus(const char *pText, uint32_t nConsoleColor) {
 		TextStatus(pText);
 
 		if (nConsoleColor == UINT32_MAX) {
@@ -127,7 +122,7 @@ public:
 		return m_bSleep;
 	}
 
-	void SetFlipVertically(__attribute__((unused)) bool sFlipVertically) {}
+	void SetFlipVertically([[maybe_unused]] bool sFlipVertically) {}
 
 	bool GetFlipVertically() const {
 		return false;

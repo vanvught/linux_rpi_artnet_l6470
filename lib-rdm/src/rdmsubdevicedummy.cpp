@@ -33,7 +33,7 @@
 static constexpr uint32_t DMX_FOOTPRINT = 4;
 static RDMPersonality *s_RDMPersonalities[] = {new RDMPersonality("Dummy-H", DMX_FOOTPRINT), new RDMPersonality("Dummy-D", DMX_FOOTPRINT)};
 
-RDMSubDeviceDummy::RDMSubDeviceDummy(__attribute__((unused)) uint16_t nDmxStartAddress, __attribute__((unused)) char nChipSselect, __attribute__((unused)) uint8_t nSlaveAddress, __attribute__((unused)) uint32_t nSpiSpeed) :
+RDMSubDeviceDummy::RDMSubDeviceDummy([[maybe_unused]] uint16_t nDmxStartAddress, [[maybe_unused]] char nChipSselect, [[maybe_unused]] uint8_t nSlaveAddress, [[maybe_unused]] uint32_t nSpiSpeed) :
 	RDMSubDevice("SubDevice Dummy", nDmxStartAddress)
 {
 	SetDmxFootprint(DMX_FOOTPRINT);
@@ -58,8 +58,8 @@ void RDMSubDeviceDummy::Data(const uint8_t* pData, uint32_t nLength) {
 
 	const auto nDmxStartAddress = GetDmxStartAddress();
 
-	printf("RDMSubDeviceDummy::Data(*pData:%p, nLength:%d)\n", static_cast<const void*>(pData), nLength);
-	printf("%d:%d:%d: ", nLength, DMX_FOOTPRINT, nDmxStartAddress);
+	printf("RDMSubDeviceDummy::Data(*pData:%p, nLength:%u)\n", static_cast<const void *>(pData), static_cast<unsigned int>(nLength));
+	printf("%u:%u:%u: ", static_cast<unsigned int>(nLength), static_cast<unsigned int>(DMX_FOOTPRINT), static_cast<unsigned int>(nDmxStartAddress));
 
 	for (uint32_t i = static_cast<uint32_t>(nDmxStartAddress - 1), j = 0; (i < nLength) && (j < DMX_FOOTPRINT); i++, j++) {
 		switch (GetPersonalityCurrent()) {
@@ -74,7 +74,7 @@ void RDMSubDeviceDummy::Data(const uint8_t* pData, uint32_t nLength) {
 		}
 	}
 
-	printf("\n");
+	puts("");
 }
 
 void RDMSubDeviceDummy::UpdateEvent(TRDMSubDeviceUpdateEvent tUpdateEvent) {

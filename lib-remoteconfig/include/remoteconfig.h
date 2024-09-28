@@ -2,7 +2,7 @@
  * @file remoteconfig.h
  *
  */
-/* Copyright (C) 2019-2023 by Arjan van Vught mailto:info@orangepi-dmx.nl
+/* Copyright (C) 2019-2024 by Arjan van Vught mailto:info@gd32-dmx.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,6 +27,7 @@
 #define REMOTECONFIG_H_
 
 #include <cstdint>
+#include <cassert>
 
 #if defined (NODE_ARTNET_MULTI)
 # define NODE_ARTNET
@@ -48,17 +49,20 @@
 # include "node.h"
 #endif
 
-#include "configstore.h"
-
 #if defined(ENABLE_TFTP_SERVER)
 # include "tftp/tftpfileserver.h"
 #endif
 
+#if defined (ENABLE_HTTPD)
+# include "httpd/httpd.h"
+#endif
+
+#include "configstore.h"
 #include "network.h"
 
 namespace remoteconfig {
 namespace udp {
-static constexpr auto BUFFER_SIZE = 1024;
+static constexpr auto BUFFER_SIZE = 1420;
 } // namespace udp
 
 enum class Node {
@@ -77,6 +81,7 @@ enum class Node {
 	RDMRESPONDER,
 	LAST
 };
+
 enum class Output {
 	DMX,
 	RDM,
@@ -92,11 +97,6 @@ enum class Output {
 	RGBPANEL,
 	PWM,
 	LAST
-};
-
-enum {
-	DISPLAY_NAME_LENGTH = 24,
-	ID_LENGTH = (32 + remoteconfig::DISPLAY_NAME_LENGTH + 2) // +2, comma and \n
 };
 
 enum class TxtFile {
@@ -128,13 +128,19 @@ enum class TxtFile {
 	RGBPANEL,
 	LTCETC,
 	NODE,
+	ENV,
 	LAST
+};
+
+enum {
+	DISPLAY_NAME_LENGTH = 24,
+	ID_LENGTH = (32 + remoteconfig::DISPLAY_NAME_LENGTH + 2) // +2, comma and \n
 };
 }  // namespace remoteconfig
 
 class RemoteConfig {
 public:
-	RemoteConfig(remoteconfig::Node tType, remoteconfig::Output tMode, uint32_t nOutputs = 0);
+	RemoteConfig(const remoteconfig::Node node, const remoteconfig::Output output, const uint32_t nActiveOutputs = 0);
 	~RemoteConfig();
 
 	const char *GetStringNode() const;
@@ -210,6 +216,10 @@ public:
 		}
 #endif
 
+#if defined (ENABLE_HTTPD)
+		m_pHttpDaemon->Run();
+#endif
+
 		uint16_t nForeignPort;
 		m_nBytesReceived = Network::Get()->RecvFrom(m_nHandle, const_cast<const void **>(reinterpret_cast<void **>(&s_pUdpBuffer)), &m_nIPAddressFrom, &nForeignPort);
 
@@ -229,7 +239,9 @@ private:
 	void HandleReboot();
 	void HandleFactory();
 	void HandleList();
+#if !defined (CONFIG_REMOTECONFIG_MINIMUM)
 	void HandleUptime();
+#endif
 	void HandleVersion();
 
 	void HandleGetNoParams() {
@@ -237,6 +249,7 @@ private:
 	}
 
 	void HandleGetRconfigTxt(uint32_t& nSize);
+	void HandleGetEnvTxt(uint32_t& nSize);
 	void HandleGetNetworkTxt(uint32_t& nSize);
 
 #if defined (DISPLAY_UDF)
@@ -287,7 +300,7 @@ private:
 #if defined (RDM_RESPONDER)
 	void HandleGetRdmDeviceTxt(uint32_t& nSize);
 	void HandleGetRdmSensorsTxt(uint32_t& nSize);
-# if defined (ENABLE_RDM_SUBDEVICES)
+# if defined (CONFIG_RDM_ENABLE_SUBDEVICES)
 	void HandleGetRdmSubdevTxt(uint32_t& nSize);
 # endif
 #endif
@@ -345,7 +358,8 @@ private:
 	void HandleGetPca9685Txt(uint32_t& nSize);
 #endif
 
-	void HandleSetRconfig();
+	void HandleSetRconfigTxt();
+	void HandleSetEnvTxt();
 	void HandleSetNetworkTxt();
 
 #if defined (DISPLAY_UDF)
@@ -396,7 +410,7 @@ private:
 #if defined (RDM_RESPONDER)
 	void HandleSetRdmDeviceTxt();
 	void HandleSetRdmSensorsTxt();
-# if defined (ENABLE_RDM_SUBDEVICES)
+# if defined (CONFIG_RDM_ENABLE_SUBDEVICES)
 	void HandleSetRdmSubdevTxt();
 # endif
 #endif
@@ -484,7 +498,6 @@ private:
 		void (RemoteConfig::*SetHandler)();
 		const char *pFileName;
 		const uint8_t nFileNameLength;
-		const configstore::Store nStore;
 	};
 
 	static const Txt s_TXT[];
@@ -515,6 +528,10 @@ private:
 	TFTPFileServer *m_pTFTPFileServer { nullptr };
 #endif
 	bool m_bEnableTFTP { false };
+
+#if defined (ENABLE_HTTPD)
+	HttpDaemon *m_pHttpDaemon { nullptr };
+#endif
 
 	static char *s_pUdpBuffer;
 

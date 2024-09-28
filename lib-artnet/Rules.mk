@@ -1,4 +1,4 @@
-EXTRA_INCLUDES+=../lib-lightset/include ../lib-properties/include ../lib-hal/include ../lib-network/include ../lib-configstore/include
+EXTRA_INCLUDES+=../lib-lightset/include ../lib-properties/include ../lib-network/include
 
 ifneq ($(MAKE_FLAGS),)
 	ifeq ($(findstring NODE_ARTNET,$(MAKE_FLAGS)), NODE_ARTNET)
@@ -22,10 +22,6 @@ ifneq ($(MAKE_FLAGS),)
 		EXTRA_INCLUDES+=../lib-rdm/include
 	endif
 	
-	ifeq ($(findstring ARTNET_HAVE_TIMECODE,$(MAKE_FLAGS)), ARTNET_HAVE_TIMECODE)
-		EXTRA_SRCDIR+=src/node/timecode
-	endif
-	
 	ifeq ($(findstring ARTNET_CONTROLLER,$(MAKE_FLAGS)), ARTNET_CONTROLLER)
 		EXTRA_SRCDIR+=src/controller
 	endif
@@ -42,6 +38,10 @@ ifneq ($(MAKE_FLAGS),)
 	ifeq ($(findstring ARTNET_VERSION=4,$(MAKE_FLAGS)), ARTNET_VERSION=4)
 		EXTRA_SRCDIR+=src/node/4
 		EXTRA_INCLUDES+=../lib-e131/include
+	endif
+	
+	ifeq ($(findstring OUTPUT_DMX_SEND,$(MAKE_FLAGS)), OUTPUT_DMX_SEND)
+			EXTRA_INCLUDES+=../lib-dmx/include
 	endif
 	
 	ifneq (,$(findstring CONFIG_STORE_USE_ROM,$(MAKE_FLAGS)))
@@ -63,4 +63,6 @@ else
 	DEFINES+=RDM_CONTROLLER
 	DEFINES+=ARTNET_VERSION=4
 	DEFINES+=LIGHTSET_PORTS=1
+	DEFINES+=NODE_SHOWFILE 
+	DEFINES+=CONFIG_SHOWFILE_PROTOCOL_NODE_ARTNET
 endif

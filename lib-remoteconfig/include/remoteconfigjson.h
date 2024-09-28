@@ -2,7 +2,7 @@
  * @file remoteconfig.h
  *
  */
-/* Copyright (C) 2021-2023 by Arjan van Vught mailto:info@gd32-dmx.org
+/* Copyright (C) 2021-2024 by Arjan van Vught mailto:info@gd32-dmx.org
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +37,10 @@ uint32_t json_get_directory(char *pOutBuffer, const uint32_t nOutBufferSize);
 namespace net {
 uint32_t json_get_phystatus(char *pOutBuffer, const uint32_t nOutBufferSize);
 }  // namespace net
+namespace dmx {
+uint32_t json_get_ports(char *pOutBuffer, const uint32_t nOutBufferSize);
+uint32_t json_get_portstatus(const char cPort, char *pOutBuffer, const uint32_t nOutBufferSize);
+}  // namespace dmx
 namespace rdm {
 uint32_t json_get_rdm(char *pOutBuffer, const uint32_t nOutBufferSize);
 uint32_t json_get_queue(char *pOutBuffer, const uint32_t nOutBufferSize);
@@ -50,6 +54,29 @@ namespace dsa {
 uint32_t json_get_portstatus(char *pOutBuffer, const uint32_t nOutBufferSize);
 uint32_t json_get_vlantable(char *pOutBuffer, const uint32_t nOutBufferSize);
 }  // namespace dsa
+namespace showfile {
+uint32_t json_get_status(char *pOutBuffer, const uint32_t nOutBufferSize);
+uint32_t json_get_directory(char *pOutBuffer, const uint32_t nOutBufferSize);
+void json_set_status(const char *pBuffer, const uint32_t nBufferSize);
+void json_delete(const char *pBuffer, const uint32_t nBufferSize);
+}  // namespace showfile
+namespace timedate {
+uint32_t json_get_timeofday(char *pOutBuffer, const uint32_t nOutBufferSize);
+void json_set_timeofday(const char *pBuffer, const uint32_t nBufferSize);
+}  // namespace timedate
+namespace rtc {
+uint32_t json_get_rtc(char *pOutBuffer, const uint32_t nOutBufferSize);
+void json_set_rtc(const char *pBuffer, const uint32_t nBufferSize);
+}  // namespace rtc
+namespace artnet {
+namespace controller {
+uint32_t json_get_polltable(char *pOutBuffer, const uint32_t nOutBufferSize);
+}  // namespace controller
+}  // namespace artnet
+namespace pixel {
+uint32_t json_get_types(char *pOutBuffer, const uint32_t nOutBufferSize);
+uint32_t json_get_status(char *pOutBuffer, const uint32_t nOutBufferSize);
+}  // namespace pixel
 }  // namespace remoteconfig
 
 #endif /* REMOTECONFIGJSON_H_ */
